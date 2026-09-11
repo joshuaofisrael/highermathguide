@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numerical Derivative Calculator — Higher Math Guide</title>
+<meta name="description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/numerical-derivative.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Numerical Derivative Calculator — Higher Math Guide">
+<meta property="og:description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/numerical-derivative.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numerical Derivative Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Numerical Derivative Calculator",
+  "description": "Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/numerical-derivative.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Numerical derivative / slope estimator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>This tool estimates $f'(x_0)$ using a difference quotient. Enter a simple expression in <code>x</code>, a point $x_0$, and a step size $h$. Central differences are usually best for smooth functions; try smaller $h$ until the estimate stabilizes — then stop before floating-point noise dominates.</p>
+<p>Allowed pieces: numbers, <code>x</code>, <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code>, parentheses, and <code>sin</code> <code>cos</code> <code>tan</code> <code>sqrt</code> <code>abs</code> <code>log</code> (natural) <code>exp</code> <code>pi</code> <code>e</code>.</p>
+</div>
+
+<div class="calc-panel" style="margin:1.5rem 0">
+<label for="fx-expr">f(x) =</label>
+<input id="fx-expr" type="text" value="x^2" autocomplete="off" spellcheck="false">
+<label for="x0">x₀</label>
+<input id="x0" type="number" value="3" step="any">
+<label for="h-step">Step size h</label>
+<input id="h-step" type="number" value="0.001" step="any">
+<label for="diff-method">Method</label>
+<select id="diff-method">
+<option value="central" selected>Central difference</option>
+<option value="forward">Forward difference</option>
+<option value="backward">Backward difference</option>
+</select>
+<div class="calc-actions">
+<button type="button" class="btn" id="calc-slope">Estimate slope</button>
+<button type="button" class="btn btn-secondary" id="calc-reset">Reset</button>
+</div>
+<p class="calc-error" id="calc-error" role="alert"></p>
+<div class="calc-result" id="calc-result">
+<div class="amount" id="result-amount"></div>
+<div class="detail" id="result-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout warning"><strong>Disclaimer.</strong> This is a numerical estimate, not a symbolic computer-algebra derivative. Ill-conditioned expressions, discontinuities, or tiny $h$ can produce garbage. See the <a href="../disclaimer/">site disclaimer</a>.</div>
+<p>Read more: <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculus Foundations — Higher Math Guide</title>
+<meta name="description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/topics/calculus-foundations.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Calculus Foundations — Higher Math Guide">
+<meta property="og:description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/topics/calculus-foundations.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculus Foundations — Higher Math Guide">
+<meta name="twitter:description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Calculus Foundations",
+  "description": "A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/topics/calculus-foundations.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/" aria-current="page">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Calculus foundations</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Calculus is the mathematics of change and accumulation. Derivatives answer “how fast?” Integrals answer “how much in total?” Limits hold the two ideas together by making precise what happens as we zoom in or add finer and finer pieces.</p>
+
+<h2>What you should be able to do</h2>
+<p>After a solid first pass, you should be able to:</p>
+<ul>
+<li>Explain a limit in words and check simple ones algebraically or numerically.</li>
+<li>Compute derivatives of polynomials, exponentials, sine and cosine, and products/quotients/compositions.</li>
+<li>Interpret $f'(a)$ as an instantaneous rate and as the slope of a tangent line.</li>
+<li>Set up and evaluate definite integrals as signed area / net accumulation.</li>
+<li>Use the Fundamental Theorem of Calculus to connect derivatives and integrals.</li>
+</ul>
+
+<h2>Limits without mysticism</h2>
+<p>Saying $\lim_{x \to a} f(x) = L$ means: values of $f(x)$ can be forced as close to $L$ as we like by taking $x$ sufficiently close to $a$ (but not necessarily equal to $a$). Continuity at $a$ adds that $f(a)$ exists and equals that limit. Removable gaps, jumps, and vertical blow-ups are the classic ways continuity fails.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> Plugging in $x = a$ is a useful check when $f$ is continuous there — but it is not the definition of a limit. Limits care about nearby values, not the point itself.</div>
+
+<h2>Derivatives as linear approximation</h2>
+<p>The derivative $f'(a)$ is the unique number (when it exists) such that near $a$, $f(x) \approx f(a) + f'(a)(x-a)$. That linear approximation is why derivatives show up in optimization, related rates, and numerical methods. For a walkthrough of the meaning, see <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a>. To estimate slopes numerically, try the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>.</p>
+
+<h2>Integrals as accumulation</h2>
+<p>A definite integral $\int_a^b f(x)\,dx$ measures net signed area under $y=f(x)$ from $a$ to $b$. Riemann sums make the idea concrete: rectangles of height $f(x_i^*)$ and width $\Delta x$ approximate the total; the integral is the limit of those sums as the mesh goes to zero (when the limit exists).</p>
+
+<h2>Where to go next</h2>
+<ul>
+<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition without terror</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge pathway</a></li>
+<li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
+<li>Glossary: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#integral">integral</a>, <a href="../glossary/#continuity">continuity</a></li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="multivariable-vector-calculus.html">Multivariable &amp; vector calculus</a></li>
+<li><a href="real-analysis-proofs.html">Real analysis &amp; proof habits</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC. Not a substitute for coursework or tutoring.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

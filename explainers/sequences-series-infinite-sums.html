@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequences, Series, and Infinite Sums — Higher Math Guide</title>
+<meta name="description" content="When infinite sums make sense: partial sums, convergence, and common student traps.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/explainers/sequences-series-infinite-sums.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Sequences, Series, and Infinite Sums — Higher Math Guide">
+<meta property="og:description" content="When infinite sums make sense: partial sums, convergence, and common student traps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/explainers/sequences-series-infinite-sums.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sequences, Series, and Infinite Sums — Higher Math Guide">
+<meta name="twitter:description" content="When infinite sums make sense: partial sums, convergence, and common student traps.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sequences, Series, and Infinite Sums",
+  "description": "When infinite sums make sense: partial sums, convergence, and common student traps.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/explainers/sequences-series-infinite-sums.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Sequences, series, and when infinite sums make sense</h1>
+<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>An infinite sum is not a mystical elongated plus sign. It is a limit of partial sums. If those partial sums approach a number, we say the series converges and we assign that number as the sum. If they wander or blow up, the series diverges — and writing a “total” is meaningless in the usual sense.</p>
+
+<h2>Sequences first</h2>
+<p>A sequence $(a_n)$ is an ordered list of numbers. It converges to $L$ when terms eventually stay arbitrarily close to $L$. Series piggyback on this idea: given terms $a_n$, form $s_N=a_1+\cdots+a_N$. The series $\sum a_n$ converges exactly when the sequence $(s_N)$ converges.</p>
+
+<h2>Classic behaviors</h2>
+<ul>
+<li><strong>Geometric series</strong> $\sum r^n$ converges when $|r|&lt;1$, with sum formulas you can derive from partial sums.</li>
+<li><strong>Harmonic series</strong> $\sum 1/n$ diverges despite terms going to zero — “terms → 0” is necessary but not sufficient.</li>
+<li><strong>Alternating examples</strong> can converge conditionally; absolute convergence is a stronger, rearrangement-friendly property.</li>
+</ul>
+
+<p><span class="example-label">Example</span> Partial sums of $1+\frac12+\frac14+\frac18+\cdots$ approach $2$. Partial sums of $1+\frac12+\frac13+\frac14+\cdots$ grow without bound (slowly), so there is no finite sum.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> You cannot rearrange conditionally convergent series and expect the same sum. Absolute convergence is the green light for most algebraic wish-lists.</div>
+
+<p>These ideas sit at the hinge between calculus technique and analysis rigor — see <a href="../topics/real-analysis-proofs.html">Real analysis &amp; proof habits</a> and <a href="../topics/calculus-foundations.html">Calculus foundations</a>.</p>
+
+<h2>Citations &amp; further reading</h2>
+<ul class="source-list">
+<li>OpenStax <em>Calculus Volume 2</em>, sequences and series. <a href="https://openstax.org/details/books/calculus-volume-2" rel="noopener">openstax.org</a></li>
+<li>Abbott, <em>Understanding Analysis</em> — sequences and series chapters. <a href="https://link.springer.com/book/10.1007/978-1-4939-2712-8" rel="noopener">Springer</a></li>
+<li>Paul’s Online Math Notes, Series &amp; Sequences. <a href="https://tutorial.math.lamar.edu/Classes/CalcII/SeriesIntro.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>MIT OCW single-variable calculus — infinite series units. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
+</ul>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

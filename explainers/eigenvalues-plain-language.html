@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eigenvalues in Plain Language — Higher Math Guide</title>
+<meta name="description" content="What eigenvalues and eigenvectors mean geometrically, with original examples and common pitfalls.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/explainers/eigenvalues-plain-language.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Eigenvalues in Plain Language — Higher Math Guide">
+<meta property="og:description" content="What eigenvalues and eigenvectors mean geometrically, with original examples and common pitfalls.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/explainers/eigenvalues-plain-language.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Eigenvalues in Plain Language — Higher Math Guide">
+<meta name="twitter:description" content="What eigenvalues and eigenvectors mean geometrically, with original examples and common pitfalls.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Eigenvalues in Plain Language",
+  "description": "What eigenvalues and eigenvectors mean geometrically, with original examples and common pitfalls.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/explainers/eigenvalues-plain-language.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Eigenvalues in plain language</h1>
+<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Matrices can rotate, reflect, shear, stretch, and squash. Amid all that motion, some directions are special: the matrix stretches or flips vectors on those lines but does not knock them onto a different line. Those directions are spanned by eigenvectors; the stretch factors are eigenvalues.</p>
+
+<h2>The defining equation</h2>
+<p>A nonzero vector $\mathbf{v}$ is an eigenvector of square matrix $A$ with eigenvalue $\lambda$ when $A\mathbf{v}=\lambda\mathbf{v}$. Applying $A$ has the same effect as simply multiplying by the scalar $\lambda$. Rearranged, $(A-\lambda I)\mathbf{v}=\mathbf{0}$, so $\lambda$ is an eigenvalue precisely when $A-\lambda I$ fails to be invertible — that is, when $\det(A-\lambda I)=0$.</p>
+
+<p><span class="example-label">Example</span> Stretch the plane by $2$ in the $x$-direction and $3$ in the $y$-direction: $A=\begin{pmatrix}2&amp;0\\0&amp;3\end{pmatrix}$. Then $\mathbf{e}_1=(1,0)$ is an eigenvector with $\lambda=2$, and $\mathbf{e}_2=(0,1)$ with $\lambda=3$. Most other vectors get both stretched and realigned relative to the axes — their direction changes, so they are not eigenvectors.</p>
+
+<h2>Why anyone cares</h2>
+<ul>
+<li><strong>Diagonalization.</strong> If you have a basis of eigenvectors, $A$ becomes a diagonal matrix in those coordinates — powers and exponentials of $A$ become easy.</li>
+<li><strong>Dynamics.</strong> For discrete systems $\mathbf{x}_{n+1}=A\mathbf{x}_n$, eigenvalues decide growth, decay, and oscillation.</li>
+<li><strong>Stability.</strong> In continuous linear systems $\mathbf{x}'=A\mathbf{x}$, signs of real parts of eigenvalues govern whether solutions blow up or settle.</li>
+</ul>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> Eigenvectors are defined only up to nonzero scaling. Also, real matrices can have complex eigenvalues (think rotations): there may be no real eigenvector even though complex ones exist.</div>
+
+<p>Build the surrounding vocabulary in <a href="../topics/linear-algebra.html">Linear algebra</a> and follow the <a href="../pathways/linear-algebra-first-course.html">first-course pathway</a>.</p>
+
+<h2>Citations &amp; further reading</h2>
+<ul class="source-list">
+<li>Strang, G. <em>Introduction to Linear Algebra</em>. Wellesley-Cambridge. Eigenvalue chapters with strong geometry. <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a></li>
+<li>3Blue1Brown, Essence of linear algebra — eigenvalues episodes. <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" rel="noopener">YouTube playlist</a></li>
+<li>MIT OCW 18.06 Linear Algebra. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Khan Academy, Eigenvalues and eigenvectors unit. <a href="https://www.khanacademy.org/math/linear-algebra/alternate-bases/eigen-everything/v/introduction-to-eigenvalues-and-eigenvectors" rel="noopener">khanacademy.org</a></li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../glossary/#eigenvalue">Glossary: eigenvalue</a></li>
+<li><a href="../glossary/#eigenvector">Glossary: eigenvector</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

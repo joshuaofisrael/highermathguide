@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Algebra — Higher Math Guide</title>
+<meta name="description" content="Vectors, matrices, bases, and eigenvalues explained with geometric intuition.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/topics/linear-algebra.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Linear Algebra — Higher Math Guide">
+<meta property="og:description" content="Vectors, matrices, bases, and eigenvalues explained with geometric intuition.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/topics/linear-algebra.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linear Algebra — Higher Math Guide">
+<meta name="twitter:description" content="Vectors, matrices, bases, and eigenvalues explained with geometric intuition.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Linear Algebra",
+  "description": "Vectors, matrices, bases, and eigenvalues explained with geometric intuition.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/topics/linear-algebra.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/" aria-current="page">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Linear algebra</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Linear algebra studies linear maps and the spaces they act on. A linear map sends lines through the origin to lines through the origin and respects addition and scaling. Matrices are concrete recipes for those maps once bases are chosen; eigenvalues and eigenvectors reveal stretch-and-align behavior that coordinates can hide.</p>
+
+<h2>Vectors and bases</h2>
+<p>A vector is an arrow you can add and scale — or, more abstractly, an element of a vector space. A basis is a minimal set of vectors that can build every vector in the space by linear combination. Coordinates are the recipe coefficients relative to a basis; change the basis and the numbers change, even though the geometric vector is the same.</p>
+
+<h2>Matrices as machines</h2>
+<p>Multiplying by a matrix $A$ applies a linear transformation. Columns of $A$ are the images of the standard basis vectors. Solving $A\mathbf{x}=\mathbf{b}$ asks which inputs produce output $\mathbf{b}$. Row reduction is bookkeeping for that question; determinants measure oriented volume scaling (and vanish precisely when the map collapses dimension).</p>
+
+<h2>Eigenvalues: invariant directions</h2>
+<p>An eigenvector satisfies $A\mathbf{v}=\lambda\mathbf{v}$ with $\mathbf{v}\neq\mathbf{0}$: the map stretches or flips $\mathbf{v}$ but does not tip it off its line. The scalar $\lambda$ is the eigenvalue. For a careful plain-language tour, see <a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> Not every matrix is diagonalizable. Complex eigenvalues, defective matrices, and Jordan form appear when “nice stretch factors along a basis of eigenvectors” are unavailable. Learn the geometric story first; special cases later.</div>
+
+<h2>Where to go next</h2>
+<ul>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course pathway</a></li>
+<li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
+<li>Glossary: <a href="../glossary/#vector">vector</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#eigenvalue">eigenvalue</a>, <a href="../glossary/#basis">basis</a></li>
+</ul>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC. Not a substitute for coursework or tutoring.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayes’ Theorem Without the Fog — Higher Math Guide</title>
+<meta name="description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/explainers/bayes-theorem-without-fog.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Bayes’ Theorem Without the Fog — Higher Math Guide">
+<meta property="og:description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/explainers/bayes-theorem-without-fog.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bayes’ Theorem Without the Fog — Higher Math Guide">
+<meta name="twitter:description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bayes\u2019 Theorem Without the Fog",
+  "description": "Original explainer of Bayes\u2019 theorem using counts, false positives, and careful updates.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/explainers/bayes-theorem-without-fog.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Bayes’ theorem without the fog</h1>
+<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Bayes’ theorem is a bookkeeping rule for reversing conditional probabilities. If you know how likely the evidence is under a hypothesis, and how common the hypothesis is beforehand, you can update after seeing the evidence. The algebra is short; the discipline is in stating the events clearly.</p>
+
+<h2>The formula</h2>
+<p>$$P(H\mid E)=\frac{P(E\mid H)P(H)}{P(E)}$$
+Here $H$ is a hypothesis and $E$ is evidence. The denominator $P(E)$ expands by total probability when $H$ and its complement partition the space: $P(E)=P(E\mid H)P(H)+P(E\mid H^c)P(H^c)$.</p>
+
+<h2>Think in counts</h2>
+<p><span class="example-label">Example</span> Imagine 10,000 people; 1% have a condition ($H$). A test is 99% sensitive ($P(E\mid H)=0.99$) and 95% specific, so false positive rate $P(E\mid H^c)=0.05$. About 100 people have $H$; roughly 99 test positive. Among the 9,900 without $H$, about 495 false positives. So among ~594 positive tests, only ~99 truly have $H$ — a bit under 17%, not 99%. The test is informative, but the rare base rate dominates the headline sensitivity.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> $P(H\mid E)$ is not $P(E\mid H)$. Medical and legal headlines mix them constantly. Say both in words before you multiply.</div>
+
+<h2>What “prior” and “posterior” mean</h2>
+<p>$P(H)$ is the prior — your probability before seeing $E$. $P(H\mid E)$ is the posterior — after updating. Likelihood $P(E\mid H)$ is not a probability distribution over hypotheses by itself; it measures how well each hypothesis predicts the data.</p>
+<p>For the surrounding map, see <a href="../topics/probability-statistics.html">Probability &amp; statistics</a>.</p>
+
+<h2>Citations &amp; further reading</h2>
+<ul class="source-list">
+<li>OpenIntro Statistics (open textbook) — conditional probability and Bayes. <a href="https://www.openintro.org/book/os/" rel="noopener">openintro.org</a></li>
+<li>Khan Academy, Bayes’ theorem lessons. <a href="https://www.khanacademy.org/math/statistics-probability/probability-library" rel="noopener">khanacademy.org</a></li>
+<li>Stanford CS109 probability notes (Bayes applications). <a href="https://web.stanford.edu/class/cs109/" rel="noopener">web.stanford.edu/class/cs109</a></li>
+<li>Thinking in counts pedagogy popularized in medical decision teaching; see also Gigerenzer’s work on natural frequencies (overview articles via scholarly search).</li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../glossary/#bayes-theorem">Glossary: Bayes’ theorem</a></li>
+<li><a href="../glossary/#conditional-probability">Glossary: conditional probability</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

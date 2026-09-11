@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differential Equations First Look — Higher Math Guide</title>
+<meta name="description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/topics/differential-equations.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Differential Equations First Look — Higher Math Guide">
+<meta property="og:description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/topics/differential-equations.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Differential Equations First Look — Higher Math Guide">
+<meta name="twitter:description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Differential Equations First Look",
+  "description": "A first look at ODEs: modeling change, separable equations, and qualitative thinking.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/topics/differential-equations.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/" aria-current="page">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Differential equations first look</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>A differential equation relates a function to its derivatives. Ordinary differential equations (ODEs) involve one independent variable, usually time. They are the native language of growth, decay, oscillators, and many engineering models.</p>
+
+<h2>What a solution means</h2>
+<p>Solving $y'=f(t,y)$ means finding a function $y(t)$ whose slope at each point matches the rule $f$. An initial condition $y(t_0)=y_0$ selects one solution curve from a family. Existence and uniqueness theorems tell you when that selection is reliable — roughly, when $f$ is sufficiently well-behaved near the starting point.</p>
+
+<h2>Separable equations</h2>
+<p>If $y'=g(t)h(y)$, you can often rearrange and integrate both sides. That technique is a workhorse for first courses. Walk through it in detail in <a href="../explainers/separable-differential-equations.html">Separable differential equations walkthrough</a>.</p>
+
+<h2>Qualitative pictures</h2>
+<p>Before solving, sketch a slope field: at each point $(t,y)$, draw a short segment with slope $f(t,y)$. Solution curves must thread those segments. Equilibria where $y'=0$ and whether nearby solutions approach or flee them often matter more than a closed-form formula.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> Dividing by an expression that might be zero (common when separating variables) can lose constant solutions. Always check equilibrium solutions separately.</div>
+
+<h2>Where to go next</h2>
+<ul>
+<li><a href="../explainers/separable-differential-equations.html">Separable DE walkthrough</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li>Glossary: <a href="../glossary/#differential-equation">differential equation</a>, <a href="../glossary/#initial-value-problem">initial value problem</a>, <a href="../glossary/#slope-field">slope field</a></li>
+</ul>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC. Not a substitute for coursework or tutoring.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

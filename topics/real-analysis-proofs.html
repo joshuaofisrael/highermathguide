@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Analysis & Proof Habits — Higher Math Guide</title>
+<meta name="description" content="Sequences, rigor, epsilon arguments, and how to write proofs that hold up.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/topics/real-analysis-proofs.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Real Analysis & Proof Habits — Higher Math Guide">
+<meta property="og:description" content="Sequences, rigor, epsilon arguments, and how to write proofs that hold up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/topics/real-analysis-proofs.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Real Analysis & Proof Habits — Higher Math Guide">
+<meta name="twitter:description" content="Sequences, rigor, epsilon arguments, and how to write proofs that hold up.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Real Analysis & Proof Habits",
+  "description": "Sequences, rigor, epsilon arguments, and how to write proofs that hold up.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/topics/real-analysis-proofs.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/" aria-current="page">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Real analysis &amp; proof habits</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Real analysis rebuilds calculus on precise definitions. Instead of “gets close,” we say “for every $\varepsilon&gt;0$ there exists $N$ such that…” The payoff is not pedantry for its own sake: you learn which intuitions survive and which pictures quietly lie.</p>
+
+<h2>Sequences and limits</h2>
+<p>A sequence $(a_n)$ converges to $L$ if terms eventually stay inside every neighborhood of $L$, no matter how tight. Bounded monotone sequences converge (on the reals). Cauchy sequences capture “eventually terms stick together” without naming the limit in advance. Series are sequences of partial sums; convergence of the series means those partial sums settle. See <a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a>.</p>
+
+<h2>Proof habits that transfer</h2>
+<ul>
+<li><strong>Unpack definitions.</strong> Write what you must show in $\varepsilon$-$N$ or $\varepsilon$-$\delta$ form before inventing algebra.</li>
+<li><strong>Work backwards carefully.</strong> Scratch work may start from the goal; the written proof must start from hypotheses.</li>
+<li><strong>Name your quantifiers.</strong> “For all” and “there exists” are not interchangeable, and order matters.</li>
+<li><strong>Use examples and counterexamples.</strong> A single counterexample kills a universal claim; many examples never prove one.</li>
+</ul>
+<p>For a friendlier entry to the most feared definition in calculus, read <a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition without terror</a>. For a structured study plan, see <a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a>.</p>
+
+<div class="callout"><strong>Tone check.</strong> Rigor is a kindness to future-you. It is not a personality. Aim for arguments a skeptical classmate can verify line by line.</div>
+
+<h2>Where to go next</h2>
+<ul>
+<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition</a></li>
+<li><a href="../explainers/sequences-series-infinite-sums.html">Sequences and series</a></li>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs</a></li>
+</ul>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC. Not a substitute for coursework or tutoring.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

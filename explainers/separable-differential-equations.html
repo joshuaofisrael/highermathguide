@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Separable Differential Equations Walkthrough — Higher Math Guide</title>
+<meta name="description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/explainers/separable-differential-equations.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Separable Differential Equations Walkthrough — Higher Math Guide">
+<meta property="og:description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/explainers/separable-differential-equations.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Separable Differential Equations Walkthrough — Higher Math Guide">
+<meta name="twitter:description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Separable Differential Equations Walkthrough",
+  "description": "Step-by-step original walkthrough of separable ODEs with checks for lost solutions.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/explainers/separable-differential-equations.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Separable differential equations walkthrough</h1>
+<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>A first-order equation is separable when you can write $\frac{dy}{dx}=g(x)h(y)$ (or equivalently $M(x)N(y)\,dx+P(x)Q(y)\,dy=0$ in differential form). The method is: move $y$-factors to one side and $x$-factors to the other, then integrate.</p>
+
+<h2>The steps</h2>
+<ol>
+<li>Write $\frac{dy}{dx}=g(x)h(y)$.</li>
+<li>If $h(y)\neq 0$, rewrite $\frac{1}{h(y)}\,dy = g(x)\,dx$.</li>
+<li>Integrate both sides: $\int \frac{1}{h(y)}\,dy = \int g(x)\,dx + C$ (absorb constants sensibly).</li>
+<li>Solve for $y$ if you can (explicit solution); otherwise leave an implicit relation.</li>
+<li><strong>Check singular solutions:</strong> any roots of $h(y)=0$ that make $y$ constant may be solutions lost when you divided.</li>
+<li>Apply initial conditions to fix $C$ when you have an IVP.</li>
+</ol>
+
+<p><span class="example-label">Example</span> Solve $\frac{dy}{dx}=ky$ with $y(0)=y_0$. Separate: $\frac{dy}{y}=k\,dx$ (for $y\neq 0$). Integrate: $\ln|y|=kx+C$, so $y=Ae^{kx}$. The missing solution $y\equiv 0$ corresponds to $A=0$. The IVP yields $y=y_0 e^{kx}$.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> Absolute values and domains matter. Extending a local solution through a singularity of $h(y)$ or $g(x)$ can be invalid. Also, not every ODE is separable — forcing the algebra invents nonsense.</div>
+
+<p>Zoom out with <a href="../topics/differential-equations.html">Differential equations first look</a>. Refresh derivative meaning in <a href="what-a-derivative-measures.html">What a derivative actually measures</a>.</p>
+
+<h2>Citations &amp; further reading</h2>
+<ul class="source-list">
+<li>OpenStax <em>Calculus Volume 2</em>, differential equations chapter. <a href="https://openstax.org/details/books/calculus-volume-2" rel="noopener">openstax.org</a></li>
+<li>MIT OCW 18.03 Differential Equations. <a href="https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Paul’s Online Math Notes, Separable Differential Equations. <a href="https://tutorial.math.lamar.edu/Classes/DE/Separable.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>Khan Academy, Separable equations. <a href="https://www.khanacademy.org/math/differential-equations" rel="noopener">khanacademy.org</a></li>
+</ul>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

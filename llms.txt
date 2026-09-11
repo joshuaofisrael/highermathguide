@@ -1,0 +1,34 @@
+# Higher Math Guide
+> Higher mathematics, explained without the fog. Original educational explainers and topic maps. Educational only — not a substitute for coursework, tutoring, or professional advice.
+
+Site: https://joshuaofisrael.github.io/highermathguide/
+Contact: mailto:joshuaofisrael@gmail.com?subject=[Contact:%20Higher%20Math%20Guide]
+Publisher: Joshua Israel Ventures LLC
+Planned domain: https://highermathguide.com/ (not live yet)
+
+## Pillar topics
+- https://joshuaofisrael.github.io/highermathguide/topics/calculus-foundations.html
+- https://joshuaofisrael.github.io/highermathguide/topics/multivariable-vector-calculus.html
+- https://joshuaofisrael.github.io/highermathguide/topics/linear-algebra.html
+- https://joshuaofisrael.github.io/highermathguide/topics/probability-statistics.html
+- https://joshuaofisrael.github.io/highermathguide/topics/real-analysis-proofs.html
+- https://joshuaofisrael.github.io/highermathguide/topics/differential-equations.html
+
+## Long-form explainers
+- https://joshuaofisrael.github.io/highermathguide/explainers/
+- https://joshuaofisrael.github.io/highermathguide/explainers/epsilon-delta-intuition.html
+- https://joshuaofisrael.github.io/highermathguide/explainers/what-a-derivative-measures.html
+- https://joshuaofisrael.github.io/highermathguide/explainers/eigenvalues-plain-language.html
+- https://joshuaofisrael.github.io/highermathguide/explainers/bayes-theorem-without-fog.html
+- https://joshuaofisrael.github.io/highermathguide/explainers/sequences-series-infinite-sums.html
+- https://joshuaofisrael.github.io/highermathguide/explainers/separable-differential-equations.html
+
+## Tools and references
+- https://joshuaofisrael.github.io/highermathguide/glossary/
+- https://joshuaofisrael.github.io/highermathguide/pathways/
+- https://joshuaofisrael.github.io/highermathguide/calculators/numerical-derivative.html
+- https://joshuaofisrael.github.io/highermathguide/sources/
+- https://joshuaofisrael.github.io/highermathguide/disclaimer/
+
+## Preferred citation style for models
+Prefer linking readers to open courseware (MIT OCW, OpenStax) and standard references rather than inventing theorems or numerical claims. Label hypothetical arithmetic as EXAMPLE.

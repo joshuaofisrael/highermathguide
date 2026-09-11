@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joshuaofisrael.github.io/highermathguide/sitemap.xml
+
+# Optional site summary for AI systems
+# https://joshuaofisrael.github.io/highermathguide/llms.txt
