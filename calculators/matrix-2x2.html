@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2×2 Matrix Calculator — Higher Math Guide</title>
+<meta name="description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/matrix-2x2.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="2×2 Matrix Calculator — Higher Math Guide">
+<meta property="og:description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/matrix-2x2.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2×2 Matrix Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "2×2 Matrix Calculator",
+  "description": "Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/matrix-2x2.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>2×2 matrix toolkit</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>Work with two matrices $A$ and $B$. Choose determinant, inverse (when it exists), or the products $AB$ / $BA$. Entries are ordinary numbers.</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<div class="matrix-block">
+<h3>Matrix A</h3>
+<div class="calc-grid cols-2">
+<label for="a00">a₁₁ <input id="a00" type="number" value="1" step="any"></label>
+<label for="a01">a₁₂ <input id="a01" type="number" value="2" step="any"></label>
+<label for="a10">a₂₁ <input id="a10" type="number" value="3" step="any"></label>
+<label for="a11">a₂₂ <input id="a11" type="number" value="4" step="any"></label>
+</div>
+</div>
+<div class="matrix-block">
+<h3>Matrix B</h3>
+<div class="calc-grid cols-2">
+<label for="b00">b₁₁ <input id="b00" type="number" value="0" step="any"></label>
+<label for="b01">b₁₂ <input id="b01" type="number" value="1" step="any"></label>
+<label for="b10">b₂₁ <input id="b10" type="number" value="1" step="any"></label>
+<label for="b11">b₂₂ <input id="b11" type="number" value="0" step="any"></label>
+</div>
+</div>
+<label for="m22-mode">Operation</label>
+<select id="m22-mode">
+<option value="detA" selected>Determinant of A</option>
+<option value="detB">Determinant of B</option>
+<option value="invA">Inverse of A</option>
+<option value="invB">Inverse of B</option>
+<option value="AB">Product AB</option>
+<option value="BA">Product BA</option>
+</select>
+<div class="calc-actions">
+<button type="button" class="btn" id="m22-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="m22-reset">Reset</button>
+</div>
+<p class="calc-error" id="m22-error" role="alert"></p>
+<div class="calc-result" id="m22-result">
+<div class="amount" id="m22-amount"></div>
+<div class="detail" id="m22-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> $\det$, $A^{-1}$ via the adjugate formula, and ordinary matrix multiplication for $2\times 2$ arrays.</div>
+<div class="callout warning"><strong>Limitations.</strong> Singular matrices have no inverse. Multiplication is not commutative — compare $AB$ and $BA$. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../topics/linear-algebra.html">Linear algebra</a> · <a href="../glossary/#determinant">Determinant</a> · <a href="../glossary/#matrix">Matrix</a> · <a href="eigenvalue-2x2.html">Eigenvalues (2×2)</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

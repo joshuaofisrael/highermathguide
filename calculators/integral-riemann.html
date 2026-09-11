@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riemann Sum Calculator — Higher Math Guide</title>
+<meta name="description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/integral-riemann.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Riemann Sum Calculator — Higher Math Guide">
+<meta property="og:description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/integral-riemann.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Riemann Sum Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Riemann Sum Calculator",
+  "description": "Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/integral-riemann.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Riemann sum integrator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>Approximate $\int_a^b f(x)\,dx$ with equal-width rectangles. Choose left endpoints, midpoints, or right endpoints. Expression rules match the other calculus tools (constrained parser — no arbitrary code).</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<label for="rie-expr">f(x) =</label>
+<input id="rie-expr" type="text" value="x^2" autocomplete="off" spellcheck="false">
+<div class="field-row">
+<label for="rie-a">a <input id="rie-a" type="number" value="0" step="any"></label>
+<label for="rie-b">b <input id="rie-b" type="number" value="1" step="any"></label>
+<label for="rie-n">n <input id="rie-n" type="number" value="100" min="1" step="1"></label>
+</div>
+<label for="rie-method">Rule</label>
+<select id="rie-method">
+<option value="left">Left Riemann sum</option>
+<option value="mid" selected>Midpoint Riemann sum</option>
+<option value="right">Right Riemann sum</option>
+</select>
+<div class="calc-actions">
+<button type="button" class="btn" id="rie-compute">Approximate integral</button>
+<button type="button" class="btn btn-secondary" id="rie-reset">Reset</button>
+</div>
+<p class="calc-error" id="rie-error" role="alert"></p>
+<div class="calc-result" id="rie-result">
+<div class="amount" id="rie-amount"></div>
+<div class="detail" id="rie-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> A rectangular partition estimate of a definite integral.</div>
+<div class="callout warning"><strong>Limitations.</strong> Discontinuities, huge $n$, or stiff oscillations reduce reliability. Not symbolic integration. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../glossary/#definite-integral">Definite integral</a> · <a href="../glossary/#integral">Integral</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a> · <a href="numerical-derivative.html">Numerical derivative</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

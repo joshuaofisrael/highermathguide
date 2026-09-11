@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numerical Limit Estimator — Higher Math Guide</title>
+<meta name="description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/limit-estimator.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Numerical Limit Estimator — Higher Math Guide">
+<meta property="og:description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/limit-estimator.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numerical Limit Estimator — Higher Math Guide">
+<meta name="twitter:description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Numerical Limit Estimator",
+  "description": "Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/limit-estimator.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Numerical limit estimator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>Probe $\lim_{{x \to a}} f(x)$ or behavior as $x \to \pm\infty$ by evaluating a constrained expression at a ladder of nearby points. Allowed pieces match the derivative tool: numbers, <code>x</code>, <code>+ - * / ^</code>, parentheses, and <code>sin cos tan sqrt abs log exp pi e</code>.</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<label for="lim-expr">f(x) =</label>
+<input id="lim-expr" type="text" value="(x^2-1)/(x-1)" autocomplete="off" spellcheck="false">
+<label for="lim-approach">Approach</label>
+<select id="lim-approach">
+<option value="finite" selected>x → a (finite)</option>
+<option value="posinf">x → +∞</option>
+<option value="neginf">x → −∞</option>
+</select>
+<label for="lim-a">a (used when approach is finite)</label>
+<input id="lim-a" type="number" value="1" step="any" inputmode="decimal">
+<div class="calc-actions">
+<button type="button" class="btn" id="lim-compute">Estimate limit</button>
+<button type="button" class="btn btn-secondary" id="lim-reset">Reset</button>
+</div>
+<p class="calc-error" id="lim-error" role="alert"></p>
+<div class="calc-result" id="lim-result">
+<div class="amount" id="lim-amount"></div>
+<div class="detail" id="lim-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> A sampling-based estimate with left/right (or large-$|x|$) probes — useful for intuition, not a formal $\varepsilon$-$\delta$ proof.</div>
+<div class="callout warning"><strong>Limitations.</strong> Removable holes, oscillations, and vertical asymptotes can fool any finite sample. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition</a> · <a href="../glossary/#limit">Limit</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a> · <a href="numerical-derivative.html">Numerical derivative</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

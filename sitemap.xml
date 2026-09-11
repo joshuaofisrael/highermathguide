@@ -73,6 +73,46 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/quadratic-formula.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/matrix-2x2.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/vector-ops.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/binomial-probability.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/normal-cdf.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/sequence-series.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/combinatorics.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/limit-estimator.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/integral-riemann.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/eigenvalue-2x2.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://joshuaofisrael.github.io/highermathguide/pathways/</loc>
     <changefreq>monthly</changefreq>
   </url>

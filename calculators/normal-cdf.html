@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normal CDF &amp; Z-Score Calculator — Higher Math Guide</title>
+<meta name="description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/normal-cdf.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Normal CDF &amp; Z-Score Calculator — Higher Math Guide">
+<meta property="og:description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/normal-cdf.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Normal CDF &amp; Z-Score Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Normal CDF &amp; Z-Score Calculator",
+  "description": "Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/normal-cdf.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Normal CDF &amp; z from percentile</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>Standard normal tools: approximate $\Phi(z) = P(Z \le z)$ for $Z \sim N(0,1)$, or recover the $z$ whose left-tail probability matches a percentile.</p>
+<p><strong>Method.</strong> CDF uses the error-function approximation in Abramowitz &amp; Stegun (formula 7.1.26) via $\Phi(z) = \tfrac12\bigl(1+\mathrm{erf}(z/\sqrt{{2}})\bigr)$. The inverse uses a rational approximation in the style of Acklam / Beasley–Springer–Moro. These are educational approximations, not certified library math.</p>
+</div>
+
+<div class="calc-panel" style="margin:1.5rem 0">
+<label for="ncdf-mode">Mode</label>
+<select id="ncdf-mode">
+<option value="cdf" selected>Φ(z) from z-score</option>
+<option value="inv">z-score from percentile / probability</option>
+</select>
+<label for="ncdf-z">z-score</label>
+<input id="ncdf-z" type="number" value="1.96" step="any" inputmode="decimal">
+<label for="ncdf-pct">Percentile (e.g. 97.5) or probability in (0,1)</label>
+<input id="ncdf-pct" type="number" value="97.5" step="any" inputmode="decimal">
+<p class="calc-hint">For inverse mode, values above 1 are treated as percentages (97.5 → 0.975).</p>
+<div class="calc-actions">
+<button type="button" class="btn" id="ncdf-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="ncdf-reset">Reset</button>
+</div>
+<p class="calc-error" id="ncdf-error" role="alert"></p>
+<div class="calc-result" id="ncdf-result">
+<div class="amount" id="ncdf-amount"></div>
+<div class="detail" id="ncdf-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> Left-tail probabilities and quantile $z$-scores for the standard normal.</div>
+<div class="callout warning"><strong>Limitations.</strong> Tail accuracy degrades far from the mean; this is not a substitute for a statistical package. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../topics/probability-statistics.html">Probability &amp; statistics</a> · <a href="../glossary/#random-variable">Random variable</a> · <a href="../glossary/#expected-value">Expected value</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

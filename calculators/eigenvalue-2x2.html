@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2×2 Eigenvalue Calculator — Higher Math Guide</title>
+<meta name="description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/eigenvalue-2x2.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="2×2 Eigenvalue Calculator — Higher Math Guide">
+<meta property="og:description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/eigenvalue-2x2.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2×2 Eigenvalue Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "2×2 Eigenvalue Calculator",
+  "description": "Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/eigenvalue-2x2.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Eigenvalues of a 2×2 matrix</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>For $A = \begin{{pmatrix}} a &amp; b \\ c &amp; d \end{{pmatrix}}$, eigenvalues solve $\lambda^2 - (\mathrm{{tr}} A)\lambda + \det A = 0$. Real or complex conjugate pairs are reported.</p>
+</div>
+
+<div class="calc-panel" style="margin:1.5rem 0">
+<div class="matrix-block">
+<h3>Matrix entries</h3>
+<div class="calc-grid cols-2">
+<label for="eig-a">a <input id="eig-a" type="number" value="2" step="any"></label>
+<label for="eig-b">b <input id="eig-b" type="number" value="1" step="any"></label>
+<label for="eig-c">c <input id="eig-c" type="number" value="1" step="any"></label>
+<label for="eig-d">d <input id="eig-d" type="number" value="2" step="any"></label>
+</div>
+</div>
+<div class="calc-actions">
+<button type="button" class="btn" id="eig-compute">Find eigenvalues</button>
+<button type="button" class="btn btn-secondary" id="eig-reset">Reset</button>
+</div>
+<p class="calc-error" id="eig-error" role="alert"></p>
+<div class="calc-result" id="eig-result">
+<div class="amount" id="eig-amount"></div>
+<div class="detail" id="eig-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> Roots of the characteristic polynomial for a single $2\times 2$ real matrix.</div>
+<div class="callout warning"><strong>Limitations.</strong> Does not return eigenvectors (yet). Ill-conditioned cases can blur repeated roots. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a> · <a href="../glossary/#eigenvalue">Eigenvalue</a> · <a href="../topics/linear-algebra.html">Linear algebra</a> · <a href="matrix-2x2.html">2×2 matrix toolkit</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

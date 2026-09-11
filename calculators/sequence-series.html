@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arithmetic &amp; Geometric Sequence Calculator — Higher Math Guide</title>
+<meta name="description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/sequence-series.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Arithmetic &amp; Geometric Sequence Calculator — Higher Math Guide">
+<meta property="og:description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/sequence-series.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Arithmetic &amp; Geometric Sequence Calculator — Higher Math Guide">
+<meta name="twitter:description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Arithmetic &amp; Geometric Sequence Calculator",
+  "description": "Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.",
+  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/sequence-series.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<h1>Arithmetic &amp; geometric sequences</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+</header>
+<div class="article-body">
+<p>Compute the $n$th term and the finite sum $S_n$ for an arithmetic progression (common difference $d$) or a geometric progression (common ratio $r$).</p>
+</div>
+
+<div class="calc-panel" style="margin:1.5rem 0">
+<label for="seq-kind">Type</label>
+<select id="seq-kind">
+<option value="arith" selected>Arithmetic</option>
+<option value="geo">Geometric</option>
+</select>
+<label for="seq-a1">First term a₁</label>
+<input id="seq-a1" type="number" value="2" step="any" inputmode="decimal">
+<div id="seq-d-wrap">
+<label for="seq-d">Common difference d</label>
+<input id="seq-d" type="number" value="3" step="any" inputmode="decimal">
+</div>
+<div id="seq-r-wrap" style="display:none">
+<label for="seq-r">Common ratio r</label>
+<input id="seq-r" type="number" value="0.5" step="any" inputmode="decimal">
+</div>
+<label for="seq-n">n (term index / number of terms)</label>
+<input id="seq-n" type="number" value="10" min="1" step="1" inputmode="numeric">
+<div class="calc-actions">
+<button type="button" class="btn" id="seq-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="seq-reset">Reset</button>
+</div>
+<p class="calc-error" id="seq-error" role="alert"></p>
+<div class="calc-result" id="seq-result">
+<div class="amount" id="seq-amount"></div>
+<div class="detail" id="seq-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<div class="callout"><strong>What it computes.</strong> Closed forms for $a_n$ and finite $S_n$ only — not infinite series convergence tests.</div>
+<div class="callout warning"><strong>Limitations.</strong> Large $|r|^n$ can overflow. Infinite geometric sums are not handled here. See the <a href="../disclaimer/">disclaimer</a>.</div>
+<p>Related: <a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a> · <a href="../glossary/#sequence">Sequence</a> · <a href="../glossary/#series">Series</a> · <a href="../glossary/#partial-sum">Partial sum</a></p>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
