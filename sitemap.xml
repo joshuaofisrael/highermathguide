@@ -1,143 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/</loc>
+    <loc>https://highermathguide.com/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/topics/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/</loc>
+    <loc>https://highermathguide.com/topics/calculus-foundations.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/calculus-foundations.html</loc>
+    <loc>https://highermathguide.com/topics/multivariable-vector-calculus.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/multivariable-vector-calculus.html</loc>
+    <loc>https://highermathguide.com/topics/linear-algebra.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/linear-algebra.html</loc>
+    <loc>https://highermathguide.com/topics/probability-statistics.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/probability-statistics.html</loc>
+    <loc>https://highermathguide.com/topics/real-analysis-proofs.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/real-analysis-proofs.html</loc>
+    <loc>https://highermathguide.com/topics/differential-equations.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/topics/differential-equations.html</loc>
+    <loc>https://highermathguide.com/explainers/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/epsilon-delta-intuition.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/</loc>
+    <loc>https://highermathguide.com/explainers/what-a-derivative-measures.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/epsilon-delta-intuition.html</loc>
+    <loc>https://highermathguide.com/explainers/eigenvalues-plain-language.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/what-a-derivative-measures.html</loc>
+    <loc>https://highermathguide.com/explainers/bayes-theorem-without-fog.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/eigenvalues-plain-language.html</loc>
+    <loc>https://highermathguide.com/explainers/sequences-series-infinite-sums.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/bayes-theorem-without-fog.html</loc>
+    <loc>https://highermathguide.com/explainers/separable-differential-equations.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/sequences-series-infinite-sums.html</loc>
+    <loc>https://highermathguide.com/explainers/implicit-differentiation-intuition.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/explainers/separable-differential-equations.html</loc>
+    <loc>https://highermathguide.com/explainers/jacobian-matrices-plain-language.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/glossary/</loc>
+    <loc>https://highermathguide.com/explainers/convergence-tests-series.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/</loc>
+    <loc>https://highermathguide.com/explainers/lagrange-multipliers-intuition.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/numerical-derivative.html</loc>
+    <loc>https://highermathguide.com/explainers/stokes-theorem-intuition.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/quadratic-formula.html</loc>
+    <loc>https://highermathguide.com/glossary/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/matrix-2x2.html</loc>
+    <loc>https://highermathguide.com/calculators/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/vector-ops.html</loc>
+    <loc>https://highermathguide.com/calculators/numerical-derivative.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/binomial-probability.html</loc>
+    <loc>https://highermathguide.com/calculators/quadratic-formula.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/normal-cdf.html</loc>
+    <loc>https://highermathguide.com/calculators/matrix-2x2.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/sequence-series.html</loc>
+    <loc>https://highermathguide.com/calculators/vector-ops.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/combinatorics.html</loc>
+    <loc>https://highermathguide.com/calculators/binomial-probability.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/limit-estimator.html</loc>
+    <loc>https://highermathguide.com/calculators/normal-cdf.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/integral-riemann.html</loc>
+    <loc>https://highermathguide.com/calculators/sequence-series.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/calculators/eigenvalue-2x2.html</loc>
+    <loc>https://highermathguide.com/calculators/combinatorics.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/pathways/</loc>
+    <loc>https://highermathguide.com/calculators/limit-estimator.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/pathways/ap-calc-ab-bridge.html</loc>
+    <loc>https://highermathguide.com/calculators/integral-riemann.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/pathways/linear-algebra-first-course.html</loc>
+    <loc>https://highermathguide.com/calculators/eigenvalue-2x2.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/pathways/intro-to-proofs.html</loc>
+    <loc>https://highermathguide.com/pathways/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/sources/</loc>
+    <loc>https://highermathguide.com/pathways/ap-calc-ab-bridge.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/contact/</loc>
+    <loc>https://highermathguide.com/pathways/linear-algebra-first-course.html</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://joshuaofisrael.github.io/highermathguide/disclaimer/</loc>
+    <loc>https://highermathguide.com/pathways/intro-to-proofs.html</loc>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/sources/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/about/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/faq/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/contact/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/disclaimer/</loc>
+    <changefreq>yearly</changefreq>
   </url>
 </urlset>

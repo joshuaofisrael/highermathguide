@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convergence Tests for Series, Higher Math Guide</title>
+<meta name="description" content="Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.">
+<link rel="canonical" href="https://highermathguide.com/explainers/convergence-tests-series.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Convergence Tests for Series, Higher Math Guide">
+<meta property="og:description" content="Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/convergence-tests-series.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Convergence Tests for Series, Higher Math Guide">
+<meta name="twitter:description" content="Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Convergence Tests for Series",
+  "description": "Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.",
+  "url": "https://highermathguide.com/explainers/convergence-tests-series.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-17",
+  "dateModified": "2026-09-17"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Convergence tests for series without fog</h1>
+<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>An infinite series is not a long plus sign. It is a <a href="../glossary/#sequence">sequence</a> of <a href="../glossary/#partial-sum">partial sums</a>. The series $\sum a_n$ <a href="../glossary/#convergence">converges</a> when $s_N=a_1+\cdots+a_N$ approaches a number. Tests exist because you often cannot write $s_N$ in closed form. A good test answers only one question. Do those partial sums settle?</p>
+<p>This page treats three workhorses: comparison, ratio, and root. They are cousins, not rivals. Comparison borrows a series you already understand. Ratio and root ask whether your terms eventually look geometric. For the broader story of sequences and series, start with <a href="sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>. For proof habits around limits, see <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>.</p>
+
+<h2>A reminder you will need</h2>
+<p>If $a_n$ does not go to $0$, the series diverges. That is the term test. It never proves convergence. Terms can go to zero slowly and the sum can still run to infinity. The harmonic series $\sum 1/n$ is the famous example. Terms vanish. Partial sums grow like $\ln N$.</p>
+<p>Positive term series are the cleanest setting for the three tests below. If terms change sign, ask first about absolute convergence, $\sum |a_n|$. Absolute convergence implies ordinary convergence. The converse can fail. Alternating series have their own test, which this page leaves to a later note.</p>
+
+<h2>Comparison: sandwich against a known series</h2>
+<p>Suppose $0\le a_n\le b_n$ for all large $n$. If $\sum b_n$ converges, then $\sum a_n$ converges. The partial sums of $a$ are increasing and bounded above by a convergent pile plus a finite head, so they settle. If instead $a_n\ge c_n\ge 0$ and $\sum c_n$ diverges, then $\sum a_n$ diverges. You cannot be smaller than a divergent stack of nonnegative blocks and still stay finite.</p>
+<p>The usual comparison partners are geometric series $\sum r^n$ (converges when $|r|&lt;1$) and $p$ series $\sum 1/n^p$ (converges when $p&gt;1$). You must actually check the inequality, or a limit form of it, not only the “looks like” feeling.</p>
+<p><span class="example-label">Example</span> For $a_n=\frac{1}{n^2+3n+1}$, note that $n^2+3n+1&gt;n^2$, so $0&lt;a_n&lt;1/n^2$. The $p$ series with $p=2$ converges, so this series converges. The inequality is doing the work, not the visual resemblance alone.</p>
+<p>Limit comparison is the same idea with less inequality pain. If $a_n&gt;0$, $b_n&gt;0$, and $a_n/b_n\to L$ with $0&lt;L&lt;\infty$, then $\sum a_n$ and $\sum b_n$ converge or diverge together. The terms are eventually the same size up to a constant factor. Constants do not change convergence of a series of positive terms.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> Comparing with a smaller convergent series proves nothing. Being below a finite sum is helpful. Being above a finite sum is not a crime. Likewise, being below a divergent series does not force divergence. Match the direction of the inequality to the claim you want.</div>
+
+<h2>Ratio: ask if the terms become geometric</h2>
+<p>For $a_n\neq 0$, form $L=\lim |a_{n+1}/a_n|$ when the limit exists. The ratio test says:</p>
+<ul>
+<li>If $L&lt;1$, the series converges absolutely.</li>
+<li>If $L&gt;1$, or if the ratio tends to infinity, the series diverges.</li>
+<li>If $L=1$, the test is silent.</li>
+</ul>
+<p>Why $L&lt;1$ wins: eventually $|a_{n+1}|\le r|a_n|$ for some $r$ with $L&lt;r&lt;1$. From there on, the tail is dominated by a geometric series with ratio $r$. Comparison finishes the proof. If $L&gt;1$, terms grow and cannot go to zero.</p>
+<p>The silent case $L=1$ includes both $\sum 1/n$ and $\sum 1/n^2$. The ratio test cannot see the difference between $p=1$ and $p=2$. That is not a defect in you. It is a limit of the test. Switch to comparison or an integral test.</p>
+<p><span class="example-label">Example</span> For $a_n=n^2/3^n$,</p>
+<p>$$\frac{a_{n+1}}{a_n}=\frac{(n+1)^2}{n^2}\cdot\frac{1}{3}\to\frac{1}{3}&lt;1.$$</p>
+<p>The polynomial in the numerator is helpless against the exponential. The series converges. Factorials in a denominator produce the same verdict for many Taylor remainders.</p>
+
+<h2>Root: a closer cousin of geometric series</h2>
+<p>Form $\rho=\lim\sup\sqrt[n]{|a_n|}$, or an ordinary limit when it exists. The root test uses the same three way split as the ratio test, with $\rho$ in place of $L$. The slogan is even closer to geometry. If the $n$th root settles below $1$, then $|a_n|\le r^n$ eventually for some $r&lt;1$.</p>
+<p>Root is often stronger than ratio in the official sense that it can decide some series where the ratio limit fails to exist. In a first course you will meet it most often with expressions already raised to the $n$th power, such as $\bigl(\frac{n}{n+1}\bigr)^{n^2}$ style terms, where the root simplifies the algebra.</p>
+<p>When both limits exist, they are equal. You may choose whichever quotient or root looks cleaner. Silence at $1$ is still silence.</p>
+
+<h2>A small decision map</h2>
+<ol>
+<li>Do terms fail to go to zero? Diverge. Stop.</li>
+<li>Do you see a geometric ratio or a $p$ series after a simple bound? Compare.</li>
+<li>Do you see $n!$, $c^n$, or a rational function times an exponential? Try ratio.</li>
+<li>Do you see an $n$th power wrapping the whole term? Try root.</li>
+<li>If the test returns $1$, change tools. Do not stare at the same limit.</li>
+</ol>
+<p>Finite arithmetic and geometric sums are not the same as infinite series tests. The <a href="../calculators/sequence-series.html">sequence and series calculator</a> reports $a_n$ and $S_n$ for finite $n$. That is a numerical window, not a proof of convergence. Watching $S_n$ level off can support a guess. It cannot replace a test.</p>
+<p>Related glossary terms: <a href="../glossary/#series">series</a>, <a href="../glossary/#comparison-test">comparison test</a>, <a href="../glossary/#ratio-test">ratio test</a>, <a href="../glossary/#root-test">root test</a>. The <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a> lists series as an optional next step after derivatives and integrals.</p>
+
+<h2>Citations and further reading</h2>
+<ul class="source-list">
+<li>OpenStax, <em>Calculus Volume 2</em>, comparison tests and ratio and root tests. <a href="https://openstax.org/books/calculus-volume-2/pages/5-4-comparison-tests" rel="noopener">Comparison</a> · <a href="https://openstax.org/books/calculus-volume-2/pages/5-6-ratio-and-root-tests" rel="noopener">Ratio and root</a></li>
+<li>Paul’s Online Math Notes, series convergence. <a href="https://tutorial.math.lamar.edu/Classes/CalcII/ConvergenceOfSeries.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>Abbott, S. <em>Understanding Analysis</em>, chapters on sequences and series, for $\varepsilon$ arguments behind the slogans.</li>
+<li>MIT OpenCourseWare, 18.01SC, infinite series unit. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a></li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequences calculator</a></li>
+<li><a href="../glossary/#convergence">Glossary: convergence</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

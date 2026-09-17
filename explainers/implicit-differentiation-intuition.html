@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implicit Differentiation Intuition, Higher Math Guide</title>
+<meta name="description" content="Learn why implicit differentiation works, how the chain rule finds slope on a curve given by an equation, and how to check a circle example.">
+<link rel="canonical" href="https://highermathguide.com/explainers/implicit-differentiation-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Implicit Differentiation Intuition, Higher Math Guide">
+<meta property="og:description" content="Learn why implicit differentiation works, how the chain rule finds slope on a curve given by an equation, and how to check a circle example.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/implicit-differentiation-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Implicit Differentiation Intuition, Higher Math Guide">
+<meta name="twitter:description" content="Learn why implicit differentiation works, how the chain rule finds slope on a curve given by an equation, and how to check a circle example.">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Implicit Differentiation Intuition",
+  "description": "Learn why implicit differentiation works, how the chain rule finds slope on a curve given by an equation, and how to check a circle example.",
+  "url": "https://highermathguide.com/explainers/implicit-differentiation-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-17",
+  "dateModified": "2026-09-17"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Implicit differentiation intuition</h1>
+<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>Some curves arrive as an equation that mixes $x$ and $y$, not as a formula $y=f(x)$. A circle $x^2+y^2=1$ is the usual first picture. You can solve for $y$ on the upper half, then differentiate. Implicit differentiation skips that solve. It treats $y$ as a function of $x$ that the equation already constrains, then differentiates both sides.</p>
+<p>The method looks like a trick until you hear the promise. If a smooth piece of the curve really is the graph of some $y(x)$, then every identity that holds along that piece remains an identity after you differentiate with respect to $x$. The <a href="../glossary/#derivative">derivative</a> $y'(x)$ is the unknown slope. Algebra then isolates it.</p>
+
+<h2>What implicit is naming</h2>
+<p>Explicit means you are given $y$ as a recipe in $x$. Implicit means you are given a relation $F(x,y)=0$ and you trust that, near a point you care about, there is a unique smooth $y(x)$ hiding inside that relation. You do not need the recipe in hand. You need the relation, the chain rule, and a point where the curve is not vertical.</p>
+<p>That last clause is the geometric warning. If the tangent is vertical, $y$ is not a function of $x$ in any neighborhood. You can still talk about $dx/dy$, or you can stay with a parametric description. Implicit differentiation with respect to $x$ is for pieces that pass the vertical line test locally.</p>
+
+<h2>The chain rule does the work</h2>
+<p>Suppose $y=y(x)$ and you meet a term like $y^2$. As a function of $x$ that is the composition $g(y(x))$ with $g(u)=u^2$. The chain rule says</p>
+<p>$$\frac{d}{dx}\bigl(y(x)^2\bigr)=2y(x)\,y'(x).$$</p>
+<p>People write $2y\,y'$ and keep moving. The extra $y'$ is not decoration. It is the reminder that $y$ is riding on $x$. If you differentiate $y^2$ as if $y$ were a constant, you have changed the problem into a different curve.</p>
+<p>The same pattern hits $xy$, $\sin y$, $e^{xy}$, and any other mix. Differentiate as usual, and every time a $y$ is hit you multiply by $y'$. Then collect every term that contains $y'$ and solve. This is the same linear approximation idea as in <a href="what-a-derivative-measures.html">what a derivative actually measures</a>, just applied to a constraint instead of to a formula.</p>
+
+<h2>A circle you can check by hand</h2>
+<p><span class="example-label">Example</span> Start with $x^2+y^2=1$. Differentiate both sides with respect to $x$:</p>
+<p>$$2x+2y\,y'=0.$$</p>
+<p>If $y\neq 0$, then $y'=-x/y$. On the unit circle the radius to $(x,y)$ is the vector $\langle x,y\rangle$. The tangent should be perpendicular to that radius, so a tangent direction is $\langle -y,x\rangle$ or $\langle y,-x\rangle$. Slope of the first is $-x/y$ when $y\neq 0$. The implicit result matches the geometry.</p>
+<p>At $(0,1)$ you get $y'=0$, a horizontal tangent. At $(1,0)$ the formula $y'=-x/y$ blows up, which is honest. The tangent is vertical. The upper semicircle $y=\sqrt{1-x^2}$ gives the same derivative $y'=-x/\sqrt{1-x^2}=-x/y$ on $y&gt;0$. Implicit work saved the square root, then agreed with it.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> After you isolate $y'$, the right hand side still contains $y$. That is expected. The slope depends on where you sit on the curve. To get a number, substitute the point that satisfies the original equation. A point that fails $x^2+y^2=1$ is not on this circle, so its slope is meaningless here.</div>
+
+<h2>A quieter example with a product</h2>
+<p><span class="example-label">Example</span> Take $x^3+xy+y^3=3$ near $(1,1)$, which satisfies the equation. Differentiate:</p>
+<p>$$3x^2+\bigl(y+x y'\bigr)+3y^2 y'=0.$$</p>
+<p>Collect $y'$ terms: $x y'+3y^2 y'=-3x^2-y$, so</p>
+<p>$$y'=\frac{-3x^2-y}{x+3y^2}$$</p>
+<p>when the denominator is not zero. At $(1,1)$ this is $-4/4=-1$. You now have a tangent line $y-1=-1\cdot(x-1)$ without solving a cubic for $y$.</p>
+
+<h2>When the method is allowed</h2>
+<p>The implicit function theorem, in undergraduate language, says this. If $F(x,y)$ is smooth and $F_y$ is not zero at a point on $F=0$, then near that point the level set is the graph of a unique smooth $y(x)$, and</p>
+<p>$$y'=-\frac{F_x}{F_y}.$$</p>
+<p>That is implicit differentiation in one line. The denominator $F_y$ is exactly the coefficient you would have solved for $y'$. If $F_y=0$ and $F_x\neq 0$, the curve is locally a graph $x=x(y)$ instead. If both vanish, the level set may cross itself or cusp, and a single tangent may fail.</p>
+<p>You do not need the full theorem to compute homework slopes. You do need it as a sanity check. Vertical tangents, self crossings, and isolated points are not bugs in your algebra. They are places where the story “$y$ is a function of $x$” paused.</p>
+
+<h2>Related rates are the same idea</h2>
+<p>If $x$ and $y$ both depend on time $t$, and a constraint $F(x,y)=0$ holds for all $t$ in an interval, differentiate the constraint with respect to $t$. You obtain a linear relation between $x'(t)$ and $y'(t)$. That is implicit differentiation with a new independent variable. The geometry is unchanged. A moving point is required to stay on the curve, so its velocity is tangent to the curve.</p>
+
+<h2>How to practice</h2>
+<ol>
+<li>Differentiate both sides before you isolate anything. Leave $y'$ visible.</li>
+<li>Solve for $y'$. Substitute the point only at the end.</li>
+<li>Check that the point satisfies the original equation.</li>
+<li>Ask whether $y'$ is infinite or undefined. If it is, sketch or switch the independent variable.</li>
+<li>When you can solve explicitly on a branch, compare once. Then trust the implicit path on equations you cannot solve.</li>
+</ol>
+<p>A numerical slope check is possible if you can sample the curve. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> needs an explicit $f(x)$, so it is a comparison tool after you solve a branch, not a replacement for the implicit step. For the language of limits that sits under every derivative, see <a href="epsilon-delta-intuition.html">epsilon delta intuition</a> and the <a href="../topics/calculus-foundations.html">calculus foundations</a> pillar.</p>
+
+<h2>Citations and further reading</h2>
+<ul class="source-list">
+<li>OpenStax, <em>Calculus Volume 1</em>, “Implicit Differentiation.” <a href="https://openstax.org/books/calculus-volume-1/pages/3-8-implicit-differentiation" rel="noopener">openstax.org</a></li>
+<li>Paul’s Online Math Notes, “Implicit Differentiation.” <a href="https://tutorial.math.lamar.edu/Classes/CalcI/ImplicitDiff.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>MIT OpenCourseWare, 18.01SC Single Variable Calculus. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Stewart, J. <em>Calculus</em>, section on implicit differentiation, for drill problems after the idea is clear.</li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
+<li><a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
+<li><a href="../glossary/#implicit-differentiation">Glossary: implicit differentiation</a></li>
+<li><a href="../glossary/#derivative">Glossary: derivative</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge pathway</a></li>
+<li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

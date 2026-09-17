@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacobian Matrices in Plain Language, Higher Math Guide</title>
+<meta name="description" content="A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.">
+<link rel="canonical" href="https://highermathguide.com/explainers/jacobian-matrices-plain-language.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Jacobian Matrices in Plain Language, Higher Math Guide">
+<meta property="og:description" content="A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/jacobian-matrices-plain-language.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jacobian Matrices in Plain Language, Higher Math Guide">
+<meta name="twitter:description" content="A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Jacobian Matrices in Plain Language",
+  "description": "A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.",
+  "url": "https://highermathguide.com/explainers/jacobian-matrices-plain-language.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-09-17",
+  "dateModified": "2026-09-17"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Jacobian matrices in plain language</h1>
+<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+</header>
+<div class="article-body">
+<p>A derivative in one variable is a single number, the best linear multiplier near a point. When a map sends several inputs to several outputs, the best linear multiplier is a matrix. That matrix is the Jacobian. It is not a new kind of derivative. It is the derivative, written so that every first <a href="../glossary/#partial-derivative">partial derivative</a> has a seat.</p>
+<p>If you already like the sentence $f(x)\approx f(a)+f'(a)(x-a)$, the multivariable cousin is</p>
+<p>$$\mathbf{f}(\mathbf{a}+\mathbf{h})\approx \mathbf{f}(\mathbf{a})+D\mathbf{f}(\mathbf{a})\,\mathbf{h}.$$</p>
+<p>Here $D\mathbf{f}(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$, and $\mathbf{h}$ is a small input step. Matrix times vector is the linear map. For the geometry of those maps, keep <a href="../topics/linear-algebra.html">linear algebra</a> nearby. For the calculus setting, use the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>.</p>
+
+<h2>How the entries are arranged</h2>
+<p>Write $\mathbf{f}(x,y)=(u(x,y),v(x,y))$ as a map from the plane to the plane. The Jacobian is</p>
+<p>$$D\mathbf{f}=\begin{pmatrix} u_x &amp; u_y \\ v_x &amp; v_y \end{pmatrix}.$$</p>
+<p>Row $i$ is the <a href="../glossary/#gradient">gradient</a> of the $i$th output. Column $j$ is the velocity of the output when you move only the $j$th input. Both readings are useful. Gradients tell you how each coordinate function tilts. Columns tell you where the standard basis arrows go after the linear approximation.</p>
+<p>That column picture is the same story as “a matrix is the images of basis vectors,” which also appears in <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a>. The Jacobian is the matrix of the derivative map, not a mysterious grid of extra symbols.</p>
+
+<h2>A polar example you can picture</h2>
+<p><span class="example-label">Example</span> Polar coordinates send $(r,\theta)$ to $(x,y)=(r\cos\theta,\, r\sin\theta)$. The Jacobian is</p>
+<p>$$D=\begin{pmatrix} \cos\theta &amp; -r\sin\theta \\ \sin\theta &amp; r\cos\theta \end{pmatrix}.$$</p>
+<p>The first column is the unit radial direction. Increasing $r$ a little moves you straight out from the origin. The second column is a tangential direction of length $r$. Increasing $\theta$ a little walks you along a circle, and a farther radius makes the same angle change sweep a longer arc. The determinant is $r$. Local area in the $(r,\theta)$ plane is scaled by $|r|$ when you look in the $(x,y)$ plane. That is why polar integrals pick up a factor of $r$.</p>
+<p>At $r=0$ the determinant vanishes. Many angles collapse to one point. The linear map is singular, which matches the picture. Polar coordinates are a poor chart exactly at the origin.</p>
+
+<h2>What the determinant is saying</h2>
+<p>For a map from $\mathbb{R}^n$ to $\mathbb{R}^n$, $\det D\mathbf{f}(\mathbf{a})$ is the signed volume scaling of the best linear approximation at $\mathbf{a}$. Positive means orientation is kept. Negative means it is flipped. Zero means some direction is crushed, so the map is not locally invertible.</p>
+<p>The inverse function theorem, in undergraduate language, says that if $D\mathbf{f}(\mathbf{a})$ is invertible, then $\mathbf{f}$ itself is invertible on small neighborhoods, and the derivative of the inverse is the inverse matrix of the derivative. You do not need the full proof to use the slogan. A nonzero Jacobian determinant is a green light for a local inverse. A zero determinant is a warning, not an automatic disaster everywhere, but it is a place to slow down.</p>
+<p>Try the <a href="../calculators/matrix-2x2.html">2 by 2 matrix toolkit</a> on a Jacobian you have computed by hand. Check the determinant and, when it is safe, the inverse. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue tool</a> can show the stretch factors of that linear map along special directions. Those numbers describe the approximation, not the full nonlinear map.</p>
+
+<h2>Maps that change dimension</h2>
+<p>If $\mathbf{f}:\mathbb{R}^n\to\mathbb{R}^m$, the Jacobian is an $m\times n$ matrix. It is still the derivative. It just cannot be square, so it has no single determinant. Rank becomes the useful word. Full rank means the linear approximation hits a subspace of the largest possible dimension. For a scalar function, $m=1$, the Jacobian is a single row, which is the gradient. The linear approximation is the tangent plane story from multivariable calculus.</p>
+<p>For a curve $\mathbf{r}(t)$ in space, $n=1$, the Jacobian is a single column $\mathbf{r}'(t)$, the velocity. Nothing here conflicts. The same definition specializes cleanly.</p>
+
+<h2>Change of variables in integrals</h2>
+<p>When you rewrite a double or triple integral in new coordinates, you are pushing a region through a map $\mathbf{g}$. Little parallelepipeds in the parameter domain become little parallelepipeds in space. Their volumes differ by $|\det D\mathbf{g}|$. That factor is the Jacobian determinant, taken in absolute value because volume is unsigned in the usual integral. Forgetting it is the most common computational error after a substitution looks “correct” on the integrand alone.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> The Jacobian matrix and the Jacobian determinant are related and not identical. People say “the Jacobian” for either. In a sentence about invertibility or eigenvalues you want the matrix. In a sentence about $dA$ or $dV$ after a substitution you want the absolute value of the determinant.</div>
+
+<h2>How this sits next to other ideas</h2>
+<p>Constrained optimization uses gradients of a function and of a constraint. Those gradients are Jacobian rows. See <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. Vector calculus theorems package derivatives of fields. The derivative of a field is built from partials that could be arranged as a Jacobian. <a href="stokes-theorem-intuition.html">Stokes theorem intuition</a> is one of those theorems.</p>
+<p>If you want a numerical feel for a single partial, hold every variable but one fixed and use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> on that slice. The <a href="../calculators/vector-ops.html">vector operations tool</a> helps you check orthogonality when a column of $D\mathbf{f}$ should be tangent to a circle or a sphere.</p>
+<p>Glossary anchors that repay a click: <a href="../glossary/#jacobian">Jacobian</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#partial-derivative">partial derivative</a>.</p>
+
+<h2>Citations and further reading</h2>
+<ul class="source-list">
+<li>OpenStax, <em>Calculus Volume 3</em>, change of variables and the Jacobian. <a href="https://openstax.org/books/calculus-volume-3/pages/5-7-change-of-variables-in-multiple-integrals" rel="noopener">openstax.org</a></li>
+<li>MIT OpenCourseWare, 18.02SC Multivariable Calculus. <a href="https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Gilbert Strang, linear algebra notes on matrices as linear maps. <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a></li>
+<li>Paul’s Online Math Notes, change of variables. <a href="https://tutorial.math.lamar.edu/Classes/CalcIII/ChangeOfVariables.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+</ul>
+</div>
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra</a></li>
+<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course pathway</a></li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix toolkit</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

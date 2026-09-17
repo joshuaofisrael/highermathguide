@@ -18,10 +18,14 @@
       e.preventDefault();
       var name = (document.getElementById("name") || {}).value || "";
       var email = (document.getElementById("email") || {}).value || "";
+      var reason = (document.getElementById("reason") || {}).value || "";
+      var topic = (document.getElementById("topic-idea") || {}).value || "";
       var message = (document.getElementById("message") || {}).value || "";
       var body =
         "Name: " + name.trim() +
         "\nEmail: " + email.trim() +
+        (reason ? "\nReason: " + reason.trim() : "") +
+        (topic.trim() ? "\nTopic idea: " + topic.trim() : "") +
         "\n\n" + message.trim();
       var mailto =
         "mailto:joshuaofisrael@gmail.com" +

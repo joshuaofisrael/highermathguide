@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Glossary — Higher Math Guide</title>
-<meta name="description" content="Plain-language glossary of about thirty higher mathematics terms with anchor links.">
-<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/glossary/">
+<title>Glossary of Higher Mathematics, Higher Math Guide</title>
+<meta name="description" content="Plain language glossary of higher mathematics terms, including Jacobian, Lagrange multipliers, series tests, and Stokes theorem.">
+<link rel="canonical" href="https://highermathguide.com/glossary/">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Glossary — Higher Math Guide">
-<meta property="og:description" content="Plain-language glossary of about thirty higher mathematics terms with anchor links.">
+<meta property="og:title" content="Glossary of Higher Mathematics, Higher Math Guide">
+<meta property="og:description" content="Plain language glossary of higher mathematics terms, including Jacobian, Lagrange multipliers, series tests, and Stokes theorem.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/glossary/">
+<meta property="og:url" content="https://highermathguide.com/glossary/">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glossary — Higher Math Guide">
-<meta name="twitter:description" content="Plain-language glossary of about thirty higher mathematics terms with anchor links.">
+<meta name="twitter:title" content="Glossary of Higher Mathematics, Higher Math Guide">
+<meta name="twitter:description" content="Plain language glossary of higher mathematics terms, including Jacobian, Lagrange multipliers, series tests, and Stokes theorem.">
 <link rel="stylesheet" href="../css/styles.css">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "@type": "WebPage",
   "name": "Glossary",
   "description": "Plain-language glossary of about thirty higher mathematics terms with anchor links.",
-  "url": "https://joshuaofisrael.github.io/highermathguide/glossary/",
+  "url": "https://highermathguide.com/glossary/",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
@@ -44,7 +44,9 @@
 <li><a href="../glossary/" aria-current="page">Glossary</a></li>
 <li><a href="../pathways/">Pathways</a></li>
 <li><a href="../calculators/">Calculators</a></li>
-<li><a href="../contact/">Contact</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
 </ul>
 </nav>
 </div>
@@ -61,7 +63,9 @@
 <ul>
 <li><a href="#basis">Basis</a></li>
 <li><a href="#bayes-theorem">Bayes’ theorem</a></li>
+<li><a href="#comparison-test">Comparison test</a></li>
 <li><a href="#conditional-probability">Conditional probability</a></li>
+<li><a href="#constraint">Constraint</a></li>
 <li><a href="#continuity">Continuity</a></li>
 <li><a href="#convergence">Convergence (sequence/series)</a></li>
 <li><a href="#definite-integral">Definite integral</a></li>
@@ -74,8 +78,11 @@
 <li><a href="#epsilon-delta">Epsilon-delta definition</a></li>
 <li><a href="#expected-value">Expected value</a></li>
 <li><a href="#gradient">Gradient</a></li>
+<li><a href="#implicit-differentiation">Implicit differentiation</a></li>
 <li><a href="#initial-value-problem">Initial value problem (IVP)</a></li>
+<li><a href="#jacobian">Jacobian</a></li>
 <li><a href="#integral">Integral</a></li>
+<li><a href="#lagrange-multiplier">Lagrange multiplier</a></li>
 <li><a href="#limit">Limit</a></li>
 <li><a href="#linear-independence">Linear independence</a></li>
 <li><a href="#linear-map">Linear map (linear transformation)</a></li>
@@ -84,17 +91,22 @@
 <li><a href="#partial-sum">Partial sum</a></li>
 <li><a href="#probability">Probability</a></li>
 <li><a href="#random-variable">Random variable</a></li>
+<li><a href="#ratio-test">Ratio test</a></li>
+<li><a href="#root-test">Root test</a></li>
 <li><a href="#sequence">Sequence</a></li>
 <li><a href="#series">Series</a></li>
 <li><a href="#slope-field">Slope field</a></li>
 <li><a href="#span">Span</a></li>
+<li><a href="#stokes-theorem">Stokes theorem</a></li>
 <li><a href="#vector">Vector</a></li>
 <li><a href="#vector-field">Vector field</a></li>
 </ul>
 </nav>
 <section class="glossary-term" id="basis"><h3>Basis</h3><p>A linearly independent set of vectors that spans a vector space; every vector has unique coordinates relative to a basis.</p></section>
 <section class="glossary-term" id="bayes-theorem"><h3>Bayes’ theorem</h3><p>A rule relating P(H|E) to P(E|H), the prior P(H), and P(E). Used to update probabilities after observing evidence.</p></section>
+<section class="glossary-term" id="comparison-test"><h3>Comparison test</h3><p>A test for series of nonnegative terms. If 0 ≤ a_n ≤ b_n and Σ b_n converges, then Σ a_n converges. If a_n ≥ c_n ≥ 0 and Σ c_n diverges, then Σ a_n diverges. See <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>.</p></section>
 <section class="glossary-term" id="conditional-probability"><h3>Conditional probability</h3><p>P(A|B) is the probability of A given that B occurred; probability reweighted to the subspace B.</p></section>
+<section class="glossary-term" id="constraint"><h3>Constraint</h3><p>An equation g(x) = c that restricts the points you may use when optimizing a function. Lagrange multipliers find candidates where the gradient of f is parallel to the gradient of g. See <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>.</p></section>
 <section class="glossary-term" id="continuity"><h3>Continuity</h3><p>A function is continuous at a if the limit as x→a equals f(a). Informally, the graph does not jump at a.</p></section>
 <section class="glossary-term" id="convergence"><h3>Convergence (sequence/series)</h3><p>A sequence converges if terms approach a limit. A series converges if its sequence of partial sums converges.</p></section>
 <section class="glossary-term" id="definite-integral"><h3>Definite integral</h3><p>The signed accumulation of f from a to b, written ∫_a^b f(x) dx; equal to net signed area when f is integrable.</p></section>
@@ -107,8 +119,11 @@
 <section class="glossary-term" id="epsilon-delta"><h3>Epsilon-delta definition</h3><p>The precise definition of a limit: for every ε>0 there exists δ>0 such that 0<|x−a|<δ implies |f(x)−L|<ε.</p></section>
 <section class="glossary-term" id="expected-value"><h3>Expected value</h3><p>The probability-weighted average of a random variable; center of mass of its distribution.</p></section>
 <section class="glossary-term" id="gradient"><h3>Gradient</h3><p>The vector of first partial derivatives of a scalar function; points toward steepest ascent.</p></section>
+<section class="glossary-term" id="implicit-differentiation"><h3>Implicit differentiation</h3><p>Finding dy/dx from an equation F(x, y) = 0 by differentiating both sides with respect to x and treating y as a function of x. See <a href="../explainers/implicit-differentiation-intuition.html">implicit differentiation intuition</a>.</p></section>
 <section class="glossary-term" id="initial-value-problem"><h3>Initial value problem (IVP)</h3><p>A differential equation plus enough initial conditions to select a particular solution.</p></section>
 <section class="glossary-term" id="integral"><h3>Integral</h3><p>An antiderivative (indefinite) or a definite accumulation (definite). Linked to derivatives by the Fundamental Theorem.</p></section>
+<section class="glossary-term" id="jacobian"><h3>Jacobian</h3><p>The matrix of first partial derivatives of a map. It is the best linear approximation to that map at a point. The determinant, when the map is square, scales local volume. See <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>.</p></section>
+<section class="glossary-term" id="lagrange-multiplier"><h3>Lagrange multiplier</h3><p>A number λ such that ∇f = λ ∇g at a constrained local max or min of f on g = c, when ∇g is nonzero. It measures how f responds to a small change in the allowed level of g. See <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>.</p></section>
 <section class="glossary-term" id="limit"><h3>Limit</h3><p>The value a function or sequence approaches as the input approaches a point or infinity, when that approach settles.</p></section>
 <section class="glossary-term" id="linear-independence"><h3>Linear independence</h3><p>A set of vectors is linearly independent if the only linear combination equaling zero uses all-zero coefficients.</p></section>
 <section class="glossary-term" id="linear-map"><h3>Linear map (linear transformation)</h3><p>A function between vector spaces that preserves addition and scalar multiplication.</p></section>
@@ -117,10 +132,13 @@
 <section class="glossary-term" id="partial-sum"><h3>Partial sum</h3><p>The sum of the first N terms of a series; the sequence of partial sums decides convergence.</p></section>
 <section class="glossary-term" id="probability"><h3>Probability</h3><p>A number between 0 and 1 assigned to events under a model, satisfying nonnegativity and countable additivity (in the standard axioms).</p></section>
 <section class="glossary-term" id="random-variable"><h3>Random variable</h3><p>A numerical quantity determined by the outcome of a random experiment; described by a distribution.</p></section>
+<section class="glossary-term" id="ratio-test"><h3>Ratio test</h3><p>For a series Σ a_n, form L = lim |a_{n+1}/a_n| when the limit exists. If L &lt; 1 the series converges absolutely. If L &gt; 1 it diverges. If L = 1 the test is silent. See <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>.</p></section>
+<section class="glossary-term" id="root-test"><h3>Root test</h3><p>For a series Σ a_n, form ρ = lim ( |a_n| )^{1/n} when the limit exists. The conclusions match the ratio test with ρ in place of L. Useful when terms are already written as nth powers. See <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>.</p></section>
 <section class="glossary-term" id="sequence"><h3>Sequence</h3><p>An ordered list of numbers a₁, a₂, a₃, … indexed by positive integers (or nonnegative integers).</p></section>
 <section class="glossary-term" id="series"><h3>Series</h3><p>An infinite sum Σ a_n, defined as the limit of its partial sums when that limit exists.</p></section>
 <section class="glossary-term" id="slope-field"><h3>Slope field</h3><p>A plot of short segments showing the slope f(t,y) of an ODE y'=f(t,y) at sample points; guides qualitative solution shapes.</p></section>
 <section class="glossary-term" id="span"><h3>Span</h3><p>The set of all linear combinations of a given collection of vectors.</p></section>
+<section class="glossary-term" id="stokes-theorem"><h3>Stokes theorem</h3><p>The circulation of a smooth vector field F around the oriented boundary of a surface S equals the flux of curl F through S. Green’s theorem is the flat special case. See <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>.</p></section>
 <section class="glossary-term" id="vector"><h3>Vector</h3><p>An element of a vector space; informally an arrow that can be added and scaled.</p></section>
 <section class="glossary-term" id="vector-field"><h3>Vector field</h3><p>An assignment of a vector to each point of a region — e.g., velocity of a flow.</p></section>
 </div>
@@ -130,7 +148,7 @@
 <div class="footer-inner">
 <div>
 <a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
-<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>
 <h2>Explore</h2>
@@ -146,10 +164,16 @@
 <div>
 <h2>About</h2>
 <ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
 <li><a href="../contact/">Contact</a></li>
 <li><a href="../disclaimer/">Disclaimer</a></li>
 <li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
 </ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
 </div>
 <p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
 </div>

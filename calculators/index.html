@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calculators — Higher Math Guide</title>
-<meta name="description" content="Client-side math calculators for Higher Math Guide: derivatives, integrals, matrices, vectors, probability, sequences, and more.">
-<link rel="canonical" href="https://joshuaofisrael.github.io/highermathguide/calculators/">
+<title>Browser Math Calculators, Higher Math Guide</title>
+<meta name="description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
+<link rel="canonical" href="https://highermathguide.com/calculators/">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Calculators — Higher Math Guide">
-<meta property="og:description" content="Client-side math calculators for Higher Math Guide: derivatives, integrals, matrices, vectors, probability, sequences, and more.">
+<meta property="og:title" content="Browser Math Calculators, Higher Math Guide">
+<meta property="og:description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://joshuaofisrael.github.io/highermathguide/calculators/">
+<meta property="og:url" content="https://highermathguide.com/calculators/">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Calculators — Higher Math Guide">
-<meta name="twitter:description" content="Client-side math calculators for Higher Math Guide: derivatives, integrals, matrices, vectors, probability, sequences, and more.">
+<meta name="twitter:title" content="Browser Math Calculators, Higher Math Guide">
+<meta name="twitter:description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
 <link rel="stylesheet" href="../css/styles.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Calculators",
-  "description": "Client-side math calculators for Higher Math Guide: derivatives, integrals, matrices, vectors, probability, sequences, and more.",
-  "url": "https://joshuaofisrael.github.io/highermathguide/calculators/",
+  "@type": "CollectionPage",
+  "name": "Browser Math Calculators",
+  "description": "Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences.",
+  "url": "https://highermathguide.com/calculators/",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
@@ -44,7 +44,9 @@
 <li><a href="../glossary/">Glossary</a></li>
 <li><a href="../pathways/">Pathways</a></li>
 <li><a href="../calculators/" aria-current="page">Calculators</a></li>
-<li><a href="../contact/">Contact</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
 </ul>
 </nav>
 </div>
@@ -53,22 +55,82 @@
 
 <div class="wrap">
 <header class="hero">
+<p class="section-kicker">Tools after ideas</p>
 <h1>Calculators</h1>
-<p class="lede">Small, client-side tools for exploring ideas. No accounts, no server math — your browser does the work. Educational estimates only.</p>
+<p class="lede">Small tools that run in your browser. No accounts and no server math. Use them to test a number after you can explain the idea. Educational estimates only.</p>
 </header>
-<div class="card-grid">
-<article class="card"><h3><a href="numerical-derivative.html">Numerical derivative / slope estimator</a></h3><p>Estimate f′(x₀) with forward, backward, or central differences.</p></article>
-<article class="card"><h3><a href="quadratic-formula.html">Quadratic formula solver</a></h3><p>Solve ax²+bx+c=0 with discriminant and real or complex roots.</p></article>
-<article class="card"><h3><a href="matrix-2x2.html">2×2 matrix toolkit</a></h3><p>Determinant, inverse, and products AB / BA for two matrices.</p></article>
-<article class="card"><h3><a href="eigenvalue-2x2.html">2×2 eigenvalues</a></h3><p>Characteristic polynomial roots for a 2×2 matrix.</p></article>
-<article class="card"><h3><a href="vector-ops.html">Vector operations (2D / 3D)</a></h3><p>Dot product, cross product, magnitude, and unit vectors.</p></article>
-<article class="card"><h3><a href="binomial-probability.html">Binomial probability</a></h3><p>n choose k and P(X=k) for a binomial model.</p></article>
-<article class="card"><h3><a href="normal-cdf.html">Normal CDF &amp; z-score</a></h3><p>Approximate Φ(z) or invert a percentile to a z-score.</p></article>
-<article class="card"><h3><a href="combinatorics.html">Combinatorics (nPr, nCr, n!)</a></h3><p>Permutations, combinations, and factorials with overflow warnings.</p></article>
-<article class="card"><h3><a href="sequence-series.html">Arithmetic &amp; geometric sequences</a></h3><p>Nth term and finite sum for arithmetic or geometric progressions.</p></article>
-<article class="card"><h3><a href="limit-estimator.html">Numerical limit estimator</a></h3><p>Sample f(x) as x→a or ±∞ with a constrained expression parser.</p></article>
-<article class="card"><h3><a href="integral-riemann.html">Riemann sum integrator</a></h3><p>Left, midpoint, or right rectangular sums on [a,b].</p></article>
+
+<section aria-labelledby="calc-start">
+<p class="section-kicker">Start here</p>
+<h2 id="calc-start">A short pathway through the tools</h2>
+<div class="pathway-strip">
+<article class="pathway-step">
+<span class="step-n">Calculus</span>
+<h3><a href="numerical-derivative.html">Slope estimate</a></h3>
+<p>Then read <a href="../explainers/what-a-derivative-measures.html">what a derivative measures</a>.</p>
+</article>
+<article class="pathway-step">
+<span class="step-n">Series</span>
+<h3><a href="sequence-series.html">Finite sums</a></h3>
+<p>Then read <a href="../explainers/convergence-tests-series.html">convergence tests</a>.</p>
+</article>
+<article class="pathway-step">
+<span class="step-n">Matrices</span>
+<h3><a href="matrix-2x2.html">2 by 2 toolkit</a></h3>
+<p>Then read <a href="../explainers/jacobian-matrices-plain-language.html">Jacobians</a> or <a href="../explainers/eigenvalues-plain-language.html">eigenvalues</a>.</p>
+</article>
+<article class="pathway-step">
+<span class="step-n">Vectors</span>
+<h3><a href="vector-ops.html">Dot and cross</a></h3>
+<p>Useful next to <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem</a>.</p>
+</article>
 </div>
+</section>
+
+<section class="calc-group" aria-labelledby="calc-calc">
+<h2 id="calc-calc">Calculus tools</h2>
+<p>Limits, slopes, and accumulation. Pair each tool with the matching explainer so the output has a sentence attached.</p>
+<div class="card-grid">
+<article class="card"><h3><a href="limit-estimator.html">Numerical limit estimator</a></h3><p>Sample f(x) as x approaches a or infinity. See <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a>.</p></article>
+<article class="card"><h3><a href="numerical-derivative.html">Numerical derivative</a></h3><p>Forward, backward, or central differences. See <a href="../explainers/what-a-derivative-measures.html">what a derivative measures</a> and <a href="../explainers/implicit-differentiation-intuition.html">implicit differentiation</a>.</p></article>
+<article class="card"><h3><a href="integral-riemann.html">Riemann sum integrator</a></h3><p>Left, midpoint, or right rectangles. See <a href="../topics/calculus-foundations.html">calculus foundations</a>.</p></article>
+<article class="card"><h3><a href="quadratic-formula.html">Quadratic formula solver</a></h3><p>Roots and discriminant. Algebra that calculus still uses.</p></article>
+</div>
+</section>
+
+<section class="calc-group" aria-labelledby="calc-lin">
+<h2 id="calc-lin">Matrices and vectors</h2>
+<p>Linear maps in small dimension. Good companions for the <a href="../topics/linear-algebra.html">linear algebra pillar</a>.</p>
+<div class="card-grid">
+<article class="card"><h3><a href="matrix-2x2.html">2 by 2 matrix toolkit</a></h3><p>Determinant, inverse, and products AB or BA. See <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</p></article>
+<article class="card"><h3><a href="eigenvalue-2x2.html">2 by 2 eigenvalues</a></h3><p>Characteristic polynomial roots. See <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>.</p></article>
+<article class="card"><h3><a href="vector-ops.html">Vector operations</a></h3><p>Dot product, cross product, magnitude, and unit vectors. See <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>.</p></article>
+</div>
+</section>
+
+<section class="calc-group" aria-labelledby="calc-prob">
+<h2 id="calc-prob">Probability and counting</h2>
+<p>Models you can type, not proofs. Read <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a> for updating beliefs.</p>
+<div class="card-grid">
+<article class="card"><h3><a href="binomial-probability.html">Binomial probability</a></h3><p>n choose k and P(X equals k) for a binomial model.</p></article>
+<article class="card"><h3><a href="normal-cdf.html">Normal CDF and z score</a></h3><p>Approximate Φ(z) or invert a percentile to a z score.</p></article>
+<article class="card"><h3><a href="combinatorics.html">Combinatorics</a></h3><p>Permutations, combinations, and factorials with overflow warnings.</p></article>
+</div>
+</section>
+
+<section class="calc-group" aria-labelledby="calc-seq">
+<h2 id="calc-seq">Sequences</h2>
+<p>Finite arithmetic and geometric sums only. Infinite convergence needs a test, not a partial sum alone. See <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>.</p>
+<div class="card-grid">
+<article class="card"><h3><a href="sequence-series.html">Arithmetic and geometric sequences</a></h3><p>Nth term and finite sum. Pair with <a href="../explainers/sequences-series-infinite-sums.html">sequences and series</a>.</p></article>
+</div>
+</section>
+
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+<p class="article-meta" style="margin-top:1.25rem">Calculators are educational. They are not symbolic algebra systems. See the <a href="../faq/#calculators">FAQ on calculators versus understanding</a> and the <a href="../disclaimer/">disclaimer</a>.</p>
 </div>
 
 </main>
@@ -76,7 +138,7 @@
 <div class="footer-inner">
 <div>
 <a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
-<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. Original educational content from Joshua Israel Ventures LLC.</p>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>
 <h2>Explore</h2>
@@ -92,10 +154,16 @@
 <div>
 <h2>About</h2>
 <ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
 <li><a href="../contact/">Contact</a></li>
 <li><a href="../disclaimer/">Disclaimer</a></li>
 <li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
 </ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
 </div>
 <p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
 </div>
