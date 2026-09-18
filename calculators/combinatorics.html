@@ -3,36 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Combinatorics Calculator (nPr, nCr, n!), Higher Math Guide</title>
-<meta name="description" content="Permutations, combinations, and factorials with overflow-safe messaging — educational client-side tool.">
+<title>Combinatorics Calculator, Higher Math Guide</title>
+<meta name="description" content="Permutations, combinations, and factorials with overflow warnings. Count ordered or unordered selections in your browser.">
 <link rel="canonical" href="https://highermathguide.com/calculators/combinatorics.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Combinatorics Calculator (nPr, nCr, n!), Higher Math Guide">
-<meta property="og:description" content="Permutations, combinations, and factorials with overflow-safe messaging — educational client-side tool.">
+<meta property="og:title" content="Combinatorics Calculator, Higher Math Guide">
+<meta property="og:description" content="Permutations, combinations, and factorials with overflow warnings. Count ordered or unordered selections in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/combinatorics.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Combinatorics Calculator (nPr, nCr, n!), Higher Math Guide">
-<meta name="twitter:description" content="Permutations, combinations, and factorials with overflow-safe messaging — educational client-side tool.">
+<meta name="twitter:title" content="Combinatorics Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Permutations, combinations, and factorials with overflow warnings. Count ordered or unordered selections in your browser.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Combinatorics Calculator (nPr, nCr, n!)",
-  "description": "Permutations, combinations, and factorials with overflow-safe messaging — educational client-side tool.",
-  "url": "https://highermathguide.com/calculators/combinatorics.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/combinatorics.html#webpage",
+      "name": "Combinatorics Calculator",
+      "description": "Permutations, combinations, and factorials with overflow warnings. Count ordered or unordered selections in your browser.",
+      "url": "https://highermathguide.com/calculators/combinatorics.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/combinatorics.html#faq",
+      "url": "https://highermathguide.com/calculators/combinatorics.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between P(n, k) and C(n, k)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "P counts ordered lists. C counts unordered sets. For the same n and k, P is larger by a factor of k factorial, because each set can be ordered in k factorial ways."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does n factorial fail past 170?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IEEE doubles cannot represent 171 factorial exactly, or even finitely in range past a nearby point. The warning is about the computer, not about the integer existing in mathematics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this handle repetition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not as a separate mode. The three formulas assume distinct objects and, for P and C, selections without reuse of an item. A different story needs a different count."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is C(n, 0)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is 1. There is one empty selection. The same holds for P(n, 0). The page should agree when k is 0."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Combinatorics: nPr, nCr, n!</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Counting formulas</p>
+<h1>Combinatorics calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Count ordered selections ($P(n,k)$), unordered selections ($C(n,k)$), or compute $n!$. Messages warn when IEEE doubles cannot represent the exact integer.</p>
+<p>This tool counts ordered selections $P(n,k)$, unordered selections $C(n,k)$, or a factorial $n!$. You choose the quantity, enter $n$ and (when needed) $k$, and read an integer or an overflow warning.</p>
+<p>The counts are meaningful when you are selecting from $n$ distinct objects, without extra structure such as identical items or forbidden positions. $P(n,k)$ cares about order. $C(n,k)$ does not. $n!$ is $P(n,n)$, the number of ways to line up $n$ distinct objects.</p>
+<p>This is not a generating function package and not a proof of a counting identity. It does not handle multisets, it does not solve a recurrence, and it does not replace a sentence that explains what is being counted.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -92,9 +148,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Standard counting formulas with multiplicative loops / log-space fallbacks.</div>
-<div class="callout warning"><strong>Limitations.</strong> $n!$ overflows past 170 in double precision; huge $C(n,k)$ may only be approximate. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="binomial-probability.html">Binomial probability</a> · <a href="../topics/probability-statistics.html">Probability &amp; statistics</a></p>
+<h2>How to use the counters</h2>
+<p>Pick Combinations, Permutations, or Factorial. Enter a nonnegative integer $n$. For $P$ and $C$, enter $k$ with $0\le k\le n$. The default $n=10$, $k=3$ gives $C(10,3)=120$. Press Compute.</p>
+<p>$C(n,k)=n!/(k!(n-k)!)$ counts unordered $k$ sets. $P(n,k)=n!/(n-k)!$ counts ordered $k$ lists. For $n!$ the $k$ box is ignored.</p>
+<h2>How to read the output</h2>
+<p>When the integer fits in a double exactly, the page prints it as a count. When $n$ is huge, the page may switch to a rounded value or refuse the run with an overflow message. A rounded $C(n,k)$ is no longer a counting certificate. It is a magnitude.</p>
+<p>Use the number only after you can say, in a sentence, what object was counted. “$120$” with no sentence is not combinatorics yet.</p>
+<h2>Common pitfalls</h2>
+<p>$n!$ overflows ordinary doubles past $170$. That is a representation limit, not a claim that $171!$ is undefined. The page will warn rather than invent extra digits.</p>
+<p>Mixing $P$ and $C$ is the usual homework error. If a prompt says “committees”, order usually does not matter. If it says “passwords” or “lineups”, order usually does. The menu will not infer the story.</p>
+<p>These formulas assume distinct objects and no repetition unless you have already encoded repetition by a different model. Sampling with replacement is not $P(n,k)$.</p>
+<h2>Related reading</h2>
+<p>Counts become probabilities on the <a href="binomial-probability.html">binomial probability calculator</a> and on <a href="../topics/probability-statistics.html">probability and statistics</a>. Language: <a href="../glossary/#probability">probability</a>. Belief updates after a count is observed sit in <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>.</p>
+<p>A continuous table is the <a href="normal-cdf.html">normal CDF and z score calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="pc">
+<h2>What is the difference between P(n, k) and C(n, k)?</h2>
+<p>P counts ordered lists. C counts unordered sets. For the same n and k, P is larger by a factor of k factorial, because each set can be ordered in k factorial ways.</p>
+</section><section class="faq-item" id="overflow">
+<h2>Why does n factorial fail past 170?</h2>
+<p>IEEE doubles cannot represent 171 factorial exactly, or even finitely in range past a nearby point. The warning is about the computer, not about the integer existing in mathematics.</p>
+</section><section class="faq-item" id="repeat">
+<h2>Does this handle repetition?</h2>
+<p>Not as a separate mode. The three formulas assume distinct objects and, for P and C, selections without reuse of an item. A different story needs a different count.</p>
+</section><section class="faq-item" id="zero">
+<h2>What is C(n, 0)?</h2>
+<p>It is 1. There is one empty selection. The same holds for P(n, 0). The page should agree when k is 0.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

@@ -3,36 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2×2 Eigenvalue Calculator, Higher Math Guide</title>
-<meta name="description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<title>2 by 2 Eigenvalue Calculator, Higher Math Guide</title>
+<meta name="description" content="Find eigenvalues of a 2 by 2 matrix from the characteristic polynomial. Real or complex roots in your browser, without eigenvectors.">
 <link rel="canonical" href="https://highermathguide.com/calculators/eigenvalue-2x2.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="2×2 Eigenvalue Calculator, Higher Math Guide">
-<meta property="og:description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<meta property="og:title" content="2 by 2 Eigenvalue Calculator, Higher Math Guide">
+<meta property="og:description" content="Find eigenvalues of a 2 by 2 matrix from the characteristic polynomial. Real or complex roots in your browser, without eigenvectors.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/eigenvalue-2x2.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2×2 Eigenvalue Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.">
+<meta name="twitter:title" content="2 by 2 Eigenvalue Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Find eigenvalues of a 2 by 2 matrix from the characteristic polynomial. Real or complex roots in your browser, without eigenvectors.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "2×2 Eigenvalue Calculator",
-  "description": "Eigenvalues of a 2×2 matrix from the characteristic polynomial — educational client-side tool.",
-  "url": "https://highermathguide.com/calculators/eigenvalue-2x2.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/eigenvalue-2x2.html#webpage",
+      "name": "2 by 2 Eigenvalue Calculator",
+      "description": "Find eigenvalues of a 2 by 2 matrix from the characteristic polynomial. Real or complex roots in your browser, without eigenvectors.",
+      "url": "https://highermathguide.com/calculators/eigenvalue-2x2.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/eigenvalue-2x2.html#faq",
+      "url": "https://highermathguide.com/calculators/eigenvalue-2x2.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an eigenvalue in this tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A number lambda such that A v equals lambda v for some nonzero vector v. This page finds those lambda values for a 2 by 2 matrix by solving the characteristic polynomial. It does not find v."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the eigenvalues are complex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The real matrix still has a real characteristic polynomial, so nonreal roots come in a conjugate pair. Over the reals the map rotates and scales. Over the complex numbers those roots are ordinary eigenvalues."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are the eigenvectors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not here. Once you have lambda, you solve (A minus lambda I) v equals 0 by hand or with a later tool. The explainer shows what that direction means."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I check the answer quickly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The two eigenvalues should sum to the trace a plus d and multiply to the determinant ad minus bc. If those two checks fail, do not trust the list."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Eigenvalues of a 2×2 matrix</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Stretch factors</p>
+<h1>2 by 2 eigenvalue calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>For $A = \begin{{pmatrix}} a &amp; b \\ c &amp; d \end{{pmatrix}}$, eigenvalues solve $\lambda^2 - (\mathrm{{tr}} A)\lambda + \det A = 0$. Real or complex conjugate pairs are reported.</p>
+<p>This tool finds eigenvalues of a single $2\times 2$ real matrix $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$. Eigenvalues are the roots of the characteristic polynomial $\lambda^2-(\mathrm{tr}\,A)\lambda+\det A=0$, where $\mathrm{tr}\,A=a+d$ and $\det A=ad-bc$.</p>
+<p>The roots are meaningful when you want the stretch factors along directions that $A$ does not tip. A real eigenvalue $\lambda$ means some nonzero vector $\mathbf{v}$ satisfies $A\mathbf{v}=\lambda\mathbf{v}$. A complex conjugate pair means the real plane map rotates and scales, with no real invariant line.</p>
+<p>This is not a full eigensolver. It does not return eigenvectors, it does not handle $3\times 3$ matrices, and it does not prove diagonalizability. It solves a quadratic. For the geometry, read the eigenvalue explainer.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -91,9 +147,40 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Roots of the characteristic polynomial for a single $2\times 2$ real matrix.</div>
-<div class="callout warning"><strong>Limitations.</strong> Does not return eigenvectors (yet). Ill-conditioned cases can blur repeated roots. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a> · <a href="../glossary/#eigenvalue">Eigenvalue</a> · <a href="../topics/linear-algebra.html">Linear algebra</a> · <a href="matrix-2x2.html">2×2 matrix toolkit</a></p>
+<h2>How to use the characteristic polynomial</h2>
+<p>Enter the four entries $a,b,c,d$. The default $\begin{pmatrix}2&1\\1&2\end{pmatrix}$ has trace $4$ and determinant $3$, so the polynomial is $\lambda^2-4\lambda+3=0$ and the roots are $3$ and $1$. Press Find eigenvalues and confirm those two numbers.</p>
+<p>The page reports the trace, the determinant, the discriminant of the quadratic, and the roots. Use that audit line. If you only stare at the $\lambda$ list, you miss the arithmetic that produced it.</p>
+<h2>How to read the output</h2>
+<p>Two distinct real roots mean two real stretch factors. A repeated real root means a double algebraic eigenvalue; the geometry may or may not have two independent eigenvectors, and this page will not decide that.</p>
+<p>A negative discriminant produces $\alpha\pm\beta i$. Those are still eigenvalues over $\mathbb{C}$. Over $\mathbb{R}$ you should picture a rotation scaling rather than two real invariant lines.</p>
+<p>The sum of the eigenvalues equals the trace. The product equals the determinant. If a reported pair fails those two checks, something is off. On a healthy run they should match.</p>
+<h2>Common pitfalls</h2>
+<p>A repeated root is numerically fragile. A discriminant that should be zero may print as a tiny positive or negative number, splitting one eigenvalue into two close values or into a tiny imaginary part. If you expected a perfect square, check the entries.</p>
+<p>Eigenvalues are not entries of $A$ except in special cases (triangular matrices, for example). Do not read $a$ and $d$ as the spectrum unless you know the matrix is triangular.</p>
+<p>Without eigenvectors you cannot yet diagonalize, and you cannot yet say which direction stretches. The number $\lambda$ is the factor. The vector is the direction. This page only has the factor.</p>
+<h2>Related reading</h2>
+<p>The geometry is in <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a> and in the <a href="../glossary/#eigenvalue">eigenvalue</a>, <a href="../glossary/#eigenvector">eigenvector</a>, and <a href="../glossary/#eigenspace">eigenspace</a> entries. The surrounding map is <a href="../topics/linear-algebra.html">linear algebra</a>. A study order is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> pathway.</p>
+<p>Build the determinant and products first on the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>. Local linearization in several variables is <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. The same quadratic algebra appears on the <a href="quadratic-formula.html">quadratic formula calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="meaning">
+<h2>What is an eigenvalue in this tool?</h2>
+<p>A number lambda such that A v equals lambda v for some nonzero vector v. This page finds those lambda values for a 2 by 2 matrix by solving the characteristic polynomial. It does not find v.</p>
+</section><section class="faq-item" id="complex">
+<h2>What if the eigenvalues are complex?</h2>
+<p>The real matrix still has a real characteristic polynomial, so nonreal roots come in a conjugate pair. Over the reals the map rotates and scales. Over the complex numbers those roots are ordinary eigenvalues.</p>
+</section><section class="faq-item" id="vectors">
+<h2>Where are the eigenvectors?</h2>
+<p>Not here. Once you have lambda, you solve (A minus lambda I) v equals 0 by hand or with a later tool. The explainer shows what that direction means.</p>
+</section><section class="faq-item" id="trace">
+<h2>How can I check the answer quickly?</h2>
+<p>The two eigenvalues should sum to the trace a plus d and multiply to the determinant ad minus bc. If those two checks fail, do not trust the list.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

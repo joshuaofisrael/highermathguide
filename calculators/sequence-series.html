@@ -3,36 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arithmetic &amp; Geometric Sequence Calculator, Higher Math Guide</title>
-<meta name="description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<title>Arithmetic and Geometric Sequence Calculator, Higher Math Guide</title>
+<meta name="description" content="Nth term and finite sum for arithmetic and geometric sequences. Closed forms in your browser, not an infinite convergence test.">
 <link rel="canonical" href="https://highermathguide.com/calculators/sequence-series.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Arithmetic &amp; Geometric Sequence Calculator, Higher Math Guide">
-<meta property="og:description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<meta property="og:title" content="Arithmetic and Geometric Sequence Calculator, Higher Math Guide">
+<meta property="og:description" content="Nth term and finite sum for arithmetic and geometric sequences. Closed forms in your browser, not an infinite convergence test.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/sequence-series.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Arithmetic &amp; Geometric Sequence Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.">
+<meta name="twitter:title" content="Arithmetic and Geometric Sequence Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Nth term and finite sum for arithmetic and geometric sequences. Closed forms in your browser, not an infinite convergence test.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Arithmetic &amp; Geometric Sequence Calculator",
-  "description": "Nth term and finite sum for arithmetic and geometric sequences — client-side educational tool.",
-  "url": "https://highermathguide.com/calculators/sequence-series.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/sequence-series.html#webpage",
+      "name": "Arithmetic and Geometric Sequence Calculator",
+      "description": "Nth term and finite sum for arithmetic and geometric sequences. Closed forms in your browser, not an infinite convergence test.",
+      "url": "https://highermathguide.com/calculators/sequence-series.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/sequence-series.html#faq",
+      "url": "https://highermathguide.com/calculators/sequence-series.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a finite sum decide infinite convergence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Sn is the sum of n terms. An infinite series is a limit of those partial sums. You need a convergence test, or a known closed form that already assumes a condition such as |r| less than 1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the infinite geometric sum?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not on this page. If |r| is less than 1, the infinite sum is a1 over (1 minus r). That claim needs the limit, not only Sn. Read the series explainers before you quote it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does overflow mean here?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The computed power or sum left the range of a JavaScript number. Try a smaller |r| or a smaller n. Overflow is not the same as divergence in analysis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does n start at zero or at one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This page treats a1 as the first term and n as the term index starting at 1. If your notes start at a0, adjust before you compare answers."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Arithmetic &amp; geometric sequences</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Finite sums</p>
+<h1>Arithmetic and geometric sequence calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Compute the $n$th term and the finite sum $S_n$ for an arithmetic progression (common difference $d$) or a geometric progression (common ratio $r$).</p>
+<p>This tool computes the $n$th term and the finite sum $S_n$ for an arithmetic sequence (common difference $d$) or a geometric sequence (common ratio $r$). You enter the first term, the step $d$ or $r$, and how many terms you want.</p>
+<p>The output is meaningful when the list really is arithmetic or geometric, and when $n$ is a finite count of terms. A finite sum always exists as a number (unless it overflows). An infinite series is a different object: it is a limit of partial sums, and that limit may fail to exist.</p>
+<p>This is not a convergence test and not a computer algebra system for general $\sum a_n$. It will not run a ratio test, a root test, or a comparison test. For those, read the series explainers.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -99,9 +155,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Closed forms for $a_n$ and finite $S_n$ only — not infinite series convergence tests.</div>
-<div class="callout warning"><strong>Limitations.</strong> Large $|r|^n$ can overflow. Infinite geometric sums are not handled here. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a> · <a href="../explainers/convergence-tests-series.html">Convergence tests for series</a> · <a href="../glossary/#sequence">Sequence</a> · <a href="../glossary/#series">Series</a></p>
+<h2>How to use the closed forms</h2>
+<p>Choose Arithmetic or Geometric. Enter the first term $a_1$. For arithmetic, enter $d$ so that each term adds $d$. For geometric, enter $r$ so that each term multiplies by $r$. Enter $n\ge 1$ and press Compute.</p>
+<p>The default arithmetic run is $2,5,8,\ldots$ with $n=10$. You should see $a_n=29$ and $S_n=155$. Switch to geometric with the default $r=0.5$ when you want a shrinking product.</p>
+<h2>How to read the output</h2>
+<p>The large line reports $a_n$ and $S_n$. For arithmetic, $a_n=a_1+(n-1)d$ and $S_n=\frac{n}{2}(2a_1+(n-1)d)$. For geometric, $a_n=a_1 r^{n-1}$ and $S_n=a_1(1-r^n)/(1-r)$ when $r\ne 1$. If $r=1$, the geometric sum is just $n\,a_1$.</p>
+<p>$S_n$ is a partial sum, not a verdict about $\sum_{k=1}^\infty a_k$. A geometric series with $|r|&lt;1$ does have a famous infinite sum $a_1/(1-r)$, and this page will not print that infinite value. Compute it by hand only after you know the infinite sum exists.</p>
+<h2>Common pitfalls</h2>
+<p>Large $|r|^n$ overflows double precision. The page will say so. That overflow is not a convergence test. It is a computer running out of range.</p>
+<p>A common mistake is to treat a large finite $S_n$ as proof that the infinite series diverges, or a small $S_n$ as proof that it converges. Finite pictures can mislead. Use a test.</p>
+<p>$n$ is a term index and a count of terms here, starting at $a_1$. If your course indexes from $a_0$, shift the formulas before you compare.</p>
+<h2>Related reading</h2>
+<p>The ideas live in <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and infinite sums</a> and <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>. Glossary: <a href="../glossary/#sequence">sequence</a>, <a href="../glossary/#series">series</a>, <a href="../glossary/#partial-sum">partial sum</a>, <a href="../glossary/#convergence">convergence</a>, <a href="../glossary/#ratio-test">ratio test</a>, <a href="../glossary/#root-test">root test</a>, and <a href="../glossary/#comparison-test">comparison test</a>.</p>
+<p>The surrounding map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. A course path is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="finite">
+<h2>Does a finite sum decide infinite convergence?</h2>
+<p>No. Sn is the sum of n terms. An infinite series is a limit of those partial sums. You need a convergence test, or a known closed form that already assumes a condition such as |r| less than 1.</p>
+</section><section class="faq-item" id="geoinf">
+<h2>Where is the infinite geometric sum?</h2>
+<p>Not on this page. If |r| is less than 1, the infinite sum is a1 over (1 minus r). That claim needs the limit, not only Sn. Read the series explainers before you quote it.</p>
+</section><section class="faq-item" id="overflow">
+<h2>What does overflow mean here?</h2>
+<p>The computed power or sum left the range of a JavaScript number. Try a smaller |r| or a smaller n. Overflow is not the same as divergence in analysis.</p>
+</section><section class="faq-item" id="index">
+<h2>Does n start at zero or at one?</h2>
+<p>This page treats a1 as the first term and n as the term index starting at 1. If your notes start at a0, adjust before you compare answers.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

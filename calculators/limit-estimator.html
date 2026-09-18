@@ -4,35 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Numerical Limit Estimator, Higher Math Guide</title>
-<meta name="description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<meta name="description" content="Estimate a limit by sampling a simple function as x approaches a or infinity. A numerical probe, not an epsilon delta proof.">
 <link rel="canonical" href="https://highermathguide.com/calculators/limit-estimator.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Numerical Limit Estimator, Higher Math Guide">
-<meta property="og:description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<meta property="og:description" content="Estimate a limit by sampling a simple function as x approaches a or infinity. A numerical probe, not an epsilon delta proof.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/limit-estimator.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numerical Limit Estimator, Higher Math Guide">
-<meta name="twitter:description" content="Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.">
+<meta name="twitter:description" content="Estimate a limit by sampling a simple function as x approaches a or infinity. A numerical probe, not an epsilon delta proof.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Numerical Limit Estimator",
-  "description": "Estimate limits of simple expressions as x→a or ±∞ by sampling — educational client-side tool.",
-  "url": "https://highermathguide.com/calculators/limit-estimator.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/limit-estimator.html#webpage",
+      "name": "Numerical Limit Estimator",
+      "description": "Estimate a limit by sampling a simple function as x approaches a or infinity. A numerical probe, not an epsilon delta proof.",
+      "url": "https://highermathguide.com/calculators/limit-estimator.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/limit-estimator.html#faq",
+      "url": "https://highermathguide.com/calculators/limit-estimator.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a small gap prove the limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is encouraging numerical evidence. A proof still needs algebra, a theorem, or an epsilon delta argument. Use the samples to form a guess, then prove or refute that guess."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a large left right gap mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The two sides are not settling together. The two sided limit probably does not exist. Check one sided behavior by reading the printed neighbors, then decide what your course is asking for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the infinite approach do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It evaluates f at larger and larger |x| in one direction. If those values settle, the page reports the last one as a guess. If they blow up or oscillate, the finite limit likely fails."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the default formula work at x equals 1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Algebra cancels a common factor and leaves x plus 1, which is 2 at x equals 1. The original fraction is undefined at 1, but the limit is 2. The sampler never sits exactly on the hole."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,15 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Sampling a limit</p>
 <h1>Numerical limit estimator</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Probe $\lim_{{x \to a}} f(x)$ or behavior as $x \to \pm\infty$ by evaluating a constrained expression at a ladder of nearby points. Allowed pieces match the derivative tool: numbers, <code>x</code>, <code>+ - * / ^</code>, parentheses, and <code>sin cos tan sqrt abs log exp pi e</code>.</p>
+<p>This tool probes $\lim_{x\to a}f(x)$ or the behavior of $f$ as $x\to\pm\infty$ by evaluating a constrained expression at a ladder of nearby points. It reports a guessed limit and the last samples from each side (or from large $|x|$).</p>
+<p>The guess is meaningful when the samples from both sides settle near the same number, or when the large $|x|$ values settle. Agreement among samples is evidence, not a proof. A formal limit still needs the epsilon delta guarantee, or an algebra argument that removes a hole.</p>
+<p>This is not a computer algebra system and not an epsilon delta writeup. Oscillation, a jump, or a vertical blow up can fool any finite ladder. The default $(x^2-1)/(x-1)$ as $x\to 1$ is a hole you can fill: samples should approach $2$.</p>
+<p>Allowed pieces match the derivative tool: numbers, $x$, plus, minus, times, divide, powers, parentheses, and <code>sin</code> <code>cos</code> <code>tan</code> <code>sqrt</code> <code>abs</code> <code>log</code> <code>exp</code> <code>pi</code> <code>e</code>.</p>
 </div>
 
 <div class="calc-panel wide" style="margin:1.5rem 0">
@@ -92,9 +149,40 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> A sampling-based estimate with left/right (or large-$|x|$) probes — useful for intuition, not a formal $\varepsilon$-$\delta$ proof.</div>
-<div class="callout warning"><strong>Limitations.</strong> Removable holes, oscillations, and vertical asymptotes can fool any finite sample. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition</a> · <a href="../glossary/#limit">Limit</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a> · <a href="numerical-derivative.html">Numerical derivative</a></p>
+<h2>How to use the probe</h2>
+<p>Type $f(x)$. Choose a finite approach $x\to a$ or an infinite approach. For a finite approach, enter $a$. Press Estimate limit. The page samples a fixed ladder of distances, from $10^{-1}$ down to $10^{-6}$ on each side, or a ladder of large $|x|$ values.</p>
+<p>Keep the default run until you see a number near $2$ with a small gap between left and right. Then change the formula to something with a jump, such as $\mathrm{abs}(x)/x$ as $x\to 0$, and watch the gap stay large.</p>
+<h2>How to read the output</h2>
+<p>The large number is an average of the nearest left and right samples (or the last large $|x|$ sample). The note prints those neighbors and the gap. A tiny gap plus stable samples is the happy case.</p>
+<p>A large gap means the two sides do not agree. In analysis that usually means the two sided limit does not exist, even if each one sided limit exists. The page is showing you that disagreement as numbers.</p>
+<p>Samples that become non finite drop out. If too many drop out, the tool refuses the estimate and asks you to check the domain.</p>
+<h2>Common pitfalls</h2>
+<p>A removable hole can still produce a huge intermediate value if you land exactly on the hole. The sampler avoids $x=a$ on purpose. If you rewrite the formula badly, you can still hit a singularity on the ladder.</p>
+<p>Rapid oscillation such as $\sin(1/x)$ near $0$ can look settled at an unlucky sample and wild at the next. Finite samples do not replace a picture of the oscillation.</p>
+<p>As $|x|$ grows, a polynomial dominates, but a ratio of huge terms can overflow before it settles. Overflow is not the same as “the limit is infinity” in a careful course, though it is a hint to look at degrees.</p>
+<h2>Related reading</h2>
+<p>The definition is unpacked in <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a> and at <a href="../glossary/#limit">limit</a>, <a href="../glossary/#epsilon-delta">epsilon delta definition</a>, and <a href="../glossary/#continuity">continuity</a>. After a limit settles, slopes are in <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> and on the <a href="numerical-derivative.html">numerical derivative calculator</a>.</p>
+<p>The map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. A path is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. Accumulation after limits: <a href="integral-riemann.html">Riemann sum calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="proof">
+<h2>Does a small gap prove the limit?</h2>
+<p>No. It is encouraging numerical evidence. A proof still needs algebra, a theorem, or an epsilon delta argument. Use the samples to form a guess, then prove or refute that guess.</p>
+</section><section class="faq-item" id="gap">
+<h2>What does a large left right gap mean?</h2>
+<p>The two sides are not settling together. The two sided limit probably does not exist. Check one sided behavior by reading the printed neighbors, then decide what your course is asking for.</p>
+</section><section class="faq-item" id="infinity">
+<h2>What does the infinite approach do?</h2>
+<p>It evaluates f at larger and larger |x| in one direction. If those values settle, the page reports the last one as a guess. If they blow up or oscillate, the finite limit likely fails.</p>
+</section><section class="faq-item" id="hole">
+<h2>Why does the default formula work at x equals 1?</h2>
+<p>Algebra cancels a common factor and leaves x plus 1, which is 2 at x equals 1. The original fraction is undefined at 1, but the limit is 2. The sampler never sits exactly on the hole.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

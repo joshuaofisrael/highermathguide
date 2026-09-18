@@ -4,35 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riemann Sum Calculator, Higher Math Guide</title>
-<meta name="description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<meta name="description" content="Approximate a definite integral with left, midpoint, or right rectangles. A browser Riemann sum, not a symbolic antiderivative.">
 <link rel="canonical" href="https://highermathguide.com/calculators/integral-riemann.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Riemann Sum Calculator, Higher Math Guide">
-<meta property="og:description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<meta property="og:description" content="Approximate a definite integral with left, midpoint, or right rectangles. A browser Riemann sum, not a symbolic antiderivative.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/integral-riemann.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Riemann Sum Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.">
+<meta name="twitter:description" content="Approximate a definite integral with left, midpoint, or right rectangles. A browser Riemann sum, not a symbolic antiderivative.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Riemann Sum Calculator",
-  "description": "Left, midpoint, or right Riemann sums for a simple expression on [a,b] — educational client-side tool.",
-  "url": "https://highermathguide.com/calculators/integral-riemann.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/integral-riemann.html#webpage",
+      "name": "Riemann Sum Calculator",
+      "description": "Approximate a definite integral with left, midpoint, or right rectangles. A browser Riemann sum, not a symbolic antiderivative.",
+      "url": "https://highermathguide.com/calculators/integral-riemann.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/integral-riemann.html#faq",
+      "url": "https://highermathguide.com/calculators/integral-riemann.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is the output an exact integral?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a rectangular Riemann sum. An exact value needs an antiderivative and the Fundamental Theorem, or another theorem. Use the sum to see area accumulate, then do the algebra your course asked for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which rule should I pick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Midpoint is a good default on a smooth graph. Left and right are the pictures most courses draw first, and they make overestimate versus underestimate visible on a monotone function. Try all three on x squared."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if b is less than a?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The page still runs. Delta x becomes negative, so the sum changes sign. That matches the usual convention for a definite integral with reversed limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the function blows up on the interval?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A non finite sample stops the sum. Improper integrals need a limit argument, not a blind rectangle pile. Change the interval or study the singularity first."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Riemann sum integrator</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Rectangles for area</p>
+<h1>Riemann sum calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Approximate $\int_a^b f(x)\,dx$ with equal-width rectangles. Choose left endpoints, midpoints, or right endpoints. Expression rules match the other calculus tools (constrained parser — no arbitrary code).</p>
+<p>This tool approximates $\int_a^b f(x)\,dx$ with equal width rectangles. You type a simple expression, the endpoints $a$ and $b$, a count $n$ of subintervals, and a rule: left endpoints, midpoints, or right endpoints.</p>
+<p>The sum is meaningful when $f$ is integrable on $[a,b]$ (or on $[b,a]$ if you reverse the ends) and when $n$ is large enough that the rectangles track the graph. Midpoint sums are often more accurate than left or right sums on a smooth monotone piece, but every rule here is still a rectangular estimate.</p>
+<p>This is not symbolic integration. It does not find an antiderivative, it does not invoke the Fundamental Theorem, and it does not prove integrability. A Riemann sum is the definition’s finite picture, not a closed form.</p>
 </div>
 
 <div class="calc-panel wide" style="margin:1.5rem 0">
@@ -95,9 +151,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> A rectangular partition estimate of a definite integral.</div>
-<div class="callout warning"><strong>Limitations.</strong> Discontinuities, huge $n$, or stiff oscillations reduce reliability. Not symbolic integration. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../glossary/#definite-integral">Definite integral</a> · <a href="../glossary/#integral">Integral</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a> · <a href="numerical-derivative.html">Numerical derivative</a></p>
+<h2>How to use the rectangles</h2>
+<p>Enter $f(x)$ with the same constrained language as the other calculus tools. Set $a$ and $b$. Set $n$ (the default $100$ is a reasonable classroom size). Choose a rule and press Approximate integral.</p>
+<p>The default $x^2$ on $[0,1]$ has exact integral $1/3$. A midpoint run with $n=100$ should land close to $0.333\ldots$. If it does not, check the expression before you trust a stranger function.</p>
+<h2>How to read the output</h2>
+<p>The large number is $\sum f(x_i^\ast)\Delta x$ with $\Delta x=(b-a)/n$ and $x_i^\ast$ the left, mid, or right sample in each subinterval. If $b&lt;a$, $\Delta x$ is negative and the sum flips sign, which matches the usual definite integral convention.</p>
+<p>Raise $n$ and watch the value settle. Settlement is evidence that the partition is fine enough for this $f$, not a proof that you have the exact integral. Compare left and right on a monotone graph: one overshoots, one undershoots, and the true integral sits between them.</p>
+<h2>Common pitfalls</h2>
+<p>A discontinuity or a blow up inside $[a,b]$ can make a sample non finite, and the tool will stop. That is a domain problem, not a rounding quirk. Split the interval or change the model.</p>
+<p>Huge $n$ is slower and not automatically wiser. Past a point you pay in rounding and in time. For a smooth $f$, a few thousand midpoints usually already tell the story this page is meant to tell.</p>
+<p>Expression rules are constrained on purpose. The parser is not general code. Rapid oscillation can need a picture, not only a larger $n$.</p>
+<h2>Related reading</h2>
+<p>Language: <a href="../glossary/#definite-integral">definite integral</a>, <a href="../glossary/#integral">integral</a>, and <a href="../glossary/#derivative">derivative</a>. The slope side of the Fundamental Theorem is <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a>. Limits that justify the finer partition sit in <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a>.</p>
+<p>The map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. A path is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. Nearby tools: <a href="numerical-derivative.html">numerical derivative calculator</a> and <a href="limit-estimator.html">numerical limit estimator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="exact">
+<h2>Is the output an exact integral?</h2>
+<p>No. It is a rectangular Riemann sum. An exact value needs an antiderivative and the Fundamental Theorem, or another theorem. Use the sum to see area accumulate, then do the algebra your course asked for.</p>
+</section><section class="faq-item" id="rule">
+<h2>Which rule should I pick?</h2>
+<p>Midpoint is a good default on a smooth graph. Left and right are the pictures most courses draw first, and they make overestimate versus underestimate visible on a monotone function. Try all three on x squared.</p>
+</section><section class="faq-item" id="reverse">
+<h2>What if b is less than a?</h2>
+<p>The page still runs. Delta x becomes negative, so the sum changes sign. That matches the usual convention for a definite integral with reversed limits.</p>
+</section><section class="faq-item" id="blowup">
+<h2>What if the function blows up on the interval?</h2>
+<p>A non finite sample stops the sum. Improper integrals need a limit argument, not a blind rectangle pile. Change the interval or study the singularity first.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

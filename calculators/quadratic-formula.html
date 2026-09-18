@@ -4,35 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quadratic Formula Calculator, Higher Math Guide</title>
-<meta name="description" content="Solve ax²+bx+c=0 with real or complex roots and show the discriminant — client-side educational tool.">
+<meta name="description" content="Solve ax squared plus bx plus c equals zero. See the discriminant and the real or complex roots in your browser.">
 <link rel="canonical" href="https://highermathguide.com/calculators/quadratic-formula.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Quadratic Formula Calculator, Higher Math Guide">
-<meta property="og:description" content="Solve ax²+bx+c=0 with real or complex roots and show the discriminant — client-side educational tool.">
+<meta property="og:description" content="Solve ax squared plus bx plus c equals zero. See the discriminant and the real or complex roots in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/quadratic-formula.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quadratic Formula Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Solve ax²+bx+c=0 with real or complex roots and show the discriminant — client-side educational tool.">
+<meta name="twitter:description" content="Solve ax squared plus bx plus c equals zero. See the discriminant and the real or complex roots in your browser.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Quadratic Formula Calculator",
-  "description": "Solve ax²+bx+c=0 with real or complex roots and show the discriminant — client-side educational tool.",
-  "url": "https://highermathguide.com/calculators/quadratic-formula.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/quadratic-formula.html#webpage",
+      "name": "Quadratic Formula Calculator",
+      "description": "Solve ax squared plus bx plus c equals zero. See the discriminant and the real or complex roots in your browser.",
+      "url": "https://highermathguide.com/calculators/quadratic-formula.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/quadratic-formula.html#faq",
+      "url": "https://highermathguide.com/calculators/quadratic-formula.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the discriminant tell me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is b squared minus 4ac. Its sign decides whether the roots are two distinct real numbers, one repeated real number, or a complex conjugate pair. Read that sign before you argue about the graph."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the roots are complex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The page writes them as a real part plus or minus an imaginary part. The real graph of the quadratic then never crosses the axis. Complex roots still satisfy the equation as numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a equal to zero fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The quadratic formula divides by 2a. If a is zero you have a linear equation, and a different method applies. The refusal is the honest answer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the roots exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are the quadratic formula evaluated in floating point. For tidy school coefficients they usually match the exact roots. For huge or nearly cancelling coefficients, rounding can move the last digits."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,12 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Quadratic formula solver</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Roots of a parabola</p>
+<h1>Quadratic formula calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Enter coefficients for $ax^2 + bx + c = 0$. The tool reports the discriminant $\Delta = b^2 - 4ac$ and the roots: two real, one repeated, or a complex conjugate pair when $\Delta &lt; 0$.</p>
-<p>Coefficient inputs only — no free-text parsing.</p>
+<p>This tool solves $ax^2+bx+c=0$ for a nonzero $a$. You enter the three coefficients. It reports the discriminant $\Delta=b^2-4ac$ and the roots: two distinct real numbers, one repeated real number, or a complex conjugate pair.</p>
+<p>The output is meaningful when the equation really is quadratic, so $a$ is not zero, and when you care about roots of that exact polynomial. Calculus still uses this algebra when a second degree piece appears in a critical point, a characteristic equation, or a separable model.</p>
+<p>This is not a computer algebra system for general polynomials. It does not factor by grouping, it does not complete the square as a written lesson, and it does not graph the parabola. It applies the quadratic formula in floating point.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -89,9 +144,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Exact roots of a monic-or-not quadratic over the reals, with complex pairs written as $x = \mathrm{re} \pm \mathrm{im}\, i$ when needed.</div>
-<div class="callout warning"><strong>Limitations.</strong> Requires $a \neq 0$. Floating-point rounding can nudge a tiny discriminant across zero. See the <a href="../disclaimer/">site disclaimer</a>.</div>
-<p>Related: <a href="../topics/calculus-foundations.html">Calculus foundations</a> · <a href="../glossary/#continuity">Continuity</a></p>
+<h2>How to use the solver</h2>
+<p>Type $a$, $b$, and $c$ as ordinary numbers. The default $a=1$, $b=-3$, $c=2$ is $x^2-3x+2=0$, whose roots are $1$ and $2$. Press Solve and confirm you see those two numbers before you trust a messier triple.</p>
+<p>There is no free text formula box. That is intentional. A quadratic is defined by three coefficients, and typing only those three keeps the claim honest.</p>
+<h2>How to read the output</h2>
+<p>Read the discriminant first. If $\Delta&gt;0$, you get two distinct real roots. If $\Delta=0$, the parabola just touches the axis and the root is repeated. If $\Delta&lt;0$, the real graph misses the axis, and the page writes a conjugate pair $r\pm si$.</p>
+<p>The large line is the root list. The note under it names the sign of $\Delta$. If you are checking homework, compare both the roots and the discriminant, not only the final $x$ values.</p>
+<h2>Common pitfalls</h2>
+<p>If $a=0$, the equation is linear, not quadratic, and the tool refuses the run. Do not force a dummy $a$ to sneak a linear equation through the formula.</p>
+<p>Floating point can nudge a tiny discriminant across zero. A $\Delta$ that should be exactly zero may print as a small positive or negative number, and the page will then report two close real roots or a tiny imaginary part. If the coefficients came from rounding, treat a hairline $\Delta$ with suspicion.</p>
+<p>Large coefficients can lose digits when $b^2$ and $4ac$ nearly cancel. The classic quadratic formula is algebraically exact and still numerically fragile in that case. If roots look wild, rescale the equation or check by substituting the reported $x$ back into $ax^2+bx+c$.</p>
+<h2>Related reading</h2>
+<p>Quadratics sit under <a href="../topics/calculus-foundations.html">calculus foundations</a> because limits, derivatives, and integrals still need fluent algebra. Continuity of a polynomial is recorded at <a href="../glossary/#continuity">continuity</a>. Characteristic equations in linear algebra reuse the same discriminant idea: see the <a href="eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> and <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>.</p>
+<p>A course shaped path is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. Nearby algebra inside calculus tools: <a href="numerical-derivative.html">numerical derivative calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="disc">
+<h2>What does the discriminant tell me?</h2>
+<p>It is b squared minus 4ac. Its sign decides whether the roots are two distinct real numbers, one repeated real number, or a complex conjugate pair. Read that sign before you argue about the graph.</p>
+</section><section class="faq-item" id="complex">
+<h2>What if the roots are complex?</h2>
+<p>The page writes them as a real part plus or minus an imaginary part. The real graph of the quadratic then never crosses the axis. Complex roots still satisfy the equation as numbers.</p>
+</section><section class="faq-item" id="linear">
+<h2>Why does a equal to zero fail?</h2>
+<p>The quadratic formula divides by 2a. If a is zero you have a linear equation, and a different method applies. The refusal is the honest answer.</p>
+</section><section class="faq-item" id="exact">
+<h2>Are the roots exact?</h2>
+<p>They are the quadratic formula evaluated in floating point. For tidy school coefficients they usually match the exact roots. For huge or nearly cancelling coefficients, rounding can move the last digits.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

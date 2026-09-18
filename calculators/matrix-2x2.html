@@ -3,36 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2×2 Matrix Calculator, Higher Math Guide</title>
-<meta name="description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<title>2 by 2 Matrix Calculator, Higher Math Guide</title>
+<meta name="description" content="Determinant, inverse, and products AB or BA for two 2 by 2 matrices. A small linear algebra toolkit that runs in your browser.">
 <link rel="canonical" href="https://highermathguide.com/calculators/matrix-2x2.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="2×2 Matrix Calculator, Higher Math Guide">
-<meta property="og:description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<meta property="og:title" content="2 by 2 Matrix Calculator, Higher Math Guide">
+<meta property="og:description" content="Determinant, inverse, and products AB or BA for two 2 by 2 matrices. A small linear algebra toolkit that runs in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/matrix-2x2.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2×2 Matrix Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.">
+<meta name="twitter:title" content="2 by 2 Matrix Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Determinant, inverse, and products AB or BA for two 2 by 2 matrices. A small linear algebra toolkit that runs in your browser.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "2×2 Matrix Calculator",
-  "description": "Determinant, inverse, and product for two 2×2 matrices — original client-side linear algebra tool.",
-  "url": "https://highermathguide.com/calculators/matrix-2x2.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/matrix-2x2.html#webpage",
+      "name": "2 by 2 Matrix Calculator",
+      "description": "Determinant, inverse, and products AB or BA for two 2 by 2 matrices. A small linear algebra toolkit that runs in your browser.",
+      "url": "https://highermathguide.com/calculators/matrix-2x2.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/matrix-2x2.html#faq",
+      "url": "https://highermathguide.com/calculators/matrix-2x2.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the determinant measure here?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a 2 by 2 real matrix it is the signed area scale factor of the linear map. Zero means the map flattens the plane onto a line or a point, so no inverse exists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does the inverse fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the determinant is zero, or so close to zero that the page treats it as singular. That is not a software bug. A singular matrix has no inverse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can AB and BA disagree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplication is composition. Doing B then A is a different map from doing A then B, except in special cases. Compute both on the default matrices and look at the two arrays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this page find eigenvalues?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Use the 2 by 2 eigenvalue calculator for the characteristic polynomial. This page stays with determinant, inverse, and products."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>2×2 matrix toolkit</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Small linear maps</p>
+<h1>2 by 2 matrix calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Work with two matrices $A$ and $B$. Choose determinant, inverse (when it exists), or the products $AB$ / $BA$. Entries are ordinary numbers.</p>
+<p>This toolkit works with two $2\times 2$ matrices $A$ and $B$. You can ask for a determinant, an inverse when it exists, or the products $AB$ and $BA$. Every entry is an ordinary number.</p>
+<p>The numbers are meaningful when you are studying a linear map on the plane, a $2\times 2$ Jacobian, or a tiny system $A\mathbf{x}=\mathbf{b}$. In those settings the determinant tells you about oriented area scaling and invertibility, and the products show that order matters.</p>
+<p>This is not a computer algebra system for $n\times n$ matrices. It does not compute eigenvalues on this page, it does not row reduce a general system, and it does not prove a theorem. For stretch factors, use the eigenvalue tool. For the idea of a derivative matrix, read the Jacobian explainer.</p>
 </div>
 
 <div class="calc-panel wide" style="margin:1.5rem 0">
@@ -109,9 +165,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> $\det$, $A^{-1}$ via the adjugate formula, and ordinary matrix multiplication for $2\times 2$ arrays.</div>
-<div class="callout warning"><strong>Limitations.</strong> Singular matrices have no inverse. Multiplication is not commutative — compare $AB$ and $BA$. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../topics/linear-algebra.html">Linear algebra</a> · <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> · <a href="../glossary/#jacobian">Jacobian</a> · <a href="eigenvalue-2x2.html">2 by 2 eigenvalues</a></p>
+<h2>How to use the toolkit</h2>
+<p>Fill the four entries of $A$ and, if you need products or a second determinant, the four entries of $B$. The default $A$ is $\begin{pmatrix}1&2\\3&4\end{pmatrix}$, whose determinant is $-2$. Choose an operation from the menu and press Compute.</p>
+<p>Determinant of $A$ is the fastest self check. Inverse of $A$ uses the adjugate formula $(1/\det A)\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$. Product $AB$ multiplies in that order. Product $BA$ reverses the order on purpose so you can see they need not match.</p>
+<h2>How to read the output</h2>
+<p>A determinant is a single number. If it is zero, $A$ is singular: columns are linearly dependent, the map collapses area, and no inverse exists. If it is nonzero, the inverse option should return a matrix that multiplies with $A$ to something near the identity.</p>
+<p>Products print as a $2\times 2$ array. Compare $AB$ and $BA$ on the default matrices. They disagree, which is the whole lesson. Matrix multiplication is composition of maps, and composition is not commutative in general.</p>
+<h2>Common pitfalls</h2>
+<p>A determinant near zero is a warning, not a rounding trophy. The inverse formula divides by $\det A$. If that number is tiny, entries of $A^{-1}$ can explode, and floating point will look confident while being fragile.</p>
+<p>Do not read $AB$ as “$A$ and then $B$” without fixing a convention. Here $AB$ means $A$ acts after $B$ on a column vector, the usual textbook order. If your course writes maps on the left, this is the matching product.</p>
+<p>The page only knows $2\times 2$ arrays. A Jacobian of a map $\mathbb{R}^2\to\mathbb{R}^2$ fits. A $3\times 3$ rotation does not. Do not paste a larger matrix into four boxes and hope.</p>
+<h2>Related reading</h2>
+<p>The idea of a derivative matrix is in <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> and the <a href="../glossary/#jacobian">Jacobian</a> glossary entry. Determinants and linear maps live on the <a href="../topics/linear-algebra.html">linear algebra</a> pillar and in the <a href="../glossary/#determinant">determinant</a>, <a href="../glossary/#matrix">matrix</a>, and <a href="../glossary/#linear-map">linear map</a> entries.</p>
+<p>A study order is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> pathway. Next tool: <a href="eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. Nearby geometry: <a href="vector-ops.html">vector operations calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="det">
+<h2>What does the determinant measure here?</h2>
+<p>For a 2 by 2 real matrix it is the signed area scale factor of the linear map. Zero means the map flattens the plane onto a line or a point, so no inverse exists.</p>
+</section><section class="faq-item" id="inv">
+<h2>When does the inverse fail?</h2>
+<p>When the determinant is zero, or so close to zero that the page treats it as singular. That is not a software bug. A singular matrix has no inverse.</p>
+</section><section class="faq-item" id="abba">
+<h2>Why can AB and BA disagree?</h2>
+<p>Multiplication is composition. Doing B then A is a different map from doing A then B, except in special cases. Compute both on the default matrices and look at the two arrays.</p>
+</section><section class="faq-item" id="eigen">
+<h2>Does this page find eigenvalues?</h2>
+<p>No. Use the 2 by 2 eigenvalue calculator for the characteristic polynomial. This page stays with determinant, inverse, and products.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

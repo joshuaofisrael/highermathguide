@@ -3,36 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Normal CDF &amp; Z-Score Calculator, Higher Math Guide</title>
-<meta name="description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<title>Normal CDF and Z Score Calculator, Higher Math Guide</title>
+<meta name="description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
 <link rel="canonical" href="https://highermathguide.com/calculators/normal-cdf.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Normal CDF &amp; Z-Score Calculator, Higher Math Guide">
-<meta property="og:description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<meta property="og:title" content="Normal CDF and Z Score Calculator, Higher Math Guide">
+<meta property="og:description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/normal-cdf.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Normal CDF &amp; Z-Score Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.">
+<meta name="twitter:title" content="Normal CDF and Z Score Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Normal CDF &amp; Z-Score Calculator",
-  "description": "Approximate Φ(z) and invert percentiles to z-scores with documented numerical approximations.",
-  "url": "https://highermathguide.com/calculators/normal-cdf.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/normal-cdf.html#webpage",
+      "name": "Normal CDF and Z Score Calculator",
+      "description": "Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.",
+      "url": "https://highermathguide.com/calculators/normal-cdf.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/normal-cdf.html#faq",
+      "url": "https://highermathguide.com/calculators/normal-cdf.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Phi(z) a two sided probability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is the left tail P(Z is at most z). A two sided 95 percent interval uses both tails. People often want 1 minus Phi(z) for a right tail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I type 97.5 or 0.975 in inverse mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same z."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle a normal that is not standard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convert x to a z score by subtracting the mean and dividing by the standard deviation, then use this page. The page itself only knows the standard normal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the approximation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Near the center it is plenty for homework. Far in the tails the documented error bound is small but not zero, and this is still not a certified library. Use a statistics package when a decision is high stakes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,12 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Normal CDF &amp; z from percentile</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Bell curve tails</p>
+<h1>Normal CDF and z score calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Standard normal tools: approximate $\Phi(z) = P(Z \le z)$ for $Z \sim N(0,1)$, or recover the $z$ whose left-tail probability matches a percentile.</p>
-<p><strong>Method.</strong> CDF uses the error-function approximation in Abramowitz &amp; Stegun (formula 7.1.26) via $\Phi(z) = \tfrac12\bigl(1+\mathrm{erf}(z/\sqrt{{2}})\bigr)$. The inverse uses a rational approximation in the style of Acklam / Beasley–Springer–Moro. These are educational approximations, not certified library math.</p>
+<p>This page offers two standard normal tools. In CDF mode it approximates $\Phi(z)=P(Z\le z)$ for $Z\sim N(0,1)$. In inverse mode it returns a $z$ whose left tail probability matches a percentile you type.</p>
+<p>The output is meaningful when a normal model is already justified, and when you want a left tail probability or a $z$ cutoff. Many school tables stop at two decimals. This page is a smoother table, not a reason to assume normality.</p>
+<p>This is not a certified statistics library and not a proof. CDF uses an error function approximation from Abramowitz and Stegun (formula 7.1.26) via $\Phi(z)=\tfrac12(1+\mathrm{erf}(z/\sqrt{2}))$. The inverse uses a rational approximation in the style of Acklam and Beasley Springer. Treat the digits as educational, not as a regulatory compute.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -93,9 +148,40 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Left-tail probabilities and quantile $z$-scores for the standard normal.</div>
-<div class="callout warning"><strong>Limitations.</strong> Tail accuracy degrades far from the mean; this is not a substitute for a statistical package. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../topics/probability-statistics.html">Probability &amp; statistics</a> · <a href="../glossary/#random-variable">Random variable</a> · <a href="../glossary/#expected-value">Expected value</a></p>
+<h2>How to use the two modes</h2>
+<p>For $\Phi(z)$, leave the menu on CDF, type a $z$ score, and press Compute. The default $z=1.96$ should land near $0.975$, the familiar two sided $95\%$ cutoff from the left.</p>
+<p>For a $z$ from a percentile, switch to inverse mode. Values above $1$ are treated as percentages, so $97.5$ means $0.975$. Values already in $(0,1)$ are treated as probabilities. The default $97.5$ should return a $z$ near $1.96$.</p>
+<h2>How to read the output</h2>
+<p>$\Phi(z)$ is a left tail. It is the chance that a standard normal is at most $z$. It is not a two sided $p$ value, and it is not $P(Z&gt;z)$ unless you form $1-\Phi(z)$ yourself.</p>
+<p>The inverse answers “which $z$ has this left tail?”. If your course talks about a right tail cutoff, convert first. A right tail of $5\%$ is a left tail of $95\%$, not $5\%$.</p>
+<p>To move from a general $N(\mu,\sigma^2)$ value $x$ to a $z$, compute $z=(x-\mu)/\sigma$ by hand, then use this page. The page does not store $\mu$ or $\sigma$.</p>
+<h2>Common pitfalls</h2>
+<p>Accuracy is weaker far in the tails than near the mean. Do not use this page for extreme quantiles in a high stakes setting. A statistical package with a well tested library belongs there.</p>
+<p>Percentiles and probabilities use the same box in inverse mode. Typing $0.975$ and typing $97.5$ are meant to agree. Typing $97.5$ in CDF mode as if it were a $z$ will not do what you wanted.</p>
+<p>A normal curve is a model. Data that are skewed, discrete, or bounded can make a $z$ score a poor summary even when the arithmetic is fine.</p>
+<h2>Related reading</h2>
+<p>Place the model on <a href="../topics/probability-statistics.html">probability and statistics</a>. Nearby language: <a href="../glossary/#random-variable">random variable</a>, <a href="../glossary/#expected-value">expected value</a>, and <a href="../glossary/#probability">probability</a>. Belief updates after evidence are in <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>.</p>
+<p>A discrete two outcome model is the <a href="binomial-probability.html">binomial probability calculator</a>. Counting is on the <a href="combinatorics.html">combinatorics calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="lefttail">
+<h2>Is Phi(z) a two sided probability?</h2>
+<p>No. It is the left tail P(Z is at most z). A two sided 95 percent interval uses both tails. People often want 1 minus Phi(z) for a right tail.</p>
+</section><section class="faq-item" id="percent">
+<h2>Should I type 97.5 or 0.975 in inverse mode?</h2>
+<p>Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same z.</p>
+</section><section class="faq-item" id="general">
+<h2>How do I handle a normal that is not standard?</h2>
+<p>Convert x to a z score by subtracting the mean and dividing by the standard deviation, then use this page. The page itself only knows the standard normal.</p>
+</section><section class="faq-item" id="accuracy">
+<h2>How accurate is the approximation?</h2>
+<p>Near the center it is plenty for homework. Far in the tails the documented error bound is small but not zero, and this is still not a certified library. Use a statistics package when a decision is high stakes.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

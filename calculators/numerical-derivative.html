@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Numerical Derivative Calculator, Higher Math Guide</title>
-<meta name="description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<meta name="description" content="Estimate a slope at a point with forward, backward, or central differences. A browser tool for learning, not a computer algebra system.">
 <link rel="canonical" href="https://highermathguide.com/calculators/numerical-derivative.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Numerical Derivative Calculator, Higher Math Guide">
-<meta property="og:description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<meta property="og:description" content="Estimate a slope at a point with forward, backward, or central differences. A browser tool for learning, not a computer algebra system.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/numerical-derivative.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numerical Derivative Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.">
+<meta name="twitter:description" content="Estimate a slope at a point with forward, backward, or central differences. A browser tool for learning, not a computer algebra system.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
@@ -24,14 +24,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Numerical Derivative Calculator",
-  "description": "Estimate derivatives with forward, backward, or central differences using original client-side JavaScript.",
-  "url": "https://highermathguide.com/calculators/numerical-derivative.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/numerical-derivative.html#webpage",
+      "name": "Numerical Derivative Calculator",
+      "description": "Estimate a slope at a point with forward, backward, or central differences. A browser tool for learning, not a computer algebra system.",
+      "url": "https://highermathguide.com/calculators/numerical-derivative.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/numerical-derivative.html#faq",
+      "url": "https://highermathguide.com/calculators/numerical-derivative.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the output number mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a difference quotient that approximates the slope of f at x0. If f is differentiable there, the number should sit near f prime of x0. It is an estimate, not a symbolic derivative."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a smaller step size sometimes look worse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Truncation error falls as h shrinks, then rounding error rises. Past a point the computer cannot see the change in f, so the quotient becomes noisy. Try a few values of h and keep the plateau, not the tiniest h."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this the same as a computer algebra derivative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The page never rewrites your formula. It only evaluates numbers. A course that wants an exact derivative still wants algebra on paper."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use a one sided difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use forward or backward when the function is missing on one side of the point, or when a one sided derivative is the object you care about. Central difference needs both sides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I type any formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Only a short list of operations and named functions is accepted. That limit is intentional. The tool is a numerical probe, not a general interpreter."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -61,12 +123,15 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Numerical derivative / slope estimator</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Slope estimate</p>
+<h1>Numerical derivative calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>This tool estimates $f'(x_0)$ using a difference quotient. Enter a simple expression in <code>x</code>, a point $x_0$, and a step size $h$. Central differences are usually best for smooth functions; try smaller $h$ until the estimate stabilizes — then stop before floating-point noise dominates.</p>
-<p>Allowed pieces: numbers, <code>x</code>, <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code>, parentheses, and <code>sin</code> <code>cos</code> <code>tan</code> <code>sqrt</code> <code>abs</code> <code>log</code> (natural) <code>exp</code> <code>pi</code> <code>e</code>.</p>
+<p>This tool estimates the slope of a simple function at one point by a difference quotient. You type an expression in $x$, a point $x_0$, and a step size $h$. The number you get is a numerical estimate of $f'(x_0)$ when $f$ is smooth enough near that point.</p>
+<p>The estimate is meaningful when $f$ is defined at the sample points the method uses, and when $h$ is small enough that the secant looks like the tangent, yet large enough that rounding does not swallow the change in $f$.</p>
+<p>This is not a computer algebra system. It does not simplify a formula, it does not prove that $f$ is differentiable, and it does not solve an implicit equation $F(x,y)=0$. For the meaning of the number itself, read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a>.</p>
+<p>Allowed pieces: numbers, $x$, plus, minus, times, divide, powers, parentheses, and $\sin$, $\cos$, $\tan$, $\mathrm{sqrt}$, $\mathrm{abs}$, $\log$ (natural), $\exp$, $\pi$, $e$. Type them as <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code>, <code>abs</code>, <code>log</code>, <code>exp</code>, <code>pi</code>, <code>e</code>.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -94,8 +159,43 @@
 </div>
 
 <div class="article-body">
-<div class="callout warning"><strong>Disclaimer.</strong> This is a numerical estimate, not a symbolic computer-algebra derivative. Ill-conditioned expressions, discontinuities, or tiny $h$ can produce garbage. See the <a href="../disclaimer/">site disclaimer</a>.</div>
-<p>Read more: <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a> · <a href="../explainers/implicit-differentiation-intuition.html">Implicit differentiation intuition</a> · <a href="../topics/calculus-foundations.html">Calculus foundations</a></p>
+<h2>How to use the estimator</h2>
+<p>Start with a function you already know. The default $x^2$ at $x_0=3$ with $h=0.001$ is a good first check. The true derivative is $2x$, so a trustworthy run should land near $6$. If it does not, check the expression spelling before you trust a harder example.</p>
+<p>Pick a method. Central difference samples both sides and is usually the most accurate on a smooth graph. Forward difference only looks to the right of $x_0$. Backward difference only looks to the left. Use a one sided method when the formula is missing on the other side, such as $\sqrt{x}$ at $0$.</p>
+<p>Press Estimate slope. The large number is the estimate. The note under it repeats the difference formula and the sampled values, so you can see what was subtracted.</p>
+<h2>How to read the output</h2>
+<p>Treat the output as a probe, not a certificate. Cut $h$ by a factor of ten and run again. If the estimate barely moves, you are probably near a stable slope. If it jumps around as $h$ shrinks, you are seeing rounding noise or a corner the tangent cannot settle on.</p>
+<p>Units still belong to you. If $f$ is position in meters and $x$ is time in seconds, the estimate is meters per second. The page does not know units. You attach them after you know what $f$ measures.</p>
+<h2>Common pitfalls</h2>
+<p>A huge $h$ measures a long secant, not a tangent. A tiny $h$, such as $10^{-16}$, can make $x_0$ and $x_0+h$ identical in floating point, so the quotient becomes junk. Stay in a band like $10^{-2}$ down to $10^{-6}$ unless you have a reason to leave it.</p>
+<p>A jump, a corner, or a vertical tangent will not settle no matter how carefully you pick $h$. The parser only accepts the short list above. It is not general code, and it will reject extra names.</p>
+<p>A central difference at a point that is defined on only one side can look worse than a one sided difference. Match the method to the domain you actually have.</p>
+<h2>Related reading</h2>
+<p>Read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> before you treat the output as a rate. If the slope is hidden in an equation rather than an explicit $y=f(x)$, use <a href="../explainers/implicit-differentiation-intuition.html">implicit differentiation intuition</a>. For the limit idea behind the difference quotient, see <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a> and the <a href="../glossary/#derivative">derivative</a> glossary entry.</p>
+<p>The matching map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. A course shaped path is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. Nearby tools: <a href="limit-estimator.html">numerical limit estimator</a> and <a href="integral-riemann.html">Riemann sum calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="meaning">
+<h2>What does the output number mean?</h2>
+<p>It is a difference quotient that approximates the slope of f at x0. If f is differentiable there, the number should sit near f prime of x0. It is an estimate, not a symbolic derivative.</p>
+</section><section class="faq-item" id="stepsize">
+<h2>Why does a smaller step size sometimes look worse?</h2>
+<p>Truncation error falls as h shrinks, then rounding error rises. Past a point the computer cannot see the change in f, so the quotient becomes noisy. Try a few values of h and keep the plateau, not the tiniest h.</p>
+</section><section class="faq-item" id="symbolic">
+<h2>Is this the same as a computer algebra derivative?</h2>
+<p>No. The page never rewrites your formula. It only evaluates numbers. A course that wants an exact derivative still wants algebra on paper.</p>
+</section><section class="faq-item" id="onesided">
+<h2>When should I use a one sided difference?</h2>
+<p>Use forward or backward when the function is missing on one side of the point, or when a one sided derivative is the object you care about. Central difference needs both sides.</p>
+</section><section class="faq-item" id="allowed">
+<h2>Can I type any formula?</h2>
+<p>No. Only a short list of operations and named functions is accepted. That limit is intentional. The tool is a numerical probe, not a general interpreter.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

@@ -4,35 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Binomial Probability Calculator, Higher Math Guide</title>
-<meta name="description" content="Compute n choose k and binomial P(X=k) with log-stable arithmetic — educational client-side tool.">
+<meta name="description" content="Compute n choose k and the binomial probability P(X equals k). A browser model for independent trials with two outcomes.">
 <link rel="canonical" href="https://highermathguide.com/calculators/binomial-probability.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Binomial Probability Calculator, Higher Math Guide">
-<meta property="og:description" content="Compute n choose k and binomial P(X=k) with log-stable arithmetic — educational client-side tool.">
+<meta property="og:description" content="Compute n choose k and the binomial probability P(X equals k). A browser model for independent trials with two outcomes.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/binomial-probability.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Binomial Probability Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Compute n choose k and binomial P(X=k) with log-stable arithmetic — educational client-side tool.">
+<meta name="twitter:description" content="Compute n choose k and the binomial probability P(X equals k). A browser model for independent trials with two outcomes.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Binomial Probability Calculator",
-  "description": "Compute n choose k and binomial P(X=k) with log-stable arithmetic — educational client-side tool.",
-  "url": "https://highermathguide.com/calculators/binomial-probability.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/binomial-probability.html#webpage",
+      "name": "Binomial Probability Calculator",
+      "description": "Compute n choose k and the binomial probability P(X equals k). A browser model for independent trials with two outcomes.",
+      "url": "https://highermathguide.com/calculators/binomial-probability.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/binomial-probability.html#faq",
+      "url": "https://highermathguide.com/calculators/binomial-probability.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is P(X equals k) a tail probability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is the probability of exactly k successes. A phrase such as at least k needs a sum over several k values. Add those runs yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the binomial model the wrong tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When trials are not independent, when p is not constant, or when there are more than two outcomes. The formula can still print a number. The number will not answer the real experiment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the probability print as zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Floating point underflow. For large n and a k far from the mean, the true probability can be smaller than a double can store. Read that zero as too small to represent, not as a logic proof."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is C(n, k) doing in the formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It counts unordered ways to choose which k of the n trials are the successes. Each such pattern has the same probability. Multiply the count by that shared probability."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Binomial probability &amp; combinations</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Independent trials</p>
+<h1>Binomial probability calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>For $X \sim \mathrm{Binomial}(n,p)$, this reports $C(n,k)$ and $P(X=k) = C(n,k)\, p^k (1-p)^{n-k}$. Probabilities use log-space evaluation for better numerical behavior when $n$ is moderate.</p>
+<p>This tool evaluates a binomial model $X\sim\mathrm{Binomial}(n,p)$. You enter the number of trials $n$, the number of successes $k$, and a success probability $p$. It reports $C(n,k)$ and $P(X=k)=C(n,k)\,p^k(1-p)^{n-k}$.</p>
+<p>The number is meaningful when you really have $n$ independent trials, each with the same success probability $p$, and you care about exactly $k$ successes. Coin tosses, yes or no items on a checklist, and other two outcome repeats can fit. Updating a belief after seeing data is a different job: that is Bayes theorem.</p>
+<p>This is not a proof of a probability axiom, and it is not a general statistics package. It does not compute a cumulative tail unless you add terms yourself, and it does not fit $p$ from data. It evaluates one point of one model.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -88,9 +144,39 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Exact combinatorial coefficient (when representable) and the PMF value at $k$.</div>
-<div class="callout warning"><strong>Limitations.</strong> Independent Bernoulli trials assumed. Very large $n$ may still underflow to 0 in floating point. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../topics/probability-statistics.html">Probability &amp; statistics</a> · <a href="../explainers/bayes-theorem-without-fog.html">Bayes without the fog</a> · <a href="../glossary/#probability">Probability</a> · <a href="combinatorics.html">Combinatorics</a></p>
+<h2>How to use the model</h2>
+<p>Enter integers $n$ and $k$ with $0\le k\le n$, and a $p$ in $[0,1]$. The default $n=10$, $k=3$, $p=0.5$ is ten fair coin tosses and the chance of exactly three heads. Press Compute.</p>
+<p>The first piece $C(n,k)$ counts the ways to place $k$ successes among $n$ trials. The second piece is the probability of one specific pattern of $k$ successes and $n-k$ failures, multiplied by that count.</p>
+<h2>How to read the output</h2>
+<p>Read $P(X=k)$ as a point mass, not as “at least $k$” and not as “at most $k$”. If a homework prompt asks for a tail, you must sum several $k$ values. This page will not do that sum for you.</p>
+<p>Probabilities use log space arithmetic so moderate $n$ does not overflow as often as a naive $n!$ would. You may still see $0$ for a probability that is smaller than a double can hold. That zero means “too small to represent”, not a proof that the event is impossible in the model.</p>
+<h2>Common pitfalls</h2>
+<p>Independence and a constant $p$ are assumptions, not decorations. If later trials depend on earlier ones, or if $p$ drifts, the binomial formula is the wrong model even when the arithmetic is perfect.</p>
+<p>$n$ is capped at $1000$ on this page. That is plenty for homework and still finite. Do not treat a capped tool as a statement about infinite populations.</p>
+<p>$C(n,k)$ can be a huge integer. The printed value is a floating point number, so very large counts may be rounded. The probability next to it is usually the quantity you wanted anyway.</p>
+<h2>Related reading</h2>
+<p>The model sits on <a href="../topics/probability-statistics.html">probability and statistics</a>. For updating a hypothesis after evidence, read <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a> and the <a href="../glossary/#bayes-theorem">Bayes theorem</a>, <a href="../glossary/#probability">probability</a>, <a href="../glossary/#conditional-probability">conditional probability</a>, and <a href="../glossary/#random-variable">random variable</a> glossary entries.</p>
+<p>Counting without a probability model is on the <a href="combinatorics.html">combinatorics calculator</a>. A continuous cousin is the <a href="normal-cdf.html">normal CDF and z score calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="point">
+<h2>Is P(X equals k) a tail probability?</h2>
+<p>No. It is the probability of exactly k successes. A phrase such as at least k needs a sum over several k values. Add those runs yourself.</p>
+</section><section class="faq-item" id="assumptions">
+<h2>When is the binomial model the wrong tool?</h2>
+<p>When trials are not independent, when p is not constant, or when there are more than two outcomes. The formula can still print a number. The number will not answer the real experiment.</p>
+</section><section class="faq-item" id="zero">
+<h2>Why can the probability print as zero?</h2>
+<p>Floating point underflow. For large n and a k far from the mean, the true probability can be smaller than a double can store. Read that zero as too small to represent, not as a logic proof.</p>
+</section><section class="faq-item" id="choose">
+<h2>What is C(n, k) doing in the formula?</h2>
+<p>It counts unordered ways to choose which k of the n trials are the successes. Each such pattern has the same probability. Multiply the count by that shared probability.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>

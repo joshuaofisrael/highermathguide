@@ -4,35 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vector Operations Calculator, Higher Math Guide</title>
-<meta name="description" content="2D/3D dot product, 3D cross product, magnitude, and unit vector — client-side educational calculator.">
+<meta name="description" content="Dot product, 3D cross product, magnitude, and unit vectors for 2D or 3D vectors. A browser tool for geometry in the plane or in space.">
 <link rel="canonical" href="https://highermathguide.com/calculators/vector-ops.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Vector Operations Calculator, Higher Math Guide">
-<meta property="og:description" content="2D/3D dot product, 3D cross product, magnitude, and unit vector — client-side educational calculator.">
+<meta property="og:description" content="Dot product, 3D cross product, magnitude, and unit vectors for 2D or 3D vectors. A browser tool for geometry in the plane or in space.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/vector-ops.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vector Operations Calculator, Higher Math Guide">
-<meta name="twitter:description" content="2D/3D dot product, 3D cross product, magnitude, and unit vector — client-side educational calculator.">
+<meta name="twitter:description" content="Dot product, 3D cross product, magnitude, and unit vectors for 2D or 3D vectors. A browser tool for geometry in the plane or in space.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Vector Operations Calculator",
-  "description": "2D/3D dot product, 3D cross product, magnitude, and unit vector — client-side educational calculator.",
-  "url": "https://highermathguide.com/calculators/vector-ops.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/vector-ops.html#webpage",
+      "name": "Vector Operations Calculator",
+      "description": "Dot product, 3D cross product, magnitude, and unit vectors for 2D or 3D vectors. A browser tool for geometry in the plane or in space.",
+      "url": "https://highermathguide.com/calculators/vector-ops.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/vector-ops.html#faq",
+      "url": "https://highermathguide.com/calculators/vector-ops.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a zero dot product mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The vectors are orthogonal, or at least one of them is the zero vector. For nonzero vectors, the angle between them is a right angle in the usual Euclidean geometry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is cross product only in 3D here?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The usual cross product that returns another 3 vector is a 3D construction. In 2D people sometimes report a signed scalar instead. This page keeps the vector form and asks you to switch to 3D."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does a unit vector fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the source vector is zero. Division by length would be division by zero. A direction is not defined in that case."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I read an angle from the output?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From a dot product, yes in principle: cosine of theta is the dot product divided by the product of the lengths. Compute those three pieces, then take arccos yourself. The page does not print theta."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
 }
 </script>
 </head>
@@ -62,11 +115,14 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<h1>Vector operations (2D / 3D)</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only</p>
+<p class="section-kicker">Dot, cross, length</p>
+<h1>Vector operations calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Enter components for $\mathbf{u}$ and $\mathbf{v}$. Compute the dot product, a 3D cross product, Euclidean magnitude, or a unit vector in the same direction.</p>
+<p>This tool computes standard Euclidean operations on two vectors $\mathbf{u}$ and $\mathbf{v}$ in $2$ or $3$ dimensions. You can ask for the dot product, a $3$D cross product, a magnitude, or a unit vector in the same direction.</p>
+<p>The output is meaningful when the components are coordinates in the usual orthonormal basis, so length and angle have their school meanings. A dot product then equals $|\mathbf{u}||\mathbf{v}|\cos\theta$. A cross product then points along a direction orthogonal to both vectors, with length $|\mathbf{u}||\mathbf{v}|\sin\theta$.</p>
+<p>This is not a computer algebra system for abstract vector spaces. It does not handle $n$ components, it does not compute a line integral, and it does not prove Stokes theorem. It is arithmetic on two arrows you typed.</p>
 </div>
 
 <div class="calc-panel wide" style="margin:1.5rem 0">
@@ -112,9 +168,40 @@
 </div>
 
 <div class="article-body">
-<div class="callout"><strong>What it computes.</strong> Standard Euclidean vector algebra in $\mathbb{R}^2$ or $\mathbb{R}^3$.</div>
-<div class="callout warning"><strong>Limitations.</strong> Cross product needs 3D. The zero vector has no unit vector. See the <a href="../disclaimer/">disclaimer</a>.</div>
-<p>Related: <a href="../topics/multivariable-vector-calculus.html">Multivariable &amp; vector calculus</a> · <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a> · <a href="../glossary/#vector-field">Vector field</a> · <a href="../topics/linear-algebra.html">Linear algebra</a></p>
+<h2>How to use the calculator</h2>
+<p>Choose $2$D or $3$D. In $2$D the third boxes hide. Enter components for $\mathbf{u}$ and $\mathbf{v}$. The default pair is $\langle 1,0,0\rangle$ and $\langle 0,1,0\rangle$, whose dot product is $0$ and whose cross product is $\langle 0,0,1\rangle$.</p>
+<p>Pick an operation and press Compute. Dot product needs both vectors. Cross product needs $3$D. Magnitude and unit vector each use one vector, named in the menu.</p>
+<h2>How to read the output</h2>
+<p>A dot product is a single number. Zero means the vectors are orthogonal (or one of them is zero). A large positive value means they point in a similar direction. A negative value means they form an obtuse angle.</p>
+<p>A cross product is a vector. It is orthogonal to both inputs when both are nonzero and not parallel. Its direction follows the right hand rule used in most multivariable courses. If you only needed an area of a parallelogram, read the magnitude of that cross product.</p>
+<p>A unit vector has length $1$ and the same direction as the source vector. Use it when a later formula wants a direction and not a size.</p>
+<h2>Common pitfalls</h2>
+<p>Cross product is not defined as a $3$ vector in $2$D on this page. Switch the dimension menu to $3$D, even if the third components are zero.</p>
+<p>The zero vector has no unit vector. The page will say so. Do not invent a direction for a vector with no length.</p>
+<p>Components are just numbers. If your data came from a basis that is not orthonormal, the school formulas for angle and length do not apply without a Gram matrix. This tool does not know a custom inner product.</p>
+<h2>Related reading</h2>
+<p>Vector language in calculus is mapped on <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a> and on <a href="../topics/linear-algebra.html">linear algebra</a>. Circulation and curl use these operations: see <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a> and the <a href="../glossary/#stokes-theorem">Stokes theorem</a>, <a href="../glossary/#vector">vector</a>, and <a href="../glossary/#vector-field">vector field</a> glossary entries.</p>
+<p>Nearby tools: <a href="matrix-2x2.html">2 by 2 matrix calculator</a> and <a href="eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="dot">
+<h2>What does a zero dot product mean?</h2>
+<p>The vectors are orthogonal, or at least one of them is the zero vector. For nonzero vectors, the angle between them is a right angle in the usual Euclidean geometry.</p>
+</section><section class="faq-item" id="cross">
+<h2>Why is cross product only in 3D here?</h2>
+<p>The usual cross product that returns another 3 vector is a 3D construction. In 2D people sometimes report a signed scalar instead. This page keeps the vector form and asks you to switch to 3D.</p>
+</section><section class="faq-item" id="unit">
+<h2>When does a unit vector fail?</h2>
+<p>When the source vector is zero. Division by length would be division by zero. A direction is not defined in that case.</p>
+</section><section class="faq-item" id="angle">
+<h2>Can I read an angle from the output?</h2>
+<p>From a dot product, yes in principle: cosine of theta is the dot product divided by the product of the lengths. Compute those three pieces, then take arccos yourself. The page does not print theta.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
 </div>
 </article>
 </div>
