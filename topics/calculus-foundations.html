@@ -62,7 +62,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Calculus foundations</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
 </header>
 <div class="article-body">
 <p>Calculus is the mathematics of change and accumulation. Derivatives answer “how fast?” Integrals answer “how much in total?” Limits hold the two ideas together by making precise what happens as we zoom in or add finer and finer pieces.</p>
@@ -78,20 +78,25 @@
 </ul>
 
 <h2>Limits without mysticism</h2>
-<p>Saying $\lim_{x \to a} f(x) = L$ means: values of $f(x)$ can be forced as close to $L$ as we like by taking $x$ sufficiently close to $a$ (but not necessarily equal to $a$). Continuity at $a$ adds that $f(a)$ exists and equals that limit. Removable gaps, jumps, and vertical blow-ups are the classic ways continuity fails.</p>
-<div class="callout pitfall"><strong>Pitfall.</strong> Plugging in $x = a$ is a useful check when $f$ is continuous there — but it is not the definition of a limit. Limits care about nearby values, not the point itself.</div>
+<p>Saying $\lim_{x \to a} f(x) = L$ means: values of $f(x)$ can be forced as close to $L$ as we like by taking $x$ sufficiently close to $a$ (but not necessarily equal to $a$). Continuity at $a$ adds that $f(a)$ exists and equals that limit. Removable gaps, jumps, and vertical blow ups are the classic ways continuity fails. For a numerical table before a proof, use the <a href="../calculators/limit-estimator.html">numerical limit estimator</a>.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> Plugging in $x = a$ is a useful check when $f$ is continuous there, but it is not the definition of a limit. Limits care about nearby values, not the point itself.</div>
 
 <h2>Derivatives as linear approximation</h2>
 <p>The derivative $f'(a)$ is the unique number (when it exists) such that near $a$, $f(x) \approx f(a) + f'(a)(x-a)$. That linear approximation is why derivatives show up in optimization, related rates, and numerical methods. For a walkthrough of the meaning, see <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a>. To estimate slopes numerically, try the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>.</p>
 
 <h2>Integrals as accumulation</h2>
-<p>A definite integral $\int_a^b f(x)\,dx$ measures net signed area under $y=f(x)$ from $a$ to $b$. Riemann sums make the idea concrete: rectangles of height $f(x_i^*)$ and width $\Delta x$ approximate the total; the integral is the limit of those sums as the mesh goes to zero (when the limit exists).</p>
+<p>A definite integral $\int_a^b f(x)\,dx$ measures net signed area under $y=f(x)$ from $a$ to $b$. Riemann sums make the idea concrete: rectangles of height $f(x_i^*)$ and width $\Delta x$ approximate the total; the integral is the limit of those sums as the mesh goes to zero (when the limit exists). Practice that picture on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>. Finite arithmetic and geometric totals live on the <a href="../calculators/sequence-series.html">sequence calculator</a>.</p>
 
 <h2>Where to go next</h2>
 <ul>
-<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition without terror</a></li>
+<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a></li>
 <li><a href="../explainers/implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
 <li><a href="../explainers/convergence-tests-series.html">Convergence tests for series</a></li>
+<li><a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
+<li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
+<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
+<li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
 <li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge pathway</a></li>
 <li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
 <li>Glossary: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#integral">integral</a>, <a href="../glossary/#continuity">continuity</a>, <a href="../glossary/#implicit-differentiation">implicit differentiation</a></li>

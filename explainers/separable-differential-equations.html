@@ -4,19 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Separable Differential Equations Walkthrough, Higher Math Guide</title>
-<meta name="description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<meta name="description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
 <link rel="canonical" href="https://highermathguide.com/explainers/separable-differential-equations.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Separable Differential Equations Walkthrough, Higher Math Guide">
-<meta property="og:description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<meta property="og:description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/separable-differential-equations.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Separable Differential Equations Walkthrough, Higher Math Guide">
-<meta name="twitter:description" content="Step-by-step original walkthrough of separable ODEs with checks for lost solutions.">
+<meta name="twitter:description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -24,22 +23,64 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Separable Differential Equations Walkthrough",
-  "description": "Step-by-step original walkthrough of separable ODEs with checks for lost solutions.",
-  "url": "https://highermathguide.com/explainers/separable-differential-equations.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-11",
-  "dateModified": "2026-09-11"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Separable Differential Equations Walkthrough",
+      "description": "Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.",
+      "url": "https://highermathguide.com/explainers/separable-differential-equations.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-11",
+      "dateModified": "2026-09-21"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/separable-differential-equations.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is a first order equation separable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When you can write dy/dx as a product g(x) h(y), so every x factor can move to one side and every y factor can move to the other."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do constant solutions disappear after dividing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dividing by h(y) assumes h(y) is not zero. Any root of h(y) that makes y constant may still solve the original equation. Check those constants before you throw them away."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I check a proposed solution without a DE solver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Differentiate the formula and substitute back. The numerical derivative calculator estimates slope of an explicit solution. The Riemann sum calculator practices the integral that appears after you separate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does an implicit relation count as a solution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when you cannot solve for y cleanly. An implicit relation F(x,y)=C still describes solution curves, on a domain where the algebra and the original equation both make sense."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -70,35 +111,100 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Separable differential equations walkthrough</h1>
-<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 21 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>A first-order equation is separable when you can write $\frac{dy}{dx}=g(x)h(y)$ (or equivalently $M(x)N(y)\,dx+P(x)Q(y)\,dy=0$ in differential form). The method is: move $y$-factors to one side and $x$-factors to the other, then integrate.</p>
+<p>A first order equation is separable when you can write $\dfrac{dy}{dx}=g(x)h(y)$. Every factor that depends only on $x$ can move to one side. Every factor that depends only on $y$ can move to the other. Then both sides become integrals you already know how to attempt.</p>
+<p>The method is popular because so many first course models factor this way: exponential growth, cooling, some mixing problems, and the simplest autonomous equations. It is not a universal solvent. If the right hand side will not factor as $g(x)h(y)$, forcing the algebra invents a different equation.</p>
+<p>Zoom out on the <a href="../topics/differential-equations.html">differential equations</a> pillar. Refresh what a slope number means in <a href="what-a-derivative-measures.html">what a derivative actually measures</a>.</p>
 
-<h2>The steps</h2>
+<h2>The steps, in the order that avoids lost solutions</h2>
 <ol>
-<li>Write $\frac{dy}{dx}=g(x)h(y)$.</li>
-<li>If $h(y)\neq 0$, rewrite $\frac{1}{h(y)}\,dy = g(x)\,dx$.</li>
-<li>Integrate both sides: $\int \frac{1}{h(y)}\,dy = \int g(x)\,dx + C$ (absorb constants sensibly).</li>
-<li>Solve for $y$ if you can (explicit solution); otherwise leave an implicit relation.</li>
-<li><strong>Check singular solutions:</strong> any roots of $h(y)=0$ that make $y$ constant may be solutions lost when you divided.</li>
-<li>Apply initial conditions to fix $C$ when you have an IVP.</li>
+<li>Write $\dfrac{dy}{dx}=g(x)h(y)$, and pause. If $h(y_*)=0$ for a constant $y_*$, then $y(x)\equiv y_*$ has derivative $0$ and matches the equation. Those constants are solutions. Write them down before you divide.</li>
+<li>If $h(y)\neq 0$, rewrite $\dfrac{1}{h(y)}\,dy = g(x)\,dx$.</li>
+<li>Integrate both sides: $\displaystyle\int \frac{1}{h(y)}\,dy = \int g(x)\,dx + C$. Absorb constants so that you have one $C$, not three.</li>
+<li>Solve for $y$ if you can. That is an explicit solution. If you cannot, leave an implicit relation $F(x,y)=C$.</li>
+<li>Apply an initial condition $y(x_0)=y_0$ to fix $C$ when you have an initial value problem. Check that the constant solutions from step 1 were not the intended IVP answer.</li>
+<li>Name a domain. A formula that crosses a vertical asymptote or a zero of $h$ may be valid only on an interval, not on the whole line.</li>
 </ol>
 
-<p><span class="example-label">Example</span> Solve $\frac{dy}{dx}=ky$ with $y(0)=y_0$. Separate: $\frac{dy}{y}=k\,dx$ (for $y\neq 0$). Integrate: $\ln|y|=kx+C$, so $y=Ae^{kx}$. The missing solution $y\equiv 0$ corresponds to $A=0$. The IVP yields $y=y_0 e^{kx}$.</p>
+<h2>Exponential growth, including the missing zero</h2>
+<p><span class="example-label">Example</span> Solve $\dfrac{dy}{dx}=ky$ with $y(0)=y_0$. Here $g(x)=k$ and $h(y)=y$. The constant $y\equiv 0$ solves the equation. For $y\neq 0$, separate:</p>
+<p>$$\frac{dy}{y}=k\,dx.$$</p>
+<p>Integrate: $\ln|y|=kx+C$, so $y=Ae^{kx}$ with $A=\pm e^{C}$. The missing solution $y\equiv 0$ corresponds to $A=0$, which you can include by allowing $A$ to be any real number. The initial condition yields $y=y_0 e^{kx}$, and this formula also covers $y_0=0$.</p>
+<p>The slope field is simple. On the line $y=0$ the marks are horizontal. Above it, for $k&gt;0$, the marks tilt up more steeply as $|y|$ grows. Solutions that start positive stay positive. That is the geometric reason the absolute value in $\ln|y|$ did not create a path from a positive start down through zero.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> Absolute values and domains matter. Extending a local solution through a singularity of $h(y)$ or $g(x)$ can be invalid. Also, not every ODE is separable — forcing the algebra invents nonsense.</div>
+<h2>A separable equation whose solution stays implicit</h2>
+<p><span class="example-label">Example</span> Solve $\dfrac{dy}{dx}=\dfrac{x}{y}$ with $y(1)=2$. First, $h(y)=1/y$ is never zero, but it is undefined at $y=0$. There is no constant solution. Separate:</p>
+<p>$$y\,dy = x\,dx.$$</p>
+<p>Integrate: $\tfrac12 y^2 = \tfrac12 x^2 + C$, or $y^2-x^2=K$. The initial point $(1,2)$ gives $K=3$, so $y^2-x^2=3$. The explicit branch that meets the initial point is $y=\sqrt{x^2+3}$, which is defined for all $x$ and stays positive. The negative square root is a different solution curve. It does not pass through $(1,2)$.</p>
+<p>This is the same geometry as a family of hyperbolas. The differential equation only asks that the tangent slope equal $x/y$. Implicit differentiation of $y^2-x^2=3$ recovers $2y y'-2x=0$, hence $y'=x/y$ wherever $y\neq 0$. The implicit relation was already the solution.</p>
 
-<p>Zoom out with <a href="../topics/differential-equations.html">Differential equations first look</a>. Refresh derivative meaning in <a href="what-a-derivative-measures.html">What a derivative actually measures</a>.</p>
+<h2>A logistic style factor and a lost equilibrium</h2>
+<p><span class="example-label">Example</span> Consider $\dfrac{dy}{dx}=y(2-y)$. Then $g(x)=1$ and $h(y)=y(2-y)$. The roots $y=0$ and $y=2$ are constant solutions. They are equilibria of an autonomous equation. For other $y$,</p>
+<p>$$\frac{dy}{y(2-y)}=dx.$$</p>
+<p>Partial fractions give $\tfrac12\ln|y|-\tfrac12\ln|2-y|=x+C$, which rearranges to $\dfrac{y}{2-y}=Ae^{2x}$. Solving for $y$ produces a family of logistic looking curves that run from near $0$ toward $2$ when $A&gt;0$ and the start is between the equilibria. If you divided first and never listed $y=0$ and $y=2$, those two solutions would have vanished from your writeup even though they satisfy the original equation.</p>
 
-<h2>Citations &amp; further reading</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> Absolute values and domains matter. Extending a local solution through a singularity of $h(y)$ or $g(x)$ can be invalid. Dividing by an expression that might be zero loses constant solutions. Also, not every ODE is separable. A right hand side such as $x+y$ will not factor as $g(x)h(y)$. Treating it as if it did is a different problem.</div>
+
+<h2>What a solution is promising</h2>
+<p>Solving $y'=f(x,y)$ means finding a function whose slope at each point matches the rule $f$. An initial condition selects one curve from a family. Existence and uniqueness theorems tell you when that selection is reliable, roughly when $f$ is smooth enough near the starting point. Separable algebra can still produce a formula that leaves the interval where uniqueness holds. The formula is not a license to ignore the hypotheses.</p>
+<p>Before you integrate, a slope field is worth a sketch. At each point $(x,y)$ draw a short segment with slope $f(x,y)$. Solution curves must thread those segments. Equilibria where $y'=0$, and whether nearby solutions approach or flee them, often matter more than a closed form.</p>
+
+<h2>Try it with practice tools</h2>
+<p>This site does not solve ODEs symbolically. Two calculus tools still let you practice the pieces of the method. After you separate, you integrate. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> estimates definite integrals by adding rectangle areas. That is a numerical cousin of the antiderivative step, useful when you want to see accumulation rather than guess an antiderivative. After you have an explicit $y(x)$, the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates $y'(x_0)$. You can compare that slope with $g(x_0)h(y(x_0))$ from the original equation.</p>
+<div class="callout"><strong>Try it.</strong> For $y=2e^{0.5x}$, which solves $y'=0.5y$ with $y(0)=2$, open the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> near $x=0$ and confirm the slope is about $1$. Then check $0.5\cdot y(0)=1$. Next, on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>, estimate $\int_0^1 0.5\,dx$ as a reminder that the separated $x$ side really is an ordinary integral. The tools do not replace the algebra. They audit the calculus you used.</div>
+<div class="cta-panel">
+<p>Audit a proposed explicit solution by estimating its slope, then compare that number with the original right hand side.</p>
+<a class="btn" href="../calculators/numerical-derivative.html">Open the derivative calculator</a>
+</div>
+
+<h2>How to practice</h2>
+<ol>
+<li>Ask whether the right hand side factors as $g(x)h(y)$ before you move anything.</li>
+<li>List constant solutions from $h(y)=0$.</li>
+<li>Separate, integrate, and simplify $C$ once.</li>
+<li>Plug the initial point into the family, not into an unfinished integral.</li>
+<li>Differentiate your answer and substitute back. If the original equation does not return, the algebra slipped.</li>
+</ol>
+<p>Glossary anchors: <a href="../glossary/#differential-equation">differential equation</a>, <a href="../glossary/#initial-value-problem">initial value problem</a>, <a href="../glossary/#slope-field">slope field</a>, <a href="../glossary/#integral">integral</a>.</p>
+
+<h2>Citations and further reading</h2>
 <ul class="source-list">
-<li>OpenStax <em>Calculus Volume 2</em>, differential equations chapter. <a href="https://openstax.org/details/books/calculus-volume-2" rel="noopener">openstax.org</a></li>
-<li>MIT OCW 18.03 Differential Equations. <a href="https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
-<li>Paul’s Online Math Notes, Separable Differential Equations. <a href="https://tutorial.math.lamar.edu/Classes/DE/Separable.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
-<li>Khan Academy, Separable equations. <a href="https://www.khanacademy.org/math/differential-equations" rel="noopener">khanacademy.org</a></li>
+<li>OpenStax, <em>Calculus Volume 2</em>, differential equations chapter. <a href="https://openstax.org/details/books/calculus-volume-2" rel="noopener">openstax.org</a></li>
+<li>MIT OpenCourseWare, 18.03 Differential Equations. <a href="https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Paul’s Online Math Notes, separable differential equations. <a href="https://tutorial.math.lamar.edu/Classes/DE/Separable.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>Khan Academy, separable equations. <a href="https://www.khanacademy.org/math/differential-equations" rel="noopener">khanacademy.org</a></li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="when-separable">
+<h2>When is a first order equation separable?</h2>
+<p>When you can write $dy/dx$ as a product $g(x)h(y)$, so every $x$ factor can move to one side and every $y$ factor can move to the other.</p>
+</section>
+<section class="faq-item" id="lost-constants">
+<h2>Why do constant solutions disappear after dividing?</h2>
+<p>Dividing by $h(y)$ assumes $h(y)$ is not zero. Any root of $h(y)$ that makes $y$ constant may still solve the original equation. Check those constants before you throw them away.</p>
+</section>
+<section class="faq-item" id="how-to-check">
+<h2>How can I check a proposed solution without a DE solver?</h2>
+<p>Differentiate the formula and substitute back. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates slope of an explicit solution. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> practices the integral that appears after you separate.</p>
+</section>
+<section class="faq-item" id="implicit-ok">
+<h2>Does an implicit relation count as a solution?</h2>
+<p>Yes, when you cannot solve for $y$ cleanly. An implicit relation $F(x,y)=C$ still describes solution curves, on a domain where the algebra and the original equation both make sense.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
+<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
+<li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../glossary/#differential-equation">Glossary: differential equation</a></li>
+<li><a href="../glossary/#initial-value-problem">Glossary: initial value problem</a></li>
+</ul></div>
 </article>
 </div>
 

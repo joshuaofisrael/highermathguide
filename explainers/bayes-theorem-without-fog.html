@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bayes’ Theorem Without the Fog, Higher Math Guide</title>
-<meta name="description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<title>Bayes Theorem Without the Fog, Higher Math Guide</title>
+<meta name="description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
 <link rel="canonical" href="https://highermathguide.com/explainers/bayes-theorem-without-fog.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Bayes’ Theorem Without the Fog, Higher Math Guide">
-<meta property="og:description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<meta property="og:title" content="Bayes Theorem Without the Fog, Higher Math Guide">
+<meta property="og:description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/bayes-theorem-without-fog.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bayes’ Theorem Without the Fog, Higher Math Guide">
-<meta name="twitter:description" content="Original explainer of Bayes’ theorem using counts, false positives, and careful updates.">
+<meta name="twitter:title" content="Bayes Theorem Without the Fog, Higher Math Guide">
+<meta name="twitter:description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -24,22 +23,64 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Bayes\u2019 Theorem Without the Fog",
-  "description": "Original explainer of Bayes\u2019 theorem using counts, false positives, and careful updates.",
-  "url": "https://highermathguide.com/explainers/bayes-theorem-without-fog.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-11",
-  "dateModified": "2026-09-11"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Bayes Theorem Without the Fog",
+      "description": "Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.",
+      "url": "https://highermathguide.com/explainers/bayes-theorem-without-fog.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-11",
+      "dateModified": "2026-09-21"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/bayes-theorem-without-fog.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Bayes theorem actually compute?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It converts P(E given H) and the prior P(H) into P(H given E). You are reversing the conditional after the evidence arrives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do counts help more than the formula alone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Counts make the base rate visible. A rare hypothesis can be drowned by false positives even when a test is accurate on the people who truly have H."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is P(H given E) the same as P(E given H)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Those are different questions. Sensitivity is about evidence given the hypothesis. The posterior is about the hypothesis given the evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculators pair with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The binomial probability calculator for counts of successes under a fixed trial model, and the normal CDF calculator when you want a continuous tail probability as a comparison."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -69,35 +110,86 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Bayes’ theorem without the fog</h1>
-<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+<h1>Bayes theorem without the fog</h1>
+<p class="article-meta">Explainer · Educational only · Updated 21 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Bayes’ theorem is a bookkeeping rule for reversing conditional probabilities. If you know how likely the evidence is under a hypothesis, and how common the hypothesis is beforehand, you can update after seeing the evidence. The algebra is short; the discipline is in stating the events clearly.</p>
+<p><a href="../glossary/#bayes-theorem">Bayes theorem</a> is a bookkeeping rule for reversing <a href="../glossary/#conditional-probability">conditional probabilities</a>. If you know how likely the evidence is under a hypothesis, and how common the hypothesis is beforehand, you can update after seeing the evidence. The algebra is short. The discipline is in naming the events clearly, and in refusing to treat $P(H\mid E)$ as if it were $P(E\mid H)$.</p>
+<p>This page is educational. It is not medical, legal, or diagnostic advice. The numbers below are classroom counts, chosen so the arithmetic stays visible.</p>
 
-<h2>The formula</h2>
-<p>$$P(H\mid E)=\frac{P(E\mid H)P(H)}{P(E)}$$
-Here $H$ is a hypothesis and $E$ is evidence. The denominator $P(E)$ expands by total probability when $H$ and its complement partition the space: $P(E)=P(E\mid H)P(H)+P(E\mid H^c)P(H^c)$.</p>
+<h2>The formula, then the same formula in words</h2>
+<p>$$P(H\mid E)=\frac{P(E\mid H)\,P(H)}{P(E)}$$</p>
+<p>Here $H$ is a hypothesis and $E$ is evidence. The denominator $P(E)$ expands by total probability when $H$ and its complement partition the space:</p>
+<p>$$P(E)=P(E\mid H)P(H)+P(E\mid H^c)P(H^c).$$</p>
+<p>In words: among all the ways the evidence can appear, what fraction of those appearances come from $H$? The numerator is “evidence and hypothesis.” The denominator is “evidence from anywhere.” Division turns a joint count into a conditional probability.</p>
+<p>$P(H)$ is the prior, your probability before seeing $E$. $P(H\mid E)$ is the posterior, after updating. The likelihood $P(E\mid H)$ is not a probability distribution over hypotheses by itself. It measures how well each hypothesis predicts the data.</p>
 
-<h2>Think in counts</h2>
-<p><span class="example-label">Example</span> Imagine 10,000 people; 1% have a condition ($H$). A test is 99% sensitive ($P(E\mid H)=0.99$) and 95% specific, so false positive rate $P(E\mid H^c)=0.05$. About 100 people have $H$; roughly 99 test positive. Among the 9,900 without $H$, about 495 false positives. So among ~594 positive tests, only ~99 truly have $H$ — a bit under 17%, not 99%. The test is informative, but the rare base rate dominates the headline sensitivity.</p>
+<h2>Think in counts, not in slogans</h2>
+<p><span class="example-label">Example</span> Imagine $10{,}000$ people in a large lecture hall. About $1\%$ have a condition $H$, so $100$ people have $H$ and $9{,}900$ do not. A test is $99\%$ sensitive, meaning $P(E\mid H)=0.99$, and $95\%$ specific, so the false positive rate is $P(E\mid H^c)=0.05$.</p>
+<p>About $99$ of the $100$ people with $H$ test positive. Among the $9{,}900$ without $H$, about $495$ false positives appear. So among roughly $594$ positive tests, only about $99$ truly have $H$. That is a bit under $17\%$, not $99\%$. The test is informative. The rare base rate still dominates the headline sensitivity.</p>
+<p>Write the same arithmetic through the formula if you prefer symbols:</p>
+<p>$$P(H\mid E)=\frac{(0.99)(0.01)}{(0.99)(0.01)+(0.05)(0.99)}=\frac{0.0099}{0.0594}\approx 0.167.$$</p>
+<p>The counts and the formula agree. The counts make the $495$ false positives hard to ignore. If you only hear “$99\%$ sensitive,” you never meet those $495$ people.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> $P(H\mid E)$ is not $P(E\mid H)$. Medical and legal headlines mix them constantly. Say both in words before you multiply.</div>
+<h2>A card box that is not a medical test</h2>
+<p><span class="example-label">Example</span> A classroom keeps two boxes. Box A has $8$ gold cards and $2$ gray cards. Box B has $1$ gold card and $9$ gray cards. You pick a box at random, so $P(A)=P(B)=\tfrac12$, then draw one card. The card is gold. What is $P(A\mid \text{gold})$?</p>
+<p>There are $10$ cards in each box, and the boxes are equally likely, so imagine $20$ equally likely cards across one combined picture. Gold cards: $8$ from A and $1$ from B. Exactly $8$ of those $9$ gold cards came from A. So</p>
+<p>$$P(A\mid \text{gold})=\frac{8}{9}.$$</p>
+<p>The formula says the same thing: $P(\text{gold}\mid A)=0.8$, $P(\text{gold}\mid B)=0.1$, and</p>
+<p>$$P(A\mid \text{gold})=\frac{(0.8)(0.5)}{(0.8)(0.5)+(0.1)(0.5)}=\frac{0.4}{0.45}=\frac{8}{9}.$$</p>
+<p>The gold card is evidence for A, because A produces gold cards more often. It is not certainty. One of the nine gold cards still came from B. Bayes theorem is the clean way to keep that leftover possibility in the ledger.</p>
 
-<h2>What “prior” and “posterior” mean</h2>
-<p>$P(H)$ is the prior — your probability before seeing $E$. $P(H\mid E)$ is the posterior — after updating. Likelihood $P(E\mid H)$ is not a probability distribution over hypotheses by itself; it measures how well each hypothesis predicts the data.</p>
-<p>For the surrounding map, see <a href="../topics/probability-statistics.html">Probability &amp; statistics</a>.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> $P(H\mid E)$ is not $P(E\mid H)$. Headlines mix them constantly. Say both in words before you multiply. Also, a prior of $1\%$ is doing real work. If the condition is rarer, the same test produces an even smaller posterior. If you skip the base rate, you are not using Bayes theorem. You are quoting a likelihood and hoping nobody notices.</div>
 
-<h2>Citations &amp; further reading</h2>
+<h2>Independence is a modeling claim</h2>
+<p>If $E$ is independent of $H$, then $P(E\mid H)=P(E)$, and the posterior equals the prior. Evidence that does not change with the hypothesis cannot update the hypothesis. Independence is not a vibe. It is an assumption you can write as an equation and then defend or drop.</p>
+<p>When several pieces of evidence arrive, a common first model is to multiply likelihoods as if the pieces are independent given $H$. That may be reasonable for well separated classroom trials. It is often false for real reports that share a cause. The formula does not forgive a bad independence assumption. It will happily return a sharp posterior that your model did not earn.</p>
+
+<h2>Try it with the matching tools</h2>
+<p>This site does not have a dedicated Bayes calculator. The nearby probability tools still help you practice the ingredients. The <a href="../calculators/binomial-probability.html">binomial probability calculator</a> answers questions of the form “$n$ independent trials, success probability $p$, chance of exactly $k$ successes.” That is a clean model for $P(E\mid H)$ when the evidence is a count. The <a href="../calculators/normal-cdf.html">normal CDF and z score calculator</a> answers a continuous cousin: how much mass sits below a cutoff under a normal curve. That is useful when a classroom problem replaces a discrete count with a continuous measurement.</p>
+<div class="callout"><strong>Try it.</strong> On the <a href="../calculators/binomial-probability.html">binomial probability calculator</a>, set $n=10$, $p=0.8$, and read $P(X=8)$. That is the chance of $8$ gold like successes if box A is the hidden box and you draw with replacement ten times in a cartoon model. Compare with $p=0.1$, the box B cartoon. The two likelihoods are the numbers you would drop into Bayes theorem after you choose a prior on the box. Then open the <a href="../calculators/normal-cdf.html">normal CDF calculator</a> and compare a standardized cutoff, so you can see a continuous tail next to a discrete count.</div>
+<p>For choosing $k$ items from $n$, or for lining objects up, the <a href="../calculators/combinatorics.html">combinatorics calculator</a> is the counting bench. Bayes theorem still needs you to say which count is the hypothesis and which count is the evidence.</p>
+<div class="cta-panel">
+<p>Practice the count models that feed a Bayes update, then return here and name prior, likelihood, and posterior in words.</p>
+<a class="btn" href="../calculators/binomial-probability.html">Open the binomial calculator</a>
+</div>
+
+<h2>Where this sits on the site</h2>
+<p>The surrounding map is the <a href="../topics/probability-statistics.html">probability and statistics</a> pillar. Related glossary terms: <a href="../glossary/#bayes-theorem">Bayes theorem</a>, <a href="../glossary/#conditional-probability">conditional probability</a>, <a href="../glossary/#random-variable">random variable</a>, <a href="../glossary/#expected-value">expected value</a>.</p>
+
+<h2>Citations and further reading</h2>
 <ul class="source-list">
-<li>OpenIntro Statistics (open textbook) — conditional probability and Bayes. <a href="https://www.openintro.org/book/os/" rel="noopener">openintro.org</a></li>
-<li>Khan Academy, Bayes’ theorem lessons. <a href="https://www.khanacademy.org/math/statistics-probability/probability-library" rel="noopener">khanacademy.org</a></li>
-<li>Stanford CS109 probability notes (Bayes applications). <a href="https://web.stanford.edu/class/cs109/" rel="noopener">web.stanford.edu/class/cs109</a></li>
-<li>Thinking in counts pedagogy popularized in medical decision teaching; see also Gigerenzer’s work on natural frequencies (overview articles via scholarly search).</li>
+<li>OpenIntro Statistics, open textbook, conditional probability and Bayes. <a href="https://www.openintro.org/book/os/" rel="noopener">openintro.org</a></li>
+<li>Khan Academy, Bayes theorem lessons. <a href="https://www.khanacademy.org/math/statistics-probability/probability-library" rel="noopener">khanacademy.org</a></li>
+<li>Stanford CS109 probability notes. <a href="https://web.stanford.edu/class/cs109/" rel="noopener">web.stanford.edu/class/cs109</a></li>
+<li>Gigerenzer, G., work on natural frequencies in medical decision teaching. Search scholarly overviews for classroom treatments that stay with counts.</li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what-it-computes">
+<h2>What does Bayes theorem actually compute?</h2>
+<p>It converts $P(E\mid H)$ and the prior $P(H)$ into $P(H\mid E)$. You are reversing the conditional after the evidence arrives.</p>
+</section>
+<section class="faq-item" id="why-counts">
+<h2>Why do counts help more than the formula alone?</h2>
+<p>Counts make the base rate visible. A rare hypothesis can be drowned by false positives even when a test is accurate on the people who truly have $H$.</p>
+</section>
+<section class="faq-item" id="not-the-same">
+<h2>Is $P(H\mid E)$ the same as $P(E\mid H)$?</h2>
+<p>No. Those are different questions. Sensitivity is about evidence given the hypothesis. The posterior is about the hypothesis given the evidence.</p>
+</section>
+<section class="faq-item" id="which-tools">
+<h2>Which calculators pair with this page?</h2>
+<p>The <a href="../calculators/binomial-probability.html">binomial probability calculator</a> for counts of successes under a fixed trial model, and the <a href="../calculators/normal-cdf.html">normal CDF calculator</a> when you want a continuous tail probability as a comparison.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
-<li><a href="../glossary/#bayes-theorem">Glossary: Bayes’ theorem</a></li>
+<li><a href="../calculators/binomial-probability.html">Binomial probability calculator</a></li>
+<li><a href="../calculators/normal-cdf.html">Normal CDF and z score calculator</a></li>
+<li><a href="../calculators/combinatorics.html">Combinatorics calculator</a></li>
+<li><a href="../topics/probability-statistics.html">Probability and statistics topic</a></li>
+<li><a href="../glossary/#bayes-theorem">Glossary: Bayes theorem</a></li>
 <li><a href="../glossary/#conditional-probability">Glossary: conditional probability</a></li>
 </ul></div>
 </article>
