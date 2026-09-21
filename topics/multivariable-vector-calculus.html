@@ -62,10 +62,10 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Multivariable &amp; vector calculus intro</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Once functions depend on more than one input — height as a function of latitude and longitude, temperature in a room, profit from price and advertising — single-variable calculus is not enough. Multivariable calculus extends derivatives and integrals to several variables; vector calculus organizes those ideas when outputs or domains live in the plane or space.</p>
+<p>Once functions depend on more than one input (height as a function of latitude and longitude, temperature in a room, profit from price and advertising), single variable calculus is not enough. Multivariable calculus extends derivatives and integrals to several variables. Vector calculus organizes those ideas when outputs or domains live in the plane or space.</p>
 
 <h2>Partial derivatives and the gradient</h2>
 <p>A partial derivative holds every variable but one fixed and differentiates with respect to the free one. For $z = f(x,y)$, $\partial f/\partial x$ asks how $z$ changes when $x$ moves and $y$ stays put. The gradient $\nabla f$ packages all first partials into a vector that points in the direction of steepest increase and whose magnitude is that steepest slope (under the usual Euclidean geometry).</p>
@@ -75,17 +75,19 @@
 <p>Near a point, a differentiable function looks like its tangent plane (or hyperplane): $f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})\cdot(\mathbf{x}-\mathbf{a})$. That is the multivariable cousin of $f(a)+f'(a)(x-a)$.</p>
 
 <h2>Vector fields and “rates with direction”</h2>
-<p>A vector field assigns a vector to each point — wind velocity, fluid flow, force. Divergence measures local expansion or compression; curl measures local rotation. Line and surface integrals ask how much a field “pushes along a path” or “flows through a surface.” The big theorems (Green, Stokes, divergence) relate those integrals to derivatives of the field — multivariable cousins of the Fundamental Theorem.</p>
+<p>A vector field assigns a vector to each point: wind velocity, fluid flow, force. Divergence measures local expansion or compression; curl measures local rotation. Line and surface integrals ask how much a field “pushes along a path” or “flows through a surface.” The big theorems (Green, Stokes, divergence) relate those integrals to derivatives of the field. They are multivariable cousins of the Fundamental Theorem.</p>
 
 <div class="callout pitfall"><strong>Pitfall.</strong> Notation is crowded. Distinguish carefully between a scalar field $f$, a vector field $\mathbf{F}$, and operators $\nabla$, $\nabla\cdot$, $\nabla\times$. Writing “grad,” “div,” and “curl” in words while you learn is often clearer than drowning in symbols.</div>
 
 <h2>Where to go next</h2>
 <ul>
-<li><a href="../topics/calculus-foundations.html">Calculus foundations</a> (refresh single-variable ideas first)</li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a> (refresh single variable ideas first)</li>
 <li><a href="../topics/linear-algebra.html">Linear algebra</a> (gradients and Jacobians are linear maps)</li>
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
 <li><a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
+<li><a href="../calculators/vector-ops.html">Vector operations calculator</a>, for dot products, cross products, and norms</li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, for a Jacobian you have already written by hand</li>
 <li>Glossary: <a href="../glossary/#partial-derivative">partial derivative</a>, <a href="../glossary/#gradient">gradient</a>, <a href="../glossary/#vector-field">vector field</a>, <a href="../glossary/#jacobian">Jacobian</a>, <a href="../glossary/#stokes-theorem">Stokes theorem</a></li>
 </ul>
 </div>

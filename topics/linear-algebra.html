@@ -62,19 +62,19 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Linear algebra</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 11 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Linear algebra studies linear maps and the spaces they act on. A linear map sends lines through the origin to lines through the origin and respects addition and scaling. Matrices are concrete recipes for those maps once bases are chosen; eigenvalues and eigenvectors reveal stretch-and-align behavior that coordinates can hide.</p>
+<p>Linear algebra studies linear maps and the spaces they act on. A linear map sends lines through the origin to lines through the origin and respects addition and scaling. Matrices are concrete recipes for those maps once bases are chosen. Eigenvalues and eigenvectors reveal stretch and align behavior that coordinates can hide.</p>
 
 <h2>Vectors and bases</h2>
-<p>A vector is an arrow you can add and scale — or, more abstractly, an element of a vector space. A basis is a minimal set of vectors that can build every vector in the space by linear combination. Coordinates are the recipe coefficients relative to a basis; change the basis and the numbers change, even though the geometric vector is the same.</p>
+<p>A vector is an arrow you can add and scale, or more abstractly, an element of a vector space. A basis is a minimal set of vectors that can build every vector in the space by linear combination. Coordinates are the recipe coefficients relative to a basis. Change the basis and the numbers change, even though the geometric vector is the same.</p>
 
 <h2>Matrices as machines</h2>
 <p>Multiplying by a matrix $A$ applies a linear transformation. Columns of $A$ are the images of the standard basis vectors. Solving $A\mathbf{x}=\mathbf{b}$ asks which inputs produce output $\mathbf{b}$. Row reduction is bookkeeping for that question; determinants measure oriented volume scaling (and vanish precisely when the map collapses dimension).</p>
 
 <h2>Eigenvalues: invariant directions</h2>
-<p>An eigenvector satisfies $A\mathbf{v}=\lambda\mathbf{v}$ with $\mathbf{v}\neq\mathbf{0}$: the map stretches or flips $\mathbf{v}$ but does not tip it off its line. The scalar $\lambda$ is the eigenvalue. For a careful plain-language tour, see <a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>.</p>
+<p>An eigenvector satisfies $A\mathbf{v}=\lambda\mathbf{v}$ with $\mathbf{v}\neq\mathbf{0}$: the map stretches or flips $\mathbf{v}$ but does not tip it off its line. The scalar $\lambda$ is the eigenvalue. For a careful plain language tour, then a 2 by 2 numerical check, see <a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a> together with the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>.</p>
 
 <div class="callout pitfall"><strong>Pitfall.</strong> Not every matrix is diagonalizable. Complex eigenvalues, defective matrices, and Jordan form appear when “nice stretch factors along a basis of eigenvectors” are unavailable. Learn the geometric story first; special cases later.</div>
 
