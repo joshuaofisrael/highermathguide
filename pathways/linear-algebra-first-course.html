@@ -3,30 +3,88 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Linear Algebra First Course Pathway, Higher Math Guide</title>
-<meta name="description" content="A first-course pathway through vectors, matrices, and eigenvalues.">
+<title>Linear Algebra First Course Study Map, Higher Math Guide</title>
+<meta name="description" content="First course study map for vectors, matrices, and eigenvalues, with glossary terms, 2 by 2 calculators, and a bridge to Jacobians.">
 <link rel="canonical" href="https://highermathguide.com/pathways/linear-algebra-first-course.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Linear Algebra First Course Pathway, Higher Math Guide">
-<meta property="og:description" content="A first-course pathway through vectors, matrices, and eigenvalues.">
+<meta property="og:title" content="Linear Algebra First Course Study Map, Higher Math Guide">
+<meta property="og:description" content="First course study map for vectors, matrices, and eigenvalues, with glossary terms, 2 by 2 calculators, and a bridge to Jacobians.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/pathways/linear-algebra-first-course.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linear Algebra First Course Pathway, Higher Math Guide">
-<meta name="twitter:description" content="A first-course pathway through vectors, matrices, and eigenvalues.">
+<meta name="twitter:title" content="Linear Algebra First Course Study Map, Higher Math Guide">
+<meta name="twitter:description" content="First course study map for vectors, matrices, and eigenvalues, with glossary terms, 2 by 2 calculators, and a bridge to Jacobians.">
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Linear Algebra First Course Pathway",
-  "description": "A first-course pathway through vectors, matrices, and eigenvalues.",
+  "name": "Linear Algebra First Course Study Map",
+  "description": "First course study map for vectors, matrices, and eigenvalues, with glossary terms, 2 by 2 calculators, and a bridge to Jacobians.",
   "url": "https://highermathguide.com/pathways/linear-algebra-first-course.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Linear algebra first course questions",
+  "url": "https://highermathguide.com/pathways/linear-algebra-first-course.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need calculus before this pathway?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for vectors, matrices, and 2 by 2 eigenvalues. Calculus helps when you reach gradients and the Jacobian. If derivative language is rusty at that point, read what a derivative actually measures, then return."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are so many examples 2 by 2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A first course can see the pictures in the plane. Span, linear independence, and eigenvalue are the same words in higher dimensions. The calculators on this site are 2 by 2 so you can check the arithmetic by hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the determinant the main object?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For a 2 by 2 real matrix it is the signed area scale of the linear map. Zero means the map flattens the plane, so there is no inverse and A times x equals b cannot have exactly one solution. Learn that sentence before the formula."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my course is built around proofs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use this map for the geometry, then move to intro to proofs for quantifier habits. This page will not replace an abstract text. A small proof to try afterward: two vectors are linearly dependent if one is a scalar multiple of the other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which calculator should I open first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The vector operations calculator, then the 2 by 2 matrix calculator, then the 2 by 2 eigenvalue calculator. The matrix page does not find eigenvalues. The eigenvalue page does not find eigenvectors. Open each one after you can say what the output means."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -56,21 +114,95 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Linear algebra first course</h1>
-<p class="article-meta">Pathway · Educational only</p>
+<h1>Linear algebra first course study map</h1>
+<p class="article-meta">Pathway · Educational only · Updated 22 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Goal: see matrices as geometric machines, not only as arrays to row-reduce.</p>
+<p>The goal of this pathway is to see matrices as geometric machines, not only as grids of numbers to grind through. It orders the linear algebra pages, glossary entries, and 2 by 2 calculators that already live on Higher Math Guide. It is a first course map, educational only, and not a substitute for a syllabus.</p>
+
+<h2 id="who">Who this pathway is for</h2>
+<p>Start here if you are beginning linear algebra, or returning to vectors and matrices and wanting a picture before a pile of algorithms. You should be able to plot points and solve a tiny system by elimination. Calculus can wait until the Jacobian steps.</p>
+<p>If the course is mostly proofs, pair this geometry with <a href="intro-to-proofs.html">intro to proofs</a>. If multivariable calculus is next, this map is the bridge before partial derivatives.</p>
+
+<h2 id="prereq">Prerequisites</h2>
+<p>You need algebra, coordinates in the plane, and the habit of checking a claim on a 2 by 2 example. If vector and matrix are new words, read <a href="../glossary/#vector">vector</a>, <a href="../glossary/#matrix">matrix</a>, and <a href="../glossary/#span">span</a> before the eigenvalue explainer. The <a href="../sources/">sources</a> page lists MIT OpenCourseWare and Gilbert Strang’s linear algebra materials for a full set of notes.</p>
+
+<h2 id="outcomes">What you will be able to do</h2>
+<p>When you finish the core, you should read a dot product’s sign, name matrix columns as images of the standard basis, and say what a <a href="../glossary/#determinant">determinant</a> does to area. You should decide whether a singular system has no solution or many. You should find 2 by 2 eigenvalues, check $A\mathbf{v}=\lambda\mathbf{v}$ by hand, and notice when a repeated eigenvalue still fails to give two independent eigenvectors. You should describe a <a href="../glossary/#jacobian">Jacobian</a> as the best linear approximation, not as a bag of partial derivatives.</p>
+
+<h2 id="order">Suggested order</h2>
+<p>Work in this order. Open a calculator only after you can say what the number means. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> is the site wide rule.</p>
 <ol>
-<li><a href="../topics/linear-algebra.html">Linear algebra pillar</a> for the landscape.</li>
-<li>Master vocabulary: <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="../glossary/#matrix">matrix</a>.</li>
-<li>Practice: interpret columns of a matrix as images of basis vectors.</li>
-<li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>, then <a href="../glossary/#eigenvalue">eigenvalue</a> / <a href="../glossary/#eigenvector">eigenvector</a> / <a href="../glossary/#eigenspace">eigenspace</a>.</li>
-<li>Optional bridge: <a href="../topics/multivariable-vector-calculus.html">Multivariable intro</a> (gradients as linear approximations).</li>
-<li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>, then the <a href="../calculators/matrix-2x2.html">2 by 2 matrix toolkit</a>.</li>
+<li>Read the <a href="../topics/linear-algebra.html">linear algebra</a> topic as a table of contents for maps, bases, and eigenvalues.</li>
+<li>Read <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="../glossary/#matrix">matrix</a>, and <a href="../glossary/#determinant">determinant</a>. Pair each word with a 2 by 2 picture.</li>
+<li>Open the <a href="../calculators/vector-ops.html">vector operations calculator</a> for a dot product, a 3D cross product, a magnitude, or a unit vector. It does not print an angle. Zero means orthogonal (or a zero vector), positive means a similar direction, and negative means an obtuse angle. A cross product’s length is the parallelogram area.</li>
+<li>Open the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant, an inverse when it exists, and the products $AB$ and $BA$. On paper first, read the columns as the images of the standard basis vectors. This page does not compute eigenvalues. A zero determinant means there is no inverse.</li>
+<li>Read <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>, then <a href="../glossary/#eigenvalue">eigenvalue</a>, <a href="../glossary/#eigenvector">eigenvector</a>, and <a href="../glossary/#eigenspace">eigenspace</a>. An eigenvector is never the zero vector. The eigenvalue is the stretch along a line the map does not tip off.</li>
+<li>Check roots on the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. It reports trace, determinant, and the roots of the characteristic polynomial. It does not return eigenvectors, and it does not decide whether a repeated root gives two independent directions. You do that by hand in the checkpoint below. If the quadratic formula itself is rusty, the <a href="../calculators/quadratic-formula.html">quadratic formula calculator</a> is the same algebra without a matrix.</li>
+<li>Optional: read the <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus intro</a> and the <a href="../glossary/#gradient">gradient</a> entry. A gradient is the vector of partial derivatives.</li>
+<li>Read <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> and the <a href="../glossary/#jacobian">Jacobian</a> entry. Fill the partial derivatives yourself, then use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a product or a determinant. That calculator multiplies two 2 by 2 matrices. It does not apply a matrix to a column.</li>
 </ol>
-<div class="callout pitfall"><strong>Pitfall.</strong> Do not rush to determinants as “the formula.” Learn when a map collapses volume and why singularity blocks solving A x = b uniquely.</div>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<div class="callout"><strong>Practice habit.</strong> For every 2 by 2 matrix, draw the columns as arrows from the origin and say where the standard basis went. Then say what happened to area, using the sign and size of the determinant. Do this before you row reduce anything.</div>
+<p><strong>Area check.</strong> Let $A=\begin{pmatrix}2&amp;0\\0&amp;3\end{pmatrix}$. The columns $(2,0)$ and $(0,3)$ are the images of $(1,0)$ and $(0,1)$. The determinant is $6$, so oriented areas scale by $6$ and orientation is preserved. Confirm the determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a>.</p>
+<p><strong>Dot product check.</strong> Take $(1,2)$ and $(2,-1)$. The products $1\cdot 2$ and $2\cdot(-1)$ cancel, so the dot product is $0$ and the vectors are orthogonal. Confirm that zero on the <a href="../calculators/vector-ops.html">vector operations calculator</a>. The page will not print the angle.</p>
+<p><strong>Repeated eigenvalue check.</strong> Let $A=\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}$. It is triangular, so both eigenvalues are $2$. Trace $4$ and determinant $4$ give $\lambda^{2}-4\lambda+4=(\lambda-2)^{2}$. The <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a> should agree, though a discriminant that ought to be zero can print as a tiny nonzero number. Treat that split as one repeated eigenvalue. Eigenvectors are your job: $A-2I=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}$, so every eigenvector is a multiple of $(1,0)$. There is no second independent direction, and the matrix is not diagonalizable. The calculator cannot tell you that.</p>
+<p><strong>Singular system check.</strong> Let $A=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}$. The determinant is $0$, so the <a href="../calculators/matrix-2x2.html">matrix calculator</a> should refuse an inverse. The second column is twice the first, so reachable outputs are multiples of $(1,2)$. Thus $\mathbf{b}=(3,6)$ works and $\mathbf{b}=(3,0)$ does not. A solvable singular system gives a line of solutions, not one point.</p>
+
+<h2 id="pitfalls">Common pitfalls for self learners</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> Do not rush to the determinant as “the formula.” Learn when a map collapses area, and why a zero determinant blocks a unique solution of $A\mathbf{x}=\mathbf{b}$. The formula is how you compute the scale. The sentence is what the scale means.</div>
+<p>Complex eigenvalues are a rotation and a scale, with no real invariant line. Row reduction tells you which equations are redundant. The columns tell you what the map does. If the Jacobian sentence feels empty, read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> on the <a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a>, then return.</p>
+<p>The zero vector is not an eigenvector. It satisfies $A\mathbf{0}=\lambda\mathbf{0}$ for every $\lambda$, so the definition excludes it. The eigenspace puts zero back in, because a subspace must.</p>
+
+<h2 id="next">Related reading and the next pathway</h2>
+<p>If the next demand is writing, continue with <a href="intro-to-proofs.html">intro to proofs</a>. A fair first proof: two vectors are linearly dependent when one is a scalar multiple of the other. Define the words, state the assumption, and end by naming what you proved.</p>
+<p>If several variables are next, stay with the <a href="../topics/multivariable-vector-calculus.html">multivariable intro</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers</a> need gradients and a constraint, so they are later reading. If derivative language slowed the Jacobian step, the <a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a> repairs it. The three routes are compared on the <a href="./">pathways hub</a>.</p>
+<div class="cta-panel">
+<p>Start with the topic page and the vector glossary, then touch a calculator only after you can say what the number means.</p>
+<a class="btn" href="../topics/linear-algebra.html">Open the linear algebra topic</a>
 </div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. This page is not a course and not a substitute for a text. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="calculus">
+<h2>Do I need calculus before this pathway?</h2>
+<p>Not for vectors, matrices, and 2 by 2 eigenvalues. Calculus helps when you reach gradients and the Jacobian. If derivative language is rusty at that point, read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a>, then return.</p>
+</section>
+<section class="faq-item" id="twobytwo">
+<h2>Why are so many examples 2 by 2?</h2>
+<p>A first course can see the pictures in the plane. Span, linear independence, and eigenvalue are the same words in higher dimensions. The <a href="../calculators/">calculators</a> on this site are 2 by 2 so you can check the arithmetic by hand.</p>
+</section>
+<section class="faq-item" id="determinant">
+<h2>Is the determinant the main object?</h2>
+<p>No. For a 2 by 2 real matrix it is the signed area scale of the linear map. Zero means the map flattens the plane, so there is no inverse and A times x equals b cannot have exactly one solution. Learn that sentence before the formula.</p>
+</section>
+<section class="faq-item" id="proofs">
+<h2>What if my course is built around proofs?</h2>
+<p>Use this map for the geometry, then move to <a href="intro-to-proofs.html">intro to proofs</a> for quantifier habits. This page will not replace an abstract text. A small proof to try afterward: two vectors are linearly dependent if one is a scalar multiple of the other.</p>
+</section>
+<section class="faq-item" id="whichcalc">
+<h2>Which calculator should I open first?</h2>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a>, then the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, then the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. The matrix page does not find eigenvalues. The eigenvalue page does not find eigenvectors. Open each one after you can say what the output means.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../topics/linear-algebra.html">Linear algebra</a></li>
+<li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
+<li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
+<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus intro</a></li>
+<li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
+<li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
+<li><a href="../glossary/#basis">Glossary: basis</a></li>
+<li><a href="../glossary/#eigenvalue">Glossary: eigenvalue</a></li>
+<li><a href="../glossary/#jacobian">Glossary: Jacobian</a></li>
+<li><a href="intro-to-proofs.html">Intro to proofs pathway</a></li>
+<li><a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="../sources/">Sources</a></li>
+<li><a href="./">All pathways</a></li>
+</ul></div>
 </article>
 </div>
 

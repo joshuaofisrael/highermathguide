@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Intro to Proofs Pathway, Higher Math Guide</title>
-<meta name="description" content="A gentle pathway into proof habits, quantifiers, and analysis-style arguments.">
+<title>Intro to Proofs Study Pathway, Higher Math Guide</title>
+<meta name="description" content="Self study map for proof habits: quantifiers, epsilon delta limits, sequences, and series tests, with linked analysis pages and sources.">
 <link rel="canonical" href="https://highermathguide.com/pathways/intro-to-proofs.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Intro to Proofs Pathway, Higher Math Guide">
-<meta property="og:description" content="A gentle pathway into proof habits, quantifiers, and analysis-style arguments.">
+<meta property="og:title" content="Intro to Proofs Study Pathway, Higher Math Guide">
+<meta property="og:description" content="Self study map for proof habits: quantifiers, epsilon delta limits, sequences, and series tests, with linked analysis pages and sources.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/pathways/intro-to-proofs.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Intro to Proofs Pathway, Higher Math Guide">
-<meta name="twitter:description" content="A gentle pathway into proof habits, quantifiers, and analysis-style arguments.">
+<meta name="twitter:title" content="Intro to Proofs Study Pathway, Higher Math Guide">
+<meta name="twitter:description" content="Self study map for proof habits: quantifiers, epsilon delta limits, sequences, and series tests, with linked analysis pages and sources.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -25,13 +24,67 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Intro to Proofs Pathway",
-  "description": "A gentle pathway into proof habits, quantifiers, and analysis-style arguments.",
+  "name": "Intro to Proofs Study Pathway",
+  "description": "Self study map for proof habits: quantifiers, epsilon delta limits, sequences, and series tests, with linked analysis pages and sources.",
   "url": "https://highermathguide.com/pathways/intro-to-proofs.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Intro to proofs pathway questions",
+  "url": "https://highermathguide.com/pathways/intro-to-proofs.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need a logic textbook before I start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This pathway practices quantifiers inside calculus statements. A symbolic logic course can come later if you want it. You do need algebra and the patience to rewrite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the three sample proofs a complete analysis course?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. They are checkpoints. A full course covers completeness, continuity on intervals, differentiation theorems, and more. Use the sources page for open textbooks and courseware when you want that treatment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the limit estimator inside a proof?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only as scratch intuition. A table can support a guess and can catch a jump. A proof needs a rule that produces a valid delta for an arbitrary epsilon. The calculator does not choose that rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I get stuck on the monotone sequence outline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stop at the statement. A bounded monotone sequence of real numbers converges. For an increasing sequence that is bounded above, the least upper bound of the set of terms is the limit. Name that idea in words. Do not invent a construction of the real numbers. Return after the sequences explainer if the words still feel loose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which pathway should I open next?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the next class is linear algebra with proofs, use the linear algebra first course for pictures, then prove a small fact in the same write up style. If computational calculus still needs repair, use the AP Calculus AB bridge and come back when a definition asks for quantifiers."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -61,21 +114,102 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Intro to proofs</h1>
-<p class="article-meta">Pathway · Educational only</p>
+<h1>Intro to proofs study pathway</h1>
+<p class="article-meta">Pathway · Educational only · Updated 22 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Proofs are explanations that compel agreement from a skeptical but fair reader. This pathway builds habits rather than dumping formal logic all at once.</p>
+<p>Proofs are explanations that compel agreement from a skeptical but fair reader. This pathway builds that habit inside calculus statements, instead of dumping a symbolic logic course on you at once. It orders the analysis topic, explainers, glossary entries, two calculators used only as pictures, and the sources list.</p>
+
+<h2 id="who">Who this pathway is for</h2>
+<p>Start here if a proof course is in front of you, or if your calculus so far was mostly computation. You might compute derivatives easily and freeze when a definition says “for every epsilon there exists a delta.” That freeze is the audience.</p>
+<p>Each checkpoint asks you to write and then rewrite. Reading the page is not the step.</p>
+
+<h2 id="prereq">Prerequisites</h2>
+<p>You need algebra, function notation, and the willingness to define a word before you use it. The examples are limits, continuity, and series. If limits are new, read <a href="../topics/calculus-foundations.html">calculus foundations</a> in parallel.</p>
+<p>This is not a formal logic course. You will meet “for every” and “there exists” in the order a limit uses them. If derivative language is rusty, repair it with <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> on the <a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a>, then come back.</p>
+
+<h2 id="outcomes">What you will be able to do</h2>
+<p>When you finish the checkpoints, you should be able to do the following with a short statement, not with a chapter.</p>
+<ul>
+<li>Unpack a definition into quantifiers before any algebra.</li>
+<li>Write an epsilon delta proof that $\lim_{x\to 2}(4x-1)=7$, in the forward direction.</li>
+<li>Explain why the sum of two functions that are continuous at a point is continuous at that point, using a split of the tolerance.</li>
+<li>State, as an outline, why a bounded monotone sequence of real numbers converges, without inventing a construction of the reals.</li>
+<li>Tell a <a href="../glossary/#sequence">sequence</a> from a <a href="../glossary/#series">series</a>, and name a convergence test together with the hypothesis it needs.</li>
+<li>Keep one counterexample that kills a false converse, and end a write up by naming what was proved.</li>
+</ul>
+
+<h2 id="order">Suggested order</h2>
+<p>Work in this order. Scratch work may run backward from the goal. The write up you keep runs forward.</p>
 <ol>
-<li><a href="../topics/real-analysis-proofs.html">Real analysis &amp; proof habits</a> — mindset and checklist.</li>
-<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon-delta intuition</a> — quantifier order in the wild.</li>
-<li>Write three proofs of increasing ambition: (a) $\lim_{x\to 2}(4x-1)=7$; (b) the sum of two continuous functions is continuous at a point; (c) a bounded monotone sequence converges (outline OK at first).</li>
-<li><a href="../explainers/sequences-series-infinite-sums.html">Sequences and series</a> — partial sums as the meaning of infinite addition.</li>
-<li><a href="../explainers/convergence-tests-series.html">Convergence tests for series</a> when you want comparison, ratio, and root in one place.</li>
-<li>Keep a personal “counterexample notebook” for false converses and misplaced quantifiers.</li>
+<li>Read <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>. Unpack definitions, separate scratch work from the written proof, name quantifiers, and use a counterexample when a universal claim is false.</li>
+<li>Read the short forms: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#epsilon-delta">epsilon delta</a>, <a href="../glossary/#continuity">continuity</a>, <a href="../glossary/#sequence">sequence</a>, <a href="../glossary/#convergence">convergence</a>, <a href="../glossary/#partial-sum">partial sum</a>, and <a href="../glossary/#series">series</a>. Stay here until you can say which word is a list and which word is a sum of that list.</li>
+<li>Read <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition without terror</a>. Open the <a href="../calculators/limit-estimator.html">numerical limit estimator</a> only as a picture. Its default example is a hole you can fill: samples approach a number while the function may be undefined at the point. That is allowed for a limit. It is not a proof. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> says the same thing.</li>
+<li>Write three proofs of increasing ambition. Details are below. (a) $\lim_{x\to 2}(4x-1)=7$. (b) The sum of two functions continuous at a point is continuous there. (c) A bounded monotone sequence converges. An outline is enough for (c) on the first pass.</li>
+<li>Read <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>. Partial sums are the meaning of infinite addition. Use the <a href="../calculators/sequence-series.html">arithmetic and geometric sequence calculator</a> only for a finite sum. A finite total is not a convergence verdict.</li>
+<li>Read <a href="../explainers/convergence-tests-series.html">convergence tests for series without fog</a>, with the <a href="../glossary/#comparison-test">comparison test</a>, the <a href="../glossary/#ratio-test">ratio test</a>, and the <a href="../glossary/#root-test">root test</a>. For each test, write the hypothesis and the case where it stays silent.</li>
+<li>For a full textbook treatment, use the <a href="../sources/">sources</a> page, including MIT OpenCourseWare. This pathway is three checkpoints and a set of habits. It is not that course.</li>
 </ol>
-<div class="callout"><strong>Tone.</strong> Scratch work can be messy. Final write-ups should define terms, state assumptions, and end by naming what was proved.</div>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<p>Keep a polished column and a counterexample column. Scratch can be messy. The polished column cannot.</p>
+<div class="callout"><strong>Tone.</strong> A final write up defines terms, states assumptions, and ends by naming what was proved. If the last sentence does not say what you established, the argument is not finished, even if the algebra was correct.</div>
+<p><strong>Proof (a).</strong> Claim: $\lim_{x\to 2}(4x-1)=7$. Let $\varepsilon&gt;0$. Then $|(4x-1)-7|=4|x-2|$. Choose $\delta=\varepsilon/4$. If $0&lt;|x-2|&lt;\delta$, then $4|x-2|&lt;\varepsilon$. Write it in that order. One window is enough. A smaller positive window also works.</p>
+<p><strong>Proof (b).</strong> Assume $f$ and $g$ are continuous at $a$, and show $f+g$ is too. You need $|(f+g)(x)-(f+g)(a)|$ small when $x$ is near $a$. The triangle inequality splits that into $|f(x)-f(a)|+|g(x)-g(a)|$. Given $\varepsilon&gt;0$, take a window where $f$ stays within $\varepsilon/2$ and a window where $g$ stays within $\varepsilon/2$. The smaller window makes the sum of those pieces less than $\varepsilon$. End by naming continuity of the sum at $a$.</p>
+<p><strong>Proof (c), outline only.</strong> A bounded monotone sequence of real numbers converges. For an increasing sequence bounded above, let $L$ be the least upper bound of the set of terms. $L$ is an upper bound, and no smaller number is, so terms must eventually sit close to $L$. Do not invent a construction of the real numbers. An honest outline is enough. The full argument belongs to a book on the <a href="../sources/">sources</a> page.</p>
+<p><strong>Counterexample.</strong> “If $a_n$ tends to $0$, then the series converges” is false. The terms $1/n$ tend to $0$, and the harmonic series diverges. The other arrow is true: convergence of a series forces the terms to $0$. <a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a> keeps those apart.</p>
+<p><strong>Quantifier swap.</strong> “For every $\varepsilon&gt;0$ there exists a $\delta&gt;0$” is not “there exists a $\delta$ that works for every $\varepsilon$.” The limit definition lets you choose the window after the tolerance is named.</p>
+
+<h2 id="pitfalls">Common pitfalls for self learners</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> Finding one delta that works for a single epsilon does not finish a proof. A table of nearby values does not finish it either. You need a rule that produces a valid delta for an arbitrary positive epsilon. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is allowed in the scratch column. It is not allowed as the last line of the polished column.</div>
+<p>Scratch may start from the desired inequality. The kept argument starts with “let epsilon be positive.” Proving the converse is a quiet failure, and a silent ratio test (limit of absolute ratios equal to $1$) is not convergence. <a href="../explainers/convergence-tests-series.html">Convergence tests for series without fog</a> tells you to switch tests. “Clearly” is not a step.</p>
+
+<h2 id="next">Related reading and the next pathway</h2>
+<p>If computational calculus still needs repair, use the <a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a> and return when a page asks for epsilon before delta. If the next course is linear algebra with proofs, use the <a href="linear-algebra-first-course.html">linear algebra first course</a> for pictures, then prove that two vectors are linearly dependent when one is a scalar multiple of the other.</p>
+<p>Who each route is for is on the <a href="./">pathways hub</a>. For open notes beyond this site, use <a href="../sources/">sources</a>.</p>
+<div class="cta-panel">
+<p>Start with the analysis topic, then write proof (a) before you open a calculator.</p>
+<a class="btn" href="../topics/real-analysis-proofs.html">Open proof habits</a>
 </div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. These checkpoints are not a complete analysis course. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="logic">
+<h2>Do I need a logic textbook before I start?</h2>
+<p>No. This pathway practices quantifiers inside calculus statements. A symbolic logic course can come later if you want it. You do need algebra and the patience to rewrite.</p>
+</section>
+<section class="faq-item" id="complete">
+<h2>Are the three sample proofs a complete analysis course?</h2>
+<p>No. They are checkpoints. A full course covers completeness, continuity on intervals, differentiation theorems, and more. Use the <a href="../sources/">sources</a> page for open textbooks and courseware when you want that treatment.</p>
+</section>
+<section class="faq-item" id="estimator">
+<h2>Can I use the limit estimator inside a proof?</h2>
+<p>Only as scratch intuition. A table can support a guess and can catch a jump. A proof needs a rule that produces a valid delta for an arbitrary epsilon. The <a href="../calculators/limit-estimator.html">calculator</a> does not choose that rule.</p>
+</section>
+<section class="faq-item" id="monotone">
+<h2>What if I get stuck on the monotone sequence outline?</h2>
+<p>Stop at the statement. A bounded monotone sequence of real numbers converges. For an increasing sequence that is bounded above, the least upper bound of the set of terms is the limit. Name that idea in words. Do not invent a construction of the real numbers. Return after the <a href="../explainers/sequences-series-infinite-sums.html">sequences explainer</a> if the words still feel loose.</p>
+</section>
+<section class="faq-item" id="after">
+<h2>Which pathway should I open next?</h2>
+<p>If the next class is linear algebra with proofs, use the <a href="linear-algebra-first-course.html">linear algebra first course</a> for pictures, then prove a small fact in the same write up style. If computational calculus still needs repair, use the <a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a> and come back when a definition asks for quantifiers.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a></li>
+<li><a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
+<li><a href="../explainers/convergence-tests-series.html">Convergence tests for series without fog</a></li>
+<li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
+<li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
+<li><a href="../glossary/#epsilon-delta">Glossary: epsilon delta</a></li>
+<li><a href="../glossary/#convergence">Glossary: convergence</a></li>
+<li><a href="../sources/">Sources</a></li>
+<li><a href="ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="linear-algebra-first-course.html">Linear algebra first course</a></li>
+<li><a href="./">All pathways</a></li>
+</ul></div>
 </article>
 </div>
 

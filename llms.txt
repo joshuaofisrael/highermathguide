@@ -29,7 +29,7 @@ Publisher: Joshua Israel Ventures LLC
 
 ## Tools and references
 - https://highermathguide.com/glossary/
-- https://highermathguide.com/pathways/
+- https://highermathguide.com/pathways/ (three self study maps: an AP Calculus AB bridge, a linear algebra first course, and intro to proofs)
 - https://highermathguide.com/calculators/
 - https://highermathguide.com/sources/
 - https://highermathguide.com/about/
