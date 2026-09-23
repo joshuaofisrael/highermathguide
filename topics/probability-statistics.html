@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Probability & Statistics, Higher Math Guide</title>
-<meta name="description" content="Uncertainty, conditional probability, Bayes, and careful statistical thinking.">
+<title>Probability and Statistics Topic Map, Higher Math Guide</title>
+<meta name="description" content="First course map of chance, conditioning, Bayes theorem, and careful reading of data, with linked calculators and a study order.">
 <link rel="canonical" href="https://highermathguide.com/topics/probability-statistics.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Probability & Statistics, Higher Math Guide">
-<meta property="og:description" content="Uncertainty, conditional probability, Bayes, and careful statistical thinking.">
+<meta property="og:title" content="Probability and Statistics Topic Map, Higher Math Guide">
+<meta property="og:description" content="First course map of chance, conditioning, Bayes theorem, and careful reading of data, with linked calculators and a study order.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/topics/probability-statistics.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Probability & Statistics, Higher Math Guide">
-<meta name="twitter:description" content="Uncertainty, conditional probability, Bayes, and careful statistical thinking.">
+<meta name="twitter:title" content="Probability and Statistics Topic Map, Higher Math Guide">
+<meta name="twitter:description" content="First course map of chance, conditioning, Bayes theorem, and careful reading of data, with linked calculators and a study order.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -25,13 +24,67 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Probability & Statistics",
-  "description": "Uncertainty, conditional probability, Bayes, and careful statistical thinking.",
+  "name": "Probability and Statistics Topic Map",
+  "description": "First course map of chance, conditioning, Bayes theorem, and careful reading of data, with linked calculators and a study order.",
   "url": "https://highermathguide.com/topics/probability-statistics.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Probability and statistics questions",
+  "url": "https://highermathguide.com/topics/probability-statistics.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need calculus for this pillar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for the counting, conditional probability, Bayes theorem, binomial probabilities, and the normal picture on this page. Continuous distributions in a later course use integrals. If that arrives and accumulation is shaky, read calculus foundations and use the Riemann sum calculator as the picture of area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between probability and statistics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Probability starts from a model and asks what should happen. Statistics starts from data and asks what the data suggest about a model or a population. They share words such as random variable, distribution, and expectation. The questions run in opposite directions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a p value the probability that a hypothesis is true?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A p value is computed by assuming a model and asking how surprising the data look under that model. The probability that a hypothesis is true is a different question. It needs a prior and an update, which is the job of Bayes theorem, not of the p value phrase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I open the binomial or normal calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After you can say which model you are using and what the output counts. The binomial calculator is for a fixed number of independent trials with the same success probability. The normal calculator is for a continuous bell shaped model, often after you standardize. The combinatorics calculator only counts. It does not know your probability model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is the ordered pathway for this topic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no separate probability pathway on this site. This pillar is the cluster and the study order. The pathways hub orders calculus, linear algebra, and proofs. Use it when the next course is one of those. For a full statistics book, OpenIntro Statistics is listed on the sources page."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -61,31 +114,113 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Probability &amp; statistics</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
+<h1>Probability and statistics</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Probability quantifies uncertainty under a model. Statistics uses data to estimate, test, or update that model. The two subjects share language (random variables, distributions, expectation) but ask different questions: “what should happen if the model is true?” versus “what do the data suggest about the world?”</p>
+<p>Probability quantifies uncertainty inside a model you state. Statistics uses data to estimate, test, or update a model. The two subjects share a vocabulary and ask different questions. Probability asks what should happen if the model is true. Statistics asks what the data suggest about the world, and how fragile that suggestion is. This pillar is a first course map of that distinction, with a study order into the Bayes explainer, three calculators, and the glossary.</p>
 
-<h2>Events, conditionals, and independence</h2>
-<p>An event is a set of outcomes we care about. Conditional probability $P(A\mid B)$ reweights the sample space to outcomes inside $B$. Independence means learning $B$ does not change the probability of $A$. That is a modeling assumption, not a vibe. Confusion between $P(A\mid B)$ and $P(B\mid A)$ is one of the most common reasoning errors in applied work. Bayes theorem is the disciplined bridge between them. See <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>.</p>
+<h2 id="who">Who this pillar is for</h2>
+<p>Start here if you are beginning a first course in chance or data, or if you can compute a fraction and still mix up $P(A\mid B)$ with $P(B\mid A)$. You might be reading a result that says "significant" and wanting to know what was actually claimed. You might be about to meet the binomial and normal models and wanting a sentence for each before a calculator prints a tail.</p>
+<p>This site does not have a separate probability pathway. The <a href="../pathways/">pathways hub</a> orders calculus, linear algebra, and proofs. Use this page as the cluster. If a later probability course leans on integrals, repair accumulation on <a href="calculus-foundations.html">calculus foundations</a> when you get there, not before the counting makes sense.</p>
 
-<h2>Random variables and expectation</h2>
-<p>A random variable assigns a number to each outcome. Its distribution describes how those numbers are spread. Expectation is a probability weighted average, a center of mass for the distribution, not necessarily a “typical” single draw when the distribution is skewed.</p>
+<h2 id="prereq">Prerequisites</h2>
+<p>You need fractions, percentages, and the patience to define the experiment before you compute. You should be able to list a small set of outcomes and count them. Algebra is enough for the pages linked here. Calculus becomes useful when densities and continuous expectations arrive. It is not a gate for conditional probability.</p>
+<p>Read <a href="../glossary/#probability">probability</a>, <a href="../glossary/#conditional-probability">conditional probability</a>, <a href="../glossary/#random-variable">random variable</a>, <a href="../glossary/#expected-value">expected value</a>, and <a href="../glossary/#bayes-theorem">Bayes theorem</a> when you want the short form. OpenIntro Statistics is on the <a href="../sources/">sources</a> page if you want a full open book beside this map.</p>
 
-<h2>Statistics: estimates with humility</h2>
-<p>Sample means, variances, and proportions estimate population quantities. Confidence intervals and hypothesis tests formalize uncertainty, but only under assumptions. Always ask what was sampled, what could confound, and whether the model is even plausible.</p>
-<div class="callout pitfall"><strong>Pitfall.</strong> “Statistically significant” is not the same as “important,” and a $p$ value is not the probability that a hypothesis is true. Read claims about data as arguments, not spells.</div>
-
-<h2>Where to go next</h2>
+<h2 id="outcomes">What you should be able to do</h2>
+<p>When you finish the core, you should be able to do these things without hiding behind a phrase.</p>
 <ul>
-<li><a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a></li>
-<li><a href="../calculators/binomial-probability.html">Binomial probability calculator</a>, for counts of successes in a fixed number of trials</li>
-<li><a href="../calculators/normal-cdf.html">Normal CDF and z score calculator</a>, for a continuous tail or a standardized cutoff</li>
-<li><a href="../calculators/combinatorics.html">Combinatorics calculator</a>, for permutations and combinations that feed a counting argument</li>
-<li>Glossary: <a href="../glossary/#conditional-probability">conditional probability</a>, <a href="../glossary/#random-variable">random variable</a>, <a href="../glossary/#expected-value">expected value</a>, <a href="../glossary/#bayes-theorem">Bayes theorem</a></li>
+<li>State the sample space and the event before you assign a number.</li>
+<li>Compute a conditional probability by restricting attention to the outcomes inside the condition.</li>
+<li>Say what independence claims: learning one event does not change the probability of the other. It is a modeling assumption.</li>
+<li>Update in the Bayes direction, from $P(E\mid H)$ toward $P(H\mid E)$, on a small counting example.</li>
+<li>Tell a binomial count from a normal model, and say what a <a href="../glossary/#expected-value">expected value</a> averages.</li>
+<li>Read a statistical claim as an argument with assumptions, including what a p value does and does not say.</li>
 </ul>
+
+<h2 id="events">Events, conditioning, and independence</h2>
+<p>An event is a set of outcomes you have decided to care about. <a href="../glossary/#conditional-probability">Conditional probability</a> $P(A\mid B)$ restricts attention to outcomes inside $B$. If $P(B)$ is positive, $P(A\mid B)=P(A\text{ and }B)/P(B)$.</p>
+<p>Independence means $P(A\mid B)=P(A)$ when $P(B)$ is positive. Learning $B$ did not move the probability of $A$. Fair coin flips are often modeled that way. If two lights share a switch, independence is false even when each light is on about half the time. The margins can look ordinary while the joint behavior is tied.</p>
+<div class="callout"><strong>Counting picture.</strong> Two jars. Jar 1 has 3 red marbles and 1 blue marble. Jar 2 has 1 red and 3 blue. You pick a jar at random, then a marble at random. Each jar has probability $1/2$. Given that the marble is red, the probability it came from jar 1 is $3/4$, not $1/2$. The red marble is three times as likely from jar 1 as from jar 2, and the jars were equally likely before you looked. That arithmetic is Bayes theorem on four equally likely jar draws, scaled by the color counts. <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a> tells the same story with a larger hall and a medical test, and it warns about the false positive rate.</div>
+
+<h2 id="bayes">Bayes theorem as a change of direction</h2>
+<p>A test is often described by $P(\text{evidence}\mid \text{hypothesis})$: how often the evidence appears when the hypothesis is true. The question people mean is $P(\text{hypothesis}\mid \text{evidence})$. <a href="../glossary/#bayes-theorem">Bayes theorem</a> turns one into the other once you have a prior and the probability of the evidence overall.</p>
+<p>In the jar picture the two conditionals both equal $3/4$. That match is an accident of the numbers. Empty jar 2 of red marbles and a red draw must have come from jar 1. Make jar 2 much more common as a prior, and $P(\text{jar 1}\mid \text{red})$ drops even though jar 1 is still better at producing red. The explainer's lecture hall is that lesson with a rare condition. Read it after the jar count.</p>
+
+<h2 id="expectation">Random variables, binomial counts, and the normal model</h2>
+<p>A <a href="../glossary/#random-variable">random variable</a> assigns a number to each outcome. Its distribution says how those numbers are spread. <a href="../glossary/#expected-value">Expected value</a> is the probability weighted average, a center of mass. It need not be a value you can actually draw. A fair six sided die has expected value $3.5$. You will never roll $3.5$. The number is the long run average of many rolls under the model, not a promise about one roll.</p>
+<p>A binomial count is the number of successes in a fixed number of independent trials with the same success probability $p$. For a fair coin, five tosses, the chance of exactly 3 heads is $\binom{5}{3}/32 = 10/32$. Count the binomial coefficient on the <a href="../calculators/combinatorics.html">combinatorics calculator</a> if that step is rusty, then confirm the probability on the <a href="../calculators/binomial-probability.html">binomial calculator</a>. The combinatorics page only counts. It does not know $p$.</p>
+<p>A normal model is a bell shaped curve with a mean and a standard deviation. Standardizing, $z=(x-\mu)/\sigma$, asks how many standard deviations $x$ sits from the mean. A score of $130$ with mean $100$ and standard deviation $15$ has $z=2$. About $0.023$ of a standard normal sits above $2$. The <a href="../calculators/normal-cdf.html">normal CDF calculator</a> reports a tail. Name the upper or lower tail before you read the digits.</p>
+
+<h2 id="data">Statistics: estimates with the assumptions in view</h2>
+<p>A sample mean estimates a population mean when the sample matches what the formula assumes. A 95 percent confidence procedure, under the model, covers the parameter in about 95 percent of repeated samples. That is a statement about the method. Reading one finished interval as "the parameter has probability 95 percent of sitting here" is a different question, and it needs a prior.</p>
+<p>A hypothesis test measures surprise under a stated model. It does not, by itself, measure importance. A tiny effect in a huge sample can look surprising. A large effect in a tiny sample can fail to. Ask what was sampled, what else could explain the pattern, and whether the model was plausible before the test.</p>
+
+<h2 id="order">Suggested learning order</h2>
+<p>Work in this order. One model per sitting is enough. Open a calculator after you can name the sample space or the distribution.</p>
+<ol>
+<li>Read <a href="../glossary/#probability">probability</a>, <a href="../glossary/#conditional-probability">conditional probability</a>, and <a href="../glossary/#bayes-theorem">Bayes theorem</a>. Compute the two jar update by counting before you read further.</li>
+<li>Read <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>. Keep $P(E\mid H)$ and $P(H\mid E)$ on two separate lines of your notes.</li>
+<li>Read <a href="../glossary/#random-variable">random variable</a> and <a href="../glossary/#expected-value">expected value</a>. Compute the expected value of a fair die by hand. You should get $3.5$.</li>
+<li>Use the <a href="../calculators/combinatorics.html">combinatorics calculator</a> for $\binom{5}{3}$, then the <a href="../calculators/binomial-probability.html">binomial probability calculator</a> for 3 successes in 5 fair trials. Predict $10/32$ first.</li>
+<li>Standardize one number by hand, then use the <a href="../calculators/normal-cdf.html">normal CDF and z score calculator</a> for the tail you named in advance.</li>
+<li>If densities and integrals are the next chapter, read <a href="calculus-foundations.html">calculus foundations</a> and practice accumulation on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>. For a full book, open the statistics title on the <a href="../sources/">sources</a> page.</li>
+</ol>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<div class="callout"><strong>Practice habit.</strong> Before any probability, write the experiment in one sentence: what is random, what is fixed, and what you are conditioning on. If the sentence is missing, the fraction is not a probability yet. It is only arithmetic.</div>
+<p><strong>Bayes check.</strong> In the two jar story, $P(\text{jar 1}\mid \text{red})=3/4$. If you got $1/2$, you ignored the color counts. If you got $3/4$ for the wrong conditional, write both $P(\text{red}\mid \text{jar 1})$ and $P(\text{jar 1}\mid \text{red})$ and see that the match was luck.</p>
+<p><strong>Binomial check.</strong> Five fair coin tosses, exactly three heads: $10/32$. The <a href="../calculators/binomial-probability.html">binomial calculator</a> should agree. If it does not, check that you asked for exactly three successes, not "at least three."</p>
+<p><strong>Expectation check.</strong> A prize of $0$ with probability $0.9$ and $100$ with probability $0.1$ has expected value $10$. Most draws pay nothing. The expected value is not a typical single draw when the distribution is lopsided.</p>
+
+<h2 id="pitfalls">Common pitfalls</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> Mixing up $P(A\mid B)$ and $P(B\mid A)$ is the classic error, and a pretty test makes it worse when the condition is rare. "Statistically significant" is a technical phrase about a test under assumptions. It is not a synonym for important. A p value is computed by assuming a model and asking how surprising the data look. It is a different number from the probability that the hypothesis is true.</div>
+<p>A calculator will multiply the binomial formula you hand it. It will not notice that the trials were dependent, or that $n$ was not fixed, or that you wanted a tail and asked for a point. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> applies here as much as in calculus. Independence is a modeling assumption. Write it down or do not use a formula that needs it.</p>
+
+<h2 id="next">Related reading</h2>
+<p>Stay with <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a> until the two conditionals feel different. Counting practice is the <a href="../calculators/combinatorics.html">combinatorics</a>, <a href="../calculators/binomial-probability.html">binomial</a>, and <a href="../calculators/normal-cdf.html">normal</a> calculators. Proof habits transfer from <a href="real-analysis-proofs.html">real analysis</a> when a course asks for them. A full open statistics book is on the <a href="../sources/">sources</a> page.</p>
+<div class="cta-panel">
+<p>Do the two jar count on paper, then read the Bayes explainer. Open a calculator only after the model is named.</p>
+<a class="btn" href="../explainers/bayes-theorem-without-fog.html">Read Bayes theorem without the fog</a>
 </div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. This page is not statistical advice, not a data analysis, and not a substitute for a course. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="calculus">
+<h2>Do I need calculus for this pillar?</h2>
+<p>Not for the counting, conditional probability, Bayes theorem, binomial probabilities, and the normal picture on this page. Continuous distributions in a later course use integrals. If that arrives and accumulation is shaky, read <a href="calculus-foundations.html">calculus foundations</a> and use the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> as the picture of area.</p>
+</section>
+<section class="faq-item" id="difference">
+<h2>What is the difference between probability and statistics?</h2>
+<p>Probability starts from a model and asks what should happen. Statistics starts from data and asks what the data suggest about a model or a population. They share words such as <a href="../glossary/#random-variable">random variable</a>, distribution, and <a href="../glossary/#expected-value">expectation</a>. The questions run in opposite directions.</p>
+</section>
+<section class="faq-item" id="pvalue">
+<h2>Is a p value the probability that a hypothesis is true?</h2>
+<p>No. A p value is computed by assuming a model and asking how surprising the data look under that model. The probability that a hypothesis is true is a different question. It needs a prior and an update, which is the job of <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem</a>, not of the p value phrase.</p>
+</section>
+<section class="faq-item" id="calculators">
+<h2>When should I open the binomial or normal calculator?</h2>
+<p>After you can say which model you are using and what the output counts. The <a href="../calculators/binomial-probability.html">binomial calculator</a> is for a fixed number of independent trials with the same success probability. The <a href="../calculators/normal-cdf.html">normal calculator</a> is for a continuous bell shaped model, often after you standardize. The <a href="../calculators/combinatorics.html">combinatorics calculator</a> only counts. It does not know your probability model.</p>
+</section>
+<section class="faq-item" id="pathway">
+<h2>Where is the ordered pathway for this topic?</h2>
+<p>There is no separate probability pathway on this site. This pillar is the cluster and the study order. The <a href="../pathways/">pathways hub</a> orders calculus, linear algebra, and proofs. Use it when the next course is one of those. For a full statistics book, OpenIntro Statistics is listed on the <a href="../sources/">sources</a> page.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a></li>
+<li><a href="../calculators/binomial-probability.html">Binomial probability calculator</a></li>
+<li><a href="../calculators/normal-cdf.html">Normal CDF and z score calculator</a></li>
+<li><a href="../calculators/combinatorics.html">Combinatorics calculator</a></li>
+<li><a href="../glossary/#conditional-probability">Glossary: conditional probability</a></li>
+<li><a href="../glossary/#bayes-theorem">Glossary: Bayes theorem</a></li>
+<li><a href="../glossary/#expected-value">Glossary: expected value</a></li>
+<li><a href="calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../sources/">Sources</a></li>
+<li><a href="./">All topics</a></li>
+</ul></div>
 </article>
 </div>
 

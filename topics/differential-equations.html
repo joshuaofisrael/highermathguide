@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Differential Equations First Look, Higher Math Guide</title>
-<meta name="description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<title>Differential Equations Topic Map, Higher Math Guide</title>
+<meta name="description" content="First look map of ordinary differential equations, separable equations, and slope fields, with practice checks and a study order.">
 <link rel="canonical" href="https://highermathguide.com/topics/differential-equations.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Differential Equations First Look, Higher Math Guide">
-<meta property="og:description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<meta property="og:title" content="Differential Equations Topic Map, Higher Math Guide">
+<meta property="og:description" content="First look map of ordinary differential equations, separable equations, and slope fields, with practice checks and a study order.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/topics/differential-equations.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Differential Equations First Look, Higher Math Guide">
-<meta name="twitter:description" content="A first look at ODEs: modeling change, separable equations, and qualitative thinking.">
+<meta name="twitter:title" content="Differential Equations Topic Map, Higher Math Guide">
+<meta name="twitter:description" content="First look map of ordinary differential equations, separable equations, and slope fields, with practice checks and a study order.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -25,13 +24,67 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Differential Equations First Look",
-  "description": "A first look at ODEs: modeling change, separable equations, and qualitative thinking.",
+  "name": "Differential Equations Topic Map",
+  "description": "First look map of ordinary differential equations, separable equations, and slope fields, with practice checks and a study order.",
   "url": "https://highermathguide.com/topics/differential-equations.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Differential equations questions",
+  "url": "https://highermathguide.com/topics/differential-equations.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much calculus do I need first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need derivatives as rates, and integrals as accumulation, because separation ends in an integral. If those words are shaky, read calculus foundations and what a derivative actually measures. The AP Calculus AB study pathway reaches this topic as a late step, after series."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it mean to solve a differential equation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A solution is a function whose derivative matches the rule the equation states. An initial condition picks one curve out of a family. Check a candidate by differentiating it and substituting. A formula that does not reproduce the slope is not a solution, however neat it looks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do constant solutions disappear when I separate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Separation divides by an expression in y. If that expression is zero at some constant, the division hid that constant solution. Find where the right hand side is zero before you divide, and test those constants on their own. The separable explainer walks through the same warning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a slope field calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This site does not include a slope field tool. Sketch a few segments by hand from the rule y prime equals f of t and y. Use the numerical derivative calculator only to audit an explicit solution you already have. Use the Riemann sum calculator if the integral after separation is the step that feels unclear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What comes after separable equations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the sources page. On this site, the next related cluster is linear algebra if eigenvalues are the door you need, and calculus foundations if the integral is the door."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -62,30 +115,116 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Differential equations first look</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>A differential equation relates a function to its derivatives. Ordinary differential equations (ODEs) involve one independent variable, usually time. They are the native language of growth, decay, oscillators, and many engineering models.</p>
+<p>A differential equation relates a function to its derivatives. An ordinary differential equation has one independent variable, often thought of as time. The unknown is a function, not a number. Growth, cooling, and simple oscillators are written this way because the sentence you can say is about a rate. This pillar is a first look: what a solution is, how separation works, and how a slope field tells you the story before a formula appears. The long walkthrough of separation already lives in an explainer. This page is the map around it.</p>
 
-<h2>What a solution means</h2>
-<p>Solving $y'=f(t,y)$ means finding a function $y(t)$ whose slope at each point matches the rule $f$. An initial condition $y(t_0)=y_0$ selects one solution curve from a family. Existence and uniqueness theorems tell you when that selection is reliable, roughly when $f$ is smooth enough near the starting point.</p>
+<h2 id="who">Who this pillar is for</h2>
+<p>Start here if a first course in differential equations is beginning, or if you can separate variables by ritual and lose constant solutions without noticing. You might be coming from an AP Calculus AB course that stopped at a brief introduction, or from <a href="calculus-foundations.html">calculus foundations</a> once derivatives and integrals have meanings.</p>
+<p>The <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a> reaches this topic as a late step, after series. Use that pathway if you want the whole calculus route. Use this page if the equation itself is the question. You do not need a full series course to understand separation. You do need to know what an integral accumulates.</p>
 
-<h2>Separable equations</h2>
-<p>If $y'=g(t)h(y)$, you can often rearrange and integrate both sides. That technique is a workhorse for first courses. Walk through it in detail in <a href="../explainers/separable-differential-equations.html">Separable differential equations walkthrough</a>.</p>
+<h2 id="prereq">Prerequisites</h2>
+<p>You need derivatives as instantaneous rates, the chain rule, and integrals of common functions. Implicit differentiation helps when you check a solution that is not written as $y$ equal to a formula. If any of that is shaky, read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> and the integral section of <a href="calculus-foundations.html">calculus foundations</a>.</p>
+<p>The short definitions are <a href="../glossary/#differential-equation">differential equation</a>, <a href="../glossary/#initial-value-problem">initial value problem</a>, and <a href="../glossary/#slope-field">slope field</a>. OpenStax Calculus and MIT OpenCourseWare (including the differential equations course often numbered 18.03) are on the <a href="../sources/">sources</a> page. This pillar stops where the explainer on this site stops: separation, equilibria, and the habit of checking. Later methods are named so you know what a book is for.</p>
 
-<h2>Qualitative pictures</h2>
-<p>Before solving, sketch a slope field: at each point $(t,y)$, draw a short segment with slope $f(t,y)$. Solution curves must thread those segments. Equilibria where $y'=0$ and whether nearby solutions approach or flee them often matter more than a closed form formula.</p>
-<div class="callout pitfall"><strong>Pitfall.</strong> Dividing by an expression that might be zero (common when separating variables) can lose constant solutions. Always check equilibrium solutions separately.</div>
-
-<h2>Where to go next</h2>
+<h2 id="outcomes">What you should be able to do</h2>
+<p>When you finish the core, you should be able to do these things on a first order equation $y'=f(t,y)$.</p>
 <ul>
-<li><a href="../explainers/separable-differential-equations.html">Separable differential equations walkthrough</a></li>
-<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a>, to practice the integral that appears after you separate</li>
-<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a>, to audit the slope of an explicit solution</li>
-<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
-<li>Glossary: <a href="../glossary/#differential-equation">differential equation</a>, <a href="../glossary/#initial-value-problem">initial value problem</a>, <a href="../glossary/#slope-field">slope field</a></li>
+<li>Say what a solution is: a function whose slope matches the rule at each point on its graph.</li>
+<li>Use an initial condition to choose one curve from a family, and name that pair an <a href="../glossary/#initial-value-problem">initial value problem</a>.</li>
+<li>Separate $y'=g(t)h(y)$ when the form allows it, and test constant solutions before you divide.</li>
+<li>Sketch the idea of a <a href="../glossary/#slope-field">slope field</a>: short segments whose slopes are $f(t,y)$, with solution curves threading them.</li>
+<li>Find equilibria where $y'=0$, and say whether nearby solutions move toward them or away.</li>
+<li>Audit an explicit formula by differentiating it. A candidate that does not reproduce the equation is not a solution.</li>
 </ul>
+
+<h2 id="solution">What a solution means</h2>
+<p>Solving $y'=f(t,y)$ means finding $y(t)$ whose derivative equals $f(t, y(t))$ on some interval. The graph has to follow the slopes the rule assigns. An initial condition $y(t_0)=y_0$ selects one curve from a family. Without it, a constant is still waiting to be chosen.</p>
+<p>A common theorem says that if $f$ and its partial derivative with respect to $y$ are continuous near the start, then a unique solution exists on some interval around that start. The precise statement is in a text on the <a href="../sources/">sources</a> page. When the smoothness fails, two curves can leave the same point.</p>
+<div class="callout"><strong>Illustration.</strong> The equation $y'=3y^{2/3}$ with $y(0)=0$ is a standard example where uniqueness fails. The zero function is a solution, because both sides are zero. So is $y=t^{3}$: the derivative is $3t^{2}$, and $3(t^{3})^{2/3}=3t^{2}$ as well. The partial derivative of the right hand side with respect to $y$ blows up at $y=0$, so the usual hypothesis is absent. Two solutions, one initial condition. The theorem was not violated. Its hypothesis was not met.</div>
+
+<h2 id="separable">Separable equations</h2>
+<p>If $y'=g(t)h(y)$, the rate factors into a piece in $t$ and a piece in $y$. You can often integrate both sides after rearranging. That is the workhorse of a first look. The full write up is <a href="../explainers/separable-differential-equations.html">the separable walkthrough</a>. The checkpoint below is the one to do cold.</p>
+<p>Consider $dy/dx = 2xy$. The right hand side is zero whenever $y=0$, so the constant function $y=0$ is a solution. For other solutions, divide by $y$ and integrate:</p>
+<p>$$\int \frac{1}{y}\,dy = \int 2x\,dx.$$</p>
+<p>You get $\ln|y| = x^{2}+C$, hence $y = Ae^{x^{2}}$ with $A$ a nonzero constant. The zero solution is the case the division hid. Some people write $A=0$ afterward to include it. That is harmless only if you noticed the division. Differentiate a nonzero answer: if $y=Ae^{x^{2}}$, then $y'=2xAe^{x^{2}}=2xy$, which matches. An initial condition $y(0)=3$ forces $A=3$. That pair is an initial value problem.</p>
+<p>The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> is a picture of accumulation, not a symbolic integrator. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can audit a slope after you differentiate by hand. For $y=3e^{x^{2}}$ at $x=0$, the slope should be $0$, because $y'=2xy$ and $x=0$.</p>
+
+<h2 id="qualitative">Slope fields and equilibria</h2>
+<p>Before solving, sketch a <a href="../glossary/#slope-field">slope field</a>: at sample points, a short segment of slope $f(t,y)$. A solution has to thread those segments. This site has no slope field tool. A dozen segments on paper are enough.</p>
+<p>Equilibria are constant solutions, where an autonomous rule $y'=f(y)$ is zero. Nearby solutions may approach that height or leave it. That question is often more useful than a formula.</p>
+<p>Take the autonomous equation $y'=y(1-y)$. The equilibria are $y=0$ and $y=1$. Between them the slope is positive, so solutions increase toward $1$. Above $1$ the slope is negative, so solutions decrease toward $1$. Below $0$ the slope is negative, so solutions decrease and move away from $0$. In that rough portrait, $y=1$ attracts from above and from the interval between the equilibria, and $y=0$ does not attract. You can say this without solving. The separable explainer treats a similar autonomous equation and shows the partial fractions that produce a formula. Do the portrait first.</p>
+
+<h2 id="beyond">What a first course adds next</h2>
+<p>Not every equation separates. A linear equation $y'+p(t)y=g(t)$ is the usual next family. An integrating factor is a function of $t$ chosen so the left side becomes the derivative of a product. The books on the <a href="../sources/">sources</a> page write that method. No explainer here walks it. Separation was never the whole subject.</p>
+<p>A later linear system can be written with a matrix, and the <a href="../glossary/#eigenvalue">eigenvalues</a> describe growth along special directions. That door is <a href="linear-algebra.html">linear algebra</a> and <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>. It is not required for the separable checkpoint. Several independent variables wait for the <a href="multivariable-vector-calculus.html">multivariable pillar</a>.</p>
+
+<h2 id="order">Suggested learning order</h2>
+<p>Work in this order. Check every formula by differentiation before you trust the algebra that produced it.</p>
+<ol>
+<li>Read <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#definite-integral">definite integral</a>, <a href="../glossary/#differential-equation">differential equation</a>, <a href="../glossary/#initial-value-problem">initial value problem</a>, and <a href="../glossary/#slope-field">slope field</a>.</li>
+<li>If the rate sentence is empty, read <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> and the relevant parts of <a href="calculus-foundations.html">calculus foundations</a>.</li>
+<li>Separate $dy/dx=2xy$ on paper, including $y=0$. Impose $y(0)=3$ and differentiate the result.</li>
+<li>Read <a href="../explainers/separable-differential-equations.html">the separable walkthrough</a> and compare its warnings with the solution you just produced.</li>
+<li>Sketch a slope field for $y'=y(1-y)$ at a few heights. Mark the equilibria before you draw curves.</li>
+<li>Use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> only to audit an explicit solution. Use the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> only if the integral itself is the fog.</li>
+<li>If you want the calculus route that arrives here on purpose, follow the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>. For integrating factors and systems, use the <a href="../sources/">sources</a> page.</li>
+</ol>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<div class="callout"><strong>Practice habit.</strong> Every proposed solution gets differentiated and substituted back. If the two sides disagree, the algebra that produced the formula had a gap, often a division or a lost constant. The check is shorter than redoing the whole solution in a fog.</div>
+<p><strong>Separation check.</strong> $y=3e^{x^{2}}$ should satisfy $y'=2xy$ and $y(0)=3$. At $x=0$ the slope is $0$. At $x=1$ the slope is $6e$. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can estimate that slope. Your derivative is the authority. The estimate is a witness.</p>
+<p><strong>Equilibrium check.</strong> For $y'=y(1-y)$, name the two constant solutions and say which way a solution moves if it starts at $y=1/2$ and if it starts at $y=-1/2$. Increasing toward $1$, and decreasing away from $0$, are the answers.</p>
+<p><strong>Lost solution check.</strong> Separate $y'=y$ and also test $y=0$. The exponential family $y=Ae^{t}$ includes the zero solution when $A=0$. Say so on purpose. The separable explainer's first example is this equation with an initial value.</p>
+
+<h2 id="pitfalls">Common pitfalls</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> Dividing by an expression that might be zero throws away constant solutions. Find the roots of $h(y)$ before you separate $y'=g(t)h(y)$, and test them. A second trap: an explicit formula is not finished until an initial condition chooses the constant, if a single prediction was the question. A third trap: a slope field is a sketch of the rule, not a proof of a formula. It tells you the shape you should expect the algebra to match.</div>
+<p>Existence on a small interval is not existence for all time. A solution can blow up at a finite time even when the rule looks smooth at the start. If a formula has a denominator that hits zero, ask whether the solution only lived up to that time.</p>
+
+<h2 id="next">Related reading</h2>
+<p>The computational home of this topic on the site is <a href="../explainers/separable-differential-equations.html">the separable walkthrough</a>. The calculus cluster around it is <a href="calculus-foundations.html">calculus foundations</a> and the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>. Eigenvalues for later linear systems live on <a href="linear-algebra.html">linear algebra</a> and in <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>. Several independent variables wait for <a href="multivariable-vector-calculus.html">multivariable and vector calculus</a>. Compare routes on the <a href="../pathways/">pathways hub</a>.</p>
+<div class="cta-panel">
+<p>Separate one equation on paper, including the constant solution, then read the walkthrough and see which warning you already met.</p>
+<a class="btn" href="../explainers/separable-differential-equations.html">Open the separable walkthrough</a>
 </div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. This page is not a course and not a substitute for a text. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="calculus">
+<h2>How much calculus do I need first?</h2>
+<p>You need derivatives as rates, and integrals as accumulation, because separation ends in an integral. If those words are shaky, read <a href="calculus-foundations.html">calculus foundations</a> and <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a>. The <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a> reaches this topic as a late step, after series.</p>
+</section>
+<section class="faq-item" id="solve">
+<h2>What does it mean to solve a differential equation?</h2>
+<p>A solution is a function whose derivative matches the rule the equation states. An initial condition picks one curve out of a family. Check a candidate by differentiating it and substituting. A formula that does not reproduce the slope is not a solution, however neat it looks.</p>
+</section>
+<section class="faq-item" id="divide">
+<h2>Why do constant solutions disappear when I separate?</h2>
+<p>Separation divides by an expression in $y$. If that expression is zero at some constant, the division hid that constant solution. Find where the right hand side is zero before you divide, and test those constants on their own. The <a href="../explainers/separable-differential-equations.html">separable explainer</a> walks through the same warning.</p>
+</section>
+<section class="faq-item" id="field">
+<h2>Do I need a slope field calculator?</h2>
+<p>This site does not include a slope field tool. Sketch a few segments by hand from the rule $y'=f(t,y)$. Use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> only to audit an explicit solution you already have. Use the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> if the integral after separation is the step that feels unclear.</p>
+</section>
+<section class="faq-item" id="after">
+<h2>What comes after separable equations?</h2>
+<p>A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the <a href="../sources/">sources</a> page. On this site, the next related cluster is <a href="linear-algebra.html">linear algebra</a> if eigenvalues are the door you need, and <a href="calculus-foundations.html">calculus foundations</a> if the integral is the door.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../explainers/separable-differential-equations.html">Separable differential equations walkthrough</a></li>
+<li><a href="calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a></li>
+<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
+<li><a href="../glossary/#differential-equation">Glossary: differential equation</a></li>
+<li><a href="../glossary/#initial-value-problem">Glossary: initial value problem</a></li>
+<li><a href="../glossary/#slope-field">Glossary: slope field</a></li>
+<li><a href="linear-algebra.html">Linear algebra</a></li>
+<li><a href="./">All topics</a></li>
+</ul></div>
 </article>
 </div>
 

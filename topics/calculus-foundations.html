@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calculus Foundations, Higher Math Guide</title>
-<meta name="description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<title>Calculus Foundations Topic Map, Higher Math Guide</title>
+<meta name="description" content="First course map of limits, derivatives, and integrals: who it helps, what to practice, and which lessons and calculators to open next.">
 <link rel="canonical" href="https://highermathguide.com/topics/calculus-foundations.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Calculus Foundations, Higher Math Guide">
-<meta property="og:description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<meta property="og:title" content="Calculus Foundations Topic Map, Higher Math Guide">
+<meta property="og:description" content="First course map of limits, derivatives, and integrals: who it helps, what to practice, and which lessons and calculators to open next.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/topics/calculus-foundations.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Calculus Foundations, Higher Math Guide">
-<meta name="twitter:description" content="A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.">
+<meta name="twitter:title" content="Calculus Foundations Topic Map, Higher Math Guide">
+<meta name="twitter:description" content="First course map of limits, derivatives, and integrals: who it helps, what to practice, and which lessons and calculators to open next.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -25,13 +24,67 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Calculus Foundations",
-  "description": "A clear map of limits, continuity, derivatives, and integrals for students starting higher mathematics.",
+  "name": "Calculus Foundations Topic Map",
+  "description": "First course map of limits, derivatives, and integrals: who it helps, what to practice, and which lessons and calculators to open next.",
   "url": "https://highermathguide.com/topics/calculus-foundations.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Calculus foundations questions",
+  "url": "https://highermathguide.com/topics/calculus-foundations.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this an AP Calculus exam review?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This page is a meaning map for a first calculus course. It is not affiliated with College Board and does not replace official exam materials or a syllabus. Readers who already have AP Calculus AB skills and want an order toward series can use the AP Calculus AB study pathway, which begins with this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need epsilon delta on a first pass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is optional on a first pass and worth the time if a later course will ask for proofs. Read the explainer for the quantifier order: the tolerance on outputs comes first, then a window on inputs. The intro to proofs pathway is where you practice writing the arguments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I open a calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After you can say what the number means. The numerical derivative estimates a slope. The limit estimator samples nearby values. The Riemann sum calculator draws accumulation. The sequence calculator adds finitely many terms. None of them replaces an algebraic derivative, a limit proof, or a convergence test."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I study after integrals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the next course includes series, read the sequences explainer and the convergence tests explainer. If the next course is differential equations, read differential equations first look and the separable walkthrough. If the next course uses several variables, do linear algebra first, then the multivariable topic. If the next course asks for proofs, use intro to proofs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this page different from the AP Calculus AB pathway?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This page is the topic cluster: the ideas, the outcomes, and a suggested order. The pathway is a longer study route that assumes AP Calculus AB skills and spends more time on series and a first differential equation. Start here if the base words are shaky. Start on the pathway if computation is already easy and you want the ordered sittings."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -62,49 +115,119 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Calculus foundations</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Calculus is the mathematics of change and accumulation. Derivatives answer “how fast?” Integrals answer “how much in total?” Limits hold the two ideas together by making precise what happens as we zoom in or add finer and finer pieces.</p>
+<p>Calculus is the mathematics of change and of accumulation. A derivative answers how fast a quantity is changing at one moment. An integral answers how much has piled up over an interval. Limits are the shared language: they say what happens when you look closer, or when you add finer and finer pieces. This pillar is a map of that first course. It says who the pages help, what you should be able to do, and which explainers, calculators, glossary entries, and pathways already on this site to open next.</p>
 
-<h2>What you should be able to do</h2>
-<p>After a solid first pass, you should be able to:</p>
+<h2 id="who">Who this pillar is for</h2>
+<p>Start here if you are beginning calculus, or if you can apply derivative rules and still cannot say what the symbols measure. You might be entering a first college course, repairing a course that moved too fast, or getting ready for series and a first differential equation. You do not need to be fast. You do need a sentence you can say before you trust a formula.</p>
+<p>If computation is already comfortable, skim this map and follow the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>. If the next demand is writing arguments, this pillar is the vocabulary and <a href="../pathways/intro-to-proofs.html">intro to proofs</a> is the writing practice.</p>
+
+<h2 id="prereq">Prerequisites</h2>
+<p>You need algebra, graphs, and function notation. You should be able to evaluate a formula, solve a linear equation, and read a point off a graph. Fractions and exponents show up constantly. Sine and cosine appear in a standard first course. You can still learn the ideas of limit, derivative, and integral on polynomials first, and add trigonometry when a problem requires it.</p>
+<p>If a word is doing real work, use the glossary entries for <a href="../glossary/#limit">limit</a>, <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#continuity">continuity</a>, and <a href="../glossary/#definite-integral">definite integral</a>. If you want a full book beside this map, OpenStax Calculus and MIT OpenCourseWare are on the <a href="../sources/">sources</a> page. Come back when you can say, in one sentence each, what those three words ask.</p>
+
+<h2 id="outcomes">What you should be able to do</h2>
+<p>When you finish the core of this map, you should be able to do the following in words, not only with a memorized rule.</p>
 <ul>
-<li>Explain a limit in words and check simple ones algebraically or numerically.</li>
-<li>Compute derivatives of polynomials, exponentials, sine and cosine, and products/quotients/compositions.</li>
-<li>Interpret $f'(a)$ as an instantaneous rate and as the slope of a tangent line.</li>
-<li>Set up and evaluate definite integrals as signed area / net accumulation.</li>
-<li>Use the Fundamental Theorem of Calculus to connect derivatives and integrals.</li>
+<li>Explain a <a href="../glossary/#limit">limit</a>: nearby inputs, and a value the outputs are forced toward. The function value at the point itself may be missing.</li>
+<li>Say what <a href="../glossary/#continuity">continuity</a> adds. The function value exists, and it equals that limit.</li>
+<li>Compute derivatives of common functions, and also say that $f'(a)$ is an instantaneous rate and the slope of the best linear approximation.</li>
+<li>Set up a <a href="../glossary/#definite-integral">definite integral</a> as net signed accumulation, and connect it to derivatives with the Fundamental Theorem of Calculus.</li>
+<li>Tell a <a href="../glossary/#sequence">sequence</a> (a list) from a <a href="../glossary/#series">series</a> (an attempt to add the whole list) well enough to know which later explainer to open.</li>
 </ul>
 
-<h2>Limits without mysticism</h2>
-<p>Saying $\lim_{x \to a} f(x) = L$ means: values of $f(x)$ can be forced as close to $L$ as we like by taking $x$ sufficiently close to $a$ (but not necessarily equal to $a$). Continuity at $a$ adds that $f(a)$ exists and equals that limit. Removable gaps, jumps, and vertical blow ups are the classic ways continuity fails. For a numerical table before a proof, use the <a href="../calculators/limit-estimator.html">numerical limit estimator</a>.</p>
-<div class="callout pitfall"><strong>Pitfall.</strong> Plugging in $x = a$ is a useful check when $f$ is continuous there, but it is not the definition of a limit. Limits care about nearby values, not the point itself.</div>
+<h2 id="limits">Limits and continuity</h2>
+<p>Saying $\lim_{x \to a} f(x) = L$ means you can force the outputs as close to $L$ as you like by taking $x$ close enough to $a$, and not necessarily equal to $a$. The function may be undefined at $a$, or defined as something else. The limit does not consult $f(a)$.</p>
+<p>Continuity at $a$ adds two facts: $f(a)$ exists, and it equals the limit. A hole is a limit that exists while the function value is missing or wrong. A jump is a refusal of the story from the left and the story from the right to agree. A vertical blow up is outputs that will not stay near any finite $L$.</p>
+<p>A numerical table can show settling. A proof still has to be written. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> samples nearby values. The precise version, tolerance on outputs first and a window on inputs second, is the <a href="../glossary/#epsilon-delta">epsilon delta definition</a>. It is optional on a first pass. <a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a> is the friendly entry if a later course will ask for proofs.</p>
+<div class="callout"><strong>Check before you plug in.</strong> For $f(x)=(x^{2}-1)/(x-1)$ and $a=1$, the formula is undefined at the point. For every other $x$, it simplifies to $x+1$, so the limit is $2$. A table should approach $2$. Substituting $x=1$ into the original formula is not available. That is the situation a limit is built for.</div>
 
-<h2>Derivatives as linear approximation</h2>
-<p>The derivative $f'(a)$ is the unique number (when it exists) such that near $a$, $f(x) \approx f(a) + f'(a)(x-a)$. That linear approximation is why derivatives show up in optimization, related rates, and numerical methods. For a walkthrough of the meaning, see <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a>. To estimate slopes numerically, try the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>.</p>
+<h2 id="derivatives">Derivatives as linear approximation</h2>
+<p>The derivative $f'(a)$, when it exists, is the unique number such that near $a$,</p>
+<p>$$f(x) \approx f(a) + f'(a)(x-a).$$</p>
+<p>The slope of the tangent line and the instantaneous rate are the same number wearing different units. If position is in meters and time is in seconds, the derivative is in meters per second. "The derivative is $3$" is unfinished. "Volume is increasing by $3$ liters per minute at this time" is finished. <a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a> walks through that meaning. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates a slope. Compare it with an algebraic derivative, and change the step size if the estimate looks wild.</p>
+<p>Implicit differentiation is the same idea when the equation does not give $y$ as a formula in $x$. You differentiate both sides, treating $y$ as a function of $x$, and then solve for $dy/dx$. Read <a href="../explainers/implicit-differentiation-intuition.html">implicit differentiation intuition</a> when a curve is given as a relation. For $x^{2}+y^{2}=1$, the slope is $-x/y$ when $y$ is not zero. The glossary line for <a href="../glossary/#implicit-differentiation">implicit differentiation</a> is the short reminder.</p>
 
-<h2>Integrals as accumulation</h2>
-<p>A definite integral $\int_a^b f(x)\,dx$ measures net signed area under $y=f(x)$ from $a$ to $b$. Riemann sums make the idea concrete: rectangles of height $f(x_i^*)$ and width $\Delta x$ approximate the total; the integral is the limit of those sums as the mesh goes to zero (when the limit exists). Practice that picture on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>. Finite arithmetic and geometric totals live on the <a href="../calculators/sequence-series.html">sequence calculator</a>.</p>
+<h2 id="integrals">Integrals as accumulation</h2>
+<p>A definite integral $\int_a^b f(x)\,dx$ measures net signed accumulation of $f$ from $a$ to $b$. Where $f$ is positive, area adds. Where $f$ is negative, area subtracts. Riemann sums make the picture concrete: rectangles of height $f$ at a sample point and width $\Delta x$ approximate the total. The integral is the limit of those sums as the mesh goes to zero, when that limit exists.</p>
+<p>The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> draws that picture. For an increasing positive function, a left sum undershoots and a right sum overshoots. Say which is which before you run a modest number of rectangles. The integral of $x$ from $0$ to $1$ is $1/2$. A right sum on that interval should sit above $1/2$.</p>
+<p>The Fundamental Theorem of Calculus connects the two ideas. Differentiating an accumulation function returns the integrand, under the usual hypotheses, and a definite integral of a continuous function can be computed from an antiderivative at the ends. If you can antidifferentiate and cannot say what the number accumulates, the picture is still missing. The glossary entries for <a href="../glossary/#integral">integral</a> and <a href="../glossary/#definite-integral">definite integral</a> keep the indefinite and definite meanings apart.</p>
 
-<h2>Where to go next</h2>
-<ul>
+<h2 id="series">Sequences and series, the next door</h2>
+<p>Many first courses end with sequences and series. A sequence is an ordered list. A series adds that list, defined as the limit of <a href="../glossary/#partial-sum">partial sums</a> when the limit exists. Terms going to zero are required and not enough. The harmonic series is the warning: terms shrink, and partial sums still wander off. Read <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>, then <a href="../explainers/convergence-tests-series.html">convergence tests for series without fog</a>. The <a href="../calculators/sequence-series.html">sequence calculator</a> adds finitely many terms. A finite total is a different question from infinite <a href="../glossary/#convergence">convergence</a>.</p>
+
+<h2 id="order">Suggested learning order</h2>
+<p>Work in this order. One step per sitting is enough. Open a calculator only after you can say what the number means. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> is the rule on this site.</p>
+<ol>
+<li>Glossary: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#continuity">continuity</a>, <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#definite-integral">definite integral</a>.</li>
+<li><a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a>, then the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> on $x^{2}$ at $x=4$ (the algebraic slope is $8$).</li>
+<li>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> on a hole such as $(x^{2}-1)/(x-1)$ near $1$.</li>
+<li>Optional: <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a> and the <a href="../glossary/#epsilon-delta">glossary line</a>. Continue on <a href="../pathways/intro-to-proofs.html">intro to proofs</a> if this is the step you care about.</li>
+<li><a href="../explainers/implicit-differentiation-intuition.html">Implicit differentiation</a>. On the unit circle, compare $-x/y$ with a numerical slope.</li>
+<li>The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> with the definite integral entry. Predict which sum is larger.</li>
+<li><a href="../explainers/sequences-series-infinite-sums.html">Sequences and series</a>, then <a href="../explainers/convergence-tests-series.html">convergence tests</a>, with the <a href="../glossary/#ratio-test">ratio test</a>. The <a href="../calculators/sequence-series.html">sequence calculator</a> is only for a finite sum.</li>
+<li>Next subject: <a href="differential-equations.html">differential equations</a> and the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>, or the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a> for the full route.</li>
+</ol>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<p>Do these on paper. A calculator check comes after a sentence you can say.</p>
+<div class="callout"><strong>Practice habit.</strong> For a derivative you already know how to compute, write one sentence naming the quantity whose rate you are computing. Distance, cost, population, or temperature is enough. Include units. If the sentence has no units and no quantity, it is not finished.</div>
+<p><strong>Slope check.</strong> The derivative of $x^{2}$ at $x=4$ is $8$. Ask the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> for an estimate. If the estimate and $8$ disagree by a lot, change the step size before you blame the algebra.</p>
+<p><strong>Accumulation check.</strong> $\int_0^1 x\,dx = 1/2$. On an increasing positive function, a right Riemann sum overshoots. Say that sentence, then confirm the picture on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>.</p>
+<p><strong>Series check.</strong> In one sentence, state how a sequence differs from a series, and which object a convergence test is about. If you never mention adding terms, reread <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>.</p>
+
+<h2 id="pitfalls">Common pitfalls</h2>
+<p>Speed with the power rule can hide a missing definition. If <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> feels slow, the pillar is doing its job. A <a href="../calculators/">calculator</a> output is a picture or an estimate. A proof and an algebraic derivative are separate work.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> Substituting $x=a$ is a useful check when $f$ is continuous there. It is not the definition of a limit. Limits care about nearby values. A related mistake is to treat a finite geometric sum as a verdict about infinite convergence, or to trust the ratio test when the limit of successive absolute ratios is $1$. That case is silent. Silence is neither convergence nor divergence. Switch tests, as <a href="../explainers/convergence-tests-series.html">convergence tests for series without fog</a> explains.</div>
+
+<h2 id="next">Related reading</h2>
+<p>Epsilon delta leads to <a href="../pathways/intro-to-proofs.html">intro to proofs</a> and <a href="real-analysis-proofs.html">real analysis</a>. Several variables lead through the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a> into <a href="multivariable-vector-calculus.html">multivariable calculus</a>. Models of change stay with <a href="differential-equations.html">differential equations</a>. Compare routes on the <a href="../pathways/">pathways hub</a>. A full book is on the <a href="../sources/">sources</a> page.</p>
+<div class="cta-panel">
+<p>If the rules feel empty, start with the derivative explainer. If nearby values are the confusion, open the limit estimator after you predict what the table should do.</p>
+<a class="btn" href="../explainers/what-a-derivative-measures.html">Read what a derivative measures</a>
+</div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. This page is not a course, not exam preparation, and not affiliated with College Board. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="exam">
+<h2>Is this an AP Calculus exam review?</h2>
+<p>No. This page is a meaning map for a first calculus course. It is not affiliated with College Board and does not replace official exam materials or a syllabus. Readers who already have AP Calculus AB skills and want an order toward series can use the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>, which begins with this page.</p>
+</section>
+<section class="faq-item" id="epsilon">
+<h2>Do I need epsilon delta on a first pass?</h2>
+<p>It is optional on a first pass and worth the time if a later course will ask for proofs. Read <a href="../explainers/epsilon-delta-intuition.html">the explainer</a> for the quantifier order: the tolerance on outputs comes first, then a window on inputs. The <a href="../pathways/intro-to-proofs.html">intro to proofs</a> pathway is where you practice writing the arguments.</p>
+</section>
+<section class="faq-item" id="calculators">
+<h2>When should I open a calculator?</h2>
+<p>After you can say what the number means. The <a href="../calculators/numerical-derivative.html">numerical derivative</a> estimates a slope. The <a href="../calculators/limit-estimator.html">limit estimator</a> samples nearby values. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> draws accumulation. The <a href="../calculators/sequence-series.html">sequence calculator</a> adds finitely many terms. None of them replaces an algebraic derivative, a limit proof, or a convergence test.</p>
+</section>
+<section class="faq-item" id="after">
+<h2>What should I study after integrals?</h2>
+<p>If the next course includes series, read the <a href="../explainers/sequences-series-infinite-sums.html">sequences explainer</a> and the <a href="../explainers/convergence-tests-series.html">convergence tests explainer</a>. If the next course is differential equations, read <a href="differential-equations.html">differential equations first look</a> and the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. If the next course uses several variables, do <a href="linear-algebra.html">linear algebra</a> first, then the <a href="multivariable-vector-calculus.html">multivariable topic</a>. If the next course asks for proofs, use <a href="../pathways/intro-to-proofs.html">intro to proofs</a>.</p>
+</section>
+<section class="faq-item" id="pathway">
+<h2>How is this page different from the AP Calculus AB pathway?</h2>
+<p>This page is the topic cluster: the ideas, the outcomes, and a suggested order. The <a href="../pathways/ap-calc-ab-bridge.html">pathway</a> is a longer study route that assumes AP Calculus AB skills and spends more time on series and a first differential equation. Start here if the base words are shaky. Start on the pathway if computation is already easy and you want the ordered sittings.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="../explainers/what-a-derivative-measures.html">What a derivative actually measures</a></li>
 <li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a></li>
 <li><a href="../explainers/implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
-<li><a href="../explainers/convergence-tests-series.html">Convergence tests for series</a></li>
 <li><a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
+<li><a href="../explainers/convergence-tests-series.html">Convergence tests for series without fog</a></li>
 <li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
-<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge pathway</a></li>
-<li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
-<li>Glossary: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#integral">integral</a>, <a href="../glossary/#continuity">continuity</a>, <a href="../glossary/#implicit-differentiation">implicit differentiation</a></li>
-</ul>
-</div>
-<div class="related"><h2>Related</h2><ul>
-<li><a href="multivariable-vector-calculus.html">Multivariable &amp; vector calculus</a></li>
-<li><a href="real-analysis-proofs.html">Real analysis &amp; proof habits</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a></li>
+<li><a href="differential-equations.html">Differential equations first look</a></li>
+<li><a href="real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../glossary/#limit">Glossary: limit</a></li>
+<li><a href="./">All topics</a></li>
 </ul></div>
 </article>
 </div>
