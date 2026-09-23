@@ -6,12 +6,12 @@ Contact: mailto:joshuaofisrael@gmail.com?subject=[Contact:%20Higher%20Math%20Gui
 Publisher: Joshua Israel Ventures LLC
 
 ## Pillar topics
-- https://highermathguide.com/topics/calculus-foundations.html
-- https://highermathguide.com/topics/multivariable-vector-calculus.html
-- https://highermathguide.com/topics/linear-algebra.html
-- https://highermathguide.com/topics/probability-statistics.html
-- https://highermathguide.com/topics/real-analysis-proofs.html
-- https://highermathguide.com/topics/differential-equations.html
+- https://highermathguide.com/topics/calculus-foundations.html : first course map of limits, derivatives, integrals, and a study order
+- https://highermathguide.com/topics/multivariable-vector-calculus.html : first look map of partial derivatives, gradients, Jacobians, and vector calculus
+- https://highermathguide.com/topics/linear-algebra.html : first course map of vectors, matrices, bases, and eigenvalues
+- https://highermathguide.com/topics/probability-statistics.html : first course map of chance, conditioning, Bayes theorem, and reading data
+- https://highermathguide.com/topics/real-analysis-proofs.html : first course map of limits, sequences, series tests, and proof habits
+- https://highermathguide.com/topics/differential-equations.html : first look map of separable equations, slope fields, and initial value problems
 
 ## Long form explainers
 - https://highermathguide.com/explainers/

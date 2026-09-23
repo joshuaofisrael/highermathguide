@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Multivariable & Vector Calculus Intro, Higher Math Guide</title>
-<meta name="description" content="Partial derivatives, gradients, and vector calculus ideas explained for a first serious look.">
+<title>Multivariable Calculus Topic Map, Higher Math Guide</title>
+<meta name="description" content="First look map of partial derivatives, gradients, Jacobians, and vector calculus, with a study order into lessons already on this site.">
 <link rel="canonical" href="https://highermathguide.com/topics/multivariable-vector-calculus.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Multivariable & Vector Calculus Intro, Higher Math Guide">
-<meta property="og:description" content="Partial derivatives, gradients, and vector calculus ideas explained for a first serious look.">
+<meta property="og:title" content="Multivariable Calculus Topic Map, Higher Math Guide">
+<meta property="og:description" content="First look map of partial derivatives, gradients, Jacobians, and vector calculus, with a study order into lessons already on this site.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/topics/multivariable-vector-calculus.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Multivariable & Vector Calculus Intro, Higher Math Guide">
-<meta name="twitter:description" content="Partial derivatives, gradients, and vector calculus ideas explained for a first serious look.">
+<meta name="twitter:title" content="Multivariable Calculus Topic Map, Higher Math Guide">
+<meta name="twitter:description" content="First look map of partial derivatives, gradients, Jacobians, and vector calculus, with a study order into lessons already on this site.">
 <link rel="stylesheet" href="../css/styles.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
@@ -25,13 +24,67 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Multivariable & Vector Calculus Intro",
-  "description": "Partial derivatives, gradients, and vector calculus ideas explained for a first serious look.",
+  "name": "Multivariable Calculus Topic Map",
+  "description": "First look map of partial derivatives, gradients, Jacobians, and vector calculus, with a study order into lessons already on this site.",
   "url": "https://highermathguide.com/topics/multivariable-vector-calculus.html",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Multivariable calculus questions",
+  "url": "https://highermathguide.com/topics/multivariable-vector-calculus.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Joshua Israel Ventures LLC"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need linear algebra before this pillar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can meet partial derivatives with only single variable calculus. Gradients, Jacobians, and vector operations get much shorter if you already read a matrix as a geometric machine. The linear algebra first course is the orderly way to get that picture. Do it before the Jacobian explainer if columns and determinants are still new."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a gradient and a Jacobian?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gradient belongs to a scalar function, one number out. It is the vector of first partial derivatives and points toward steepest increase. A Jacobian belongs to a map that may have several outputs. It is the matrix of all first partial derivatives, and it is the best linear approximation to that map at a point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I study Lagrange multipliers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After you can compute a gradient and say that it is perpendicular to a level curve. Lagrange multipliers find candidates where the gradient of the objective is parallel to the gradient of the constraint. Read the explainer once those two sentences are easy, and use the glossary entries for gradient, constraint, and Lagrange multiplier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Stokes theorem a different subject from single variable calculus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the same idea of a fundamental theorem, moved to curves and surfaces. Circulation around the oriented boundary of a surface equals the flux of the curl through the surface. Green's theorem is the flat special case. Read the Stokes explainer after you can say what a line integral and a curl are asking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which calculator on this site helps with several variables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The vector operations calculator checks a dot product, a cross product, a magnitude, or a unit vector. The 2 by 2 matrix calculator checks a determinant or a product after you have written a Jacobian by hand. Neither tool computes partial derivatives for you. Predict the number, then confirm the arithmetic."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -61,36 +114,117 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Multivariable &amp; vector calculus intro</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 21 Sep 2026</p>
+<h1>Multivariable and vector calculus</h1>
+<p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Once functions depend on more than one input (height as a function of latitude and longitude, temperature in a room, profit from price and advertising), single variable calculus is not enough. Multivariable calculus extends derivatives and integrals to several variables. Vector calculus organizes those ideas when outputs or domains live in the plane or space.</p>
+<p>Once a quantity depends on more than one input, single variable calculus is only the local tool. Height can depend on two map coordinates. Temperature in a room depends on three. A map can send a point in the plane to another point in the plane. Multivariable calculus extends derivatives and integrals to several inputs. Vector calculus organizes those ideas when the output, or the domain, lives in the plane or in space. This pillar is a first look map: who it helps, what the core pictures are, and which pages already on this site to open in order.</p>
 
-<h2>Partial derivatives and the gradient</h2>
-<p>A partial derivative holds every variable but one fixed and differentiates with respect to the free one. For $z = f(x,y)$, $\partial f/\partial x$ asks how $z$ changes when $x$ moves and $y$ stays put. The gradient $\nabla f$ packages all first partials into a vector that points in the direction of steepest increase and whose magnitude is that steepest slope (under the usual Euclidean geometry).</p>
-<div class="callout"><strong>Intuition.</strong> Level curves (or surfaces) of $f$ are perpendicular to $\nabla f$. Walking along a contour keeps $f$ constant; walking with the gradient changes $f$ fastest.</div>
+<h2 id="who">Who this pillar is for</h2>
+<p>Start here if a course in several variables is in front of you, or if partial derivative symbols have appeared and the pictures have not. You should already be able to differentiate and integrate in one variable, and to say what a derivative measures. If that sentence is shaky, repair it on <a href="calculus-foundations.html">calculus foundations</a> and <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> before you add inputs.</p>
+<p>If matrices still feel like grids to grind, do the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> first. Gradients, Jacobians, and divergence are much shorter once a matrix is a geometric machine. This page assumes you want the map of ideas. The pathway is the ordered route through the linear algebra pages that make the later steps possible.</p>
 
-<h2>Linear approximation in several variables</h2>
-<p>Near a point, a differentiable function looks like its tangent plane (or hyperplane): $f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})\cdot(\mathbf{x}-\mathbf{a})$. That is the multivariable cousin of $f(a)+f'(a)(x-a)$.</p>
+<h2 id="prereq">Prerequisites</h2>
+<p>You need single variable limits, derivatives, and a picture of the definite integral as signed accumulation. You need coordinates in the plane. Dot products help immediately: a positive dot product means a similar direction, zero means a right angle (or a zero vector), and a negative dot product means an obtuse angle.</p>
+<p>Read <a href="../glossary/#partial-derivative">partial derivative</a>, <a href="../glossary/#gradient">gradient</a>, <a href="../glossary/#vector">vector</a>, and <a href="../glossary/#vector-field">vector field</a> when you want the short form of a word. OpenStax Calculus and MIT OpenCourseWare are on the <a href="../sources/">sources</a> page if you want a full development of line integrals and the big theorems. This pillar will not replace that book. It will tell you which idea to hold while you read it.</p>
 
-<h2>Vector fields and “rates with direction”</h2>
-<p>A vector field assigns a vector to each point: wind velocity, fluid flow, force. Divergence measures local expansion or compression; curl measures local rotation. Line and surface integrals ask how much a field “pushes along a path” or “flows through a surface.” The big theorems (Green, Stokes, divergence) relate those integrals to derivatives of the field. They are multivariable cousins of the Fundamental Theorem.</p>
-
-<div class="callout pitfall"><strong>Pitfall.</strong> Notation is crowded. Distinguish carefully between a scalar field $f$, a vector field $\mathbf{F}$, and operators $\nabla$, $\nabla\cdot$, $\nabla\times$. Writing “grad,” “div,” and “curl” in words while you learn is often clearer than drowning in symbols.</div>
-
-<h2>Where to go next</h2>
+<h2 id="outcomes">What you should be able to do</h2>
+<p>When you finish the core, you should be able to do these things in a sentence, then on a small example.</p>
 <ul>
-<li><a href="../topics/calculus-foundations.html">Calculus foundations</a> (refresh single variable ideas first)</li>
-<li><a href="../topics/linear-algebra.html">Linear algebra</a> (gradients and Jacobians are linear maps)</li>
+<li>Compute a partial derivative by holding the other inputs fixed, and say which input was allowed to move.</li>
+<li>Build a <a href="../glossary/#gradient">gradient</a> and say that it points toward steepest increase, perpendicular to a level curve.</li>
+<li>Write the linear approximation in several variables, and name a <a href="../glossary/#jacobian">Jacobian</a> as the matrix of that approximation when there are several outputs.</li>
+<li>Set up a constrained optimization as "gradients parallel," and know where to read the method: <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>.</li>
+<li>Distinguish a scalar field, a vector field, divergence, and curl in words, and state what <a href="../glossary/#stokes-theorem">Stokes theorem</a> equates.</li>
+</ul>
+
+<h2 id="partials">Partial derivatives and the gradient</h2>
+<p>A partial derivative holds every variable but one fixed and differentiates with respect to the free one. For $z=f(x,y)$, the symbol $\partial f/\partial x$ asks how $z$ changes when $x$ moves and $y$ stays put. It is an ordinary derivative along a line parallel to the $x$ axis. The other partial derivative is the ordinary derivative along a line parallel to the $y$ axis.</p>
+<p>The gradient $\nabla f$ packages the first partials into one vector. Under the usual Euclidean geometry it points in the direction of steepest increase, and its length is that steepest slope. Walking along a level curve keeps $f$ constant, so the gradient is perpendicular to the level curve. Walking with the gradient changes $f$ fastest.</p>
+<div class="callout"><strong>Picture.</strong> Let $f(x,y)=x^{2}y$. Then $\partial f/\partial x = 2xy$ and $\partial f/\partial y = x^{2}$. At $(1,2)$ the gradient is $(4,1)$. Moving a little in the direction of $(4,1)$ increases $f$ faster than moving the same distance in any other direction. Moving perpendicular to $(4,1)$ keeps $f$ nearly constant, which is the level curve idea in a single point.</div>
+
+<h2 id="linear">Linear approximation and the Jacobian</h2>
+<p>Near a point where the partial derivatives behave well, a scalar function looks like its tangent plane:</p>
+<p>$$f(\mathbf{x}) \approx f(\mathbf{a}) + \nabla f(\mathbf{a})\cdot(\mathbf{x}-\mathbf{a}).$$</p>
+<p>That is the several variable cousin of $f(a)+f'(a)(x-a)$. The dot product with the gradient is the whole first order correction.</p>
+<p>When the output is itself a vector, the derivative is a matrix. The <a href="../glossary/#jacobian">Jacobian</a> is the matrix of all first partial derivatives. Its columns say how the output moves when you nudge one input at a time. For a square map, the determinant of that matrix scales local area. A zero determinant means the approximation flattens area, so nearby outputs are squeezed onto a thinner set.</p>
+<p>Read <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> for the full story. A small check you can do before that page: let $F(x,y)=(x+y,\, xy)$. At $(1,1)$ every partial derivative equals $1$, so the Jacobian is $\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$. The determinant is $0$. The two columns are the same vector, so the linear approximation collapses the plane onto the line through $(1,1)$. Confirm the determinant on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> after you have written the matrix yourself. That calculator multiplies and finds determinants. It does not compute partial derivatives.</p>
+
+<h2 id="constrained">Constrained optimization</h2>
+<p>An unconstrained local maximum in the interior occurs where the gradient is the zero vector. A <a href="../glossary/#constraint">constraint</a> $g(x,y)=c$ leaves only the directions tangent to that curve. At a constrained max or min, $\nabla f$ is parallel to $\nabla g$, written $\nabla f = \lambda \nabla g$ when $\nabla g$ is not zero. The number $\lambda$ measures how the optimal value responds if you nudge the allowed level of $g$. Read <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a> once gradients are comfortable, with the <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a> glossary line.</p>
+<p>A geometry check, separate from the explainer's product example: the point on the line $x+y=1$ closest to the origin minimizes $f(x,y)=x^{2}+y^{2}$. Then $\nabla f=(2x,2y)$ and $\nabla g=(1,1)$ for $g=x+y$. Parallelism forces $x=y$, and the line forces $x=y=1/2$. The closest point is the place where the growing circle $x^{2}+y^{2}=r^{2}$ first touches the line, so the normals agree. That touch is the picture behind the algebra.</p>
+
+<h2 id="fields">Vector fields, divergence, curl, and Stokes</h2>
+<p>A <a href="../glossary/#vector-field">vector field</a> assigns a vector to each point: wind, fluid velocity, or a force. A scalar field assigns a number. Writing "grad," "div," and "curl" in words is often clearer than a page of $\nabla$ symbols while you learn.</p>
+<p>Divergence measures local expansion or compression. Curl measures local rotation. A line integral asks how much the field pushes along a path. A flux integral asks how much crosses a surface. <a href="../glossary/#stokes-theorem">Stokes theorem</a> equates circulation around the oriented boundary of a surface with the flux of the curl through the surface. Green's theorem is the flat special case. <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a> works one example and explains why a kinder surface with the same rim gives the same circulation.</p>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. A cross product's length is the area of the parallelogram the inputs span. The page does not compute a curl.</p>
+
+<h2 id="order">Suggested learning order</h2>
+<p>Work in this order. If a step uses a word you cannot define, stop and read the glossary line before the next explainer.</p>
+<ol>
+<li>If a derivative is still only a rule, refresh <a href="calculus-foundations.html">calculus foundations</a> and <a href="../explainers/what-a-derivative-measures.html">what a derivative measures</a>.</li>
+<li>If matrices are new, follow the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> through eigenvalues before the Jacobian.</li>
+<li>Glossary: <a href="../glossary/#partial-derivative">partial derivative</a> and <a href="../glossary/#gradient">gradient</a>. Compute $\nabla(x^{2}y)$ at $(1,2)$. You should get $(4,1)$.</li>
+<li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. Write a 2 by 2 Jacobian, then check its determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a>.</li>
+<li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers</a> with <a href="../glossary/#constraint">constraint</a>. Do the closest point on $x+y=1$ as a second check.</li>
+<li><a href="../glossary/#vector-field">Vector field</a>, then <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>. State the theorem in one sentence before the worked circle.</li>
+<li>A full exercise set is on the <a href="../sources/">sources</a> page. This order is the cluster on this site.</li>
+</ol>
+
+<h2 id="practice">Checkpoints and practice habits</h2>
+<div class="callout"><strong>Practice habit.</strong> Every time you differentiate in several variables, write the sentence "I am letting this input move, and holding these inputs fixed." If you cannot name the frozen inputs, the partial derivative is not finished.</div>
+<p><strong>Gradient check.</strong> For $f(x,y)=x^{2}+y^{2}$, the gradient is $(2x,2y)$, which points straight away from the origin. Level curves are circles. The radius is perpendicular to the circle. That is the gradient picture on the simplest hill.</p>
+<p><strong>Jacobian check.</strong> For $F(x,y)=(x+y,\, xy)$ at $(1,1)$, the Jacobian is $\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ and the determinant is $0$. Confirm the determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a> after the matrix is on your paper.</p>
+<p><strong>Dot product check.</strong> The vectors $(4,1)$ and $(1,-4)$ have dot product $4\cdot 1 + 1\cdot(-4) = 0$, so they are perpendicular. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> only to confirm the zero. A zero dot product is the algebraic form of "this direction stays on the level curve to first order."</p>
+
+<h2 id="pitfalls">Common pitfalls</h2>
+<div class="callout pitfall"><strong>Pitfall.</strong> A partial derivative is a derivative along one coordinate direction. If you forget which input was held fixed, the number can be right and the meaning wrong. The Jacobian determinant scales area for the linear approximation. Area and volume integrals still need their own setup.</div>
+<p>Lagrange multipliers find candidates. You still compare values, and you still watch places where $\nabla g$ vanishes. A sign error in Stokes theorem is usually an orientation error. <a href="../explainers/stokes-theorem-intuition.html">The Stokes explainer</a> treats that with care.</p>
+
+<h2 id="next">Related reading</h2>
+<p>The algebra under this page is <a href="linear-algebra.html">linear algebra</a> and its <a href="../pathways/linear-algebra-first-course.html">first course pathway</a>. Single variable repair is <a href="calculus-foundations.html">calculus foundations</a>. Proof habits are <a href="real-analysis-proofs.html">real analysis</a>. Compare routes on the <a href="../pathways/">pathways hub</a>.</p>
+<div class="cta-panel">
+<p>If derivative language is solid and matrices are the gap, open the linear algebra pathway. If both are solid, open the Jacobian explainer.</p>
+<a class="btn" href="../explainers/jacobian-matrices-plain-language.html">Read Jacobian matrices</a>
+</div>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational only. This page is not a course and not a substitute for a text. See the <a href="../disclaimer/">disclaimer</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="linalg">
+<h2>Do I need linear algebra before this pillar?</h2>
+<p>You can meet partial derivatives with only single variable calculus. Gradients, Jacobians, and vector operations get much shorter if you already read a matrix as a geometric machine. The <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> is the orderly way to get that picture. Do it before the <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian explainer</a> if columns and determinants are still new.</p>
+</section>
+<section class="faq-item" id="grad-jac">
+<h2>What is the difference between a gradient and a Jacobian?</h2>
+<p>A <a href="../glossary/#gradient">gradient</a> belongs to a scalar function, one number out. It is the vector of first partial derivatives and points toward steepest increase. A <a href="../glossary/#jacobian">Jacobian</a> belongs to a map that may have several outputs. It is the matrix of all first partial derivatives, and it is the best linear approximation to that map at a point.</p>
+</section>
+<section class="faq-item" id="lagrange">
+<h2>When should I study Lagrange multipliers?</h2>
+<p>After you can compute a gradient and say that it is perpendicular to a level curve. Lagrange multipliers find candidates where the gradient of the objective is parallel to the gradient of the constraint. Read the <a href="../explainers/lagrange-multipliers-intuition.html">explainer</a> once those two sentences are easy, and use the glossary entries for <a href="../glossary/#gradient">gradient</a>, <a href="../glossary/#constraint">constraint</a>, and <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a>.</p>
+</section>
+<section class="faq-item" id="stokes">
+<h2>Is Stokes theorem a different subject from single variable calculus?</h2>
+<p>It is the same idea of a fundamental theorem, moved to curves and surfaces. Circulation around the oriented boundary of a surface equals the flux of the curl through the surface. Green's theorem is the flat special case. Read the <a href="../explainers/stokes-theorem-intuition.html">Stokes explainer</a> after you can say what a line integral and a curl are asking.</p>
+</section>
+<section class="faq-item" id="whichcalc">
+<h2>Which calculator on this site helps with several variables?</h2>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> checks a determinant or a product after you have written a Jacobian by hand. Neither tool computes partial derivatives for you. Predict the number, then confirm the arithmetic.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="linear-algebra.html">Linear algebra</a></li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course</a></li>
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
 <li><a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
-<li><a href="../calculators/vector-ops.html">Vector operations calculator</a>, for dot products, cross products, and norms</li>
-<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, for a Jacobian you have already written by hand</li>
-<li>Glossary: <a href="../glossary/#partial-derivative">partial derivative</a>, <a href="../glossary/#gradient">gradient</a>, <a href="../glossary/#vector-field">vector field</a>, <a href="../glossary/#jacobian">Jacobian</a>, <a href="../glossary/#stokes-theorem">Stokes theorem</a></li>
-</ul>
-</div>
+<li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
+<li><a href="../glossary/#gradient">Glossary: gradient</a></li>
+<li><a href="../glossary/#jacobian">Glossary: Jacobian</a></li>
+<li><a href="./">All topics</a></li>
+</ul></div>
 </article>
 </div>
 
