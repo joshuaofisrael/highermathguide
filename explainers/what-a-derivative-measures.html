@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What a Derivative Actually Measures, Higher Math Guide</title>
-<meta name="description" content="Original explainer: instantaneous rate of change, linear approximation, units, and common misconceptions.">
+<meta name="description" content="What an instantaneous rate measures, how the best local line approximates a function, and when a corner, a jump, or a vertical tangent means no derivative.">
 <link rel="canonical" href="https://highermathguide.com/explainers/what-a-derivative-measures.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="What a Derivative Actually Measures, Higher Math Guide">
-<meta property="og:description" content="Original explainer: instantaneous rate of change, linear approximation, units, and common misconceptions.">
+<meta property="og:description" content="What an instantaneous rate measures, how the best local line approximates a function, and when a corner, a jump, or a vertical tangent means no derivative.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/what-a-derivative-measures.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What a Derivative Actually Measures, Higher Math Guide">
-<meta name="twitter:description" content="Original explainer: instantaneous rate of change, linear approximation, units, and common misconceptions.">
+<meta name="twitter:description" content="What an instantaneous rate measures, how the best local line approximates a function, and when a corner, a jump, or a vertical tangent means no derivative.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
@@ -24,22 +24,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "What a Derivative Actually Measures",
-  "description": "Original explainer: instantaneous rate of change, linear approximation, units, and common misconceptions.",
-  "url": "https://highermathguide.com/explainers/what-a-derivative-measures.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-11",
-  "dateModified": "2026-09-11"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What a Derivative Actually Measures",
+      "description": "What an instantaneous rate measures, how the best local line approximates a function, and when a corner, a jump, or a vertical tangent means no derivative.",
+      "url": "https://highermathguide.com/explainers/what-a-derivative-measures.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-11",
+      "dateModified": "2026-09-24"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/what-a-derivative-measures.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between an average rate and an instantaneous rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An average rate divides the change in output by the change in input on a whole interval. An instantaneous rate is the limit of those averages as the interval shrinks to a point, when that limit exists as a finite number. On a long interval the average can hide a slower start and a faster finish."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the derivative tell me the next value of the function?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It tells you the best local rate. You can build a line from that rate, and the line approximates the function near the point. The next exact value still comes from the function itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does a derivative fail to exist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common first course cases are a corner, where one sided slopes disagree, a jump, where the function is not continuous, and a vertical tangent, where secant slopes grow without a finite limit. The function also needs a value at the point, or there is nothing to form a difference quotient from."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do units matter for a derivative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They say what the number is counting. Position in meters and time in seconds make the derivative a velocity in meters per second. Drop the units and a slope of 6 has no story. A calculator does not know your units. You attach them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The numerical derivative calculator. Start with x squared at 3, where the true slope is 6, and compare a forward difference with a central difference. Then try absolute value at 0. A central difference there can print 0, which is not a derivative, while the one sided estimates disagree."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -70,43 +124,120 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>What a derivative actually measures</h1>
-<p class="article-meta">Explainer · Educational only · Updated 11 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 24 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Students often memorize $f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$ and still feel unsure what the number <em>means</em>. The derivative measures how sensitive the output is to a tiny nudge in the input — an instantaneous rate of change, and equivalently the slope of the best linear approximation at that point.</p>
+<p>Students often memorize $f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$ and still cannot say what the number is for. The <a href="../glossary/#derivative">derivative</a> measures sensitivity. It says how fast the output changes when the input is nudged, at one moment, when that rate settles on a single finite value. The same number is the slope of the best local line to the graph at that point. A <a href="../glossary/#limit">limit</a> is what turns a run of average rates into that one slope. If the averages refuse to settle, the derivative does not exist there, even when a derivative formula looks tidy somewhere else on the graph.</p>
+<p>This is a first college reading, and a bridge out of AP Calculus, not a substitute for the course. On the <a href="./#calculus">explainer library</a> it is the first page of the calculus cluster. The wider map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. The limit language under the formula is <a href="epsilon-delta-intuition.html">epsilon delta intuition</a>. When the curve is an equation rather than $y=f(x)$, the companion is <a href="implicit-differentiation-intuition.html">implicit differentiation</a>.</p>
 
-<h2>From average rate to instantaneous rate</h2>
-<p>The difference quotient $\frac{f(x+h)-f(x)}{h}$ is the average rate of change of $f$ on the interval between $x$ and $x+h$. Sending $h\to 0$ asks whether those averages settle on a single number. When they do, that number is $f'(x)$.</p>
-<p><span class="example-label">Example</span> If $s(t)$ is position in meters and $t$ is time in seconds, then $s'(t)$ has units meters per second: velocity. If $C(q)$ is cost in dollars to produce $q$ items, $C'(q)$ is marginal cost in dollars per item. Units are not decoration; they are the story.</p>
+<h2>Average rate and instantaneous rate</h2>
+<p>The difference quotient $\frac{f(x+h)-f(x)}{h}$ is an average rate on the interval from $x$ to $x+h$. It divides the change in output by the change in input. Nothing about that quotient is instantaneous yet. Sending $h$ toward $0$ asks whether those averages settle. When they settle on one finite number, that number is $f'(x)$, the instantaneous rate.</p>
+<p><span class="example-label">Example</span> Use a cart on a floor, as a model, not as a lab log. Let $t$ be seconds since the cart passed a mark, and let $s(t)=t^2$ be position in meters past that mark. The bare formula hides a coefficient. The $1$ in front of $t^2$ stands for $1$ meter per second squared, so the square of the time really does come out in meters. Keep that coefficient in mind when you read units. You do not see it written next to $t^2$.</p>
+<p>From $t=3$ to $t=5$ the cart goes from $s(3)=9$ meters to $s(5)=25$ meters. The change in position is $16$ meters. The change in time is $2$ seconds. The average velocity is $16/2=8$ meters per second. That single number mixes a slower moment at the start of the interval with a faster moment at the end. The derivative of $t^2$ is $2t$, so the instantaneous velocity is $6$ meters per second at $t=3$ and $10$ meters per second at $t=5$. The average, $8$, sits between them. It is not a third fact about some new instant, except in one special way noted below.</p>
+<p>Algebra makes the same point for every step $h\neq 0$:</p>
+<p>$$\frac{s(3+h)-s(3)}{h}=\frac{(3+h)^2-9}{h}=\frac{6h+h^2}{h}=6+h.$$</p>
+<p>The simplified quotient $6+h$ is the average velocity from time $3$ to time $3+h$, in meters per second. Put in $h=2$ and you recover the $8$ from the story. Put in a tiny $h$ and you are near $6$. The <a href="../glossary/#limit">limit</a> as $h$ approaches $0$ is $6$, and that is $s'(3)$. For a small positive $h$ the average is a little larger than $6$, which matches a cart that is still speeding up.</p>
+<p>On this parabola, the average rate on an interval equals the instantaneous rate at the midpoint. From $3$ to $5$ the midpoint is $t=4$, and $s'(4)=8$. That shortcut belongs to quadratic models. It is not a license to replace every derivative by a long secant on some other function.</p>
 
-<h2>Linear approximation is the point</h2>
-<p>Differentiability at $a$ means there is a number $m$ such that the error $f(a+h)-f(a)-mh$ shrinks faster than $h$ as $h\to 0$. That $m$ is $f'(a)$. Locally, the graph looks like the line $y=f(a)+f'(a)(x-a)$. Optimization, Newton’s method, and error estimates all lean on this idea.</p>
-
-<div class="callout"><strong>Try it.</strong> Use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> to estimate $f'(x_0)$ with a small step $h$. Central differences are usually more accurate than one-sided ones for smooth functions.</div>
+<h2>Linear approximation is the best local line</h2>
+<p>Differentiability at a point $a$ means there is a slope $m$ such that the error $f(a+h)-f(a)-mh$ shrinks faster than the step $h$ as $h$ approaches $0$. That $m$ is $f'(a)$. Near $a$, the graph tracks the line $y=f(a)+f'(a)(x-a)$ more closely than it tracks any other straight line through the point. The line is the linear approximation. People also call it the tangent line, which is the same object once the derivative exists.</p>
+<p>At $t=3$ the cart is at $9$ meters with velocity $6$ meters per second. The best local line is</p>
+<p>$$L(t)=9+6(t-3).$$</p>
+<p>Read it as a prediction rule. Start at the known position, and add the instantaneous velocity times how far the clock moves. At $t=3.1$, one tenth of a second later, the line predicts $9+6(0.1)=9.6$ meters. The true position is $(3.1)^2=9.61$ meters. The error is $0.01$ meters. The step was $0.1$ seconds. The error is much smaller than the step.</p>
+<p>The expansion $(3+h)^2=9+6h+h^2$ shows why. The line keeps $9+6h$ and drops $h^2$. The dropped piece is the whole error. Divide that error by the step and you get $h$ itself:</p>
+<p>$$\frac{s(3+h)-s(3)-6h}{h}=h.$$</p>
+<p>As $h$ approaches $0$, this ratio approaches $0$. That is what "faster than the step" means. A wrong slope does not pass the test. If you used $5$ instead of $6$, the error would be $h+h^2$, and the error divided by $h$ would approach $1$, not $0$. A nearby slope leaves a miss about the size of the step. Only $m=6$ makes the miss shrink faster than the step. The same local line is what Newton's method uses when it guesses a root, and what a short error bound uses when it replaces a curve by a straight line on a tiny interval.</p>
 
 <h2>What the derivative is not</h2>
+<p>A few misconceptions show up so often that they are worth retiring before the failure cases.</p>
 <ul>
-<li>It is not “the next value of the function.”</li>
-<li>It is not automatically the percentage change (that would involve dividing by $f(x)$ when $f(x)\neq 0$).</li>
-<li>A zero derivative does not guarantee a local max/min (consider $x^3$ at $0$).</li>
-<li>Existence of $f'(a)$ is stronger than continuity at $a$, but continuity of $f'$ is stronger still.</li>
+<li><strong>It is not the next value of the function.</strong> $s'(3)=6$ is a velocity in meters per second, not a position. One second later the cart is at $16$ meters, not at $6$.</li>
+<li><strong>It is not a percent change.</strong> From $9$ meters to $9.61$ meters, the change $0.61$ divided by the starting position $9$ is about $0.068$. That relative change is not a velocity. A relative rate would divide the derivative by the current value, when that value is not zero. At $t=3$, $6$ meters per second divided by $9$ meters is two thirds per second. That is a different measurement from $6$.</li>
+<li><strong>A zero derivative does not guarantee a maximum or a minimum.</strong> For $f(x)=x^3$, the derivative is $3x^2$, so $f'(0)=0$. Still, $f(0.1)=0.001$ and $f(-0.1)=-0.001$. The graph flattens for a moment and keeps rising. A horizontal tangent can be a flat step in a climb.</li>
+<li><strong>A derivative at a point is stronger than continuity there, and continuity of the derivative is stronger still.</strong> If $f'(a)$ exists, then $f$ is <a href="../glossary/#continuity">continuous</a> at $a$. The corner below is continuous and still has no derivative, so continuity is not enough. A slope formula on each side of a point also does not finish the job. You still need the limit of the difference quotient at the point itself.</li>
+<li><strong>A difference quotient with a large step is an average, not "the derivative."</strong> The story with $h=2$ produced $8$ meters per second. Calling that number $s'(3)$ is the main blur this page is trying to undo.</li>
 </ul>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> Difference quotients with large $h$ measure coarse average change. Calling them “the derivative” without a limit (or a controlled numerical scheme) blurs the concept.</div>
+<h2>When a derivative does not exist</h2>
+<p>Three pictures cover most first course failures. In each one, either $f(a)$ is the wrong kind of value for a tangent, or the difference quotients refuse to settle on one finite number. If the function is not even defined at the point, stop earlier. The quotient needs $f(a)$.</p>
 
-<p>For the rigorous neighborhood language behind limits of difference quotients, see <a href="epsilon-delta-intuition.html">Epsilon-delta intuition without terror</a>. For the wider map, see <a href="../topics/calculus-foundations.html">Calculus foundations</a>.</p>
+<h3>A corner</h3>
+<p>Let $f(x)=|x|$ and look at $x=0$. The function is continuous there: values near $0$ are near $0$, and $f(0)=0$. The slopes do not agree. For $h&gt;0$,</p>
+<p>$$\frac{|h|-0}{h}=1.$$</p>
+<p>For $h&lt;0$, the same quotient equals $-1$. The right hand averages settle on $1$. The left hand averages settle on $-1$. There is no single limit, so $f'(0)$ does not exist. A tangent line would have to fall with slope $-1$ on the left and rise with slope $1$ on the right. No one line does both. Continuity was not the missing piece. Agreement of the one sided rates was.</p>
 
-<h2>Citations &amp; further reading</h2>
+<h3>A jump</h3>
+<p>Define $f$ by two rules: $f(x)=0$ when $x&lt;0$, and $f(x)=1$ when $x\ge 0$. At $0$ the outputs do not settle on $f(0)$. From the left they sit at $0$, while $f(0)=1$. That is a failure of <a href="../glossary/#continuity">continuity</a>. Differentiability always implies continuity, so a derivative is already impossible here.</p>
+<p>The quotients show the same wreck. For $h&gt;0$, the difference quotient is $0$. For $h&lt;0$, it equals $-1/h$, which grows without a finite limit as $h$ approaches $0$. There is no tangent line across a gap. The graph disconnects, and a finite slope has nothing consistent to follow.</p>
+
+<h3>A vertical tangent</h3>
+<p>Let $f(x)=x^{1/3}$, the cube root, and look at $x=0$. This function is continuous on the whole line, including at $0$, where $f(0)=0$. It does not turn a corner in the way absolute value does. The difference quotient is</p>
+<p>$$\frac{h^{1/3}}{h}=\frac{1}{h^{2/3}}.$$</p>
+<p>As $h$ approaches $0$ from either side, $h^{2/3}$ approaches $0$ through positive values, so the quotient grows without a finite limit. Secant lines through the origin and a nearby point become arbitrarily steep. The line you want would be vertical. A vertical line is not the graph of $y=f(0)+m(x-0)$ for any real number $m$. The derivative, which has to be that $m$, does not exist. Both sides tell the same story, and the story is "no finite slope," which is a different failure from the corner, where the two sides settled on two different finite slopes.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> A central difference can hide a corner. For $|x|$ at $0$, the central recipe averages the left slope and the right slope and reports $0$ for any step it can evaluate. That $0$ is not a derivative. Forward difference reports $1$. Backward difference reports $-1$. When the one sided estimates disagree, do not promote the central number into $f'(0)$. A jump or a vertical tangent usually misbehaves in a louder way: the estimate grows as the step shrinks, instead of settling.</div>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>State $s'(3)$ with units, and say why the average from $t=3$ to $t=5$ is a different number.</li>
+<li>Build $L(3.1)$ by hand and compare it with $s(3.1)$. Name the error, and say why a slope of $5$ would not be the best local line.</li>
+<li>Give one corner, one jump, and one vertical tangent, in words, and say which of the three is still continuous.</li>
+<li>Say what a derivative is not, in one sentence you could tell a classmate who thinks $f'(a)$ is "the next $y$ value."</li>
+</ol>
+
+<h2>Practice on the numerical derivative calculator</h2>
+<p>The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates a difference quotient. It does not prove that a derivative exists, and it does not know units. If you are thinking of $x^2$ as the cart model, you attach "meters per second" yourself. The page also refuses a step larger than $1$, so the average over those two seconds stays on paper. Use the tool for a short step, where the secant has a chance of looking like the tangent.</p>
+<div class="callout"><strong>Try it.</strong> Open the calculator on $x^2$ at $x_0=3$ with step $0.001$. Central difference should show $6$. For this parabola a central difference is exact for any step the formula can evaluate, because the $h^2$ errors on the two sides cancel. Forward difference should show about $6.001$, which is $6+h$. Change the step to $0.1$. Forward difference becomes $6.1$. That is the average rate from $3$ to $3.1$, not a broken tool. It matches the algebra $6+h$.</div>
+<p>Then type <code>abs(x)</code> at $x_0=0$ with a small step. Forward difference gives $1$. Backward difference gives $-1$. Central difference gives $0$. Trust the disagreement, not the calm $0$. That is the corner from the section above, seen numerically.</p>
+<p>After those two checks, come back to a function whose derivative you can compute by a rule, and only then believe an estimate on a function you cannot differentiate by hand. If the slope is hidden in an equation $F(x,y)=0$, this calculator is the wrong tool. Use <a href="implicit-differentiation-intuition.html">implicit differentiation</a>. If you want the epsilon and delta language under the limit in the definition, use <a href="epsilon-delta-intuition.html">epsilon delta intuition</a> and, beside it, the <a href="../calculators/limit-estimator.html">numerical limit estimator</a> as a picture rather than a proof.</p>
+<div class="cta-panel">
+<p>Estimate a slope you already understand. Start with x squared at 3, where the true derivative is 6, and compare a forward difference with a central difference.</p>
+<a class="btn" href="../calculators/numerical-derivative.html">Open the numerical derivative calculator</a>
+</div>
+<p>A course shaped path that includes this page is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. Later, if a rate depends on the current amount, the <a href="separable-differential-equations.html">separable differential equations</a> page is the next calculus cluster reading, not a substitute for this one. If Jacobian language feels empty, people are sent back here from the <a href="jacobian-matrices-plain-language.html">Jacobian</a> explainer. The repair is the local line on this page.</p>
+
+<h2>Citations and further reading</h2>
 <ul class="source-list">
-<li>Strang, G. <em>Calculus</em>. Wellesley-Cambridge / MIT OCW companion materials. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">MIT 18.01SC</a></li>
-<li>OpenStax, <em>Calculus Volume 1</em>, derivatives chapters. <a href="https://openstax.org/details/books/calculus-volume-1" rel="noopener">openstax.org</a></li>
-<li>3Blue1Brown, “The paradox of the derivative” (video intuition for instantaneous rate). <a href="https://www.youtube.com/watch?v=9vKqVkMQHKk" rel="noopener">YouTube</a></li>
-<li>Paul’s Online Math Notes, “The Definition of the Derivative.” <a href="https://tutorial.math.lamar.edu/Classes/CalcI/DefnofDerivative.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>Strang, G. <em>Calculus</em>. MIT OpenCourseWare, 18.01SC Single Variable Calculus. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>OpenStax, <em>Calculus Volume 1</em>, the chapters that define the derivative and that treat linear approximations. <a href="https://openstax.org/details/books/calculus-volume-1" rel="noopener">openstax.org</a></li>
+<li>Paul’s Online Math Notes, the definition of the derivative. <a href="https://tutorial.math.lamar.edu/Classes/CalcI/DefnofDerivative.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>Paul’s Online Math Notes, linear approximations. <a href="https://tutorial.math.lamar.edu/Classes/CalcI/LinearApproximations.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>3Blue1Brown, “The paradox of the derivative,” a video picture of an instantaneous rate. <a href="https://www.youtube.com/watch?v=9vKqVkMQHKk" rel="noopener">YouTube</a></li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="average">
+<h2>What is the difference between an average rate and an instantaneous rate?</h2>
+<p>An average rate divides the change in output by the change in input on a whole interval. An instantaneous rate is the limit of those averages as the interval shrinks to a point, when that limit exists as a finite number. On a long interval the average can hide a slower start and a faster finish. In the cart model, $8$ meters per second from $t=3$ to $t=5$ is the average. $s'(3)=6$ meters per second is the instantaneous rate.</p>
+</section>
+<section class="faq-item" id="next-value">
+<h2>Does the derivative tell me the next value of the function?</h2>
+<p>No. It tells you the best local rate. You can build a line from that rate, and the line approximates the function near the point. The next exact value still comes from the function itself. One second after $t=3$, the cart is at $16$ meters, not at the velocity $6$.</p>
+</section>
+<section class="faq-item" id="fails">
+<h2>When does a derivative fail to exist?</h2>
+<p>Common first course cases are a corner, where one sided slopes disagree, a jump, where the function is not continuous, and a vertical tangent, where secant slopes grow without a finite limit. The function also needs a value at the point, or there is nothing to form a difference quotient from. Short forms: <a href="../glossary/#derivative">derivative</a>, <a href="../glossary/#limit">limit</a>, <a href="../glossary/#continuity">continuity</a>.</p>
+</section>
+<section class="faq-item" id="units">
+<h2>Why do units matter for a derivative?</h2>
+<p>They say what the number is counting. Position in meters and time in seconds make the derivative a velocity in meters per second. Drop the units and a slope of $6$ has no story. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> does not know your units. You attach them after you know what the function measures.</p>
+</section>
+<section class="faq-item" id="which-tool">
+<h2>Which calculator should I use with this page?</h2>
+<p>The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>. Start with $x^2$ at $3$, where the true slope is $6$, and compare a forward difference with a central difference. Then try <code>abs(x)</code> at $0$. A central difference there can print $0$, which is not a derivative, while the one sided estimates disagree.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta intuition</a></li>
+<li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">Explainer study library</a></li>
 <li><a href="../glossary/#derivative">Glossary: derivative</a></li>
+<li><a href="../glossary/#limit">Glossary: limit</a></li>
+<li><a href="../glossary/#continuity">Glossary: continuity</a></li>
 </ul></div>
 </article>
 </div>
