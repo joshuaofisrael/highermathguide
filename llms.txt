@@ -14,7 +14,7 @@ Publisher: Joshua Israel Ventures LLC
 - https://highermathguide.com/topics/differential-equations.html : first look map of separable equations, slope fields, and initial value problems
 
 ## Long form explainers
-- https://highermathguide.com/explainers/
+- https://highermathguide.com/explainers/ (study library: read an explainer for intuition, then practice with the linked calculator and topic map)
 - https://highermathguide.com/explainers/epsilon-delta-intuition.html
 - https://highermathguide.com/explainers/what-a-derivative-measures.html
 - https://highermathguide.com/explainers/eigenvalues-plain-language.html
