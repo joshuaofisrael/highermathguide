@@ -23,22 +23,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Jacobian Matrices in Plain Language",
-  "description": "A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.",
-  "url": "https://highermathguide.com/explainers/jacobian-matrices-plain-language.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-17",
-  "dateModified": "2026-09-17"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Jacobian Matrices in Plain Language",
+      "description": "A plain language tour of Jacobian matrices, local linear maps, area scaling, and how several variables change together.",
+      "url": "https://highermathguide.com/explainers/jacobian-matrices-plain-language.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-25"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/jacobian-matrices-plain-language.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Jacobian in one sentence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the matrix of all first partial derivatives of a map, and it is the best linear approximation to that map at a point. A single variable derivative is the same idea when the matrix is 1 by 1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Jacobian determinant measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a map from n dimensions to n dimensions, the determinant is the signed volume scaling of the best linear approximation. Positive keeps orientation, negative flips it, and zero means some direction is crushed. In an integral, the absolute value of that determinant is the factor you insert after a change of variables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a zero Jacobian mean the derivative does not exist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A zero determinant means the linear approximation is singular, so the inverse function theorem does not give a local inverse. The derivative can still exist. The map (x, y) to (x squared minus y squared, 2xy) has the zero matrix as its derivative at the origin, and that derivative is correct. The map is just not one to one near the origin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a gradient related to a Jacobian?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A gradient is the Jacobian of a scalar function, one output. It is a single row, often written as a column by habit. A map with several outputs has one gradient row per output, and those rows stacked are the Jacobian matrix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compute the partial derivatives by hand, then use the 2 by 2 matrix calculator for the determinant or the inverse of that matrix. Use the 2 by 2 eigenvalue calculator if you want the stretch factors of the linear approximation. The numerical derivative calculator can check one partial at a time, on a slice where every other variable is held fixed."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -69,44 +123,69 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Jacobian matrices in plain language</h1>
-<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>A derivative in one variable is a single number, the best linear multiplier near a point. When a map sends several inputs to several outputs, the best linear multiplier is a matrix. That matrix is the Jacobian. It is not a new kind of derivative. It is the derivative, written so that every first <a href="../glossary/#partial-derivative">partial derivative</a> has a seat.</p>
+<p>A derivative in one variable is a single number, the best linear multiplier near a point. When a map sends several inputs to several outputs, the best linear multiplier is a matrix. That matrix is the <a href="../glossary/#jacobian">Jacobian</a>. It is not a new kind of derivative. It is the derivative, written so that every first <a href="../glossary/#partial-derivative">partial derivative</a> has a seat.</p>
 <p>If you already like the sentence $f(x)\approx f(a)+f'(a)(x-a)$, the multivariable cousin is</p>
 <p>$$\mathbf{f}(\mathbf{a}+\mathbf{h})\approx \mathbf{f}(\mathbf{a})+D\mathbf{f}(\mathbf{a})\,\mathbf{h}.$$</p>
-<p>Here $D\mathbf{f}(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$, and $\mathbf{h}$ is a small input step. Matrix times vector is the linear map. For the geometry of those maps, keep <a href="../topics/linear-algebra.html">linear algebra</a> nearby. For the calculus setting, use the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>.</p>
+<p>Here $D\mathbf{f}(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$, and $\mathbf{h}$ is a small input step. Matrix times vector is the <a href="../glossary/#linear-map">linear map</a>. The error, meaning the true output minus this prediction, should shrink faster than the length of $\mathbf{h}$ as $\mathbf{h}$ shrinks to $\mathbf{0}$. That is the same demand as in one variable, told on <a href="what-a-derivative-measures.html">what a derivative actually measures</a>. If that sentence still feels empty, repair it there and come back. The geometry of the matrix itself lives on <a href="../topics/linear-algebra.html">linear algebra</a> and in <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a>. The calculus setting is the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>. The study order this site uses is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>, then this page.</p>
 
 <h2>How the entries are arranged</h2>
 <p>Write $\mathbf{f}(x,y)=(u(x,y),v(x,y))$ as a map from the plane to the plane. The Jacobian is</p>
 <p>$$D\mathbf{f}=\begin{pmatrix} u_x &amp; u_y \\ v_x &amp; v_y \end{pmatrix}.$$</p>
-<p>Row $i$ is the <a href="../glossary/#gradient">gradient</a> of the $i$th output. Column $j$ is the velocity of the output when you move only the $j$th input. Both readings are useful. Gradients tell you how each coordinate function tilts. Columns tell you where the standard basis arrows go after the linear approximation.</p>
-<p>That column picture is the same story as “a matrix is the images of basis vectors,” which also appears in <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a>. The Jacobian is the matrix of the derivative map, not a mysterious grid of extra symbols.</p>
+<p>Row $i$ is the <a href="../glossary/#gradient">gradient</a> of the $i$th output, written as a row. Column $j$ is the velocity of the output when you move only the $j$th input and hold the others fixed. Both readings are useful. Gradients tell you how each coordinate function tilts. Columns tell you where a small step along each axis is sent by the linear approximation.</p>
+<p>That column picture is the same story as "a <a href="../glossary/#matrix">matrix</a> is what it does to basis vectors," which you already use for eigenvalues. The Jacobian is the matrix of the derivative at one point. It is allowed to change when you move the point. A constant matrix is a linear map on the whole plane. A Jacobian is usually only the best linear stand in near the point where you computed it.</p>
 
-<h2>A polar example you can picture</h2>
+<h2>A polar picture, including the area factor</h2>
 <p><span class="example-label">Example</span> Polar coordinates send $(r,\theta)$ to $(x,y)=(r\cos\theta,\, r\sin\theta)$. The Jacobian is</p>
 <p>$$D=\begin{pmatrix} \cos\theta &amp; -r\sin\theta \\ \sin\theta &amp; r\cos\theta \end{pmatrix}.$$</p>
-<p>The first column is the unit radial direction. Increasing $r$ a little moves you straight out from the origin. The second column is a tangential direction of length $r$. Increasing $\theta$ a little walks you along a circle, and a farther radius makes the same angle change sweep a longer arc. The determinant is $r$. Local area in the $(r,\theta)$ plane is scaled by $|r|$ when you look in the $(x,y)$ plane. That is why polar integrals pick up a factor of $r$.</p>
-<p>At $r=0$ the determinant vanishes. Many angles collapse to one point. The linear map is singular, which matches the picture. Polar coordinates are a poor chart exactly at the origin.</p>
+<p>The first column is the unit radial direction. Increasing $r$ a little moves you straight out from the origin, and the speed of that motion does not depend on $r$. The second column is a tangential direction of length $r$. Increasing $\theta$ a little walks you along a circle, and a larger radius makes the same angle change sweep a longer arc. The determinant is $r\cos^2\theta+r\sin^2\theta=r$. Local area in the $(r,\theta)$ plane is scaled by $|r|$ when you look in the $(x,y)$ plane. That is why a polar integral picks up a factor of $r$. For the usual chart with $r\ge 0$, the absolute value is $r$ itself.</p>
+<p>At $r=0$ the determinant vanishes. Many angles collapse to one point, the origin. The linear map crushes the $\theta$ direction. Polar coordinates are a poor chart exactly there. The derivative of the coordinate map still exists. What fails is local invertibility. You cannot solve uniquely for $(r,\theta)$ in a full neighborhood of the origin in the plane, because $\theta$ is not a single valued function around that point.</p>
+
+<h2>A map you can check with a matrix</h2>
+<p><span class="example-label">Example</span> Let $\mathbf{f}(x,y)=(x^2-y^2,\, 2xy)$. This is the real and imaginary parts of $(x+iy)^2$, but you do not need complex numbers to use it. The partials are $u_x=2x$, $u_y=-2y$, $v_x=2y$, $v_y=2x$, so</p>
+<p>$$D\mathbf{f}(x,y)=\begin{pmatrix} 2x &amp; -2y \\ 2y &amp; 2x \end{pmatrix}.$$</p>
+<p>The determinant is $4x^2+4y^2=4(x^2+y^2)$. At $(1,0)$ the matrix is $\begin{pmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}$, the determinant is $4$, and both eigenvalues are $2$. The linear approximation doubles every small step. Check a number. $\mathbf{f}(1,0)=(1,0)$. A step $(0.1,0)$ is predicted to land at $(1,0)+(0.2,0)=(1.2,0)$. The true value is $\mathbf{f}(1.1,0)=(1.21,0)$. The error is $0.01$ in the first coordinate, much smaller than the step $0.1$. A wrong matrix, for example the identity, would leave an error about the size of the step. Only this Jacobian makes the miss shrink faster than the step.</p>
+<p>At the origin the Jacobian is the zero matrix, so the determinant is $0$. The prediction says a small step barely moves the output. In fact $\mathbf{f}(h,0)=(h^2,0)$, which is quadratic. The error of the zero prediction, divided by $|h|$, still goes to $0$, so the derivative really is the zero matrix. The map is not one to one near the origin, because $\mathbf{f}(x,y)=\mathbf{f}(-x,-y)$. A singular Jacobian warned you. It did not say the derivative failed to exist.</p>
 
 <h2>What the determinant is saying</h2>
-<p>For a map from $\mathbb{R}^n$ to $\mathbb{R}^n$, $\det D\mathbf{f}(\mathbf{a})$ is the signed volume scaling of the best linear approximation at $\mathbf{a}$. Positive means orientation is kept. Negative means it is flipped. Zero means some direction is crushed, so the map is not locally invertible.</p>
-<p>The inverse function theorem, in undergraduate language, says that if $D\mathbf{f}(\mathbf{a})$ is invertible, then $\mathbf{f}$ itself is invertible on small neighborhoods, and the derivative of the inverse is the inverse matrix of the derivative. You do not need the full proof to use the slogan. A nonzero Jacobian determinant is a green light for a local inverse. A zero determinant is a warning, not an automatic disaster everywhere, but it is a place to slow down.</p>
-<p>Try the <a href="../calculators/matrix-2x2.html">2 by 2 matrix toolkit</a> on a Jacobian you have computed by hand. Check the determinant and, when it is safe, the inverse. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue tool</a> can show the stretch factors of that linear map along special directions. Those numbers describe the approximation, not the full nonlinear map.</p>
+<p>For a map from $\mathbb{R}^n$ to $\mathbb{R}^n$, $\det D\mathbf{f}(\mathbf{a})$ is the signed volume scaling of the best linear approximation at $\mathbf{a}$. Positive means orientation is kept. Negative means it is flipped. Zero means some direction is crushed, so that linear map is not invertible. Area in the plane is the $n=2$ case of the same sentence. The polar factor $r$ and the factor $4(x^2+y^2)$ above are both this number.</p>
+<p>The inverse function theorem, in undergraduate language, says that if $D\mathbf{f}(\mathbf{a})$ is invertible, then $\mathbf{f}$ itself is invertible on small neighborhoods of $\mathbf{a}$ and of $\mathbf{f}(\mathbf{a})$, and the derivative of the local inverse is the inverse matrix of $D\mathbf{f}(\mathbf{a})$. You do not need the full proof to use the slogan. A nonzero Jacobian determinant is a green light for a local inverse. A zero determinant is a place to slow down. It is not an automatic disaster at every nearby point. In the example above, the determinant vanishes only at the origin. Nearby, $4(x^2+y^2)$ is positive and a local inverse exists.</p>
+<p>Eigenvalues of the Jacobian, when you compute them, are stretch factors of that linear approximation along special directions. They describe $D\mathbf{f}(\mathbf{a})$, not the full nonlinear map. A large eigenvalue says the approximation stretches hard in one direction. It does not say what $\mathbf{f}$ does on the other side of the domain. Read <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a> if "stretch factor" is the foggy half of that sentence.</p>
+
+<h2>The chain rule is matrix multiplication</h2>
+<p>If you compose maps, you multiply Jacobians, in the order that the chain rule already uses in one variable. A small case is enough to see it. Let $\mathbf{g}(t)=(t,t^2)$, a curve, and let $f(x,y)=x^2+y$, a scalar. The composition is $f(\mathbf{g}(t))=t^2+t^2=2t^2$, whose ordinary derivative is $4t$.</p>
+<p>The Jacobian of $f$ is the gradient row $\langle 2x,1\rangle$. Along the curve that row is $\langle 2t,1\rangle$. The velocity $\mathbf{g}'(t)$ is the column $\langle 1,2t\rangle$. Their product is $2t\cdot 1+1\cdot 2t=4t$. Same number. The gradient is a $1$ by $2$ Jacobian. The velocity is a $2$ by $1$ Jacobian. The chain rule did not invent a new operation. It multiplied the matrices. When both maps are plane to plane, the product is $2$ by $2$ times $2$ by $2$, and the order matters, because matrix multiplication is not commutative.</p>
 
 <h2>Maps that change dimension</h2>
-<p>If $\mathbf{f}:\mathbb{R}^n\to\mathbb{R}^m$, the Jacobian is an $m\times n$ matrix. It is still the derivative. It just cannot be square, so it has no single determinant. Rank becomes the useful word. Full rank means the linear approximation hits a subspace of the largest possible dimension. For a scalar function, $m=1$, the Jacobian is a single row, which is the gradient. The linear approximation is the tangent plane story from multivariable calculus.</p>
-<p>For a curve $\mathbf{r}(t)$ in space, $n=1$, the Jacobian is a single column $\mathbf{r}'(t)$, the velocity. Nothing here conflicts. The same definition specializes cleanly.</p>
+<p>If $\mathbf{f}:\mathbb{R}^n\to\mathbb{R}^m$, the Jacobian is an $m$ by $n$ matrix. It is still the derivative. It often cannot be square, so it has no single determinant. Rank becomes the useful word. Full rank means the linear approximation hits a subspace of the largest possible dimension. For a scalar function, $m=1$, the Jacobian is a single row, the gradient, and the linear approximation is the tangent line or tangent plane story.</p>
+<p>For a curve $\mathbf{r}(t)$ in space, $n=1$, the Jacobian is a single column $\mathbf{r}'(t)$, the velocity. Nothing here conflicts. The definition specializes cleanly. A surface parametrization $\mathbf{r}(u,v)$ has a $3$ by $2$ Jacobian. Its two columns are $\mathbf{r}_u$ and $\mathbf{r}_v$, and their cross product is the normal that shows up in a surface integral. That cross product is the bridge to <a href="stokes-theorem-intuition.html">Stokes theorem intuition</a>. You do not need Stokes theorem to compute a Jacobian. You do need the columns when a flux integral asks for $d\mathbf{S}$.</p>
 
 <h2>Change of variables in integrals</h2>
-<p>When you rewrite a double or triple integral in new coordinates, you are pushing a region through a map $\mathbf{g}$. Little parallelepipeds in the parameter domain become little parallelepipeds in space. Their volumes differ by $|\det D\mathbf{g}|$. That factor is the Jacobian determinant, taken in absolute value because volume is unsigned in the usual integral. Forgetting it is the most common computational error after a substitution looks “correct” on the integrand alone.</p>
+<p>When you rewrite a double or triple integral in new coordinates, you push a region through a map $\mathbf{g}$. Little squares or little boxes in the parameter domain become little parallelograms in space. Their volumes differ by $|\det D\mathbf{g}|$. That factor is the Jacobian determinant, taken in absolute value because the usual integral uses unsigned volume. Forgetting it is the most common computational error after a substitution looks correct on the integrand alone.</p>
+<p>Polar coordinates are the drill. The integrand gains a factor $r$, and the region has to be described in $r$ and $\theta$, not left in $x$ and $y$. Both changes are part of the substitution. A correct factor on the wrong region is still the wrong integral. The determinant tells you the local scale. It does not draw the region for you.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> The Jacobian matrix and the Jacobian determinant are related and not identical. People say “the Jacobian” for either. In a sentence about invertibility or eigenvalues you want the matrix. In a sentence about $dA$ or $dV$ after a substitution you want the absolute value of the determinant.</div>
+<div class="callout pitfall"><strong>Pitfall.</strong> The Jacobian matrix and the Jacobian determinant are related and not identical. People say "the Jacobian" for either. In a sentence about invertibility, eigenvalues, or a chain rule product, you want the matrix. In a sentence about area or volume after a substitution, you want the absolute value of the determinant. A zero matrix is a determinant of zero. A determinant of zero does not tell you the whole matrix.</div>
 
-<h2>How this sits next to other ideas</h2>
-<p>Constrained optimization uses gradients of a function and of a constraint. Those gradients are Jacobian rows. See <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. Vector calculus theorems package derivatives of fields. The derivative of a field is built from partials that could be arranged as a Jacobian. <a href="stokes-theorem-intuition.html">Stokes theorem intuition</a> is one of those theorems.</p>
-<p>If you want a numerical feel for a single partial, hold every variable but one fixed and use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> on that slice. The <a href="../calculators/vector-ops.html">vector operations tool</a> helps you check orthogonality when a column of $D\mathbf{f}$ should be tangent to a circle or a sphere.</p>
-<p>Glossary anchors that repay a click: <a href="../glossary/#jacobian">Jacobian</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#partial-derivative">partial derivative</a>.</p>
+<h2>How to know you understood</h2>
+<ol>
+<li>Write the Jacobian of $(r\cos\theta, r\sin\theta)$ and say why the determinant equals $r$.</li>
+<li>At $(1,0)$ for $(x^2-y^2, 2xy)$, state the matrix, the determinant, and the error of the linear prediction on the step $(0.1,0)$.</li>
+<li>Explain why a zero Jacobian at the origin of that map does not mean "no derivative."</li>
+<li>Multiply the gradient of $x^2+y$ by the velocity of $(t,t^2)$ and match it with the ordinary derivative of $2t^2$.</li>
+<li>Say, in one sentence, when you insert $|\det D\mathbf{g}|$ into an integral and when you leave it out.</li>
+</ol>
+
+<h2>Practice on the matrix tools</h2>
+<p>Compute every partial by hand before you open a calculator. The tools on this site do not differentiate a vector formula. They audit a matrix you already wrote down.</p>
+<div class="callout"><strong>Try it.</strong> On the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, enter the Jacobian at $(1,0)$ from the example above: $a=2$, $b=0$, $c=0$, $d=2$. The determinant should be $4$, and the inverse should be $(1/2)$ times the identity. Then open the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> on the same four numbers. Both eigenvalues should be $2$, matching a pure stretch by $2$. For a single partial, hold $y$ fixed at $0$ so $u(x,0)=x^2$, and check the slope at $x=1$ on the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>. You should see about $2$, which is the first entry of the first row. The calculator never saw $y$. You held it fixed.</div>
+<p>A cross product of two columns, when the Jacobian is $3$ by $2$, belongs on the <a href="../calculators/vector-ops.html">vector operations calculator</a>. Swap the order of the cross product and the normal flips. That is an orientation choice, not a new derivative.</p>
+<div class="cta-panel">
+<p>After you have written a 2 by 2 Jacobian by hand, check its determinant and its stretch factors.</p>
+<a class="btn" href="../calculators/matrix-2x2.html">Open the 2 by 2 matrix calculator</a>
+</div>
+<p>Two gradient rows side by side are the Jacobian of a pair $(f,g)$. They are parallel exactly when that determinant is zero, which is the tangency condition on <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. The multiplier page assumes you can already read a gradient. This page is the place those rows become a matrix.</p>
 
 <h2>Citations and further reading</h2>
 <ul class="source-list">
@@ -116,12 +195,46 @@
 <li>Paul’s Online Math Notes, change of variables. <a href="https://tutorial.math.lamar.edu/Classes/CalcIII/ChangeOfVariables.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="one-sentence">
+<h2>What is a Jacobian in one sentence?</h2>
+<p>It is the matrix of all first partial derivatives of a map, and it is the best linear approximation to that map at a point. A single variable derivative is the same idea when the matrix is $1$ by $1$. The short form is the <a href="../glossary/#jacobian">glossary entry</a>.</p>
+</section>
+<section class="faq-item" id="determinant">
+<h2>What does the Jacobian determinant measure?</h2>
+<p>For a map from $n$ dimensions to $n$ dimensions, the determinant is the signed volume scaling of the best linear approximation. Positive keeps orientation, negative flips it, and zero means some direction is crushed. In an integral, you insert the absolute value of that determinant after a change of variables. Polar area uses the factor $r$.</p>
+</section>
+<section class="faq-item" id="zero-det">
+<h2>Does a zero Jacobian mean the derivative does not exist?</h2>
+<p>No. A zero determinant means the linear approximation is singular, so the inverse function theorem does not give a local inverse. The derivative can still exist. The map $(x^2-y^2, 2xy)$ has the zero matrix as its derivative at the origin, and that derivative is correct. The map is just not one to one near the origin.</p>
+</section>
+<section class="faq-item" id="gradient">
+<h2>How is a gradient related to a Jacobian?</h2>
+<p>A gradient is the Jacobian of a scalar function, one output. It is a single row, often written as a column by habit. A map with several outputs has one gradient row per output, and those rows stacked are the Jacobian matrix. The chain rule multiplies that matrix by the next one.</p>
+</section>
+<section class="faq-item" id="which-tool">
+<h2>Which calculator should I use with this page?</h2>
+<p>Compute the partials by hand. Then use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for the determinant or the inverse, and the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> for the stretch factors of the linear approximation. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can check one partial at a time, on a slice where every other variable is held fixed.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
-<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
-<li><a href="../topics/linear-algebra.html">Linear algebra</a></li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
+<li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
+<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
 <li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
-<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course pathway</a></li>
-<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix toolkit</a></li>
+<li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
+<li><a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
+<li><a href="stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra</a></li>
+<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course</a></li>
+<li><a href="./">Explainer study library</a></li>
+<li><a href="../glossary/#jacobian">Glossary: Jacobian</a></li>
+<li><a href="../glossary/#linear-map">Glossary: linear map</a></li>
+<li><a href="../glossary/#matrix">Glossary: matrix</a></li>
+<li><a href="../glossary/#partial-derivative">Glossary: partial derivative</a></li>
+<li><a href="../glossary/#gradient">Glossary: gradient</a></li>
 </ul></div>
 </article>
 </div>
@@ -130,7 +243,7 @@
 <footer class="site-footer">
 <div class="footer-inner">
 <div>
-<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
 <p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>
