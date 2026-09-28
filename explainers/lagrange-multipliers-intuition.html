@@ -23,22 +23,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Lagrange Multipliers Intuition",
-  "description": "Why Lagrange multipliers work, how level sets meet a constraint, and what the multiplier number is telling you.",
-  "url": "https://highermathguide.com/explainers/lagrange-multipliers-intuition.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-17",
-  "dateModified": "2026-09-17"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Lagrange Multipliers Intuition",
+      "description": "Why Lagrange multipliers work, how level sets meet a constraint, and what the multiplier number is telling you.",
+      "url": "https://highermathguide.com/explainers/lagrange-multipliers-intuition.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-25"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/lagrange-multipliers-intuition.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Lagrange multiplier measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At a constrained optimum, lambda is the rate at which the optimal value of f changes when the allowed level of g changes a little. If the constraint moves from g = c to g = c + epsilon, the optimal value of f changes by about lambda times epsilon, when the hypotheses hold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does every Lagrange point give a maximum?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The equations list candidates. On a closed and bounded constraint, such as a circle or a sphere, a continuous objective attains a max and a min, so you compare the value of f at every candidate. On an unbounded constraint a critical point can be only local, and the values may run off to infinity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the gradient of the constraint is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The parallelism rule assumes the gradient of g is not zero. At a singular point of the constraint the tangent picture can shrink or break, so you inspect that point by hand. A zero multiplier is a different event. It means the unconstrained critical point of f already lies on the constraint."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I substitute instead of using a multiplier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Substitute when the constraint solves cleanly for one variable. Then ordinary one variable calculus finishes the job, and implicit differentiation is the engine if you only need the slope. Use Lagrange when solving the constraint is messy, or when you want the sensitivity lambda as well as the point."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no Lagrange solver on this site. Use the vector operations calculator to check that the gradient of f is perpendicular to an allowed tangent, which is the same as being parallel to the gradient of g. Use the 2 by 2 matrix calculator to confirm that the matrix with those two gradients as rows has determinant zero."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -69,44 +123,65 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Lagrange multipliers intuition</h1>
-<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Unconstrained optimization hunts for places where the <a href="../glossary/#gradient">gradient</a> of $f$ is zero. A constraint $g(\mathbf{x})=c$ changes the hunt. You may only travel on the level set of $g$. The best value of $f$ on that set usually occurs where you can no longer climb $f$ without leaving the set. That is a tangency picture, not a new kind of calculus.</p>
-<p>Lagrange multipliers turn the picture into equations. At a constrained local max or min, $\nabla f$ is parallel to $\nabla g$, so there is a number $\lambda$ with</p>
+<p>Unconstrained optimization hunts for places where the <a href="../glossary/#gradient">gradient</a> of an objective $f$ is zero. A <a href="../glossary/#constraint">constraint</a> $g(\mathbf{x})=c$ changes the hunt. You may only travel on the level set of $g$. The best value of $f$ on that set usually occurs where you can no longer climb $f$ without leaving the set. That is a tangency picture, not a new kind of calculus. The number that records the tangency is a <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a>.</p>
+<p>At a constrained local max or min, when $\nabla g$ is not zero, $\nabla f$ is parallel to $\nabla g$. So there is a number $\lambda$ with</p>
 <p>$$\nabla f=\lambda\nabla g, \qquad g=c.$$</p>
-<p>The first vector equation says the two gradients line up. The last scalar equation says you stayed on the constraint. Together they are usually $n+1$ equations in $n+1$ unknowns when $\mathbf{x}$ lives in $\mathbb{R}^n$.</p>
+<p>The vector equation says the two gradients line up. The scalar equation says you stayed on the constraint. Together they are usually $n+1$ equations in $n+1$ unknowns when $\mathbf{x}$ lives in $\mathbb{R}^n$. This page sits in the multivariable cluster of the <a href="./">explainer library</a>, after gradients. The topic map is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. The pathway that this site uses before that cluster is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>, because a gradient is a vector and a Jacobian of two gradients is a matrix.</p>
 
 <h2>Why parallelism is the right demand</h2>
-<p>On the constraint, allowed motions are tangent to $g=c$. Those tangent directions are exactly the directions orthogonal to $\nabla g$, provided $\nabla g\neq\mathbf{0}$. If $\nabla f$ has a leftover component along an allowed tangent, you can slide a little and change $f$. So at an interior optimum on the constraint, $\nabla f$ must have no tangent component. The only remaining possibility is that $\nabla f$ is a multiple of $\nabla g$.</p>
-<p>Level sets of $f$ make the same point. You want the highest (or lowest) contour of $f$ that still touches $g=c$. Two curves that touch share a tangent line. Their normals, which are the gradients, therefore line up. If the contours crossed, you could step onto a better contour while remaining on $g=c$.</p>
-<p>This is the same geometry as in the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>: gradients are normal to level sets. Lagrange adds the rule that two families of level sets should be tangent.</p>
+<p>On the constraint, allowed motions are tangent to $g=c$. Those tangent directions are exactly the directions orthogonal to $\nabla g$, provided $\nabla g\neq\mathbf{0}$. If $\nabla f$ still has a piece along an allowed tangent, you can slide a little and change $f$. At an interior optimum on the constraint, $\nabla f$ must have no tangent component left. The only remaining possibility is that $\nabla f$ is a multiple of $\nabla g$.</p>
+<p>Read the same fact with a dot product. Let $\mathbf{t}$ be any tangent vector to the constraint at the point. Then $\nabla g\cdot\mathbf{t}=0$. Parallelism says $\nabla f\cdot\mathbf{t}=0$ as well. The directional derivative of $f$ along every allowed direction is zero. That is the constrained version of "the derivative is zero," and it is weaker than $\nabla f=\mathbf{0}$. You are not required to be flat in the directions that the constraint forbids.</p>
+<p>Level sets of $f$ make the same point in a drawing. You want the highest or lowest contour of $f$ that still touches $g=c$. Two curves that touch and do not cross share a tangent line. Their normals, which are the gradients, therefore line up. If the contours crossed, you could step onto a better contour of $f$ while remaining on $g=c$. Crossing is a failure of optimality. Tangency is the picture of a candidate.</p>
+<p>This is the same geometry as on the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>. A gradient is normal to a level set. Lagrange adds one rule. At the optimum, the level set of $f$ and the level set of $g$ should be tangent to each other.</p>
 
-<h2>A worked rectangle that stays honest</h2>
-<p><span class="example-label">Example</span> Maximize $f(x,y)=xy$ on the line $x+y=1$. Set $g(x,y)=x+y$. Then $\nabla f=\langle y,x\rangle$ and $\nabla g=\langle 1,1\rangle$. Parallelism says $y=\lambda$ and $x=\lambda$, so $x=y$. The constraint then gives $x=y=1/2$, and $f=1/4$.</p>
-<p>You already knew this from AM GM or from substituting $y=1-x$ and maximizing $x(1-x)$. The Lagrange system recovered the same point without picking a coordinate to eliminate. On a circle or a surface, elimination is messy. The gradient condition stays tidy.</p>
-<p>Here $\lambda=1/2$. That number is not a decoration. If you relax the constraint from $x+y=1$ to $x+y=1+\varepsilon$, the new maximum of $xy$ is about $1/4+\lambda\varepsilon$ for small $\varepsilon$. In that sense $\lambda$ is a sensitivity. Economists call a close cousin a shadow price. In a first course it is enough to say: $\lambda$ measures how hard $f$ pulls against a change in the allowed level of $g$.</p>
+<h2>A line you can also do by substitution</h2>
+<p><span class="example-label">Example</span> Maximize $f(x,y)=xy$ on the line $x+y=1$. Set $g(x,y)=x+y$, so $c=1$. Then $\nabla f=\langle y,x\rangle$ and $\nabla g=\langle 1,1\rangle$. Parallelism says $y=\lambda$ and $x=\lambda$, so $x=y$. The constraint then gives $x=y=1/2$, and $f=1/4$. There is one candidate.</p>
+<p>Substitution agrees. Set $y=1-x$. Then $f(x)=x(1-x)=x-x^2$, and the ordinary derivative $1-2x$ is zero at $x=1/2$. The second derivative is $-2$, so this critical point is a maximum of the substituted function. On the whole line, which is not bounded, $f$ still runs to $-\infty$ as $x$ runs to $\pm\infty$, because $-x^2$ dominates. The Lagrange point is a maximum, and there is no minimum. The method found the candidate. The shape of the constraint told you which kind of extreme you had.</p>
+<p>Here $\lambda=1/2$. That number is not a decoration. If you relax the constraint from $x+y=1$ to $x+y=1+\varepsilon$, the new maximum of $xy$ is $(1+\varepsilon)^2/4$. For small $\varepsilon$ that is about $1/4+(1/2)\varepsilon$. The coefficient of $\varepsilon$ is $\lambda$. In that sense $\lambda$ is a sensitivity. It measures how hard $f$ pulls against a small change in the allowed level of $g$. A first course can stop at that sentence. A zero multiplier would have meant the optimal value barely notices a small move of the constraint.</p>
+
+<h2>A circle, where substitution is less kind</h2>
+<p><span class="example-label">Example</span> Maximize and minimize $f(x,y)=xy$ on the unit circle $g(x,y)=x^2+y^2=1$. Now $\nabla f=\langle y,x\rangle$ and $\nabla g=\langle 2x,2y\rangle$. The system is</p>
+<p>$$y=2\lambda x,\qquad x=2\lambda y,\qquad x^2+y^2=1.$$</p>
+<p>If $x$ and $y$ are both nonzero, substitute $x=2\lambda y$ into the first equation: $y=2\lambda(2\lambda y)=4\lambda^2 y$. Then $4\lambda^2=1$, so $\lambda=\pm 1/2$. For $\lambda=1/2$ you get $y=x$, and the circle forces $x=y=\pm 1/\sqrt{2}$. Both points give $f=1/2$. For $\lambda=-1/2$ you get $y=-x$, and the points $(1/\sqrt{2},-1/\sqrt{2})$ and $(-1/\sqrt{2},1/\sqrt{2})$ give $f=-1/2$. If you try $x=0$, the second equation forces $y=0$, which is not on the circle. The same happens if $y=0$. So there are four candidates, and no others.</p>
+<p>The circle is closed and bounded, and $f$ is continuous, so a max and a min exist. Comparing values, the maximum is $1/2$ and the minimum is $-1/2$. A substitution check uses $x=\cos\theta$ and $y=\sin\theta$. Then $xy=(1/2)\sin 2\theta$, whose range on a full turn is exactly $[-1/2,1/2]$. The multiplier method and the angle method name the same extremes.</p>
+<p>The multiplier still has a job after the points are known. At a maximum, $\lambda=1/2$. Move the constraint to $x^2+y^2=1+\varepsilon$ with $\varepsilon$ small and positive, so the radius squared grows. The largest value of $xy$ on a circle of radius squared $r^2$ is $r^2/2$, because $(x+y)^2=r^2+2xy$ and the largest $|x+y|$ is $r\sqrt{2}$. So the new maximum is $(1+\varepsilon)/2=1/2+(1/2)\varepsilon$. Again the change is about $\lambda\varepsilon$. At a minimum, $\lambda=-1/2$, and the smallest value $-(1+\varepsilon)/2$ moves down as $\varepsilon$ grows, which matches a negative sensitivity.</p>
 
 <h2>What can go wrong</h2>
-<p>The method lists candidates. It does not, by itself, tell you which candidate is max, min, or saddle. On a closed bounded constraint, such as a circle or a sphere, a continuous $f$ attains max and min, so you evaluate $f$ at every Lagrange point and compare. On an unbounded constraint, values may run to infinity and a critical point may be only a local story.</p>
-<p>You also need $\nabla g\neq\mathbf{0}$ at the point. If the constraint is singular, the tangent space may be smaller than you think, and the parallelism condition can miss a genuine optimum or invent a fake one. Check the geometry when $\nabla g$ vanishes.</p>
-<p>Several constraints $g_1=\cdots=g_k=c$ replace the single $\lambda$ with a linear combination $\nabla f=\lambda_1\nabla g_1+\cdots+\lambda_k\nabla g_k$, provided the constraint gradients stay independent. That is the same idea. Allowed motions are orthogonal to every $\nabla g_i$. Then $\nabla f$ must live in their span.</p>
+<p>The method lists candidates. It does not, by itself, label them max, min, or neither. On a closed bounded constraint, such as a circle, an ellipse, or a sphere, a continuous $f$ attains its max and its min, so you evaluate $f$ at every Lagrange point and compare. On an unbounded constraint, as on the line above, values may run to infinity and a critical point may be only a local story. "I solved the system" is not the same sentence as "this point is the global maximum."</p>
+<p>You also need $\nabla g\neq\mathbf{0}$ at the point. If the constraint is singular, the set of allowed tangents may be smaller than the orthogonal complement of $\nabla g$, or the level set may pinch. The parallelism condition can miss a genuine optimum or become vacuous. A standard picture is the constraint $x^2-y^2=0$, the pair of lines $y=\pm x$. At the origin, $\nabla g=\mathbf{0}$ if $g(x,y)=x^2-y^2$. Inspect that point by geometry. Do not trust a multiplier equation there.</p>
+<p>Inequalities are a different problem. The equation $g=c$ is the boundary. The inequality $g\le c$ also has an interior, where the constraint is slack and you look for ordinary critical points $\nabla f=\mathbf{0}$. A first course that only writes $\nabla f=\lambda\nabla g$ and never mentions the interior will miss an optimum that sits inside the region. If the problem says "subject to $x^2+y^2\le 1$," do the disk interior and the circle, then compare.</p>
+<p>Several constraints $g_1=c_1,\ldots,g_k=c_k$ replace the single $\lambda$ with a linear combination</p>
+<p>$$\nabla f=\lambda_1\nabla g_1+\cdots+\lambda_k\nabla g_k,$$</p>
+<p>provided the constraint gradients stay independent. Allowed motions are orthogonal to every $\nabla g_i$. Then $\nabla f$ must live in their span. Each $\lambda_i$ is a sensitivity to its own constraint level. If the constraint gradients are dependent, you have fewer genuine restrictions than the count $k$ suggests, and the list of multipliers is not unique.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> Solving $\nabla f=\lambda\nabla g$ without $g=c$ finds a ray of points that are not on the constraint. Always include the constraint equation. Also, $\lambda=0$ is allowed. It means $\nabla f=\mathbf{0}$ already, so the unconstrained critical point happens to lie on $g=c$.</div>
+<div class="callout pitfall"><strong>Pitfall.</strong> Solving $\nabla f=\lambda\nabla g$ without $g=c$ finds a family of points that need not lie on the constraint. Always include the constraint equation. Also, $\lambda=0$ is allowed. It means $\nabla f=\mathbf{0}$ already, so an unconstrained critical point happens to lie on $g=c$. Dropping $\lambda=0$ because it "looks trivial" can drop the answer.</div>
 
 <h2>How this connects to derivatives you already know</h2>
-<p>If you can solve the constraint for $y=h(x)$, the problem becomes ordinary one variable calculus. Implicit differentiation, as in <a href="implicit-differentiation-intuition.html">implicit differentiation intuition</a>, is the engine of that substitution. Lagrange is what you use when you would rather not solve. Both methods, when they apply, describe the same tangency.</p>
-<p>The Jacobian of the map $(f,g)$ is related to whether the two gradients are independent. See <a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. Vector tools on this site will not solve a Lagrange system for you. They can check a gradient inner product or a $2$ by $2$ determinant if you compute the partials by hand. Try <a href="../calculators/vector-ops.html">vector operations</a> and the <a href="../calculators/matrix-2x2.html">matrix toolkit</a>.</p>
-<p>Glossary: <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a>, <a href="../glossary/#gradient">gradient</a>, <a href="../glossary/#constraint">constraint</a>, <a href="../glossary/#partial-derivative">partial derivative</a>.</p>
+<p>If you can solve the constraint for $y=h(x)$, the problem becomes ordinary one variable calculus. <a href="implicit-differentiation-intuition.html">Implicit differentiation</a> is the engine when you need $h'(x)$ without a full formula for $h$. On the line example, $y=1-x$ is explicit, so implicit work is unnecessary. On the circle $x^2+y^2=1$, implicit differentiation gives $y'=-x/y$ when $y\neq 0$. The slope of $f(x,y)=xy$ along the curve is then an ordinary derivative of $x\,y(x)$. Lagrange is what you use when you would rather not solve, and when you want $\lambda$ as well as the point. Both methods, when they apply and the constraint is smooth, describe the same tangency.</p>
+<p>The two gradients are parallel exactly when the matrix with rows $\nabla f$ and $\nabla g$ has determinant zero. That determinant is a $2$ by $2$ Jacobian of the map $(f,g)$. See <a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. A zero determinant says the two gradient rows are dependent, which is the Lagrange condition in one line, still paired with $g=c$. It does not say which candidate wins.</p>
+<p>Partials are the entries of those gradients. If a single partial feels shaky, hold the other variable fixed and read <a href="../glossary/#partial-derivative">partial derivative</a> before you build $\nabla f$. The single variable meaning of a derivative, as a best local rate, is <a href="what-a-derivative-measures.html">what a derivative actually measures</a>. A multiplier is not that rate. It is the rate of the optimal value with respect to the constraint level.</p>
 
-<h2>A short practice script</h2>
+<h2>How to know you understood</h2>
 <ol>
-<li>Write $f$ and $g$ clearly. Confirm you want $g=c$, not $g\le c$. Inequalities need extra casework.</li>
-<li>Compute both gradients. Set $\nabla f=\lambda\nabla g$ and $g=c$.</li>
-<li>Solve. Discard points where $\nabla g=\mathbf{0}$ unless you inspect them separately.</li>
-<li>Compare $f$ values, and think about the shape of the constraint (compact or not).</li>
-<li>If a substitution is easy, do it once as a check.</li>
+<li>For $xy$ on $x+y=1$, produce the point $(1/2,1/2)$, the value $1/4$, and $\lambda=1/2$, and say why there is no minimum on the whole line.</li>
+<li>For $xy$ on the unit circle, list the four points and say which value is the max and which is the min.</li>
+<li>Explain $\lambda$ with the moved constraint. On the circle, say why the new maximum on $x^2+y^2=1+\varepsilon$ is about $1/2+(1/2)\varepsilon$.</li>
+<li>Give one reason a Lagrange point might not be a maximum, and one reason a point with $\nabla g=\mathbf{0}$ needs a separate look.</li>
+<li>Say what an inequality constraint adds, in one sentence: an interior search, not only the boundary system.</li>
 </ol>
+
+<h2>Check the geometry with the nearby tools</h2>
+<p>Nothing on this site solves a Lagrange system for you. That is deliberate. The algebra is the understanding. The calculators audit a vector fact you already set up.</p>
+<div class="callout"><strong>Try it.</strong> At $(1/2,1/2)$ on the line $x+y=1$, the gradient of $f$ is $\langle 1/2,1/2\rangle$ and an allowed tangent is $\langle 1,-1\rangle$. Their dot product is $0$. Open the <a href="../calculators/vector-ops.html">vector operations calculator</a> in two dimensions and confirm that dot product. Then put the two gradients $\langle 1/2,1/2\rangle$ and $\langle 1,1\rangle$ in as rows of a matrix on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>. The determinant should be $0$, which is parallelism. On the unit circle at $(1/\sqrt{2},1/\sqrt{2})$, the same two checks work with $\nabla f=\langle 1/\sqrt{2},1/\sqrt{2}\rangle$ and a tangent $\langle -1,1\rangle$.</div>
+<p>If you only want a numerical slope after you have solved for $y$ explicitly, the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can audit that one variable function. It cannot see a constraint. Use it as a check of substitution, not as a search for $\lambda$.</p>
+<div class="cta-panel">
+<p>After you have a candidate, check that the objective gradient is perpendicular to an allowed tangent.</p>
+<a class="btn" href="../calculators/vector-ops.html">Open the vector operations calculator</a>
+</div>
+<p>A normal shows up again when a surface has an oriented boundary. That is a different theorem. Read <a href="stokes-theorem-intuition.html">Stokes theorem intuition</a> only after line integrals and curl are already in your vocabulary. If you are still on a single variable path, stay with the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a> and return to multipliers when gradients are ordinary.</p>
 
 <h2>Citations and further reading</h2>
 <ul class="source-list">
@@ -116,12 +191,42 @@
 <li>Khan Academy, Lagrange multipliers (video intuition). <a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives" rel="noopener">khanacademy.org</a></li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what-lambda">
+<h2>What does a Lagrange multiplier measure?</h2>
+<p>At a constrained optimum, $\lambda$ is the rate at which the optimal value of $f$ changes when the allowed level of $g$ changes a little. If the constraint moves from $g=c$ to $g=c+\varepsilon$, the optimal value of $f$ changes by about $\lambda\varepsilon$, when the hypotheses hold. On $xy$ with $x+y=1$, that rate is $1/2$.</p>
+</section>
+<section class="faq-item" id="not-always-max">
+<h2>Does every Lagrange point give a maximum?</h2>
+<p>No. The equations list candidates. On a closed and bounded constraint, such as a circle or a sphere, a continuous objective attains a max and a min, so you compare $f$ at every candidate. On an unbounded constraint a critical point can be only local, and the values may run off without a bound. The line $x+y=1$ has a maximum of $xy$ and no minimum.</p>
+</section>
+<section class="faq-item" id="singular">
+<h2>What if the gradient of the constraint is zero?</h2>
+<p>The parallelism rule assumes $\nabla g$ is not zero. At a singular point the tangent picture can shrink or break, so you inspect that point by hand. A zero multiplier is a different event. It means an unconstrained critical point of $f$ already lies on the constraint. Keep that point. Do not throw it out for looking dull.</p>
+</section>
+<section class="faq-item" id="substitute">
+<h2>When should I substitute instead of using a multiplier?</h2>
+<p>Substitute when the constraint solves cleanly for one variable. Then ordinary one variable calculus finishes the job, and <a href="implicit-differentiation-intuition.html">implicit differentiation</a> is the engine if you only need a slope. Use Lagrange when solving the constraint is messy, or when you want the sensitivity $\lambda$ as well as the point. On the unit circle, both routes are available, which makes it a good check.</p>
+</section>
+<section class="faq-item" id="which-tool">
+<h2>Which calculator should I use with this page?</h2>
+<p>There is no Lagrange solver here. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> to check that $\nabla f$ is perpendicular to an allowed tangent. Use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> to confirm that the matrix with rows $\nabla f$ and $\nabla g$ has determinant zero. Both checks assume you already computed the gradients.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
-<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
 <li><a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
+<li><a href="stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
+<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course</a></li>
+<li><a href="./">Explainer study library</a></li>
+<li><a href="../glossary/#lagrange-multiplier">Glossary: Lagrange multiplier</a></li>
 <li><a href="../glossary/#gradient">Glossary: gradient</a></li>
-<li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="../glossary/#constraint">Glossary: constraint</a></li>
+<li><a href="../glossary/#partial-derivative">Glossary: partial derivative</a></li>
 </ul></div>
 </article>
 </div>
@@ -130,7 +235,7 @@
 <footer class="site-footer">
 <div class="footer-inner">
 <div>
-<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
 <p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>

@@ -23,22 +23,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Stokes Theorem Intuition for Undergraduates",
-  "description": "Stokes theorem for undergraduates: circulation on a boundary, curl on a surface, and how this sits with the fundamental theorem family.",
-  "url": "https://highermathguide.com/explainers/stokes-theorem-intuition.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-17",
-  "dateModified": "2026-09-17"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Stokes Theorem Intuition for Undergraduates",
+      "description": "Stokes theorem for undergraduates: circulation on a boundary, curl on a surface, and how this sits with the fundamental theorem family.",
+      "url": "https://highermathguide.com/explainers/stokes-theorem-intuition.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-25"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/stokes-theorem-intuition.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Stokes theorem equate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It equates the circulation of a smooth vector field around the oriented boundary of a surface with the flux of the curl of that field through the surface. You may compute whichever side is easier, once the orientations match and the field is smooth on the surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Green's theorem a different result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Green's theorem is Stokes theorem for a flat region in the xy plane. The scalar that appears in the double integral is the z component of the curl."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I swap one surface for another?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when the two surfaces share the same oriented boundary and the curl is smooth in the region they enclose together. A disk and a hemisphere with the same rim are the usual classroom pair. The circulation is the same, so the two flux integrals of the curl agree."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can Stokes theorem fail near a singularity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The theorem needs the field to be smooth on a surface that includes the interior, not only on the curve. A classic planar field is smooth on the unit circle and has circulation 2 pi there, while its curl is zero away from the origin. The unit disk contains the origin, so you may not apply Stokes theorem on that disk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The vector operations calculator. Use it for a dot product when you check circulation along a short tangent, and for a cross product when a parametrization needs ru cross rv. It does not integrate a surface. A one variable slice can go to the Riemann sum calculator after you have reduced the integral by hand."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -69,49 +123,87 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Stokes theorem intuition for undergraduates</h1>
-<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>The fundamental theorem of calculus says a total change of $F$ on $[a,b]$ equals $F(b)-F(a)$. Interior information, the derivative, is recovered from the boundary values. Stokes theorem is that slogan in three dimensional clothing. Circulation of a <a href="../glossary/#vector-field">vector field</a> $\mathbf{F}$ around the edge of an oriented surface equals the flux of $\operatorname{curl}\mathbf{F}$ through the surface.</p>
+<p>The fundamental theorem of calculus says a total change of $F$ on an interval equals the difference of $F$ at the two endpoints. Interior information, the derivative, is recovered from the boundary. Stokes theorem is that slogan for a surface. The circulation of a <a href="../glossary/#vector-field">vector field</a> $\mathbf{F}$ around the oriented edge of a surface equals the flux of $\operatorname{curl}\mathbf{F}$ through the surface. You are not learning a new kind of integral. You are learning that two integrals, which look unrelated, are the same number when the hypotheses hold.</p>
 <p>In symbols, if $S$ is an oriented surface with compatible boundary curve $\partial S$,</p>
 <p>$$\oint_{\partial S}\mathbf{F}\cdot d\mathbf{r}=\iint_S(\nabla\times\mathbf{F})\cdot d\mathbf{S}.$$</p>
-<p>The left side adds how much $\mathbf{F}$ pushes along the rim. The right side adds how much the field swirls through the interior. You choose whichever side is easier. That is the practical gift, once the orientations match.</p>
+<p>The left side adds how much $\mathbf{F}$ pushes along the rim. The right side adds how much the field swirls through the interior. Compute the side that is kinder. That is the practical gift, and it is available only after the orientations match and $\mathbf{F}$ is smooth on $S$. This page is a first undergraduate reading in the multivariable cluster of the <a href="./">explainer library</a>. It assumes you can already say what a line integral and a curl are asking. The wider map is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. The linear picture of $d\mathbf{S}$ lives on <a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. The study route this site uses before several variables is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>.</p>
+
+<h2>What each side is counting</h2>
+<p>A line integral $\int_C\mathbf{F}\cdot d\mathbf{r}$ samples the field along a path and keeps only the part tangent to the path. If you walk the path and the field agrees with your direction, the integral grows. If the field fights you, the integral shrinks. On a closed rim the result is called circulation. It is a single number, not a vector. Units, if the field is a force, are work. If the field is a velocity, the number is a circulation of flow. The theorem does not know your units. You attach them after the integral is done.</p>
+<p>The surface integral $\iint_S(\nabla\times\mathbf{F})\cdot d\mathbf{S}$ does a different sampling. At each point of $S$ you take the curl, keep the part along the chosen normal, and add those pieces with respect to area. A positive contribution means the local swirl agrees with the normal. A negative contribution means it opposes the normal. Stokes theorem says the total of those local swirls equals the circulation on the rim. Nothing in the statement says the two integrands look alike. They usually do not. Equality of the totals is the claim.</p>
 
 <h2>Curl as microscopic circulation</h2>
-<p>At a point, $\nabla\times\mathbf{F}$ is a vector. Its direction is an axis of local rotation, in the right hand sense, for a smooth field. Its magnitude is the strength of that swirl per unit area in the plane perpendicular to the axis. If you take a tiny oriented loop in a plane with unit normal $\mathbf{n}$, the circulation around that loop is about $(\nabla\times\mathbf{F})\cdot\mathbf{n}$ times the area.</p>
-<p>Stokes theorem says those microscopic swirls add up. Interior edges of a tiled surface cancel, because each shared edge is traveled both ways. Only the outer boundary survives. The same cancellation is why telescoping sums appear in the single variable fundamental theorem. For a first map of fields, start with <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>.</p>
+<p>At a point, $\nabla\times\mathbf{F}$ is a vector. Its direction is an axis of local rotation, in the right hand sense, for a smooth field. Its length is the strength of that swirl per unit area in the plane perpendicular to the axis. If you take a tiny oriented loop in a plane with unit normal $\mathbf{n}$, the circulation around that loop is about $(\nabla\times\mathbf{F})\cdot\mathbf{n}$ times the area of the loop.</p>
+<p><span class="example-label">Example</span> Let $\mathbf{F}=\langle -y,x,0\rangle$. Then $\nabla\times\mathbf{F}=\langle 0,0,2\rangle$. On a circle of radius $\varepsilon$ in the plane $z=0$, centered at the origin and traveled counterclockwise from above, the circulation is not a mystery. Parametrize $\mathbf{r}(t)=(\varepsilon\cos t,\varepsilon\sin t,0)$. Then $\mathbf{F}(\mathbf{r}(t))=(-\varepsilon\sin t,\varepsilon\cos t,0)$ and $\mathbf{r}'(t)=(-\varepsilon\sin t,\varepsilon\cos t,0)$, so the dot product is $\varepsilon^2$ at every $t$. Integrate from $0$ to $2\pi$ and the circulation is $2\pi\varepsilon^2$. The area inside the circle is $\pi\varepsilon^2$. Circulation divided by area equals $2$, which is exactly the $z$ component of the curl. The tiny loop has already met the theorem. The factor $2$ is a rate per unit area, not a circulation by itself.</p>
+<p>Stokes theorem says those microscopic swirls add up on a large surface. Tile $S$ with small patches. Each shared edge is traveled once in each direction, so the interior edges cancel. Only the outer boundary survives. The same cancellation is why a telescoping sum appears in the single variable fundamental theorem. If that single variable sentence is still foggy, repair it on <a href="what-a-derivative-measures.html">what a derivative actually measures</a> before you lean on the surface version.</p>
+
+<h2>Orientation is part of the data</h2>
+<p>A surface needs a continuous choice of normal, and the boundary needs a travel direction tied to that normal. The right hand rule is the tie. Point the thumb of your right hand along the normal. Your fingers curl in the direction you must walk the rim. Reverse the normal and you must reverse the walk. The two sides of the theorem both change sign, and the equality survives. Reverse only one of them and a minus sign appears. That minus sign is not a calculation error. It is a mismatched pair of orientations.</p>
+<p>A closed surface, such as a full sphere, has empty boundary. The circulation side is an empty sum, which is $0$. So the flux of $\operatorname{curl}\mathbf{F}$ through a closed surface is $0$ whenever $\mathbf{F}$ is smooth on and inside that surface. This is a useful check, and it is not the divergence theorem. The divergence theorem equates the flux of $\mathbf{F}$ itself, not of the curl, with a triple integral of $\operatorname{div}\mathbf{F}$. Mixing those two statements is a common way to "prove" a number that the problem never asked for.</p>
 
 <h2>Green in the plane is the flat case</h2>
-<p>If $S$ sits in the $xy$ plane and $\mathbf{F}=\langle P,Q,0\rangle$, Stokes theorem reduces to Green’s theorem:</p>
+<p>If $S$ sits in the $xy$ plane and $\mathbf{F}=\langle P,Q,0\rangle$, Stokes theorem reduces to Green's theorem:</p>
 <p>$$\oint_C P\,dx+Q\,dy=\iint_D(Q_x-P_y)\,dA.$$</p>
-<p>The scalar $Q_x-P_y$ is the $z$ component of curl. So Green is not a different religion. It is Stokes for a flat domain. If you already believe Green, you already believe the two dimensional core of Stokes.</p>
+<p>The scalar $Q_x-P_y$ is the $z$ component of the curl. So Green is not a different religion. It is Stokes for a flat domain with upward normal, which matches counterclockwise travel on the outer boundary. If you already believe Green, you already believe the two dimensional core of Stokes. A hole in the domain adds an inner curve, traveled clockwise when the outer curve is counterclockwise, because the normal still points up and the region stays on the left as you walk. Forgetting the inner curve is how a planar problem quietly leaves the hypotheses.</p>
 
 <h2>Why the surface can change</h2>
-<p>Suppose two surfaces $S_1$ and $S_2$ share the same oriented boundary, and $\nabla\times\mathbf{F}$ is defined and smooth in the region they enclose together. Then the two flux integrals of curl are equal, because each equals the same circulation. You may replace a complicated surface with a simpler one that has the same rim. A hemisphere and its equatorial disk are the classroom picture.</p>
-<p><span class="example-label">Example</span> Let $\mathbf{F}=\langle -y,x,0\rangle$ and let $C$ be the unit circle $x^2+y^2=1$, $z=0$, traveled counterclockwise when viewed from above. Directly, $\mathbf{F}$ along $C$ is a unit tangent times radius $1$, and the circulation is $2\pi$. The disk $x^2+y^2\le 1$ in the plane $z=0$ has $\nabla\times\mathbf{F}=\langle 0,0,2\rangle$, so the flux of curl is $2$ times area $\pi$, which is $2\pi$. A hemisphere with the same rim gives the same number after more work. The disk was the kinder surface.</p>
+<p>Suppose two surfaces $S_1$ and $S_2$ share the same oriented boundary, and $\nabla\times\mathbf{F}$ is defined and smooth in the region they enclose together. Then the two flux integrals of the curl are equal, because each equals the same circulation. You may replace a complicated surface with a simpler one that has the same rim. A hemisphere and its equatorial disk are the classroom picture. The curl does not have to be zero for the swap to be legal. Smoothness in the enclosed region is the legal condition.</p>
+<p><span class="example-label">Example</span> Let $\mathbf{F}=\langle -y,x,0\rangle$ and let $C$ be the unit circle $x^2+y^2=1$ in the plane $z=0$, traveled counterclockwise when viewed from above. On $C$, the field equals the unit tangent, and the speed is $1$, so the circulation is the length $2\pi$. You can also compute it from the parametrization $\mathbf{r}(t)=(\cos t,\sin t,0)$: the integrand $\mathbf{F}\cdot\mathbf{r}'$ equals $1$, and the integral from $0$ to $2\pi$ is $2\pi$.</p>
+<p>The disk $x^2+y^2\le 1$ in the plane $z=0$ has upward normal and $\nabla\times\mathbf{F}=\langle 0,0,2\rangle$. The flux of the curl is $2$ times the area $\pi$, which is $2\pi$. A hemisphere with the same rim gives the same number, because the hypotheses hold in the ball and the boundary matches. The disk was the kinder surface. Choosing the hemisphere and then grinding through a spherical parametrization is correct and usually a waste, unless the problem insists on that surface.</p>
+<p>A second field shows the sign. Let $\mathbf{G}=\langle y,0,0\rangle$. Then $\nabla\times\mathbf{G}=\langle 0,0,-1\rangle$. On the same unit circle, $\mathbf{G}\cdot d\mathbf{r}$ becomes $-\sin^2 t$ after the parametrization above, and the integral is $-\pi$. The flux of the curl through the unit disk is $-1$ times area $\pi$, which is also $-\pi$. The negative sign means the swirl opposes the upward normal. It is still a successful check of the theorem.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> Orientation is part of the data. The right hand rule ties the normal on $S$ to the travel direction on $\partial S$. Reverse one without the other and a minus sign appears. Also, Stokes needs $\mathbf{F}$ to be smooth on a surface that includes $S$, not only on the curve. A field that blows up inside the rim can make the two sides disagree if you apply the theorem outside its hypotheses.</div>
+<h2>What the theorem is not</h2>
+<ul>
+<li><strong>It is not path independence.</strong> Path independence belongs to gradient fields, where the circulation on every closed curve in the region is zero. A gradient field has curl zero, so Stokes theorem agrees, but many fields with curl zero on a punctured region are not gradients. The theorem does not promote every curl free field into a gradient.</li>
+<li><strong>It is not a test that the field is conservative.</strong> A single surface with a single boundary can give circulation zero because the flux of the curl happens to cancel, even when the field is not a gradient on a larger region.</li>
+<li><strong>It does not apply to a surface that the field does not survive.</strong> Smoothness on $S$ is a hypothesis, not a courtesy.</li>
+<li><strong>A zero curl does not let you ignore a hole.</strong> The next example is the standard warning.</li>
+</ul>
+<p><span class="example-label">Example</span> Let $\mathbf{H}=\left\langle \dfrac{-y}{x^2+y^2},\dfrac{x}{x^2+y^2},0\right\rangle$ away from the $z$ axis, where the formula breaks. On the unit circle in the plane $z=0$ the denominator is $1$, and $\mathbf{H}\cdot d\mathbf{r}$ integrates to $2\pi$. Away from the origin the curl is $\mathbf{0}$. If you still apply Stokes theorem on the unit disk, the flux of the curl would be $0$. The two numbers disagree because $\mathbf{H}$ is not smooth on that disk. The origin sits in the interior. The theorem did not fail. The hypothesis did.</p>
+
+<div class="callout pitfall"><strong>Pitfall.</strong> Orientation is part of the data. The right hand rule ties the normal on $S$ to the travel direction on $\partial S$. Reverse one without the other and a minus sign appears. Also, Stokes needs $\mathbf{F}$ to be smooth on a surface that includes the interior, not only on the curve. A field that blows up inside the rim can make the two sides disagree if you apply the theorem outside its hypotheses.</div>
+
+<h2>How an undergraduate should compute</h2>
+<ol>
+<li>Sketch $S$ and $\partial S$. Decide a normal, then the boundary direction from the right hand rule.</li>
+<li>Compute $\nabla\times\mathbf{F}$. If it is simple, prefer the surface integral. If $S$ is messy and $\mathbf{F}$ is simple on the curve, prefer the line integral.</li>
+<li>If another surface has the same boundary and a friendlier curl flux, switch, after you know the curl is smooth between them.</li>
+<li>Parametrize, insert, and integrate. The vector area element is $\mathbf{r}_u\times\mathbf{r}_v\,du\,dv$. The order of the cross product chooses the normal.</li>
+<li>Ask whether the field is smooth on and near $S$. If not, stop and repair the setup. Do not average the two sides into a compromise number.</li>
+</ol>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>Say, in one sentence, which integral is circulation and which is flux of curl, and why they can be equal without looking alike.</li>
+<li>For $\mathbf{F}=\langle -y,x,0\rangle$ on the unit circle, get $2\pi$ two ways: the line integral, and the flux of $\langle 0,0,2\rangle$ through the disk.</li>
+<li>Name the right hand rule out loud while you point at a sketch. Then say what happens if you reverse only the normal.</li>
+<li>Give the punctured field $\mathbf{H}$ as a case where curl zero on the curve does not license Stokes theorem on the disk.</li>
+<li>Tell Stokes theorem from the divergence theorem in one sentence a classmate could use.</li>
+</ol>
+
+<h2>Practice with the vector calculator</h2>
+<p>This site does not hide a surface integrator, and it should not. Stokes theorem is a decision about which integral to set up, not a button. The nearby arithmetic is a dot product or a cross product. The <a href="../calculators/vector-ops.html">vector operations calculator</a> does those, in two or three components. It does not know your orientation, and it does not add the pieces of an integral.</p>
+<div class="callout"><strong>Try it.</strong> For the disk example, the curl is $\langle 0,0,2\rangle$ and an upward normal direction is $\langle 0,0,1\rangle$. Their dot product is $2$, which is the integrand before you multiply by area. Separately, take two tangent vectors on a graph, such as $\mathbf{r}_u=\langle 1,0,0\rangle$ and $\mathbf{r}_v=\langle 0,1,1\rangle$. The cross product $\mathbf{r}_u\times\mathbf{r}_v$ should be $\langle 0,-1,1\rangle$. If you swap the order you get the opposite normal, and the flux changes sign. That swap is the orientation pitfall, seen as a single cross product.</div>
+<p>After a parametrization has collapsed to a one variable integral, a numerical picture of that integral can go to the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>. Use it only after the setup is finished by hand. A pretty Riemann sum of the wrong integrand is still the wrong integral. The short glossary forms are <a href="../glossary/#stokes-theorem">Stokes theorem</a>, <a href="../glossary/#vector-field">vector field</a>, and <a href="../glossary/#partial-derivative">partial derivative</a>, since every component of a curl is a partial derivative.</p>
+<div class="cta-panel">
+<p>Check a dot product or a cross product after you can say which vector is the field and which vector is the normal.</p>
+<a class="btn" href="../calculators/vector-ops.html">Open the vector operations calculator</a>
+</div>
+<p>Constrained optimization uses normals in a different job. The gradient of a constraint is normal to a level set, which is the picture on <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. Do not import a multiplier into a circulation problem. If the next course is still single variable, Stokes theorem can wait. The <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a> says so on purpose, and it sends several variables through linear algebra first.</p>
 
 <h2>The family of theorems</h2>
 <p>Keep one mental shelf:</p>
 <ul>
 <li>Fundamental theorem: $\int_a^b F'=F(b)-F(a)$.</li>
-<li>Line integrals of gradients: path independence when $\mathbf{F}=\nabla f$.</li>
+<li>Line integrals of gradients: path independence when $\mathbf{F}=\nabla f$ on a decent region.</li>
 <li>Green: curl in the plane, circulation on a closed curve.</li>
 <li>Stokes: curl in space, circulation on the boundary of a surface.</li>
-<li>Divergence theorem: flux of $\mathbf{F}$ through a closed surface equals triple integral of $\operatorname{div}\mathbf{F}$.</li>
+<li>Divergence theorem: flux of $\mathbf{F}$ through a closed surface equals the triple integral of $\operatorname{div}\mathbf{F}$.</li>
 </ul>
-<p>Each says that a derivative on the inside matches a measurement on the boundary. The <a href="../glossary/#stokes-theorem">Stokes theorem</a> entry in the glossary is the short form of this page. Jacobians appear when you parametrize $S$ and compute $d\mathbf{S}=\mathbf{r}_u\times\mathbf{r}_v\,du\,dv$. See <a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> and the <a href="../calculators/vector-ops.html">vector operations calculator</a> for a cross product check.</p>
-
-<h2>How an undergraduate should compute</h2>
-<ol>
-<li>Sketch $S$ and $\partial S$. Decide a normal, then the boundary direction.</li>
-<li>Compute $\nabla\times\mathbf{F}$. If it is simple, prefer the surface integral. If $S$ is messy and $\mathbf{F}$ is simple on the curve, prefer the line integral.</li>
-<li>If another surface has the same boundary and a friendlier curl flux, switch.</li>
-<li>Parametrize, insert, and integrate. Watch the Jacobian factor in $d\mathbf{S}$.</li>
-<li>Ask whether the field is smooth on and near $S$. If not, stop and repair the setup.</li>
-</ol>
-<p>This site will not hide a full surface integrator. The tools that help nearby are <a href="../calculators/vector-ops.html">vector operations</a>, the <a href="../calculators/integral-riemann.html">Riemann sum integrator</a> for a one variable slice, and the <a href="../glossary/#vector-field">vector field</a> glossary note. For a constrained geometry picture that also uses normals, see <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>.</p>
+<p>Each says that a derivative on the inside matches a measurement on the boundary. The <a href="../glossary/#integral">integral</a> glossary line is the single variable ancestor of that shelf. Jacobians appear when you parametrize $S$ and compute $d\mathbf{S}$. They also appear when a change of variables needs a volume scale. That is a different sentence, and it belongs on the Jacobian page, not as a substitute for the curl.</p>
 
 <h2>Citations and further reading</h2>
 <ul class="source-list">
@@ -121,12 +213,41 @@
 <li>Schey, H. M. <em>Div, Grad, Curl, and All That</em>, for a physical reading of curl and circulation.</li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what-equals">
+<h2>What does Stokes theorem equate?</h2>
+<p>It equates the circulation of a smooth vector field around the oriented boundary of a surface with the flux of the curl of that field through the surface. You may compute whichever side is easier, once the orientations match and the field is smooth on the surface. The short form is the <a href="../glossary/#stokes-theorem">glossary entry</a>.</p>
+</section>
+<section class="faq-item" id="green">
+<h2>Is Green's theorem a different result?</h2>
+<p>No. Green's theorem is Stokes theorem for a flat region in the $xy$ plane. The scalar in the double integral is the $z$ component of the curl. Counterclockwise travel on an outer boundary matches an upward normal.</p>
+</section>
+<section class="faq-item" id="swap-surface">
+<h2>Can I swap one surface for another?</h2>
+<p>Yes, when the two surfaces share the same oriented boundary and the curl is smooth in the region they enclose together. A disk and a hemisphere with the same rim are the usual classroom pair. The circulation is the same, so the two flux integrals of the curl agree. For $\mathbf{F}=\langle -y,x,0\rangle$ on the unit circle, both give $2\pi$, and the disk is the shorter computation.</p>
+</section>
+<section class="faq-item" id="singularity">
+<h2>Why can Stokes theorem fail near a singularity?</h2>
+<p>The theorem needs the field to be smooth on a surface that includes the interior, not only on the curve. The field $\mathbf{H}$ on this page is smooth on the unit circle and has circulation $2\pi$ there, while its curl is zero away from the origin. The unit disk contains the origin, so you may not apply the theorem on that disk.</p>
+</section>
+<section class="faq-item" id="which-tool">
+<h2>Which calculator should I use with this page?</h2>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a>. Use it for a dot product when you check circulation along a short tangent, and for a cross product when a parametrization needs $\mathbf{r}_u\times\mathbf{r}_v$. It does not integrate a surface. A one variable slice can go to the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> after you have reduced the integral by hand.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
-<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
-<li><a href="../glossary/#vector-field">Glossary: vector field</a></li>
+<li><a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
+<li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
+<li><a href="../topics/multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course</a></li>
+<li><a href="./">Explainer study library</a></li>
 <li><a href="../glossary/#stokes-theorem">Glossary: Stokes theorem</a></li>
-<li><a href="../calculators/vector-ops.html">Vector operations</a></li>
+<li><a href="../glossary/#vector-field">Glossary: vector field</a></li>
+<li><a href="../glossary/#partial-derivative">Glossary: partial derivative</a></li>
 </ul></div>
 </article>
 </div>
@@ -135,7 +256,7 @@
 <footer class="site-footer">
 <div class="footer-inner">
 <div>
-<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
 <p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>

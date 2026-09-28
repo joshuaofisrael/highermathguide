@@ -23,22 +23,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Convergence Tests for Series",
-  "description": "Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.",
-  "url": "https://highermathguide.com/explainers/convergence-tests-series.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  },
-  "isAccessibleForFree": true,
-  "inLanguage": "en",
-  "datePublished": "2026-09-17",
-  "dateModified": "2026-09-17"
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Convergence Tests for Series",
+      "description": "Comparison, ratio, and root tests for infinite series explained with partial sums and the cases where each test stays silent.",
+      "url": "https://highermathguide.com/explainers/convergence-tests-series.html",
+      "author": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-25"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/convergence-tests-series.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the term test prove convergence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. If the terms do not go to zero, the series diverges. If the terms do go to zero, the test says nothing. The harmonic series has terms 1/n going to zero, and the partial sums still grow without a bound."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do when the ratio test gives 1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Switch tests. The limit 1 is silence, not a shy way of saying convergence. Both the harmonic series and the series of 1/n squared give ratio limit 1, and they do not share a verdict. Comparison, or an integral test from your course, can see the difference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do comparison, ratio, and root tests differ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comparison borrows a series you already understand and needs an inequality, or a limit comparison with a positive finite limit. Ratio and root ask whether the terms eventually sit under a geometric series with ratio below 1. Root can decide some series whose successive ratios have no limit. When both limits exist, they are equal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is conditional convergence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The series converges, but the series of absolute values diverges. The alternating harmonic series is the standard example. Comparison, ratio, and root tests are aimed at absolute convergence. They stay silent or report divergence of the absolute series, and a separate alternating test is what sees the conditional convergence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use with this page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The arithmetic and geometric sequence calculator. It reports a single term and a finite partial sum. A geometric series with first term 1 and ratio 1/2 has finite sums approaching 2, and the page can show a finite sum. That picture is not a proof. It cannot test the harmonic series, because that series is neither arithmetic nor geometric."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -69,23 +123,29 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Convergence tests for series without fog</h1>
-<p class="article-meta">Explainer · Educational only · Updated 17 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>An infinite series is not a long plus sign. It is a <a href="../glossary/#sequence">sequence</a> of <a href="../glossary/#partial-sum">partial sums</a>. The series $\sum a_n$ <a href="../glossary/#convergence">converges</a> when $s_N=a_1+\cdots+a_N$ approaches a number. Tests exist because you often cannot write $s_N$ in closed form. A good test answers only one question. Do those partial sums settle?</p>
-<p>This page treats three workhorses: comparison, ratio, and root. They are cousins, not rivals. Comparison borrows a series you already understand. Ratio and root ask whether your terms eventually look geometric. For the broader story of sequences and series, start with <a href="sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>. For proof habits around limits, see <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>.</p>
+<p>An infinite series is not a long plus sign. It is a <a href="../glossary/#sequence">sequence</a> of <a href="../glossary/#partial-sum">partial sums</a>. The series $\sum a_n$ <a href="../glossary/#convergence">converges</a> when $s_N=a_1+\cdots+a_N$ approaches a finite number. It diverges when that sequence of sums does not. Tests exist because you often cannot write $s_N$ in closed form. A good test answers one question only. Do those partial sums settle?</p>
+<p>This page treats three workhorses: the <a href="../glossary/#comparison-test">comparison test</a>, the <a href="../glossary/#ratio-test">ratio test</a>, and the <a href="../glossary/#root-test">root test</a>. They are cousins, not rivals. Comparison borrows a <a href="../glossary/#series">series</a> you already understand. Ratio and root ask whether your terms eventually look geometric. Read this after <a href="sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>, not instead of it. The topic map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. If you want the habit of writing the hypothesis before the verdict, use <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a> and the <a href="../pathways/intro-to-proofs.html">intro to proofs</a> pathway. A course shaped order that includes this page is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>.</p>
 
-<h2>A reminder you will need</h2>
-<p>If $a_n$ does not go to $0$, the series diverges. That is the term test. It never proves convergence. Terms can go to zero slowly and the sum can still run to infinity. The harmonic series $\sum 1/n$ is the famous example. Terms vanish. Partial sums grow like $\ln N$.</p>
-<p>Positive term series are the cleanest setting for the three tests below. If terms change sign, ask first about absolute convergence, $\sum |a_n|$. Absolute convergence implies ordinary convergence. The converse can fail. Alternating series have their own test, which this page leaves to a later note.</p>
+<h2>The term test, which never proves convergence</h2>
+<p>If $a_n$ does not go to $0$, the series diverges. Partial sums cannot settle if each new term stays a fixed distance away from zero. That is the term test, sometimes called the divergence test. It never proves convergence. Terms can go to zero slowly, and the sum can still run off.</p>
+<p>The harmonic series $\sum 1/n$ is the famous example. The terms vanish. The partial sums do not. A picture that does not need a named integral test: on each interval $[n,n+1]$, the function $1/x$ sits under the constant $1/n$. So</p>
+<p>$$\sum_{n=1}^{N}\frac{1}{n} &gt; \int_1^{N+1}\frac{1}{x}\,dx=\ln(N+1).$$</p>
+<p>The natural log grows without a bound, so the partial sums do too. Terms going to zero were required and not enough. Any later test that "succeeds" on a series whose terms refuse to go to zero has been misapplied.</p>
+<p>Positive term series are the cleanest setting for the three tests below. Partial sums of nonnegative terms only increase, so they either settle or run to infinity. There is no oscillation to hide the answer. If terms change sign, ask first about absolute convergence, meaning convergence of $\sum |a_n|$. Absolute convergence implies ordinary convergence, because the partial sums of $a_n$ are then squeezed by a convergent series of absolute values. The converse can fail. A short note on that failure is later on this page. It is not a reason to skip the absolute question.</p>
 
 <h2>Comparison: sandwich against a known series</h2>
-<p>Suppose $0\le a_n\le b_n$ for all large $n$. If $\sum b_n$ converges, then $\sum a_n$ converges. The partial sums of $a$ are increasing and bounded above by a convergent pile plus a finite head, so they settle. If instead $a_n\ge c_n\ge 0$ and $\sum c_n$ diverges, then $\sum a_n$ diverges. You cannot be smaller than a divergent stack of nonnegative blocks and still stay finite.</p>
-<p>The usual comparison partners are geometric series $\sum r^n$ (converges when $|r|&lt;1$) and $p$ series $\sum 1/n^p$ (converges when $p&gt;1$). You must actually check the inequality, or a limit form of it, not only the “looks like” feeling.</p>
-<p><span class="example-label">Example</span> For $a_n=\frac{1}{n^2+3n+1}$, note that $n^2+3n+1&gt;n^2$, so $0&lt;a_n&lt;1/n^2$. The $p$ series with $p=2$ converges, so this series converges. The inequality is doing the work, not the visual resemblance alone.</p>
-<p>Limit comparison is the same idea with less inequality pain. If $a_n&gt;0$, $b_n&gt;0$, and $a_n/b_n\to L$ with $0&lt;L&lt;\infty$, then $\sum a_n$ and $\sum b_n$ converge or diverge together. The terms are eventually the same size up to a constant factor. Constants do not change convergence of a series of positive terms.</p>
+<p>Suppose $0\le a_n\le b_n$ for all large $n$. If $\sum b_n$ converges, then $\sum a_n$ converges. The partial sums of $a_n$ are increasing, and they stay below a convergent pile plus a finite head, so they settle. If instead $a_n\ge c_n\ge 0$ and $\sum c_n$ diverges, then $\sum a_n$ diverges. You cannot stay above a divergent stack of nonnegative blocks and still have a finite sum.</p>
+<p>The usual comparison partners are geometric series and $p$ series. A geometric series $\sum ar^{n}$ with $a\neq 0$ converges when $|r|&lt;1$ and diverges when $|r|\ge 1$. A $p$ series $\sum 1/n^p$ converges when $p&gt;1$ and diverges when $p\le 1$. The harmonic series is the case $p=1$. You must actually check an inequality, or a limit form of it. "It looks like $1/n^2$" is a hint about which partner to try. It is not yet a proof.</p>
+<p><span class="example-label">Example</span> For $a_n=1/(n^2+3n+1)$, note that $n^2+3n+1&gt;n^2$ when $n&gt;0$, so $0&lt;a_n&lt;1/n^2$. The $p$ series with $p=2$ converges, so this series converges. The inequality is doing the work. A looser bound such as $a_n&lt;1$ is true and useless, because $\sum 1$ diverges and an upper bound by a divergent series proves nothing.</p>
+<p>Limit comparison is the same idea with less inequality pain. If $a_n&gt;0$, $b_n&gt;0$, and $a_n/b_n$ approaches a limit $L$ with $0&lt;L&lt;\infty$, then $\sum a_n$ and $\sum b_n$ converge or diverge together. The terms are eventually the same size up to a constant factor, and a constant factor does not change convergence for positive terms.</p>
+<p><span class="example-label">Example</span> Let $a_n=(2n+1)/(n^2+5)$. Compare with $b_n=1/n$. Then</p>
+<p>$$\frac{a_n}{b_n}=\frac{n(2n+1)}{n^2+5}=\frac{2n^2+n}{n^2+5}\to 2.$$</p>
+<p>The limit is positive and finite, and $\sum 1/n$ diverges, so $\sum a_n$ diverges. A direct inequality reaches the same verdict. For $n\ge 1$, the numerator $2n+1$ is at least $2n$, and the denominator $n^2+5$ is at most $6n^2$, so $a_n\ge (2n)/(6n^2)=1/(3n)$. A constant times the harmonic series still diverges.</p>
 
-<div class="callout pitfall"><strong>Pitfall.</strong> Comparing with a smaller convergent series proves nothing. Being below a finite sum is helpful. Being above a finite sum is not a crime. Likewise, being below a divergent series does not force divergence. Match the direction of the inequality to the claim you want.</div>
+<div class="callout pitfall"><strong>Pitfall.</strong> Comparing with a smaller convergent series proves nothing. Being below a convergent series is helpful. Being above a convergent series is not a crime. Likewise, being below a divergent series does not force divergence. Match the direction of the inequality to the claim you want. If you wanted convergence and your upper bound diverges, you learned nothing. Change the partner.</div>
 
 <h2>Ratio: ask if the terms become geometric</h2>
 <p>For $a_n\neq 0$, form $L=\lim |a_{n+1}/a_n|$ when the limit exists. The ratio test says:</p>
@@ -94,41 +154,99 @@
 <li>If $L&gt;1$, or if the ratio tends to infinity, the series diverges.</li>
 <li>If $L=1$, the test is silent.</li>
 </ul>
-<p>Why $L&lt;1$ wins: eventually $|a_{n+1}|\le r|a_n|$ for some $r$ with $L&lt;r&lt;1$. From there on, the tail is dominated by a geometric series with ratio $r$. Comparison finishes the proof. If $L&gt;1$, terms grow and cannot go to zero.</p>
-<p>The silent case $L=1$ includes both $\sum 1/n$ and $\sum 1/n^2$. The ratio test cannot see the difference between $p=1$ and $p=2$. That is not a defect in you. It is a limit of the test. Switch to comparison or an integral test.</p>
+<p>Why $L&lt;1$ wins: eventually $|a_{n+1}|\le r|a_n|$ for some fixed $r$ with $L&lt;r&lt;1$. From there on, the tail is dominated by a geometric series with ratio $r$. Comparison finishes the argument. If $L&gt;1$, the terms eventually grow, so they cannot go to zero, and the term test already says the series diverges.</p>
+<p>The silent case $L=1$ includes both $\sum 1/n$ and $\sum 1/n^2$. For $1/n$ the successive ratio is $n/(n+1)$, which approaches $1$. For $1/n^2$ the successive ratio is $n^2/(n+1)^2$, which also approaches $1$. The ratio test cannot see the difference between $p=1$ and $p=2$. That is not a defect in your algebra. It is a limit of the test. Switch to comparison. Staring at the same limit will not make it drop below $1$.</p>
 <p><span class="example-label">Example</span> For $a_n=n^2/3^n$,</p>
 <p>$$\frac{a_{n+1}}{a_n}=\frac{(n+1)^2}{n^2}\cdot\frac{1}{3}\to\frac{1}{3}&lt;1.$$</p>
-<p>The polynomial in the numerator is helpless against the exponential. The series converges. Factorials in a denominator produce the same verdict for many Taylor remainders.</p>
+<p>The polynomial in the numerator is helpless against the exponential in the denominator. The series converges absolutely. Factorials in a denominator produce the same kind of verdict for many Taylor tails, because a factorial eventually beats any fixed base to a power. Compute the ratio before you announce that. The slogan is not the test.</p>
 
-<h2>Root: a closer cousin of geometric series</h2>
-<p>Form $\rho=\lim\sup\sqrt[n]{|a_n|}$, or an ordinary limit when it exists. The root test uses the same three way split as the ratio test, with $\rho$ in place of $L$. The slogan is even closer to geometry. If the $n$th root settles below $1$, then $|a_n|\le r^n$ eventually for some $r&lt;1$.</p>
-<p>Root is often stronger than ratio in the official sense that it can decide some series where the ratio limit fails to exist. In a first course you will meet it most often with expressions already raised to the $n$th power, such as $\bigl(\frac{n}{n+1}\bigr)^{n^2}$ style terms, where the root simplifies the algebra.</p>
-<p>When both limits exist, they are equal. You may choose whichever quotient or root looks cleaner. Silence at $1$ is still silence.</p>
+<h2>Root: a closer cousin of a geometric series</h2>
+<p>Form $\rho=\limsup\sqrt[n]{|a_n|}$, or an ordinary limit when it exists. The root test uses the same three way split as the ratio test, with $\rho$ in place of $L$. If the root settles below $1$, then $|a_n|\le r^n$ eventually for some $r$ with $\rho&lt;r&lt;1$, and comparison with a geometric series applies again. If the root settles above $1$, the terms do not go to zero.</p>
+<p>In a first course the root is kindest when the whole term is already an $n$th power. For $a_n=\bigl(n/(2n+1)\bigr)^n$,</p>
+<p>$$\sqrt[n]{a_n}=\frac{n}{2n+1}\to\frac{1}{2}&lt;1.$$</p>
+<p>The series converges. The ratio of successive terms is messier and is unnecessary once the root is this clean.</p>
+<p>Root can also decide a series whose successive ratios refuse to settle. Let $a_n=2^{-n}$ when $n$ is even, and $a_n=3^{-n}$ when $n$ is odd. Along even indices the next ratio collapses toward $0$. Along odd indices the next ratio blows up. The limit of $|a_{n+1}/a_n|$ does not exist, so the ratio test in the "limit exists" form does not speak. The roots are $1/2$ on even indices and $1/3$ on odd indices, so the largest limit point of the roots is $1/2$, which is below $1$. The root test says the series converges. A direct comparison sees it too, since $a_n\le 2^{-n}$ for every $n$. The example is here so you do not treat a missing ratio limit as a mystery. It is a signal to change tools.</p>
+<p>When the ratio limit exists, the root limit exists and they are equal. You may choose whichever expression looks cleaner. Silence at $1$ is still silence for both tests. Neither test is a stronger personality. They fail together on $p$ series.</p>
+
+<h2>Signs, absolute convergence, and what these tests do not see</h2>
+<p>If $\sum |a_n|$ converges, then $\sum a_n$ converges. The proof idea is that the positive part and the negative part are each smaller than the absolute series, so each settles, and their difference settles. You may apply comparison, ratio, or root to $|a_n|$ and then transfer the verdict.</p>
+<p>The transfer does not run backward. Let $a_n=(-1)^{n+1}/n$, the alternating harmonic series. The absolute series is the harmonic series, which diverges. The alternating series itself converges. One honest reason: the partial sums with an even number of terms increase, the partial sums with an odd number of terms decrease, and the gap between those two strands is the next term $1/n$, which goes to zero. A course will call this the alternating series test. The hypotheses to remember are that the absolute values decrease to zero. Drop the decrease, and a sign pattern alone does not save you.</p>
+<p>For this alternating series the ratio of absolute values is $n/(n+1)$, which approaches $1$. Ratio and root stay silent. Comparison on the absolute values proves divergence of $\sum |a_n|$, which is real information and is not a verdict about $\sum a_n$. The name for "converges, but not absolutely" is conditional convergence. These three tests are built to see absolute convergence. When they are silent and the signs alternate, you need the alternating test, or a different closed form. This page does not pretend to be that later chapter. It does insist that silence not be recorded as convergence.</p>
 
 <h2>A small decision map</h2>
 <ol>
-<li>Do terms fail to go to zero? Diverge. Stop.</li>
-<li>Do you see a geometric ratio or a $p$ series after a simple bound? Compare.</li>
-<li>Do you see $n!$, $c^n$, or a rational function times an exponential? Try ratio.</li>
-<li>Do you see an $n$th power wrapping the whole term? Try root.</li>
+<li>Do the terms fail to go to zero? The series diverges. Stop.</li>
+<li>Do you see a geometric ratio or a $p$ series after a simple bound? Compare, and check the direction.</li>
+<li>Do you see a factorial, an exponential, or a rational function times an exponential? Try the ratio.</li>
+<li>Is the whole term an $n$th power, or do successive ratios fail to settle? Try the root.</li>
 <li>If the test returns $1$, change tools. Do not stare at the same limit.</li>
+<li>If the signs alternate and the absolute series diverges, ask the alternating test. Do not force a ratio limit of $1$ to vote.</li>
 </ol>
-<p>Finite arithmetic and geometric sums are not the same as infinite series tests. The <a href="../calculators/sequence-series.html">sequence and series calculator</a> reports $a_n$ and $S_n$ for finite $n$. That is a numerical window, not a proof of convergence. Watching $S_n$ level off can support a guess. It cannot replace a test.</p>
-<p>Related glossary terms: <a href="../glossary/#series">series</a>, <a href="../glossary/#comparison-test">comparison test</a>, <a href="../glossary/#ratio-test">ratio test</a>, <a href="../glossary/#root-test">root test</a>. The <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a> lists series as an optional next step after derivatives and integrals.</p>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>State the term test in one sentence, and give the harmonic series as a case where terms go to zero and the series still diverges.</li>
+<li>For $1/(n^2+3n+1)$, name the comparison partner and the direction of the inequality.</li>
+<li>For $n^2/3^n$, compute the successive ratio limit and say why it is enough.</li>
+<li>For both $1/n$ and $1/n^2$, show that the ratio limit is $1$, and say which series converges.</li>
+<li>Say what conditional convergence means, using the alternating harmonic series, and say which of the three tests fails to see it.</li>
+</ol>
+
+<h2>A finite sum is a picture, not a verdict</h2>
+<p>The <a href="../calculators/sequence-series.html">arithmetic and geometric sequence calculator</a> reports a term $a_n$ and a finite sum $S_n$. It does not test an arbitrary series. Harmonic terms are not an arithmetic or geometric list, so they do not belong in that form. A geometric series does.</p>
+<div class="callout"><strong>Try it.</strong> Choose a geometric sequence with first term $1$, common ratio $1/2$, and $n=10$. The finite sum is $2-1/512$, which sits just under $2$. The infinite sum, when $|r|&lt;1$, is the first term divided by $1-r$, here $1/(1-1/2)=2$. The calculator is showing the finite sum only. The approach toward $2$ supports the geometric test you already know. It is not a new test, and the same screen cannot tell you that $\sum 1/n^2$ converges. For that, you still owe a comparison or an integral argument from your course.</div>
+<p>Watching $S_n$ level off can support a guess before you pick a test. A large $S_n$ is not divergence, and a calm $S_n$ is not convergence. Partial sums of the harmonic series grow slowly. A short window looks tame and the series still diverges. Trust the hypothesis of the test you invoked, then the verdict.</p>
+<div class="cta-panel">
+<p>Compute a finite geometric sum you can also do by hand. Then say what that number is not: it is not a convergence proof for a series the tool cannot see.</p>
+<a class="btn" href="../calculators/sequence-series.html">Open the sequence and series calculator</a>
+</div>
+<p>If the limit language under "approaches" is the actual gap, read <a href="epsilon-delta-intuition.html">epsilon delta intuition</a> before you stack more tests. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> can sample a successive ratio such as $n/(n+1)$ and show it nearing $1$. That sample is still not the ratio test. The test is the limit, together with the three way split above. Glossary lines that repay a second look: <a href="../glossary/#series">series</a>, <a href="../glossary/#partial-sum">partial sum</a>, <a href="../glossary/#convergence">convergence</a>.</p>
 
 <h2>Citations and further reading</h2>
 <ul class="source-list">
 <li>OpenStax, <em>Calculus Volume 2</em>, comparison tests and ratio and root tests. <a href="https://openstax.org/books/calculus-volume-2/pages/5-4-comparison-tests" rel="noopener">Comparison</a> · <a href="https://openstax.org/books/calculus-volume-2/pages/5-6-ratio-and-root-tests" rel="noopener">Ratio and root</a></li>
 <li>Paul’s Online Math Notes, series convergence. <a href="https://tutorial.math.lamar.edu/Classes/CalcII/ConvergenceOfSeries.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
-<li>Abbott, S. <em>Understanding Analysis</em>, chapters on sequences and series, for $\varepsilon$ arguments behind the slogans.</li>
+<li>Abbott, S. <em>Understanding Analysis</em>, chapters on sequences and series, for epsilon arguments behind the slogans.</li>
 <li>MIT OpenCourseWare, 18.01SC, infinite series unit. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a></li>
 </ul>
 </div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="term-test">
+<h2>Does the term test prove convergence?</h2>
+<p>No. If the terms do not go to zero, the series diverges. If the terms do go to zero, the test says nothing. The harmonic series has terms $1/n$ going to zero, and the partial sums still grow without a bound. They stay larger than $\ln(N+1)$.</p>
+</section>
+<section class="faq-item" id="ratio-silent">
+<h2>What should I do when the ratio test gives 1?</h2>
+<p>Switch tests. The limit $1$ is silence, not a shy way of saying convergence. Both $\sum 1/n$ and $\sum 1/n^2$ give ratio limit $1$, and they do not share a verdict. Comparison can see the difference. So can an integral test from your course. The <a href="../glossary/#ratio-test">glossary line</a> states the same three way split.</p>
+</section>
+<section class="faq-item" id="which-test">
+<h2>How do comparison, ratio, and root tests differ?</h2>
+<p>Comparison borrows a series you already understand and needs an inequality, or a limit comparison with a positive finite limit. Ratio and root ask whether the terms eventually sit under a geometric series with ratio below $1$. Root can decide some series whose successive ratios have no limit. When both limits exist, they are equal. Silence at $1$ hits both ratio and root.</p>
+</section>
+<section class="faq-item" id="conditional">
+<h2>What is conditional convergence?</h2>
+<p>The series converges, but the series of absolute values diverges. The alternating harmonic series $\sum (-1)^{n+1}/n$ is the standard example. Comparison, ratio, and root tests are aimed at absolute convergence. They stay silent or report divergence of the absolute series. A separate alternating test is what sees the conditional convergence.</p>
+</section>
+<section class="faq-item" id="which-tool">
+<h2>Which calculator should I use with this page?</h2>
+<p>The <a href="../calculators/sequence-series.html">arithmetic and geometric sequence calculator</a>. It reports a single term and a finite partial sum. A geometric series with first term $1$ and ratio $1/2$ has finite sums approaching $2$. That picture is not a proof. The tool cannot test the harmonic series, because that series is neither arithmetic nor geometric.</p>
+</section>
+
 <div class="related"><h2>Related</h2><ul>
-<li><a href="sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a></li>
-<li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
+<li><a href="sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta intuition</a></li>
 <li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
-<li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequences calculator</a></li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs</a></li>
+<li><a href="./">Explainer study library</a></li>
+<li><a href="../glossary/#comparison-test">Glossary: comparison test</a></li>
+<li><a href="../glossary/#ratio-test">Glossary: ratio test</a></li>
+<li><a href="../glossary/#root-test">Glossary: root test</a></li>
+<li><a href="../glossary/#series">Glossary: series</a></li>
+<li><a href="../glossary/#partial-sum">Glossary: partial sum</a></li>
 <li><a href="../glossary/#convergence">Glossary: convergence</a></li>
 </ul></div>
 </article>
@@ -138,7 +256,7 @@
 <footer class="site-footer">
 <div class="footer-inner">
 <div>
-<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span>Math</span> Guide</a>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
 <p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
 </div>
 <div>
