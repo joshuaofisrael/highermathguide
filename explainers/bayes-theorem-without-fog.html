@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bayes Theorem Without the Fog, Higher Math Guide</title>
-<meta name="description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
+<meta name="description" content="Bayes theorem with classroom counts: reverse a conditional, keep the base rate, and update after new evidence.">
 <link rel="canonical" href="https://highermathguide.com/explainers/bayes-theorem-without-fog.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Bayes Theorem Without the Fog, Higher Math Guide">
-<meta property="og:description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
+<meta property="og:description" content="Bayes theorem with classroom counts: reverse a conditional, keep the base rate, and update after new evidence.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/bayes-theorem-without-fog.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bayes Theorem Without the Fog, Higher Math Guide">
-<meta name="twitter:description" content="Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.">
+<meta name="twitter:description" content="Bayes theorem with classroom counts: reverse a conditional, keep the base rate, and update after new evidence.">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
     {
       "@type": "Article",
       "headline": "Bayes Theorem Without the Fog",
-      "description": "Update a hypothesis after seeing evidence using counts, a classroom card example, false positives, and related probability calculators.",
+      "description": "Bayes theorem with classroom counts: reverse a conditional, keep the base rate, and update after new evidence.",
       "url": "https://highermathguide.com/explainers/bayes-theorem-without-fog.html",
       "author": {
         "@type": "Organization",
@@ -40,11 +40,15 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-21"
+      "dateModified": "2026-09-30"
     },
     {
       "@type": "FAQPage",
       "url": "https://highermathguide.com/explainers/bayes-theorem-without-fog.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
       "mainEntity": [
         {
           "@type": "Question",
@@ -72,10 +76,18 @@
         },
         {
           "@type": "Question",
+          "name": "What changes if the hypothesis is common?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The same test can produce a posterior near the sensitivity when the base rate is one half, and a much smaller posterior when the hypothesis is rare. The likelihood did not change. The prior did. Counts make that shift obvious."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Which calculators pair with this page?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The binomial probability calculator for counts of successes under a fixed trial model, and the normal CDF calculator when you want a continuous tail probability as a comparison."
+            "text": "The binomial probability calculator for counts of successes under a fixed trial model, and the normal CDF calculator when you want a continuous tail as a comparison. This site has no dedicated Bayes button. You still name the prior, the likelihood, and the posterior yourself."
           }
         }
       ]
@@ -111,11 +123,11 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Bayes theorem without the fog</h1>
-<p class="article-meta">Explainer · Educational only · Updated 21 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
 </header>
 <div class="article-body">
 <p><a href="../glossary/#bayes-theorem">Bayes theorem</a> is a bookkeeping rule for reversing <a href="../glossary/#conditional-probability">conditional probabilities</a>. If you know how likely the evidence is under a hypothesis, and how common the hypothesis is beforehand, you can update after seeing the evidence. The algebra is short. The discipline is in naming the events clearly, and in refusing to treat $P(H\mid E)$ as if it were $P(E\mid H)$.</p>
-<p>This page is educational. It is not medical, legal, or diagnostic advice. The numbers below are classroom counts, chosen so the arithmetic stays visible.</p>
+<p>This page is educational. It is not medical, legal, or diagnostic advice. The numbers below are classroom counts, chosen so the arithmetic stays visible. It belongs to the <a href="./">explainer library</a> and to the <a href="../topics/probability-statistics.html">probability and statistics</a> pillar. A <a href="../glossary/#probability">probability</a> here is a number in a model. It is not a promise about a particular person.</p>
 
 <h2>The formula, then the same formula in words</h2>
 <p>$$P(H\mid E)=\frac{P(E\mid H)\,P(H)}{P(E)}$$</p>
@@ -141,9 +153,55 @@
 
 <div class="callout pitfall"><strong>Pitfall.</strong> $P(H\mid E)$ is not $P(E\mid H)$. Headlines mix them constantly. Say both in words before you multiply. Also, a prior of $1\%$ is doing real work. If the condition is rarer, the same test produces an even smaller posterior. If you skip the base rate, you are not using Bayes theorem. You are quoting a likelihood and hoping nobody notices.</div>
 
+<h2>The same test with a common hypothesis</h2>
+<p><span class="example-label">Example</span> Keep the test from the lecture hall. Sensitivity stays $0.99$. The false positive rate stays $0.05$. Change only the base rate. Suppose half the people have $H$, so the prior is $\tfrac12$ instead of $0.01$.</p>
+<p>$$P(H\mid E)=\frac{(0.99)(0.5)}{(0.99)(0.5)+(0.05)(0.5)}=\frac{0.495}{0.520}\approx 0.952.$$</p>
+<p>In counts, imagine $10{,}000$ people again. About $5{,}000$ have $H$, and about $4{,}950$ of them test positive. About $5{,}000$ do not have $H$, and about $250$ of those are false positives. Among $5{,}200$ positive tests, about $4{,}950$ truly have $H$. That is near $95\%$, close to the sensitivity. The test did not become more accurate. The hypothesis became common, so the false positives are a small crowd next to the true positives.</p>
+<p>Put the two halls side by side. Rare hypothesis, posterior near $17\%$. Common hypothesis, posterior near $95\%$. Anyone who reports "$99\%$ sensitive" as if it were $P(H\mid E)$ is answering $P(E\mid H)$ and discarding the prior. The formula will not do that discarding for you. You have to put $P(H)$ in the numerator and in the total probability for $P(E)$.</p>
+
+<h2>A second card, and a posterior that becomes the next prior</h2>
+<p>The two box story is not finished after one gold card. Suppose you replace the card, so the box is unchanged, and you draw a second card from the same box. It is gold again. The draws are independent given the box. They are not independent if you forget which box you are talking about.</p>
+<p><span class="example-label">Example</span> Start from the original priors $P(A)=P(B)=\tfrac12$. Two golds with replacement have likelihood $0.8^2=0.64$ under A and $0.1^2=0.01$ under B. Then</p>
+<p>$$P(A\mid \text{two golds})=\frac{(0.64)(0.5)}{(0.64)(0.5)+(0.01)(0.5)}=\frac{0.32}{0.325}=\frac{64}{65}.$$</p>
+<p>You can also update in stages. After the first gold, the posterior was $\tfrac89$ for A and $\tfrac19$ for B. Use those numbers as the prior for the second gold:</p>
+<p>$$P(A\mid \text{second gold})=\frac{(0.8)(8/9)}{(0.8)(8/9)+(0.1)(1/9)}=\frac{6.4}{6.5}=\frac{64}{65}.$$</p>
+<p>The two routes match. That is the practical meaning of a posterior. It is the prior you carry into the next piece of evidence. You do not restart at $\tfrac12$ after you have already used the first card, unless the problem really is a fresh box.</p>
+<p>Without replacement the second gold tells a sharper story. Box B had only one gold card. After a gold draw from B, no gold remains. So $P(\text{second gold}\mid B,\text{first gold})=0$. Two golds without replacement are impossible under B, and the posterior for A is $1$. Dependence given the box matters. Multiplying $0.1\cdot 0.1$ would be the replacement model, and it would be the wrong likelihood for sampling without replacement. Bayes theorem will accept whichever likelihood you hand it. It will not notice that you described the wrong experiment.</p>
+
+<h2>Three boxes, so the partition is not a complement</h2>
+<p><span class="example-label">Example</span> Add box C, with $5$ gold cards and $5$ gray cards. You pick one of the three boxes at random, so each prior is $\tfrac13$, then draw one card. The card is gold. A complement of "box A" is no longer a single hypothesis. The denominator has to add three paths.</p>
+<p>Imagine one copy of each box, $30$ cards, equally likely because the boxes were equally likely and each box has $10$ cards. Gold cards: $8$ from A, $1$ from B, and $5$ from C, so $14$ gold cards in the picture. Then</p>
+<p>$$P(A\mid \text{gold})=\frac{8}{14}=\frac{4}{7},\qquad P(B\mid \text{gold})=\frac{1}{14},\qquad P(C\mid \text{gold})=\frac{5}{14}.$$</p>
+<p>Those three fractions sum to $1$. The formula agrees. The likelihoods are $0.8$, $0.1$, and $0.5$, and</p>
+<p>$$P(A\mid \text{gold})=\frac{(0.8)(1/3)}{(0.8+0.1+0.5)(1/3)}=\frac{0.8}{1.4}=\frac{4}{7}.$$</p>
+<p>If you forget box C and reuse the two box answer $\tfrac89$, you are solving a different problem. The gold card is less decisive for A once C can also produce gold cards often. Total probability is a sum over the partition you actually have, not over the complement you wish you had.</p>
+
+<h2>A decision framework</h2>
+<ol>
+<li>Name the hypothesis and the evidence in words before you write symbols. "Box A" and "the card is gold" are names. "$H$" and "$E$" are abbreviations you earn after the names are clear.</li>
+<li>List the partition. That may be a hypothesis and its complement, or several exclusive hypotheses, as in the three boxes.</li>
+<li>Write a prior for every piece of the partition. If a prior is missing, stop. You cannot update yet.</li>
+<li>Write $P(E\mid \text{each hypothesis})$. That list is the likelihood. It is not the posterior, and the numbers need not sum to $1$.</li>
+<li>Compute $P(E)$ by adding likelihood times prior over the whole partition.</li>
+<li>Divide. The numerator is one path to the evidence. The denominator is every path that produces the evidence.</li>
+<li>If a new piece of evidence arrives, decide whether it is independent of the previous evidence given the hypothesis. If it is, the posterior becomes the next prior. If it is not, write the joint likelihood for the actual experiment, as in the draw without replacement.</li>
+<li>Translate the fraction back into a count. A rare base rate is easy to skip in symbols and hard to skip when $495$ false positives are standing next to $99$ true ones.</li>
+</ol>
+<div class="callout pitfall"><strong>Pitfall.</strong> Multiplying likelihoods pretends the pieces of evidence are independent given the hypothesis. Classroom draws with replacement can earn that assumption. Repeated reports that share a cause often do not. The formula will still return a sharp fraction. Sharpness is not evidence that the independence assumption was true. Also, a posterior is not an <a href="../glossary/#expected-value">expected value</a>. An expected value is a probability weighted average of a <a href="../glossary/#random-variable">random variable</a>. Do not average the hypotheses when the question asked which hypothesis the evidence supports.</div>
+
 <h2>Independence is a modeling claim</h2>
 <p>If $E$ is independent of $H$, then $P(E\mid H)=P(E)$, and the posterior equals the prior. Evidence that does not change with the hypothesis cannot update the hypothesis. Independence is not a vibe. It is an assumption you can write as an equation and then defend or drop.</p>
 <p>When several pieces of evidence arrive, a common first model is to multiply likelihoods as if the pieces are independent given $H$. That may be reasonable for well separated classroom trials. It is often false for real reports that share a cause. The formula does not forgive a bad independence assumption. It will happily return a sharp posterior that your model did not earn.</p>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>In the rare hall of $10{,}000$ people, produce about $99$ true positives and about $495$ false positives, and a posterior a bit under $17\%$.</li>
+<li>Repeat the same test with prior $\tfrac12$ and see the posterior move to about $95\%$. Say which input changed.</li>
+<li>For two boxes and one gold card, get $\tfrac89$, and say that the leftover gold card came from box B.</li>
+<li>For a second gold with replacement, get $\tfrac{64}{65}$ two ways: from the original prior, and from the first posterior used as the next prior.</li>
+<li>For three boxes, get $\tfrac{4}{7}$ for box A, and explain why $\tfrac89$ would be the wrong problem.</li>
+<li>Name a case where the evidence does not move the prior. That is independence of the evidence and the hypothesis, so $P(E\mid H)=P(E)$.</li>
+</ol>
 
 <h2>Try it with the matching tools</h2>
 <p>This site does not have a dedicated Bayes calculator. The nearby probability tools still help you practice the ingredients. The <a href="../calculators/binomial-probability.html">binomial probability calculator</a> answers questions of the form “$n$ independent trials, success probability $p$, chance of exactly $k$ successes.” That is a clean model for $P(E\mid H)$ when the evidence is a count. The <a href="../calculators/normal-cdf.html">normal CDF and z score calculator</a> answers a continuous cousin: how much mass sits below a cutoff under a normal curve. That is useful when a classroom problem replaces a discrete count with a continuous measurement.</p>
@@ -179,9 +237,13 @@
 <h2>Is $P(H\mid E)$ the same as $P(E\mid H)$?</h2>
 <p>No. Those are different questions. Sensitivity is about evidence given the hypothesis. The posterior is about the hypothesis given the evidence.</p>
 </section>
+<section class="faq-item" id="common-hypothesis">
+<h2>What changes if the hypothesis is common?</h2>
+<p>The same test can produce a posterior near the sensitivity when the base rate is one half, and a much smaller posterior when the hypothesis is rare. The likelihood did not change. The prior did. Counts make that shift obvious.</p>
+</section>
 <section class="faq-item" id="which-tools">
 <h2>Which calculators pair with this page?</h2>
-<p>The <a href="../calculators/binomial-probability.html">binomial probability calculator</a> for counts of successes under a fixed trial model, and the <a href="../calculators/normal-cdf.html">normal CDF calculator</a> when you want a continuous tail probability as a comparison.</p>
+<p>The <a href="../calculators/binomial-probability.html">binomial probability calculator</a> for counts of successes under a fixed trial model, and the <a href="../calculators/normal-cdf.html">normal CDF calculator</a> when you want a continuous tail as a comparison. This site has no dedicated Bayes button. You still name the prior, the likelihood, and the posterior yourself.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
@@ -189,8 +251,12 @@
 <li><a href="../calculators/normal-cdf.html">Normal CDF and z score calculator</a></li>
 <li><a href="../calculators/combinatorics.html">Combinatorics calculator</a></li>
 <li><a href="../topics/probability-statistics.html">Probability and statistics topic</a></li>
+<li><a href="./">Explainer study library</a></li>
 <li><a href="../glossary/#bayes-theorem">Glossary: Bayes theorem</a></li>
 <li><a href="../glossary/#conditional-probability">Glossary: conditional probability</a></li>
+<li><a href="../glossary/#probability">Glossary: probability</a></li>
+<li><a href="../glossary/#random-variable">Glossary: random variable</a></li>
+<li><a href="../glossary/#expected-value">Glossary: expected value</a></li>
 </ul></div>
 </article>
 </div>

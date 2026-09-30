@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sequences, Series, and Infinite Sums, Higher Math Guide</title>
-<meta name="description" content="When an infinite sum makes sense: sequences, partial sums, geometric and harmonic examples, and how to watch finite sums on a calculator.">
+<meta name="description" content="Infinite sums as limits of partial sums: geometric, harmonic, telescoping, and absolute versus conditional convergence.">
 <link rel="canonical" href="https://highermathguide.com/explainers/sequences-series-infinite-sums.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Sequences, Series, and Infinite Sums, Higher Math Guide">
-<meta property="og:description" content="When an infinite sum makes sense: sequences, partial sums, geometric and harmonic examples, and how to watch finite sums on a calculator.">
+<meta property="og:description" content="Infinite sums as limits of partial sums: geometric, harmonic, telescoping, and absolute versus conditional convergence.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/sequences-series-infinite-sums.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sequences, Series, and Infinite Sums, Higher Math Guide">
-<meta name="twitter:description" content="When an infinite sum makes sense: sequences, partial sums, geometric and harmonic examples, and how to watch finite sums on a calculator.">
+<meta name="twitter:description" content="Infinite sums as limits of partial sums: geometric, harmonic, telescoping, and absolute versus conditional convergence.">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
     {
       "@type": "Article",
       "headline": "Sequences, Series, and Infinite Sums",
-      "description": "When an infinite sum makes sense: sequences, partial sums, geometric and harmonic examples, and how to watch finite sums on a calculator.",
+      "description": "Infinite sums as limits of partial sums: geometric, harmonic, telescoping, and absolute versus conditional convergence.",
       "url": "https://highermathguide.com/explainers/sequences-series-infinite-sums.html",
       "author": {
         "@type": "Organization",
@@ -40,11 +40,15 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-21"
+      "dateModified": "2026-09-30"
     },
     {
       "@type": "FAQPage",
       "url": "https://highermathguide.com/explainers/sequences-series-infinite-sums.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
       "mainEntity": [
         {
           "@type": "Question",
@@ -68,6 +72,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. A finite arithmetic or geometric sum is a numerical window, not a proof. Watching partial sums level off can support a guess. Tests decide the infinite case."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is absolute convergence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means the series of absolute values converges. Absolute convergence lets you rearrange terms without changing the sum. The alternating harmonic series converges, but not absolutely, because the absolute values are the harmonic series. Rearranging that series can change the sum."
           }
         },
         {
@@ -111,11 +123,11 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Sequences, series, and when infinite sums make sense</h1>
-<p class="article-meta">Explainer · Educational only · Updated 21 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
 </header>
 <div class="article-body">
 <p>An infinite sum is not a mystical elongated plus sign. It is a <a href="../glossary/#limit">limit</a> of <a href="../glossary/#partial-sum">partial sums</a>. If those partial sums approach a number, the <a href="../glossary/#series">series</a> <a href="../glossary/#convergence">converges</a> and we assign that number as the sum. If they wander or blow up, the series diverges, and writing a “total” is meaningless in the usual sense.</p>
-<p>This page is about that meaning. It is not a catalog of tests. For comparison, ratio, and root tests, and for the cases where a test stays silent, use the companion explainer <a href="convergence-tests-series.html">convergence tests for series</a>. The two pages share examples. They answer different questions.</p>
+<p>This page is about that meaning. It is not a catalog of tests. For comparison, ratio, and root tests, and for the cases where a test stays silent, use the companion explainer <a href="convergence-tests-series.html">convergence tests for series</a>. The two pages share a subject. They answer different questions. The precise language of "arbitrarily close" is the epsilon delta negotiation on <a href="epsilon-delta-intuition.html">epsilon delta intuition</a>, with an index $N$ in place of a window $\delta$. This reading sits in the <a href="./">explainer library</a>.</p>
 
 <h2>Sequences first</h2>
 <p>A <a href="../glossary/#sequence">sequence</a> $(a_n)$ is an ordered list of numbers. It converges to $L$ when terms eventually stay arbitrarily close to $L$. You do not need a closed formula for $a_n$ to understand the claim. You need the idea that after some index, every later term sits inside a chosen tolerance of $L$.</p>
@@ -129,10 +141,22 @@
 <p>As $N$ grows, $3^{-N}$ vanishes, so $s_N\to\tfrac32$. The infinite sum is $\tfrac32$, because the leftover tail is forced toward $0$. The same algebra with a general ratio $r$ shows that $\sum_{n=0}^\infty r^n$ converges when $|r|&lt;1$, with sum $1/(1-r)$, and diverges when $|r|\ge 1$ (except the trivial empty conventions you will not meet in a first course).</p>
 <p>If instead $r=2$, the partial sums are $1,3,7,15,\ldots$, which roughly double each time and run to infinity. Terms that grow cannot have a finite sum. Terms that refuse to go to zero already fail the term test.</p>
 
+<h2>A negative ratio still settles when it is small</h2>
+<p><span class="example-label">Example</span> Let $a_n=\bigl(-\tfrac12\bigr)^{n-1}$, so the list begins $1,-\tfrac12,\tfrac14,-\tfrac18,\ldots$. This is geometric with first term $1$ and ratio $r=-\tfrac12$. The partial sum is</p>
+<p>$$s_N=\frac{1-r^N}{1-r}=\frac{1-(-1/2)^N}{3/2}=\frac23\Bigl(1-\bigl(-\tfrac12\bigr)^N\Bigr).$$</p>
+<p>The power $\bigl(-\tfrac12\bigr)^N$ goes to $0$, so $s_N\to\tfrac23$. The same closed form $1/(1-r)$ gives $1/(1-(-1/2))=2/3$. The partial sums do not march in one direction. They alternate around the limit: $1$, then $1/2$, then $3/4$, then $5/8$, then $11/16$. The even steps sit below $\tfrac23$ and the odd steps sit above it, and the gap shrinks. Oscillation is not divergence. Divergence would mean the partial sums refuse to settle. These settle, on a number, because $|r|&lt;1$.</p>
+<p>The sign of $r$ never replaced the size test. What matters for this family is whether $|r|&lt;1$. A ratio of $-1$ gives $1-1+1-1+\cdots$, whose partial sums are $1,0,1,0,\ldots$ and do not approach one number. A ratio of $-2$ grows in size and runs away. Negative is allowed. Large is not.</p>
+
+<h2>An arithmetic total that cannot stay finite</h2>
+<p><span class="example-label">Example</span> The list $1,2,3,4,\ldots$ is arithmetic. The finite formula $s_N=N(N+1)/2$ is correct, and it answers only a finite question. As $N$ grows, $s_N$ grows without bound. The infinite sum does not exist as a real number. You can see the failure before you remember the formula. The terms themselves go to infinity, so they do not go to $0$, and the term test already says the series diverges.</p>
+<p>The same warning covers any arithmetic list whose terms do not all vanish. A common step $d\neq 0$ forces the terms to walk away from $0$ in at least one direction. The finite formula on the <a href="../calculators/sequence-series.html">sequence calculator</a> will happily print a large $S_n$. That printout is the partial sum. It is not permission to write an infinite total.</p>
+
 <h2>Terms going to zero is not a finish line</h2>
 <p>If $a_n$ does not go to $0$, the series diverges. That is the term test. It never proves convergence. Terms can go to zero slowly and the sum can still run to infinity.</p>
 <p><span class="example-label">Example</span> The harmonic series $\sum_{n=1}^\infty 1/n$ has terms that vanish. Group the terms after $1$ into blocks of length $1$, $2$, $4$, $8$, and so on. Each block is larger than $\tfrac12$. There are infinitely many blocks, so the partial sums grow at least like a constant times the number of blocks. They do not settle. There is no finite harmonic sum in the usual sense, even though a calculator with $N=50$ might look “slow.”</p>
-<p>By contrast, $\sum 1/n^2$ converges. The extra $n$ in the denominator is enough. You can see the difference in spirit by comparing to an integral of $1/x^2$, or by the $p$ series rule: $\sum 1/n^p$ converges when $p&gt;1$. The companion page on tests makes that comparison precise. Here the moral is simpler. Vanishing terms are necessary. They are not sufficient.</p>
+<p>By contrast, $\sum 1/n^2$ converges. The extra factor of $n$ in the denominator is enough. A $p$ series $\sum 1/n^p$ converges when $p&gt;1$ and diverges when $p\le 1$. The harmonic series is the case $p=1$. The companion page on tests makes comparison precise. Here you only need to see why a logarithm grows and why a square in the denominator can trap the partial sums.</p>
+<p><span class="example-label">Example</span> Compare the harmonic partial sums with areas under $1/x$. On the interval from $k$ to $k+1$, the graph of $1/x$ sits below the constant height $1/k$. Those rectangles stack into $s_{N-1}=1+\tfrac12+\cdots+\tfrac{1}{N-1}$, and they cover the region under the graph from $1$ to $N$. The area of that region is $\ln N$. So $\ln N\le s_{N-1}$. The logarithm grows without bound, and therefore so do the harmonic partial sums. A calculator that stops at $N=50$ is looking at $s_{50}$, which is only a bit above $4$. The inequality says that by the time $N$ passes $e^{10}$, the partial sum has already passed $10$. Slow is not the same as convergent.</p>
+<p>The square case runs the other way. The function $1/x^2$ decreases. On the interval from $k-1$ to $k$, for $k\ge 2$, a rectangle of height $1/k^2$ fits under the graph. So $1/2^2+1/3^2+\cdots+1/n^2$ is less than the integral of $1/x^2$ from $1$ to $n$, which equals $1-1/n$ and is less than $1$. The partial sums of $\sum 1/n^2$ are increasing and bounded above by $2$. An increasing sequence that cannot pass a ceiling has a limit. That is convergence, and the argument never needed the exact total. The <a href="../glossary/#definite-integral">definite integral</a> here is a comparison tool. It is not a claim that the series equals the integral. A numerical picture of that integral can wait on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> after you know which region you meant to measure.</p>
 
 <h2>A telescoping sum that is not geometric</h2>
 <p><span class="example-label">Example</span> Consider $a_n=\dfrac{1}{n(n+2)}$. Partial fractions give</p>
@@ -143,8 +167,31 @@
 
 <h2>Absolute and conditional convergence</h2>
 <p>If $\sum |a_n|$ converges, the original series converges absolutely. Absolute convergence is the green light for most algebraic wish lists: you may rearrange terms and the sum stays put. The alternating harmonic series $1-\tfrac12+\tfrac13-\tfrac14+\cdots$ converges (to $\ln 2$), but the series of absolute values is the ordinary harmonic series, which diverges. That is conditional convergence. Rearranging a conditionally convergent series can change the sum. It can even produce divergence. Riemann’s rearrangement theorem is the precise statement. The classroom warning is enough for now. Do not shuffle a conditional series as if it were a finite list.</p>
+<p><span class="example-label">Example</span> The alternating series $\sum (-1)^{n+1}/n^2$ is a different object. The absolute values are $1/n^2$, and the previous section already trapped those partial sums. So this series converges absolutely. You may rearrange it. The alternating harmonic series does not earn that freedom. Its partial sums do settle, and you can see the settling without a special test. They begin $1$, $0.5$, $0.833\ldots$, $0.583\ldots$, $0.783\ldots$. Odd steps decrease toward the sum and even steps increase toward it, once you are past the first term. After $1-\tfrac12+\tfrac13-\tfrac14=\tfrac{7}{12}$, the next omitted term has size $\tfrac15$. The true sum sits within $\tfrac15$ of $\tfrac{7}{12}$. That remainder bound is a practical check. It is not a reason to rearrange the terms into a new order and expect $\ln 2$ to survive.</p>
+<p>The glossary entries that take over when you cannot name $s_N$ are the <a href="../glossary/#comparison-test">comparison test</a>, the <a href="../glossary/#ratio-test">ratio test</a>, and the <a href="../glossary/#root-test">root test</a>. Each one is a theorem about partial sums, even when the writeup never prints $s_N$. If a test stays silent, you do not yet know whether the series converges. Silence is not a shy yes.</p>
+
+<h2>A decision framework</h2>
+<ol>
+<li>Decide whether you have a sequence or a series. If you are not adding, you are done when the terms settle near a limit. The epsilon version is on <a href="epsilon-delta-intuition.html">epsilon delta intuition</a>: every tolerance $\varepsilon$ gets an index $N$.</li>
+<li>If you are adding, look at the terms first. If $a_n$ does not go to $0$, the series diverges. Stop. The arithmetic example and the geometric example with $|r|\ge 1$ die here.</li>
+<li>If the terms are geometric, use $|r|&lt;1$ as the convergence test and $1/(1-r)$ only after the first term and the index are aligned. Check the negative ratio example before you assume the partial sums are monotone.</li>
+<li>If the terms telescope, write $s_N$ by partial fractions and take the limit, as with $1/(n(n+2))$.</li>
+<li>If the terms are positive and look like $1/n^p$, use the $p$ series split at $p=1$. The logarithm bound and the square bound on this page are the pictures behind that split.</li>
+<li>If the terms involve factorials or exponentials, leave this page and use the ratio test on <a href="convergence-tests-series.html">convergence tests for series</a>.</li>
+<li>If the signs alternate, test the absolute series first. Absolute convergence is the strong result. Conditional convergence still needs a warning about rearrangement.</li>
+</ol>
 
 <div class="callout pitfall"><strong>Pitfall.</strong> A finite arithmetic or geometric total is not the same object as an infinite series. The formula $S_n=\tfrac n2\bigl(2a+(n-1)d\bigr)$ answers a finite question. It does not decide whether $\sum a_n$ converges. Also, “the terms get smaller” is not a test. Name a limit of partial sums, or name a test that controls those partial sums.</div>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>Say, in one sentence, that a series converges only when its sequence of partial sums converges.</li>
+<li>For first term $1$ and ratio $\tfrac13$, derive the partial sum and the infinite total $\tfrac32$.</li>
+<li>For ratio $-\tfrac12$, get the total $\tfrac23$, and explain why the partial sums may oscillate while they settle.</li>
+<li>For the harmonic series, produce one block larger than $\tfrac12$ and conclude that the partial sums are unbounded. Then say why $N=50$ can still look calm.</li>
+<li>For $1/(n(n+2))$, name the partial sum and the limit $\tfrac34$.</li>
+<li>Separate absolute convergence from conditional convergence using $\sum 1/n^2$ and the alternating harmonic series.</li>
+</ol>
 
 <h2>Try it with the matching tool</h2>
 <p>The site calculator handles finite arithmetic and geometric lists. That is the right first numerical window. You can watch $a_n$ and $S_n$ for a chosen $n$, then ask whether the running total looks like it is settling.</p>
@@ -181,6 +228,10 @@
 <h2>Can a calculator prove that an infinite series converges?</h2>
 <p>No. A finite arithmetic or geometric sum is a numerical window, not a proof. Watching partial sums level off can support a guess. Tests decide the infinite case.</p>
 </section>
+<section class="faq-item" id="absolute">
+<h2>What is absolute convergence?</h2>
+<p>It means the series of absolute values converges. Absolute convergence lets you rearrange terms without changing the sum. The alternating harmonic series converges, but not absolutely, because the absolute values are the harmonic series. Rearranging that series can change the sum.</p>
+</section>
 <section class="faq-item" id="next-page">
 <h2>Where should I go after this page?</h2>
 <p>Read <a href="convergence-tests-series.html">convergence tests for series</a>. That page is the toolkit for series you cannot sum in closed form. This page is the meaning of the sum itself.</p>
@@ -188,11 +239,18 @@
 
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="convergence-tests-series.html">Convergence tests for series</a></li>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta intuition</a></li>
 <li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
 <li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">Explainer study library</a></li>
+<li><a href="../glossary/#sequence">Glossary: sequence</a></li>
 <li><a href="../glossary/#series">Glossary: series</a></li>
 <li><a href="../glossary/#partial-sum">Glossary: partial sum</a></li>
+<li><a href="../glossary/#convergence">Glossary: convergence</a></li>
+<li><a href="../glossary/#comparison-test">Glossary: comparison test</a></li>
 </ul></div>
 </article>
 </div>

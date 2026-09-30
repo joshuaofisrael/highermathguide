@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Separable Differential Equations Walkthrough, Higher Math Guide</title>
-<meta name="description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
+<meta name="description" content="Separable differential equations: factor the slope, keep constant solutions, and name where the formula stays valid.">
 <link rel="canonical" href="https://highermathguide.com/explainers/separable-differential-equations.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Separable Differential Equations Walkthrough, Higher Math Guide">
-<meta property="og:description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
+<meta property="og:description" content="Separable differential equations: factor the slope, keep constant solutions, and name where the formula stays valid.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/separable-differential-equations.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Separable Differential Equations Walkthrough, Higher Math Guide">
-<meta name="twitter:description" content="Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.">
+<meta name="twitter:description" content="Separable differential equations: factor the slope, keep constant solutions, and name where the formula stays valid.">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
     {
       "@type": "Article",
       "headline": "Separable Differential Equations Walkthrough",
-      "description": "Solve a separable first order ODE by separating, integrating, checking lost constant solutions, and testing the result with calculus tools.",
+      "description": "Separable differential equations: factor the slope, keep constant solutions, and name where the formula stays valid.",
       "url": "https://highermathguide.com/explainers/separable-differential-equations.html",
       "author": {
         "@type": "Organization",
@@ -40,11 +40,15 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-21"
+      "dateModified": "2026-09-30"
     },
     {
       "@type": "FAQPage",
       "url": "https://highermathguide.com/explainers/separable-differential-equations.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Joshua Israel Ventures LLC"
+      },
       "mainEntity": [
         {
           "@type": "Question",
@@ -76,6 +80,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, when you cannot solve for y cleanly. An implicit relation F(x,y)=C still describes solution curves, on a domain where the algebra and the original equation both make sense."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far does a separated formula stay valid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only on an interval where the algebra and the original equation both make sense. A solution of y prime equals y squared that starts at y(0)=1 is 1 over 1 minus x, up to the blowup at x=1. The same expression past that wall is a different solution, not a continuation of the original one."
           }
         }
       ]
@@ -111,12 +123,12 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Separable differential equations walkthrough</h1>
-<p class="article-meta">Explainer · Educational only · Updated 21 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
 </header>
 <div class="article-body">
 <p>A first order equation is separable when you can write $\dfrac{dy}{dx}=g(x)h(y)$. Every factor that depends only on $x$ can move to one side. Every factor that depends only on $y$ can move to the other. Then both sides become integrals you already know how to attempt.</p>
 <p>The method is popular because so many first course models factor this way: exponential growth, cooling, some mixing problems, and the simplest autonomous equations. It is not a universal solvent. If the right hand side will not factor as $g(x)h(y)$, forcing the algebra invents a different equation.</p>
-<p>Zoom out on the <a href="../topics/differential-equations.html">differential equations</a> pillar. Refresh what a slope number means in <a href="what-a-derivative-measures.html">what a derivative actually measures</a>.</p>
+<p>Zoom out on the <a href="../topics/differential-equations.html">differential equations</a> pillar. Refresh what a slope number means in <a href="what-a-derivative-measures.html">what a derivative actually measures</a>. This walkthrough is part of the <a href="./">explainer library</a>, and it is the differential equation step on the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>. The scalar growth equation below is also the one dimensional picture on <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a>: the constant $k$ is the eigenvalue of a $1\times 1$ matrix.</p>
 
 <h2>The steps, in the order that avoids lost solutions</h2>
 <ol>
@@ -144,8 +156,55 @@
 <p><span class="example-label">Example</span> Consider $\dfrac{dy}{dx}=y(2-y)$. Then $g(x)=1$ and $h(y)=y(2-y)$. The roots $y=0$ and $y=2$ are constant solutions. They are equilibria of an autonomous equation. For other $y$,</p>
 <p>$$\frac{dy}{y(2-y)}=dx.$$</p>
 <p>Partial fractions give $\tfrac12\ln|y|-\tfrac12\ln|2-y|=x+C$, which rearranges to $\dfrac{y}{2-y}=Ae^{2x}$. Solving for $y$ produces a family of logistic looking curves that run from near $0$ toward $2$ when $A&gt;0$ and the start is between the equilibria. If you divided first and never listed $y=0$ and $y=2$, those two solutions would have vanished from your writeup even though they satisfy the original equation.</p>
+<p><span class="example-label">Example</span> Add the initial condition $y(0)=1$. Then $1/(2-1)=A$, so $A=1$ and $y/(2-y)=e^{2x}$. Solving for $y$ gives</p>
+<p>$$y=\frac{2e^{2x}}{1+e^{2x}}.$$</p>
+<p>At $x=0$ this is $2/2=1$. As $x$ grows, $y$ approaches $2$ from below and never reaches it. As $x$ runs to $-\infty$, $y$ approaches $0$ from above. The constant solutions are fences. This formula lives on the whole line because the denominator $1+e^{2x}$ never vanishes. That is a fact about this solution, not a general license. The next examples show a formula that stays smooth forever and a formula that does not.</p>
+<p>Read the sign of $y'=y(2-y)$ before you trust the picture. If $y&lt;0$, the product is negative, so solutions decrease and move away from $0$. If $0&lt;y&lt;2$, both factors are positive, so solutions increase toward $2$. If $y&gt;2$, the product is negative, so solutions decrease toward $2$. The equilibrium $0$ is unstable. The equilibrium $2$ is stable. A <a href="../glossary/#slope-field">slope field</a> would show horizontal marks on those two lines and arrows pointing as the signs just said.</p>
 
 <div class="callout pitfall"><strong>Pitfall.</strong> Absolute values and domains matter. Extending a local solution through a singularity of $h(y)$ or $g(x)$ can be invalid. Dividing by an expression that might be zero loses constant solutions. Also, not every ODE is separable. A right hand side such as $x+y$ will not factor as $g(x)h(y)$. Treating it as if it did is a different problem.</div>
+
+<h2>A sum is not a product</h2>
+<p><span class="example-label">Example</span> The equation $\dfrac{dy}{dx}=x+y$ is not separable. Suppose there were functions $g$ and $h$ with $g(x)h(y)=x+y$ for all $x$ and $y$ near the origin. Set $y=0$. Then $g(x)h(0)=x$. If $h(0)=0$, the left side is $0$ and the right side is $x$, which is absurd. If $h(0)\neq 0$, then $g(x)=x/h(0)$, so</p>
+<p>$$\frac{x}{h(0)}\,h(y)=x+y$$</p>
+<p>for all $x$ and $y$. Put $x=1$. Then $h(y)/h(0)=1+y$, so $h(y)=h(0)(1+y)$. Substitute back: $x(1+y)=x+y$ for all $x$ and $y$, hence $xy=y$ for all $y$, which is false. The factorization does not exist. Equations of the form $y'+p(x)y=q(x)$ are a later method, an integrating factor. Forcing a separation here does not solve $y'=x+y$. It solves something else, or it solves nothing.</p>
+<p>By contrast, $\dfrac{dy}{dx}=xy$ is separable, with $g(x)=x$ and $h(y)=y$. And $\dfrac{dy}{dx}=y/x$ is separable wherever $x\neq 0$, with $g(x)=1/x$ and $h(y)=y$. The test is a product, not a vague feeling that $x$ and $y$ both appear.</p>
+
+<h2>Cooling toward a constant you must not lose</h2>
+<p><span class="example-label">Example</span> Let $\dfrac{dT}{dt}=-0.1\,(T-20)$ with $T(0)=80$. The number $20$ is a fixed room temperature in this classroom model, and $0.1$ is a positive rate constant. Set $u=T-20$. Then $u'=-0.1\,u$ and $u(0)=60$. This is the exponential equation already solved, with $k=-0.1$. The constant $u\equiv 0$, meaning $T\equiv 20$, solves the differential equation and does not meet the initial condition. For the initial value we want,</p>
+<p>$$T=20+60e^{-0.1 t}.$$</p>
+<p>Check it. The derivative is $60\cdot(-0.1)e^{-0.1 t}=-0.1\,(T-20)$, which is the original right hand side. And $T(0)=80$. At $t=10$, the formula gives $20+60e^{-1}$, about $42.1$. The slope there is $-0.1$ times about $22.1$, so about $-2.2$. The explicit derivative $-6e^{-1}$ is the same number. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> should land near that slope if you enter the explicit formula and a modest step.</p>
+<p>As $t$ grows, $T$ falls toward $20$ and does not cross it. The constant solution you would have lost by dividing is the horizontal asymptote of the solution you kept. The formula is valid for every real $t$, because the exponential never breaks. Name that domain in the writeup. "Valid for all $t$" is a conclusion you earned here, not a default.</p>
+
+<h2>A formula that stops at a vertical wall</h2>
+<p><span class="example-label">Example</span> Solve $\dfrac{dy}{dx}=y^2$ with $y(0)=1$. Here $h(y)=y^2$, so $y\equiv 0$ is a constant solution. It does not satisfy $y(0)=1$. For $y\neq 0$,</p>
+<p>$$\frac{dy}{y^2}=dx.$$</p>
+<p>Integrate: $-1/y=x+C$. The initial condition gives $-1=C$, so $-1/y=x-1$, and</p>
+<p>$$y=\frac{1}{1-x}.$$</p>
+<p>Differentiate to audit. The derivative of $(1-x)^{-1}$ is $(1-x)^{-2}$, which equals $y^2$. The initial value is $1$. The algebra succeeded, and the formula still cannot be the solution on the whole line. The denominator vanishes at $x=1$. Starting at $x=0$, the solution increases and becomes infinite as $x$ approaches $1$ from the left. The interval that contains the initial time and stays inside the hypotheses is $x&lt;1$.</p>
+<p>The same expression $1/(1-x)$ is negative for $x&gt;1$, and on that side it does solve $y'=y^2$. It is not a continuation of the solution that passed through $(0,1)$. A vertical asymptote split the plane. Copying the formula across the wall silently changes which solution you are talking about. When you report an answer, name the interval.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> A separated antiderivative can look global while the solution is local. Check three things before you extend a formula. Does it still satisfy the differential equation? Does it still meet the initial condition without a jump? Does it cross a zero of $h$, a zero of a denominator, or a vertical asymptote? If it does, stop at that wall and say so.</div>
+
+<h2>A decision framework</h2>
+<ol>
+<li>Look at the right hand side. If it is a sum of a piece that depends on $x$ and a piece that depends on $y$, it is probably not separable. The argument for $x+y$ shows how to prove a refusal when you need one.</li>
+<li>If it factors, write $g(x)$ and $h(y)$ on a domain where both make sense.</li>
+<li>List the roots of $h$. Each root is a constant solution. Compare those constants with the initial condition before you divide.</li>
+<li>Separate, integrate, and keep a single constant $C$.</li>
+<li>Apply the initial condition to the whole family, including the constant solutions. Plug the point into the integrated relation, not into an unfinished integral.</li>
+<li>If you cannot solve for $y$, keep the implicit relation. Check it by <a href="implicit-differentiation-intuition.html">implicit differentiation</a>, the way the hyperbola example recovered $y'=x/y$.</li>
+<li>Differentiate an explicit answer and substitute back into the original equation.</li>
+<li>Name the interval. Equilibria of an autonomous equation are fences. A blowup, as in $y=1/(1-x)$, ends the solution that started on the other side of the wall.</li>
+</ol>
+
+<h2>How to know you understood</h2>
+<ol>
+<li>State the factor test. You need $\dfrac{dy}{dx}=g(x)h(y)$, not merely an equation that mentions both variables.</li>
+<li>For $\dfrac{dy}{dx}=ky$ and $y(0)=y_0$, recover $y=y_0 e^{kx}$, and say why $y_0=0$ had to be checked separately.</li>
+<li>For $\dfrac{dy}{dx}=x/y$ and $y(1)=2$, get $y^2-x^2=3$ and choose the positive branch.</li>
+<li>For $\dfrac{dy}{dx}=y(2-y)$, name the equilibria $0$ and $2$, and say that solutions between them increase toward $2$.</li>
+<li>For $\dfrac{dy}{dx}=y^2$ and $y(0)=1$, get $y=1/(1-x)$ and refuse to use that expression at $x=1$ and beyond as the same solution.</li>
+<li>For the cooling model, compute the derivative of $20+60e^{-0.1 t}$ and match it with $-0.1\,(T-20)$.</li>
+</ol>
 
 <h2>What a solution is promising</h2>
 <p>Solving $y'=f(x,y)$ means finding a function whose slope at each point matches the rule $f$. An initial condition selects one curve from a family. Existence and uniqueness theorems tell you when that selection is reliable, roughly when $f$ is smooth enough near the starting point. Separable algebra can still produce a formula that leaves the interval where uniqueness holds. The formula is not a license to ignore the hypotheses.</p>
@@ -193,17 +252,27 @@
 </section>
 <section class="faq-item" id="implicit-ok">
 <h2>Does an implicit relation count as a solution?</h2>
-<p>Yes, when you cannot solve for $y$ cleanly. An implicit relation $F(x,y)=C$ still describes solution curves, on a domain where the algebra and the original equation both make sense.</p>
+<p>Yes, when you cannot solve for $y$ cleanly. An implicit relation $F(x,y)=C$ still describes solution curves, on a domain where the algebra and the original equation both make sense. The check is <a href="implicit-differentiation-intuition.html">implicit differentiation</a>.</p>
+</section>
+<section class="faq-item" id="how-far">
+<h2>How far does a separated formula stay valid?</h2>
+<p>Only on an interval where the algebra and the original equation both make sense. A solution of $y'=y^2$ that starts at $y(0)=1$ is $1/(1-x)$, up to the vertical wall at $x=1$. The same expression past that wall is a different solution, not a continuation of the original one.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
-<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
 <li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
+<li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
+<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
 <li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">Explainer study library</a></li>
 <li><a href="../glossary/#differential-equation">Glossary: differential equation</a></li>
 <li><a href="../glossary/#initial-value-problem">Glossary: initial value problem</a></li>
+<li><a href="../glossary/#slope-field">Glossary: slope field</a></li>
+<li><a href="../glossary/#integral">Glossary: integral</a></li>
 </ul></div>
 </article>
 </div>
