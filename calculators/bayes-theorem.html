@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayes Theorem Calculator, Higher Math Guide</title>
+<meta name="description" content="Compute the posterior P(H|E) from a prior, a likelihood, and P(E|not H). A browser tool that writes out the Bayes formula.">
+<link rel="canonical" href="https://highermathguide.com/calculators/bayes-theorem.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Bayes Theorem Calculator, Higher Math Guide">
+<meta property="og:description" content="Compute the posterior P(H|E) from a prior, a likelihood, and P(E|not H). A browser tool that writes out the Bayes formula.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/bayes-theorem.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bayes Theorem Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Compute the posterior P(H|E) from a prior, a likelihood, and P(E|not H). A browser tool that writes out the Bayes formula.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/bayes-theorem.html#webpage",
+      "name": "Bayes Theorem Calculator",
+      "description": "Compute the posterior P(H|E) from a prior, a likelihood, and P(E|not H). A browser tool that writes out the Bayes formula.",
+      "url": "https://highermathguide.com/calculators/bayes-theorem.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/bayes-theorem.html#faq",
+      "url": "https://highermathguide.com/calculators/bayes-theorem.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does this calculator return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It returns P(H given E), the posterior. You enter the prior P(H), the likelihood P(E given H), and P(E given not H). The page also shows P(E), the part of that evidence that comes from H, the part that comes from the opposite, and the posterior on not H."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can a sensitive test still leave a small posterior?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A headline accuracy is usually the likelihood, P(E given H). If the hypothesis is rare, false positives from the large group without H can outnumber the true positives. The defaults on this page do that. A prior of 0.01 and a likelihood of 0.99, with P(E given not H) equal to 0.05, produce a posterior of 1/6, a bit under 17 percent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is P(E given H) the same as P(H given E)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. P(E given H) asks how often the evidence appears when the hypothesis is true. P(H given E) asks how often the hypothesis is true when the evidence appears. Reporting one of them as the other is the usual mistake. This page will not swap them for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the evidence cannot happen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then P(E) is 0 and the posterior is undefined, because the formula divides by P(E). That happens when both hypotheses give the evidence probability 0. The page stops and asks you to change an input. A model in which the evidence cannot occur cannot be updated by that evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the result medical or legal advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The page only does the arithmetic you type. It does not know whether the prior matches a real population, whether the likelihood matches a real test, or whether a later observation is independent of this one. It is not medical, legal, or diagnostic advice."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Belief updates</p>
+<h1>Bayes theorem calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 1 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool computes a posterior for a yes or no hypothesis. You give a prior $P(H)$, a likelihood $P(E\mid H)$, and the chance of the same evidence when the hypothesis is false, $P(E\mid \text{not }H)$. It reports</p>
+$$P(H\mid E)=\frac{P(E\mid H)\,P(H)}{P(E)}$$
+<p>with</p>
+$$P(E)=P(E\mid H)\,P(H)+P(E\mid \text{not }H)\,P(\text{not }H)$$
+<p>and $P(\text{not }H)=1-P(H)$. The large number on the page is $P(H\mid E)$. The lines under it are the same formula with your inputs plugged in, including the two pieces that add up to $P(E)$.</p>
+<p>The number is meaningful when $H$ and its opposite are the only two possibilities you are willing to consider, when the three inputs are probabilities in that same model, and when $E$ is the evidence you actually observed. A classroom test, a spam flag, or a card draw can fit once you name those events. A binomial count is a different job. That tool fixes a success probability and asks for the chance of exactly $k$ successes. Here those rates are inputs, and the output is an updated belief.</p>
+<p>This is one update for one binary hypothesis. It does not estimate a prior from a data file, and it does not check that a later observation is independent of this one. Name the events in the <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem explainer</a> before you trust a digit.</p>
+</div>
+
+<form class="calc-panel wide" id="bayes-form" style="margin:1.5rem 0" autocomplete="off">
+<label for="bayes-mode">Input style</label>
+<select id="bayes-mode">
+<option value="prob" selected>Probabilities</option>
+<option value="counts">Natural frequencies</option>
+</select>
+<div id="bayes-prob-only">
+<label for="bayes-ph">Prior P(H)</label>
+<input id="bayes-ph" type="number" value="0.01" min="0" max="1" step="any" inputmode="decimal" aria-describedby="bayes-hint">
+</div>
+<div id="bayes-count-only" hidden>
+<label for="bayes-n">Population size N</label>
+<input id="bayes-n" type="number" value="10000" min="1" step="1" inputmode="numeric" aria-describedby="bayes-hint">
+<label for="bayes-h">Count with H</label>
+<input id="bayes-h" type="number" value="100" min="0" step="1" inputmode="numeric" aria-describedby="bayes-hint">
+</div>
+<label for="bayes-peh">Likelihood P(E|H)</label>
+<input id="bayes-peh" type="number" value="0.99" min="0" max="1" step="any" inputmode="decimal" aria-describedby="bayes-hint">
+<label for="bayes-penh">P(E|not H), false positive rate</label>
+<input id="bayes-penh" type="number" value="0.05" min="0" max="1" step="any" inputmode="decimal" aria-describedby="bayes-hint">
+<p class="calc-hint" id="bayes-hint">Probabilities are decimals from 0 to 1. Type 0.99 for 99 percent. Count mode builds the prior from a population and a head count, then uses the same two likelihoods. Switching to counts rounds the prior to a whole number of people.</p>
+<div class="calc-actions">
+<button type="submit" class="btn" id="bayes-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="bayes-reset">Reset</button>
+</div>
+<p class="calc-error" id="bayes-error" role="alert"></p>
+<div class="calc-result" id="bayes-result" role="status" aria-live="polite">
+<div class="amount" id="bayes-amount"></div>
+<div class="detail steps" id="bayes-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How to use the two input styles</h2>
+<p>Probability style is the formula as written. Enter $P(H)$, $P(E\mid H)$, and $P(E\mid \text{not }H)$, each in $[0,1]$, then press Compute. The defaults are a rare hypothesis: prior $0.01$, likelihood $0.99$, and a $0.05$ chance of the evidence when $H$ is false. That is the classroom test from the Bayes explainer, written as probabilities instead of a hall of people.</p>
+<p>Natural frequency style replaces the prior with a head count. Enter a population size $N$, how many of those $N$ have $H$, and the same two likelihoods. The page sets $P(H)$ equal to the count divided by $N$, then runs the same formula. It also prints the expected true positive count and the expected false positive count, so you can see which group is supplying the evidence. The defaults are $N=10000$ and $100$ people with $H$, which is the same prior $0.01$. Those counts are expectations. If the rates do not land on whole people, the page still uses the exact ratio for the posterior.</p>
+<p>Type probabilities as decimals. $0.99$ means 99 percent, and $99$ is rejected. Switching to counts rounds $P(H)\times N$ to a whole person. A repeating prior can move by about one person, so keep an exact decimal in probability style.</p>
+<h2>How to read the output</h2>
+<p>The large number is $P(H\mid E)$. When it is not a short decimal, it is rounded to 6 places and the word “about” appears with a percent. The lines underneath keep more digits. They are the same formula, not a second model.</p>
+<p>$P(\text{not }H)$ is one minus the prior. The next two lines are the pieces before you divide: evidence from $H$, and evidence from the opposite. Their sum is $P(E)$. Dividing the piece from $H$ by that sum is the posterior. The other piece over the same sum is $P(\text{not }H\mid E)$. Those two posteriors add to $1$.</p>
+<p>On the defaults, the piece from $H$ is $0.0099$ and the piece from the opposite is $0.0495$. So $P(E)=0.0594$ and</p>
+$$P(H\mid E)=\frac{0.0099}{0.0594}=\frac{1}{6}\approx 0.166667.$$
+<p>A bit under 17 percent, not $0.99$. Most of that evidence is false positives from the large group without $H$. Quoting the likelihood as if it were the posterior is base rate neglect. Count mode with $10000$ people prints $99$ expected true positives and $495$ expected false positives, and $99/(99+495)$ is the same $1/6$. If both likelihoods are positive and the prior sits strictly between $0$ and $1$, the page also prints the likelihood ratio and the prior and posterior odds. That is the same fraction in another form. If $P(E\mid H)$ is smaller than $P(E\mid \text{not }H)$, the posterior falls below the prior. That is a real update, not a broken input.</p>
+<h2>A second check you can do by hand</h2>
+<p>Two jars, from the <a href="../topics/probability-statistics.html">probability and statistics</a> topic. The prior on jar 1 is $1/2$. Jar 1 produces red with probability $3/4$, and jar 2 with probability $1/4$. Enter prior $0.5$, likelihood $0.75$, and $0.25$ for $P(E\mid \text{not }H)$. The posterior for jar 1 given red is $0.75$. The match with the likelihood is an accident of these counts. Change the prior to $0.1$ and leave the likelihoods alone. The posterior drops to $0.25$. If you still get $0.75$, you ignored the prior.</p>
+<h2>Common pitfalls</h2>
+<p>$P(E\mid H)$ and $P(H\mid E)$ are different questions. Sensitivity is about the evidence given the hypothesis. The posterior is about the hypothesis given the evidence. The labels stay in one order. The button will not swap a story you told backwards.</p>
+<p>A probability outside $[0,1]$ is rejected, and so is a head count larger than the population, a population below $1$, or a blank box. If $P(E)=0$, the posterior is undefined and the page stops instead of dividing by zero. A prior of $0$ stays $0$ when the evidence can still come from the opposite hypothesis. A prior of $1$ stays $1$ when the evidence can come from $H$. Population size stops at one billion.</p>
+<p>The tool is binary: one hypothesis and its opposite. The three box card problem in the explainer has three priors, so do not fold those boxes into a single $H$ until you have decided which event $H$ is. A second observation needs its own likelihood. Feed the posterior back in as the next prior only when the new evidence is independent of the old evidence given $H$. The explainer shows a card draw where that independence fails.</p>
+<h2>Related reading</h2>
+<p>Read the story behind the defaults in <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>. The surrounding map is <a href="../topics/probability-statistics.html">probability and statistics</a>. Short definitions sit at the glossary entries for <a href="../glossary/#bayes-theorem">Bayes theorem</a>, <a href="../glossary/#conditional-probability">conditional probability</a>, and <a href="../glossary/#probability">probability</a>.</p>
+<p>A fixed number of independent trials with a constant success probability belongs on the <a href="binomial-probability.html">binomial probability calculator</a>. Counting selections, without a probability model, is the <a href="combinatorics.html">combinatorics calculator</a>. A continuous tail is the <a href="normal-cdf.html">normal CDF and z score calculator</a>. None of those three updates a prior. This page does, and only for the binary hypothesis you type.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What does this calculator return?</h2>
+<p>It returns $P(H\mid E)$, the posterior. You enter the prior $P(H)$, the likelihood $P(E\mid H)$, and $P(E\mid \text{not }H)$. The page also shows $P(E)$, the part of that evidence that comes from $H$, the part that comes from the opposite, and the posterior on not $H$.</p>
+</section>
+<section class="faq-item" id="sensitive">
+<h2>Why can a sensitive test still leave a small posterior?</h2>
+<p>A headline accuracy is usually the likelihood, $P(E\mid H)$. If the hypothesis is rare, false positives from the large group without $H$ can outnumber the true positives. The defaults on this page do that. A prior of $0.01$ and a likelihood of $0.99$, with $P(E\mid \text{not }H)$ equal to $0.05$, produce a posterior of $1/6$, a bit under 17 percent.</p>
+</section>
+<section class="faq-item" id="swap">
+<h2>Is P(E given H) the same as P(H given E)?</h2>
+<p>No. $P(E\mid H)$ asks how often the evidence appears when the hypothesis is true. $P(H\mid E)$ asks how often the hypothesis is true when the evidence appears. Reporting one of them as the other is the usual mistake. This page will not swap them for you.</p>
+</section>
+<section class="faq-item" id="zero">
+<h2>What if the evidence cannot happen?</h2>
+<p>Then $P(E)$ is $0$ and the posterior is undefined, because the formula divides by $P(E)$. That happens when both hypotheses give the evidence probability $0$. The page stops and asks you to change an input. A model in which the evidence cannot occur cannot be updated by that evidence.</p>
+</section>
+<section class="faq-item" id="advice">
+<h2>Is the result medical or legal advice?</h2>
+<p>No. The page only does the arithmetic you type. It does not know whether the prior matches a real population, whether the likelihood matches a real test, or whether a later observation is independent of this one. It is not medical, legal, or diagnostic advice.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
