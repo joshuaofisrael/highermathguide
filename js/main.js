@@ -538,6 +538,148 @@
     }
   );
 
+  /* ---------- Bayes theorem ---------- */
+  function bayesUnit(value, label) {
+    if (value < 0 || value > 1) {
+      if (value > 1 && value <= 100) {
+        throw new Error(label + " must lie in [0, 1]. If you meant a percent, divide by 100.");
+      }
+      throw new Error(label + " must lie in [0, 1].");
+    }
+    return value;
+  }
+
+  function bayesHeadline(n) {
+    if (!isFinite(n)) return String(n);
+    var abs = Math.abs(n);
+    if (n !== 0 && (abs < 1e-4 || abs >= 1e6)) return formatNum(n);
+    return String(Math.round(n * 1e6) / 1e6);
+  }
+
+  function bayesPct(n) {
+    var p = Math.round(n * 1000000) / 10000;
+    return String(p) + "%";
+  }
+
+  var bayesMode = document.getElementById("bayes-mode");
+  function setBayesGroup(el, hidden) {
+    if (!el) return;
+    el.hidden = hidden;
+    var inputs = el.querySelectorAll("input");
+    for (var i = 0; i < inputs.length; i++) inputs[i].disabled = hidden;
+  }
+  function syncBayesMode() {
+    if (!bayesMode) return;
+    var counts = bayesMode.value === "counts";
+    setBayesGroup(document.getElementById("bayes-prob-only"), counts);
+    setBayesGroup(document.getElementById("bayes-count-only"), !counts);
+  }
+  if (bayesMode) {
+    bayesMode.addEventListener("change", function () {
+      var counts = bayesMode.value === "counts";
+      if (counts) {
+        var phIn = parseFloat(document.getElementById("bayes-ph").value);
+        var nIn = parseInt(document.getElementById("bayes-n").value, 10);
+        if (isFinite(phIn) && phIn >= 0 && phIn <= 1 && isFinite(nIn) && nIn >= 1) {
+          var hRound = Math.round(phIn * nIn);
+          if (hRound < 0) hRound = 0;
+          if (hRound > nIn) hRound = nIn;
+          document.getElementById("bayes-h").value = String(hRound);
+        }
+      } else {
+        var nBack = parseInt(document.getElementById("bayes-n").value, 10);
+        var hBack = parseInt(document.getElementById("bayes-h").value, 10);
+        if (isFinite(nBack) && nBack >= 1 && isFinite(hBack) && hBack >= 0 && hBack <= nBack) {
+          document.getElementById("bayes-ph").value = formatNum(hBack / nBack);
+        }
+      }
+      syncBayesMode();
+    });
+    syncBayesMode();
+  }
+
+  var bayesForm = document.getElementById("bayes-form");
+  if (bayesForm) {
+    bayesForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  }
+
+  wireCalc(
+    { compute: "bayes-compute", reset: "bayes-reset", result: "bayes-result", amount: "bayes-amount", detail: "bayes-detail", error: "bayes-error" },
+    function (api) {
+      var mode = bayesMode ? bayesMode.value : "prob";
+      var ph;
+      var countNote = null;
+      if (mode === "counts") {
+        var n = parseIntStrict(document.getElementById("bayes-n"), "Population N", 1, 1000000000);
+        var h = parseIntStrict(document.getElementById("bayes-h"), "Count with H", 0, n);
+        ph = h / n;
+        countNote = { n: n, h: h };
+      } else {
+        ph = bayesUnit(parseNum(document.getElementById("bayes-ph"), "Prior P(H)"), "Prior P(H)");
+      }
+      var peh = bayesUnit(parseNum(document.getElementById("bayes-peh"), "P(E|H)"), "P(E|H)");
+      var penh = bayesUnit(parseNum(document.getElementById("bayes-penh"), "P(E|not H)"), "P(E|not H)");
+      var pNot = 1 - ph;
+      var jointH = peh * ph;
+      var jointNot = penh * pNot;
+      var pe = jointH + jointNot;
+      if (!(pe > 0) || !isFinite(pe)) {
+        throw new Error("The evidence has probability 0 under both hypotheses, so the posterior is undefined.");
+      }
+      var post = jointH / pe;
+      if (post < 0 && post > -1e-12) post = 0;
+      if (post > 1 && post < 1 + 1e-12) post = 1;
+      if (!(post >= 0 && post <= 1) || !isFinite(post)) {
+        throw new Error("The posterior is not a probability. Check the inputs.");
+      }
+      var postNot = 1 - post;
+      if (postNot < 0 && postNot > -1e-12) postNot = 0;
+      if (postNot > 1 && postNot < 1 + 1e-12) postNot = 1;
+      var full = formatNum(post);
+      var shortText = bayesHeadline(post);
+      var sign = full === shortText ? "=" : "≈";
+      var lines = [];
+      lines.push(sign === "=" ? bayesPct(post) + "." : "About " + bayesPct(post) + ".");
+      if (countNote) {
+        lines.push("Count mode prior P(H) = " + countNote.h + " / " + countNote.n + " = " + formatNum(ph));
+        lines.push("Expected true positives = " + formatNum(peh) + " × " + countNote.h + " = " + formatNum(peh * countNote.h));
+        lines.push("Expected false positives = " + formatNum(penh) + " × " + (countNote.n - countNote.h) + " = " + formatNum(penh * (countNote.n - countNote.h)));
+      }
+      lines.push("P(not H) = 1 − " + formatNum(ph) + " = " + formatNum(pNot));
+      lines.push("Evidence from H = P(E|H) × P(H) = " + formatNum(peh) + " × " + formatNum(ph) + " = " + formatNum(jointH));
+      lines.push("Evidence from not H = P(E|not H) × P(not H) = " + formatNum(penh) + " × " + formatNum(pNot) + " = " + formatNum(jointNot));
+      lines.push("P(E) = " + formatNum(jointH) + " + " + formatNum(jointNot) + " = " + formatNum(pe));
+      lines.push("P(H|E) = " + formatNum(jointH) + " / " + formatNum(pe) + " " + sign + " " + full);
+      lines.push("P(not H|E) " + sign + " " + formatNum(postNot));
+      if (ph > 0 && ph < 1 && peh > 0 && penh > 0 && postNot > 0) {
+        lines.push("Likelihood ratio P(E|H) / P(E|not H) = " + formatNum(peh / penh));
+        lines.push("Prior odds P(H) / P(not H) = " + formatNum(ph / pNot));
+        lines.push("Posterior odds P(H|E) / P(not H|E) = " + formatNum(post / postNot));
+      } else if (penh === 0) {
+        lines.push("P(E|not H) is 0, so every time the evidence occurs it comes from H.");
+      } else if (peh === 0) {
+        lines.push("P(E|H) is 0, so the evidence never comes from H. The posterior is 0.");
+      } else if (ph === 0) {
+        lines.push("The prior is 0, so the posterior stays 0 when the evidence can still come from not H.");
+      } else if (ph === 1) {
+        lines.push("The prior is 1, so the posterior stays 1 when the evidence can occur under H.");
+      }
+      lines.push("Educational use only.");
+      api.showResult("P(H|E) " + sign + " " + shortText, lines.join("\n"));
+    },
+    function () {
+      if (bayesMode) bayesMode.value = "prob";
+      document.getElementById("bayes-ph").value = "0.01";
+      document.getElementById("bayes-n").value = "10000";
+      document.getElementById("bayes-h").value = "100";
+      document.getElementById("bayes-peh").value = "0.99";
+      document.getElementById("bayes-penh").value = "0.05";
+      syncBayesMode();
+    }
+  );
+
   /* ---------- Normal CDF ---------- */
   wireCalc(
     { compute: "ncdf-compute", reset: "ncdf-reset", result: "ncdf-result", amount: "ncdf-amount", detail: "ncdf-detail", error: "ncdf-error" },
