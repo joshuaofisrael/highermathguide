@@ -28,7 +28,7 @@
   "description": "A clear answer on whether vector calculus and multivariable calculus are the same, plus a study map of partial derivatives, gradients, fields, and theorems.",
   "url": "https://highermathguide.com/topics/multivariable-vector-calculus.html",
   "datePublished": "2026-09-11",
-  "dateModified": "2026-10-02",
+  "dateModified": "2026-10-05",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
@@ -91,7 +91,7 @@
       "name": "Which calculator on this site helps with several variables?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The vector operations calculator checks a dot product, a cross product, a magnitude, or a unit vector. The 2 by 2 matrix calculator checks a determinant or a product after you have written a Jacobian by hand. Neither tool computes partial derivatives for you. Predict the number, then confirm the arithmetic."
+        "text": "The gradient and directional derivative calculator estimates partial derivatives, the gradient, and a directional derivative with central differences. The vector operations calculator checks a dot product, a cross product, a magnitude, or a unit vector. The 2 by 2 matrix calculator checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare."
       }
     }
   ]
@@ -125,7 +125,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Multivariable and vector calculus</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 2 Oct 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 5 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>Once a quantity depends on more than one input, single variable calculus is only the local tool. Height can depend on two map coordinates. Temperature in a room depends on three. A map can send a point in the plane to another point in the plane. Multivariable calculus extends derivatives and integrals to several inputs. Vector calculus organizes those ideas when the output, or the domain, lives in the plane or in space. This pillar answers whether the two names are the same subject, then maps who it helps, what the core pictures are, and which pages already on this site to open in order.</p>
@@ -133,7 +133,7 @@
 <h2 id="same">Are multivariable calculus and vector calculus the same?</h2>
 <p>They overlap heavily and are often taught in one course sequence, and departments use the names interchangeably for a third semester calculus course, which is why people ask whether vector calculus is the same as multivariable calculus. Multivariable calculus is the broader move from one input to several inputs: partial derivatives, multiple integrals, and constrained optimization. Vector calculus is the part that organizes fields, line integrals, surface integrals, divergence, curl, and Green's theorem, Stokes theorem, and the divergence theorem, when vectors live in the plane or in space.</p>
 <p>Treat the catalog title as a label, not as a wall. A multivariable syllabus often still includes the vector theorems, and a vector calculus syllabus often still teaches partial derivatives, because divergence and curl are built from them. A few schools split the material across two terms. The calendar changes. The ideas still lock together.</p>
-<div class="callout"><strong>Multivariable calculus.</strong> The main object is a number that depends on several inputs. A <a href="../glossary/#partial-derivative">partial derivative</a> lets one input move. The <a href="../glossary/#gradient">gradient</a> packs those rates into the direction of steepest increase. When there are several outputs, the <a href="../glossary/#jacobian">Jacobian</a> is the matrix of all first partial derivatives, which is the story on <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. Constrained optimization, on <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>, asks where two gradients are parallel.</div>
+<div class="callout"><strong>Multivariable calculus.</strong> The main object is a number that depends on several inputs. A <a href="../glossary/#partial-derivative">partial derivative</a> lets one input move. The <a href="../glossary/#gradient">gradient</a> packs those rates into the direction of steepest increase. Estimate one on the <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a>. When there are several outputs, the <a href="../glossary/#jacobian">Jacobian</a> is the matrix of all first partial derivatives, which is the story on <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. Constrained optimization, on <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>, asks where two gradients are parallel.</div>
 <div class="callout"><strong>Vector calculus.</strong> The main object is a <a href="../glossary/#vector-field">vector field</a>, an arrow at each point. Divergence measures spreading. Curl measures circulation. <a href="../glossary/#stokes-theorem">Stokes theorem</a> equates circulation on a rim with the flux of the curl, and <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a> works that picture. The orderly preparation for both columns is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>. After you set a problem up by hand, the <a href="../calculators/vector-ops.html">vector operations calculator</a> and the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> check the arithmetic.</div>
 <p>The gradient is the bridge that makes the names feel interchangeable. It is a vector computed from a scalar function, so the technique is still multivariable calculus. The vector half starts when a field is given to you and you do not yet know that it is a gradient: line integrals, curl, and the theorems that move a derivative to the boundary.</p>
 
@@ -170,6 +170,7 @@
 <p>A partial derivative holds every variable but one fixed and differentiates with respect to the free one. For $z=f(x,y)$, the symbol $\partial f/\partial x$ asks how $z$ changes when $x$ moves and $y$ stays put. It is an ordinary derivative along a line parallel to the $x$ axis. The other partial derivative is the ordinary derivative along a line parallel to the $y$ axis.</p>
 <p>The gradient $\nabla f$ packages the first partials into one vector. Under the usual Euclidean geometry it points in the direction of steepest increase, and its length is that steepest slope. Walking along a level curve keeps $f$ constant, so the gradient is perpendicular to the level curve. Walking with the gradient changes $f$ fastest.</p>
 <div class="callout"><strong>Picture.</strong> Let $f(x,y)=x^{2}y$. Then $\partial f/\partial x = 2xy$ and $\partial f/\partial y = x^{2}$. At $(1,2)$ the gradient is $(4,1)$. Moving a little in the direction of $(4,1)$ increases $f$ faster than moving the same distance in any other direction. Moving perpendicular to $(4,1)$ keeps $f$ nearly constant, which is the level curve idea in a single point.</div>
+<p>The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> estimates the same objects with a central difference. For $f(x,y)=x^{2}+y^{2}$ at $(1,2)$, the gradient is $(2,4)$, the magnitude is $\sqrt{20}$, and the directional derivative in the direction $(3,4)$ is $4.4$. The algebra on this page is still the authority. The calculator labels its output as an approximation.</p>
 
 <h2 id="linear">Linear approximation and the Jacobian</h2>
 <p>Near a point where the partial derivatives behave well, a scalar function looks like its tangent plane:</p>
@@ -192,7 +193,7 @@
 <ol>
 <li>If a derivative is still only a rule, refresh <a href="calculus-foundations.html">calculus foundations</a> and <a href="../explainers/what-a-derivative-measures.html">what a derivative measures</a>.</li>
 <li>If matrices are new, follow the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> through eigenvalues before the Jacobian.</li>
-<li>Glossary: <a href="../glossary/#partial-derivative">partial derivative</a> and <a href="../glossary/#gradient">gradient</a>. Compute $\nabla(x^{2}y)$ at $(1,2)$. You should get $(4,1)$.</li>
+<li>Glossary: <a href="../glossary/#partial-derivative">partial derivative</a> and <a href="../glossary/#gradient">gradient</a>. Compute $\nabla(x^{2}y)$ at $(1,2)$. You should get $(4,1)$. Then check $x^{2}+y^{2}$ at $(1,2)$ on the <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a>.</li>
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. Write a 2 by 2 Jacobian, then check its determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a>.</li>
 <li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers</a> with <a href="../glossary/#constraint">constraint</a>. Do the closest point on $x+y=1$ as a second check.</li>
 <li><a href="../glossary/#vector-field">Vector field</a>, then <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>. State the theorem in one sentence before the worked circle.</li>
@@ -201,7 +202,7 @@
 
 <h2 id="practice">Checkpoints and practice habits</h2>
 <div class="callout"><strong>Practice habit.</strong> Every time you differentiate in several variables, write the sentence "I am letting this input move, and holding these inputs fixed." If you cannot name the frozen inputs, the partial derivative is not finished.</div>
-<p><strong>Gradient check.</strong> For $f(x,y)=x^{2}+y^{2}$, the gradient is $(2x,2y)$, which points straight away from the origin. Level curves are circles. The radius is perpendicular to the circle. That is the gradient picture on the simplest hill.</p>
+<p><strong>Gradient check.</strong> For $f(x,y)=x^{2}+y^{2}$, the gradient is $(2x,2y)$, which points straight away from the origin. Level curves are circles. The radius is perpendicular to the circle. That is the gradient picture on the simplest hill. At $(1,2)$ the gradient is $(2,4)$. The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> should agree, and the directional derivative in the direction $(3,4)$ should be $4.4$.</p>
 <p><strong>Jacobian check.</strong> For $F(x,y)=(x+y,\, xy)$ at $(1,1)$, the Jacobian is $\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ and the determinant is $0$. Confirm the determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a> after the matrix is on your paper.</p>
 <p><strong>Dot product check.</strong> The vectors $(4,1)$ and $(1,-4)$ have dot product $4\cdot 1 + 1\cdot(-4) = 0$, so they are perpendicular. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> only to confirm the zero. A zero dot product is the algebraic form of "this direction stays on the level curve to first order."</p>
 <p><strong>Wind check.</strong> At $(1,0)$ the field $\mathbf{F}(x,y)=(-y,x)$ equals $(0,1)$. The magnitude is $1$. The dot product with $(1,0)$ is $0$, so the arrow is perpendicular to the radius and the air is circling. The Jacobian is $\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$ and the determinant is $1$. Confirm the magnitude and the dot product on the <a href="../calculators/vector-ops.html">vector operations calculator</a>, and the determinant on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, after the numbers are on your paper. Use the symmetry test from the weather section to decide whether the wind is a gradient.</p>
@@ -252,7 +253,7 @@
 </section>
 <section class="faq-item" id="whichcalc">
 <h2>Which calculator on this site helps with several variables?</h2>
-<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> checks a determinant or a product after you have written a Jacobian by hand. Neither tool computes partial derivatives for you. Predict the number, then confirm the arithmetic.</p>
+<p>The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> estimates partial derivatives, the gradient, and a directional derivative with central differences. The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
@@ -262,6 +263,7 @@
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
 <li><a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
+<li><a href="../calculators/gradient-directional-derivative.html">Gradient and directional derivative calculator</a></li>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="../glossary/#gradient">Glossary: gradient</a></li>

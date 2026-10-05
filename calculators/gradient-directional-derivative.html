@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gradient and Directional Derivative Calculator, Higher Math Guide</title>
+<meta name="description" content="Estimate partial derivatives, the gradient, and a directional derivative at a point. A browser tool for functions of two or three variables.">
+<link rel="canonical" href="https://highermathguide.com/calculators/gradient-directional-derivative.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Gradient and Directional Derivative Calculator, Higher Math Guide">
+<meta property="og:description" content="Estimate partial derivatives, the gradient, and a directional derivative at a point. A browser tool for functions of two or three variables.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/gradient-directional-derivative.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradient and Directional Derivative Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Estimate partial derivatives, the gradient, and a directional derivative at a point. A browser tool for functions of two or three variables.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/gradient-directional-derivative.html#webpage",
+      "name": "Gradient and Directional Derivative Calculator",
+      "description": "Estimate partial derivatives, the gradient, and a directional derivative at a point. A browser tool for functions of two or three variables.",
+      "url": "https://highermathguide.com/calculators/gradient-directional-derivative.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/gradient-directional-derivative.html#faq",
+      "url": "https://highermathguide.com/calculators/gradient-directional-derivative.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the gradient on this page mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The gradient is the vector of partial derivatives at the point you typed. Its direction is steepest ascent, and its length is the fastest rate of increase. The entries are central difference estimates, not a symbolic derivative."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the directional derivative a dot product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A directional derivative is the slope along one chosen direction. On a smooth surface that slope equals the steepest slope times the cosine of the angle between your direction and the gradient. A dot product with a unit vector is exactly that product."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the direction have to be a unit vector?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The directional derivative is a rate per unit distance. If you dot the gradient with a vector of length 5, you scale the slope by 5. This page normalizes the direction you type and shows the unit vector it used."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the partial derivatives exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Each partial derivative is a central difference with the step shown under the result. For a polynomial of low degree the estimate often matches the algebra. A kink, a corner, or a point outside the domain will not settle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I leave the direction blank, or type the zero vector?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leave the direction blank when you only want the gradient. The zero vector does not name a direction, so the page refuses it instead of dividing by zero."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Steepest ascent</p>
+<h1>Gradient and directional derivative calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 5 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool estimates the gradient of a function of two or three variables at one point. If you also type a direction, it estimates the directional derivative in that direction. You type $f(x,y)$ or $f(x,y,z)$, a point, and an optional direction vector. Each partial derivative is a central difference. The numbers are numerical approximations, not a symbolic derivative.</p>
+<p>The estimate is useful when $f$ is smooth near the point, and when the step is small enough that each slice looks like a tangent, yet large enough that rounding does not swallow the change in $f$. The boxes start with step $0.001$.</p>
+<p>This is not a computer algebra system. It does not simplify a formula, it does not prove that the partial derivatives exist, and it does not solve a constrained optimization. For the picture of steepest ascent, read <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. For why two gradients line up at a constrained optimum, read <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>.</p>
+<p>Allowed pieces: numbers, the variables $x$, $y$, and $z$, plus, minus, times, divide, powers, parentheses, and $\sin$, $\cos$, $\tan$, $\mathrm{sqrt}$, $\mathrm{abs}$, $\log$ (natural), $\exp$, $\pi$, $e$. Type them as <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code>, <code>abs</code>, <code>log</code>, <code>exp</code>, <code>pi</code>, <code>e</code>. Write a times sign between variables. The letters <code>xy</code> are not the product <code>x*y</code>.</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<label for="grad-dim">Variables</label>
+<select id="grad-dim">
+<option value="2" selected>Two variables, f(x, y)</option>
+<option value="3">Three variables, f(x, y, z)</option>
+</select>
+<label for="grad-expr">f =</label>
+<input id="grad-expr" type="text" value="x^2+y^2" autocomplete="off" spellcheck="false">
+<div class="matrix-block">
+<h3>Point</h3>
+<div class="calc-grid cols-3">
+<label for="grad-x">x <input id="grad-x" type="number" value="1" step="any"></label>
+<label for="grad-y">y <input id="grad-y" type="number" value="2" step="any"></label>
+<label for="grad-z" class="grad-z" style="display:none">z <input id="grad-z" type="number" value="0" step="any"></label>
+</div>
+</div>
+<div class="matrix-block">
+<h3>Direction, optional</h3>
+<p class="calc-hint">Leave every box blank to skip the directional derivative. A zero vector is refused.</p>
+<div class="calc-grid cols-3">
+<label for="grad-dx">x <input id="grad-dx" type="number" value="3" step="any"></label>
+<label for="grad-dy">y <input id="grad-dy" type="number" value="4" step="any"></label>
+<label for="grad-dz" class="grad-z" style="display:none">z <input id="grad-dz" type="number" value="0" step="any"></label>
+</div>
+</div>
+<label for="grad-h">Central difference step h</label>
+<input id="grad-h" type="number" value="0.001" step="any">
+<p class="calc-hint">Worked examples fill the boxes and compute.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="ex-paraboloid">Paraboloid</button>
+<button type="button" class="btn btn-secondary" id="ex-temperature">Temperature map</button>
+<button type="button" class="btn btn-secondary" id="ex-elevation">Hill elevation</button>
+<button type="button" class="btn btn-secondary" id="ex-three">Three variables</button>
+</div>
+<div class="calc-actions">
+<button type="button" class="btn" id="grad-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="grad-reset">Reset</button>
+</div>
+<p class="calc-error" id="grad-error" role="alert"></p>
+<div class="calc-result" id="grad-result">
+<div class="amount" id="grad-amount"></div>
+<div class="detail steps" id="grad-detail"></div>
+</div>
+</div>
+
+<div class="article-body">
+<h2>How to use the calculator</h2>
+<p>The boxes start on a paraboloid check you can do by hand. Leave $f(x,y)=x^{2}+y^{2}$ at $(1,2)$, with direction $(3,4)$ and step $0.001$, and press Compute. The gradient is $(2,4)$. The magnitude is $\sqrt{20}$. The direction has length $5$, so the unit direction is $(3/5,4/5)=(0.6,0.8)$. The directional derivative is $2\cdot 0.6+4\cdot 0.8=4.4$. If the screen disagrees, check the spelling before you trust a harder example.</p>
+<p>Pick two or three variables. In two variables the $z$ boxes hide, and an expression that uses $z$ is refused until you switch. Leave the direction blank when you only want the gradient. Fill every component when you want a directional derivative.</p>
+<p>The four example buttons each load one worked case and compute it. Paraboloid is the check above. Temperature map and Hill elevation are scalar fields with a story. Three variables adds $z$.</p>
+<h2>How to read the output</h2>
+<p>The large line is the gradient, and, when you gave a direction, the directional derivative. Under it, each partial derivative is named, then the magnitude, then the unit vector of steepest ascent. The magnitude is the fastest rate of increase. The unit vector is that direction, with length $1$.</p>
+<p>If a direction was typed, the note also shows the unit vector the page actually used, the directional derivative $D_u f$, and the angle between that unit vector and the gradient. A positive directional derivative means $f$ increases as you walk that way. A negative one means $f$ decreases. A value near zero means the direction is level to first order, which is the tangent to a level curve.</p>
+<p>Treat the output as a probe. Change the step by a factor of ten and compute again. If the stable digits hold, you are probably near the slope. If they jump, you are seeing rounding, or a kink the tangent cannot settle on. Units still belong to you. A temperature gradient is degrees per unit distance. The page does not know the units.</p>
+<h2>Worked examples</h2>
+<p><span class="example-label">Paraboloid</span> $f(x,y)=x^{2}+y^{2}$ at $(1,2)$, direction $(3,4)$. This is a bowl with its bottom at the origin. The gradient $(2,4)$ points away from the bottom, and straight up the bowl. The magnitude printed to the usual rounding is $4.472135955$, which is $\sqrt{20}$. The directional derivative is $4.4$.</p>
+<p><span class="example-label">Temperature map</span> $T(x,y)=70+2x-y$ at $(1,3)$, facing east along $(1,0)$. This is the temperature field from the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>, with $x$ east and $y$ north. The gradient is $(2,-1)$ at every point. One unit east raises the reading by $2$. One unit north lowers it by $1$. Facing east, the directional derivative is $2$. The fastest rate of increase is $\sqrt{5}$.</p>
+<p><span class="example-label">Hill elevation</span> $f(x,y)=100-x^{2}-2y^{2}$ at $(1,1)$, facing east along $(1,0)$. The peak is at the origin, where the height is $100$. At $(1,1)$ the gradient is $(-2,-4)$, which points back toward the peak, not farther downhill. Facing east, the directional derivative is $-2$, so this step loses height.</p>
+<p><span class="example-label">Three variables</span> $f(x,y,z)=xy+z^{2}$ at $(1,2,3)$, direction $(0,0,1)$. The gradient is $(y,x,2z)=(2,1,6)$. Walking along the positive $z$ axis, the directional derivative is $6$, the same number as the partial derivative with respect to $z$. The partial derivatives in $x$ and $y$ do not contribute, because this direction has no $x$ or $y$ component.</p>
+<h2>What the gradient is telling you</h2>
+<p>Stand on a smooth hill and turn until the ground rises fastest under your feet. That facing is the gradient. Its length is the steepness of that facing, in rise per unit of horizontal distance. The partial derivatives are the steepness you would feel if you had to walk parallel to an axis, with the other coordinates held fixed. The gradient packs those axis slopes into the single best facing.</p>
+<p>A directional derivative is the steepness along a facing you chose, which may not be the best one. On a smooth hill it equals the steepest slope times the cosine of the angle between your facing and the gradient. Walk straight uphill and the cosine is $1$, so you feel the full magnitude. Walk along a level curve and the cosine is $0$, so the height does not change to first order. Walk downhill and the cosine is negative, so the directional derivative is negative.</p>
+<p>That product is a dot product for a small reason, not a new operation. The dot product of two vectors is the product of their lengths and the cosine of the angle between them. The direction in the definition is a unit vector, so its length is $1$ and it drops out. What remains is the magnitude of the gradient times the cosine. Skip the unit length, and the extra factor is the length of the vector you typed. The number stops being a slope per unit distance.</p>
+<p>The temperature map is the same geometry with different units. $T(x,y)=70+2x-y$ has gradient $(2,-1)$ everywhere. The hottest facing is along $(2,-1)$, east and somewhat south, and the fastest rate of increase is the length $\sqrt{5}$. Facing due east keeps only the eastern partial derivative, which is $2$. The northern partial derivative is present in the gradient and silent in that particular walk, because you did not move north.</p>
+<h2>Common mistakes</h2>
+<ul>
+<li>Forgetting to normalize the direction. The directional derivative wants a unit vector. Dotting $(2,4)$ with $(3,4)$ gives $22$, which is $4.4$ times $5$. The extra $5$ is the length of $(3,4)$, not a rate per unit distance. This page divides by that length and shows the unit vector it used. If you normalize twice, once on paper and once by accident in your head, you will not match the screen.</li>
+<li>Mixing up the gradient and the directional derivative. The gradient is a vector. It has a direction and a length. The directional derivative is one number, the slope in a direction you chose. The number is the dot product of the gradient with a unit vector. They answer different questions. A course that asks for $\nabla f$ wants the vector. A course that asks for $D_u f$ wants the number.</li>
+<li>Reading a partial derivative as the slope of the whole surface. A partial derivative lets one variable move and holds the others fixed. It is the slope along an axis. The slope along a diagonal is the directional derivative, and it can be larger than either partial derivative. On the paraboloid at $(1,2)$, the partial derivatives are $2$ and $4$, while the steepest slope is $\sqrt{20}$, about $4.47$.</li>
+<li>Trusting a central difference at a corner. For $|x|+|y|$ at the origin, type <code>abs(x)+abs(y)</code>. The samples on the left and right cancel, and the central difference reports a slope near zero. The surface has a kink there. Steepest ascent is not a single vector. If the digits refuse to settle when you change the step, do not treat the output as a derivative.</li>
+<li>Using the zero vector as a direction. It has no length and no direction. Dividing by its length would be division by zero. The page refuses it. Leave the boxes blank when you only want the gradient.</li>
+<li>A step that is too large or too small. A step near $1$ follows a long secant on each slice. A step near $10^{-16}$ can make the two sample points the same number in floating point, so the quotient becomes junk. A tail of zeros with a stray last digit, such as $2.0000000001$ when the slope is $2$, is floating point dust. Change the step by a factor of ten. If the stable digits hold, trust those digits.</li>
+</ul>
+<h2>Related reading</h2>
+<p>The map of the course is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. The short lines are <a href="../glossary/#gradient">gradient</a> and <a href="../glossary/#partial-derivative">partial derivative</a>. Constrained optima, where the gradient of the objective is parallel to the gradient of the constraint, are on <a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. When the output is several numbers rather than one, the derivative is a matrix. That story is <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>.</p>
+<p>After the gradient is on your paper, the <a href="vector-ops.html">vector operations calculator</a> checks a dot product, a magnitude, or a unit vector. A single variable slope, with every other input held fixed by you, belongs on the <a href="numerical-derivative.html">numerical derivative calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="meaning">
+<h2>What does the gradient on this page mean?</h2>
+<p>The gradient is the vector of partial derivatives at the point you typed. Its direction is steepest ascent, and its length is the fastest rate of increase. The entries are central difference estimates, not a symbolic derivative.</p>
+</section>
+<section class="faq-item" id="dot">
+<h2>Why is the directional derivative a dot product?</h2>
+<p>A directional derivative is the slope along one chosen direction. On a smooth surface that slope equals the steepest slope times the cosine of the angle between your direction and the gradient. A dot product with a unit vector is exactly that product.</p>
+</section>
+<section class="faq-item" id="unit">
+<h2>Why does the direction have to be a unit vector?</h2>
+<p>The directional derivative is a rate per unit distance. If you dot the gradient with a vector of length $5$, you scale the slope by $5$. This page normalizes the direction you type and shows the unit vector it used.</p>
+</section>
+<section class="faq-item" id="exact">
+<h2>Are the partial derivatives exact?</h2>
+<p>No. Each partial derivative is a central difference with the step shown under the result. For a polynomial of low degree the estimate often matches the algebra. A kink, a corner, or a point outside the domain will not settle.</p>
+</section>
+<section class="faq-item" id="blank">
+<h2>What if I leave the direction blank, or type the zero vector?</h2>
+<p>Leave the direction blank when you only want the gradient. The zero vector does not name a direction, so the page refuses it instead of dividing by zero.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

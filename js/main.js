@@ -940,4 +940,232 @@
       document.getElementById("eig-d").value = "2";
     }
   );
+
+  /* ---------- Gradient and directional derivative ---------- */
+  /* Same whitelist idea as buildFn: only arithmetic and named functions survive, then new Function. Not eval of arbitrary code. */
+  function buildFnXYZ(expr) {
+    var cleaned = String(expr).trim().toLowerCase()
+      .replace(/\^/g, "**")
+      .replace(/\bpi\b/g, "Math.PI")
+      .replace(/\be\b/g, "Math.E");
+    if (!cleaned) throw new Error("Enter a function of x and y, or of x, y, and z.");
+    var marked = cleaned
+      .replace(/Math\.(PI|E)/g, "")
+      .replace(/\b(sin|cos|tan|sqrt|abs|log|exp)\b/g, "")
+      .replace(/\*\*/g, "#");
+    var compact = marked.replace(/\s/g, "");
+    if (/[xyz]{2,}/i.test(compact)) {
+      throw new Error("Write a multiplication sign between variables. xy is not x times y.");
+    }
+    if (/[0-9.][xyz]|[xyz][0-9.]/i.test(compact)) {
+      throw new Error("Write a multiplication sign between a number and a variable. 2x is not 2*x.");
+    }
+    var test = marked.replace(/#/g, "");
+    if (!/^[0-9xyz+\-*/().\s]*$/i.test(test)) {
+      throw new Error("Unsupported characters in the expression. Use x, y, z, +, −, *, /, ^, parentheses, and sin, cos, tan, sqrt, abs, log, exp, pi, or e.");
+    }
+    var mapped = cleaned
+      .replace(/\bsin\(/g, "Math.sin(")
+      .replace(/\bcos\(/g, "Math.cos(")
+      .replace(/\btan\(/g, "Math.tan(")
+      .replace(/\bsqrt\(/g, "Math.sqrt(")
+      .replace(/\babs\(/g, "Math.abs(")
+      .replace(/\blog\(/g, "Math.log(")
+      .replace(/\bexp\(/g, "Math.exp(");
+    try {
+      return new Function("x", "y", "z", "return (" + mapped + ");");
+    } catch (err) {
+      throw new Error("Could not parse the expression. Check parentheses and operators.");
+    }
+  }
+
+  (function () {
+    if (!document.getElementById("grad-compute")) return;
+
+    function syncGradDim() {
+      var show = (document.getElementById("grad-dim").value === "3");
+      document.querySelectorAll(".grad-z").forEach(function (el) {
+        el.style.display = show ? "" : "none";
+      });
+    }
+    document.getElementById("grad-dim").addEventListener("change", syncGradDim);
+    syncGradDim();
+
+    function evalAt(f, x, y, z) {
+      try {
+        return f(x, y, z);
+      } catch (err) {
+        throw new Error("Could not evaluate the expression. Check parentheses, operators, and multiplication signs.");
+      }
+    }
+
+    function centralPartial(f, coords, axis, h) {
+      var plus = coords.slice();
+      var minus = coords.slice();
+      plus[axis] += h;
+      minus[axis] -= h;
+      var fp = evalAt(f, plus[0], plus[1], plus[2]);
+      var fm = evalAt(f, minus[0], minus[1], minus[2]);
+      if (!isFinite(fp) || !isFinite(fm)) {
+        throw new Error("A sample next to this point is not a finite number. The central difference needs both sides of each variable. Check the domain, or move the point.");
+      }
+      var est = (fp - fm) / (2 * h);
+      if (!isFinite(est)) throw new Error("A partial derivative was not a finite number.");
+      return est;
+    }
+
+    function formatVec(components) {
+      return "⟨" + components.map(formatNum).join(", ") + "⟩";
+    }
+
+    function readRequired(id, label) {
+      var raw = String((document.getElementById(id) || {}).value || "").trim();
+      if (raw === "") throw new Error("Enter a valid number for " + label + ".");
+      var v = parseFloat(raw);
+      if (!isFinite(v)) throw new Error("Enter a valid number for " + label + ".");
+      return v;
+    }
+
+    function readOptional(id) {
+      var raw = String((document.getElementById(id) || {}).value || "").trim();
+      if (raw === "") return null;
+      var v = parseFloat(raw);
+      if (!isFinite(v)) throw new Error("Enter a valid number for each direction component, or leave the direction blank.");
+      return v;
+    }
+
+    var examples = {
+      "ex-paraboloid": { dim: "2", expr: "x^2+y^2", x: "1", y: "2", z: "0", dx: "3", dy: "4", dz: "0", h: "0.001" },
+      "ex-temperature": { dim: "2", expr: "70+2*x-y", x: "1", y: "3", z: "0", dx: "1", dy: "0", dz: "0", h: "0.001" },
+      "ex-elevation": { dim: "2", expr: "100-x^2-2*y^2", x: "1", y: "1", z: "0", dx: "1", dy: "0", dz: "0", h: "0.001" },
+      "ex-three": { dim: "3", expr: "x*y+z^2", x: "1", y: "2", z: "3", dx: "0", dy: "0", dz: "1", h: "0.001" }
+    };
+
+    function applyExample(ex) {
+      document.getElementById("grad-dim").value = ex.dim;
+      document.getElementById("grad-expr").value = ex.expr;
+      document.getElementById("grad-x").value = ex.x;
+      document.getElementById("grad-y").value = ex.y;
+      document.getElementById("grad-z").value = ex.z;
+      document.getElementById("grad-dx").value = ex.dx;
+      document.getElementById("grad-dy").value = ex.dy;
+      document.getElementById("grad-dz").value = ex.dz;
+      document.getElementById("grad-h").value = ex.h;
+      syncGradDim();
+      document.getElementById("grad-compute").click();
+    }
+
+    Object.keys(examples).forEach(function (id) {
+      var button = document.getElementById(id);
+      if (!button) return;
+      button.addEventListener("click", function () { applyExample(examples[id]); });
+    });
+
+    wireCalc(
+      { compute: "grad-compute", reset: "grad-reset", result: "grad-result", amount: "grad-amount", detail: "grad-detail", error: "grad-error" },
+      function (api) {
+        var expr = (document.getElementById("grad-expr").value || "").trim();
+        if (!expr) throw new Error("Enter a function of x and y, or of x, y, and z. For example, x^2+y^2.");
+        var dim = (document.getElementById("grad-dim").value === "3") ? 3 : 2;
+        if (dim === 2 && /\bz\b/i.test(expr)) {
+          throw new Error("This expression uses z. Switch to three variables, or remove z.");
+        }
+        var x = readRequired("grad-x", "x");
+        var y = readRequired("grad-y", "y");
+        var z = dim === 3 ? readRequired("grad-z", "z") : 0;
+        var h = readRequired("grad-h", "the step size h");
+        if (!(h > 0)) throw new Error("Step size h must be a positive number. Try 0.001.");
+        if (h > 1) throw new Error("Choose a step size h of at most 1 for a meaningful estimate.");
+
+        var dx = readOptional("grad-dx");
+        var dy = readOptional("grad-dy");
+        var dz = dim === 3 ? readOptional("grad-dz") : null;
+        var parts = dim === 3 ? [dx, dy, dz] : [dx, dy];
+        var anyDir = parts.some(function (v) { return v !== null; });
+        var allDir = parts.every(function (v) { return v !== null; });
+        if (anyDir && !allDir) {
+          throw new Error("Fill every component of the direction, or leave the whole direction blank.");
+        }
+        var dir = null;
+        if (allDir && anyDir) {
+          dir = dim === 3 ? [dx, dy, dz] : [dx, dy];
+          var dmag = Math.sqrt(dir.reduce(function (s, c) { return s + c * c; }, 0));
+          if (!(dmag >= 1e-14)) {
+            throw new Error("The direction vector is zero, so it does not name a direction. Enter a nonzero vector, or leave the direction blank.");
+          }
+        }
+
+        var f = buildFnXYZ(expr);
+        var coords = [x, y, z];
+        var f0 = evalAt(f, x, y, z);
+        if (!isFinite(f0)) {
+          throw new Error("f at this point is not a finite number. The formula may be outside its domain.");
+        }
+        var names = dim === 3 ? ["x", "y", "z"] : ["x", "y"];
+        var grad = names.map(function (name, i) {
+          return centralPartial(f, coords, i, h);
+        });
+        var mag = Math.sqrt(grad.reduce(function (s, c) { return s + c * c; }, 0));
+        if (!isFinite(mag)) throw new Error("The gradient magnitude was not a finite number.");
+
+        var lines = [];
+        lines.push("f at the point ≈ " + formatNum(f0));
+        names.forEach(function (name, i) {
+          lines.push("Partial with respect to " + name + " ≈ " + formatNum(grad[i]));
+        });
+        lines.push("Gradient magnitude ≈ " + formatNum(mag) + ", the fastest rate of increase.");
+
+        var flat = mag < 1e-8;
+        if (flat) {
+          lines.push("The gradient is about zero, so steepest ascent has no single direction.");
+        } else {
+          lines.push("Unit direction of steepest ascent ≈ " + formatVec(grad.map(function (c) { return c / mag; })) + ".");
+        }
+
+        var amount = "∇f ≈ " + formatVec(grad);
+        if (dir) {
+          var len = Math.sqrt(dir.reduce(function (s, c) { return s + c * c; }, 0));
+          var unit = dir.map(function (c) { return c / len; });
+          var du = 0;
+          for (var i = 0; i < grad.length; i++) du += grad[i] * unit[i];
+          if (!isFinite(du)) throw new Error("The directional derivative was not a finite number.");
+          lines.push("Normalized direction u ≈ " + formatVec(unit) + ".");
+          lines.push("Directional derivative D_u f ≈ " + formatNum(du) + ".");
+          if (Math.abs(du) < 1e-8) {
+            lines.push("About zero means this direction is level to first order.");
+          } else if (du > 0) {
+            lines.push("Positive means f increases in this direction.");
+          } else {
+            lines.push("Negative means f decreases in this direction.");
+          }
+          if (flat) {
+            lines.push("The angle with the gradient is not defined, because the gradient has no direction.");
+          } else {
+            var cos = du / mag;
+            if (cos > 1) cos = 1;
+            if (cos < -1) cos = -1;
+            var rad = Math.acos(cos);
+            var deg = rad * 180 / Math.PI;
+            lines.push("Angle between u and the gradient ≈ " + formatNum(deg) + " degrees (" + formatNum(rad) + " radians).");
+          }
+          amount += ", directional derivative ≈ " + formatNum(du);
+        }
+
+        lines.push("Central difference with step h = " + formatNum(h) + ". These partial derivatives are numerical approximations, not symbolic derivatives.");
+        api.showResult(amount, lines.join("\n"));
+      },
+      function () {
+        document.getElementById("grad-dim").value = "2";
+        document.getElementById("grad-expr").value = "x^2+y^2";
+        document.getElementById("grad-x").value = "1";
+        document.getElementById("grad-y").value = "2";
+        document.getElementById("grad-z").value = "0";
+        document.getElementById("grad-dx").value = "3";
+        document.getElementById("grad-dy").value = "4";
+        document.getElementById("grad-dz").value = "0";
+        document.getElementById("grad-h").value = "0.001";
+        syncGradDim();
+      }
+    );
+  })();
 })();

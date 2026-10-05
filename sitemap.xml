@@ -16,7 +16,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/multivariable-vector-calculus.html</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/lagrange-multipliers-intuition.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -101,14 +101,21 @@
   </url>
   <url>
     <loc>https://highermathguide.com/glossary/</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/numerical-derivative.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/calculators/gradient-directional-derivative.html</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
