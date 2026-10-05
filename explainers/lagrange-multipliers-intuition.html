@@ -40,7 +40,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-17",
-      "dateModified": "2026-09-25"
+      "dateModified": "2026-10-05"
     },
     {
       "@type": "FAQPage",
@@ -87,7 +87,7 @@
           "name": "Which calculator should I use with this page?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There is no Lagrange solver on this site. Use the vector operations calculator to check that the gradient of f is perpendicular to an allowed tangent, which is the same as being parallel to the gradient of g. Use the 2 by 2 matrix calculator to confirm that the matrix with those two gradients as rows has determinant zero."
+            "text": "There is no Lagrange solver on this site. Use the gradient and directional derivative calculator to estimate both gradients and to check that the directional derivative along an allowed tangent is about zero. Use the vector operations calculator to check that the gradient of f is perpendicular to an allowed tangent. Use the 2 by 2 matrix calculator to confirm that the matrix with those two gradients as rows has determinant zero."
           }
         }
       ]
@@ -123,7 +123,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Lagrange multipliers intuition</h1>
-<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 5 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>Unconstrained optimization hunts for places where the <a href="../glossary/#gradient">gradient</a> of an objective $f$ is zero. A <a href="../glossary/#constraint">constraint</a> $g(\mathbf{x})=c$ changes the hunt. You may only travel on the level set of $g$. The best value of $f$ on that set usually occurs where you can no longer climb $f$ without leaving the set. That is a tangency picture, not a new kind of calculus. The number that records the tangency is a <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a>.</p>
@@ -134,6 +134,7 @@
 <h2>Why parallelism is the right demand</h2>
 <p>On the constraint, allowed motions are tangent to $g=c$. Those tangent directions are exactly the directions orthogonal to $\nabla g$, provided $\nabla g\neq\mathbf{0}$. If $\nabla f$ still has a piece along an allowed tangent, you can slide a little and change $f$. At an interior optimum on the constraint, $\nabla f$ must have no tangent component left. The only remaining possibility is that $\nabla f$ is a multiple of $\nabla g$.</p>
 <p>Read the same fact with a dot product. Let $\mathbf{t}$ be any tangent vector to the constraint at the point. Then $\nabla g\cdot\mathbf{t}=0$. Parallelism says $\nabla f\cdot\mathbf{t}=0$ as well. The directional derivative of $f$ along every allowed direction is zero. That is the constrained version of "the derivative is zero," and it is weaker than $\nabla f=\mathbf{0}$. You are not required to be flat in the directions that the constraint forbids.</p>
+<p>You can estimate that slope on the <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a>. Type the objective, the point, and a tangent to the constraint. At a candidate the directional derivative along that tangent should come out near zero, because the gradient of $f$ is parallel to the gradient of $g$ and the tangent is perpendicular to both.</p>
 <p>Level sets of $f$ make the same point in a drawing. You want the highest or lowest contour of $f$ that still touches $g=c$. Two curves that touch and do not cross share a tangent line. Their normals, which are the gradients, therefore line up. If the contours crossed, you could step onto a better contour of $f$ while remaining on $g=c$. Crossing is a failure of optimality. Tangency is the picture of a candidate.</p>
 <p>This is the same geometry as on the <a href="../topics/multivariable-vector-calculus.html">multivariable pillar</a>. A gradient is normal to a level set. Lagrange adds one rule. At the optimum, the level set of $f$ and the level set of $g$ should be tangent to each other.</p>
 
@@ -211,10 +212,11 @@
 </section>
 <section class="faq-item" id="which-tool">
 <h2>Which calculator should I use with this page?</h2>
-<p>There is no Lagrange solver here. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> to check that $\nabla f$ is perpendicular to an allowed tangent. Use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> to confirm that the matrix with rows $\nabla f$ and $\nabla g$ has determinant zero. Both checks assume you already computed the gradients.</p>
+<p>There is no Lagrange solver here. Use the <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> to estimate both gradients and to check that the directional derivative along an allowed tangent is about zero. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> to check that $\nabla f$ is perpendicular to an allowed tangent. Use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> to confirm that the matrix with rows $\nabla f$ and $\nabla g$ has determinant zero.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
+<li><a href="../calculators/gradient-directional-derivative.html">Gradient and directional derivative calculator</a></li>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
