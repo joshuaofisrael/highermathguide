@@ -65,7 +65,7 @@
       "name": "Can a calculator prove a limit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The numerical limit estimator samples nearby values and can show settling or a refusal to settle. A proof has to start from the definition and end at the tolerance you were given. Use the table as scratch. Keep the write up in the forward direction."
+        "text": "No. The numerical limit estimator samples nearby values and can show settling or a refusal to settle. The epsilon delta finder searches for a delta at one epsilon you type. A proof has to start from the definition and end at the tolerance you were given. Use either tool as scratch. Keep the write up in the forward direction."
       }
     },
     {
@@ -115,7 +115,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Real analysis and proof habits</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 6 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>Real analysis rebuilds calculus on definitions that a skeptical reader can check. "Gets close" becomes "for every tolerance, there is a stage after which the terms stay inside it." The point is not pedantry. Some pictures survive the definition, and some pictures quietly lie. This pillar is a map of that first encounter: sequences, limits, series, and the habits that make a short proof hold. The <a href="../pathways/intro-to-proofs.html">intro to proofs</a> pathway is where you write the arguments. This page says what the words are and in what order to meet them.</p>
@@ -146,8 +146,8 @@
 
 <h2 id="epsilon">Epsilon delta, and the order of the quantifiers</h2>
 <p>The <a href="../glossary/#epsilon-delta">epsilon delta definition</a> of $\lim_{x\to a}f(x)=L$ says: for every $\varepsilon&gt;0$ there exists $\delta&gt;0$ such that $0&lt;|x-a|&lt;\delta$ implies $|f(x)-L|&lt;\varepsilon$. The output tolerance comes first. The input window is yours to choose, and it may depend on $\varepsilon$. The point $x=a$ is excluded. A limit does not require $f(a)$ to exist. <a href="../glossary/#continuity">Continuity</a> at $a$ adds that $f(a)$ exists and equals the limit.</p>
-<p><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a> is the long version of that paragraph. Here is a short argument you can try before that page, or after it as a second function. Claim: $\lim_{x\to 1}(2x+3)=5$. Let $\varepsilon&gt;0$. Then $|(2x+3)-5|=2|x-1|$. Choose $\delta=\varepsilon/2$. If $0&lt;|x-1|&lt;\delta$, then $2|x-1|&lt;\varepsilon$. The write up runs in that order. Scratch work may start from the goal and solve for $\delta$. The polished paragraph starts from $\varepsilon$.</p>
-<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> can sample a hole, where nearby values settle and the function is undefined at the point. That picture matches the definition, because the definition never consults the point. The picture is still not a proof. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> says the same thing.</p>
+<p><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta definition and delta finder</a> is the long version of that paragraph. Here is a short argument you can try before that page, or after it as a second function. Claim: $\lim_{x\to 1}(2x+3)=5$. Let $\varepsilon&gt;0$. Then $|(2x+3)-5|=2|x-1|$. Choose $\delta=\varepsilon/2$. If $0&lt;|x-1|&lt;\delta$, then $2|x-1|&lt;\varepsilon$. The write up runs in that order. Scratch work may start from the goal and solve for $\delta$. The polished paragraph starts from $\varepsilon$.</p>
+<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> can sample a hole, where nearby values settle and the function is undefined at the point. That picture matches the definition, because the definition never consults the point. The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> takes the next step. You propose $L$ and $\varepsilon$, and it searches for a large $\delta$ that keeps sampled outputs inside the band. Compare that window with a $\delta$ you can prove, such as $\varepsilon/3$ for a line of slope $3$. The samples still do not replace the forward write up. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> says the same thing.</p>
 
 <h2 id="series">Series as sequences of partial sums</h2>
 <p>A <a href="../glossary/#series">series</a> $\sum a_n$ means the sequence of <a href="../glossary/#partial-sum">partial sums</a>, and <a href="../glossary/#convergence">convergence</a> of the series means those partial sums settle. You do not add infinitely many numbers in one gesture. You ask whether the finite totals approach a limit. Read <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a> until that sentence is automatic.</p>
@@ -170,7 +170,7 @@
 <ol>
 <li>Glossary: <a href="../glossary/#limit">limit</a>, <a href="../glossary/#epsilon-delta">epsilon delta</a>, <a href="../glossary/#continuity">continuity</a>, <a href="../glossary/#sequence">sequence</a>, <a href="../glossary/#partial-sum">partial sum</a>, <a href="../glossary/#series">series</a>. Say which word is a list and which is a sum.</li>
 <li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition</a>. Write the limit of $2x+3$ at $x=1$ in the forward direction.</li>
-<li>The <a href="../calculators/limit-estimator.html">limit estimator</a> only as a picture. Then write a sentence a table cannot prove.</li>
+<li>The <a href="../calculators/limit-estimator.html">limit estimator</a> only as a picture, and the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> when you already have an $\varepsilon$. Then write a sentence a table cannot prove.</li>
 <li><a href="../pathways/intro-to-proofs.html">Intro to proofs</a> for the three checkpoints, including the rewrite.</li>
 <li><a href="../explainers/sequences-series-infinite-sums.html">Sequences and series</a>, with the <a href="../calculators/sequence-series.html">sequence calculator</a> used only for a finite sum.</li>
 <li><a href="../explainers/convergence-tests-series.html">Convergence tests</a> with the <a href="../glossary/#comparison-test">comparison</a>, <a href="../glossary/#ratio-test">ratio</a>, and <a href="../glossary/#root-test">root</a> tests. Write the silent case for each.</li>
@@ -208,7 +208,7 @@
 </section>
 <section class="faq-item" id="calculator">
 <h2>Can a calculator prove a limit?</h2>
-<p>No. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> samples nearby values and can show settling or a refusal to settle. A proof has to start from the definition and end at the tolerance you were given. Use the table as scratch. Keep the write up in the forward direction.</p>
+<p>No. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> samples nearby values and can show settling or a refusal to settle. The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> searches for a delta at one epsilon you type. A proof has to start from the definition and end at the tolerance you were given. Use either tool as scratch. Keep the write up in the forward direction.</p>
 </section>
 <section class="faq-item" id="seqseries">
 <h2>What is the difference between a sequence and a series?</h2>
@@ -221,9 +221,10 @@
 
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a></li>
-<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta intuition without terror</a></li>
+<li><a href="../explainers/epsilon-delta-intuition.html">Epsilon delta definition and delta finder</a></li>
 <li><a href="../explainers/sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
 <li><a href="../explainers/convergence-tests-series.html">Convergence tests for series without fog</a></li>
+<li><a href="../calculators/epsilon-delta-finder.html">Epsilon delta finder</a></li>
 <li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
 <li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
 <li><a href="calculus-foundations.html">Calculus foundations</a></li>
