@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Epsilon Delta Intuition Without Terror, Higher Math Guide</title>
-<meta name="description" content="Epsilon delta limits: what the quantifiers ask, linear and quadratic proofs, a limit that fails, and a checklist.">
+<title>Epsilon Delta Definition and Delta Finder, Higher Math Guide</title>
+<meta name="description" content="The epsilon delta definition of a limit, explained with worked examples and an interactive delta finder. A numerical window is a check, not a proof.">
 <link rel="canonical" href="https://highermathguide.com/explainers/epsilon-delta-intuition.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Epsilon Delta Intuition Without Terror, Higher Math Guide">
-<meta property="og:description" content="Epsilon delta limits: what the quantifiers ask, linear and quadratic proofs, a limit that fails, and a checklist.">
+<meta property="og:title" content="Epsilon Delta Definition and Delta Finder, Higher Math Guide">
+<meta property="og:description" content="The epsilon delta definition of a limit, explained with worked examples and an interactive delta finder. A numerical window is a check, not a proof.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://highermathguide.com/explainers/epsilon-delta-intuition.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Epsilon Delta Intuition Without Terror, Higher Math Guide">
-<meta name="twitter:description" content="Epsilon delta limits: what the quantifiers ask, linear and quadratic proofs, a limit that fails, and a checklist.">
+<meta name="twitter:title" content="Epsilon Delta Definition and Delta Finder, Higher Math Guide">
+<meta name="twitter:description" content="The epsilon delta definition of a limit, explained with worked examples and an interactive delta finder. A numerical window is a check, not a proof.">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
@@ -26,8 +26,8 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Epsilon Delta Intuition Without Terror",
-      "description": "Epsilon delta limits: what the quantifiers ask, linear and quadratic proofs, a limit that fails, and a checklist.",
+      "headline": "Epsilon Delta Definition and Delta Finder",
+      "description": "The epsilon delta definition of a limit, explained with worked examples and an interactive delta finder. A numerical window is a check, not a proof.",
       "url": "https://highermathguide.com/explainers/epsilon-delta-intuition.html",
       "author": {
         "@type": "Organization",
@@ -40,7 +40,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-30"
+      "dateModified": "2026-10-06"
     },
     {
       "@type": "FAQPage",
@@ -87,7 +87,7 @@
           "name": "Which calculator pairs with this explainer?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The numerical limit estimator. Use it to watch outputs as inputs approach a point from both sides. Then return here and write a delta rule for a function you can bound by hand. The calculator can support a guess. It cannot choose delta for you."
+            "text": "The epsilon delta finder. You type f(x), a point, a proposed limit, and epsilon. It searches for a large delta that keeps sampled outputs inside that tolerance. The numerical limit estimator is the earlier picture: it only asks whether nearby values seem to settle. Either tool can support a guess. Write the delta rule by hand. A sampled window is not a proof."
           }
         }
       ]
@@ -122,8 +122,8 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
-<h1>Epsilon delta intuition without terror</h1>
-<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
+<h1>Epsilon delta definition and delta finder</h1>
+<p class="article-meta">Explainer · Educational only · Updated 6 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>The <a href="../glossary/#epsilon-delta">epsilon delta</a> definition looks like a wall of symbols because it packs a negotiation into one sentence. Once you hear the negotiation, the symbols become a checklist rather than a curse. The claim $\lim_{x\to a}f(x)=L$ means this. No matter how tightly someone demands that $f(x)$ stay near $L$, you can answer with a restriction on how close $x$ must be to $a$, excluding $x=a$ itself if needed.</p>
@@ -211,12 +211,12 @@
 <p>This habit transfers to continuity arguments, which add the demand that $f(a)=L$, and to derivatives, which are limits of difference quotients. The same language sits under <a href="what-a-derivative-measures.html">what a derivative actually measures</a>. After you can write a $\delta$ rule, an implicit curve is a later place the chain rule hides a limit. That story is <a href="implicit-differentiation-intuition.html">implicit differentiation intuition</a>. For the wider map, return to <a href="../topics/calculus-foundations.html">calculus foundations</a> and <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>.</p>
 
 <h2>Try it with the matching tool</h2>
-<p>A numerical table is not a proof. It is still a good way to see the negotiation before you write $\delta$. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> evaluates a function at points that approach $a$ from both sides and reports whether the outputs appear to settle.</p>
-<div class="callout"><strong>Try it.</strong> Open the <a href="../calculators/limit-estimator.html">numerical limit estimator</a> and enter $f(x)=3x+1$ near $a=2$. The outputs should crowd near $7$. Then try $f(x)=x^2$ near $a=3$ and watch the crowd near $9$. Finally try a jump, such as a piecewise rule that is $0$ for $x&lt;0$ and $1$ for $x&gt;0$, near $a=0$. The two sides refuse to agree. That is the picture of a missing two sided limit.</div>
-<p>After the table looks calm, come back and write a $\delta$ rule by hand for the linear or quadratic case. The calculator can support a guess. It cannot choose $\delta$ for you.</p>
+<p>A numerical table is not a proof. It is still a good way to see the negotiation before you write $\delta$. The matching tool is the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a>. You type $f(x)$, the point $a$, a proposed limit $L$, and a tolerance $\varepsilon$. It searches for a large input window where the sampled outputs stay inside that tolerance, and it draws the horizontal epsilon band and the vertical delta band.</p>
+<div class="callout"><strong>Try it.</strong> Open the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> on the linear preset, $f(x)=3x+1$ at $a=2$ with $L=7$. For $\varepsilon=0.1$ the search should return a $\delta$ near $0.03333$, which is $\varepsilon/3$. Then load the quadratic preset. A written proof often picks a smaller convenient $\delta$, namely $\min(1,\varepsilon/7)$. The finder is hunting a large window that the samples support. Load the jump preset last. No positive $\delta$ survives, because the two sides do not share a limit.</div>
+<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is the companion picture. It only asks whether nearby outputs seem to settle. After the picture looks calm, come back and write a $\delta$ rule by hand for the linear or quadratic case. A sampled window is not a proof.</p>
 <div class="cta-panel">
-<p>Watch nearby outputs on the numerical limit estimator, then write a delta rule for a function you can bound by hand.</p>
-<a class="btn" href="../calculators/limit-estimator.html">Open the limit estimator</a>
+<p>Find a numerical delta for one epsilon, then write the rule a proof would use.</p>
+<a class="btn" href="../calculators/epsilon-delta-finder.html">Open the epsilon delta finder</a>
 </div>
 
 <h2>Citations and further reading</h2>
@@ -247,10 +247,11 @@
 </section>
 <section class="faq-item" id="which-tool">
 <h2>Which calculator pairs with this explainer?</h2>
-<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a>. Use it to watch outputs as inputs approach a point from both sides. Then return here and write a $\delta$ rule for a function you can bound by hand. The calculator can support a guess. It cannot choose $\delta$ for you.</p>
+<p>The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a>. You type $f(x)$, a point, a proposed limit, and epsilon. It searches for a large delta that keeps sampled outputs inside that tolerance. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is the earlier picture: it only asks whether nearby values seem to settle. Either tool can support a guess. Write the delta rule by hand. A sampled window is not a proof.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
+<li><a href="../calculators/epsilon-delta-finder.html">Epsilon delta finder</a></li>
 <li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
 <li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
 <li><a href="sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a></li>

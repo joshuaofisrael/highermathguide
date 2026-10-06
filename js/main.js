@@ -110,6 +110,7 @@
       .replace(/\be\b/g, "Math.E");
     var test = cleaned
       .replace(/Math\.(PI|E|sin|cos|tan|sqrt|abs|log|exp)/g, "")
+      .replace(/\b(sin|cos|tan|sqrt|abs|log|exp)\b/g, "")
       .replace(/\*\*/g, "");
     if (!/^[0-9x+\-*/().,\s]*$/i.test(test)) {
       throw new Error("Unsupported characters in expression. Use x, +, -, *, /, ^, (), and sin/cos/tan/sqrt/abs/log/exp/pi/e.");
@@ -1165,6 +1166,401 @@
         document.getElementById("grad-dz").value = "0";
         document.getElementById("grad-h").value = "0.001";
         syncGradDim();
+      }
+    );
+  })();
+
+  /* ---------- Epsilon delta finder ---------- */
+  var ED_CAP = 10;
+  var ED_FLOOR = 1e-10;
+
+  function edEval(f, x) {
+    try {
+      return f(x);
+    } catch (err) {
+      return NaN;
+    }
+  }
+
+  function edPairFails(f, a, L, eps, h) {
+    var sign, x, y, err, worst;
+    worst = null;
+    for (sign = -1; sign <= 1; sign += 2) {
+      x = a + sign * h;
+      y = edEval(f, x);
+      err = isFinite(y) ? Math.abs(y - L) : Infinity;
+      if (!isFinite(y) || !(err < eps)) {
+        if (!worst || err > worst.err) worst = { x: x, y: y, dist: h, err: err };
+      }
+    }
+    return worst;
+  }
+
+  function edScan(f, a, L, eps, delta) {
+    var nLin = 360;
+    var nEdge = 400;
+    var i, h, hit, closest, n;
+    closest = null;
+    n = 0;
+    function note(hVal) {
+      if (!(hVal > 0) || hVal >= delta || hVal < ED_FLOOR) return;
+      n += 2;
+      hit = edPairFails(f, a, L, eps, hVal);
+      if (hit && (!closest || hit.dist < closest.dist - 1e-15)) closest = hit;
+    }
+    for (i = 1; i <= nLin; i++) note(delta * i / (nLin + 1));
+    for (i = 1; i <= nEdge; i++) note(delta * (1 - i / (nEdge * 80)));
+    h = delta * 0.5;
+    i = 0;
+    while (h >= ED_FLOOR && i < 40) {
+      note(h);
+      h *= 0.5;
+      i++;
+    }
+    return { failed: !!closest, closest: closest, n: n };
+  }
+
+  function findEdDelta(f, a, L, eps) {
+    var h, hit, allFail, witness, total, capScan, lo, hi, iter, mid, sc, steps, s, hh, b, rounds, finalScan;
+    total = 0;
+    allFail = true;
+    witness = null;
+    h = 1e-1;
+    while (h >= ED_FLOOR) {
+      hit = edPairFails(f, a, L, eps, h);
+      total += 2;
+      if (hit) {
+        if (!witness || hit.dist < witness.dist) witness = hit;
+      } else {
+        allFail = false;
+        break;
+      }
+      h /= 10;
+    }
+    if (allFail) {
+      return { status: "none", delta: null, cap: ED_CAP, witness: witness, n: total };
+    }
+
+    capScan = edScan(f, a, L, eps, ED_CAP);
+    total += capScan.n;
+    if (!capScan.failed) {
+      return { status: "capped", delta: ED_CAP, cap: ED_CAP, witness: null, n: total };
+    }
+
+    hi = capScan.closest.dist;
+    lo = 0;
+    for (iter = 0; iter < 40; iter++) {
+      mid = (lo + hi) / 2;
+      if (!(mid > lo && mid < hi)) break;
+      sc = edScan(f, a, L, eps, mid);
+      total += sc.n;
+      if (sc.failed) hi = sc.closest.dist;
+      else lo = mid;
+    }
+
+    steps = 240;
+    for (s = 1; s <= steps; s++) {
+      hh = lo + (hi - lo) * s / (steps + 1);
+      if (!(hh > lo && hh < hi)) continue;
+      b = edPairFails(f, a, L, eps, hh);
+      total += 2;
+      if (b) {
+        hi = b.dist;
+        witness = b;
+        break;
+      }
+    }
+
+    rounds = 0;
+    while (rounds < 5) {
+      sc = edScan(f, a, L, eps, hi);
+      total += sc.n;
+      if (!sc.failed) break;
+      if (sc.closest.dist < hi * (1 - 1e-12)) {
+        hi = sc.closest.dist;
+        witness = sc.closest;
+        rounds++;
+        continue;
+      }
+      witness = sc.closest;
+      break;
+    }
+
+    finalScan = edScan(f, a, L, eps, hi);
+    total += finalScan.n;
+    if (finalScan.failed) {
+      hi = finalScan.closest.dist;
+      witness = finalScan.closest;
+      finalScan = edScan(f, a, L, eps, hi);
+      total += finalScan.n;
+      if (finalScan.failed) {
+        return { status: "none", delta: null, cap: ED_CAP, witness: finalScan.closest, n: total };
+      }
+    }
+
+    if (!(hi > ED_FLOOR)) {
+      return { status: "none", delta: null, cap: ED_CAP, witness: witness, n: total };
+    }
+    return { status: "found", delta: hi, cap: ED_CAP, witness: witness || capScan.closest, n: total };
+  }
+
+  function edFormatY(y) {
+    if (!isFinite(y)) return "not a finite number";
+    return formatNum(y);
+  }
+
+  function drawEdPlot(f, a, L, eps, found) {
+    var canvas = document.getElementById("ed-plot");
+    var legend = document.getElementById("ed-legend");
+    if (!canvas || !canvas.getContext) return;
+    var span = 2;
+    if (found.status === "found" && found.delta > 0) span = found.delta * 2.6;
+    if (!(span > 0) || !isFinite(span)) span = 2;
+    var xMin = a - span;
+    var xMax = a + span;
+    var n = 280;
+    var pts = [];
+    var i, x, y, escape;
+    for (i = 0; i <= n; i++) {
+      x = xMin + (xMax - xMin) * i / n;
+      if (Math.abs(x - a) <= 1e-12) {
+        pts.push({ x: x, y: NaN, escape: false, atA: true });
+        continue;
+      }
+      y = edEval(f, x);
+      escape = !isFinite(y) || !(Math.abs(y - L) < eps);
+      pts.push({ x: x, y: y, escape: escape, atA: false });
+    }
+
+    var yLo = L - eps;
+    var yHi = L + eps;
+    var limit = Math.max(8 * eps, 2);
+    for (i = 0; i < pts.length; i++) {
+      y = pts[i].y;
+      if (!isFinite(y)) continue;
+      if (Math.abs(y - L) > limit) continue;
+      if (y < yLo) yLo = y;
+      if (y > yHi) yHi = y;
+    }
+    if (!(yHi > yLo)) {
+      yLo = L - 1;
+      yHi = L + 1;
+    }
+    var yPad = 0.08 * (yHi - yLo);
+    yLo -= yPad;
+    yHi += yPad;
+
+    var cssW = canvas.clientWidth || 560;
+    if (cssW < 280) cssW = 560;
+    var cssH = Math.round(cssW * 360 / 640);
+    var dpr = (typeof window !== "undefined" && window.devicePixelRatio) || 1;
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    canvas.style.height = cssH + "px";
+    var ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var W = cssW;
+    var H = cssH;
+    var padL = 52;
+    var padR = 14;
+    var padT = 16;
+    var padB = 32;
+    var plotW = W - padL - padR;
+    var plotH = H - padT - padB;
+
+    function xPix(xv) {
+      return padL + (xv - xMin) / (xMax - xMin) * plotW;
+    }
+    function yPix(yv) {
+      return padT + (yHi - yv) / (yHi - yLo) * plotH;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, W, H);
+
+    if (found.status === "found" || found.status === "capped") {
+      var dLeft = Math.max(xMin, a - found.delta);
+      var dRight = Math.min(xMax, a + found.delta);
+      ctx.fillStyle = "rgba(139, 90, 43, 0.14)";
+      ctx.fillRect(xPix(dLeft), padT, Math.max(1, xPix(dRight) - xPix(dLeft)), plotH);
+    }
+
+    var bandTop = yPix(L + eps);
+    var bandBot = yPix(L - eps);
+    ctx.fillStyle = "rgba(47, 74, 122, 0.16)";
+    ctx.fillRect(padL, bandTop, plotW, Math.max(1, bandBot - bandTop));
+
+    ctx.strokeStyle = "#d8d2c6";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(padL, padT, plotW, plotH);
+
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = "#2f4a7a";
+    ctx.beginPath();
+    ctx.moveTo(padL, yPix(L));
+    ctx.lineTo(padL + plotW, yPix(L));
+    ctx.stroke();
+    ctx.strokeStyle = "#8b5a2b";
+    ctx.beginPath();
+    ctx.moveTo(xPix(a), padT);
+    ctx.lineTo(xPix(a), padT + plotH);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.beginPath();
+    var pen = false;
+    for (i = 0; i < pts.length; i++) {
+      y = pts[i].y;
+      if (!isFinite(y) || y < yLo || y > yHi) {
+        pen = false;
+        continue;
+      }
+      if (!pen) {
+        ctx.moveTo(xPix(pts[i].x), yPix(y));
+        pen = true;
+      } else {
+        ctx.lineTo(xPix(pts[i].x), yPix(y));
+      }
+    }
+    ctx.strokeStyle = "#243a61";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    for (i = 0; i < pts.length; i++) {
+      if (!pts[i].escape || pts[i].atA) continue;
+      y = pts[i].y;
+      var px = xPix(pts[i].x);
+      var py;
+      if (!isFinite(y) || y > yHi) py = padT + 4;
+      else if (y < yLo) py = padT + plotH - 4;
+      else py = yPix(y);
+      ctx.beginPath();
+      ctx.fillStyle = "#8b2e2e";
+      ctx.arc(px, py, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = "#4a5160";
+    ctx.font = "12px Segoe UI, system-ui, sans-serif";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillText("L", padL - 6, yPix(L));
+    ctx.fillText("L+ε", padL - 6, yPix(L + eps));
+    ctx.fillText("L−ε", padL - 6, yPix(L - eps));
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.fillText("a", xPix(a), padT + plotH + 6);
+    ctx.fillText(formatNum(xMin), padL, padT + plotH + 6);
+    ctx.fillText(formatNum(xMax), padL + plotW, padT + plotH + 6);
+
+    var summary;
+    if (found.status === "found") {
+      summary = "Plot of f near a. The horizontal band is the epsilon tolerance around L. The vertical band is the delta window. Red dots are samples that leave the epsilon band.";
+    } else if (found.status === "capped") {
+      summary = "Plot of f near a. Every sample inside the cap stayed in the epsilon band. The picture is a zoom near a. The accepted window is wider than this plot. Red dots would mark escapes. None appear.";
+    } else {
+      summary = "Plot of f near a. No vertical delta band is drawn, because no positive delta kept the samples inside the epsilon band. Red dots are samples that leave the band.";
+    }
+    canvas.setAttribute("aria-label", summary);
+    if (legend) legend.textContent = summary;
+  }
+
+  (function () {
+    if (!document.getElementById("ed-compute")) return;
+
+    var examples = {
+      "ed-ex-linear": { expr: "3*x+1", a: "2", L: "7", eps: "0.1" },
+      "ed-ex-quadratic": { expr: "x^2", a: "3", L: "9", eps: "0.1" },
+      "ed-ex-hole": { expr: "(x^2-1)/(x-1)", a: "1", L: "2", eps: "0.1" },
+      "ed-ex-recip": { expr: "1/x", a: "2", L: "0.5", eps: "0.1" },
+      "ed-ex-jump": { expr: "abs(x)/x", a: "0", L: "0", eps: "0.5" }
+    };
+
+    function applyExample(ex) {
+      document.getElementById("ed-expr").value = ex.expr;
+      document.getElementById("ed-a").value = ex.a;
+      document.getElementById("ed-L").value = ex.L;
+      document.getElementById("ed-eps").value = ex.eps;
+      document.getElementById("ed-compute").click();
+    }
+
+    Object.keys(examples).forEach(function (id) {
+      var button = document.getElementById(id);
+      if (!button) return;
+      button.addEventListener("click", function () { applyExample(examples[id]); });
+    });
+
+    wireCalc(
+      { compute: "ed-compute", reset: "ed-reset", result: "ed-result", amount: "ed-amount", detail: "ed-detail", error: "ed-error" },
+      function (api) {
+        var expr = (document.getElementById("ed-expr").value || "").trim();
+        if (!expr) throw new Error("Enter a function of x. For example, 3*x+1.");
+        var compact = expr.replace(/\s/g, "");
+        if (/[0-9.]x|x[0-9.]/i.test(compact)) {
+          throw new Error("Write a multiplication sign between a number and x. 3x is not 3*x.");
+        }
+        var a = parseNum(document.getElementById("ed-a"), "a");
+        var L = parseNum(document.getElementById("ed-L"), "the proposed limit L");
+        var eps = parseNum(document.getElementById("ed-eps"), "epsilon");
+        if (!(eps > 0)) throw new Error("Epsilon must be a positive number. Try 0.1.");
+        var f;
+        try {
+          f = buildFn(expr);
+        } catch (err) {
+          throw new Error(err.message || "Could not parse the expression.");
+        }
+        try {
+          f(a + 0.1);
+        } catch (err) {
+          throw new Error("Could not evaluate the expression. Check parentheses and operators.");
+        }
+
+        var found = findEdDelta(f, a, L, eps);
+        var lines = [];
+        var amount;
+        if (found.status === "none") {
+          amount = "No delta found";
+          lines.push("No positive delta kept the sampled points inside the epsilon band.");
+          if (found.witness) {
+            lines.push(
+              "A sampled escape is at x = " + formatNum(found.witness.x) +
+              ", where f(x) is " + edFormatY(found.witness.y) +
+              " and the absolute error is " + (isFinite(found.witness.err) ? formatNum(found.witness.err) : "not finite") +
+              ". That distance from a is " + formatNum(found.witness.dist) + "."
+            );
+          }
+          lines.push("A jump, a wrong proposed limit, or a blowup can do this. The plot marks samples that leave the band around L.");
+        } else if (found.status === "capped") {
+          amount = "Delta reaches the cap of " + formatNum(found.delta);
+          lines.push(
+            "Every checked sample with 0 < |x − " + formatNum(a) + "| < " + formatNum(found.delta) +
+            " had |f(x) − " + formatNum(L) + "| < " + formatNum(eps) + "."
+          );
+          lines.push("The search stops at a cap of " + formatNum(ED_CAP) + ". A larger window was not tested. The picture is zoomed near a.");
+        } else {
+          amount = "Largest sampled delta ≈ " + formatNum(found.delta);
+          lines.push(
+            "Every checked sample with 0 < |x − " + formatNum(a) + "| < " + formatNum(found.delta) +
+            " had |f(x) − " + formatNum(L) + "| < " + formatNum(eps) + "."
+          );
+          if (found.witness) {
+            lines.push(
+              "The closest sampled escape is at distance " + formatNum(found.witness.dist) +
+              " (x = " + formatNum(found.witness.x) + ", f(x) = " + edFormatY(found.witness.y) +
+              "). The window stops at that edge."
+            );
+          }
+        }
+        lines.push("Checked " + found.n + " sample values. This is a numerical check, not a proof.");
+        api.showResult(amount, lines.join("\n"));
+        drawEdPlot(f, a, L, eps, found);
+      },
+      function () {
+        document.getElementById("ed-expr").value = "3*x+1";
+        document.getElementById("ed-a").value = "2";
+        document.getElementById("ed-L").value = "7";
+        document.getElementById("ed-eps").value = "0.1";
       }
     );
   })();

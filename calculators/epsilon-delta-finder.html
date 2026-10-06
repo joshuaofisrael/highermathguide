@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epsilon Delta Finder, Higher Math Guide</title>
+<meta name="description" content="Find a numerical delta for a proposed limit. Type f(x), a point, L, and epsilon. A sampled check, not a proof.">
+<link rel="canonical" href="https://highermathguide.com/calculators/epsilon-delta-finder.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Epsilon Delta Finder, Higher Math Guide">
+<meta property="og:description" content="Find a numerical delta for a proposed limit. Type f(x), a point, L, and epsilon. A sampled check, not a proof.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/epsilon-delta-finder.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Epsilon Delta Finder, Higher Math Guide">
+<meta name="twitter:description" content="Find a numerical delta for a proposed limit. Type f(x), a point, L, and epsilon. A sampled check, not a proof.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/epsilon-delta-finder.html#webpage",
+      "name": "Epsilon Delta Finder",
+      "description": "Find a numerical delta for a proposed limit. Type f(x), a point, L, and epsilon. A sampled check, not a proof.",
+      "url": "https://highermathguide.com/calculators/epsilon-delta-finder.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/epsilon-delta-finder.html#faq",
+      "url": "https://highermathguide.com/calculators/epsilon-delta-finder.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is the delta on this page a proof?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The page checks a finite set of samples, and it stops at a cap of 10. A proof has to cover every x in the punctured window, for every positive epsilon, with a rule you can write down. One epsilon that survives is not the definition. Use the number as a guess, then write the inequality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the linear preset match epsilon over 3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For f(x) = 3x+1 at a = 2 and L = 7, the absolute error is exactly 3 times the distance from 2. The error stays below epsilon precisely when that distance is below epsilon/3. The delta in a written proof and the largest delta are the same number. With epsilon = 0.1 that number is about 0.03333. The last digits on the screen can move with the sample spacing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the quadratic delta larger than epsilon over 7?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A written proof that x squared approaches 9 at 3 often chooses delta = min(1, epsilon/7). That choice is legal because it keeps a convenient bound. It is not the biggest legal delta. This page searches for a larger window that the samples still support. For epsilon = 0.1 the proof uses about 0.0143, while the largest delta is about 0.0166."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if no delta works?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then some samples leave the epsilon band at every tested distance, including distances very close to a. A jump, a wrong proposed limit, or a blowup can do that. The plot marks those samples. The result is strong numerical evidence, not a finished proof that the limit fails."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">One tolerance, one window</p>
+<h1>Epsilon delta finder</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 6 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool searches for a large $\delta$ such that sampled inputs inside that window keep $f(x)$ within $\varepsilon$ of a proposed limit $L$. You type $f(x)$, the point $a$, the proposed limit $L$, and a positive $\varepsilon$. The page samples both sides of $a$, skips $a$ itself, and looks for the widest window that still passes, up to a cap of $10$.</p>
+<p>The search is a numerical check, not a proof. A finite list of samples can miss a spike between them. Passing one $\varepsilon$ does not settle the definition, which asks for every positive tolerance. Read the negotiation in <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a> before you treat a printed $\delta$ as the end of the argument.</p>
+<p>Allowed pieces match the other numerical tools: numbers, $x$, plus, minus, times, divide, powers, parentheses, and <code>sin</code> <code>cos</code> <code>tan</code> <code>sqrt</code> <code>abs</code> <code>log</code> <code>exp</code> <code>pi</code> <code>e</code>. Write a times sign between a number and $x$. The text <code>3x</code> is not the product <code>3*x</code>.</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<label for="ed-expr">f(x) =</label>
+<input id="ed-expr" type="text" value="3*x+1" autocomplete="off" spellcheck="false">
+<div class="calc-grid cols-3">
+<label for="ed-a">a <input id="ed-a" type="number" value="2" step="any"></label>
+<label for="ed-L">L <input id="ed-L" type="number" value="7" step="any"></label>
+<label for="ed-eps">epsilon <input id="ed-eps" type="number" value="0.1" step="any"></label>
+</div>
+<p class="calc-hint">Presets fill the boxes and search. The jump preset is built to fail.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="ed-ex-linear">Linear</button>
+<button type="button" class="btn btn-secondary" id="ed-ex-quadratic">Quadratic</button>
+<button type="button" class="btn btn-secondary" id="ed-ex-hole">Removable hole</button>
+<button type="button" class="btn btn-secondary" id="ed-ex-recip">Reciprocal</button>
+<button type="button" class="btn btn-secondary" id="ed-ex-jump">Jump</button>
+</div>
+<div class="calc-actions">
+<button type="button" class="btn" id="ed-compute">Find delta</button>
+<button type="button" class="btn btn-secondary" id="ed-reset">Reset</button>
+</div>
+<p class="calc-error" id="ed-error" role="alert"></p>
+<div class="calc-result" id="ed-result">
+<div class="amount" id="ed-amount"></div>
+<div class="detail steps" id="ed-detail"></div>
+<canvas id="ed-plot" class="ed-plot" width="640" height="360" role="img" aria-label="Plot of f near a, with the epsilon band around L and the delta band around a"></canvas>
+<p class="ed-legend" id="ed-legend">The horizontal band is the epsilon tolerance around L. The vertical band is the delta window around a. Red dots are samples that leave the epsilon band.</p>
+</div>
+</div>
+
+<div class="article-body">
+<h2>How to read the result</h2>
+<p>The large line is the widest $\delta$ whose checked samples stayed inside the band, or a clear refusal. Under it, the note names $\varepsilon$, the cap, and the closest sampled point that escaped, when one exists. The sentence that the check is not a proof is part of every result. Do not skip it.</p>
+<p>The plot draws $f$ near $a$. The horizontal shaded band is the strip from $L-\varepsilon$ to $L+\varepsilon$. The vertical shaded band, when a $\delta$ is found, is the input window. A red dot is a sample whose output left the strip, or a sample that was not a finite number. If the vertical band is missing, no positive $\delta$ survived the samples. The red dots are where it fails.</p>
+<p>Read the window as a guess about size, not as a unique answer. If a $\delta$ works, every smaller positive $\delta$ works too. The page hunts a large one because that is the interesting edge. A written proof is allowed to pick a smaller convenient value and stop.</p>
+<h2>How the found delta compares with a proof</h2>
+<p><span class="example-label">Linear</span> Let $f(x)=3x+1$, $a=2$, and $L=7$. Then $|f(x)-7|=3|x-2|$. The outputs stay inside $\varepsilon$ exactly when $|x-2|&lt;\varepsilon/3$. A written proof chooses $\delta=\varepsilon/3$. That choice is sharp. Any larger window contains a point that misses the band. With $\varepsilon=0.1$ the value is $0.1/3$, about $0.03333$. The finder should print a number near that. The last digits can differ by the spacing of the samples. Here the proof $\delta$ and the largest $\delta$ are the same number, because the error is a constant times $|x-a|$.</p>
+<p><span class="example-label">Quadratic</span> Let $f(x)=x^{2}$, $a=3$, $L=9$, and $\varepsilon=0.1$. A standard proof first requires $|x-3|&lt;1$, which forces $|x+3|&lt;7$, and then chooses $\delta=\min(1,\varepsilon/7)$. For this $\varepsilon$ that is $0.1/7$, about $0.0143$. That $\delta$ is legal. It is not the largest legal $\delta$. The largest $\delta$ is the distance from $3$ to the nearest solution of $|x^{2}-9|=0.1$, which is $\sqrt{9.1}-3$, about $0.0166$. The finder is searching for that larger window. The proof only had to exhibit one $\delta$. The screen is estimating the biggest $\delta$ the samples will allow.</p>
+<p>The same gap shows up on the reciprocal preset. For $1/x$ at $a=2$ with $L=1/2$ and $\varepsilon=0.1$, the largest $\delta$ is $1/3$, about $0.3333$. A proof that first keeps $x$ inside $(1,3)$, so the denominator stays away from $0$, can legally stop at a smaller $\delta$ such as $0.2$. Again the write up is allowed to be modest. The search is not.</p>
+<h2>Why a numerical delta never replaces the proof</h2>
+<p>The definition asks for every $x$ with $0&lt;|x-a|&lt;\delta$, not for a finite list. Between two samples the graph can spike, oscillate, or cross the band on a set the grid missed. Rapid oscillation, such as $\sin(1/x)$ near $0$, is the usual warning. A calm sample list is not a certificate.</p>
+<p>The search also stops at a cap of $10$. A window that survives the cap has not been checked on the whole line. Rounding can nudge a value across the $\varepsilon$ line when the true value sits on it. And a single $\varepsilon$ is the easy half of the definition. The definition demands a rule that, given an arbitrary $\varepsilon&gt;0$, produces a $\delta$. Passing $\varepsilon=0.1$ and failing $\varepsilon=0.01$ is a failed limit, even if the first picture looks kind.</p>
+<p>A proof names that rule and then shows the inequality for every $x$ in the window. The picture is a reason to believe the rule is worth writing. It is not the write up. The forward paragraph still starts with "let $\varepsilon&gt;0$", chooses $\delta$, and only then estimates $|f(x)-L|$.</p>
+<h2>Worked examples</h2>
+<p><span class="example-label">Linear</span> Press Linear, or leave the boxes at $3*x+1$, $a=2$, $L=7$, $\varepsilon=0.1$. The horizontal band sits around $7$. The vertical band should be about $\varepsilon/3$ wide on each side. Change $L$ to $8$ and search again. The line $3x+1$ is near $7$ at $x=2$, so the error against $8$ is about $1$, which is larger than $0.1$. No $\delta$ survives. A wrong limit fails even when the function is gentle.</p>
+<p><span class="example-label">Quadratic</span> Press Quadratic. $x^{2}$ at $3$ with $L=9$ and $\varepsilon=0.1$ should return a $\delta$ near $0.0166$, a bit larger than the convenient proof value $0.1/7$. The band around $9$ is short, and the parabola is steep enough that the window is tighter than the linear example.</p>
+<p><span class="example-label">Removable hole</span> Press Removable hole. The formula $(x^{2}-1)/(x-1)$ is undefined at $x=1$, and it equals $x+1$ everywhere else. With $L=2$ and $\varepsilon=0.1$, the error is $|x-1|$ on the points the definition uses, so the largest $\delta$ is $0.1$. The sampler never sits on the hole. A limit does not need a function value at $a$.</p>
+<p><span class="example-label">Reciprocal</span> Press Reciprocal. $1/x$ at $a=2$ with $L=1/2$ and $\varepsilon=0.1$ should return a $\delta$ near $1/3$. The dangerous point is $x=0$, where the graph blows up. That point is $2$ units away from $a$, so a modest window never sees it. The binding side is the left, where the graph is a little steeper.</p>
+<p><span class="example-label">Jump</span> Press Jump. $\mathrm{abs}(x)/x$ is $-1$ on the left of $0$ and $1$ on the right. With $L=0$ and $\varepsilon=0.5$, both sides miss the band. The page should refuse a $\delta$ and mark the escaping samples in red. No candidate $L$ would survive this $\varepsilon$, because the two outputs are $2$ apart and the band has width $1$. The long version of that argument is on the <a href="../explainers/epsilon-delta-intuition.html">explainer</a>.</p>
+<h2>Common mistakes</h2>
+<ul>
+<li>Treating the printed $\delta$ as the only legal one. When a window works, every smaller positive window works. A proof may pick the smaller convenient value, such as $\varepsilon/7$ instead of the largest $\delta$ on the quadratic.</li>
+<li>Trusting one $\varepsilon$. The definition is a promise about every positive tolerance. Try a smaller $\varepsilon$ on the same function. A real limit still produces a $\delta$. A wrong $L$ stops producing one as soon as $\varepsilon$ is tighter than the gap.</li>
+<li>Reading a refusal as a finished proof that the limit does not exist. The samples are strong evidence of a jump, a wrong $L$, or a blowup. The write up still has to name an $\varepsilon$ that defeats every candidate, or defeat the candidate you claimed.</li>
+<li>Forgetting the times sign. Type <code>3*x+1</code>, not <code>3x+1</code>. The parser accepts arithmetic and a short list of functions. It does not accept glued coefficients.</li>
+<li>Expecting the point $x=a$ to be checked. The definition excludes it. A hole at $a$ is allowed. The removable preset is the picture.</li>
+</ul>
+<h2>Related reading</h2>
+<p>The definition, with the linear and quadratic proofs written forward, is <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a>. The glossary lines are <a href="../glossary/#limit">limit</a> and <a href="../glossary/#epsilon-delta">epsilon delta definition</a>. If you only want to see whether nearby values settle, and you do not yet have an $\varepsilon$, use the <a href="limit-estimator.html">numerical limit estimator</a> first.</p>
+<p>The map of the first course is <a href="../topics/calculus-foundations.html">calculus foundations</a>. The proof habit is <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>. After a limit is in place, slopes are on <a href="../explainers/what-a-derivative-measures.html">what a derivative actually measures</a> and the <a href="numerical-derivative.html">numerical derivative calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="proof">
+<h2>Is the delta on this page a proof?</h2>
+<p>No. The page checks a finite set of samples, and it stops at a cap of $10$. A proof has to cover every $x$ in the punctured window, for every positive $\varepsilon$, with a rule you can write down. One $\varepsilon$ that survives is not the definition. Use the number as a guess, then write the inequality.</p>
+</section>
+<section class="faq-item" id="linear">
+<h2>Why does the linear preset match epsilon over 3?</h2>
+<p>For $f(x)=3x+1$ at $a=2$ and $L=7$, the absolute error is exactly $3$ times the distance from $2$. The error stays below $\varepsilon$ precisely when that distance is below $\varepsilon/3$. The $\delta$ in a written proof and the largest $\delta$ are the same number. With $\varepsilon=0.1$ that number is about $0.03333$. The last digits on the screen can move with the sample spacing.</p>
+</section>
+<section class="faq-item" id="quadratic">
+<h2>Why is the quadratic delta larger than epsilon over 7?</h2>
+<p>A written proof that $x^{2}$ approaches $9$ at $3$ often chooses $\delta=\min(1,\varepsilon/7)$. That choice is legal because it keeps a convenient bound. It is not the biggest legal $\delta$. This page searches for a larger window that the samples still support. For $\varepsilon=0.1$ the proof uses about $0.0143$, while the largest $\delta$ is about $0.0166$.</p>
+</section>
+<section class="faq-item" id="none">
+<h2>What if no delta works?</h2>
+<p>Then some samples leave the epsilon band at every tested distance, including distances very close to $a$. A jump, a wrong proposed limit, or a blowup can do that. The plot marks those samples. The result is strong numerical evidence, not a finished proof that the limit fails.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
