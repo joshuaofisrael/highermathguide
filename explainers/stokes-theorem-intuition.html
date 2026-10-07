@@ -40,7 +40,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-17",
-      "dateModified": "2026-09-25"
+      "dateModified": "2026-10-07"
     },
     {
       "@type": "FAQPage",
@@ -87,7 +87,7 @@
           "name": "Which calculator should I use with this page?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The vector operations calculator. Use it for a dot product when you check circulation along a short tangent, and for a cross product when a parametrization needs ru cross rv. It does not integrate a surface. A one variable slice can go to the Riemann sum calculator after you have reduced the integral by hand."
+            "text": "The vector operations calculator handles a dot product when you check circulation along a short tangent, and a cross product when a parametrization needs ru cross rv. It does not integrate a surface. The divergence and curl calculator estimates divergence and curl at one point and draws the arrows. A one variable slice can go to the Riemann sum calculator after you have reduced the integral by hand."
           }
         }
       ]
@@ -123,7 +123,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Stokes theorem intuition for undergraduates</h1>
-<p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 7 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>The fundamental theorem of calculus says a total change of $F$ on an interval equals the difference of $F$ at the two endpoints. Interior information, the derivative, is recovered from the boundary. Stokes theorem is that slogan for a surface. The circulation of a <a href="../glossary/#vector-field">vector field</a> $\mathbf{F}$ around the oriented edge of a surface equals the flux of $\operatorname{curl}\mathbf{F}$ through the surface. You are not learning a new kind of integral. You are learning that two integrals, which look unrelated, are the same number when the hypotheses hold.</p>
@@ -186,6 +186,7 @@
 
 <h2>Practice with the vector calculator</h2>
 <p>This site does not hide a surface integrator, and it should not. Stokes theorem is a decision about which integral to set up, not a button. The nearby arithmetic is a dot product or a cross product. The <a href="../calculators/vector-ops.html">vector operations calculator</a> does those, in two or three components. It does not know your orientation, and it does not add the pieces of an integral.</p>
+<p>To see divergence and curl at one point, including the rotation field $\langle -y, x, 0\rangle$ and the shear field from the sign example, use the <a href="../calculators/divergence-curl.html">divergence and curl calculator</a>. It estimates each partial derivative with a central difference, reports the numbers, and draws the arrows in the plane or on a horizontal slice. It does not integrate a surface. The number it prints is a local check, not a flux.</p>
 <div class="callout"><strong>Try it.</strong> For the disk example, the curl is $\langle 0,0,2\rangle$ and an upward normal direction is $\langle 0,0,1\rangle$. Their dot product is $2$, which is the integrand before you multiply by area. Separately, take two tangent vectors on a graph, such as $\mathbf{r}_u=\langle 1,0,0\rangle$ and $\mathbf{r}_v=\langle 0,1,1\rangle$. The cross product $\mathbf{r}_u\times\mathbf{r}_v$ should be $\langle 0,-1,1\rangle$. If you swap the order you get the opposite normal, and the flux changes sign. That swap is the orientation pitfall, seen as a single cross product.</div>
 <p>After a parametrization has collapsed to a one variable integral, a numerical picture of that integral can go to the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>. Use it only after the setup is finished by hand. A pretty Riemann sum of the wrong integrand is still the wrong integral. The short glossary forms are <a href="../glossary/#stokes-theorem">Stokes theorem</a>, <a href="../glossary/#vector-field">vector field</a>, and <a href="../glossary/#partial-derivative">partial derivative</a>, since every component of a curl is a partial derivative.</p>
 <div class="cta-panel">
@@ -233,11 +234,12 @@
 </section>
 <section class="faq-item" id="which-tool">
 <h2>Which calculator should I use with this page?</h2>
-<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a>. Use it for a dot product when you check circulation along a short tangent, and for a cross product when a parametrization needs $\mathbf{r}_u\times\mathbf{r}_v$. It does not integrate a surface. A one variable slice can go to the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> after you have reduced the integral by hand.</p>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> handles a dot product when you check circulation along a short tangent, and a cross product when a parametrization needs $\mathbf{r}_u\times\mathbf{r}_v$. It does not integrate a surface. The <a href="../calculators/divergence-curl.html">divergence and curl calculator</a> estimates divergence and curl at one point and draws the arrows. A one variable slice can go to the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> after you have reduced the integral by hand.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/divergence-curl.html">Divergence and curl calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>

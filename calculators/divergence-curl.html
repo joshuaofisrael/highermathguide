@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divergence and Curl Calculator, Higher Math Guide</title>
+<meta name="description" content="Estimate divergence and curl of a vector field at a point, in the plane or in space, and see the arrows. A browser tool with central differences.">
+<link rel="canonical" href="https://highermathguide.com/calculators/divergence-curl.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Divergence and Curl Calculator, Higher Math Guide">
+<meta property="og:description" content="Estimate divergence and curl of a vector field at a point, in the plane or in space, and see the arrows. A browser tool with central differences.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/divergence-curl.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Divergence and Curl Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Estimate divergence and curl of a vector field at a point, in the plane or in space, and see the arrows. A browser tool with central differences.">
+<link rel="stylesheet" href="../css/styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/divergence-curl.html#webpage",
+      "name": "Divergence and Curl Calculator",
+      "description": "Estimate divergence and curl of a vector field at a point, in the plane or in space, and see the arrows. A browser tool with central differences.",
+      "url": "https://highermathguide.com/calculators/divergence-curl.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/divergence-curl.html#faq",
+      "url": "https://highermathguide.com/calculators/divergence-curl.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the sign of the divergence mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Positive divergence is a source tendency. A tiny region around the point sends out more of the field than it takes in. Negative divergence is a sink tendency. A value near zero means inflow and outflow balance at that point. The arrows can still be long."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the sign of the curl mean in the plane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a planar field the curl on this page is the number Qx minus Py. Positive means a counterclockwise rotation tendency. Negative means a clockwise tendency. In space the curl is a vector. The sign of its z component is the same counterclockwise or clockwise reading for the horizontal slice drawn here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a gradient field have zero curl?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the components are partial derivatives of one scalar function, and the mixed partials are continuous, those mixed partials agree. The curl subtracts one order from the other, so each component cancels. Curl zero at one point is not, by itself, a proof that a potential exists on a whole region."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the shear field rotate if the arrows are straight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The field with components y and 0 has horizontal arrows, so each particle travels in a straight line. A tiny wheel still feels a stronger push to the right on its top than on its bottom, which is a clockwise spin. The scalar curl is -1. Curl measures that local spin, not whether one streamline bends."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these partial derivatives exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Each one is a central difference with the step shown under the result. For a polynomial of low degree the estimate often matches the algebra. A kink, a corner, or a point where the formula is undefined will not settle. The number is a check, not a symbolic proof."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the field is undefined at my point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The page refuses the point. Divergence and curl need the components to return finite numbers on both sides of a small step. A formula such as 1/x at x = 0, or a square root of a negative number, stops the calculation. Move to a point where every component is defined."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Source, sink, and spin</p>
+<h1>Divergence and curl calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 7 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool estimates the divergence and the curl of a vector field at one point. You type a field in the plane, $\mathbf{F}=\langle P,Q\rangle$, or a field in space, $\mathbf{F}=\langle P,Q,R\rangle$, plus a point. Each partial derivative is a central difference. The numbers are numerical approximations, not a symbolic derivative.</p>
+<p>In the plane, both answers are numbers. Positive divergence is a source tendency, and negative divergence is a sink tendency. Positive curl is a counterclockwise tendency, and negative curl is a clockwise tendency. In space, the curl is a vector. The page also draws the arrows, either the whole planar field or the horizontal slice through your point.</p>
+<p>This is not a computer algebra system. It does not prove that a partial derivative exists, and it does not evaluate a flux integral or a circulation. For the map of the course, read <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. For the boundary form of the curl, read <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>.</p>
+<p>Allowed pieces: numbers, the variables $x$, $y$, and $z$, plus, minus, times, divide, powers, parentheses, and $\sin$, $\cos$, $\tan$, $\mathrm{sqrt}$, $\mathrm{abs}$, $\log$ (natural), $\exp$, $\pi$, $e$. Type them as <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code>, <code>abs</code>, <code>log</code>, <code>exp</code>, <code>pi</code>, <code>e</code>. Write a times sign between variables. The letters <code>xy</code> are not the product <code>x*y</code>.</p>
+</div>
+
+<div class="calc-panel wide" style="margin:1.5rem 0">
+<label for="dc-dim">Field</label>
+<select id="dc-dim">
+<option value="2" selected>Plane, components P and Q</option>
+<option value="3">Space, components P, Q, and R</option>
+</select>
+<div class="matrix-block">
+<h3>Components</h3>
+<label for="dc-p">P</label>
+<input id="dc-p" type="text" value="-y" autocomplete="off" spellcheck="false">
+<label for="dc-q">Q</label>
+<input id="dc-q" type="text" value="x" autocomplete="off" spellcheck="false">
+<label for="dc-r" class="dc-z" style="display:none">R</label>
+<input id="dc-r" class="dc-z" type="text" value="0" style="display:none" autocomplete="off" spellcheck="false">
+</div>
+<div class="matrix-block">
+<h3>Point</h3>
+<div class="calc-grid cols-3">
+<label for="dc-x">x <input id="dc-x" type="number" value="1" step="any"></label>
+<label for="dc-y">y <input id="dc-y" type="number" value="0" step="any"></label>
+<label for="dc-z" class="dc-z" style="display:none">z <input id="dc-z" type="number" value="0" step="any"></label>
+</div>
+</div>
+<label for="dc-h">Central difference step h</label>
+<input id="dc-h" type="number" value="0.001" step="any">
+<p class="calc-hint">In the plane, divergence is Px + Qy and the scalar curl is Qx minus Py. Example buttons fill the boxes and compute.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="ex-rotation">Rotation field</button>
+<button type="button" class="btn btn-secondary" id="ex-radial">Radial field</button>
+<button type="button" class="btn btn-secondary" id="ex-shear">Shear field</button>
+<button type="button" class="btn btn-secondary" id="ex-gradient">Gradient field</button>
+<button type="button" class="btn btn-secondary" id="ex-three">Field in space</button>
+</div>
+<div class="calc-actions">
+<button type="button" class="btn" id="dc-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="dc-reset">Reset</button>
+</div>
+<p class="calc-error" id="dc-error" role="alert"></p>
+<div class="calc-result" id="dc-result">
+<div class="amount" id="dc-amount"></div>
+<div class="detail steps" id="dc-detail"></div>
+<canvas id="dc-plot" class="ed-plot" width="640" height="640" role="img" aria-label="Arrows of the vector field on a window centered at the evaluation point"></canvas>
+<p class="ed-legend" id="dc-reading"></p>
+</div>
+</div>
+
+<div class="article-body">
+<h2>How to use the calculator</h2>
+<p>The boxes start on the rotation field $\mathbf{F}=\langle -y, x\rangle$ at $(1,0)$, with step $0.001$. Press Compute. The partial derivatives are constant, so the same divergence and curl appear at every point where you move the dot. Divergence is $0$. The scalar curl is $2$.</p>
+<p>Choose a field in the plane or in space. In the plane the $z$ and $R$ boxes hide, and an expression that uses $z$ is refused until you switch. Fill every component. The five example buttons each load one field and compute it.</p>
+<h2>How to read the output</h2>
+<p>The large line is the divergence, and the curl. Under it, each partial derivative is named, so you can add $P_x+Q_y$ yourself, and subtract for $Q_x-P_y$. In space the curl line is a vector, and the next line is its length.</p>
+<p>The picture is a window centered on your point. Arrow length follows the size of $\langle P,Q\rangle$, with the longest samples kept from hiding the rest. The dot is the evaluation point. A sentence under the picture reads the sign of the divergence as source or sink, and the sign of the planar curl as counterclockwise or clockwise. In space that planar sign is the $z$ component. The full curl vector can point out of the slice, and the numbers above the picture are where you see that.</p>
+<p>Treat the output as a probe. Change the step by a factor of ten and compute again. If the stable digits hold, you are close to the partial derivatives. If they jump, you are seeing rounding, a kink, or a formula that breaks nearby.</p>
+<h2>Worked examples</h2>
+<p><span class="example-label">Rotation field</span> $\mathbf{F}=\langle -y, x\rangle$ at $(1,0)$. Then $P_x=0$, $P_y=-1$, $Q_x=1$, $Q_y=0$. Divergence is $0$. Scalar curl is $1-(-1)=2$. The arrows circle the origin counterclockwise. This is the planar field on the <a href="../explainers/stokes-theorem-intuition.html">Stokes explainer</a>, before the extra zero component.</p>
+<p><span class="example-label">Radial field</span> $\mathbf{F}=\langle x, y\rangle$ at $(1,1)$. Divergence is $1+1=2$. Scalar curl is $0-0=0$. Arrows point away from the origin and lengthen with distance. Every small disk is a source, and a paddle wheel does not spin.</p>
+<p><span class="example-label">Shear field</span> $\mathbf{F}=\langle y, 0\rangle$ at $(1,1)$. Divergence is $0$. Scalar curl is $0-1=-1$, a clockwise tendency. The arrows are horizontal. The section below explains why straight arrows can still spin a wheel.</p>
+<p><span class="example-label">Gradient field</span> $\mathbf{F}=\langle y, x\rangle$ at $(1,2)$. This is $\nabla(xy)$. Divergence is $0$. Scalar curl is $1-1=0$. A gradient of a smooth scalar function has curl zero. The page should agree, up to rounding dust.</p>
+<p><span class="example-label">Field in space</span> $\mathbf{F}=\langle -y, x, 0\rangle$ at $(1,0,0)$. Divergence is $0$. The curl vector is $\langle 0,0,2\rangle$, and its length is $2$. The picture is the slice $z=0$, which looks like the rotation field. The $z$ component is the spin you see. The other two components are zero, so the axis of rotation is vertical.</p>
+
+<h2>What divergence measures</h2>
+<p>Divergence is a number at a point of a vector field. It asks whether a tiny region around that point is a source or a sink. Whatever the arrows mean, some of it enters through the boundary and some leaves. Divergence is the net outward flow per unit area, or per unit volume, after the region shrinks to the point.</p>
+<p>Positive means a source tendency: more leaves than enters. Negative means a sink tendency. Near zero means inflow and outflow balance. The arrows can still be long. Balance is not a field that vanishes.</p>
+<p>For $\mathbf{F}=\langle P,Q\rangle$ the divergence is $P_x+Q_y$. In space, add $R_z$. The radial field $\langle x,y\rangle$ has divergence $2$ everywhere, so every small disk is a source. The rotation field $\langle -y,x\rangle$ has divergence $0$. The flow turns, and it does not create or destroy anything.</p>
+
+<h2>What curl measures</h2>
+<p>Curl asks whether a tiny paddle wheel at the point would spin, and which way. In the plane the answer is $Q_x-P_y$. Positive is a counterclockwise tendency. Negative is clockwise. Near zero means the wheel does not spin from the first order behavior of the field. The rotation field has curl $2$ everywhere. The radial field has curl $0$. Those arrows can stretch a wheel. They do not turn it.</p>
+<p>In space the curl is the vector $\langle R_y-Q_z,\, P_z-R_x,\, Q_x-P_y\rangle$. Its direction is the axis of the spin, in the right hand sense: fingers follow the spin, and the thumb points along the curl. Its length is the strength. The $z$ component is still the planar curl, so it reports the turn in a horizontal slice.</p>
+<p>The picture on this page is always a horizontal slice. In the plane it is the whole field. In space it is the plane of constant $z$ through your point, and the arrows are $P$ and $Q$. A spin about a horizontal axis does not show up as a turn of those arrows. Read the full curl vector before you say a field in space has no rotation.</p>
+
+<h2>How the theorems use these numbers</h2>
+<p>The divergence theorem and Stokes theorem move a derivative from an interior onto a boundary. That is the same idea as the fundamental theorem of calculus, which recovers a derivative on an interval from the values at the two endpoints.</p>
+<p>The divergence theorem says the flux of $\mathbf{F}$ through the closed boundary of a solid equals the triple integral of the divergence. If the divergence is the constant $2$ throughout the solid, the flux is $2$ times the volume.</p>
+<p>Stokes theorem says the circulation of $\mathbf{F}$ around the oriented rim of a surface equals the flux of the curl through the surface. Green's theorem is the flat case: the double integral of $Q_x-P_y$ equals the circulation around the boundary. On the rotation field the curl is $2$, so circulation around a disk is $2$ times the area. The unit circle gives $2\pi$, and the unit disk has area $\pi$. That match is the check on the <a href="../explainers/stokes-theorem-intuition.html">Stokes explainer</a>.</p>
+<p>Both theorems need the field smooth on the whole region, not only on the boundary. A blowup at one interior point can leave a tidy curl nearby and still refuse the theorem. This page refuses a point where a component is not a finite number. The wider map is the <a href="../topics/multivariable-vector-calculus.html#fields">fields section</a>, plus the glossary lines for <a href="../glossary/#divergence">divergence</a>, <a href="../glossary/#curl">curl</a>, and <a href="../glossary/#stokes-theorem">Stokes theorem</a>.</p>
+
+<h2>Why a gradient field has zero curl</h2>
+<p>If $\mathbf{F}$ is the gradient of a scalar $f$, then $P=f_x$ and $Q=f_y$. When the mixed partial derivatives are continuous, they agree, so $Q_x-P_y$ is $0$. In space every component of the curl cancels the same way. A gradient field does not spin the paddle wheel.</p>
+<p>A line integral of a gradient then depends only on the endpoints, on a region without holes. Circulation on a closed loop is $0$, and Stokes theorem agrees because the curl is the zero vector.</p>
+<p>Curl zero is required. It is not always enough. On a punctured plane, a field can have curl zero wherever it is defined and still fail to be a gradient on the whole region. This page checks one point. It does not certify a potential. The gradient button loads $\langle y,x\rangle$, which is $\nabla(xy)$, and the curl there is $0$. The <a href="gradient-directional-derivative.html">gradient calculator</a> starts from a scalar. This page starts from the components.</p>
+
+<h2>The shear field, with straight arrows</h2>
+<p>The field $\langle y,0\rangle$ has horizontal arrows. Above the $x$ axis they point right and lengthen as $y$ grows. Below it they point left. A particle stays on a horizontal line and never turns.</p>
+<p>A paddle wheel still spins. A stronger push to the right on the top than on the bottom is clockwise, even when every nearby arrow points the same way. Here $Q_x-P_y=-1$, and the divergence is $0$.</p>
+<p>Straight streamlines and a nonzero curl can share a field. Curl measures the spin of a small neighborhood, not whether one path bends. Circles in a sketch are a hint of rotation, not the definition.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Swapping the formulas. Divergence adds matching components, $P_x+Q_y+R_z$. Curl uses the crossed ones, such as $Q_x-P_y$. Adding every partial you computed is neither formula.</li>
+<li>Reading the signs as one idea. Positive curl means counterclockwise. Positive divergence means a source. The rotation field has curl $2$ and divergence $0$. The radial field swaps those numbers. If your answer swaps them, the formulas were crossed.</li>
+<li>Trusting streamlines as a curl test. The shear field has curl $-1$ and paths that are straight. Missing curves do not mean the curl is zero.</li>
+<li>Treating one point as a theorem. Divergence $2$ at a single point does not make the flux through a large surface equal $2$ times the volume, unless the divergence is $2$ throughout the solid.</li>
+<li>Forgetting that curl in space is a vector. $Q_x-P_y$ is only the $z$ component. A field can spin about a horizontal axis while that component is $0$.</li>
+<li>Ignoring a hole or a blowup. Curl zero on a curve does not license Stokes theorem on a disk that contains a point where the field breaks.</li>
+</ul>
+
+<h2>These derivatives are estimates</h2>
+<p>Every partial derivative here is a central difference. The page samples a component one step $h$ to each side of the point, subtracts, and divides by $2h$. For a polynomial of degree at most $2$, that quotient matches the derivative you would write by hand, apart from ordinary rounding. For a rougher formula it is an estimate. Change $h$ by a factor of ten. If the stable digits hold, you are close to the slope. If they jump, the point may be a kink, a corner, or too close to a place where the formula breaks. The boxes start at $0.001$.</p>
+<p>The output is not a proof that a partial derivative exists, and it is not a proof of either theorem. It is a numerical check against algebra you did yourself. If the field is undefined at the point, or a sample beside the step is not finite, the page stops. Move the point, or repair the formula, before you treat that spot as a divergence or a curl.</p>
+
+<h2>Related reading</h2>
+<p>The course map is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. Circulation and the flux of the curl are on <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>. Short lines: <a href="../glossary/#divergence">divergence</a>, <a href="../glossary/#curl">curl</a>, <a href="../glossary/#vector-field">vector field</a>, and <a href="../glossary/#gradient">gradient</a>.</p>
+<p>After the components are on your paper, the <a href="vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, or a magnitude. A scalar function, when you want its gradient rather than the curl of a field, belongs on the <a href="gradient-directional-derivative.html">gradient and directional derivative calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="sign-div">
+<h2>What does the sign of the divergence mean?</h2>
+<p>Positive divergence is a source tendency. A tiny region around the point sends out more of the field than it takes in. Negative divergence is a sink tendency. A value near zero means inflow and outflow balance at that point. The arrows can still be long.</p>
+</section>
+<section class="faq-item" id="sign-curl">
+<h2>What does the sign of the curl mean in the plane?</h2>
+<p>For a planar field the curl on this page is the number $Q_x-P_y$. Positive means a counterclockwise rotation tendency. Negative means a clockwise tendency. In space the curl is a vector. The sign of its $z$ component is the same counterclockwise or clockwise reading for the horizontal slice drawn here.</p>
+</section>
+<section class="faq-item" id="gradient-curl">
+<h2>Why does a gradient field have zero curl?</h2>
+<p>If the components are partial derivatives of one scalar function, and the mixed partials are continuous, those mixed partials agree. The curl subtracts one order from the other, so each component cancels. Curl zero at one point is not, by itself, a proof that a potential exists on a whole region.</p>
+</section>
+<section class="faq-item" id="shear">
+<h2>Why can the shear field rotate if the arrows are straight?</h2>
+<p>The field $\langle y, 0\rangle$ has horizontal arrows, so each particle travels in a straight line. A tiny wheel still feels a stronger push to the right on its top than on its bottom, which is a clockwise spin. The scalar curl is $-1$. Curl measures that local spin, not whether one streamline bends.</p>
+</section>
+<section class="faq-item" id="exact">
+<h2>Are these partial derivatives exact?</h2>
+<p>No. Each one is a central difference with the step shown under the result. For a polynomial of low degree the estimate often matches the algebra. A kink, a corner, or a point where the formula is undefined will not settle. The number is a check, not a symbolic proof.</p>
+</section>
+<section class="faq-item" id="undefined">
+<h2>What if the field is undefined at my point?</h2>
+<p>The page refuses the point. Divergence and curl need the components to return finite numbers on both sides of a small step. A formula such as $1/x$ at $x=0$, or a square root of a negative number, stops the calculation. Move to a point where every component is defined.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. Educational use only. See the <a href="../disclaimer/">disclaimer</a>.</p>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

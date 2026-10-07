@@ -28,7 +28,7 @@
   "description": "A clear answer on whether vector calculus and multivariable calculus are the same, plus a study map of partial derivatives, gradients, fields, and theorems.",
   "url": "https://highermathguide.com/topics/multivariable-vector-calculus.html",
   "datePublished": "2026-09-11",
-  "dateModified": "2026-10-05",
+  "dateModified": "2026-10-07",
   "publisher": {
     "@type": "Organization",
     "name": "Joshua Israel Ventures LLC"
@@ -91,7 +91,7 @@
       "name": "Which calculator on this site helps with several variables?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The gradient and directional derivative calculator estimates partial derivatives, the gradient, and a directional derivative with central differences. The vector operations calculator checks a dot product, a cross product, a magnitude, or a unit vector. The 2 by 2 matrix calculator checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare."
+        "text": "The gradient and directional derivative calculator estimates partial derivatives, the gradient, and a directional derivative with central differences. The divergence and curl calculator estimates divergence and curl for a field with two or three components, and it draws the arrows. The vector operations calculator checks a dot product, a cross product, a magnitude, or a unit vector. The 2 by 2 matrix calculator checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare."
       }
     }
   ]
@@ -125,7 +125,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Multivariable and vector calculus</h1>
-<p class="article-meta">Topic pillar · Educational only · Updated 5 Oct 2026</p>
+<p class="article-meta">Topic pillar · Educational only · Updated 7 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>Once a quantity depends on more than one input, single variable calculus is only the local tool. Height can depend on two map coordinates. Temperature in a room depends on three. A map can send a point in the plane to another point in the plane. Multivariable calculus extends derivatives and integrals to several inputs. Vector calculus organizes those ideas when the output, or the domain, lives in the plane or in space. This pillar answers whether the two names are the same subject, then maps who it helps, what the core pictures are, and which pages already on this site to open in order.</p>
@@ -186,7 +186,7 @@
 <h2 id="fields">Vector fields, divergence, curl, and Stokes</h2>
 <p>A <a href="../glossary/#vector-field">vector field</a> assigns a vector to each point: wind, fluid velocity, or a force. A scalar field assigns a number. Writing "grad," "div," and "curl" in words is often clearer than a page of $\nabla$ symbols while you learn.</p>
 <p>Divergence measures local expansion or compression. Curl measures local rotation. A line integral asks how much the field pushes along a path. A flux integral asks how much crosses a surface. <a href="../glossary/#stokes-theorem">Stokes theorem</a> equates circulation around the oriented boundary of a surface with the flux of the curl through the surface. Green's theorem is the flat special case. <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a> works one example and explains why a kinder surface with the same rim gives the same circulation.</p>
-<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. A cross product's length is the area of the parallelogram the inputs span. The page does not compute a curl.</p>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. A cross product's length is the area of the parallelogram the inputs span. That page does not compute a curl. For divergence and curl at a point, with each partial derivative shown and a picture of the arrows, use the <a href="../calculators/divergence-curl.html">divergence and curl calculator</a>.</p>
 
 <h2 id="order">Suggested learning order</h2>
 <p>The naming answer above is the first checkpoint. Work in this order after it. If a step uses a word you cannot define, stop and read the glossary line before the next explainer.</p>
@@ -205,7 +205,7 @@
 <p><strong>Gradient check.</strong> For $f(x,y)=x^{2}+y^{2}$, the gradient is $(2x,2y)$, which points straight away from the origin. Level curves are circles. The radius is perpendicular to the circle. That is the gradient picture on the simplest hill. At $(1,2)$ the gradient is $(2,4)$. The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> should agree, and the directional derivative in the direction $(3,4)$ should be $4.4$.</p>
 <p><strong>Jacobian check.</strong> For $F(x,y)=(x+y,\, xy)$ at $(1,1)$, the Jacobian is $\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ and the determinant is $0$. Confirm the determinant on the <a href="../calculators/matrix-2x2.html">matrix calculator</a> after the matrix is on your paper.</p>
 <p><strong>Dot product check.</strong> The vectors $(4,1)$ and $(1,-4)$ have dot product $4\cdot 1 + 1\cdot(-4) = 0$, so they are perpendicular. Use the <a href="../calculators/vector-ops.html">vector operations calculator</a> only to confirm the zero. A zero dot product is the algebraic form of "this direction stays on the level curve to first order."</p>
-<p><strong>Wind check.</strong> At $(1,0)$ the field $\mathbf{F}(x,y)=(-y,x)$ equals $(0,1)$. The magnitude is $1$. The dot product with $(1,0)$ is $0$, so the arrow is perpendicular to the radius and the air is circling. The Jacobian is $\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$ and the determinant is $1$. Confirm the magnitude and the dot product on the <a href="../calculators/vector-ops.html">vector operations calculator</a>, and the determinant on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, after the numbers are on your paper. Use the symmetry test from the weather section to decide whether the wind is a gradient.</p>
+<p><strong>Wind check.</strong> At $(1,0)$ the field $\mathbf{F}(x,y)=(-y,x)$ equals $(0,1)$. The magnitude is $1$. The dot product with $(1,0)$ is $0$, so the arrow is perpendicular to the radius and the air is circling. The Jacobian is $\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$ and the determinant is $1$. Divergence is $0$ and the scalar curl is $2$. Confirm the magnitude and the dot product on the <a href="../calculators/vector-ops.html">vector operations calculator</a>, the determinant on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, and the divergence and curl on the <a href="../calculators/divergence-curl.html">divergence and curl calculator</a>, after the numbers are on your paper. Use the symmetry test from the weather section to decide whether the wind is a gradient.</p>
 
 <h2 id="understood">How to know you understood</h2>
 <ol>
@@ -253,7 +253,7 @@
 </section>
 <section class="faq-item" id="whichcalc">
 <h2>Which calculator on this site helps with several variables?</h2>
-<p>The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> estimates partial derivatives, the gradient, and a directional derivative with central differences. The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare.</p>
+<p>The <a href="../calculators/gradient-directional-derivative.html">gradient and directional derivative calculator</a> estimates partial derivatives, the gradient, and a directional derivative with central differences. The <a href="../calculators/divergence-curl.html">divergence and curl calculator</a> estimates divergence and curl for a field with two or three components, and it draws the arrows. The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks a dot product, a cross product, a magnitude, or a unit vector. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> checks a determinant or a product after you have written a Jacobian by hand. Predict the number, then compare.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
@@ -264,6 +264,7 @@
 <li><a href="../explainers/lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a></li>
 <li><a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a></li>
 <li><a href="../calculators/gradient-directional-derivative.html">Gradient and directional derivative calculator</a></li>
+<li><a href="../calculators/divergence-curl.html">Divergence and curl calculator</a></li>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="../glossary/#gradient">Glossary: gradient</a></li>

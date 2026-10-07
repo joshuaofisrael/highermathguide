@@ -28,6 +28,7 @@ Publisher: Joshua Israel Ventures LLC
 - https://highermathguide.com/explainers/stokes-theorem-intuition.html
 
 ## Tools and references
+- https://highermathguide.com/calculators/divergence-curl.html : numerical divergence and curl of a planar or spatial vector field at a point, with a plot of the arrows. Central differences, not a symbolic proof.
 - https://highermathguide.com/calculators/epsilon-delta-finder.html : numerical search for a delta given f, a, L, and epsilon. A sample check, not a proof.
 - https://highermathguide.com/glossary/
 - https://highermathguide.com/pathways/ (three self study maps: an AP Calculus AB bridge, a linear algebra first course, and intro to proofs)
