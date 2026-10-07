@@ -1170,6 +1170,414 @@
     );
   })();
 
+  /* ---------- Divergence and curl ---------- */
+  (function () {
+    if (!document.getElementById("dc-compute")) return;
+
+    function syncDim() {
+      var show = (document.getElementById("dc-dim").value === "3");
+      document.querySelectorAll(".dc-z").forEach(function (el) {
+        el.style.display = show ? "" : "none";
+      });
+    }
+    document.getElementById("dc-dim").addEventListener("change", syncDim);
+    syncDim();
+
+    function readRequired(id, label) {
+      var raw = String((document.getElementById(id) || {}).value || "").trim();
+      if (raw === "") throw new Error("Enter a valid number for " + label + ".");
+      var v = parseFloat(raw);
+      if (!isFinite(v)) throw new Error("Enter a valid number for " + label + ".");
+      return v;
+    }
+
+    function buildComponent(expr, name, dim) {
+      var trimmed = String(expr || "").trim();
+      if (!trimmed) throw new Error("Enter an expression for " + name + ".");
+      if (dim === 2 && /\bz\b/i.test(trimmed)) {
+        throw new Error(name + " uses z. Switch to a field in space, or remove z.");
+      }
+      try {
+        return buildFnXYZ(trimmed);
+      } catch (err) {
+        var msg = (err && err.message) ? err.message : "Could not parse the expression.";
+        if (msg.indexOf("Enter a function") === 0) msg = "Enter an expression for " + name + ".";
+        throw new Error(name + ": " + msg);
+      }
+    }
+
+    function evalComponent(fn, x, y, z, name) {
+      var v;
+      try {
+        v = fn(x, y, z);
+      } catch (err) {
+        throw new Error("Could not evaluate " + name + ". Check parentheses, operators, and multiplication signs.");
+      }
+      return v;
+    }
+
+    function centralPartial(fn, coords, axis, h, name) {
+      var plus = coords.slice();
+      var minus = coords.slice();
+      plus[axis] += h;
+      minus[axis] -= h;
+      if (plus[axis] === coords[axis] || minus[axis] === coords[axis]) {
+        throw new Error("The step is too small compared with this point. Increase h, or choose a point closer to the origin.");
+      }
+      var fp = evalComponent(fn, plus[0], plus[1], plus[2], name);
+      var fm = evalComponent(fn, minus[0], minus[1], minus[2], name);
+      if (!isFinite(fp) || !isFinite(fm)) {
+        throw new Error(name + " is not a finite number on both sides of this point. The central difference needs both samples. Move the point, or use a smaller step.");
+      }
+      var est = (fp - fm) / (2 * h);
+      if (!isFinite(est)) throw new Error("A partial derivative of " + name + " was not a finite number.");
+      return est;
+    }
+
+    function showNum(n) {
+      if (isFinite(n) && Math.abs(n) < 1e-8) return formatNum(0);
+      return formatNum(n);
+    }
+
+    function formatVec(components) {
+      return "⟨" + components.map(showNum).join(", ") + "⟩";
+    }
+
+    function nearZero(v) {
+      return Math.abs(v) < 1e-6;
+    }
+
+    function sourceSentence(divV) {
+      if (nearZero(divV)) {
+        return "Divergence is about zero, so this point has little source or sink tendency. Inflow and outflow balance, to the accuracy of this estimate.";
+      }
+      if (divV > 0) {
+        return "Divergence is positive, so this point has a source tendency. A tiny region sends out more of the field than it takes in.";
+      }
+      return "Divergence is negative, so this point has a sink tendency. A tiny region takes in more of the field than it sends out.";
+    }
+
+    function spinSentence(scalarCurl, inSpace) {
+      var which = inSpace ? "The z component of the curl" : "The scalar curl";
+      if (nearZero(scalarCurl)) {
+        return which + " is about zero, so the arrows in this picture show little counterclockwise or clockwise tendency.";
+      }
+      if (scalarCurl > 0) {
+        return which + " is positive, so the arrows in this picture have a counterclockwise rotation tendency.";
+      }
+      return which + " is negative, so the arrows in this picture have a clockwise rotation tendency.";
+    }
+
+    var lastPlot = null;
+
+    function drawField(plot) {
+      var canvas = document.getElementById("dc-plot");
+      var legend = document.getElementById("dc-reading");
+      if (!canvas || !canvas.getContext) {
+        if (legend) legend.textContent = plot.reading;
+        return;
+      }
+      var n = 11;
+      var span = 2;
+      var x0 = plot.x;
+      var y0 = plot.y;
+      var z0 = plot.z;
+      var samples = [];
+      var mags = [];
+      var skipped = 0;
+      var i, j, x, y, vx, vy, mag;
+      for (j = 0; j < n; j++) {
+        for (i = 0; i < n; i++) {
+          x = x0 + ((i / (n - 1)) * 2 - 1) * span;
+          y = y0 + ((j / (n - 1)) * 2 - 1) * span;
+          try {
+            vx = plot.p(x, y, z0);
+            vy = plot.q(x, y, z0);
+          } catch (err) {
+            vx = NaN;
+            vy = NaN;
+          }
+          if (!isFinite(vx) || !isFinite(vy)) {
+            skipped++;
+            samples.push(null);
+            continue;
+          }
+          mag = Math.sqrt(vx * vx + vy * vy);
+          if (isFinite(mag) && mag > 0) mags.push(mag);
+          samples.push({ x: x, y: y, vx: vx, vy: vy, mag: mag });
+        }
+      }
+      mags.sort(function (a, b) { return a - b; });
+      var ref = mags.length ? mags[Math.min(mags.length - 1, Math.floor(mags.length * 0.8))] : 0;
+
+      var cssW = canvas.clientWidth || 480;
+      if (!(cssW > 40)) cssW = 480;
+      var cssH = cssW;
+      var dpr = Math.min((typeof window !== "undefined" && window.devicePixelRatio) || 1, 2);
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.height = cssH + "px";
+      var ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var pad = 28;
+      var plotW = cssW - pad * 2;
+      var plotH = cssH - pad * 2;
+      var xMin = x0 - span;
+      var xMax = x0 + span;
+      var yMin = y0 - span;
+      var yMax = y0 + span;
+      function xPix(xv) { return pad + (xv - xMin) / (xMax - xMin) * plotW; }
+      function yPix(yv) { return pad + (yMax - yv) / (yMax - yMin) * plotH; }
+
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.fillStyle = "#fffcf7";
+      ctx.fillRect(0, 0, cssW, cssH);
+      ctx.strokeStyle = "#e4dfd4";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (i = 0; i < n; i++) {
+        x = x0 + ((i / (n - 1)) * 2 - 1) * span;
+        y = y0 + ((i / (n - 1)) * 2 - 1) * span;
+        ctx.moveTo(xPix(x), pad);
+        ctx.lineTo(xPix(x), pad + plotH);
+        ctx.moveTo(pad, yPix(y));
+        ctx.lineTo(pad + plotW, yPix(y));
+      }
+      ctx.stroke();
+
+      ctx.strokeStyle = "#b7b1a4";
+      ctx.beginPath();
+      if (xMin < 0 && xMax > 0) {
+        ctx.moveTo(xPix(0), pad);
+        ctx.lineTo(xPix(0), pad + plotH);
+      }
+      if (yMin < 0 && yMax > 0) {
+        ctx.moveTo(pad, yPix(0));
+        ctx.lineTo(pad + plotW, yPix(0));
+      }
+      ctx.stroke();
+      ctx.strokeStyle = "#d8d2c6";
+      ctx.strokeRect(pad, pad, plotW, plotH);
+
+      var cell = plotW / n;
+      ctx.strokeStyle = "#2f4a7a";
+      ctx.fillStyle = "#2f4a7a";
+      ctx.lineWidth = 1.4;
+      ctx.lineCap = "round";
+      samples.forEach(function (s) {
+        if (!s) return;
+        var px = xPix(s.x);
+        var py = yPix(s.y);
+        if (!(s.mag > 1e-10) || !(ref > 0)) {
+          ctx.beginPath();
+          ctx.arc(px, py, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+          return;
+        }
+        var len = Math.min(cell * 0.78, (s.mag / ref) * cell * 0.62);
+        if (len < 4) {
+          ctx.beginPath();
+          ctx.arc(px, py, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+          return;
+        }
+        var ux = s.vx / s.mag;
+        var uy = s.vy / s.mag;
+        var x2 = px + ux * len / 2;
+        var y2 = py - uy * len / 2;
+        var x1 = px - ux * len / 2;
+        var y1 = py + uy * len / 2;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        var ang = Math.atan2(y2 - y1, x2 - x1);
+        var head = Math.min(8, len * 0.38);
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - head * Math.cos(ang - 0.45), y2 - head * Math.sin(ang - 0.45));
+        ctx.lineTo(x2 - head * Math.cos(ang + 0.45), y2 - head * Math.sin(ang + 0.45));
+        ctx.closePath();
+        ctx.fill();
+      });
+
+      var mx = xPix(x0);
+      var my = yPix(y0);
+      ctx.beginPath();
+      ctx.arc(mx, my, 6, 0, Math.PI * 2);
+      ctx.fillStyle = "#fff";
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#8b5a2b";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(mx, my, 2.4, 0, Math.PI * 2);
+      ctx.fillStyle = "#8b5a2b";
+      ctx.fill();
+
+      ctx.fillStyle = "#4a5160";
+      ctx.font = "12px Segoe UI, system-ui, sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.fillText("y", pad + 4, 6);
+      ctx.textAlign = "right";
+      ctx.textBaseline = "bottom";
+      ctx.fillText("x", cssW - 6, cssH - 4);
+
+      var note = plot.reading;
+      if (skipped > 0) {
+        note += " Some sample arrows are omitted because the field was not finite there.";
+      }
+      if (legend) legend.textContent = note;
+      canvas.setAttribute("aria-label", "Vector field arrows centered at the evaluation point. " + note);
+    }
+
+    window.addEventListener("resize", function () {
+      var result = document.getElementById("dc-result");
+      if (lastPlot && result && result.classList.contains("visible")) drawField(lastPlot);
+    });
+
+    var examples = {
+      "ex-rotation": { dim: "2", p: "-y", q: "x", r: "0", x: "1", y: "0", z: "0", h: "0.001" },
+      "ex-radial": { dim: "2", p: "x", q: "y", r: "0", x: "1", y: "1", z: "0", h: "0.001" },
+      "ex-shear": { dim: "2", p: "y", q: "0", r: "0", x: "1", y: "1", z: "0", h: "0.001" },
+      "ex-gradient": { dim: "2", p: "y", q: "x", r: "0", x: "1", y: "2", z: "0", h: "0.001" },
+      "ex-three": { dim: "3", p: "-y", q: "x", r: "0", x: "1", y: "0", z: "0", h: "0.001" }
+    };
+
+    function applyExample(ex) {
+      document.getElementById("dc-dim").value = ex.dim;
+      document.getElementById("dc-p").value = ex.p;
+      document.getElementById("dc-q").value = ex.q;
+      document.getElementById("dc-r").value = ex.r;
+      document.getElementById("dc-x").value = ex.x;
+      document.getElementById("dc-y").value = ex.y;
+      document.getElementById("dc-z").value = ex.z;
+      document.getElementById("dc-h").value = ex.h;
+      syncDim();
+      document.getElementById("dc-compute").click();
+    }
+
+    Object.keys(examples).forEach(function (id) {
+      var button = document.getElementById(id);
+      if (!button) return;
+      button.addEventListener("click", function () { applyExample(examples[id]); });
+    });
+
+    wireCalc(
+      { compute: "dc-compute", reset: "dc-reset", result: "dc-result", amount: "dc-amount", detail: "dc-detail", error: "dc-error" },
+      function (api) {
+        var dim = (document.getElementById("dc-dim").value === "3") ? 3 : 2;
+        var pExpr = document.getElementById("dc-p").value;
+        var qExpr = document.getElementById("dc-q").value;
+        var rExpr = dim === 3 ? document.getElementById("dc-r").value : "0";
+        var P = buildComponent(pExpr, "P", dim);
+        var Q = buildComponent(qExpr, "Q", dim);
+        var R = dim === 3 ? buildComponent(rExpr, "R", dim) : null;
+        var x = readRequired("dc-x", "x");
+        var y = readRequired("dc-y", "y");
+        var z = dim === 3 ? readRequired("dc-z", "z") : 0;
+        var h = readRequired("dc-h", "the step size h");
+        if (!(h > 0)) throw new Error("Step size h must be a positive number. Try 0.001.");
+        if (h > 1) throw new Error("Choose a step size h of at most 1 for a meaningful estimate.");
+        if (h < 1e-8) throw new Error("Step size h is too small for a stable central difference. Try 0.001.");
+
+        var coords = [x, y, z];
+        var p0 = evalComponent(P, x, y, z, "P");
+        var q0 = evalComponent(Q, x, y, z, "Q");
+        var r0 = R ? evalComponent(R, x, y, z, "R") : 0;
+        if (!isFinite(p0) || !isFinite(q0) || !isFinite(r0)) {
+          throw new Error("The field is not defined at this point, or a component is not a finite number. Move the point, or repair the formula.");
+        }
+
+        var axes = dim === 3 ? ["x", "y", "z"] : ["x", "y"];
+        var comps = dim === 3 ? [
+          { name: "P", fn: P },
+          { name: "Q", fn: Q },
+          { name: "R", fn: R }
+        ] : [
+          { name: "P", fn: P },
+          { name: "Q", fn: Q }
+        ];
+        var partial = comps.map(function (comp) {
+          return axes.map(function (axisName, axis) {
+            return centralPartial(comp.fn, coords, axis, h, comp.name);
+          });
+        });
+
+        var divV, curlZ, curl, amount, lines;
+        lines = [];
+        if (dim === 2) {
+          lines.push("F at the point ≈ " + formatVec([p0, q0]));
+        } else {
+          lines.push("F at the point ≈ " + formatVec([p0, q0, r0]));
+        }
+        comps.forEach(function (comp, ci) {
+          axes.forEach(function (axisName, ai) {
+            lines.push("Partial of " + comp.name + " with respect to " + axisName + " ≈ " + showNum(partial[ci][ai]));
+          });
+        });
+
+        if (dim === 2) {
+          divV = partial[0][0] + partial[1][1];
+          curlZ = partial[1][0] - partial[0][1];
+          if (!isFinite(divV) || !isFinite(curlZ)) throw new Error("Divergence or curl was not a finite number.");
+          lines.push("Divergence ≈ " + showNum(divV) + ", from Px + Qy.");
+          lines.push("Scalar curl ≈ " + showNum(curlZ) + ", from Qx minus Py.");
+          amount = "Divergence ≈ " + showNum(divV) + ", scalar curl ≈ " + showNum(curlZ);
+        } else {
+          var Ry = partial[2][1];
+          var Qz = partial[1][2];
+          var Pz = partial[0][2];
+          var Rx = partial[2][0];
+          var Qx = partial[1][0];
+          var Py = partial[0][1];
+          divV = partial[0][0] + partial[1][1] + partial[2][2];
+          curl = [Ry - Qz, Pz - Rx, Qx - Py];
+          curlZ = curl[2];
+          var curlMag = Math.sqrt(curl[0] * curl[0] + curl[1] * curl[1] + curl[2] * curl[2]);
+          if (!isFinite(divV) || !isFinite(curlMag)) throw new Error("Divergence or curl was not a finite number.");
+          lines.push("Divergence ≈ " + showNum(divV) + ", from Px + Qy + Rz.");
+          lines.push("Curl ≈ " + formatVec(curl) + ".");
+          lines.push("Curl x component ≈ " + showNum(curl[0]) + ", from Ry minus Qz.");
+          lines.push("Curl y component ≈ " + showNum(curl[1]) + ", from Pz minus Rx.");
+          lines.push("Curl z component ≈ " + showNum(curl[2]) + ", from Qx minus Py.");
+          lines.push("Curl magnitude ≈ " + showNum(curlMag) + ".");
+          amount = "Divergence ≈ " + showNum(divV) + ", curl ≈ " + formatVec(curl);
+        }
+
+        var reading = (dim === 2)
+          ? "The arrows are the field on a square window centered at the point."
+          : "The arrows are P and Q on the horizontal slice z = " + formatNum(z) + ", centered at the point.";
+        reading += " The dot marks the evaluation point. " + sourceSentence(divV) + " " + spinSentence(curlZ, dim === 3);
+        if (dim === 3) {
+          reading += " The full curl vector may point out of this slice. Its direction is the axis of local rotation, in the right hand sense, and its length is the strength of that spin.";
+        }
+        lines.push(reading);
+        lines.push("Central difference with step h = " + formatNum(h) + ". These partial derivatives are numerical approximations, not symbolic derivatives, and they are not a proof.");
+
+        api.showResult(amount, lines.join("\n"));
+        lastPlot = { p: P, q: Q, x: x, y: y, z: z, reading: reading };
+        drawField(lastPlot);
+      },
+      function () {
+        document.getElementById("dc-dim").value = "2";
+        document.getElementById("dc-p").value = "-y";
+        document.getElementById("dc-q").value = "x";
+        document.getElementById("dc-r").value = "0";
+        document.getElementById("dc-x").value = "1";
+        document.getElementById("dc-y").value = "0";
+        document.getElementById("dc-z").value = "0";
+        document.getElementById("dc-h").value = "0.001";
+        syncDim();
+        lastPlot = null;
+        var legend = document.getElementById("dc-reading");
+        if (legend) legend.textContent = "";
+      }
+    );
+  })();
+
   /* ---------- Epsilon delta finder ---------- */
   var ED_CAP = 10;
   var ED_FLOOR = 1e-10;

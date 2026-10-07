@@ -16,7 +16,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/multivariable-vector-calculus.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -96,17 +96,17 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/stokes-theorem-intuition.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/glossary/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -115,7 +115,12 @@
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/gradient-directional-derivative.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/calculators/divergence-curl.html</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -128,6 +133,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/vector-ops.html</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
