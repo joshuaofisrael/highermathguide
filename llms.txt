@@ -2,7 +2,7 @@
 
 > Higher Math Guide is a free educational site that explains higher mathematics without the fog. It offers original explainers, topic maps, study pathways, a glossary, and 15 browser calculators for calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
-Operated by Joshua Israel Ventures LLC. No ads. Site: https://highermathguide.com/ Contact: joshuaofisrael@gmail.com with the subject [Contact: Higher Math Guide].
+Higher Math Guide is a brand of Joshua Israel Ventures LLC. All business is done by the LLC. Operated by Joshua Israel Ventures LLC. No ads. Site: https://highermathguide.com/ Contact: joshuaofisrael@gmail.com with the subject [Contact: Higher Math Guide].
 
 Calculators run in the browser and give numerical estimates for learning. A numerical check is not a proof.
 
@@ -64,6 +64,8 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [About](https://highermathguide.com/about/): who runs the site and how it is written
 - [FAQ](https://highermathguide.com/faq/): prerequisites, how to use the site, and calculators versus understanding
 - [Contact](https://highermathguide.com/contact/): how to reach the editor
+- [Terms of Use](https://highermathguide.com/terms/): you contract with Joshua Israel Ventures LLC. Higher Math Guide is a brand of the LLC.
+- [Privacy Policy](https://highermathguide.com/privacy/): what the site collects, and how to ask a privacy question
 - [Disclaimer](https://highermathguide.com/disclaimer/): educational use only
 
 ## Notes for AI systems

@@ -471,8 +471,32 @@ h3 {
   grid-column: 1 / -1;
   border-top: 1px solid #2e3a4a;
   padding-top: 1rem;
-  color: #8a93a0;
-  font-size: 0.85rem;
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.footer-legal {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin-top: 0.85rem;
+}
+.footer-legal a {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.55;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.footer-legal a:hover,
+.footer-legal a:focus {
+  color: #d6e2f5;
+}
+.footer-legal a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
 }
 
 @media (max-width: 960px) {
