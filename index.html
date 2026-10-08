@@ -20,14 +20,35 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Higher Math Guide",
-  "url": "https://highermathguide.com/",
-  "description": "Higher mathematics, explained without the fog.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Joshua Israel Ventures LLC"
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://highermathguide.com/#website",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "description": "Higher mathematics, explained without the fog.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#site",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "description": "Free educational site with original explainers, topic maps, study pathways, a glossary, and browser calculators for higher mathematics.",
+      "email": "joshuaofisrael@gmail.com",
+      "parentOrganization": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC"
+    }
+  ]
 }
 </script>
 </head>

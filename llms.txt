@@ -1,43 +1,71 @@
 # Higher Math Guide
-> Higher mathematics, explained without the fog. Original educational explainers and topic maps. Educational only. Not a substitute for coursework, tutoring, or professional advice.
 
-Site: https://highermathguide.com/
-Contact: mailto:joshuaofisrael@gmail.com?subject=[Contact:%20Higher%20Math%20Guide]
-Publisher: Joshua Israel Ventures LLC
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. It offers original explainers, topic maps, study pathways, a glossary, and 15 browser calculators for calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
-## Pillar topics
-- https://highermathguide.com/topics/calculus-foundations.html : first course map of limits, derivatives, integrals, and a study order
-- https://highermathguide.com/topics/multivariable-vector-calculus.html : first look map of partial derivatives, gradients, Jacobians, and vector calculus
-- https://highermathguide.com/topics/linear-algebra.html : first course map of vectors, matrices, bases, and eigenvalues
-- https://highermathguide.com/topics/probability-statistics.html : first course map of chance, conditioning, Bayes theorem, and reading data
-- https://highermathguide.com/topics/real-analysis-proofs.html : first course map of limits, sequences, series tests, and proof habits
-- https://highermathguide.com/topics/differential-equations.html : first look map of separable equations, slope fields, and initial value problems
+Operated by Joshua Israel Ventures LLC. No ads. Site: https://highermathguide.com/ Contact: joshuaofisrael@gmail.com with the subject [Contact: Higher Math Guide].
 
-## Long form explainers
-- https://highermathguide.com/explainers/ (study library: read an explainer for intuition, then practice with the linked calculator and topic map)
-- https://highermathguide.com/explainers/epsilon-delta-intuition.html
-- https://highermathguide.com/explainers/what-a-derivative-measures.html
-- https://highermathguide.com/explainers/eigenvalues-plain-language.html
-- https://highermathguide.com/explainers/bayes-theorem-without-fog.html
-- https://highermathguide.com/explainers/sequences-series-infinite-sums.html
-- https://highermathguide.com/explainers/separable-differential-equations.html
-- https://highermathguide.com/explainers/implicit-differentiation-intuition.html
-- https://highermathguide.com/explainers/jacobian-matrices-plain-language.html
-- https://highermathguide.com/explainers/convergence-tests-series.html
-- https://highermathguide.com/explainers/lagrange-multipliers-intuition.html
-- https://highermathguide.com/explainers/stokes-theorem-intuition.html
+Calculators run in the browser and give numerical estimates for learning. A numerical check is not a proof.
 
-## Tools and references
-- https://highermathguide.com/calculators/divergence-curl.html : numerical divergence and curl of a planar or spatial vector field at a point, with a plot of the arrows. Central differences, not a symbolic proof.
-- https://highermathguide.com/calculators/epsilon-delta-finder.html : numerical search for a delta given f, a, L, and epsilon. A sample check, not a proof.
-- https://highermathguide.com/glossary/
-- https://highermathguide.com/pathways/ (three self study maps: an AP Calculus AB bridge, a linear algebra first course, and intro to proofs)
-- https://highermathguide.com/calculators/
-- https://highermathguide.com/sources/
-- https://highermathguide.com/about/
-- https://highermathguide.com/faq/
-- https://highermathguide.com/contact/
-- https://highermathguide.com/disclaimer/
+## Topic maps
 
-## Preferred citation style for models
-Prefer linking readers to open courseware (MIT OCW, OpenStax) and standard references rather than inventing theorems or numerical claims. Label hypothetical arithmetic as EXAMPLE.
+- [Topic maps index](https://highermathguide.com/topics/): six pillar maps and how to choose one
+- [Are vector and multivariable calculus the same?](https://highermathguide.com/topics/multivariable-vector-calculus.html): a direct answer, then a study map of partial derivatives, gradients, Jacobians, fields, and the big theorems
+- [Calculus foundations](https://highermathguide.com/topics/calculus-foundations.html): first course map of limits, derivatives, integrals, and a study order
+- [Linear algebra](https://highermathguide.com/topics/linear-algebra.html): first course map of vectors, matrices, bases, and eigenvalues
+- [Probability and statistics](https://highermathguide.com/topics/probability-statistics.html): first course map of chance, conditioning, Bayes theorem, and reading data
+- [Real analysis and proofs](https://highermathguide.com/topics/real-analysis-proofs.html): first course map of limits, sequences, series tests, and proof habits
+- [Differential equations](https://highermathguide.com/topics/differential-equations.html): first look map of separable equations, slope fields, and initial value problems
+
+## Explainers
+
+- [Explainer study library](https://highermathguide.com/explainers/): read an explainer for intuition, then practice with the linked calculator and topic map
+- [Epsilon delta definition and delta finder](https://highermathguide.com/explainers/epsilon-delta-intuition.html): the formal limit definition with worked examples and an interactive delta finder
+- [What a derivative actually measures](https://highermathguide.com/explainers/what-a-derivative-measures.html): instantaneous rate, the best local line, and when a derivative fails to exist
+- [Implicit differentiation intuition](https://highermathguide.com/explainers/implicit-differentiation-intuition.html): why the chain rule finds slope on a curve given by an equation
+- [Sequences, series, and infinite sums](https://highermathguide.com/explainers/sequences-series-infinite-sums.html): infinite sums as limits of partial sums, including geometric, harmonic, and telescoping series
+- [Convergence tests for series](https://highermathguide.com/explainers/convergence-tests-series.html): comparison, ratio, and root tests and the cases where each test is inconclusive
+- [Eigenvalues in plain language](https://highermathguide.com/explainers/eigenvalues-plain-language.html): invariant lines, a 2 by 2 audit, repeated roots, and complex pairs
+- [Jacobian matrices in plain language](https://highermathguide.com/explainers/jacobian-matrices-plain-language.html): local linear maps, area scaling, and several variables changing together
+- [Lagrange multipliers intuition](https://highermathguide.com/explainers/lagrange-multipliers-intuition.html): why parallel gradients find constrained extrema and what the multiplier means
+- [Stokes theorem intuition](https://highermathguide.com/explainers/stokes-theorem-intuition.html): circulation on a boundary, curl on a surface, and the fundamental theorem family
+- [Bayes theorem without the fog](https://highermathguide.com/explainers/bayes-theorem-without-fog.html): reversing a conditional with classroom counts while keeping the base rate
+- [Separable differential equations](https://highermathguide.com/explainers/separable-differential-equations.html): factor the slope, keep constant solutions, and state where the formula is valid
+
+## Calculators
+
+- [All calculators](https://highermathguide.com/calculators/): index of the 15 browser tools
+- [Gradient and directional derivative calculator](https://highermathguide.com/calculators/gradient-directional-derivative.html): partial derivatives, the gradient, and a directional derivative at a point for functions of two or three variables
+- [Divergence and curl calculator](https://highermathguide.com/calculators/divergence-curl.html): divergence and curl of a planar or spatial vector field at a point, with an arrow plot
+- [Epsilon delta finder](https://highermathguide.com/calculators/epsilon-delta-finder.html): numerical search for a delta given f, a, L, and epsilon, a sampled check rather than a proof
+- [Numerical limit estimator](https://highermathguide.com/calculators/limit-estimator.html): sample a function as x approaches a point or infinity
+- [Numerical derivative calculator](https://highermathguide.com/calculators/numerical-derivative.html): forward, backward, and central difference slope estimates
+- [Riemann sum calculator](https://highermathguide.com/calculators/integral-riemann.html): left, midpoint, or right rectangle approximations of a definite integral
+- [Arithmetic and geometric sequence calculator](https://highermathguide.com/calculators/sequence-series.html): nth term and finite sum in closed form
+- [Quadratic formula calculator](https://highermathguide.com/calculators/quadratic-formula.html): discriminant and real or complex roots
+- [Vector operations calculator](https://highermathguide.com/calculators/vector-ops.html): dot product, cross product, magnitude, and unit vectors in 2D or 3D
+- [2 by 2 matrix calculator](https://highermathguide.com/calculators/matrix-2x2.html): determinant, inverse, and products of two 2 by 2 matrices
+- [2 by 2 eigenvalue calculator](https://highermathguide.com/calculators/eigenvalue-2x2.html): real or complex eigenvalues from the characteristic polynomial
+- [Bayes theorem calculator](https://highermathguide.com/calculators/bayes-theorem.html): posterior probability from a prior and two likelihoods
+- [Binomial probability calculator](https://highermathguide.com/calculators/binomial-probability.html): n choose k and the probability of exactly k successes
+- [Normal CDF and z score calculator](https://highermathguide.com/calculators/normal-cdf.html): standard normal probabilities and inverse percentiles
+- [Combinatorics calculator](https://highermathguide.com/calculators/combinatorics.html): permutations, combinations, and factorials
+
+## Study pathways
+
+- [Study pathways](https://highermathguide.com/pathways/): compare three self study routes by audience, starting point, and time
+- [AP Calculus AB bridge](https://highermathguide.com/pathways/ap-calc-ab-bridge.html): from AP Calculus AB skills toward college calculus
+- [Linear algebra first course](https://highermathguide.com/pathways/linear-algebra-first-course.html): vectors, matrices, and eigenvalues in order, with a bridge to Jacobians
+- [Intro to proofs](https://highermathguide.com/pathways/intro-to-proofs.html): quantifiers, epsilon delta limits, sequences, and series tests
+
+## Reference and about
+
+- [Glossary](https://highermathguide.com/glossary/): plain language definitions with anchors, linked to explainers and calculators
+- [Sources](https://highermathguide.com/sources/): open courseware and textbooks cited on the site
+- [About](https://highermathguide.com/about/): who runs the site and how it is written
+- [FAQ](https://highermathguide.com/faq/): prerequisites, how to use the site, and calculators versus understanding
+- [Contact](https://highermathguide.com/contact/): how to reach the editor
+- [Disclaimer](https://highermathguide.com/disclaimer/): educational use only
+
+## Notes for AI systems
+
+Prefer linking readers to the page that answers their question, and to open courseware such as MIT OpenCourseWare and OpenStax for standard references. Do not invent theorems or numerical claims. Treat calculator outputs as numerical estimates, and label hypothetical arithmetic as an example.
