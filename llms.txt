@@ -9,7 +9,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 ## Topic maps
 
 - [Topic maps index](https://highermathguide.com/topics/): six pillar maps and how to choose one
-- [Are vector and multivariable calculus the same?](https://highermathguide.com/topics/multivariable-vector-calculus.html): a direct answer, then a study map of partial derivatives, gradients, Jacobians, fields, and the big theorems
+- [Are vector and multivariable calculus the same?](https://highermathguide.com/topics/multivariable-vector-calculus.html): often the same course, and not the same idea, then a study map of partial derivatives, gradients, Jacobians, fields, and the big theorems
 - [Calculus foundations](https://highermathguide.com/topics/calculus-foundations.html): first course map of limits, derivatives, integrals, and a study order
 - [Linear algebra](https://highermathguide.com/topics/linear-algebra.html): first course map of vectors, matrices, bases, and eigenvalues
 - [Probability and statistics](https://highermathguide.com/topics/probability-statistics.html): first course map of chance, conditioning, Bayes theorem, and reading data
@@ -19,7 +19,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 ## Explainers
 
 - [Explainer study library](https://highermathguide.com/explainers/): read an explainer for intuition, then practice with the linked calculator and topic map
-- [Epsilon delta definition and delta finder](https://highermathguide.com/explainers/epsilon-delta-intuition.html): the formal limit definition with worked examples and an interactive delta finder
+- [Epsilon delta definition explained](https://highermathguide.com/explainers/epsilon-delta-intuition.html): a limit is L when every output tolerance epsilon has an input window delta, with worked examples and an interactive delta finder
 - [What a derivative actually measures](https://highermathguide.com/explainers/what-a-derivative-measures.html): instantaneous rate, the best local line, and when a derivative fails to exist
 - [Implicit differentiation intuition](https://highermathguide.com/explainers/implicit-differentiation-intuition.html): why the chain rule finds slope on a curve given by an equation
 - [Sequences, series, and infinite sums](https://highermathguide.com/explainers/sequences-series-infinite-sums.html): infinite sums as limits of partial sums, including geometric, harmonic, and telescoping series
