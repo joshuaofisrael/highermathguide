@@ -44,6 +44,22 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
+# AI training crawlers are welcome too
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://highermathguide.com/sitemap.xml
 
 # Optional site summary for AI systems
