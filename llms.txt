@@ -1,6 +1,6 @@
 # Higher Math Guide
 
-> Higher Math Guide is a free educational site that explains higher mathematics without the fog. It offers original explainers, topic maps, study pathways, a glossary, and 15 browser calculators for calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 15 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
 Higher Math Guide is a brand of Joshua Israel Ventures LLC. All business is done by the LLC. Operated by Joshua Israel Ventures LLC. No ads. Site: https://highermathguide.com/ Contact: joshuaofisrael@gmail.com with the subject [Contact: Higher Math Guide].
 
@@ -9,7 +9,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 ## Topic maps
 
 - [Topic maps index](https://highermathguide.com/topics/): six pillar maps and how to choose one
-- [Are vector and multivariable calculus the same?](https://highermathguide.com/topics/multivariable-vector-calculus.html): often the same course, and not the same idea, then a study map of partial derivatives, gradients, Jacobians, fields, and the big theorems
+- [Multivariable and vector calculus](https://highermathguide.com/topics/multivariable-vector-calculus.html): what multivariable calculus covers and how it differs from vector calculus. Often the same course and not the same idea, then a study map of partial derivatives, gradients, Jacobians, fields, divergence, curl, and Stokes theorem
 - [Calculus foundations](https://highermathguide.com/topics/calculus-foundations.html): first course map of limits, derivatives, integrals, and a study order
 - [Linear algebra](https://highermathguide.com/topics/linear-algebra.html): first course map of vectors, matrices, bases, and eigenvalues
 - [Probability and statistics](https://highermathguide.com/topics/probability-statistics.html): first course map of chance, conditioning, Bayes theorem, and reading data
@@ -19,7 +19,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 ## Explainers
 
 - [Explainer study library](https://highermathguide.com/explainers/): read an explainer for intuition, then practice with the linked calculator and topic map
-- [Epsilon delta definition explained](https://highermathguide.com/explainers/epsilon-delta-intuition.html): a limit is L when every output tolerance epsilon has an input window delta, with worked examples and an interactive delta finder
+- [Epsilon delta proofs, step by step](https://highermathguide.com/explainers/epsilon-delta-intuition.html): a step by step proof method that answers every epsilon with a delta and writes the argument forward, with linear, quadratic, hole, and jump examples, plus a finder that samples and does not prove
 - [What a derivative actually measures](https://highermathguide.com/explainers/what-a-derivative-measures.html): instantaneous rate, the best local line, and when a derivative fails to exist
 - [Implicit differentiation intuition](https://highermathguide.com/explainers/implicit-differentiation-intuition.html): why the chain rule finds slope on a curve given by an equation
 - [Sequences, series, and infinite sums](https://highermathguide.com/explainers/sequences-series-infinite-sums.html): infinite sums as limits of partial sums, including geometric, harmonic, and telescoping series
