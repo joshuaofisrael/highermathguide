@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3 by 3 Matrix Inverse and Determinant Calculator, With Steps, Higher Math Guide</title>
+<meta name="description" content="Find the determinant and inverse of a 3 by 3 matrix with every step shown. Exact fractions, cofactor expansion, the adjugate, and an identity check.">
+<link rel="canonical" href="https://highermathguide.com/calculators/matrix-3x3.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="3 by 3 Matrix Inverse and Determinant Calculator, With Steps, Higher Math Guide">
+<meta property="og:description" content="Find the determinant and inverse of a 3 by 3 matrix with every step shown. Exact fractions, cofactor expansion, the adjugate, and an identity check.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/matrix-3x3.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 by 3 Matrix Inverse and Determinant Calculator, With Steps, Higher Math Guide">
+<meta name="twitter:description" content="Find the determinant and inverse of a 3 by 3 matrix with every step shown. Exact fractions, cofactor expansion, the adjugate, and an identity check.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/matrix-3x3.html#webpage",
+      "name": "3 by 3 Matrix Inverse and Determinant Calculator, With Steps",
+      "description": "Find the determinant and inverse of a 3 by 3 matrix with every step shown. Exact fractions, cofactor expansion, the adjugate, and an identity check.",
+      "url": "https://highermathguide.com/calculators/matrix-3x3.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/matrix-3x3.html#faq",
+      "url": "https://highermathguide.com/calculators/matrix-3x3.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you find the inverse of a 3 by 3 matrix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compute the determinant by cofactor expansion along the first row. Form the matrix of minors, apply the sign pattern to get the cofactor matrix, and transpose that matrix to get the adjugate. If the determinant is not zero, divide the adjugate by the determinant. That quotient is the inverse. If the determinant is zero, the matrix is singular and has no inverse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a determinant of zero mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A determinant of zero means the matrix is singular. The columns are linearly dependent, so the linear map collapses volume and cannot be undone. No inverse exists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a cofactor and the adjugate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A cofactor is one signed minor: the determinant of a 2 by 2 block, with a plus or a minus that depends on its position. The cofactor matrix lists all nine cofactors. The adjugate is the transpose of the cofactor matrix. Divide the adjugate by the determinant to get the inverse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which row should I expand along?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any row or any column gives the same determinant. This page uses the first row, which is the usual homework path. A different row changes the arithmetic, not the value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check that an inverse is correct?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the original matrix by the proposed inverse. The product should be the identity: ones on the diagonal and zeros in every other entry. This page does that multiplication with the same exact fractions."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/matrix-3x3.html#app",
+      "name": "3 by 3 Matrix Inverse and Determinant Calculator",
+      "url": "https://highermathguide.com/calculators/matrix-3x3.html",
+      "description": "Find the determinant and inverse of a 3 by 3 matrix with every step shown. Exact fractions, cofactor expansion, the adjugate, and an identity check.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Exact fractions</p>
+<h1>3 by 3 matrix inverse and determinant calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 13 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool finds the determinant of a 3 by 3 matrix and, when the determinant is not zero, the inverse. Each entry can be an integer, a decimal, or a simple fraction such as 3/4. The arithmetic stays exact: every result is a reduced fraction.</p>
+<p>The numbers are meaningful when a homework matrix is 3 by 3 and you need the volume scale, the adjugate, or a matrix that undoes A. The page writes the cofactor expansion, then multiplies A by the inverse and checks for the identity.</p>
+<p>This page does not compute eigenvalues, and it does not row reduce a general linear system. For 2 by 2 products, use the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>. For stretch factors of a 2 by 2 map, use the <a href="eigenvalue-2x2.html">eigenvalue calculator</a>.</p>
+</div>
+
+<form class="calc-panel wide" id="m33-form" style="margin:1.5rem 0;max-width:40rem" autocomplete="off">
+<div class="matrix-block">
+<h3>Matrix A</h3>
+<div class="calc-grid cols-3">
+<label for="m33-00">a₁₁ <input id="m33-00" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 1, column 1"></label>
+<label for="m33-01">a₁₂ <input id="m33-01" type="text" value="2" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 1, column 2"></label>
+<label for="m33-02">a₁₃ <input id="m33-02" type="text" value="3" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 1, column 3"></label>
+<label for="m33-10">a₂₁ <input id="m33-10" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 2, column 1"></label>
+<label for="m33-11">a₂₂ <input id="m33-11" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 2, column 2"></label>
+<label for="m33-12">a₂₃ <input id="m33-12" type="text" value="4" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 2, column 3"></label>
+<label for="m33-20">a₃₁ <input id="m33-20" type="text" value="5" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 3, column 1"></label>
+<label for="m33-21">a₃₂ <input id="m33-21" type="text" value="6" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 3, column 2"></label>
+<label for="m33-22">a₃₃ <input id="m33-22" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Row 3, column 3"></label>
+</div>
+</div>
+<p class="calc-hint">Integers, decimals, and fractions such as 3/4 or −2/5. A decimal is read as an exact fraction of a power of ten, so 0.5 is 1/2.</p>
+<div class="calc-actions">
+<button type="submit" class="btn" id="m33-compute">Compute</button>
+<button type="button" class="btn btn-secondary" id="m33-reset">Reset</button>
+</div>
+<p class="calc-error" id="m33-error" role="alert"></p>
+<div class="calc-result" id="m33-result" role="status" aria-live="polite">
+<div class="amount" id="m33-amount"></div>
+<div class="detail steps" id="m33-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>What the determinant tells you</h2>
+<p>The determinant tells you the signed volume scale of the linear map. An inverse exists exactly when that number is not zero.</p>
+<p>For a 3 by 3 matrix, cofactor expansion along the first row builds the determinant from three 2 by 2 minors. The sign pattern on that row is plus, minus, plus. Multiply each entry of the first row by its cofactor and add the three products.</p>
+<p>The matrix of minors stores every 2 by 2 determinant, including the six that the first row expansion does not use for the determinant itself. The cofactor matrix applies the alternating signs. The adjugate is the transpose of the cofactor matrix, not the transpose of A. The inverse is 1 over the determinant times the adjugate, and this page writes each entry as a reduced fraction.</p>
+<p>If the determinant is 0, the matrix is singular and has no inverse. The columns are linearly dependent, so the map collapses volume and no matrix undoes it. Rank below 3 is the same dependence, seen by elimination. Rank 3 agrees with a determinant that is not zero. The transpose is the same array with rows and columns swapped. It is included so you can compare it with the adjugate and see that those two arrays are different jobs.</p>
+<p>Type 1/3 when you mean one third. The decimal 0.333 is 333/1000, which is not 1/3. Dropping a cofactor sign, transposing A instead of the cofactor matrix, and dividing before you transpose are the usual places a hand calculation goes wrong.</p>
+
+<h2>A fully worked example</h2>
+<p>Let A have rows (1, 2, 3), (0, 1, 4), and (5, 6, 0). That is the matrix already filled in above. The determinant is 1, so the inverse equals the adjugate. The inverse rows are (−24, 18, 5), (20, −15, −4), and (−5, 4, 1). The product with A is the identity, and the rank is 3. The steps below are written in the page, so you can read them with scripts turned off.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Cofactor expansion of det(A) along row 1.
+
+Minor M₁₁ deletes row 1 and column 1, leaving the 2 by 2 entries 1, 4; 6, 0.
+M₁₁ = (1)(0) − (4)(6) = 0 − 24 = −24.
+The cofactor sign for row 1, column 1 is +. So C₁₁ = +(−24) = −24.
+
+Minor M₁₂ deletes row 1 and column 2, leaving the 2 by 2 entries 0, 4; 5, 0.
+M₁₂ = (0)(0) − (4)(5) = 0 − 20 = −20.
+The cofactor sign for row 1, column 2 is −. So C₁₂ = −(−20) = 20.
+
+Minor M₁₃ deletes row 1 and column 3, leaving the 2 by 2 entries 0, 1; 5, 6.
+M₁₃ = (0)(6) − (1)(5) = 0 − 5 = −5.
+The cofactor sign for row 1, column 3 is +. So C₁₃ = +(−5) = −5.
+
+det(A) = a₁₁ C₁₁ + a₁₂ C₁₂ + a₁₃ C₁₃.
+a₁₁ C₁₁ = (1)(−24) = −24.
+a₁₂ C₁₂ = (2)(20) = 40.
+a₁₃ C₁₃ = (3)(−5) = −15.
+det(A) = −24 + 40 − 15 = 1.
+
+The other six minors complete the matrix of minors.
+
+Minor M₂₁ deletes row 2 and column 1, leaving the 2 by 2 entries 2, 3; 6, 0.
+M₂₁ = (2)(0) − (3)(6) = 0 − 18 = −18.
+The cofactor sign for row 2, column 1 is −. So C₂₁ = −(−18) = 18.
+
+Minor M₂₂ deletes row 2 and column 2, leaving the 2 by 2 entries 1, 3; 5, 0.
+M₂₂ = (1)(0) − (3)(5) = 0 − 15 = −15.
+The cofactor sign for row 2, column 2 is +. So C₂₂ = +(−15) = −15.
+
+Minor M₂₃ deletes row 2 and column 3, leaving the 2 by 2 entries 1, 2; 5, 6.
+M₂₃ = (1)(6) − (2)(5) = 6 − 10 = −4.
+The cofactor sign for row 2, column 3 is −. So C₂₃ = −(−4) = 4.
+
+Minor M₃₁ deletes row 3 and column 1, leaving the 2 by 2 entries 2, 3; 1, 4.
+M₃₁ = (2)(4) − (3)(1) = 8 − 3 = 5.
+The cofactor sign for row 3, column 1 is +. So C₃₁ = +(5) = 5.
+
+Minor M₃₂ deletes row 3 and column 2, leaving the 2 by 2 entries 1, 3; 0, 4.
+M₃₂ = (1)(4) − (3)(0) = 4 − 0 = 4.
+The cofactor sign for row 3, column 2 is −. So C₃₂ = −(4) = −4.
+
+Minor M₃₃ deletes row 3 and column 3, leaving the 2 by 2 entries 1, 2; 0, 1.
+M₃₃ = (1)(1) − (2)(0) = 1 − 0 = 1.
+The cofactor sign for row 3, column 3 is +. So C₃₃ = +(1) = 1.
+
+Matrix of minors
+Row 1: −24, −20, −5
+Row 2: −18, −15, −4
+Row 3: 5, 4, 1
+
+Cofactor matrix
+Row 1: −24, 20, −5
+Row 2: 18, −15, 4
+Row 3: 5, −4, 1
+
+Adjugate, the transpose of the cofactor matrix
+Row 1: −24, 18, 5
+Row 2: 20, −15, −4
+Row 3: −5, 4, 1
+
+Inverse = (1/det(A)) times the adjugate. Here det(A) = 1.
+Dividing by 1 leaves the adjugate unchanged, so A inverse equals the adjugate.
+Row 1: −24, 18, 5
+Row 2: 20, −15, −4
+Row 3: −5, 4, 1
+
+Check: A times A inverse. Each entry is a row of A dotted with a column of the inverse.
+Row 1, column 1: (1)(−24) + (2)(20) + (3)(−5) = 1.
+Row 1, column 2: (1)(18) + (2)(−15) + (3)(4) = 0.
+Row 1, column 3: (1)(5) + (2)(−4) + (3)(1) = 0.
+Row 2, column 1: (0)(−24) + (1)(20) + (4)(−5) = 0.
+Row 2, column 2: (0)(18) + (1)(−15) + (4)(4) = 1.
+Row 2, column 3: (0)(5) + (1)(−4) + (4)(1) = 0.
+Row 3, column 1: (5)(−24) + (6)(20) + (0)(−5) = 0.
+Row 3, column 2: (5)(18) + (6)(−15) + (0)(4) = 0.
+Row 3, column 3: (5)(5) + (6)(−4) + (0)(1) = 1.
+
+Row 1: 1, 0, 0
+Row 2: 0, 1, 0
+Row 3: 0, 0, 1
+The product is the identity.
+
+Rank is 3.
+The three columns are linearly independent.
+
+Transpose of A
+Row 1: 1, 0, 5
+Row 2: 2, 1, 6
+Row 3: 3, 4, 0</pre>
+
+<h2>Related reading</h2>
+<p>Determinants and linear maps live on the <a href="../topics/linear-algebra.html">linear algebra</a> pillar and in the glossary entries for <a href="../glossary/#determinant">determinant</a>, <a href="../glossary/#matrix">matrix</a>, and <a href="../glossary/#linear-map">linear map</a>. A study order is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> pathway.</p>
+<p>The shorter arithmetic is the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>. Stretch factors of a 2 by 2 map are on the <a href="eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> and in <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>. A zero determinant and a zero eigenvalue are the same collapse, seen two ways.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="inverse">
+<h2>How do you find the inverse of a 3 by 3 matrix?</h2>
+<p>Compute the determinant by cofactor expansion along the first row. Form the matrix of minors, apply the sign pattern to get the cofactor matrix, and transpose that matrix to get the adjugate. If the determinant is not zero, divide the adjugate by the determinant. That quotient is the inverse. If the determinant is zero, the matrix is singular and has no inverse.</p>
+</section>
+<section class="faq-item" id="singular">
+<h2>What does a determinant of zero mean?</h2>
+<p>A determinant of zero means the matrix is singular. The columns are linearly dependent, so the linear map collapses volume and cannot be undone. No inverse exists.</p>
+</section>
+<section class="faq-item" id="cofactor">
+<h2>What is the difference between a cofactor and the adjugate?</h2>
+<p>A cofactor is one signed minor: the determinant of a 2 by 2 block, with a plus or a minus that depends on its position. The cofactor matrix lists all nine cofactors. The adjugate is the transpose of the cofactor matrix. Divide the adjugate by the determinant to get the inverse.</p>
+</section>
+<section class="faq-item" id="whichrow">
+<h2>Which row should I expand along?</h2>
+<p>Any row or any column gives the same determinant. This page uses the first row, which is the usual homework path. A different row changes the arithmetic, not the value.</p>
+</section>
+<section class="faq-item" id="check">
+<h2>How do I check that an inverse is correct?</h2>
+<p>Multiply the original matrix by the proposed inverse. The product should be the identity: ones on the diagonal and zeros in every other entry. This page does that multiplication with the same exact fractions.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.</p>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../privacy/">Privacy</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../contact/">Contact</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/matrix3-exact.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
