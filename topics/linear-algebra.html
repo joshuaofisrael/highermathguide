@@ -74,10 +74,10 @@
     },
     {
       "@type": "Question",
-      "name": "Why are the calculators only 2 by 2?",
+      "name": "Are the calculators only 2 by 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A first course can see the pictures in the plane. Span, linear independence, determinant, and eigenvalue are the same words in higher dimensions. The calculators are 2 by 2 so you can check the arithmetic by hand. The matrix page does not find eigenvalues. The eigenvalue page does not find eigenvectors."
+        "text": "No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The eigenvalue calculator stays 2 by 2 so the characteristic polynomial is a quadratic you can audit by hand. The 3 by 3 matrix calculator computes a determinant and an inverse with exact fractions when the homework matrix is larger. The matrix pages do not find eigenvalues. The eigenvalue page does not find eigenvectors."
       }
     },
     {
@@ -130,7 +130,7 @@
 <p class="article-meta">Topic pillar · Educational only · Updated 23 Sep 2026</p>
 </header>
 <div class="article-body">
-<p>Linear algebra studies linear maps and the spaces they act on. A linear map sends lines through the origin to lines through the origin, and it respects addition and scaling. Matrices are concrete recipes for those maps once bases are chosen. Eigenvalues and eigenvectors reveal stretch along lines that coordinates can hide. This pillar is a first course map of those ideas, with a study order into the glossary, the explainers, and the 2 by 2 calculators that already live here.</p>
+<p>Linear algebra studies linear maps and the spaces they act on. A linear map sends lines through the origin to lines through the origin, and it respects addition and scaling. Matrices are concrete recipes for those maps once bases are chosen. Eigenvalues and eigenvectors reveal stretch along lines that coordinates can hide. This pillar is a first course map of those ideas, with a study order into the glossary, the explainers, and the calculators that already live here, including a 3 by 3 determinant and inverse.</p>
 
 <h2 id="who">Who this pillar is for</h2>
 <p>Start here if you are beginning linear algebra, or returning to vectors and matrices and wanting a picture before a pile of algorithms. You might be in a first matrix course, preparing for multivariable calculus, or trying to make eigenvalues mean something before a calculator prints them.</p>
@@ -160,7 +160,7 @@
 <p>Multiplying by a matrix $A$ applies a <a href="../glossary/#linear-map">linear map</a>. The columns of $A$ are the images of the standard basis vectors. If you know where the basis goes, you know the whole map, because every other vector is a combination of the basis and the map respects combinations.</p>
 <p>Solving $A\mathbf{x}=\mathbf{b}$ asks which inputs produce $\mathbf{b}$. Row reduction tells you which equations are redundant. The columns tell you what the map does. Use both stories.</p>
 <p>The <a href="../glossary/#determinant">determinant</a> of a 2 by 2 real matrix is the signed area scale of the parallelogram formed by the columns. Positive preserves orientation. Negative flips it. Zero means the columns are parallel, the map flattens the plane, and there is no inverse. Then $A\mathbf{x}=\mathbf{b}$ has either no solution or a whole line of them, depending on whether $\mathbf{b}$ is in the column span.</p>
-<p>Let $A=\begin{pmatrix}2&amp;4\\1&amp;2\end{pmatrix}$. The second column is twice the first, so the determinant is $0$. Reachable outputs are multiples of $(2,1)$. Thus $\mathbf{b}=(2,1)$ has solutions and $\mathbf{b}=(1,0)$ does not. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> should refuse an inverse. Predict that refusal before you type the entries. The page also multiplies two matrices. It does not compute eigenvalues.</p>
+<p>Let $A=\begin{pmatrix}2&amp;4\\1&amp;2\end{pmatrix}$. The second column is twice the first, so the determinant is $0$. Reachable outputs are multiples of $(2,1)$. Thus $\mathbf{b}=(2,1)$ has solutions and $\mathbf{b}=(1,0)$ does not. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> should refuse an inverse. Predict that refusal before you type the entries. The page also multiplies two matrices. It does not compute eigenvalues. When the matrix is 3 by 3, the <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> expands the determinant along the first row and builds the inverse from the adjugate, in exact fractions.</p>
 
 <h2 id="eigen">Eigenvalues: lines the map keeps</h2>
 <p>An eigenvector is a nonzero vector $\mathbf{v}$ with $A\mathbf{v}=\lambda\mathbf{v}$. The map stretches or flips $\mathbf{v}$ and does not tip it off its line. The scalar $\lambda$ is the eigenvalue. The zero vector satisfies the equation for every $\lambda$, so the definition excludes it. The <a href="../glossary/#eigenspace">eigenspace</a> puts zero back in, because a subspace must contain zero. Read <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a> for the geometric tour, then the glossary lines for <a href="../glossary/#eigenvalue">eigenvalue</a> and <a href="../glossary/#eigenvector">eigenvector</a>.</p>
@@ -177,6 +177,7 @@
 <li>Glossary, each with a 2 by 2 picture: <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#determinant">determinant</a>.</li>
 <li>The <a href="../calculators/vector-ops.html">vector operations calculator</a> for a dot product you already computed. Zero means a right angle or a zero vector. The page does not print an angle.</li>
 <li>The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant and for $AB$ versus $BA$, after you read the columns as images of the basis.</li>
+<li>The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for cofactor expansion, the adjugate, and an inverse in exact fractions.</li>
 <li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>, then the triangular example above by hand.</li>
 <li>Roots on the <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a>. Eigenvectors by hand. A repeated root still needs a second independent direction. The <a href="../pathways/linear-algebra-first-course.html">pathway</a> has that checkpoint.</li>
 <li>When several variables are next: <a href="multivariable-vector-calculus.html">multivariable calculus</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</li>
@@ -211,8 +212,8 @@
 <p>This page is the topic cluster: the ideas, a few worked checks, and a suggested order. The <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> is the longer study route, with more checkpoints and an explicit handoff to several variables. Start here for the map. Follow the pathway when you want the sittings in order.</p>
 </section>
 <section class="faq-item" id="twobytwo">
-<h2>Why are the calculators only 2 by 2?</h2>
-<p>A first course can see the pictures in the plane. Span, linear independence, determinant, and eigenvalue are the same words in higher dimensions. The <a href="../calculators/">calculators</a> are 2 by 2 so you can check the arithmetic by hand. The <a href="../calculators/matrix-2x2.html">matrix page</a> does not find eigenvalues. The <a href="../calculators/eigenvalue-2x2.html">eigenvalue page</a> does not find eigenvectors.</p>
+<h2>Are the calculators only 2 by 2?</h2>
+<p>No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a> stays 2 by 2 so the characteristic polynomial is a quadratic you can audit by hand. The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> computes a determinant and an inverse with exact fractions when the homework matrix is larger. The matrix pages do not find eigenvalues. The eigenvalue page does not find eigenvectors.</p>
 </section>
 <section class="faq-item" id="diagonal">
 <h2>Is every matrix diagonalizable?</h2>
@@ -229,6 +230,7 @@
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
+<li><a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a></li>
 <li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
 <li><a href="../calculators/quadratic-formula.html">Quadratic formula calculator</a></li>
 <li><a href="multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
