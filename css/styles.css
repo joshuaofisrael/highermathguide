@@ -526,6 +526,8 @@ h3 {
 .calc-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .calc-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .calc-grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.calc-grid.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.calc-grid.cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .calc-grid label {
   margin: 0;
   font-size: 0.82rem;
@@ -571,8 +573,27 @@ h3 {
   font-family: var(--font-sans);
   font-weight: 700;
 }
+.calc-panel label.calc-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-weight: 600;
+  margin: 0.95rem 0 0;
+}
+.calc-panel label.calc-check input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.25rem;
+  flex: 0 0 auto;
+}
+@media (max-width: 720px) {
+  .calc-grid.cols-5,
+  .calc-grid.cols-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 520px) {
-  .calc-grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .calc-grid.cols-4,
+  .calc-grid.cols-5,
+  .calc-grid.cols-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .section-kicker {
