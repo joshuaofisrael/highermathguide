@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partial Fractions Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Decompose a rational function into partial fractions with exact steps. Handles distinct linear factors, repeated factors, and irreducible quadratics.">
+<link rel="canonical" href="https://highermathguide.com/calculators/partial-fractions.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Partial Fractions Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Decompose a rational function into partial fractions with exact steps. Handles distinct linear factors, repeated factors, and irreducible quadratics.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/partial-fractions.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Partial Fractions Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Decompose a rational function into partial fractions with exact steps. Handles distinct linear factors, repeated factors, and irreducible quadratics.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/partial-fractions.html#webpage",
+      "name": "Partial Fractions Calculator with Steps",
+      "description": "Decompose a rational function into partial fractions with exact steps. Handles distinct linear factors, repeated factors, and irreducible quadratics.",
+      "url": "https://highermathguide.com/calculators/partial-fractions.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/partial-fractions.html#faq",
+      "url": "https://highermathguide.com/calculators/partial-fractions.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is partial fraction decomposition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partial fraction decomposition writes a rational function as a polynomial plus a sum of simpler fractions. Each simpler denominator is a power of a linear factor, or a power of a quadratic that has no rational root. Numerators are constants, or linear polynomials when the denominator is quadratic. That identity is the algebra behind many antiderivatives and telescoping series."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the numerator has degree at least as high as the denominator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide first. Polynomial division produces a quotient and a remainder whose degree is smaller than the denominator degree. The original function equals the quotient plus that proper fraction. Only the proper fraction is split into partial fractions. This page shows the division, then the decomposition of the remainder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do repeated linear factors change the setup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A factor (x - r) that divides the denominator m times needs m fractions: a constant over (x - r), a constant over (x - r)^2, and so on up to the mth power. The coefficient of the highest power is the numerator at x = r, divided by the other factors at that root. The lower coefficients come from matching the remaining powers of x."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the numerator over a quadratic linear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a quadratic factor has no rational root, it stays in one piece. Its discriminant is not a perfect square. Over that factor, and over each of its powers, the numerator is a linear polynomial Bx + C. A single constant cannot produce every proper fraction with that denominator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the calculator keep fractions instead of decimals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With rational coefficients, and a denominator that factors into linears and irreducible quadratics, the partial fraction coefficients are rational. A decimal can hide a value such as 1/2. This page uses exact rational arithmetic. A decimal you type is read as a fraction of a power of ten, so 0.5 becomes 1/2. Type 1/3 when you mean one third."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this page find the integral?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It stops at the decomposition. Integrating 1/(x - r) gives a logarithm, and integrating 1/(x - r)^m for m greater than 1 gives a power. A quadratic denominator leads to a logarithm of that quadratic, or to an arctangent after you complete the square. Those antiderivatives are the next step. The page shows the algebra that makes them possible."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/partial-fractions.html#app",
+      "name": "Partial Fractions Calculator with Steps",
+      "url": "https://highermathguide.com/calculators/partial-fractions.html",
+      "description": "Decompose a rational function into partial fractions with exact steps. Handles distinct linear factors, repeated factors, and irreducible quadratics.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Exact fractions</p>
+<h1>Partial fraction decomposition calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 15 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This tool decomposes a rational function into partial fractions and writes each algebra step. A rational function is one polynomial divided by another. The boxes start with 1 over x^2 − 1, the distinct-linear example written out below. You can also type a repeated factor such as (x − 1)^2, or an irreducible quadratic such as x^2 + 1.</p>
+<p>If the numerator has degree at least as high as the denominator, the page divides first and keeps the quotient. It then factors the denominator, sets up one fraction for each linear power and a linear numerator for each irreducible quadratic, and solves for the unknown constants in exact fractions.</p>
+<p>The same split shows up before an antiderivative on the <a href="../topics/calculus-foundations.html">calculus foundations</a> map, in a telescoping series such as 1/(n(n + 2)), and when a separable equation such as y' = y(2 − y) is integrated. This page stops at the decomposition. The integral is the next step.</p>
+</div>
+
+<form class="calc-panel wide" id="pf-form" style="margin:1.5rem 0" autocomplete="off">
+<label for="pf-num">Numerator</label>
+<input id="pf-num" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="pf-hint">
+<label for="pf-den">Denominator</label>
+<input id="pf-den" type="text" value="x^2 - 1" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="pf-hint">
+<p class="calc-hint" id="pf-hint">Polynomials such as x^2+3x+2 or (x-1)(x+2)^2. A comma list such as 1, 0, -1 is read from the highest power down to the constant. Use ^ for powers. A slash in one box only divides by a number, as in (1/2)x. A decimal is an exact fraction of a power of ten, so 0.5 is 1/2. One variable: x, or y, t, or n.</p>
+<div class="calc-actions">
+<button type="submit" class="btn" id="pf-compute">Show steps</button>
+<button type="button" class="btn btn-secondary" id="pf-clear">Clear</button>
+</div>
+<p class="calc-error" id="pf-error" role="alert"></p>
+<div class="calc-result" id="pf-result" role="status" aria-live="polite">
+<div class="amount" id="pf-amount"></div>
+<div class="detail steps" id="pf-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How to read the result</h2>
+<p>The large line is the decomposition. A polynomial at the front is the quotient from division. Each later term is a partial fraction. A coefficient that comes out zero is omitted, and the steps say so. The lines under the answer are the division, the factoring, the cover-up substitutions, and the coefficient matching.</p>
+<p>For distinct linear factors, each constant is a cover-up value: substitute the root of one factor into the numerator and into the other factors, then divide. For a repeated linear factor (x − r)^m, cover-up finds only the coefficient of 1/(x − r)^m. The lower powers come from equating coefficients. For an irreducible quadratic, the numerator is Bx + C, and those two constants come from the same system.</p>
+<p>The check multiplies the partial fractions back together. If that sum is the numerator you started with, after any division and any canceled common factor, the identity holds wherever the denominator is not zero.</p>
+
+<h2>Three textbook setups</h2>
+<p>Distinct linear factors. 1/(x^2 − 1) = 1/((x − 1)(x + 1)). The decomposition is −(1/2)/(x + 1) + (1/2)/(x − 1). The same identity is often written (1/2)/(x − 1) − (1/2)/(x + 1).</p>
+<p>A repeated linear factor. (x + 2)/(x − 1)^2 = 1/(x − 1) + 3/(x − 1)^2. One fraction over (x − 1) cannot carry both coefficients. The 3 is the numerator at x = 1. The 1 is the coefficient of x after you expand.</p>
+<p>An irreducible quadratic. 1/(x(x^2 + 1)) = 1/x − x/(x^2 + 1). The discriminant of x^2 + 1 is −4, which is not a square, so the quadratic stays whole and its numerator is allowed to be linear. The constant term in that numerator is 0, and the steps drop it.</p>
+<p>An improper fraction is divided first. (x^2 + 1)/(x − 1) equals x + 1 + 2/(x − 1). The quotient is a polynomial. Only 2/(x − 1) is a partial fraction.</p>
+
+<h2>A fully worked example</h2>
+<p>Both examples below are written on the page, so you can read them with scripts turned off. The form opens on the first one. Clear the boxes and type the second numerator and denominator if you want the repeated case from the buttons as well.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Distinct linear factors. Numerator 1, denominator x^2 - 1.
+
+Numerator: 1.
+Denominator: x^2 − 1.
+
+The numerator has degree 0 and the denominator has degree 2.
+The degree of the numerator is smaller, so the fraction is proper. There is no polynomial quotient to split off.
+
+Factor the denominator x^2 − 1.
+By the rational root theorem, any rational root p/q in lowest terms has p dividing the constant term −1 and q dividing the leading coefficient 1.
+The rational root theorem produces a root x = −1, so x + 1 is a factor.
+Dividing x^2 − 1 by (x + 1) leaves x − 1.
+The remaining factor x − 1 is linear.
+Factored denominator: (x + 1)(x − 1).
+Expanding that product returns x^2 − 1.
+
+Set up the partial fractions.
+1 / (x^2 − 1) = A/(x + 1) + B/(x − 1).
+
+Cover (x + 1) and substitute x = −1.
+The numerator there is 1. The other factors, evaluated at that root, equal −2.
+A = 1 / (−2) = −1/2.
+
+Cover (x − 1) and substitute x = 1.
+The numerator there is 1. The other factors, evaluated at that root, equal 2.
+B = 1 / 2 = 1/2.
+
+Decomposition
+1 / (x^2 − 1) = −(1/2)/(x + 1) + (1/2)/(x − 1).
+
+Check. Multiply each partial fraction by the factors it does not already include, then add.
+−(1/2)·(x − 1) + (1/2)·(x + 1) = 1.
+That is the numerator of the proper fraction, so the decomposition is correct wherever the denominator is not zero.
+
+Repeated linear factor. Numerator x + 2, denominator (x - 1)^2.
+
+Numerator: x + 2.
+Denominator: x^2 − 2x + 1.
+
+The numerator has degree 1 and the denominator has degree 2.
+The degree of the numerator is smaller, so the fraction is proper. There is no polynomial quotient to split off.
+
+Factor the denominator x^2 − 2x + 1.
+By the rational root theorem, any rational root p/q in lowest terms has p dividing the constant term 1 and q dividing the leading coefficient 1.
+The rational root theorem produces a root x = 1, so x − 1 is a factor, and it divides 2 times.
+Dividing x^2 − 2x + 1 by (x − 1)^2 leaves 1.
+Factored denominator: (x − 1)^2.
+Expanding that product returns x^2 − 2x + 1.
+
+Set up the partial fractions.
+(x + 2) / (x^2 − 2x + 1) = A/(x − 1) + B/(x − 1)^2.
+
+Cover (x − 1)^2 and substitute x = 1.
+The numerator there is 3. The other factors, evaluated at that root, equal 1.
+B = 3 / 1 = 3.
+
+Substitution fixed the coefficient on each full linear power. Expand the identity to find the remaining letters.
+Multiply through by the factored denominator. Each letter multiplies the factors that its own denominator does not already include.
+A multiplies x − 1.
+B is the whole numerator of its fraction, because that denominator power is the entire factored denominator.
+The sum of those pieces equals x + 2.
+
+Match coefficients, then substitute the cover-up values.
+Constant term: −A + B = 2
+Coefficient of x: A = 1
+
+Substitute B = 3.
+The equations that still have an unknown letter:
+Constant term: −A = −1
+Coefficient of x: A = 1
+1. Divide the constant term equation by −1 so the coefficient of A is 1.
+Constant term: A = 1
+Coefficient of x: A = 1
+2. Subtract the equation that isolates A from the coefficient of x equation, to clear A.
+Constant term: A = 1
+Coefficient of x: 0 = 0
+
+A = 1.
+
+Decomposition
+(x + 2) / (x^2 − 2x + 1) = 1/(x − 1) + 3/(x − 1)^2.
+
+Check. Multiply each partial fraction by the factors it does not already include, then add.
+1·(x − 1) + 3 = x + 2.
+That is the numerator of the proper fraction, so the decomposition is correct wherever the denominator is not zero.</pre>
+
+<h2>Related reading</h2>
+<p>Place the algebra on <a href="../topics/calculus-foundations.html">calculus foundations</a>. A telescoping series uses the same split: <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a> writes 1/(n(n + 2)) by partial fractions and then takes a limit. The <a href="../calculators/sequence-series.html">sequence calculator</a> adds a finite list. It does not decompose a rational term.</p>
+<p>The logistic step in <a href="../explainers/separable-differential-equations.html">separable differential equations</a> integrates 1/(y(2 − y)) after a partial fraction split. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> estimates a definite integral with rectangles. The <a href="../calculators/quadratic-formula.html">quadratic formula calculator</a> is the discriminant test for whether a quadratic factor has rational roots. The short definition is <a href="../glossary/#partial-fraction-decomposition">partial fraction decomposition</a> in the glossary.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What is partial fraction decomposition?</h2>
+<p>Partial fraction decomposition writes a rational function as a polynomial plus a sum of simpler fractions. Each simpler denominator is a power of a linear factor, or a power of a quadratic that has no rational root. Numerators are constants, or linear polynomials when the denominator is quadratic. That identity is the algebra behind many antiderivatives and telescoping series.</p>
+</section>
+<section class="faq-item" id="improper">
+<h2>What if the numerator has degree at least as high as the denominator?</h2>
+<p>Divide first. Polynomial division produces a quotient and a remainder whose degree is smaller than the denominator degree. The original function equals the quotient plus that proper fraction. Only the proper fraction is split into partial fractions. This page shows the division, then the decomposition of the remainder.</p>
+</section>
+<section class="faq-item" id="repeated">
+<h2>How do repeated linear factors change the setup?</h2>
+<p>A factor (x − r) that divides the denominator m times needs m fractions: a constant over (x − r), a constant over (x − r)^2, and so on up to the mth power. The coefficient of the highest power is the numerator at x = r, divided by the other factors at that root. The lower coefficients come from matching the remaining powers of x.</p>
+</section>
+<section class="faq-item" id="quadratic">
+<h2>When is the numerator over a quadratic linear?</h2>
+<p>When a quadratic factor has no rational root, it stays in one piece. Its discriminant is not a perfect square. Over that factor, and over each of its powers, the numerator is a linear polynomial Bx + C. A single constant cannot produce every proper fraction with that denominator.</p>
+</section>
+<section class="faq-item" id="fractions">
+<h2>Why does the calculator keep fractions instead of decimals?</h2>
+<p>With rational coefficients, and a denominator that factors into linears and irreducible quadratics, the partial fraction coefficients are rational. A decimal can hide a value such as 1/2. This page uses exact rational arithmetic. A decimal you type is read as a fraction of a power of ten, so 0.5 becomes 1/2. Type 1/3 when you mean one third.</p>
+</section>
+<section class="faq-item" id="integral">
+<h2>Does this page find the integral?</h2>
+<p>It stops at the decomposition. Integrating 1/(x − r) gives a logarithm, and integrating 1/(x − r)^m for m greater than 1 gives a power. A quadratic denominator leads to a logarithm of that quadratic, or to an arctangent after you complete the square. Those antiderivatives are the next step. The page shows the algebra that makes them possible.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.</p>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../privacy/">Privacy</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../contact/">Contact</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/partial-fractions.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

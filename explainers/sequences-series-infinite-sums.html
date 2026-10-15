@@ -141,7 +141,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Sequences, series, and when infinite sums make sense</h1>
-<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 15 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>An infinite sum is not a mystical elongated plus sign. It is a <a href="../glossary/#limit">limit</a> of <a href="../glossary/#partial-sum">partial sums</a>. If those partial sums approach a number, the <a href="../glossary/#series">series</a> <a href="../glossary/#convergence">converges</a> and we assign that number as the sum. If they wander or blow up, the series diverges, and writing a “total” is meaningless in the usual sense.</p>
@@ -182,6 +182,7 @@
 <p>Write out $s_6$ and watch most terms cancel, leaving</p>
 <p>$$s_N=\frac12\Bigl(1+\frac12-\frac{1}{N+1}-\frac{1}{N+2}\Bigr).$$</p>
 <p>The leftover pieces vanish, so $s_N\to\tfrac34$. This series converges because you can name the partial sums, not because the terms look small. When you cannot name $s_N$, you will need a test. That is the division of labor between this page and <a href="convergence-tests-series.html">convergence tests for series</a>.</p>
+<p>The split of $1/(n(n+2))$ is partial fractions with $n$ as the variable. On the <a href="../calculators/partial-fractions.html">partial fraction decomposition calculator</a>, numerator $1$ and denominator $x(x+2)$ write $-\frac{1}{2(x+2)}+\frac{1}{2x}$. With $n$ in place of $x$, that is $-\frac{1}{2(n+2)}+\frac{1}{2n}$, the same sum as $\frac12\bigl(\frac{1}{n}-\frac{1}{n+2}\bigr)$.</p>
 
 <h2>Absolute and conditional convergence</h2>
 <p>If $\sum |a_n|$ converges, the original series converges absolutely. Absolute convergence is the green light for most algebraic wish lists: you may rearrange terms and the sum stays put. The alternating harmonic series $1-\tfrac12+\tfrac13-\tfrac14+\cdots$ converges (to $\ln 2$), but the series of absolute values is the ordinary harmonic series, which diverges. That is conditional convergence. Rearranging a conditionally convergent series can change the sum. It can even produce divergence. Riemann’s rearrangement theorem is the precise statement. The classroom warning is enough for now. Do not shuffle a conditional series as if it were a finite list.</p>
@@ -257,6 +258,7 @@
 
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../calculators/sequence-series.html">Arithmetic and geometric sequence calculator</a></li>
+<li><a href="../calculators/partial-fractions.html">Partial fraction decomposition calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="convergence-tests-series.html">Convergence tests for series</a></li>
 <li><a href="epsilon-delta-intuition.html">Epsilon delta intuition</a></li>
