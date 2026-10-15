@@ -141,7 +141,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Separable differential equations walkthrough</h1>
-<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 15 Oct 2026</p>
 </header>
 <div class="article-body">
 <p>A first order equation is separable when you can write $\dfrac{dy}{dx}=g(x)h(y)$. Every factor that depends only on $x$ can move to one side. Every factor that depends only on $y$ can move to the other. Then both sides become integrals you already know how to attempt.</p>
@@ -173,7 +173,7 @@
 <h2>A logistic style factor and a lost equilibrium</h2>
 <p><span class="example-label">Example</span> Consider $\dfrac{dy}{dx}=y(2-y)$. Then $g(x)=1$ and $h(y)=y(2-y)$. The roots $y=0$ and $y=2$ are constant solutions. They are equilibria of an autonomous equation. For other $y$,</p>
 <p>$$\frac{dy}{y(2-y)}=dx.$$</p>
-<p>Partial fractions give $\tfrac12\ln|y|-\tfrac12\ln|2-y|=x+C$, which rearranges to $\dfrac{y}{2-y}=Ae^{2x}$. Solving for $y$ produces a family of logistic looking curves that run from near $0$ toward $2$ when $A&gt;0$ and the start is between the equilibria. If you divided first and never listed $y=0$ and $y=2$, those two solutions would have vanished from your writeup even though they satisfy the original equation.</p>
+<p>Partial fractions give $\tfrac12\ln|y|-\tfrac12\ln|2-y|=x+C$, which rearranges to $\dfrac{y}{2-y}=Ae^{2x}$. Solving for $y$ produces a family of logistic looking curves that run from near $0$ toward $2$ when $A&gt;0$ and the start is between the equilibria. If you divided first and never listed $y=0$ and $y=2$, those two solutions would have vanished from your writeup even though they satisfy the original equation. The <a href="../calculators/partial-fractions.html">partial fraction decomposition calculator</a> writes $1/(y(2-y))$ as $(1/2)/y - (1/2)/(y-2)$ if you enter numerator $1$ and denominator $y(2-y)$. That is the same split: $2-y = -(y-2)$, so the minus sign sits on the second coefficient, and the integral is still $\tfrac12\ln|y|-\tfrac12\ln|2-y|$.</p>
 <p><span class="example-label">Example</span> Add the initial condition $y(0)=1$. Then $1/(2-1)=A$, so $A=1$ and $y/(2-y)=e^{2x}$. Solving for $y$ gives</p>
 <p>$$y=\frac{2e^{2x}}{1+e^{2x}}.$$</p>
 <p>At $x=0$ this is $2/2=1$. As $x$ grows, $y$ approaches $2$ from below and never reaches it. As $x$ runs to $-\infty$, $y$ approaches $0$ from above. The constant solutions are fences. This formula lives on the whole line because the denominator $1+e^{2x}$ never vanishes. That is a fact about this solution, not a general license. The next examples show a formula that stays smooth forever and a formula that does not.</p>
@@ -280,6 +280,7 @@
 <div class="related"><h2>Related</h2><ul>
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
+<li><a href="../calculators/partial-fractions.html">Partial fraction decomposition calculator</a></li>
 <li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
 <li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
 <li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>

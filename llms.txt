@@ -1,6 +1,6 @@
 # Higher Math Guide
 
-> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 17 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 18 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
 Higher Math Guide is a brand of Joshua Israel Ventures LLC. All business is done by the LLC. Operated by Joshua Israel Ventures LLC. No ads. Site: https://highermathguide.com/ Contact: joshuaofisrael@gmail.com with the subject [Contact: Higher Math Guide].
 
@@ -33,13 +33,14 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 
 ## Calculators
 
-- [All calculators](https://highermathguide.com/calculators/): index of the 17 browser tools
+- [All calculators](https://highermathguide.com/calculators/): index of the 18 browser tools
 - [Gradient and directional derivative calculator](https://highermathguide.com/calculators/gradient-directional-derivative.html): partial derivatives, the gradient, and a directional derivative at a point for functions of two or three variables
 - [Divergence and curl calculator](https://highermathguide.com/calculators/divergence-curl.html): divergence and curl of a planar or spatial vector field at a point, with an arrow plot
 - [Epsilon delta finder](https://highermathguide.com/calculators/epsilon-delta-finder.html): numerical search for a delta given f, a, L, and epsilon, a sampled check rather than a proof
 - [Numerical limit estimator](https://highermathguide.com/calculators/limit-estimator.html): sample a function as x approaches a point or infinity
 - [Numerical derivative calculator](https://highermathguide.com/calculators/numerical-derivative.html): forward, backward, and central difference slope estimates
 - [Riemann sum calculator](https://highermathguide.com/calculators/integral-riemann.html): left, midpoint, or right rectangle approximations of a definite integral
+- [Partial fraction decomposition calculator](https://highermathguide.com/calculators/partial-fractions.html): exact partial fractions of a rational function, with polynomial division and each algebra step for linear factors, repeated linear factors, and irreducible quadratics
 - [Arithmetic and geometric sequence calculator](https://highermathguide.com/calculators/sequence-series.html): nth term and finite sum in closed form
 - [Quadratic formula calculator](https://highermathguide.com/calculators/quadratic-formula.html): discriminant and real or complex roots
 - [Vector operations calculator](https://highermathguide.com/calculators/vector-ops.html): dot product, cross product, magnitude, and unit vectors in 2D or 3D
