@@ -52,7 +52,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-30"
+      "dateModified": "2026-10-16"
     },
     {
       "@type": "FAQPage",
@@ -229,12 +229,14 @@
 <p>Before you integrate, a slope field is worth a sketch. At each point $(x,y)$ draw a short segment with slope $f(x,y)$. Solution curves must thread those segments. Equilibria where $y'=0$, and whether nearby solutions approach or flee them, often matter more than a closed form.</p>
 
 <h2>Try it with practice tools</h2>
-<p>This site does not solve ODEs symbolically. Two calculus tools still let you practice the pieces of the method. After you separate, you integrate. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> estimates definite integrals by adding rectangle areas. That is a numerical cousin of the antiderivative step, useful when you want to see accumulation rather than guess an antiderivative. After you have an explicit $y(x)$, the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates $y'(x_0)$. You can compare that slope with $g(x_0)h(y(x_0))$ from the original equation.</p>
+<p>This page does not separate an equation for you. Two calculus tools still let you practice the pieces of the method. After you separate, you integrate. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> estimates definite integrals by adding rectangle areas. That is a numerical cousin of the antiderivative step, useful when you want to see accumulation rather than guess an antiderivative. After you have an explicit $y(x)$, the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> estimates $y'(x_0)$. You can compare that slope with $g(x_0)h(y(x_0))$ from the original equation.</p>
 <div class="callout"><strong>Try it.</strong> For $y=2e^{0.5x}$, which solves $y'=0.5y$ with $y(0)=2$, open the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> near $x=0$ and confirm the slope is about $1$. Then check $0.5\cdot y(0)=1$. Next, on the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a>, estimate $\int_0^1 0.5\,dx$ as a reminder that the separated $x$ side really is an ordinary integral. The tools do not replace the algebra. They audit the calculus you used.</div>
 <div class="cta-panel">
 <p>Audit a proposed explicit solution by estimating its slope, then compare that number with the original right hand side.</p>
 <a class="btn" href="../calculators/numerical-derivative.html">Open the derivative calculator</a>
 </div>
+<h2>Next step, when the order is two</h2>
+<p>Separation is a first order method. A constant-coefficient equation $a y''+b y'+c y=0$ is a different family. The characteristic equation $a r^2+b r+c=0$ sorts it into two real roots, one repeated root, or a complex pair. The <a href="../calculators/second-order-ode.html">second order differential equation calculator</a> writes that algebra and, when you give $y(x_0)$ and $y'(x_0)$, solves for the two constants.</p>
 
 <h2>How to practice</h2>
 <ol>
@@ -281,6 +283,7 @@
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="../calculators/partial-fractions.html">Partial fraction decomposition calculator</a></li>
+<li><a href="../calculators/second-order-ode.html">Second order differential equation calculator</a></li>
 <li><a href="../topics/differential-equations.html">Differential equations first look</a></li>
 <li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>
 <li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
