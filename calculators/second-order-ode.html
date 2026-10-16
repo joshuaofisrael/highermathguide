@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Order Differential Equation Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Solve a y'' + b y' + c y = 0 with the characteristic equation. Exact steps for real roots, a repeated root, or complex roots, plus initial conditions.">
+<link rel="canonical" href="https://highermathguide.com/calculators/second-order-ode.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Second Order Differential Equation Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Solve a y'' + b y' + c y = 0 with the characteristic equation. Exact steps for real roots, a repeated root, or complex roots, plus initial conditions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/second-order-ode.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Second Order Differential Equation Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Solve a y'' + b y' + c y = 0 with the characteristic equation. Exact steps for real roots, a repeated root, or complex roots, plus initial conditions.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/second-order-ode.html#webpage",
+      "name": "Second Order Differential Equation Calculator with Steps",
+      "description": "Solve a y'' + b y' + c y = 0 with the characteristic equation. Exact steps for real roots, a repeated root, or complex roots, plus initial conditions.",
+      "url": "https://highermathguide.com/calculators/second-order-ode.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://highermathguide.com/calculators/second-order-ode.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/second-order-ode.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://highermathguide.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://highermathguide.com/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Second order differential equation calculator",
+          "item": "https://highermathguide.com/calculators/second-order-ode.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/second-order-ode.html#faq",
+      "url": "https://highermathguide.com/calculators/second-order-ode.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a second order differential equation calculator solve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It solves a y'' + b y' + c y = 0, where a, b, and c are constants and a is not zero. The page forms the characteristic equation a r² + b r + c = 0, computes the discriminant b² − 4ac, and writes the general solution for two different real roots, a repeated real root, or a complex conjugate pair. If you enter y(x₀) and y'(x₀), it also solves the 2 by 2 system for the two constants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the discriminant choose the form of the solution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The discriminant is b² − 4ac. When it is positive, there are two different real roots r₁ and r₂, and y = C₁ e^(r₁ x) + C₂ e^(r₂ x). When it is zero, there is a repeated root r, and y = (C₁ + C₂ x) e^(r x). When it is negative, the roots are α ± β i, and the real solution is e^(α x) (C₁ cos(β x) + C₂ sin(β x))."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do overdamped, critically damped, and underdamped mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Those words describe a spring, or a similar oscillator, when the mass, the damping, and the spring constant are all positive. Overdamped means two different negative real roots: the mass returns toward rest as a sum of decaying exponentials and does not oscillate. Critically damped means a repeated negative root: the return still does not oscillate, and one term carries an extra factor of x. Underdamped means a complex pair with a negative real part: the mass oscillates inside a shrinking exponential. If a real part is positive, the same algebra describes growth rather than a passive spring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a second order initial value problem need two conditions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The general solution has two arbitrary constants, because the equation contains a second derivative. A single condition, such as the value y(x₀) = y₀, leaves one constant free. The slope y'(x₀) = v₀ supplies the second equation. Together they are a 2 by 2 linear system for C₁ and C₂."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When are the constants exact fractions, and when are they decimals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The characteristic roots are exact fractions, or exact combinations of fractions and square roots. The constants C₁ and C₂ stay in that same exact form when every exponential, sine, and cosine in the initial-value system is 0, 1, or −1. That includes every problem whose initial time is 0. At a different initial time, a constant generally contains an exponential or a sine and a cosine. The page writes that exact expression, then prints a decimal labelled as a decimal approximation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this page solve every differential equation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The page solves only the homogeneous equation with constant coefficients. A nonzero forcing term, a coefficient that depends on x, and a first order separable equation are different problems. Separation is treated in the separable differential equations walkthrough. The quadratic formula calculator is the same discriminant arithmetic without the differential equation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/second-order-ode.html#app",
+      "name": "Second Order Differential Equation Calculator with Steps",
+      "url": "https://highermathguide.com/calculators/second-order-ode.html",
+      "description": "Solve a y'' + b y' + c y = 0 with the characteristic equation. Exact steps for real roots, a repeated root, or complex roots, plus initial conditions.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Second order differential equations</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Characteristic equation</p>
+<h1>Second order differential equation calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 16 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>This page solves a y'' + b y' + c y = 0, the constant-coefficient equation that shows up in a first differential equations course and in the search for a characteristic equation solver. The coefficients a, b, and c can be integers, fractions, or decimals. A decimal is kept as a fraction of a power of ten, so 0.5 is 1/2.</p>
+<p>The boxes open on y'' + 2y' + 5y = 0 with y(0) = 1 and y'(0) = 0. That problem has complex roots −1 ± 2i, and the particular solution is e^(−x) (cos(2x) + (1/2) sin(2x)). Leave the three condition boxes blank when you only want the general solution.</p>
+<p>The method is not separation. A first order equation that factors as a product is on the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. This page starts from the second derivative and constant coefficients. The map around both is <a href="../topics/differential-equations.html">differential equations</a>.</p>
+</div>
+
+<form class="calc-panel wide" id="ode-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="ode-a">a, coefficient of y''
+<input id="ode-a" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="ode-hint">
+</label>
+<label for="ode-b">b, coefficient of y'
+<input id="ode-b" type="text" value="2" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="ode-c">c, coefficient of y
+<input id="ode-c" type="text" value="5" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<div class="field-row">
+<label for="ode-x0">x₀, optional
+<input id="ode-x0" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="ode-y0">y(x₀), optional
+<input id="ode-y0" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="ode-v0">y'(x₀), optional
+<input id="ode-v0" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<p class="calc-hint" id="ode-hint">The equation is a y'' + b y' + c y = 0. Use integers, decimals, or fractions such as 3/4 or −1/2. Enter all three initial conditions, or leave all three blank. A decimal is an exact fraction of a power of ten.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="ode-preset-distinct">Two real roots</button>
+<button type="button" class="btn btn-secondary" id="ode-preset-repeated">Repeated root</button>
+<button type="button" class="btn btn-secondary" id="ode-preset-complex">Complex pair</button>
+<button type="button" class="btn btn-secondary" id="ode-preset-spring">Damped spring</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="ode-compute">Show steps</button>
+<button type="button" class="btn btn-secondary" id="ode-reset">Reset</button>
+</div>
+<p class="calc-error" id="ode-error" role="alert"></p>
+<div class="calc-result" id="ode-result" role="status" aria-live="polite">
+<div class="amount" id="ode-amount" style="overflow-wrap:anywhere"></div>
+<canvas id="ode-plot" class="ed-plot" width="560" height="280" role="img" aria-label="Plot of the solution of the differential equation"></canvas>
+<p class="ed-legend" id="ode-legend"></p>
+<div class="detail steps" id="ode-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How to read the result</h2>
+<p>The large line is the general solution, or the particular solution if you supplied y(x₀) and y'(x₀). Under it, the steps build the characteristic equation a r² + b r + c = 0, compute the discriminant Δ = b² − 4ac, and take one of the three cases.</p>
+<p>A positive discriminant gives two different real roots r₁ and r₂, listed with the larger one first. The solution is C₁ e^(r₁ x) + C₂ e^(r₂ x). A zero discriminant gives a repeated root r, and the solution is (C₁ + C₂ x) e^(r x). The extra factor of x is required. Two copies of the same exponential are not two solutions. A negative discriminant gives complex conjugates α ± β i, with β written positive. The real solution is e^(α x) (C₁ cos(β x) + C₂ sin(β x)).</p>
+<p>When initial conditions are present, the page differentiates the general solution, substitutes x₀, and solves the resulting 2 by 2 system. Fractions and square roots stay exact. If the initial time makes an exponential, a sine, or a cosine that is not 0, 1, or −1, the exact expression is kept and a decimal approximation is printed on its own line and labelled as a decimal.</p>
+<p>The curve is the particular solution when conditions were entered. The marked point is (x₀, y₀). With no conditions, the curve uses the sample choice C₁ = 1 and C₂ = 1, and the steps say so. It is one member of the family.</p>
+
+<h2>What the three cases mean</h2>
+<p>Think of a mass on a spring: mass times acceleration, plus damping times velocity, plus spring constant times displacement, equals zero. In the letters of this page, that is a positive, b positive, and c positive. The sign of the discriminant then has a physical name.</p>
+<p>Overdamped means Δ &gt; 0. There are two different real roots, and both are negative. The mass returns toward equilibrium as a sum of decaying exponentials. It does not oscillate. A heavy shock absorber is the picture: the motion dies, and it does not ring.</p>
+<p>Critically damped means Δ = 0. There is one repeated negative root, and one term carries a factor of x. The mass still does not oscillate. This is the boundary between a return that rings and a return that does not. The algebra needs the extra factor of x because a repeated root does not give two independent exponentials.</p>
+<p>Underdamped means Δ &lt; 0. The roots are α ± β i with α negative. The mass oscillates. The factor e^(α x) is a shrinking envelope, and β is the frequency of the ring inside that envelope. A door closer that bounces a few times and then stops is the picture.</p>
+<p>The names assume the coefficients share a sign, so the real parts are negative. If a root has positive real part, the same three formulas describe growth. A passive spring with positive damping does not do that. If b is zero and a and c have the same sign, there is no damping at all: the solution oscillates at a constant amplitude.</p>
+
+<h2>Four presets</h2>
+<p>Two real roots. y'' − 3y' + 2y = 0 has discriminant 1 and roots 2 and 1. The general solution is C₁ e^(2x) + C₂ e^x. Both roots are positive, so solutions grow. This is not a passive spring.</p>
+<p>A repeated root. y'' + 4y' + 4y = 0 has discriminant 0 and root −2. The general solution is (C₁ + C₂ x) e^(−2x). With y(0) = 1 and y'(0) = 0, the constants are C₁ = 1 and C₂ = 2, so y = (1 + 2x) e^(−2x). That is critical damping.</p>
+<p>A complex pair. y'' + 2y' + 5y = 0 has discriminant −16, so the roots are −1 ± 2i. With y(0) = 1 and y'(0) = 0, C₁ = 1 and C₂ = 1/2. The particular solution is e^(−x) (cos(2x) + (1/2) sin(2x)). That is underdamped.</p>
+<p>A damped spring. Take unit mass, damping constant 3, and spring constant 2, released from rest at displacement 1. The equation is y'' + 3y' + 2y = 0 with y(0) = 1 and y'(0) = 0. The roots are −1 and −2, and the solution is 2 e^(−x) − e^(−2x). The mass returns to 0 and does not cross into oscillation. That is overdamped.</p>
+
+<h2>A fully worked example</h2>
+<p>Both examples below are written on the page, so you can read them with scripts turned off. The form opens on the complex example. The first block is the two-real-root equation with the constants left free.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Distinct real roots. y'' − 3y' + 2y = 0, with no initial conditions.
+
+Equation
+y'' − 3y' + 2y = 0
+
+Look for solutions of the form y = e^(rx), where r is constant. Then y' = r e^(rx) and y'' = r² e^(rx). Substitute those into the differential equation. Every term contains e^(rx), and that factor is never zero, so it cancels.
+
+Characteristic equation
+r² − 3r + 2 = 0
+
+Discriminant
+Δ = b² − 4ac.
+b² = (−3)² = 9.
+4ac = 4(1)(2) = 8.
+Δ = 9 − 8 = 1.
+
+The discriminant is positive, so the characteristic equation has two different real roots.
+r = (−b ± √Δ) / (2a).
+√Δ = 1.
+r₁ = 4 / 2 = 2.
+r₂ = 2 / 2 = 1.
+The larger root is written first.
+
+General solution
+y = C₁ e^(2x) + C₂ e^x.
+Each pure exponential uses one root. The two constants are free until an initial condition fixes them.
+
+Check
+Each root returns zero in a r² + b r + c. At r₁ = 2 and at r₂ = 1, the characteristic polynomial is 0.
+
+Complex roots, with initial conditions. y'' + 2y' + 5y = 0, y(0) = 1, y'(0) = 0.
+
+Equation
+y'' + 2y' + 5y = 0
+
+Characteristic equation
+r² + 2r + 5 = 0
+
+Discriminant
+Δ = b² − 4ac.
+b² = (2)² = 4.
+4ac = 4(1)(5) = 20.
+Δ = 4 − 20 = −16.
+
+The discriminant is negative, so the roots are complex conjugates.
+α = −b / (2a) = −2 / 2 = −1.
+β = √(−Δ) / (2|a|) = 4 / 2 = 2.
+The roots are −1 ± 2i.
+
+General solution
+y = e^(−x) (C₁ cos(2x) + C₂ sin(2x)).
+
+Initial conditions
+y(0) = 1.
+y'(0) = 0.
+
+At x = 0 the exponential is 1, cos(0) = 1, and sin(0) = 0.
+y(0) = C₁, so C₁ = 1.
+y'(0) = α C₁ + β C₂ = −1 + 2 C₂.
+Set that equal to 0. Then 2 C₂ = 1, so C₂ = 1/2.
+
+Particular solution
+y = e^(−x) (cos(2x) + (1/2) sin(2x)).
+
+Check
+y(0) = 1 · (1 + 0) = 1.
+The derivative at 0 is α C₁ + β C₂ = −1 + 2 · (1/2) = 0.
+The characteristic polynomial at −1 + 2i is zero because α = −b / (2a) and β² = −Δ / (4a²).</pre>
+
+<h2>Related reading</h2>
+<p>Place the equation on the <a href="../topics/differential-equations.html">differential equations</a> map. Separation, which is a different method, is the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. The short definitions are <a href="../glossary/#differential-equation">differential equation</a> and <a href="../glossary/#initial-value-problem">initial value problem</a>.</p>
+<p>The discriminant step, without a differential equation around it, is the <a href="quadratic-formula.html">quadratic formula calculator</a>. A characteristic polynomial for a 2 by 2 matrix is a cousin, not the same object: the <a href="eigenvalue-2x2.html">eigenvalue calculator</a> solves that matrix problem. After you have an explicit y(x), the <a href="numerical-derivative.html">numerical derivative calculator</a> can audit the slope.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What does a second order differential equation calculator solve?</h2>
+<p>It solves a y'' + b y' + c y = 0, where a, b, and c are constants and a is not zero. The page forms the characteristic equation a r² + b r + c = 0, computes the discriminant b² − 4ac, and writes the general solution for two different real roots, a repeated real root, or a complex conjugate pair. If you enter y(x₀) and y'(x₀), it also solves the 2 by 2 system for the two constants.</p>
+</section>
+<section class="faq-item" id="discriminant">
+<h2>How does the discriminant choose the form of the solution?</h2>
+<p>The discriminant is b² − 4ac. When it is positive, there are two different real roots r₁ and r₂, and y = C₁ e^(r₁ x) + C₂ e^(r₂ x). When it is zero, there is a repeated root r, and y = (C₁ + C₂ x) e^(r x). When it is negative, the roots are α ± β i, and the real solution is e^(α x) (C₁ cos(β x) + C₂ sin(β x)).</p>
+</section>
+<section class="faq-item" id="damping">
+<h2>What do overdamped, critically damped, and underdamped mean?</h2>
+<p>Those words describe a spring, or a similar oscillator, when the mass, the damping, and the spring constant are all positive. Overdamped means two different negative real roots: the mass returns toward rest as a sum of decaying exponentials and does not oscillate. Critically damped means a repeated negative root: the return still does not oscillate, and one term carries an extra factor of x. Underdamped means a complex pair with a negative real part: the mass oscillates inside a shrinking exponential. If a real part is positive, the same algebra describes growth rather than a passive spring.</p>
+</section>
+<section class="faq-item" id="conditions">
+<h2>Why does a second order initial value problem need two conditions?</h2>
+<p>The general solution has two arbitrary constants, because the equation contains a second derivative. A single condition, such as the value y(x₀) = y₀, leaves one constant free. The slope y'(x₀) = v₀ supplies the second equation. Together they are a 2 by 2 linear system for C₁ and C₂.</p>
+</section>
+<section class="faq-item" id="exact">
+<h2>When are the constants exact fractions, and when are they decimals?</h2>
+<p>The characteristic roots are exact fractions, or exact combinations of fractions and square roots. The constants C₁ and C₂ stay in that same exact form when every exponential, sine, and cosine in the initial-value system is 0, 1, or −1. That includes every problem whose initial time is 0. At a different initial time, a constant generally contains an exponential or a sine and a cosine. The page writes that exact expression, then prints a decimal labelled as a decimal approximation.</p>
+</section>
+<section class="faq-item" id="scope">
+<h2>Does this page solve every differential equation?</h2>
+<p>No. The page solves only the homogeneous equation with constant coefficients. A nonzero forcing term, a coefficient that depends on x, and a first order separable equation are different problems. Separation is treated in the <a href="../explainers/separable-differential-equations.html">separable differential equations walkthrough</a>. The <a href="quadratic-formula.html">quadratic formula calculator</a> is the same discriminant arithmetic without the differential equation.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.</p>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../privacy/">Privacy</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../contact/">Contact</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/second-order-ode.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
