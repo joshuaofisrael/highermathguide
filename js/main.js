@@ -11,30 +11,6 @@
     });
   }
 
-  /* Contact form → mailto with required subject */
-  var form = document.getElementById("contact-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = (document.getElementById("name") || {}).value || "";
-      var email = (document.getElementById("email") || {}).value || "";
-      var reason = (document.getElementById("reason") || {}).value || "";
-      var topic = (document.getElementById("topic-idea") || {}).value || "";
-      var message = (document.getElementById("message") || {}).value || "";
-      var body =
-        "Name: " + name.trim() +
-        "\nEmail: " + email.trim() +
-        (reason ? "\nReason: " + reason.trim() : "") +
-        (topic.trim() ? "\nTopic idea: " + topic.trim() : "") +
-        "\n\n" + message.trim();
-      var mailto =
-        "mailto:joshuaofisrael@gmail.com" +
-        "?subject=" + encodeURIComponent("[Contact: Higher Math Guide]") +
-        "&body=" + encodeURIComponent(body);
-      window.location.href = mailto;
-    });
-  }
-
   /* Shared helpers for calculators */
   function formatNum(n) {
     if (typeof n !== "number" || !isFinite(n)) return String(n);

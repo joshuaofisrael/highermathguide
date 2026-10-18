@@ -702,18 +702,3 @@ h3 {
   background: var(--accent-soft);
 }
 
-.topic-select-hint {
-  font-size: 0.88rem;
-  color: var(--ink-muted);
-  margin: 0.35rem 0 0;
-}
-
-.contact-form select {
-  width: 100%;
-  padding: 0.55rem 0.7rem;
-  font: inherit;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--paper);
-  color: var(--ink);
-}
