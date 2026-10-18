@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taylor Polynomial Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Build a Taylor or Maclaurin polynomial with exact fractions, derivative steps, a Lagrange remainder bound, and a graph.">
+<link rel="canonical" href="https://highermathguide.com/calculators/taylor-polynomial.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Taylor Polynomial Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Build a Taylor or Maclaurin polynomial with exact fractions, derivative steps, a Lagrange remainder bound, and a graph.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/taylor-polynomial.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Taylor Polynomial Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Build a Taylor or Maclaurin polynomial with exact fractions, derivative steps, a Lagrange remainder bound, and a graph.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/taylor-polynomial.html#webpage",
+      "name": "Taylor Polynomial Calculator with Steps",
+      "description": "Build a Taylor or Maclaurin polynomial with exact fractions, derivative steps, a Lagrange remainder bound, and a graph.",
+      "url": "https://highermathguide.com/calculators/taylor-polynomial.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://highermathguide.com/calculators/taylor-polynomial.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/taylor-polynomial.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://highermathguide.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://highermathguide.com/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Taylor polynomial calculator",
+          "item": "https://highermathguide.com/calculators/taylor-polynomial.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/taylor-polynomial.html#faq",
+      "url": "https://highermathguide.com/calculators/taylor-polynomial.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Taylor polynomial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The degree-n Taylor polynomial of f about a center a is P_n(x) = f(a) + f'(a)(x-a) + f''(a)/2! (x-a)^2 + ... + f^(n)(a)/n! (x-a)^n. It is the unique polynomial of degree at most n whose value and first n derivatives agree with f at x = a."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a Maclaurin polynomial different from a Taylor polynomial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Maclaurin polynomial is a Taylor polynomial whose center is 0. The powers are then ordinary powers of x. Every Maclaurin polynomial is a Taylor polynomial. The expansion of e^x about 1 is a Taylor polynomial and not a Maclaurin polynomial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you estimate the remainder of a Taylor polynomial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lagrange's form says the error at x equals f^(n+1)(c)/(n+1)! (x-a)^(n+1) for some c between a and x. If the absolute value of f^(n+1)(t) is at most M on that interval, the absolute error is at most M times |x-a|^(n+1)/(n+1)!. The bound is a ceiling, not the exact error. If the interval reaches a singularity, no finite M exists, and this page says so."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the radius of convergence of a Taylor series?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the radius of the largest disk, centered at a, inside which the infinite series converges. For e^x, sin x, and cos x the radius is infinite. For ln(1+x) and for 1/(1-x) it is the distance from a to the nearest singularity. For arctan x the singularities are the imaginary points i and -i, so the radius is the square root of 1+a^2. A finite polynomial can still be evaluated outside that disk. The infinite series need not approach the function there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the Maclaurin series for sin x use only odd powers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "sin x is an odd function, so sin(-x) = -sin x. The even-order derivatives of an odd function are 0 at 0, and the coefficients of the even powers are 0. cos x is even, so its odd-order derivatives at 0 vanish and only even powers remain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a Taylor polynomial equal to the function?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only in special cases. If f is a polynomial of degree d and n is at least d, the Taylor polynomial equals f everywhere. For e^x, sin x, and ln(1+x), a finite polynomial matches the function at the center and is only an approximation nearby. Raising n improves the match near the center, inside the radius of convergence. The remainder bound measures the gap."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Joshua Israel Ventures LLC",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/taylor-polynomial.html#app",
+      "name": "Taylor Polynomial Calculator with Steps",
+      "url": "https://highermathguide.com/calculators/taylor-polynomial.html",
+      "description": "Build a Taylor or Maclaurin polynomial with exact fractions, derivative steps, a Lagrange remainder bound, and a graph.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Taylor polynomials</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Polynomial approximation</p>
+<h1>Taylor polynomial calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 18 Oct 2026</p>
+</header>
+<div class="article-body">
+<p>The degree-n Taylor polynomial of f about a center a is P_n(x) = f(a) + f'(a)(x − a) + f''(a)/2! (x − a)^2 + … + f^(n)(a)/n! (x − a)^n. When a is 0, that polynomial is the Maclaurin polynomial. This page builds it for the standard functions below, through order 12.</p>
+<p>Coefficients that are rational are written as reduced fractions, and the factorial is kept visible in the steps. A factor such as e, ln(2), or √2 stays exact instead of being replaced by a decimal. The table lists f^(k)(a), k!, and the coefficient of each power. A check at a point x you choose compares P_n(x) with f(x) and reports the absolute error. A Lagrange remainder bound is printed when a finite M is honest to claim on the interval between a and x. If the interval meets a singularity, the page says that no finite bound is available.</p>
+<p>The boxes open on the degree-4 Maclaurin polynomial for e^x, checked at x = 1/2. That run is the worked example further down the page. The same screen also states the radius of convergence for the function you picked.</p>
+</div>
+
+<form class="calc-panel wide" id="taylor-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<label for="taylor-fn">Function
+<select id="taylor-fn">
+<option value="exp" selected>e^x</option>
+<option value="exp_c">e^(c x)</option>
+<option value="sin">sin x</option>
+<option value="cos">cos x</option>
+<option value="sin_c">sin(c x)</option>
+<option value="cos_c">cos(c x)</option>
+<option value="ln1p">ln(1+x)</option>
+<option value="ln">ln x</option>
+<option value="geom">1/(1−x)</option>
+<option value="atan">arctan x</option>
+<option value="sqrt1p">sqrt(1+x)</option>
+<option value="binom">(1+x)^p</option>
+</select>
+</label>
+<div id="taylor-param-wrap" hidden>
+<label id="taylor-param-label" for="taylor-param">Parameter c
+<input id="taylor-param" type="text" value="2" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<div class="field-row">
+<label for="taylor-a">Center a
+<input id="taylor-a" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="taylor-hint">
+</label>
+<label for="taylor-n">Order n
+<input id="taylor-n" type="number" value="4" min="0" max="12" step="1" inputmode="numeric">
+</label>
+<label for="taylor-x">Check at x
+<input id="taylor-x" type="text" value="1/2" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<p class="calc-hint" id="taylor-hint">Use an integer, a decimal, or a fraction. A decimal is kept as a fraction of a power of ten, so 0.5 is 1/2. For sine and cosine you may also type a multiple of pi, such as pi/2, pi/4, or 2pi/3. Order n runs from 0 to 12. Maclaurin means the center is 0.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="taylor-preset-exp">e^x about 0</button>
+<button type="button" class="btn btn-secondary" id="taylor-preset-sin">sin x about 0</button>
+<button type="button" class="btn btn-secondary" id="taylor-preset-ln">ln(1+x)</button>
+<button type="button" class="btn btn-secondary" id="taylor-preset-shift">e^x about 1</button>
+<button type="button" class="btn btn-secondary" id="taylor-preset-geom">1/(1−x)</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="taylor-compute">Show steps</button>
+<button type="button" class="btn btn-secondary" id="taylor-reset">Reset</button>
+</div>
+<p class="calc-error" id="taylor-error" role="alert"></p>
+<div class="calc-result" id="taylor-result" role="status" aria-live="polite">
+<div class="amount" id="taylor-amount" style="font-size:1.35rem;line-height:1.35;overflow-wrap:anywhere"></div>
+<canvas id="taylor-plot" class="ed-plot" width="560" height="280" role="img" aria-label="Graph of the function and its Taylor polynomial near the center"></canvas>
+<p class="ed-legend" id="taylor-legend"></p>
+<div class="detail" id="taylor-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How a Taylor polynomial is built</h2>
+<p>Ask for the polynomial of degree at most n that matches f at a single point as far as the derivatives can see. Matching the value fixes the constant term: it has to be f(a). Matching the first derivative fixes the coefficient of (x − a). The kth derivative of (x − a)^k is k!, so if the term is c_k (x − a)^k, its kth derivative at the center is c_k k!. Set that equal to f^(k)(a) and solve: c_k = f^(k)(a) / k!. That is the whole recipe. There is one coefficient for each k from 0 through n, and no freedom left.</p>
+<p>When the center is 0, (x − a)^k is just x^k. That special case is named for Maclaurin. The algebra is the same. Only the powers look simpler, and several of the standard functions then have rational coefficients: 1/k! for e^x, 1/k for ln(1+x), and 1 for every power in 1/(1−x).</p>
+<p>The polynomial is a finite object. The Taylor series is the limit of these polynomials as n grows, when that limit exists. A series converges inside an open disk whose radius is the distance from a to the nearest singularity in the complex plane. e^x, sin x, and cos x have no singularity, so the radius is infinite. ln(1+x) breaks at −1. 1/(1−x) breaks at 1. arctan x is smooth on the whole real line and still has singularities at i and −i, so its Maclaurin series has radius 1 and diverges for |x| &gt; 1. The polynomial can be evaluated past that radius. It just stops being a reliable stand-in for f.</p>
+<p>The error has a name. Lagrange's form says f(x) − P_n(x) = f^(n+1)(c) / (n+1)! · (x − a)^(n+1) for some c strictly between a and x, when the derivatives exist on that interval. You rarely know c. If |f^(n+1)(t)| ≤ M for every t between a and x, the absolute error is at most M |x − a|^(n+1) / (n+1)!. That ceiling is the remainder bound on this page. It is not the exact error. If the interval reaches a point where the derivative blows up, no such M exists, and inventing one would be a false comfort.</p>
+
+<h2>How to read the result</h2>
+<p>The title says Maclaurin when the center is 0 and Taylor otherwise. Under the graph, the expanded polynomial drops any term whose coefficient is 0. The table does not. A zero row is useful: it is how you see that the even powers of sin x are missing, rather than forgotten.</p>
+<p>The coefficient column shows the quotient f^(k)(a)/k! and, when division simplifies the fraction, the reduced value as well. So 1/4! = 1/24, and 8/3! = 4/3 for the k = 3 term of e^(2x). Square roots stay in the coefficient when the center is a multiple of π that produces one, such as sin x about π/4.</p>
+<p>The numeric check evaluates the polynomial at your x. When every coefficient and the point are rational, P_n(x) is printed as an exact fraction and then as a decimal. f(x) is the true function value. The absolute error is the gap between them. If x is outside the real domain, or outside the interval of convergence, the page says which, and it still prints the polynomial value.</p>
+<p>The graph draws f as a solid curve and P_n as a dashed curve on a window around the center. The window stops short of a singularity, so a logarithm or 1/(1−x) does not send the picture to infinity. The dot is the center, where the two curves are required to meet.</p>
+
+<h2>A fully worked example</h2>
+<p>Both blocks below are written on the page, so you can read them with scripts turned off. The form opens on the first block. The second block moves the same function to a center that is not 0, which is the step that brings in the factor e.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Maclaurin polynomial of degree 4 for e^x, checked at x = 1/2.
+
+f(x) = e^x. Every derivative is e^x, and e^0 = 1.
+The center is 0, so this is a Maclaurin polynomial.
+P_4(x) = sum_{k=0}^{4} x^k / k!.
+
+k    f^(k)(0)    k!     coefficient
+0    1            1      1
+1    1            1      1
+2    1            2      1/2! = 1/2
+3    1            6      1/3! = 1/6
+4    1            24     1/4! = 1/24
+
+P_4(x) = 1 + x + (1/2) x^2 + (1/6) x^3 + (1/24) x^4.
+
+Check at x = 1/2.
+P_4(1/2) = 1 + 1/2 + (1/4)/2 + (1/8)/6 + (1/16)/24
+         = 1 + 1/2 + 1/8 + 1/48 + 1/384.
+Common denominator 384:
+384/384 + 192/384 + 48/384 + 8/384 + 1/384 = 633/384 = 211/128.
+211/128 = 1.6484375.
+e^(1/2) ≈ 1.6487212707.
+Absolute error ≈ 0.0002837707.
+
+Lagrange bound. On [0, 1/2], the fifth derivative e^t is largest at t = 1/2.
+M = e^(1/2).
+|R_4(1/2)| ≤ M / 5! · (1/2)^5 = e^(1/2) / (120 · 32) = e^(1/2) / 3840 ≈ 0.0004293545.
+The true error sits under that ceiling. The ceiling is not the error.
+
+Radius. e^x is entire. The series converges for every real x.
+
+Same function, nonzero center. Degree 2 Taylor polynomial of e^x about 1.
+
+f(1) = e, f'(1) = e, f''(1) = e.
+P_2(x) = e + e (x − 1) + e (x − 1)^2 / 2
+       = e [ 1 + (x − 1) + (x − 1)^2 / 2 ].
+The coefficients are not rational. They are rational multiples of e, and that is the exact form. A decimal for e would already be a rounding.</pre>
+
+<h2>Common mistakes</h2>
+<p>The derivative in the coefficient is a number, f^(k)(a), not the function f^(k)(x). If a power of x survives inside the coefficient, the center was never substituted.</p>
+<p>Degree n means the powers from 0 through n, which is n + 1 terms before any of them turn out to be zero. Stopping at k = n − 1 builds the polynomial of degree n − 1 and then compares it with a remainder formula written for a different order.</p>
+<p>Maclaurin is not a second kind of approximation. It is the Taylor polynomial with a = 0. The expansion of e^x about 1 is a Taylor polynomial. Calling it Maclaurin is a false label, and it hides the factor e.</p>
+<p>The Lagrange expression with an unnamed c is an equality. The version with M is an inequality. Students often copy the bound into an answer blank that asked for the error. The error is smaller than the bound unless |f^(n+1)| actually attains M at the right place.</p>
+<p>M has to cover the interval between a and x, and only that interval. A maximum taken on a larger interval is still a valid bound, but it is usually worse. A maximum taken on an interval that does not contain the segment from a to x is not a bound for this x at all.</p>
+<p>Smooth on the real line is not the same as an infinite radius. arctan x has derivatives of every order everywhere, and its Maclaurin series still diverges for |x| &gt; 1. The partial polynomial at x = 2 is a number. It is not evidence that the series converges there.</p>
+<p>Two sign patterns cause most of the algebra errors. For sin x the derivatives at 0 cycle 0, 1, 0, −1. For ln(1+x) the coefficients are +1, −1/2, +1/3, −1/4, and the first omitted sign is the one people flip.</p>
+
+<h2>Related reading</h2>
+<p>A Taylor series is an infinite sum, so the meaning of convergence lives in <a href="../explainers/sequences-series-infinite-sums.html">sequences, series, and infinite sums</a>. The tests that decide many of those series, including the ratio test that explains a factorial in the denominator, are in <a href="../explainers/convergence-tests-series.html">convergence tests for series</a>. Finite arithmetic and geometric sums, which are a different question, are the <a href="sequence-series.html">sequence calculator</a>.</p>
+<p>The surrounding map is <a href="../topics/calculus-foundations.html">calculus foundations</a>. After you have an explicit polynomial, the <a href="numerical-derivative.html">numerical derivative calculator</a> can audit the slope of P_n at the center. It should come back near f'(a). Glossary entries that sit next to this page: <a href="../glossary/#series">series</a>, <a href="../glossary/#partial-sum">partial sum</a>, and <a href="../glossary/#convergence">convergence</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What is a Taylor polynomial?</h2>
+<p>The degree-n Taylor polynomial of f about a center a is P_n(x) = f(a) + f'(a)(x-a) + f''(a)/2! (x-a)^2 + ... + f^(n)(a)/n! (x-a)^n. It is the unique polynomial of degree at most n whose value and first n derivatives agree with f at x = a.</p>
+</section>
+<section class="faq-item" id="maclaurin">
+<h2>How is a Maclaurin polynomial different from a Taylor polynomial?</h2>
+<p>A Maclaurin polynomial is a Taylor polynomial whose center is 0. The powers are then ordinary powers of x. Every Maclaurin polynomial is a Taylor polynomial. The expansion of e^x about 1 is a Taylor polynomial and not a Maclaurin polynomial.</p>
+</section>
+<section class="faq-item" id="remainder">
+<h2>How do you estimate the remainder of a Taylor polynomial?</h2>
+<p>Lagrange's form says the error at x equals f^(n+1)(c)/(n+1)! (x-a)^(n+1) for some c between a and x. If the absolute value of f^(n+1)(t) is at most M on that interval, the absolute error is at most M times |x-a|^(n+1)/(n+1)!. The bound is a ceiling, not the exact error. If the interval reaches a singularity, no finite M exists, and this page says so.</p>
+</section>
+<section class="faq-item" id="radius">
+<h2>What is the radius of convergence of a Taylor series?</h2>
+<p>It is the radius of the largest disk, centered at a, inside which the infinite series converges. For e^x, sin x, and cos x the radius is infinite. For ln(1+x) and for 1/(1-x) it is the distance from a to the nearest singularity. For arctan x the singularities are the imaginary points i and -i, so the radius is the square root of 1+a^2. A finite polynomial can still be evaluated outside that disk. The infinite series need not approach the function there.</p>
+</section>
+<section class="faq-item" id="odd">
+<h2>Why does the Maclaurin series for sin x use only odd powers?</h2>
+<p>sin x is an odd function, so sin(-x) = -sin x. The even-order derivatives of an odd function are 0 at 0, and the coefficients of the even powers are 0. cos x is even, so its odd-order derivatives at 0 vanish and only even powers remain.</p>
+</section>
+<section class="faq-item" id="equal">
+<h2>Is a Taylor polynomial equal to the function?</h2>
+<p>Only in special cases. If f is a polynomial of degree d and n is at least d, the Taylor polynomial equals f everywhere. For e^x, sin x, and ln(1+x), a finite polynomial matches the function at the center and is only an approximation nearby. Raising n improves the match near the center, inside the radius of convergence. The remainder bound measures the gap.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource from Joshua Israel Ventures LLC.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.</p>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../privacy/">Privacy</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../contact/">Contact</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/taylor-polynomial.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
