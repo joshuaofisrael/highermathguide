@@ -31,10 +31,10 @@ No build step is required. HTML, CSS, and JS are ready to serve as-is. KaTeX loa
 | `pathways/` | AP Calc AB bridge; linear algebra; intro to proofs |
 | `calculators/` | Index + browser tools |
 | `sources/` | Outbound reference directory |
-| `contact/` | Mailto contact form (`[Contact: Higher Math Guide]`) |
+| `contact/` | Contact form posted to FormSubmit (`[Contact: highermathguide.com] New message`) |
 | `disclaimer/` | Educational disclaimer |
 | `css/styles.css` | Shared styles (indigo accent) |
-| `js/main.js` | Nav, contact mailto, calculators |
+| `js/main.js` | Nav and calculators |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawlers and AI summary |
 
 ## Notes
