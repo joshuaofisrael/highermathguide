@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://highermathguide.com/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/calculus-foundations.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -67,7 +67,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/sequences-series-infinite-sums.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/convergence-tests-series.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -107,7 +107,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -167,7 +167,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/sequence-series.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -198,6 +198,11 @@
   <url>
     <loc>https://highermathguide.com/calculators/second-order-ode.html</loc>
     <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/calculators/taylor-polynomial.html</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
