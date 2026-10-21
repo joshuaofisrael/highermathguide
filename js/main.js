@@ -135,73 +135,6 @@
     return r;
   }
 
-  /* Normal CDF via Abramowitz & Stegun 7.1.26 rational approximation to erf */
-  function erfApprox(x) {
-    var sign = x < 0 ? -1 : 1;
-    x = Math.abs(x);
-    var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741;
-    var a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
-    var t = 1 / (1 + p * x);
-    var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
-    return sign * y;
-  }
-
-  function normalCdf(z) {
-    return 0.5 * (1 + erfApprox(z / Math.SQRT2));
-  }
-
-  /* Inverse normal CDF via Beasley-Springer/Moro-style rational approximation */
-  function invNormalCdf(p) {
-    if (!(p > 0 && p < 1)) throw new Error("Percentile / probability must be strictly between 0 and 1.");
-    if (p === 0.5) return 0;
-    var a = [
-      -3.969683028665376e+01,
-      2.209460984245205e+02,
-      -2.759285104469687e+02,
-      1.383577459334152e+02,
-      -3.066479806614716e+01,
-      2.506628277459239e+00
-    ];
-    var b = [
-      -5.447609879822406e+01,
-      1.615858368580409e+02,
-      -1.556989798598866e+02,
-      6.680131188771972e+01,
-      -1.328068155288572e+01
-    ];
-    var c = [
-      -7.784894002430293e-03,
-      -3.223964580411365e-01,
-      -2.400758277161838e+00,
-      -2.549732539343734e+00,
-      4.374664141464968e+00,
-      2.938163982698783e+00
-    ];
-    var d = [
-      7.784695709041462e-03,
-      3.224671290700398e-01,
-      2.445134137142996e+00,
-      3.754408661907416e+00
-    ];
-    var plow = 0.02425;
-    var phigh = 1 - plow;
-    var q, r;
-    if (p < plow) {
-      q = Math.sqrt(-2 * Math.log(p));
-      return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
-        ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
-    }
-    if (p > phigh) {
-      q = Math.sqrt(-2 * Math.log(1 - p));
-      return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
-        ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
-    }
-    q = p - 0.5;
-    r = q * q;
-    return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q /
-      (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1);
-  }
-
   /* ---------- Numerical derivative ---------- */
   (function () {
     var calcBtn = document.getElementById("calc-slope");
@@ -658,32 +591,106 @@
   );
 
   /* ---------- Normal CDF ---------- */
+  function setNcdfGroup(el, hidden) {
+    if (!el) return;
+    el.hidden = hidden;
+    var controls = el.querySelectorAll("input, select");
+    for (var i = 0; i < controls.length; i++) controls[i].disabled = hidden;
+  }
+
+  function ncdfHint(mode) {
+    if (mode === "cdf") {
+      return "Φ(z) is the left tail of a standard normal: the probability of a value at or below z.";
+    }
+    if (mode === "inv") {
+      return "A value above 1 is a percentage, so 97.5 and 0.975 match. Mean 0 and standard deviation 1 return a z score. Any other mean and a positive standard deviation return a raw score.";
+    }
+    return "Standard deviation must be greater than 0. For a probability between two values, put the lower bound below the upper bound. On a continuous curve, including an endpoint does not change the probability.";
+  }
+
+  function syncNcdf() {
+    var modeEl = document.getElementById("ncdf-mode");
+    if (!modeEl) return;
+    var mode = modeEl.value || "score";
+    setNcdfGroup(document.getElementById("ncdf-score-fields"), mode !== "score");
+    setNcdfGroup(document.getElementById("ncdf-z-fields"), mode !== "cdf");
+    setNcdfGroup(document.getElementById("ncdf-inv-fields"), mode !== "inv");
+    if (mode === "score") {
+      var range = (document.getElementById("ncdf-range") || {}).value || "between";
+      setNcdfGroup(document.getElementById("ncdf-a-wrap"), range === "lt");
+      setNcdfGroup(document.getElementById("ncdf-b-wrap"), range === "gt");
+    }
+    var hint = document.getElementById("ncdf-hint");
+    if (hint) hint.textContent = ncdfHint(mode);
+  }
+
+  function hideNcdfResult() {
+    var resultEl = document.getElementById("ncdf-result");
+    var errorEl = document.getElementById("ncdf-error");
+    if (resultEl) resultEl.classList.remove("visible");
+    if (errorEl) {
+      errorEl.classList.remove("visible");
+      errorEl.textContent = "";
+    }
+  }
+
+  var ncdfForm = document.getElementById("ncdf-form");
+  if (ncdfForm) {
+    ncdfForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  }
+
+  var ncdfMode = document.getElementById("ncdf-mode");
+  if (ncdfMode) {
+    ncdfMode.addEventListener("change", function () {
+      syncNcdf();
+      hideNcdfResult();
+    });
+    var ncdfRange = document.getElementById("ncdf-range");
+    if (ncdfRange) {
+      ncdfRange.addEventListener("change", function () {
+        syncNcdf();
+        hideNcdfResult();
+      });
+    }
+    syncNcdf();
+  }
+
   wireCalc(
     { compute: "ncdf-compute", reset: "ncdf-reset", result: "ncdf-result", amount: "ncdf-amount", detail: "ncdf-detail", error: "ncdf-error" },
     function (api) {
-      var mode = (document.getElementById("ncdf-mode") || {}).value || "cdf";
+      if (!window.NormalCdf) throw new Error("The calculator script did not load. Refresh the page.");
+      var mode = (document.getElementById("ncdf-mode") || {}).value || "score";
+      var input = { mode: mode };
       if (mode === "cdf") {
-        var z = parseNum(document.getElementById("ncdf-z"), "z");
-        var phi = normalCdf(z);
-        api.showResult(
-          "Φ(" + formatNum(z) + ") ≈ " + formatNum(phi),
-          "Standard normal CDF via erf approximation (Abramowitz & Stegun 7.1.26). Absolute error is typically under about 1.5×10⁻⁷. Educational use only."
-        );
+        input.z = document.getElementById("ncdf-z").value;
+      } else if (mode === "inv") {
+        input.p = document.getElementById("ncdf-pct").value;
+        input.mu = document.getElementById("ncdf-inv-mu").value;
+        input.sigma = document.getElementById("ncdf-inv-sigma").value;
       } else {
-        var pct = parseNum(document.getElementById("ncdf-pct"), "percentile");
-        var p = pct > 1 ? pct / 100 : pct;
-        if (!(p > 0 && p < 1)) throw new Error("Enter a percentile in (0,100) or a probability in (0,1).");
-        var zz = invNormalCdf(p);
-        api.showResult(
-          "z ≈ " + formatNum(zz) + "  (for p = " + formatNum(p) + ")",
-          "Inverse CDF uses a rational approximation (Acklam / Beasley–Springer style). Educational use only."
-        );
+        input.mu = document.getElementById("ncdf-mu").value;
+        input.sigma = document.getElementById("ncdf-sigma").value;
+        input.range = document.getElementById("ncdf-range").value;
+        input.a = document.getElementById("ncdf-a").value;
+        input.b = document.getElementById("ncdf-b").value;
       }
+      var out = window.NormalCdf.solve(input);
+      api.showResult(out.amount, out.detail);
     },
     function () {
-      document.getElementById("ncdf-mode").value = "cdf";
+      document.getElementById("ncdf-mode").value = "score";
+      document.getElementById("ncdf-mu").value = "100";
+      document.getElementById("ncdf-sigma").value = "15";
+      document.getElementById("ncdf-range").value = "between";
+      document.getElementById("ncdf-a").value = "85";
+      document.getElementById("ncdf-b").value = "115";
       document.getElementById("ncdf-z").value = "1.96";
       document.getElementById("ncdf-pct").value = "97.5";
+      document.getElementById("ncdf-inv-mu").value = "0";
+      document.getElementById("ncdf-inv-sigma").value = "1";
+      syncNcdf();
     }
   );
 
