@@ -52,7 +52,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [2 by 2 eigenvalue calculator](https://highermathguide.com/calculators/eigenvalue-2x2.html): real or complex eigenvalues from the characteristic polynomial
 - [Bayes theorem calculator](https://highermathguide.com/calculators/bayes-theorem.html): posterior probability from a prior and two likelihoods
 - [Binomial probability calculator](https://highermathguide.com/calculators/binomial-probability.html): n choose k and the probability of exactly k successes
-- [Normal CDF and z score calculator](https://highermathguide.com/calculators/normal-cdf.html): standard normal probabilities and inverse percentiles
+- [Normal distribution calculator](https://highermathguide.com/calculators/normal-cdf.html): normal probabilities from a mean, a standard deviation, and bounds, plus z scores and inverse percentiles
 - [Combinatorics calculator](https://highermathguide.com/calculators/combinatorics.html): permutations, combinations, and factorials
 
 ## Study pathways

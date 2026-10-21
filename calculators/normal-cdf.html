@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Normal CDF and Z Score Calculator, Higher Math Guide</title>
-<meta name="description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
+<title>Normal Distribution Calculator, Higher Math Guide</title>
+<meta name="description" content="Enter a mean, a standard deviation, and bounds to find a normal probability, including the chance between two values. Z scores and percentiles work too.">
 <link rel="canonical" href="https://highermathguide.com/calculators/normal-cdf.html">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Normal CDF and Z Score Calculator, Higher Math Guide">
-<meta property="og:description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
+<meta property="og:title" content="Normal Distribution Calculator, Higher Math Guide">
+<meta property="og:description" content="Enter a mean, a standard deviation, and bounds to find a normal probability, including the chance between two values. Z scores and percentiles work too.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/normal-cdf.html">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Normal CDF and Z Score Calculator, Higher Math Guide">
-<meta name="twitter:description" content="Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.">
+<meta name="twitter:title" content="Normal Distribution Calculator, Higher Math Guide">
+<meta name="twitter:description" content="Enter a mean, a standard deviation, and bounds to find a normal probability, including the chance between two values. Z scores and percentiles work too.">
 <link rel="stylesheet" href="../css/styles.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
@@ -28,8 +28,8 @@
     {
       "@type": "WebPage",
       "@id": "https://highermathguide.com/calculators/normal-cdf.html#webpage",
-      "name": "Normal CDF and Z Score Calculator",
-      "description": "Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.",
+      "name": "Normal Distribution Calculator",
+      "description": "Enter a mean, a standard deviation, and bounds to find a normal probability, including the chance between two values. Z scores and percentiles work too.",
       "url": "https://highermathguide.com/calculators/normal-cdf.html",
       "isPartOf": {
         "@type": "WebSite",
@@ -61,15 +61,15 @@
           "name": "Should I type 97.5 or 0.975 in inverse mode?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same z."
+            "text": "Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same cutoff. Mean 0 and standard deviation 1 return that z score. Another mean and standard deviation return the raw score x = mean + z times the standard deviation."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I handle a normal that is not standard?",
+          "name": "Can this page use a mean and a standard deviation?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Convert x to a z score by subtracting the mean and dividing by the standard deviation, then use this page. The page itself only knows the standard normal."
+            "text": "Yes. Raw score mode takes a mean, a standard deviation greater than 0, and a left tail, a right tail, or both bounds. Each bound is converted with z = (x - mean) / standard deviation, and the probability comes from the standard normal CDF. Standard normal mode still accepts a z score directly."
           }
         },
         {
@@ -78,6 +78,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Near the center it is plenty for homework. Far in the tails the documented error bound is small but not zero, and this is still not a certified library. Use a statistics package when a decision is high stakes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do the endpoints count in a between probability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a continuous normal model, one exact score has probability 0. The probability between two values is the same whether the endpoints are included or left out. The page prints the strict inequalities and the z score of each bound."
           }
         }
       ]
@@ -96,9 +104,9 @@
     {
       "@type": "WebApplication",
       "@id": "https://highermathguide.com/calculators/normal-cdf.html#app",
-      "name": "Normal CDF and Z Score Calculator",
+      "name": "Normal Distribution Calculator",
       "url": "https://highermathguide.com/calculators/normal-cdf.html",
-      "description": "Approximate the standard normal CDF Phi(z) or invert a percentile to a z score. Educational numerical approximations in your browser.",
+      "description": "Enter a mean, a standard deviation, and bounds to find a normal probability, including the chance between two values. Z scores and percentiles work too.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript",
@@ -137,7 +145,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Normal CDF and z score calculator",
+      "name": "Normal distribution calculator",
       "item": "https://highermathguide.com/calculators/normal-cdf.html"
     }
   ]
@@ -170,50 +178,89 @@
 <div class="wrap">
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
-<p class="section-kicker">Bell curve tails</p>
-<h1>Normal CDF and z score calculator</h1>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 1 Oct 2026</p>
+<p class="section-kicker">Normal model</p>
+<h1>Normal distribution calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 21 Oct 2026</p>
 </header>
 <div class="article-body">
-<p>This page offers two standard normal tools. In CDF mode it approximates $\Phi(z)=P(Z\le z)$ for $Z\sim N(0,1)$. In inverse mode it returns a $z$ whose left tail probability matches a percentile you type.</p>
-<p>The output is meaningful when a normal model is already justified, and when you want a left tail probability or a $z$ cutoff. Many school tables stop at two decimals. This page is a smoother table, not a reason to assume normality.</p>
-<p>This is not a certified statistics library and not a proof. CDF uses an error function approximation from Abramowitz and Stegun (formula 7.1.26) via $\Phi(z)=\tfrac12(1+\mathrm{erf}(z/\sqrt{2}))$. The inverse uses a rational approximation in the style of Acklam and Beasley Springer. Treat the digits as educational, not as a regulatory compute.</p>
+<p>This page computes probabilities for a normal model with mean $\mu$ and standard deviation $\sigma$. Raw score mode takes those two numbers and a range: below an upper bound, $P(X&lt;b)$, above a lower bound, $P(X&gt;a)$, or between two values, $P(a&lt;X&lt;b)$. Each bound is standardized with $z=(x-\mu)/\sigma$, then read from the standard normal CDF. Standard normal mode approximates $\Phi(z)=P(Z\le z)$ for $Z\sim N(0,1)$. Inverse mode turns a percentile into a cutoff. With mean $0$ and standard deviation $1$ that cutoff is a $z$ score. With any other mean and a positive standard deviation it is the raw score $x=\mu+z\sigma$.</p>
+<p>The number is meaningful when a normal model is already justified. Many school tables stop at two decimals of $z$. This page is a smoother table that also accepts the mean and the standard deviation. It evaluates a model you have already chosen.</p>
+<p>CDF uses an error function approximation from Abramowitz and Stegun (formula 7.1.26) via $\Phi(z)=\tfrac12(1+\mathrm{erf}(z/\sqrt{2}))$. The inverse uses a rational approximation in the style of Acklam and Beasley Springer. Treat the digits as educational. A statistics package belongs in a high stakes setting.</p>
 </div>
 
-<div class="calc-panel" style="margin:1.5rem 0">
+<form class="calc-panel wide" id="ncdf-form" style="margin:1.5rem 0" autocomplete="off">
 <label for="ncdf-mode">Mode</label>
-<select id="ncdf-mode">
-<option value="cdf" selected>Φ(z) from z-score</option>
-<option value="inv">z-score from percentile / probability</option>
+<select id="ncdf-mode" aria-describedby="ncdf-hint">
+<option value="score" selected>Raw score with mean and standard deviation</option>
+<option value="cdf">Standard normal z score</option>
+<option value="inv">Inverse, percentile to a cutoff</option>
 </select>
-<label for="ncdf-z">z-score</label>
+<div id="ncdf-score-fields" style="margin-top:0.85rem">
+<label for="ncdf-mu">Mean</label>
+<input id="ncdf-mu" type="number" value="100" step="any" inputmode="decimal" aria-describedby="ncdf-hint">
+<label for="ncdf-sigma">Standard deviation</label>
+<input id="ncdf-sigma" type="number" value="15" step="any" inputmode="decimal" aria-describedby="ncdf-hint">
+<label for="ncdf-range">Probability</label>
+<select id="ncdf-range">
+<option value="between" selected>Between two values, P(a &lt; X &lt; b)</option>
+<option value="lt">Below a value, P(X &lt; b)</option>
+<option value="gt">Above a value, P(X &gt; a)</option>
+</select>
+<div id="ncdf-a-wrap" style="margin-top:0.85rem">
+<label for="ncdf-a">Lower bound a</label>
+<input id="ncdf-a" type="number" value="85" step="any" inputmode="decimal">
+</div>
+<div id="ncdf-b-wrap" style="margin-top:0.85rem">
+<label for="ncdf-b">Upper bound b</label>
+<input id="ncdf-b" type="number" value="115" step="any" inputmode="decimal">
+</div>
+</div>
+<div id="ncdf-z-fields" style="margin-top:0.85rem" hidden>
+<label for="ncdf-z">z score</label>
 <input id="ncdf-z" type="number" value="1.96" step="any" inputmode="decimal">
-<label for="ncdf-pct">Percentile (e.g. 97.5) or probability in (0,1)</label>
-<input id="ncdf-pct" type="number" value="97.5" step="any" inputmode="decimal">
-<p class="calc-hint">For inverse mode, values above 1 are treated as percentages (97.5 → 0.975).</p>
+</div>
+<div id="ncdf-inv-fields" style="margin-top:0.85rem" hidden>
+<label for="ncdf-pct">Percentile (for example 97.5) or probability in (0, 1)</label>
+<input id="ncdf-pct" type="number" value="97.5" step="any" inputmode="decimal" aria-describedby="ncdf-hint">
+<label for="ncdf-inv-mu">Mean</label>
+<input id="ncdf-inv-mu" type="number" value="0" step="any" inputmode="decimal">
+<label for="ncdf-inv-sigma">Standard deviation</label>
+<input id="ncdf-inv-sigma" type="number" value="1" step="any" inputmode="decimal" aria-describedby="ncdf-hint">
+</div>
+<p class="calc-hint" id="ncdf-hint">Standard deviation must be greater than 0. For a probability between two values, put the lower bound below the upper bound. On a continuous curve, including an endpoint does not change the probability.</p>
 <div class="calc-actions">
-<button type="button" class="btn" id="ncdf-compute">Compute</button>
+<button type="submit" class="btn" id="ncdf-compute">Compute</button>
 <button type="button" class="btn btn-secondary" id="ncdf-reset">Reset</button>
 </div>
 <p class="calc-error" id="ncdf-error" role="alert"></p>
-<div class="calc-result" id="ncdf-result">
+<div class="calc-result" id="ncdf-result" role="status" aria-live="polite">
 <div class="amount" id="ncdf-amount"></div>
-<div class="detail" id="ncdf-detail"></div>
+<div class="detail steps" id="ncdf-detail"></div>
 </div>
-</div>
+</form>
 
 <div class="article-body">
-<h2>How to use the two modes</h2>
-<p>For $\Phi(z)$, leave the menu on CDF, type a $z$ score, and press Compute. The default $z=1.96$ should land near $0.975$, the familiar two sided $95\%$ cutoff from the left.</p>
-<p>For a $z$ from a percentile, switch to inverse mode. Values above $1$ are treated as percentages, so $97.5$ means $0.975$. Values already in $(0,1)$ are treated as probabilities. The default $97.5$ should return a $z$ near $1.96$.</p>
+<h2>How to use the three modes</h2>
+<p>Raw score mode is the default. Enter the mean, a standard deviation greater than 0, and the probability you want: below an upper bound, above a lower bound, or between two bounds. The defaults are mean 100, standard deviation 15, and the probability between 85 and 115. Press Compute, or press Enter from any box. The lines under the answer show $z=(x-\mu)/\sigma$ for each bound, then the probability in words.</p>
+<p>Standard normal mode sets the mean and the standard deviation aside. Type a $z$ score. The default $1.96$ should land near $0.975$, the familiar left tail at the edge of a two sided $95\%$ interval.</p>
+<p>Inverse mode turns a left tail probability into a cutoff. A number above $1$ is read as a percentage, so $97.5$ and $0.975$ ask for the same place on the curve. Mean $0$ and standard deviation $1$ return a $z$ score. Any other mean, with a positive standard deviation, returns the raw score $x=\mu+z\sigma$. Inverse mode keeps its own mean and standard deviation. Switching modes does not copy the raw score boxes into the inverse boxes.</p>
 <h2>How to read the output</h2>
-<p>$\Phi(z)$ is a left tail. It is the chance that a standard normal is at most $z$. It is not a two sided $p$ value, and it is not $P(Z&gt;z)$ unless you form $1-\Phi(z)$ yourself.</p>
-<p>The inverse answers “which $z$ has this left tail?”. If your course talks about a right tail cutoff, convert first. A right tail of $5\%$ is a left tail of $95\%$, not $5\%$.</p>
-<p>To move from a general $N(\mu,\sigma^2)$ value $x$ to a $z$, compute $z=(x-\mu)/\sigma$ by hand, then use this page. The page does not store $\mu$ or $\sigma$.</p>
+<p>The large number is the probability, or the cutoff in inverse mode. The lines underneath substitute your inputs into $z=(x-\mu)/\sigma$ and then into $\Phi$. A probability between two values is $\Phi(z_b)-\Phi(z_a)$. A left tail is $\Phi(z)$. A right tail is $1-\Phi(z)$.</p>
+<p>A left tail answers how much of the model sits below the bound. A two sided interval uses both tails, and you add those yourself. A right tail of $5\%$ is a left tail of $95\%$.</p>
+<p>On a continuous curve, the probability of one exact number is 0. The page prints strict inequalities. The inclusive version, with $\le$ or $\ge$, is the same number.</p>
+<h2>Two worked examples</h2>
+<h3>The middle band of a placement test</h3>
+<p>A placement test is modeled as normal with mean 100 and standard deviation 15. The band from 85 to 115 sits one standard deviation on either side of the mean. Leave the page on raw score mode, keep those four numbers, and choose the probability between two values. The standardized ends are</p>
+$$z=\frac{85-100}{15}=-1,\qquad z=\frac{115-100}{15}=1.$$
+<p>The probability is $\Phi(1)-\Phi(-1)$, about $0.6827$. Roughly 68 percent of this model falls in that band. That is the middle slice of the empirical rule, checked from the curve. Including the scores 85 and 115 themselves does not move the probability, because a continuous model gives one exact score probability 0.</p>
+<h3>From 1.96 back to a raw cutoff</h3>
+<p>Switch to standard normal mode and enter $1.96$. The left tail $\Phi(1.96)$ is about $0.9750$, so about 2.5 percent of a standard normal sits above $1.96$. Inverse mode runs that fact backwards. Leave the mean at $0$ and the standard deviation at $1$, and type $97.5$. The cutoff returns near $1.96$.</p>
+<p>The same percentile on the placement test uses mean $100$ and standard deviation $15$ in inverse mode. The page returns $x=\mu+z\sigma$, a bit under $129.4$. About 97.5 percent of that test model sits at or below that score.</p>
 <h2>Common pitfalls</h2>
-<p>Accuracy is weaker far in the tails than near the mean. Do not use this page for extreme quantiles in a high stakes setting. A statistical package with a well tested library belongs there.</p>
-<p>Percentiles and probabilities use the same box in inverse mode. Typing $0.975$ and typing $97.5$ are meant to agree. Typing $97.5$ in CDF mode as if it were a $z$ will not do what you wanted.</p>
-<p>A normal curve is a model. Data that are skewed, discrete, or bounded can make a $z$ score a poor summary even when the arithmetic is fine.</p>
+<p>The standard deviation has to be greater than 0. A blank box, a zero, or a negative value stops the page with a message. For a probability between two values, the lower bound has to sit below the upper bound. Equal bounds are allowed, and the probability is 0.</p>
+<p>Percentiles and $z$ scores are different boxes. Typing $97.5$ in standard normal mode treats it as a $z$ score, far in the tail. Typing it in inverse mode treats it as a percentage. Typing $0.975$ and typing $97.5$ in inverse mode are meant to agree.</p>
+<p>Accuracy is weaker far in the tails than near the mean. The documented error of the erf approximation is small, and it is still an approximation. Use a statistics package when a decision is high stakes.</p>
+<p>A normal curve is a model. Data that are skewed, discrete, or bounded can make these probabilities a poor summary even when the arithmetic is fine.</p>
 <h2>Related reading</h2>
 <p>Place the model on <a href="../topics/probability-statistics.html">probability and statistics</a>. Nearby language: <a href="../glossary/#random-variable">random variable</a>, <a href="../glossary/#expected-value">expected value</a>, and <a href="../glossary/#probability">probability</a>. Belief updates after evidence are on the <a href="bayes-theorem.html">Bayes theorem calculator</a> and in <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>.</p>
 <p>A discrete two outcome model is the <a href="binomial-probability.html">binomial probability calculator</a>. Counting is on the <a href="combinatorics.html">combinatorics calculator</a>.</p>
@@ -224,15 +271,22 @@
 <section class="faq-item" id="lefttail">
 <h2>Is Phi(z) a two sided probability?</h2>
 <p>No. It is the left tail P(Z is at most z). A two sided 95 percent interval uses both tails. People often want 1 minus Phi(z) for a right tail.</p>
-</section><section class="faq-item" id="percent">
+</section>
+<section class="faq-item" id="percent">
 <h2>Should I type 97.5 or 0.975 in inverse mode?</h2>
-<p>Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same z.</p>
-</section><section class="faq-item" id="general">
-<h2>How do I handle a normal that is not standard?</h2>
-<p>Convert x to a z score by subtracting the mean and dividing by the standard deviation, then use this page. The page itself only knows the standard normal.</p>
-</section><section class="faq-item" id="accuracy">
+<p>Either. A value above 1 is treated as a percentage. A value already between 0 and 1 is treated as a probability. Both 97.5 and 0.975 ask for the same cutoff. Mean 0 and standard deviation 1 return that z score. Another mean and standard deviation return the raw score x = mean + z times the standard deviation.</p>
+</section>
+<section class="faq-item" id="mean">
+<h2>Can this page use a mean and a standard deviation?</h2>
+<p>Yes. Raw score mode takes a mean, a standard deviation greater than 0, and a left tail, a right tail, or both bounds. Each bound is converted with z = (x - mean) / standard deviation, and the probability comes from the standard normal CDF. Standard normal mode still accepts a z score directly.</p>
+</section>
+<section class="faq-item" id="accuracy">
 <h2>How accurate is the approximation?</h2>
 <p>Near the center it is plenty for homework. Far in the tails the documented error bound is small but not zero, and this is still not a certified library. Use a statistics package when a decision is high stakes.</p>
+</section>
+<section class="faq-item" id="endpoints">
+<h2>Do the endpoints count in a between probability?</h2>
+<p>For a continuous normal model, one exact score has probability 0. The probability between two values is the same whether the endpoints are included or left out. The page prints the strict inequalities and the z score of each bound.</p>
 </section>
 <div class="cta-panel">
 <p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
@@ -284,6 +338,7 @@
 </nav>
 </div>
 </footer>
+<script src="../js/normal-cdf.js"></script>
 <script src="../js/main.js"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
