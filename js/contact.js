@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  var CONTACT_ENDPOINT = "joshuaofisrael" + "@gmail.com";
+  var CONTACT_ENDPOINT = "4497ee41a1200e746e967998473d21da";
   var AJAX_URL = "https://formsubmit.co/ajax/" + CONTACT_ENDPOINT;
   var FORM_URL = "https://formsubmit.co/" + CONTACT_ENDPOINT;
   var MIN_MS = 3000;
