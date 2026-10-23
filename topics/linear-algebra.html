@@ -77,7 +77,7 @@
       "name": "Are the calculators only 2 by 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The eigenvalue calculator stays 2 by 2 so the characteristic polynomial is a quadratic you can audit by hand. The 3 by 3 matrix calculator computes a determinant and an inverse with exact fractions when the homework matrix is larger. The matrix pages do not find eigenvalues. The eigenvalue page does not find eigenvectors."
+        "text": "No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The 2 by 2 eigenvalue calculator keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The 3x3 eigenvalue calculator expands the characteristic polynomial and row reduces for a real eigenvector. The 3 by 3 matrix calculator computes a determinant and an inverse. It does not find eigenvalues."
       }
     },
     {
@@ -229,6 +229,7 @@
 <h2 id="eigen">Eigenvalues: lines the map keeps</h2>
 <p>An eigenvector is a nonzero vector $\mathbf{v}$ with $A\mathbf{v}=\lambda\mathbf{v}$. The map stretches or flips $\mathbf{v}$ and does not tip it off its line. The scalar $\lambda$ is the eigenvalue. The zero vector satisfies the equation for every $\lambda$, so the definition excludes it. The <a href="../glossary/#eigenspace">eigenspace</a> puts zero back in, because a subspace must contain zero. Read <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a> for the geometric tour, then the glossary lines for <a href="../glossary/#eigenvalue">eigenvalue</a> and <a href="../glossary/#eigenvector">eigenvector</a>.</p>
 <p>For a 2 by 2 matrix the eigenvalues are the roots of a quadratic. The trace and the determinant build that quadratic: $\lambda^{2}-(\operatorname{tr} A)\lambda+\det A$. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> reports the trace, the determinant, and the roots. It does not return eigenvectors, and it does not decide whether a repeated root gives two independent directions. You do that by hand. If the quadratic formula itself is rusty, the <a href="../calculators/quadratic-formula.html">quadratic formula calculator</a> is the same algebra without a matrix.</p>
+<p>For a 3 by 3 matrix the characteristic polynomial is a cubic. The <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands $\det(A-\lambda I)$ from the trace, the sum of the principal 2 by 2 minors, and the determinant, then row reduces $A-\lambda I$ for a real eigenvector.</p>
 <div class="callout"><strong>Check.</strong> Let $A=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}$. It is triangular, so the eigenvalues are the diagonal entries $1$ and $2$. Trace $3$ and determinant $2$ give $\lambda^{2}-3\lambda+2=(\lambda-1)(\lambda-2)$. For $\lambda=1$, $A-I=\begin{pmatrix}0&amp;1\\0&amp;1\end{pmatrix}$, so eigenvectors are multiples of $(1,0)$. For $\lambda=2$, $A-2I=\begin{pmatrix}-1&amp;1\\0&amp;0\end{pmatrix}$, so eigenvectors are multiples of $(1,1)$. Check $A(1,1)=(2,2)$. The <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a> should agree about the roots. The eigenvectors are your job.</div>
 
 <h2 id="handoff">Where the geometry goes next</h2>
@@ -243,7 +244,7 @@
 <li>The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant and for $AB$ versus $BA$, after you read the columns as images of the basis.</li>
 <li>The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for cofactor expansion, the adjugate, and an inverse in exact fractions.</li>
 <li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>, then the triangular example above by hand.</li>
-<li>Roots on the <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a>. Eigenvectors by hand. A repeated root still needs a second independent direction. The <a href="../pathways/linear-algebra-first-course.html">pathway</a> has that checkpoint.</li>
+<li>Roots on the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. Eigenvectors by hand for that case. When the matrix is 3 by 3, the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> row reduces for a real eigenvector. A repeated root still needs enough independent directions. The <a href="../pathways/linear-algebra-first-course.html">pathway</a> has that checkpoint.</li>
 <li>When several variables are next: <a href="multivariable-vector-calculus.html">multivariable calculus</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</li>
 </ol>
 
@@ -277,7 +278,7 @@
 </section>
 <section class="faq-item" id="twobytwo">
 <h2>Are the calculators only 2 by 2?</h2>
-<p>No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The <a href="../calculators/eigenvalue-2x2.html">eigenvalue calculator</a> stays 2 by 2 so the characteristic polynomial is a quadratic you can audit by hand. The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> computes a determinant and an inverse with exact fractions when the homework matrix is larger. The matrix pages do not find eigenvalues. The eigenvalue page does not find eigenvectors.</p>
+<p>No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands the characteristic polynomial and row reduces for a real eigenvector. The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> computes a determinant and an inverse. It does not find eigenvalues.</p>
 </section>
 <section class="faq-item" id="diagonal">
 <h2>Is every matrix diagonalizable?</h2>
@@ -297,6 +298,7 @@
 <li><a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a></li>
 <li><a href="../calculators/rref.html">Reduced row echelon form calculator</a></li>
 <li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
+<li><a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a></li>
 <li><a href="../calculators/quadratic-formula.html">Quadratic formula calculator</a></li>
 <li><a href="multivariable-vector-calculus.html">Multivariable and vector calculus</a></li>
 <li><a href="../glossary/#eigenvalue">Glossary: eigenvalue</a></li>
@@ -333,7 +335,7 @@
 <li><a href="../disclaimer/">Disclaimer</a></li>
 <li><a href="../terms/">Terms</a></li>
 <li><a href="../privacy/">Privacy</a></li>
-<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+<li><a href="../contact/">Email</a></li>
 </ul>
 </div>
 <div class="footer-cta">
