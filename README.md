@@ -40,5 +40,5 @@ No build step is required. HTML, CSS, and JS are ready to serve as-is. KaTeX loa
 ## Notes
 
 - Content is original educational prose. Not a substitute for courses or exams.
-- No ads, affiliate links, or paid product funnels.
+- The site may show Google AdSense ads. Affiliate links are not used now. The disclaimer says they may be added later. There is no paid product to buy.
 - GitHub Pages should serve from `main` branch root.
