@@ -38,7 +38,20 @@
 
   if (/[?&]sent=1(?:&|$)/.test(window.location.search)) showThanks();
 
+  function applySubject() {
+    var subject = form.querySelector('[name="_subject"]');
+    var message = form.querySelector('[name="message"]');
+    if (!subject) return;
+    var text = message ? String(message.value || "") : "";
+    if (/\bDMCA\b/i.test(text)) {
+      subject.value = "[Contact: highermathguide.com] DMCA notice";
+    } else {
+      subject.value = "[Contact: highermathguide.com] New message";
+    }
+  }
+
   form.addEventListener("submit", function (event) {
+    applySubject();
     var honey = form.querySelector('[name="_honey"]');
     if (honey && honey.value) {
       event.preventDefault();
