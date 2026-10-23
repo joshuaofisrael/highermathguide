@@ -306,7 +306,9 @@ for (const file of htmlFiles) {
     const tag = im[0];
     if (!/\bwidth=/i.test(tag) || !/\bheight=/i.test(tag)) fail(`${file} img missing dimensions ${tag}`);
     const fold = html.indexOf("<main");
-    if (im.index > fold && !/loading=["']lazy["']/i.test(tag)) fail(`${file} below-fold img not lazy ${tag}`);
+    const homeHero = file === "index.html" && /fetchpriority=["']high["']/i.test(tag);
+    if (homeHero && /loading=["']lazy["']/i.test(tag)) fail(`${file} homepage hero must not be lazy`);
+    if (im.index > fold && !/loading=["']lazy["']/i.test(tag) && !homeHero) fail(`${file} below-fold img not lazy ${tag}`);
   });
   if (file !== "404.html") indexable.push(file);
 }

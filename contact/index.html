@@ -4,30 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact Higher Math Guide</title>
-<meta name="description" content="Write to Higher Math Guide at joshuaofisrael@gmail.com. Ask a question, send a correction, or suggest a topic. Free educational project, not a tutoring desk.">
+<meta name="description" content="Send a question, a correction, or a topic idea to Higher Math Guide. Free educational project, not a tutoring desk.">
 <link rel="canonical" href="https://highermathguide.com/contact/">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Contact Higher Math Guide">
-<meta property="og:description" content="Write to Higher Math Guide at joshuaofisrael@gmail.com. Ask a question, send a correction, or suggest a topic. Free educational project, not a tutoring desk.">
+<meta property="og:description" content="Send a question, a correction, or a topic idea to Higher Math Guide. Free educational project, not a tutoring desk.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/contact/">
 <meta property="og:site_name" content="Higher Math Guide">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Contact Higher Math Guide">
-<meta name="twitter:description" content="Write to Higher Math Guide at joshuaofisrael@gmail.com. Ask a question, send a correction, or suggest a topic. Free educational project, not a tutoring desk.">
+<meta name="twitter:description" content="Send a question, a correction, or a topic idea to Higher Math Guide. Free educational project, not a tutoring desk.">
 <link rel="stylesheet" href="../css/styles.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact Higher Math Guide",
-  "description": "Write to Higher Math Guide at joshuaofisrael@gmail.com with subject [Contact: highermathguide.com] New message.",
+  "description": "Send a question, a correction, or a topic idea to Higher Math Guide. The subject is [Contact: highermathguide.com] New message.",
   "url": "https://highermathguide.com/contact/",
   "publisher": {
     "@type": "Organization",
     "@id": "https://highermathguide.com/#organization",
     "name": "Joshua Israel Ventures LLC",
-    "email": "joshuaofisrael@gmail.com",
     "brand": {
       "@type": "Brand",
       "@id": "https://highermathguide.com/#site",
@@ -90,30 +89,36 @@
 
 <div class="article-body">
 <h2>What happens after you write</h2>
-<p>The form sends your name, email, and message. The subject is set to <strong>[Contact: highermathguide.com] New message</strong>. After it sends, you land on a short <a href="thanks.html">thank you page</a>. Mail arrives at <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>.</p>
+<p>The form sends your name, email, and message. The subject is set to <strong>[Contact: highermathguide.com] New message</strong>. When it goes through, a thank you appears on this page. If the browser sends the form without JavaScript, you return here with the same thank you.</p>
 <p>If you are not sure what to ask, start from the <a href="../">home page</a>. It lists the topic maps, the explainers, and the calculators.</p>
 <p>Replies usually come within a few business days when volume allows. You will get a human note, not an autoresponder sequence. If the question is already answered on a page, we may send you that link.</p>
 <p>This is not a tutoring desk and not a homework hotline. We may decline to solve a full assignment. We welcome short, specific questions and topic suggestions. See the <a href="../faq/#contact-expect">FAQ on contact expectations</a> and the <a href="../disclaimer/">disclaimer</a>.</p>
 </div>
 
-<form class="contact-form" id="contact-form" action="https://formsubmit.co/joshuaofisrael@gmail.com" method="POST">
+<p class="form-thanks" id="contact-thanks" hidden role="status">Thank you. Your note is on its way. We will read it and reply when we can.</p>
+<form class="contact-form" id="contact-form" action="https://formsubmit.co/" method="POST">
 <input type="hidden" name="_subject" value="[Contact: highermathguide.com] New message">
 <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="https://highermathguide.com/contact/thanks.html">
 <input type="hidden" name="_captcha" value="false">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<input type="hidden" name="_next" value="https://highermathguide.com/contact/?sent=1">
+<div class="hp-field" aria-hidden="true">
+<label for="contact-honey">Website</label>
+<input id="contact-honey" name="_honey" type="text" tabindex="-1" autocomplete="off" value="">
+</div>
 <label for="name">Name</label>
 <input id="name" name="name" type="text" required autocomplete="name">
 <label for="email">Email</label>
 <input id="email" name="email" type="email" required autocomplete="email">
 <label for="message">Message</label>
 <textarea id="message" name="message" required></textarea>
+<p class="form-note">Messages are used only to reply to you, never sold or shared. Read the <a href="../privacy/">privacy policy</a>.</p>
+<p class="form-error" id="contact-error" hidden role="alert"></p>
 <div class="calc-actions">
 <button type="submit" class="btn">Send message</button>
 </div>
 </form>
 
-<p style="margin-top:1.25rem;color:var(--ink-muted);font-size:0.95rem">You can also email directly: <a href="mailto:joshuaofisrael@gmail.com">joshuaofisrael@gmail.com</a>. Publisher: Joshua Israel Ventures LLC. Read <a href="../about/">About</a> for mission and the original content policy.</p>
+<p style="margin-top:1.25rem;color:var(--ink-muted);font-size:0.95rem">Publisher: Joshua Israel Ventures LLC. Read <a href="../about/">About</a> for mission and the original content policy.</p>
 </div>
 
 </main>
@@ -143,7 +148,6 @@
 <li><a href="../disclaimer/">Disclaimer</a></li>
 <li><a href="../terms/">Terms</a></li>
 <li><a href="../privacy/">Privacy</a></li>
-<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
 </ul>
 </div>
 <div class="footer-cta">
@@ -159,6 +163,7 @@
 </nav>
 </div>
 </footer>
+<script src="../js/contact.js"></script>
 <script src="../js/main.js"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
