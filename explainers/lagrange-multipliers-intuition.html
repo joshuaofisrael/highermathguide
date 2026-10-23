@@ -170,6 +170,10 @@
 <h1>Lagrange multipliers intuition</h1>
 <p class="article-meta">Explainer · Educational only · Updated 5 Oct 2026</p>
 </header>
+<figure class="article-figure">
+<img src="../images/hero-chalkboard.webp" srcset="../images/hero-chalkboard-800.webp 800w, ../images/hero-chalkboard.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A chalkboard of handwritten equations and curves for constrained optimization." class="crop-8" loading="lazy" decoding="async">
+<figcaption>Constraint curves sketched among chalkboard equations.</figcaption>
+</figure>
 <div class="article-body">
 <p>Unconstrained optimization hunts for places where the <a href="../glossary/#gradient">gradient</a> of an objective $f$ is zero. A <a href="../glossary/#constraint">constraint</a> $g(\mathbf{x})=c$ changes the hunt. You may only travel on the level set of $g$. The best value of $f$ on that set usually occurs where you can no longer climb $f$ without leaving the set. That is a tangency picture, not a new kind of calculus. The number that records the tangency is a <a href="../glossary/#lagrange-multiplier">Lagrange multiplier</a>.</p>
 <p>At a constrained local max or min, when $\nabla g$ is not zero, $\nabla f$ is parallel to $\nabla g$. So there is a number $\lambda$ with</p>
