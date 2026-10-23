@@ -28,6 +28,7 @@ const SECTION = {
   terms: "Terms",
   privacy: "Privacy",
   disclaimer: "Disclaimer",
+  copyright: "Copyright",
 };
 
 const failures = [];
