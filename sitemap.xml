@@ -211,6 +211,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://highermathguide.com/calculators/eigenvalue-3x3.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://highermathguide.com/pathways/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -232,7 +237,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/sources/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -257,7 +262,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/terms/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
@@ -267,12 +272,12 @@
   </url>
   <url>
     <loc>https://highermathguide.com/disclaimer/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

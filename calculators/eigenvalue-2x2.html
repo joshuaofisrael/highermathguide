@@ -181,7 +181,7 @@
 <div class="article-body">
 <p>This tool finds eigenvalues of a single $2\times 2$ real matrix $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$. Eigenvalues are the roots of the characteristic polynomial $\lambda^2-(\mathrm{tr}\,A)\lambda+\det A=0$, where $\mathrm{tr}\,A=a+d$ and $\det A=ad-bc$.</p>
 <p>The roots are meaningful when you want the stretch factors along directions that $A$ does not tip. A real eigenvalue $\lambda$ means some nonzero vector $\mathbf{v}$ satisfies $A\mathbf{v}=\lambda\mathbf{v}$. A complex conjugate pair means the real plane map rotates and scales, with no real invariant line.</p>
-<p>This is not a full eigensolver. It does not return eigenvectors, it does not handle $3\times 3$ matrices, and it does not prove diagonalizability. It solves a quadratic. For the geometry, read the eigenvalue explainer.</p>
+<p>This is not a full eigensolver. It does not return eigenvectors, and it does not prove diagonalizability. It solves a quadratic. For a 3 by 3 matrix, the characteristic polynomial and a real eigenvector are on the <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a>. For the geometry, read the eigenvalue explainer.</p>
 </div>
 
 <div class="calc-panel" style="margin:1.5rem 0">
@@ -220,7 +220,7 @@
 <h2>Related reading</h2>
 <p>The geometry is in <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a> and in the <a href="../glossary/#eigenvalue">eigenvalue</a>, <a href="../glossary/#eigenvector">eigenvector</a>, and <a href="../glossary/#eigenspace">eigenspace</a> entries. The surrounding map is <a href="../topics/linear-algebra.html">linear algebra</a>. A study order is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> pathway.</p>
 <p>Build the determinant and products first on the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>. Local linearization in several variables is <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. The same quadratic algebra appears on the <a href="quadratic-formula.html">quadratic formula calculator</a>.</p>
-<p>Elimination and a larger inverse are different jobs. The <a href="rref.html">reduced row echelon form calculator</a> writes each elementary step of a linear system. The <a href="matrix-3x3.html">3 by 3 matrix calculator</a> expands a determinant and builds an inverse when one exists. Neither page finds eigenvalues.</p>
+<p>Elimination and a larger inverse are different jobs. The <a href="rref.html">reduced row echelon form calculator</a> writes each elementary step of a linear system. The <a href="matrix-3x3.html">3 by 3 matrix calculator</a> expands a determinant and builds an inverse when one exists. Neither of those pages finds eigenvalues. The <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> writes the characteristic polynomial and row reduces $A-\lambda I$.</p>
 <div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
 </div>
 
@@ -272,7 +272,7 @@
 <li><a href="../disclaimer/">Disclaimer</a></li>
 <li><a href="../terms/">Terms</a></li>
 <li><a href="../privacy/">Privacy</a></li>
-<li><a href="mailto:joshuaofisrael@gmail.com?subject=%5BContact%3A%20Higher%20Math%20Guide%5D">Email</a></li>
+<li><a href="../contact/">Email</a></li>
 </ul>
 </div>
 <div class="footer-cta">
