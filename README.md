@@ -5,7 +5,7 @@ Static educational site for **Higher Math Guide**
 Live site: https://highermathguide.com/  
 GitHub Pages serves from the `main` branch root with a `CNAME` for the custom domain.  
 Brand tagline: *Higher mathematics, explained without the fog.*  
-Entity: Joshua Israel Ventures LLC
+Legal entity: named on the terms, privacy, disclaimer, and copyright pages.
 
 ## Local preview
 

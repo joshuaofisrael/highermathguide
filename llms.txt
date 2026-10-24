@@ -2,7 +2,7 @@
 
 > Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 21 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
-Higher Math Guide is a brand of Joshua Israel Ventures LLC. All business is done by the LLC. Operated by Joshua Israel Ventures LLC. The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost. Site: https://highermathguide.com/ Contact: https://highermathguide.com/contact/.
+The legal publisher is named on the terms of use. The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost. Site: https://highermathguide.com/ Contact: https://highermathguide.com/contact/.
 
 Calculators run in the browser and give numerical estimates for learning. A numerical check is not a proof.
 
@@ -70,7 +70,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [About](https://highermathguide.com/about/): who runs the site and how it is written
 - [FAQ](https://highermathguide.com/faq/): prerequisites, how to use the site, and calculators versus understanding
 - [Contact](https://highermathguide.com/contact/): how to reach the editor
-- [Terms of Use](https://highermathguide.com/terms/): you contract with Joshua Israel Ventures LLC. Higher Math Guide is a brand of the LLC.
+- [Terms of Use](https://highermathguide.com/terms/): the contracting party is named on that page.
 - [Privacy Policy](https://highermathguide.com/privacy/): what the site collects, and how to ask a privacy question
 - [Disclaimer](https://highermathguide.com/disclaimer/): educational use only, including the advertising and affiliate disclosure
 - [Copyright](https://highermathguide.com/copyright/): copyright, content use, DMCA notices sent through the contact form, and the corrections policy

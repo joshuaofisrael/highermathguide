@@ -12,7 +12,7 @@ const { execSync } = require("child_process");
 
 const ROOT = path.join(__dirname, "..");
 const ORIGIN = "https://highermathguide.com";
-const FOOTER = "© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.";
+const FOOTER = "© 2026 Higher Math Guide. All rights reserved.";
 const BEACON = "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"2a796980ec83472687c1d36c60177e23\"}'></script><!-- End Cloudflare Web Analytics -->";
 
 const SECTION = {
@@ -417,15 +417,15 @@ for (const file of htmlFiles) {
       if (!n.dateModified || !/^\d{4}-\d{2}-\d{2}$/.test(n.dateModified)) fail(`${file} Article dateModified ${n.dateModified}`);
       const authorName = n.author && n.author.name;
       const publisherName = n.publisher && n.publisher.name;
-      if (authorName !== "Joshua Israel Ventures LLC") fail(`${file} Article author ${authorName}`);
-      if (publisherName !== "Joshua Israel Ventures LLC") fail(`${file} Article publisher ${publisherName}`);
+      if (authorName !== "Higher Math Guide") fail(`${file} Article author ${authorName}`);
+      if (publisherName !== "Higher Math Guide") fail(`${file} Article publisher ${publisherName}`);
     });
   }
   if (file.startsWith("calculators/") && !file.endsWith("/index.html")) {
     if (apps.length < 1) fail(`${file} missing WebApplication`);
   }
   if (file === "index.html") {
-    if (!orgs.some((o) => o.node.name === "Joshua Israel Ventures LLC")) fail("homepage missing Organization LLC");
+    if (!orgs.some((o) => o.node.name === "Higher Math Guide" && o.node.url === "https://highermathguide.com/")) fail("homepage missing Organization");
     if (sites.length < 1) fail("homepage missing WebSite");
   }
   faqs.forEach((f) => {
