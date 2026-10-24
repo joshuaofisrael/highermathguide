@@ -244,11 +244,11 @@ if (fs.existsSync(htmlPath)) {
   var dashAt = visible.search(/[-–—]/);
   assert(dashAt === -1, "visible page text has no hyphen or dash" + (dashAt === -1 ? "" : ": " + JSON.stringify(visible.slice(Math.max(0, dashAt - 40), dashAt + 40))));
   assert(html.indexOf("noindex") === -1 && html.indexOf("nofollow") === -1 && html.indexOf("noai") === -1 && html.indexOf("X-Robots-Tag") === -1, "page stays indexable");
-  assert(html.indexOf("Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.") !== -1, "footer operator line is present");
+  assert(html.indexOf("© 2026 Higher Math Guide. All rights reserved.") !== -1, "footer uses the site brand");
   assert(html.indexOf("beacon.min.js") !== -1 && html.indexOf("2a796980ec83472687c1d36c60177e23") !== -1, "analytics beacon is present");
   assert(html.indexOf("https://highermathguide.com/calculators/rref.html") !== -1, "canonical host is present");
   assert(html.indexOf("FAQPage") !== -1 && html.indexOf("WebApplication") !== -1, "FAQ and application structured data");
-  assert(html.indexOf("Joshua Israel Ventures LLC") !== -1, "publisher name is present");
+  assert(html.indexOf('"name": "Higher Math Guide"') !== -1, "publisher name is the site brand");
   var faqCount = (html.match(/"@type": "Question"/g) || []).length;
   assert(faqCount >= 4 && faqCount <= 6, "FAQ has 4 to 6 questions, got " + faqCount);
   ["calculators/index.html", "index.html", "calculators/matrix-2x2.html", "calculators/matrix-3x3.html", "topics/linear-algebra.html", "explainers/eigenvalues-plain-language.html", "llms.txt", "sitemap.xml"].forEach(function (rel) {
@@ -256,7 +256,7 @@ if (fs.existsSync(htmlPath)) {
     assert(body.indexOf("rref.html") !== -1, rel + " links to the calculator");
   });
   var sitemap = fs.readFileSync(path.join(__dirname, "../sitemap.xml"), "utf8");
-  assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/rref.html</loc>\n    <lastmod>2026-10-23</lastmod>") !== -1, "sitemap lastmod matches the schema update");
+  assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/rref.html</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod matches the schema update");
   assert(fs.readFileSync(path.join(__dirname, "../robots.txt"), "utf8").indexOf("rref") === -1, "robots.txt is unchanged");
 }
 

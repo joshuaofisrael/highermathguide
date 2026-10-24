@@ -142,7 +142,7 @@ var visible = html
 var dashAt = visible.search(/[-–—]/);
 assert(dashAt === -1, "visible page text has no hyphen or dash" + (dashAt === -1 ? "" : ": " + JSON.stringify(visible.slice(Math.max(0, dashAt - 40), dashAt + 40))));
 assert(html.indexOf("noindex") === -1 && html.indexOf("nofollow") === -1 && html.indexOf("noai") === -1, "page stays indexable");
-assert(html.indexOf("Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.") !== -1, "footer operator line is present");
+assert(html.indexOf("© 2026 Higher Math Guide. All rights reserved.") !== -1, "footer uses the site brand");
 assert(html.indexOf("beacon.min.js") !== -1 && html.indexOf("2a796980ec83472687c1d36c60177e23") !== -1, "analytics beacon is present");
 assert(html.indexOf("Michigan") === -1, "no Michigan mention");
 

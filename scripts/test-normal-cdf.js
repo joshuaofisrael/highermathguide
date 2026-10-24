@@ -143,7 +143,7 @@ assert(html.indexOf('value="cdf"') !== -1 && html.indexOf('value="inv"') !== -1,
 assert(html.indexOf("only knows the standard normal") === -1, "old limitation is gone");
 assert(html.indexOf("aggregateRating") === -1 && html.indexOf("reviewCount") === -1, "no fake ratings");
 assert(html.indexOf("BreadcrumbList") !== -1, "BreadcrumbList remains");
-assert(html.indexOf("Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is owned and operated by Joshua Israel Ventures LLC.") !== -1, "LLC footer remains");
+assert(html.indexOf("© 2026 Higher Math Guide. All rights reserved.") !== -1, "footer uses the site brand");
 assert(html.indexOf("beacon.min.js") !== -1 && html.indexOf("2a796980ec83472687c1d36c60177e23") !== -1, "Cloudflare beacon remains");
 assert(html.indexOf("../js/normal-cdf.js") !== -1, "page loads the calculator script");
 assert(html.indexOf("<label for=\"ncdf-mu\">Mean</label>") !== -1, "mean has a label");
@@ -184,10 +184,10 @@ assert(html.indexOf('property="og:description" content="' + meta[1] + '"') !== -
 assert(html.indexOf('name="twitter:description" content="' + meta[1] + '"') !== -1, "Twitter description matches");
 
 var sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/normal-cdf.html</loc>\n    <lastmod>2026-10-23</lastmod>") !== -1, "sitemap lastmod for the calculator");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/</loc>\n    <lastmod>2026-10-23</lastmod>") !== -1, "sitemap lastmod for the home page");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/</loc>\n    <lastmod>2026-10-23</lastmod>") !== -1, "sitemap lastmod for the calculator index");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/llms.txt</loc>\n    <lastmod>2026-10-23</lastmod>") !== -1, "sitemap lastmod for llms.txt");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/normal-cdf.html</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the calculator");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the home page");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the calculator index");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/llms.txt</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for llms.txt");
 
 var mainJs = fs.readFileSync(path.join(root, "js/main.js"), "utf8");
 assert(mainJs.indexOf("function invNormalCdf") === -1, "main.js does not keep a second inverse");
