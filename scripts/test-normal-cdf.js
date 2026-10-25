@@ -143,7 +143,8 @@ assert(html.indexOf('value="cdf"') !== -1 && html.indexOf('value="inv"') !== -1,
 assert(html.indexOf("only knows the standard normal") === -1, "old limitation is gone");
 assert(html.indexOf("aggregateRating") === -1 && html.indexOf("reviewCount") === -1, "no fake ratings");
 assert(html.indexOf("BreadcrumbList") !== -1, "BreadcrumbList remains");
-assert(html.indexOf("© 2026 Higher Math Guide. All rights reserved.") !== -1, "footer uses the site brand");
+assert(html.indexOf("footer-note") === -1 && html.indexOf("All rights reserved") === -1, "calculator footer has no copyright line");
+assert(html.indexOf("Joshua Israel Ventures LLC") === -1, "calculator page does not name the LLC");
 assert(html.indexOf("beacon.min.js") !== -1 && html.indexOf("2a796980ec83472687c1d36c60177e23") !== -1, "Cloudflare beacon remains");
 assert(html.indexOf("../js/normal-cdf.js") !== -1, "page loads the calculator script");
 assert(html.indexOf("<label for=\"ncdf-mu\">Mean</label>") !== -1, "mean has a label");

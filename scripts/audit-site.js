@@ -12,7 +12,16 @@ const { execSync } = require("child_process");
 
 const ROOT = path.join(__dirname, "..");
 const ORIGIN = "https://highermathguide.com";
-const FOOTER = "© 2026 Higher Math Guide. All rights reserved.";
+const LEGAL_FOOTER = "© 2026 Joshua Israel Ventures LLC. All rights reserved. Higher Math Guide is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.";
+const RETIRED_FOOTER = "© 2026 Higher Math Guide. All rights reserved.";
+const LEGAL_PAGES = new Set([
+  "terms/index.html",
+  "privacy/index.html",
+  "disclaimer/index.html",
+  "copyright/index.html",
+  "contact/index.html",
+  "contact/thanks.html",
+]);
 const BEACON = "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"2a796980ec83472687c1d36c60177e23\"}'></script><!-- End Cloudflare Web Analytics -->";
 
 const SECTION = {
@@ -277,7 +286,14 @@ for (const file of htmlFiles) {
   if (!/<meta[^>]*name=["']viewport["'][^>]*content=["']width=device-width, initial-scale=1["']/i.test(html)) {
     fail(`${file} missing viewport`);
   }
-  if (!html.includes(FOOTER)) fail(`${file} footer text mismatch`);
+  if (LEGAL_PAGES.has(file)) {
+    const note = `<p class="footer-note">${LEGAL_FOOTER}</p>`;
+    const notes = html.match(/<p class="footer-note">[\s\S]*?<\/p>/g) || [];
+    if (notes.length !== 1 || notes[0] !== note) fail(`${file} footer text mismatch`);
+    if (html.includes(RETIRED_FOOTER)) fail(`${file} footer still uses the brand copyright line`);
+  } else if (html.includes("footer-note") || html.includes(RETIRED_FOOTER) || html.includes(LEGAL_FOOTER) || html.includes("All rights reserved") || html.includes("Joshua Israel Ventures LLC")) {
+    fail(`${file} footer copyright line or LLC name on a non-legal page`);
+  }
   if (!html.includes(BEACON)) fail(`${file} analytics beacon mismatch`);
   const styles = [...html.matchAll(/<link[^>]*rel=["']stylesheet["'][^>]*>/gi)].map((m) => {
     const href = m[0].match(/href=["']([^"']+)["']/i);
