@@ -185,10 +185,10 @@ assert(html.indexOf('property="og:description" content="' + meta[1] + '"') !== -
 assert(html.indexOf('name="twitter:description" content="' + meta[1] + '"') !== -1, "Twitter description matches");
 
 var sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/normal-cdf.html</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the calculator");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the home page");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for the calculator index");
-assert(sitemap.indexOf("<loc>https://highermathguide.com/llms.txt</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod for llms.txt");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/normal-cdf.html</loc>\n    <lastmod>2026-10-25</lastmod>") !== -1, "sitemap lastmod for the calculator");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/</loc>\n    <lastmod>2026-10-25</lastmod>") !== -1, "sitemap lastmod for the home page");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/</loc>\n    <lastmod>2026-10-25</lastmod>") !== -1, "sitemap lastmod for the calculator index");
+assert(sitemap.indexOf("<loc>https://highermathguide.com/llms.txt</loc>\n    <lastmod>2026-10-25</lastmod>") !== -1, "sitemap lastmod for llms.txt");
 
 var mainJs = fs.readFileSync(path.join(root, "js/main.js"), "utf8");
 assert(mainJs.indexOf("function invNormalCdf") === -1, "main.js does not keep a second inverse");
