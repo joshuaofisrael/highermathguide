@@ -294,6 +294,22 @@ for (const file of htmlFiles) {
   } else if (html.includes("footer-note") || html.includes(RETIRED_FOOTER) || html.includes(LEGAL_FOOTER) || html.includes("All rights reserved") || html.includes("Joshua Israel Ventures LLC")) {
     fail(`${file} footer copyright line or LLC name on a non-legal page`);
   }
+  const contentLeaf = /^(explainers|topics|calculators)\/[^/]+\.html$/.test(file) && !file.endsWith("/index.html");
+  if (contentLeaf) {
+    const bylines = [...html.matchAll(/<p class="byline">([^<]*)<\/p>/g)];
+    if (bylines.length !== 1 || !bylines[0][1].startsWith("By the Higher Math Guide editorial team")) {
+      fail(`${file} missing editorial byline`);
+    } else {
+      const reviewed = html.match(/<p>Last reviewed: ([^<]+)<\/p>/);
+      const byline = bylines[0][1];
+      if (reviewed && byline !== `By the Higher Math Guide editorial team. Last reviewed: ${reviewed[1]}`) {
+        fail(`${file} byline does not include the existing Last reviewed date`);
+      }
+      if (!reviewed && byline !== "By the Higher Math Guide editorial team") {
+        fail(`${file} byline adds a review date the page does not have`);
+      }
+    }
+  }
   if (!html.includes(BEACON)) fail(`${file} analytics beacon mismatch`);
   const styles = [...html.matchAll(/<link[^>]*rel=["']stylesheet["'][^>]*>/gi)].map((m) => {
     const href = m[0].match(/href=["']([^"']+)["']/i);
@@ -329,7 +345,7 @@ for (const file of htmlFiles) {
   });
   if (file !== "404.html") indexable.push(file);
 }
-if (!failures.some((f) => /canonical|viewport|lang|charset|footer|beacon|stylesheet|render-blocking|robots restriction|noindex/.test(f))) {
+if (!failures.some((f) => /canonical|viewport|lang|charset|footer|byline|beacon|stylesheet|render-blocking|robots restriction|noindex/.test(f))) {
   console.log(`OK. ${htmlFiles.length} html files checked`);
 }
 
@@ -432,14 +448,28 @@ for (const file of htmlFiles) {
       if (!n.headline) fail(`${file} Article missing headline`);
       if (!n.dateModified || !/^\d{4}-\d{2}-\d{2}$/.test(n.dateModified)) fail(`${file} Article dateModified ${n.dateModified}`);
       const authorName = n.author && n.author.name;
+      const authorType = n.author && n.author["@type"];
+      const authorUrl = n.author && n.author.url;
       const publisherName = n.publisher && n.publisher.name;
+      if (authorType !== "Organization") fail(`${file} Article author type ${authorType}`);
       if (authorName !== "Higher Math Guide") fail(`${file} Article author ${authorName}`);
+      if (authorUrl !== "https://highermathguide.com/") fail(`${file} Article author url ${authorUrl}`);
       if (publisherName !== "Higher Math Guide") fail(`${file} Article publisher ${publisherName}`);
     });
   }
   if (file.startsWith("calculators/") && !file.endsWith("/index.html")) {
     if (apps.length < 1) fail(`${file} missing WebApplication`);
+    apps.forEach((a) => {
+      const author = a.node.author;
+      const authorType = author && author["@type"];
+      const authorName = author && author.name;
+      const authorUrl = author && author.url;
+      if (authorType !== "Organization" || authorName !== "Higher Math Guide" || authorUrl !== "https://highermathguide.com/") {
+        fail(`${file} WebApplication author ${authorType} ${authorName} ${authorUrl}`);
+      }
+    });
   }
+  if (typeNames.includes("Person")) fail(`${file} has Person schema`);
   if (file === "index.html") {
     if (!orgs.some((o) => o.node.name === "Higher Math Guide" && o.node.url === "https://highermathguide.com/")) fail("homepage missing Organization");
     if (sites.length < 1) fail("homepage missing WebSite");

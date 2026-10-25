@@ -257,7 +257,7 @@ if (fs.existsSync(htmlPath)) {
     assert(body.indexOf("rref.html") !== -1, rel + " links to the calculator");
   });
   var sitemap = fs.readFileSync(path.join(__dirname, "../sitemap.xml"), "utf8");
-  assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/rref.html</loc>\n    <lastmod>2026-10-24</lastmod>") !== -1, "sitemap lastmod matches the schema update");
+  assert(sitemap.indexOf("<loc>https://highermathguide.com/calculators/rref.html</loc>\n    <lastmod>2026-10-25</lastmod>") !== -1, "sitemap lastmod matches the schema update");
   assert(fs.readFileSync(path.join(__dirname, "../robots.txt"), "utf8").indexOf("rref") === -1, "robots.txt is unchanged");
 }
 
