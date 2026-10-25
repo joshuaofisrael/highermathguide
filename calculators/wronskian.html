@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wronskian Calculator for Linear Independence, Higher Math Guide</title>
+<meta name="description" content="Wronskian calculator for two or three functions of x. See the matrix, the determinant, and whether those solutions are linearly independent.">
+<link rel="canonical" href="https://highermathguide.com/calculators/wronskian.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Wronskian Calculator for Linear Independence, Higher Math Guide">
+<meta property="og:description" content="Wronskian calculator for two or three functions of x. See the matrix, the determinant, and whether those solutions are linearly independent.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/wronskian.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A scientific calculator beside handwritten differential equations.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wronskian Calculator for Linear Independence, Higher Math Guide">
+<meta name="twitter:description" content="Wronskian calculator for two or three functions of x. See the matrix, the determinant, and whether those solutions are linearly independent.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="A scientific calculator beside handwritten differential equations.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/wronskian.html#webpage",
+      "name": "Wronskian Calculator",
+      "description": "Wronskian calculator for two or three functions of x. See the matrix, the determinant, and whether those solutions are linearly independent.",
+      "url": "https://highermathguide.com/calculators/wronskian.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://highermathguide.com/calculators/wronskian.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/wronskian.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://highermathguide.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://highermathguide.com/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Wronskian calculator",
+          "item": "https://highermathguide.com/calculators/wronskian.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/wronskian.html#faq",
+      "url": "https://highermathguide.com/calculators/wronskian.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Wronskian calculator check?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It builds the matrix whose first row is two or three functions of x and whose later rows are their derivatives, then takes the determinant. A nonzero value at even one point proves the functions are linearly independent on every interval that contains that point. A zero at one point does not prove dependence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does W = 0 at one point mean the functions are linearly dependent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A Wronskian of 0 at a single test point does not prove linear dependence. The functions x and x^2 have Wronskian x^2, which is 0 at x = 0, and they are still linearly independent. For the analytic formulas this page differentiates, dependence follows when the Wronskian is the zero function. The same conclusion holds when the functions are solutions of one linear homogeneous equation and Abel's identity forces the Wronskian to vanish everywhere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Wronskian of two functions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For y1 and y2 the Wronskian is y1 times y2 prime, minus y1 prime times y2. The page writes that determinant in simplified form when the derivatives are symbolic, and it always evaluates the number at the test point you choose."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Abel's identity say about the Wronskian?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For solutions of y'' + p(x) y' + q(x) y = 0, Abel's identity says W(x) equals W(x0) times e to the power of minus the integral of p. On an interval where p is continuous, the Wronskian is either always 0 or never 0. One sample then settles independence or dependence for solutions of that equation. A single zero of an arbitrary pair does not."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this page check three functions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Choose three functions and the matrix gains a third row of second derivatives. A nonzero determinant proves linear independence on every interval that contains the test point. A zero at one point does not prove dependence."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/wronskian.html#app",
+      "name": "Wronskian Calculator",
+      "url": "https://highermathguide.com/calculators/wronskian.html",
+      "description": "Wronskian calculator for two or three functions of x. See the matrix, the determinant, and whether those solutions are linearly independent.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Wronskian calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Linear independence</p>
+<h1>Wronskian calculator</h1>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 25 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A scientific calculator beside handwritten differential equations." class="crop-7" loading="lazy" decoding="async">
+<figcaption>A calculator beside the sort of derivative table a Wronskian starts from.</figcaption>
+</figure>
+<div class="article-body">
+<p>This page is a Wronskian calculator for the homework search that asks for the Wronskian of 2 functions, or for a way to check linear independence of solutions. You type two or three formulas in the variable x. The page differentiates them, writes the Wronskian matrix, simplifies the determinant when it can, and always evaluates that determinant at a test point x₀ you choose.</p>
+<p>The boxes open on e^x and e^(2x), with x₀ = 0. Those two exponentials are the usual first pair from a constant-coefficient equation with two different real roots. Their Wronskian is e^(3x), which is never 0, so the pair is linearly independent on the whole real line. The second worked example, further down, is sin x and cos x. Leave the third box hidden unless you really have three functions.</p>
+<p>A nonzero Wronskian at even one point proves linear independence on every interval that contains that point. The converse is false, and it is the mistake this page is built to catch: a Wronskian of 0 at one point does not prove linear dependence. If you already have candidate solutions of a y'' + b y' + c y = 0, build them on the <a href="second-order-ode.html">second order differential equation calculator</a>, then bring the two formulas back here. The map around both tools is <a href="../topics/differential-equations.html">differential equations</a>.</p>
+</div>
+
+<form class="calc-panel wide" id="w-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="w-count">How many functions
+<select id="w-count">
+<option value="2" selected>2 functions</option>
+<option value="3">3 functions</option>
+</select>
+</label>
+<label for="w-x0">x₀, the test point
+<input id="w-x0" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="w-hint">
+</label>
+</div>
+<div class="field-row">
+<label for="w-y1">y₁(x)
+<input id="w-y1" type="text" value="e^x" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="w-y2">y₂(x)
+<input id="w-y2" type="text" value="e^(2x)" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="w-y3" id="w-y3-wrap" hidden>y₃(x)
+<input id="w-y3" type="text" value="x^2" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<p class="calc-hint" id="w-hint">Use x as the only variable. Polynomials, e^(ax), e^2x (read as e^(2x)), sin x, cos x, tan x, ln x, sqrt(x), and products such as x e^x are differentiated symbolically. log means the natural log. Juxtaposition multiplies: 2x and sin(x)cos(x). A decimal is an exact fraction of a power of ten, so 0.5 is 1/2. x₀ may be a number, a fraction, pi, or e.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="w-preset-exp">Two exponentials</button>
+<button type="button" class="btn btn-secondary" id="w-preset-trig">Sine and cosine</button>
+<button type="button" class="btn btn-secondary" id="w-preset-zero">Zero at one point</button>
+<button type="button" class="btn btn-secondary" id="w-preset-poly">Three polynomials</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="w-compute">Compute Wronskian</button>
+<button type="button" class="btn btn-secondary" id="w-reset">Reset</button>
+</div>
+<p class="calc-error" id="w-error" role="alert"></p>
+<div class="calc-result" id="w-result" role="status" aria-live="polite">
+<div class="amount" id="w-amount" style="overflow-wrap:anywhere"></div>
+<p id="w-conclusion" style="margin:0.75rem 0 0"></p>
+<div id="w-matrix"></div>
+<div class="detail steps" id="w-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>What the Wronskian is</h2>
+<p>Take differentiable functions y₁, y₂, and, when you have a third, y₃. The Wronskian matrix puts the functions in the first row and their derivatives down the columns. For two functions the matrix is 2 by 2. For three functions it is 3 by 3, and the last row is the second derivatives. The Wronskian W is the determinant of that matrix.</p>
+<p>For two functions the determinant is the single expression W(y₁, y₂) = y₁ y₂′ − y₁′ y₂. The order matters for the sign. The opposite order, y₁′ y₂ − y₁ y₂′, is −W. A test that only asks whether W is zero does not care about that sign. This page keeps the standard order, functions on the top row, so the sign matches the textbook determinant.</p>
+<p>The determinant is a function of x, not a single number, until you pick a point. That is why the page prints a formula and then a value W(x₀). The formula is the symbolic derivative when the expression is one this page knows how to differentiate: polynomials, exponentials, sine, cosine, tangent, natural log, square roots, and products and quotients of those. If a formula uses the absolute value, which has a corner, the page says so and switches that run to central differences at x₀. Those numbers are estimates. The symbolic runs are not.</p>
+
+<h2>How to read the result</h2>
+<p>The large line is the simplified determinant. Under it, a sentence says what that determinant does, and does not, imply about linear independence. The table is the matrix itself, so you can check each derivative before you trust the determinant. The steps repeat the same arithmetic in plain text.</p>
+<p>Three readings cover the cases.</p>
+<p>If W(x₀) is a nonzero number, the functions are linearly independent on every interval that contains x₀. One nonzero value is enough. You do not need the formula to be a nonzero constant. You need one point where it misses zero.</p>
+<p>If the simplified formula is the constant 0, the Wronskian is the zero function wherever the derivatives exist. Polynomials, exponentials, sine, cosine, and logarithms are analytic on each interval where they are defined. For those functions, a Wronskian that is identically zero means linear dependence on that interval. A constant multiple is the usual picture: e^x and 2e^x have Wronskian 0 because the second is twice the first.</p>
+<p>If W(x₀) = 0 but the formula is not the zero function, stop. That one root does not prove dependence. The pair x and x² has Wronskian x². At x₀ = 0 the value is 0, and the two functions are still linearly independent, because c₁ x + c₂ x² = 0 as a function only when both constants are 0. The preset "Zero at one point" opens on that pair.</p>
+
+<h2>Abel's identity, in one paragraph</h2>
+<p>The subtle reading changes when y₁ and y₂ are not arbitrary formulas but solutions of one second order linear equation y'' + p(x) y' + q(x) y = 0. Abel's identity says</p>
+<p>W(x) = W(x₀) e^(−∫ p(s) ds),</p>
+<p>with the integral running from x₀ to x. On an interval where p is continuous, the exponential factor is never zero. So W is either zero at every point of that interval or zero at none of them. For genuine solutions of that equation, a single zero really does prove dependence, and a single nonzero value really does prove independence. The identity is a statement about solutions, not about every pair of functions you can type. If you have not yet shown that your formulas solve the equation, a zero at one point is still not a proof of dependence.</p>
+<p>Constant-coefficient equations are the course's main source of those solutions. The characteristic equation decides whether you get two real exponentials, a repeated root with an extra factor of x, or a sine and cosine pair. That algebra is on the <a href="second-order-ode.html">second order page</a>. The <a href="../glossary/#wronskian">glossary line for Wronskian</a> is the short version of this paragraph.</p>
+
+<h2>Two worked examples</h2>
+<p>Both examples are written out here, so you can read them with scripts turned off. The form opens on the first one. The "Sine and cosine" button loads the second.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Two exponentials. y₁ = e^x, y₂ = e^(2x).
+
+Derivatives
+y₁′ = e^x
+y₂′ = 2 e^(2x)
+
+Wronskian matrix
+          y₁        y₂
+function  e^x       e^(2x)
+y′        e^x       2 e^(2x)
+
+Determinant
+W = y₁ y₂′ − y₁′ y₂
+  = (e^x)(2 e^(2x)) − (e^x)(e^(2x))
+  = 2 e^(3x) − e^(3x)
+  = e^(3x)
+
+At x₀ = 0
+W(0) = e^0 = 1, which is not 0.
+
+Conclusion
+e^(3x) is never 0 for real x. The two functions are linearly independent on the whole real line. A nonzero value at one point is enough to prove independence. A Wronskian of 0 at one point would not have proved dependence.
+
+Sine and cosine. y₁ = sin x, y₂ = cos x.
+
+Derivatives
+y₁′ = cos x
+y₂′ = −sin x
+
+Wronskian matrix
+          y₁        y₂
+function  sin x     cos x
+y′        cos x     −sin x
+
+Determinant
+W = (sin x)(−sin x) − (cos x)(cos x)
+  = −sin(x)^2 − cos(x)^2
+  = −1
+
+At x₀ = 0
+W(0) = −1, which is not 0.
+
+Conclusion
+The determinant is the constant −1, so it is never 0. Sine and cosine are linearly independent on the whole real line. The same constant is what Abel's identity predicts for y'' + y = 0, where p(x) = 0 and the exponential factor is 1. A Wronskian of 0 at one point does not prove linear dependence. This example never meets that case.</pre>
+
+<h2>Common mistakes</h2>
+<p>The first mistake is treating W(x₀) = 0 as a finished proof that the functions are dependent. It is not. Dependence means some constants, not all zero, make c₁ y₁ + c₂ y₂ + c₃ y₃ the zero function, everywhere on the interval, not at one sample. The pair x and x² is the counterexample to keep: the Wronskian vanishes at 0, and no such constants exist.</p>
+<p>The second mistake is a sign slip in the 2 by 2 determinant, computing y₁′ y₂ − y₁ y₂′ and then comparing the formula with a solution key that used the other order. Both determinants are zero together. If the key says e^(3x) and you got −e^(3x), check the order of subtraction before you recompute the derivatives.</p>
+<p>The third mistake is evaluating outside the domain. ln x and 1/x are not defined at 0, and tan x blows up at π/2. A blank or an infinite entry is not a zero Wronskian. Move x₀ to a point where every function and every derivative in the matrix is a real number. For a natural log, any positive test point works. At x₀ = 1, the Wronskian of ln x and x is ln(x) − 1, which equals −1.</p>
+<p>The fourth mistake, with three functions, is to stop after a 2 by 2 minor. Independence of a triple is the full 3 by 3 determinant, with second derivatives in the last row. The preset "Three polynomials" uses 1, x, and x². The determinant is the constant 2, so the three monomials are linearly independent. They are the usual basis for quadratics.</p>
+<p>The fifth mistake is quoting an identically zero Wronskian as a proof for functions that are not analytic. There are textbook pairs, built from absolute values, whose Wronskian is zero everywhere on an interval even though the functions are linearly independent. This page will not silently differentiate an absolute value. When the formula it did differentiate simplifies to 0, the analytic case applies, and the functions are dependent on each interval where they are all defined.</p>
+
+<h2>Related reading</h2>
+<p>Place the equation on the <a href="../topics/differential-equations.html">differential equations</a> map. The short definitions are <a href="../glossary/#wronskian">Wronskian</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#differential-equation">differential equation</a>, and <a href="../glossary/#determinant">determinant</a>.</p>
+<p>Build the candidate solutions on the <a href="second-order-ode.html">second order differential equation calculator</a>. If you want the determinant arithmetic alone, without derivatives, use the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>. After you have an explicit formula, the <a href="numerical-derivative.html">numerical derivative calculator</a> can audit a single slope.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>Boyce, DiPrima, and Meade, <em>Elementary Differential Equations and Boundary Value Problems</em>. The Wronskian and Abel's identity are in the chapter on second order linear equations. This page does not cite one edition.</li>
+<li>MIT OpenCourseWare, 18.03 Differential Equations. <a href="https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
+<li>Paul’s Online Math Notes, the Wronskian. <a href="https://tutorial.math.lamar.edu/Classes/DE/Wronskian.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+</ul>
+<p>Last reviewed: 25 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What does a Wronskian calculator check?</h2>
+<p>It builds the matrix whose first row is two or three functions of x and whose later rows are their derivatives, then takes the determinant. A nonzero value at even one point proves the functions are linearly independent on every interval that contains that point. A zero at one point does not prove dependence.</p>
+</section>
+<section class="faq-item" id="zero">
+<h2>Does W = 0 at one point mean the functions are linearly dependent?</h2>
+<p>No. A Wronskian of 0 at a single test point does not prove linear dependence. The functions x and x^2 have Wronskian x^2, which is 0 at x = 0, and they are still linearly independent. For the analytic formulas this page differentiates, dependence follows when the Wronskian is the zero function. The same conclusion holds when the functions are solutions of one linear homogeneous equation and Abel's identity forces the Wronskian to vanish everywhere.</p>
+</section>
+<section class="faq-item" id="two">
+<h2>What is the Wronskian of two functions?</h2>
+<p>For y1 and y2 the Wronskian is y1 times y2 prime, minus y1 prime times y2. The page writes that determinant in simplified form when the derivatives are symbolic, and it always evaluates the number at the test point you choose.</p>
+</section>
+<section class="faq-item" id="abel">
+<h2>What does Abel's identity say about the Wronskian?</h2>
+<p>For solutions of y'' + p(x) y' + q(x) y = 0, Abel's identity says W(x) equals W(x0) times e to the power of minus the integral of p. On an interval where p is continuous, the Wronskian is either always 0 or never 0. One sample then settles independence or dependence for solutions of that equation. A single zero of an arbitrary pair does not.</p>
+</section>
+<section class="faq-item" id="three">
+<h2>Can this page check three functions?</h2>
+<p>Yes. Choose three functions and the matrix gains a third row of second derivatives. A nonzero determinant proves linear independence on every interval that contains the test point. A zero at one point does not prove dependence.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<p class="footer-note">© 2026 Higher Math Guide. All rights reserved.</p>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/wronskian.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
