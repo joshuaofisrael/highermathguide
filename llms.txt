@@ -1,6 +1,6 @@
 # Higher Math Guide
 
-> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 21 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 22 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
 The legal publisher is named on the terms of use. The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost. Site: https://highermathguide.com/ Contact: https://highermathguide.com/contact/.
 
@@ -33,7 +33,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 
 ## Calculators
 
-- [All calculators](https://highermathguide.com/calculators/): index of the 21 browser tools
+- [All calculators](https://highermathguide.com/calculators/): index of the 22 browser tools
 - [Gradient and directional derivative calculator](https://highermathguide.com/calculators/gradient-directional-derivative.html): partial derivatives, the gradient, and a directional derivative at a point for functions of two or three variables
 - [Divergence and curl calculator](https://highermathguide.com/calculators/divergence-curl.html): divergence and curl of a planar or spatial vector field at a point, with an arrow plot
 - [Epsilon delta finder](https://highermathguide.com/calculators/epsilon-delta-finder.html): numerical search for a delta given f, a, L, and epsilon, a sampled check rather than a proof
@@ -42,6 +42,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Riemann sum calculator](https://highermathguide.com/calculators/integral-riemann.html): left, midpoint, or right rectangle approximations of a definite integral
 - [Partial fraction decomposition calculator](https://highermathguide.com/calculators/partial-fractions.html): exact partial fractions of a rational function, with polynomial division and each algebra step for linear factors, repeated linear factors, and irreducible quadratics
 - [Second order differential equation calculator](https://highermathguide.com/calculators/second-order-ode.html): characteristic equation solver for a y'' + b y' + c y = 0, with the three root cases, exact constants from initial conditions when possible, and a plot of the solution
+- [Wronskian calculator](https://highermathguide.com/calculators/wronskian.html): Wronskian of two or three functions of x, with the matrix, the determinant, and a linear-independence reading that does not treat a single zero as dependence
 - [Arithmetic and geometric sequence calculator](https://highermathguide.com/calculators/sequence-series.html): nth term and finite sum in closed form
 - [Taylor polynomial calculator](https://highermathguide.com/calculators/taylor-polynomial.html): Taylor and Maclaurin polynomials with exact coefficients, a derivative table, a Lagrange remainder bound, and a graph of the function against the polynomial
 - [Quadratic formula calculator](https://highermathguide.com/calculators/quadratic-formula.html): discriminant and real or complex roots
