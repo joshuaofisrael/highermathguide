@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laplace Transform Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Laplace transform calculator with steps for common functions of t, an inverse Laplace transform calculator, and a Laplace transform table.">
+<link rel="canonical" href="https://highermathguide.com/calculators/laplace-transform.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Laplace Transform Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Laplace transform calculator with steps for common functions of t, an inverse Laplace transform calculator, and a Laplace transform table.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/laplace-transform.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A scientific calculator beside handwritten formulas for a Laplace transform.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Laplace Transform Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Laplace transform calculator with steps for common functions of t, an inverse Laplace transform calculator, and a Laplace transform table.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="A scientific calculator beside handwritten formulas for a Laplace transform.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/laplace-transform.html#webpage",
+      "name": "Laplace Transform Calculator",
+      "description": "Laplace transform calculator with steps for common functions of t, an inverse Laplace transform calculator, and a Laplace transform table.",
+      "url": "https://highermathguide.com/calculators/laplace-transform.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://highermathguide.com/calculators/laplace-transform.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/laplace-transform.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://highermathguide.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://highermathguide.com/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Laplace transform calculator",
+          "item": "https://highermathguide.com/calculators/laplace-transform.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/laplace-transform.html#faq",
+      "url": "https://highermathguide.com/calculators/laplace-transform.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Laplace transform calculator with steps show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It splits a linear combination into separate table rows, names the rule for each row, and applies linearity and the first shift theorem when an exponential multiplies another factor. The large line is the simplified transform. The lines under it are the same algebra in sentences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you compute an inverse Laplace transform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Write F(s) as a proper fraction, factor the denominator, and split it into partial fractions. A term A/(s-a)^n inverts to A times e^(at) times t^(n-1) divided by (n-1)!. A term (As+B)/((s-a)^2+b^2) inverts to an exponential times a sine and a cosine. This page does that split when the factors have rational coefficients, and it stops with an error when they do not."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Laplace transform of e^(at), sin(bt), and t^n?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The transform of e^(at) is 1/(s-a). The transform of sin(bt) is b/(s^2+b^2), and the transform of cos(bt) is s/(s^2+b^2). The transform of t^n, for a nonnegative integer n, is n!/s^(n+1). The constant function 1 is the case n = 0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What belongs on a Laplace transform table?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A short list of pairs: constants, powers of t, exponentials, sine and cosine, sinh and cosh, and the products of e^(at) with those functions. The page also records linearity, the first shift theorem, and the rule that multiplying by t differentiates the transform. It is the list this calculator will apply, not every pair that exists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the Laplace transform solve y'' + 3y' + 2y = 0?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, for an initial value problem. Transform the equation, insert y(0) and y'(0), solve the algebra for Y(s), then invert. For y(0) = 1 and y'(0) = 0 the transform is (s+3)/((s+1)(s+2)), and the solution is 2e^(-t) - e^(-2t). The same solution comes from the characteristic equation. This page inverts Y(s). It does not build Y(s) from the differential equation by itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does this calculator reject some inputs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An unsupported expression is not given a guessed transform. Step functions, impulses, logarithms, tangents, products of two trig functions, and fractions whose denominators do not factor into linears and single quadratics with rational coefficients are outside this page. The error names the gap. The partial fraction calculator is the place to see the algebra of a split on its own."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/laplace-transform.html#app",
+      "name": "Laplace Transform Calculator",
+      "url": "https://highermathguide.com/calculators/laplace-transform.html",
+      "description": "Laplace transform calculator with steps for common functions of t, an inverse Laplace transform calculator, and a Laplace transform table.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Laplace transform calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Transforms and inverses</p>
+<h1>Laplace transform calculator</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 26 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A scientific calculator beside handwritten formulas for a Laplace transform." class="crop-7" loading="lazy" decoding="async">
+<figcaption>A calculator beside the sort of transform table a first differential equations course keeps on one page.</figcaption>
+</figure>
+<div class="article-body">
+<p>This page is a Laplace transform calculator with steps for the homework searches that ask for the transform of f(t), an inverse Laplace transform calculator, or a Laplace transform table you can check by hand. Forward mode reads a linear combination of the usual terms: constants, powers of t, exponentials, sine, cosine, sinh, cosh, and a product of one exponential with one of those. It names the table row, then applies linearity and the first shift theorem. Inverse mode reads a proper rational function of s. When the denominator factors into linear factors and quadratics with rational coefficients, it writes the partial fractions and the function of t.</p>
+<p>The box opens on 2e^(−t) − e^(−2t). That is the solution of y'' + 3y' + 2y = 0 with y(0) = 1 and y'(0) = 0, worked in full further down. Its transform is (s + 3)/((s + 1)(s + 2)). Switch to inverse and paste that fraction if you want the return trip. The characteristic-equation route to the same solution is the <a href="second-order-ode.html">second order differential equation calculator</a>. The algebra of a harder split is the <a href="partial-fractions.html">partial fraction decomposition calculator</a>. The map around both is <a href="../topics/differential-equations.html">differential equations</a>, and separation, which is a different method, is the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>.</p>
+<p>If a formula is outside the table, the page says so. It does not invent a transform for a step function, a logarithm, a tangent, or a denominator it cannot factor.</p>
+</div>
+
+<form class="calc-panel wide" id="lt-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="lt-mode">Mode
+<select id="lt-mode">
+<option value="forward" selected>Forward, f(t) to F(s)</option>
+<option value="inverse">Inverse, F(s) to f(t)</option>
+</select>
+</label>
+<label for="lt-input">Expression
+<input id="lt-input" type="text" value="2*e^(-t)-e^(-2*t)" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="lt-hint">
+</label>
+</div>
+<p class="calc-hint" id="lt-hint">Forward mode reads a function of t. Linear combinations of constants, t^n, e^(at), sin(bt), cos(bt), sinh(bt), cosh(bt), and a product of one exponential with one of those. e^2t means e^(2t). Juxtaposition multiplies. A decimal is an exact fraction of a power of ten.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="lt-preset-ivp">IVP solution</button>
+<button type="button" class="btn btn-secondary" id="lt-preset-shift">Shifted sine</button>
+<button type="button" class="btn btn-secondary" id="lt-preset-power">Power times exponential</button>
+<button type="button" class="btn btn-secondary" id="lt-preset-inv">Inverse of the IVP</button>
+<button type="button" class="btn btn-secondary" id="lt-preset-quad">Completed square</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="lt-compute">Compute transform</button>
+<button type="button" class="btn btn-secondary" id="lt-reset">Reset</button>
+</div>
+<p class="calc-error" id="lt-error" role="alert"></p>
+<div class="calc-result" id="lt-result" role="status" aria-live="polite">
+<div class="amount" id="lt-amount" style="overflow-wrap:anywhere"></div>
+<p id="lt-pieces" style="margin:0.75rem 0 0"></p>
+<div class="detail steps" id="lt-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2 id="definition">What the transform is</h2>
+<p>For a function f that does not grow faster than an exponential, the Laplace transform is the improper integral</p>
+<p>F(s) = ∫ from 0 to ∞ of e^(−st) f(t) dt,</p>
+<p>taken for s whose real part is large enough that the integral converges. You rarely compute that integral on homework. You use a short table, linearity, and the shift theorem, then you check the answer against the table. That is what this page does. The outputs for the forms it accepts are exact rational functions, not decimal samples of the integral.</p>
+<p>Linearity says L{c₁ f + c₂ g} = c₁ F + c₂ G. The first shift theorem says L{e^(at) f(t)} = F(s − a). Multiplying by t differentiates the transform: L{t f(t)} = −d/ds F(s), and a higher power of t repeats that derivative. Those three sentences generate every row below.</p>
+
+<h2 id="table">Laplace transform table</h2>
+<p>The variable t is time, and the formulas are for t &gt; 0. The number a is the exponential growth rate. The number b is a frequency, taken positive in the sine and sinh rows. n is a nonnegative integer, so the case n = 0 of the power row is the constant function 1.</p>
+<div style="overflow-x:auto">
+<table class="stat-table">
+<thead>
+<tr><th>f(t)</th><th>F(s)</th><th>Rule this page cites</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>1/s</td><td>Constant, the n = 0 power</td></tr>
+<tr><td>t^n</td><td>n!/s^(n+1)</td><td>Power</td></tr>
+<tr><td>e^(at)</td><td>1/(s − a)</td><td>Exponential, a shift of 1/s</td></tr>
+<tr><td>sin(bt)</td><td>b/(s^2 + b^2)</td><td>Sine</td></tr>
+<tr><td>cos(bt)</td><td>s/(s^2 + b^2)</td><td>Cosine</td></tr>
+<tr><td>sinh(bt)</td><td>b/(s^2 − b^2)</td><td>Hyperbolic sine</td></tr>
+<tr><td>cosh(bt)</td><td>s/(s^2 − b^2)</td><td>Hyperbolic cosine</td></tr>
+<tr><td>t^n e^(at)</td><td>n!/(s − a)^(n+1)</td><td>Shift of the power row</td></tr>
+<tr><td>e^(at) sin(bt)</td><td>b/((s − a)^2 + b^2)</td><td>Shift of sine</td></tr>
+<tr><td>e^(at) cos(bt)</td><td>(s − a)/((s − a)^2 + b^2)</td><td>Shift of cosine</td></tr>
+<tr><td>e^(at) sinh(bt)</td><td>b/((s − a)^2 − b^2)</td><td>Shift of sinh</td></tr>
+<tr><td>e^(at) cosh(bt)</td><td>(s − a)/((s − a)^2 − b^2)</td><td>Shift of cosh</td></tr>
+</tbody>
+</table>
+</div>
+<p>Two inverse rows are worth memorizing next to the table. A/(s − a)^n inverts to A e^(at) t^(n−1) / (n−1)!. And (As + B)/((s − a)^2 + b^2) splits into a cosine piece along (s − a) and a sine piece along b. If the sign inside the quadratic is minus instead of plus, and the factor does not split into real linear factors with rational roots, the same arithmetic produces sinh and cosh.</p>
+
+<h2 id="example">A worked initial value problem</h2>
+<p>Solve y'' + 3y' + 2y = 0 with y(0) = 1 and y'(0) = 0. The write-up below is on the page, so you can read it with scripts turned off. The "Inverse of the IVP" button loads the fraction this solution produces.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Equation
+y'' + 3y' + 2y = 0, y(0) = 1, y'(0) = 0.
+
+Transforms of the derivatives
+L{y} = Y
+L{y'} = s Y − y(0) = s Y − 1
+L{y''} = s^2 Y − s y(0) − y'(0) = s^2 Y − s
+
+Substitute
+(s^2 Y − s) + 3(s Y − 1) + 2 Y = 0
+Y (s^2 + 3s + 2) − s − 3 = 0
+Y (s^2 + 3s + 2) = s + 3
+
+Factor
+s^2 + 3s + 2 = (s + 1)(s + 2)
+Y = (s + 3)/((s + 1)(s + 2))
+
+Partial fractions
+(s + 3)/((s + 1)(s + 2)) = A/(s + 1) + B/(s + 2)
+A(s + 2) + B(s + 1) = s + 3
+s = −1 gives A = 2
+s = −2 gives B = −1
+Y = 2/(s + 1) − 1/(s + 2)
+
+Inverse, from the exponential row
+y = 2 e^(−t) − e^(−2t)
+
+Check the initial values
+y(0) = 2 − 1 = 1
+y' = −2 e^(−t) + 2 e^(−2t)
+y'(0) = −2 + 2 = 0
+
+Check the equation
+y'' = 2 e^(−t) − 4 e^(−2t)
+y'' + 3y' + 2y = (2 − 6 + 4) e^(−t) + (−4 + 6 − 2) e^(−2t) = 0
+
+The characteristic equation r^2 + 3r + 2 = 0 has roots −1 and −2, so the same function is C1 e^(−t) + C2 e^(−2t). The initial conditions force C1 = 2 and C2 = −1.</pre>
+<p>Forward mode on 2e^(−t) − e^(−2t) returns (s + 3)/((s + 1)(s + 2)). Inverse mode on that fraction returns 2e^(−t) − e^(−2t). The two directions meet. The characteristic route, without a transform, is on the <a href="second-order-ode.html">second order page</a>.</p>
+
+<h2 id="inverse-steps">How an inverse is built</h2>
+<p>A proper fraction N(s)/D(s) is one where the degree of N is smaller than the degree of D. Divide first if it is not. The quotient would be a polynomial in s, and a polynomial is the transform of an impulse or a derivative of an impulse. This page stops there and asks for the proper piece only.</p>
+<p>Factor D. A linear factor (s − a)^n contributes A₁/(s − a) + … + Aₙ/(s − a)^n. An irreducible quadratic that appears once contributes (Bs + C) over that quadratic. The page solves the numerator identity exactly, with rational arithmetic, and it checks simple poles by cover-up. Each linear term then uses the power row. Each quadratic is completed to a square. The piece along (s − a) is a cosine, or a cosh if the constant term after completing the square is negative. The leftover constant, divided by b, is a sine, or a sinh.</p>
+<p>Repeated irreducible quadratics are refused. Their inverses need an extra factor of t, from the multiplication-by-t rule, and this page will not guess that coefficient. Enter the once-only quadratic, or differentiate the known transform by hand. A cubic with no rational root is refused for the same reason: the page will not display a factorization it did not find. The <a href="partial-fractions.html">partial fraction calculator</a> is the right tool when the split itself is the assignment and the factors are already visible.</p>
+
+<h2 id="mistakes">Common mistakes</h2>
+<p>The first mistake is dropping an initial condition. L{y''} is s^2 Y − s y(0) − y'(0), not s^2 Y. In the example above, forgetting y(0) = 1 removes the −s − 3 on the left and produces the wrong numerator.</p>
+<p>The second mistake is a factorial in the wrong place. L{t^n} = n!/s^(n+1), so the inverse of 1/s^(n+1) is t^n/n!, not t^n. The inverse of 2/s^3 is t^2, because 2/2! = 1. The inverse of 6/s^4 is t^3.</p>
+<p>The third mistake is reading b/(s^2 + b^2) as b sin(bt). That fraction is already the transform of sin(bt). The b in the numerator is part of the table row, not an extra constant in front of the sine.</p>
+<p>The fourth mistake is a phase shift left inside the sine. sin(2t + 1) is not a table row. Expand it with the angle-addition formula into sin(2t) and cos(2t), then transform those. The page rejects the unexpanded form so it cannot return a wrong fraction.</p>
+<p>The fifth mistake is quoting the formula for every s. For e^(at), the integral converges only when the real part of s is greater than a. The algebraic expression 1/(s − a) is what you invert. The inequality is the sentence that says where the integral equals that expression.</p>
+
+<h2>Related reading</h2>
+<p>Place the equation on the <a href="../topics/differential-equations.html">differential equations</a> map. Separation is a different first-order method: the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. Constant coefficients without a transform are the <a href="second-order-ode.html">second order differential equation calculator</a>. After you have two candidate solutions, the <a href="wronskian.html">Wronskian calculator</a> tests linear independence, and a zero at one point is not, by itself, a proof of dependence.</p>
+<p>The coefficient arithmetic in an inverse is partial fractions. Use the <a href="partial-fractions.html">partial fraction decomposition calculator</a> when you want that split written as algebra, including a quadratic factor, before you invert. The short definitions are <a href="../glossary/#differential-equation">differential equation</a> and <a href="../glossary/#initial-value-problem">initial value problem</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>Paul’s Online Math Notes, Laplace transforms, including the table of pairs used in a first course. <a href="https://tutorial.math.lamar.edu/classes/de/laplacetransforms.aspx" rel="noopener">tutorial.math.lamar.edu</a> and the <a href="https://tutorial.math.lamar.edu/classes/de/laplace_table.aspx" rel="noopener">table of Laplace transforms</a>.</li>
+<li>MIT OpenCourseWare, 18.03SC Differential Equations, Laplace transform basics. <a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/pages/unit-iii-fourier-series-and-laplace-transform/laplace-transform-basics/" rel="noopener">ocw.mit.edu</a></li>
+<li>Jiří Lebl, <em>Differential Equations for Engineers</em>, the chapter on the Laplace transform and the table in Appendix B, on Mathematics LibreTexts. <a href="https://math.libretexts.org/Bookshelves/Differential_Equations/Differential_Equations_for_Engineers_(Lebl)/6%3A_The_Laplace_Transform/6.2%3A_Transforms_of_derivatives_and_ODEs" rel="noopener">Transforms of derivatives and ODEs</a> and the <a href="https://math.libretexts.org/Bookshelves/Differential_Equations/Differential_Equations_for_Engineers_(Lebl)/Appendix_B%3A_Table_of_Laplace_Transforms" rel="noopener">table of Laplace transforms</a>.</li>
+</ul>
+<p>Last reviewed: 26 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="steps">
+<h2>What does a Laplace transform calculator with steps show?</h2>
+<p>It splits a linear combination into separate table rows, names the rule for each row, and applies linearity and the first shift theorem when an exponential multiplies another factor. The large line is the simplified transform. The lines under it are the same algebra in sentences.</p>
+</section>
+<section class="faq-item" id="inverse">
+<h2>How do you compute an inverse Laplace transform?</h2>
+<p>Write F(s) as a proper fraction, factor the denominator, and split it into partial fractions. A term A/(s-a)^n inverts to A times e^(at) times t^(n-1) divided by (n-1)!. A term (As+B)/((s-a)^2+b^2) inverts to an exponential times a sine and a cosine. This page does that split when the factors have rational coefficients, and it stops with an error when they do not.</p>
+</section>
+<section class="faq-item" id="pairs">
+<h2>What is the Laplace transform of e^(at), sin(bt), and t^n?</h2>
+<p>The transform of e^(at) is 1/(s-a). The transform of sin(bt) is b/(s^2+b^2), and the transform of cos(bt) is s/(s^2+b^2). The transform of t^n, for a nonnegative integer n, is n!/s^(n+1). The constant function 1 is the case n = 0.</p>
+</section>
+<section class="faq-item" id="which-table">
+<h2>What belongs on a Laplace transform table?</h2>
+<p>A short list of pairs: constants, powers of t, exponentials, sine and cosine, sinh and cosh, and the products of e^(at) with those functions. The page also records linearity, the first shift theorem, and the rule that multiplying by t differentiates the transform. It is the list this calculator will apply, not every pair that exists.</p>
+</section>
+<section class="faq-item" id="ivp">
+<h2>Can the Laplace transform solve y'' + 3y' + 2y = 0?</h2>
+<p>Yes, for an initial value problem. Transform the equation, insert y(0) and y'(0), solve the algebra for Y(s), then invert. For y(0) = 1 and y'(0) = 0 the transform is (s+3)/((s+1)(s+2)), and the solution is 2e^(-t) - e^(-2t). The same solution comes from the characteristic equation. This page inverts Y(s). It does not build Y(s) from the differential equation by itself.</p>
+</section>
+<section class="faq-item" id="rejected">
+<h2>Why does this calculator reject some inputs?</h2>
+<p>An unsupported expression is not given a guessed transform. Step functions, impulses, logarithms, tangents, products of two trig functions, and fractions whose denominators do not factor into linears and single quadratics with rational coefficients are outside this page. The error names the gap. The partial fraction calculator is the place to see the algebra of a split on its own.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/laplace.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
