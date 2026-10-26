@@ -60,7 +60,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-17",
-      "dateModified": "2026-09-25"
+      "dateModified": "2026-10-26"
     },
     {
       "@type": "FAQPage",
@@ -114,7 +114,7 @@
           "name": "Which calculator should I use with this page?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Compute the partial derivatives by hand, then use the 2 by 2 matrix calculator for the determinant or the inverse of that matrix. Use the 2 by 2 eigenvalue calculator if you want the stretch factors of the linear approximation. The numerical derivative calculator can check one partial at a time, on a slice where every other variable is held fixed."
+            "text": "Start with the Jacobian matrix calculator when the formula is still symbolic. Then use the 2 by 2 matrix calculator for the determinant or the inverse of a matrix you already evaluated. Use the 2 by 2 eigenvalue calculator if you want the stretch factors of the linear approximation. The numerical derivative calculator can check one partial at a time, on a slice where every other variable is held fixed."
           }
         }
       ]
@@ -179,7 +179,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Jacobian matrices in plain language</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 17 September 2026.</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
 <p class="article-meta">Explainer · Educational only · Updated 25 Sep 2026</p>
 </header>
 <p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
@@ -240,12 +240,12 @@
 </ol>
 
 <h2>Practice on the matrix tools</h2>
-<p>Compute every partial by hand before you open a calculator. The tools on this site do not differentiate a vector formula. They audit a matrix you already wrote down.</p>
-<div class="callout"><strong>Try it.</strong> On the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, enter the Jacobian at $(1,0)$ from the example above: $a=2$, $b=0$, $c=0$, $d=2$. The determinant should be $4$, and the inverse should be $(1/2)$ times the identity. Then open the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> on the same four numbers. Both eigenvalues should be $2$, matching a pure stretch by $2$. For a single partial, hold $y$ fixed at $0$ so $u(x,0)=x^2$, and check the slope at $x=1$ on the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>. You should see about $2$, which is the first entry of the first row. The calculator never saw $y$. You held it fixed.</div>
+<p>Compute every partial by hand before you trust a calculator. The <a href="../calculators/jacobian.html">Jacobian matrix calculator</a> differentiates a short formula in x, y, and z and writes the determinant. The matrix tools still audit a numeric matrix you already wrote down.</p>
+<div class="callout"><strong>Try it.</strong> On the <a href="../calculators/jacobian.html">Jacobian matrix calculator</a>, the map (x^2 − y^2, 2xy) at (1, 0) should print determinant 4. Then on the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, enter that same Jacobian: $a=2$, $b=0$, $c=0$, $d=2$. The determinant should be $4$, and the inverse should be $(1/2)$ times the identity. Then open the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> on the same four numbers. Both eigenvalues should be $2$, matching a pure stretch by $2$. For a single partial, hold $y$ fixed at $0$ so $u(x,0)=x^2$, and check the slope at $x=1$ on the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a>. You should see about $2$, which is the first entry of the first row. The calculator never saw $y$. You held it fixed.</div>
 <p>A cross product of two columns, when the Jacobian is $3$ by $2$, belongs on the <a href="../calculators/vector-ops.html">vector operations calculator</a>. Swap the order of the cross product and the normal flips. That is an orientation choice, not a new derivative.</p>
 <div class="cta-panel">
-<p>After you have written a 2 by 2 Jacobian by hand, check its determinant and its stretch factors.</p>
-<a class="btn" href="../calculators/matrix-2x2.html">Open the 2 by 2 matrix calculator</a>
+<p>After you have written a 2 by 2 Jacobian by hand, compare it with the symbolic calculator, then check its determinant and its stretch factors.</p>
+<a class="btn" href="../calculators/jacobian.html">Open the Jacobian matrix calculator</a>
 </div>
 <p>Two gradient rows side by side are the Jacobian of a pair $(f,g)$. They are parallel exactly when that determinant is zero, which is the tangency condition on <a href="lagrange-multipliers-intuition.html">Lagrange multipliers intuition</a>. The multiplier page assumes you can already read a gradient. This page is the place those rows become a matrix.</p>
 
@@ -256,7 +256,7 @@
 <li>Gilbert Strang, linear algebra notes on matrices as linear maps. <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a></li>
 <li>Paul’s Online Math Notes, change of variables. <a href="https://tutorial.math.lamar.edu/Classes/CalcIII/ChangeOfVariables.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
 </ul>
-<p>Last reviewed: 17 September 2026.</p>
+<p>Last reviewed: 26 October 2026.</p>
 </div>
 
 <h2>Common questions</h2>
@@ -278,10 +278,11 @@
 </section>
 <section class="faq-item" id="which-tool">
 <h2>Which calculator should I use with this page?</h2>
-<p>Compute the partials by hand. Then use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for the determinant or the inverse, and the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> for the stretch factors of the linear approximation. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can check one partial at a time, on a slice where every other variable is held fixed.</p>
+<p>Start with the <a href="../calculators/jacobian.html">Jacobian matrix calculator</a> when the formula is still symbolic. Then use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for the determinant or the inverse of a matrix you already evaluated, and the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> for the stretch factors of the linear approximation. The <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> can check one partial at a time, on a slice where every other variable is held fixed.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
+<li><a href="../calculators/jacobian.html">Jacobian matrix calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>

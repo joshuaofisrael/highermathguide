@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LU Decomposition Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="LU decomposition calculator with steps. Exact L and U factors, optional row exchanges, and forward and back substitution for A x = b.">
+<link rel="canonical" href="https://highermathguide.com/calculators/lu-decomposition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="LU Decomposition Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="LU decomposition calculator with steps. Exact L and U factors, optional row exchanges, and forward and back substitution for A x = b.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/lu-decomposition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A calculator and a handwritten triangular matrix on a wooden desk.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LU Decomposition Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="LU decomposition calculator with steps. Exact L and U factors, optional row exchanges, and forward and back substitution for A x = b.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="A calculator and a handwritten triangular matrix on a wooden desk.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/lu-decomposition.html#webpage",
+      "name": "LU Decomposition Calculator",
+      "description": "LU decomposition calculator with steps. Exact L and U factors, optional row exchanges, and forward and back substitution for A x = b.",
+      "url": "https://highermathguide.com/calculators/lu-decomposition.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": { "@id": "https://highermathguide.com/#organization" }
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" },
+      "breadcrumb": { "@id": "https://highermathguide.com/calculators/lu-decomposition.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/lu-decomposition.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://highermathguide.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://highermathguide.com/calculators/" },
+        { "@type": "ListItem", "position": 3, "name": "LU decomposition calculator", "item": "https://highermathguide.com/calculators/lu-decomposition.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/lu-decomposition.html#faq",
+      "url": "https://highermathguide.com/calculators/lu-decomposition.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does an LU decomposition calculator with steps show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It runs elimination on a square matrix, stores each multiplier in L, and leaves the upper triangular result in U. Ones sit on the diagonal of L. If you allow row exchanges, it also writes the permutation matrix P and checks that L times U equals P times A. Optional substitution then solves A x = b."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between L and U?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "U is what elimination leaves behind: zeros below the pivots, and the pivots on the diagonal. L records the multipliers used to create those zeros, with ones on its diagonal and zeros above it. Their product rebuilds A, or P times A if rows were exchanged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a zero pivot stop the factorization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A multiplier divides by the pivot. If the pivot is zero and a lower entry in that column is not, a row exchange can continue, and partial pivoting does that exchange. If the pivot and every entry below it are zero, the matrix is singular and there is no LU factorization with nonzero pivots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does partial pivoting change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Before clearing a column, the remaining entry of largest absolute value in that column becomes the pivot. The same exchange is applied to the multipliers already stored and to the row order. The identity is then P A = L U, not A = L U. With no row exchanges, P is the identity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you solve a linear system from L and U?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Replace b by P b if rows were exchanged. Solve L y = P b by forward substitution, starting at the top, then solve U x = y by back substitution, starting at the bottom. You never form the inverse. This page checks that A times x returns b."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does every square matrix have an LU factorization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not with the rule that L has ones on the diagonal and no row exchanges. A zero in a pivot position can block that pattern even when A is invertible. With partial pivoting, every invertible matrix has a factorization P A = L U. A singular matrix still fails, because some pivot is zero after every legal exchange."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": { "@type": "Brand", "@id": "https://highermathguide.com/#site", "name": "Higher Math Guide" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/lu-decomposition.html#app",
+      "name": "LU Decomposition Calculator",
+      "url": "https://highermathguide.com/calculators/lu-decomposition.html",
+      "description": "LU decomposition calculator with steps. Exact L and U factors, optional row exchanges, and forward and back substitution for A x = b.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">LU decomposition calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Elimination factors</p>
+<h1>LU decomposition calculator</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 26 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A calculator and a handwritten triangular matrix on a wooden desk." class="crop-9" loading="lazy" decoding="async">
+<figcaption>A calculator beside the triangular factors elimination leaves on the page.</figcaption>
+</figure>
+<div class="article-body">
+<p>This page is an LU decomposition calculator with steps, the factorization also called an LU factorization. It writes a square matrix as A = L U, or as P A = L U when a row exchange is required. L is lower triangular with ones on the diagonal. U is upper triangular. Each entry below the diagonal of L is a multiplier from elimination, and U is the matrix those steps leave behind. Entries can be integers, decimals, or fractions such as 3/4. The arithmetic stays exact.</p>
+<p>Reduced row echelon form keeps going: it clears above the pivots and scales each pivot to 1. LU factorization stops at U and saves the multipliers. That is why the factors solve A x = b without an inverse. Forward substitution solves L y = b, or L y = P b if rows moved, and back substitution solves U x = y. Building the inverse repeats elimination several times and throws the factors away. The <a href="rref.html">reduced row echelon form calculator</a> is the tool when you want the cleared matrix and the free variables. The <a href="matrix-3x3.html">3 by 3 matrix calculator</a> is the tool when you want the determinant and the inverse.</p>
+<p>The box opens on a 3 by 3 matrix whose factors need no row exchange. The right hand side (4, −2, 7) has solution (1, 1, 1). Mark "Solve A x = b" to see the substitution. The same writeup is printed below. A zero on the diagonal that a lower entry could replace is the "Needs a row exchange" button. A repeated row is the singular example, and the page refuses it.</p>
+</div>
+
+<form class="calc-panel wide" id="lu-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="lu-size">Size
+<select id="lu-size">
+<option value="2">2 by 2</option>
+<option value="3" selected>3 by 3</option>
+<option value="4">4 by 4</option>
+</select>
+</label>
+<label for="lu-pivot">Row exchanges
+<select id="lu-pivot">
+<option value="0" selected>No row exchanges</option>
+<option value="1">Partial pivoting</option>
+</select>
+</label>
+</div>
+<label class="calc-check" for="lu-solve">
+<input id="lu-solve" type="checkbox">
+Solve A x = b
+</label>
+<div class="matrix-block">
+<h3>Matrix A</h3>
+<div class="calc-grid cols-3" id="lu-grid"></div>
+</div>
+<div class="matrix-block" id="lu-bblock" hidden>
+<h3>Right hand side b</h3>
+<div class="calc-grid cols-3" id="lu-bgrid"></div>
+</div>
+<p class="calc-hint">Integers, decimals, and fractions such as 3/4 or −2/5. No row exchanges is the Doolittle pattern, with ones on the diagonal of L. Partial pivoting writes P as well.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="lu-preset-book">Worked 3 by 3 system</button>
+<button type="button" class="btn btn-secondary" id="lu-preset-swap">Needs a row exchange</button>
+<button type="button" class="btn btn-secondary" id="lu-preset-singular">Singular matrix</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="lu-compute">Factor A</button>
+<button type="button" class="btn btn-secondary" id="lu-reset">Reset</button>
+</div>
+<p class="calc-error" id="lu-error" role="alert"></p>
+<div class="calc-result" id="lu-result" role="status" aria-live="polite">
+<div class="amount" id="lu-amount" style="overflow-wrap:anywhere"></div>
+<div class="detail steps" id="lu-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>Where L and U come from</h2>
+<p>Elimination subtracts a multiple of the pivot row from a lower row so that the entry under the pivot becomes zero. The multiplier is that entry divided by the pivot. U keeps the rows after every subtraction, including the pivots and the entries above them, and it puts explicit zeros under the pivots. L stores each multiplier in the position that was cleared, and it puts ones on the diagonal. Multiply L by U and the multipliers put the cleared entries back. That product is A when no rows were swapped.</p>
+<p>The pattern with ones on the diagonal of L is the Doolittle factorization. Some books put the ones on the diagonal of U instead and call the result Crout. The two splittings are not the same matrices, and their product is still A. This page does Doolittle only, because that is the splitting elimination writes if you leave the pivots in U and the multipliers in L.</p>
+<p>Partial pivoting is the version that looks down the column first. The remaining entry of largest absolute value becomes the pivot, and that row exchange is recorded in P. The check is then P A = L U. A homework key that never swapped rows will not match this mode. Use "No row exchanges" when the textbook problem does not mention pivoting. If that mode hits a zero pivot with a nonzero entry below it, the page stops and names the column. It does not silently swap.</p>
+
+<h2>A fully worked example</h2>
+<p>Let A have rows (2, 1, 1), (4, −6, 0), and (−2, 7, 2), and let b = (4, −2, 7). The first pivot is 2. The multiplier for row 2 is 2, and row 2 becomes (0, −8, −2). The multiplier for row 3 is −1, so row 3 gains a copy of row 1 and becomes (0, 8, 3). The next pivot is −8. The multiplier is −1, so row 3 gains a copy of the new row 2 and becomes (0, 0, 1). Then</p>
+<p>L has rows (1, 0, 0), (2, 1, 0), and (−1, −1, 1). U has rows (2, 1, 1), (0, −8, −2), and (0, 0, 1). Their product is A. Forward substitution on L y = b gives y = (4, −10, 1). Back substitution on U x = y gives x = (1, 1, 1). The lines below are the same steps the calculator prints when you load the worked system.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">No row exchanges. This is the Doolittle pattern: ones on the diagonal of L, multipliers below that diagonal, and U the upper triangular matrix left by elimination.
+A
+Row 1: 2, 1, 1
+Row 2: 4, −6, 0
+Row 3: −2, 7, 2
+Column 1 pivot is 2.
+Multiplier for row 2 is 4 / 2 = 2.
+Row 2 becomes row 2 minus 2 times row 1.
+Row 2 is now 0, −8, −2.
+Multiplier for row 3 is −2 / 2 = −1.
+Row 3 becomes row 3 plus 1 times row 1.
+Row 3 is now 0, 8, 3.
+Column 2 pivot is −8.
+Multiplier for row 3 is 8 / −8 = −1.
+Row 3 becomes row 3 plus 1 times row 2.
+Row 3 is now 0, 0, 1.
+Column 3 pivot is 1. No rows remain below it.
+L
+Row 1: 1, 0, 0
+Row 2: 2, 1, 0
+Row 3: −1, −1, 1
+U
+Row 1: 2, 1, 1
+Row 2: 0, −8, −2
+Row 3: 0, 0, 1
+No rows were exchanged, so P is the identity and A = L times U.
+L times U
+Row 1: 2, 1, 1
+Row 2: 4, −6, 0
+Row 3: −2, 7, 2
+Check passed. L times U matches A.
+Solve A x = b by solving L y = b, then U x = y.
+Right hand side in elimination order: 4, −2, 7.
+Forward substitution, y₁ = 4 = 4.
+Forward substitution, y₂ = −2 − (2)(4) = −10.
+Forward substitution, y₃ = 7 − (−1)(4) − (−1)(−10) = 1.
+Back substitution, x₃ = (1) / 1 = 1.
+Back substitution, x₂ = (−10 − (−2)(1)) / −8 = 1.
+Back substitution, x₁ = (4 − (1)(1) − (1)(1)) / 2 = 1.
+Solution: x₁ = 1, x₂ = 1, x₃ = 1.
+Check passed. A times x equals b.</pre>
+
+<h2>Common mistakes</h2>
+<p>The first mistake is multiplying U L and expecting A. The product that rebuilds A is L U. Matrix multiplication is not commutative, which you can see on a 2 by 2 pair with the <a href="matrix-2x2.html">2 by 2 matrix calculator</a>.</p>
+<p>The second mistake is dropping the sign of a multiplier. The multiplier is (the entry being cleared) divided by the pivot. It is negative when those two numbers have opposite signs. Subtracting a negative multiplier is the same as adding the absolute value. The steps say "plus" in that case so the arithmetic on the row is the arithmetic you would write by hand.</p>
+<p>The third mistake is solving with the original b after a row exchange. If P moved row 1 and row 2, the right hand side has to move the same way before forward substitution. The page does that when partial pivoting is on and the solve box is checked.</p>
+<p>The fourth mistake is forcing a factorization of a singular matrix. Rows (1, 2) and (2, 4) are dependent. After the first elimination the second pivot is zero and nothing below it can replace it. There is no inverse, and the <a href="matrix-3x3.html">determinant calculator</a> would report zero for a 3 by 3 matrix in the same situation. This page reports the column and stops.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> LU is not QR. L and U come from elimination. Q and R come from the <a href="gram-schmidt.html">Gram Schmidt calculator</a>, and Q has orthonormal columns. A symmetric positive definite matrix has a further splitting into a transpose pair, often called Cholesky. This page does not look for that symmetry, and it will not take a square root of a pivot.</div>
+
+<h2>Related reading</h2>
+<p>Elimination is the engine of the <a href="../topics/linear-algebra.html">linear algebra</a> pillar. The <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> puts matrices before eigenvalues. Glossary lines for <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#linear-map">linear map</a>, and <a href="../glossary/#determinant">determinant</a> name what a zero pivot means: the linear map is not invertible, so the determinant is zero.</p>
+<p>If the assignment is the cleared matrix rather than the factors, stay on the <a href="rref.html">RREF calculator</a>. If the assignment is an inverse of a 3 by 3 matrix by cofactors, use the <a href="matrix-3x3.html">3 by 3 matrix calculator</a>. The two answers are related, because the inverse can be built from elimination, but the pages show different steps on purpose.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>Gilbert Strang, <em>Introduction to Linear Algebra</em>, fifth edition, Wellesley Cambridge Press, 2016. Elimination, inverses, and the factorization A = L U are Lecture 4 of his 18.06 course. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/" rel="noopener">MIT OpenCourseWare 18.06, Lecture 4</a>, and the book notes at <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a>.</li>
+<li>The orthogonal factorization is a different lecture. Strang treats Q and R in Lecture 17, which is the source list on the <a href="gram-schmidt.html">Gram Schmidt calculator</a>.</li>
+</ul>
+<p>Last reviewed: 26 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="steps">
+<h2>What does an LU decomposition calculator with steps show?</h2>
+<p>It runs elimination on a square matrix, stores each multiplier in L, and leaves the upper triangular result in U. Ones sit on the diagonal of L. If you allow row exchanges, it also writes the permutation matrix P and checks that L times U equals P times A. Optional substitution then solves A x = b.</p>
+</section>
+<section class="faq-item" id="letters">
+<h2>What is the difference between L and U?</h2>
+<p>U is what elimination leaves behind: zeros below the pivots, and the pivots on the diagonal. L records the multipliers used to create those zeros, with ones on its diagonal and zeros above it. Their product rebuilds A, or P times A if rows were exchanged.</p>
+</section>
+<section class="faq-item" id="zero">
+<h2>Why does a zero pivot stop the factorization?</h2>
+<p>A multiplier divides by the pivot. If the pivot is zero and a lower entry in that column is not, a row exchange can continue, and partial pivoting does that exchange. If the pivot and every entry below it are zero, the matrix is singular and there is no LU factorization with nonzero pivots.</p>
+</section>
+<section class="faq-item" id="pivot">
+<h2>What does partial pivoting change?</h2>
+<p>Before clearing a column, the remaining entry of largest absolute value in that column becomes the pivot. The same exchange is applied to the multipliers already stored and to the row order. The identity is then P A = L U, not A = L U. With no row exchanges, P is the identity.</p>
+</section>
+<section class="faq-item" id="solve">
+<h2>How do you solve a linear system from L and U?</h2>
+<p>Replace b by P b if rows were exchanged. Solve L y = P b by forward substitution, starting at the top, then solve U x = y by back substitution, starting at the bottom. You never form the inverse. This page checks that A times x returns b.</p>
+</section>
+<section class="faq-item" id="every">
+<h2>Does every square matrix have an LU factorization?</h2>
+<p>Not with the rule that L has ones on the diagonal and no row exchanges. A zero in a pivot position can block that pattern even when A is invertible. With partial pivoting, every invertible matrix has a factorization P A = L U. A singular matrix still fails, because some pivot is zero after every legal exchange.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/lu-decomposition.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

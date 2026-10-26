@@ -1,6 +1,6 @@
 # Higher Math Guide
 
-> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 23 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 26 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
 The legal publisher is named on the terms of use. The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost. Site: https://highermathguide.com/ Contact: https://highermathguide.com/contact/.
 
@@ -33,8 +33,9 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 
 ## Calculators
 
-- [All calculators](https://highermathguide.com/calculators/): index of the 23 browser tools
+- [All calculators](https://highermathguide.com/calculators/): index of the 26 browser tools
 - [Gradient and directional derivative calculator](https://highermathguide.com/calculators/gradient-directional-derivative.html): partial derivatives, the gradient, and a directional derivative at a point for functions of two or three variables
+- [Jacobian matrix calculator](https://highermathguide.com/calculators/jacobian.html): symbolic Jacobian matrix and determinant for one to three formulas in x, y, and z, with the value at a point
 - [Divergence and curl calculator](https://highermathguide.com/calculators/divergence-curl.html): divergence and curl of a planar or spatial vector field at a point, with an arrow plot
 - [Epsilon delta finder](https://highermathguide.com/calculators/epsilon-delta-finder.html): numerical search for a delta given f, a, L, and epsilon, a sampled check rather than a proof
 - [Numerical limit estimator](https://highermathguide.com/calculators/limit-estimator.html): sample a function as x approaches a point or infinity
@@ -48,9 +49,11 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Taylor polynomial calculator](https://highermathguide.com/calculators/taylor-polynomial.html): Taylor and Maclaurin polynomials with exact coefficients, a derivative table, a Lagrange remainder bound, and a graph of the function against the polynomial
 - [Quadratic formula calculator](https://highermathguide.com/calculators/quadratic-formula.html): discriminant and real or complex roots
 - [Vector operations calculator](https://highermathguide.com/calculators/vector-ops.html): dot product, cross product, magnitude, and unit vectors in 2D or 3D
+- [Gram Schmidt calculator](https://highermathguide.com/calculators/gram-schmidt.html): orthogonal vectors, unit vectors, and QR factors for two to four vectors, in exact fractions
 - [2 by 2 matrix calculator](https://highermathguide.com/calculators/matrix-2x2.html): determinant, inverse, and products of two 2 by 2 matrices
 - [3 by 3 matrix calculator](https://highermathguide.com/calculators/matrix-3x3.html): determinant and inverse of a 3 by 3 matrix, with cofactor expansion and exact fractions
 - [Reduced row echelon form calculator](https://highermathguide.com/calculators/rref.html): row reduction to reduced row echelon form with exact fractions, each elementary step, and the solution of a linear system
+- [LU decomposition calculator](https://highermathguide.com/calculators/lu-decomposition.html): Doolittle L and U factors with exact fractions, optional partial pivoting, and forward and back substitution for A x = b
 - [2 by 2 eigenvalue calculator](https://highermathguide.com/calculators/eigenvalue-2x2.html): real or complex eigenvalues from the characteristic polynomial
 - [3x3 eigenvalue calculator](https://highermathguide.com/calculators/eigenvalue-3x3.html): characteristic polynomial of a 3 by 3 matrix, with the trace, principal minors, determinant, eigenvalues, and a real eigenvector
 - [Bayes theorem calculator](https://highermathguide.com/calculators/bayes-theorem.html): posterior probability from a prior and two likelihoods

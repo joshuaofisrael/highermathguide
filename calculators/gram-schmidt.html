@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gram Schmidt Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Gram Schmidt calculator with steps for orthogonal vectors, unit vectors, and QR factors. Exact fractions for two to four vectors.">
+<link rel="canonical" href="https://highermathguide.com/calculators/gram-schmidt.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Gram Schmidt Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Gram Schmidt calculator with steps for orthogonal vectors, unit vectors, and QR factors. Exact fractions for two to four vectors.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/gram-schmidt.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A calculator and handwritten orthogonal vectors on a wooden desk.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gram Schmidt Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Gram Schmidt calculator with steps for orthogonal vectors, unit vectors, and QR factors. Exact fractions for two to four vectors.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="A calculator and handwritten orthogonal vectors on a wooden desk.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/gram-schmidt.html#webpage",
+      "name": "Gram Schmidt Calculator",
+      "description": "Gram Schmidt calculator with steps for orthogonal vectors, unit vectors, and QR factors. Exact fractions for two to four vectors.",
+      "url": "https://highermathguide.com/calculators/gram-schmidt.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": { "@id": "https://highermathguide.com/#organization" }
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" },
+      "breadcrumb": { "@id": "https://highermathguide.com/calculators/gram-schmidt.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/gram-schmidt.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://highermathguide.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://highermathguide.com/calculators/" },
+        { "@type": "ListItem", "position": 3, "name": "Gram Schmidt calculator", "item": "https://highermathguide.com/calculators/gram-schmidt.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/gram-schmidt.html#faq",
+      "url": "https://highermathguide.com/calculators/gram-schmidt.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Gram Schmidt calculator with steps show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It subtracts the projection of each new vector onto the orthogonal vectors already built, writes the coefficient and the projection, and keeps the remainder. Nonzero remainders are then divided by their lengths. When every remainder is nonzero, the unit vectors are the columns of Q and the rebuilding coefficients are an upper triangular R."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an orthogonal set and an orthonormal set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Orthogonal vectors have pairwise dot products equal to zero. Orthonormal vectors are orthogonal and each has length 1. This page builds the orthogonal vectors with exact fractions, then writes the unit vectors with simplified square roots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the order of the vectors change the result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each new direction is what remains after removing the span of the vectors that came before it. A different order removes a different span first, so the orthogonal vectors change. The span of the whole list does not change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does Gram Schmidt say the vectors are linearly dependent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a remainder is the zero vector. That input vector was already a combination of the earlier ones, so it adds no new direction and it has no unit vector. The page then refuses a QR factorization of the full list."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is QR related to the Gram Schmidt process?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Put the input vectors in the columns of A. If they are independent, the unit vectors from this process are the columns of Q, and A = Q R with R upper triangular. The diagonal entries of R are the lengths of the orthogonal vectors, which this page keeps positive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do the unit vectors still contain a square root?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The orthogonal vectors are exact fractions. Their lengths are square roots of those fractions. The page factors squares out of the root, so sqrt(8) would become 2 sqrt(2), and it leaves the square free part under the radical. A perfect square length becomes an exact fraction with no radical."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": { "@type": "Brand", "@id": "https://highermathguide.com/#site", "name": "Higher Math Guide" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/gram-schmidt.html#app",
+      "name": "Gram Schmidt Calculator",
+      "url": "https://highermathguide.com/calculators/gram-schmidt.html",
+      "description": "Gram Schmidt calculator with steps for orthogonal vectors, unit vectors, and QR factors. Exact fractions for two to four vectors.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Gram Schmidt calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Orthonormal bases</p>
+<h1>Gram Schmidt calculator</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 26 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A calculator and handwritten orthogonal vectors on a wooden desk." class="crop-4" loading="lazy" decoding="async">
+<figcaption>A calculator beside the sort of vector list a first linear algebra course orthonormalizes by hand.</figcaption>
+</figure>
+<div class="article-body">
+<p>This page is a Gram Schmidt calculator with steps. It takes two, three, or four vectors in dimension 2, 3, or 4 and builds an orthogonal set, then unit vectors, then the QR factors when the vectors are independent. Each entry can be an integer, a decimal, or a fraction such as 3/4. A decimal is an exact fraction of a power of ten, so 0.5 is 1/2. The projections stay exact.</p>
+<p>The projection of a vector a onto a nonzero vector u is ((a · u) / (u · u)) u. Subtract that piece and the remainder is orthogonal to u. Do this for each new vector, projecting onto the orthogonal vectors already built, not onto the original list. That is the classical Gram Schmidt process. With exact fractions it agrees with the modified process. Decimal software often prefers the modified order because rounding can tilt the classical vectors off orthogonality. This page does not round.</p>
+<p>A zero remainder means the new vector was already in the span of the earlier ones. The set is linearly dependent, that direction has no unit vector, and the page will not invent a QR factorization of the full list. Dividing a nonzero orthogonal vector by its length makes a unit vector. The length is a square root. The page pulls perfect squares out of the root, so a squared length of 2 produces factors of sqrt(2), and a squared length of 25 produces an exact fraction with no radical.</p>
+<p>The box opens on (1, 1, 0), (1, 0, 1), and (0, 1, 1). The same arithmetic is written below, so you can read it with scripts turned off. A single dot product, without the whole process, is the <a href="vector-ops.html">vector operations calculator</a>. Dependence of a list by row reduction is the <a href="rref.html">reduced row echelon form calculator</a>. The map of the course is <a href="../topics/linear-algebra.html">linear algebra</a>.</p>
+</div>
+
+<form class="calc-panel wide" id="gs-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="gs-dim">Dimension
+<select id="gs-dim">
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+</select>
+</label>
+<label for="gs-count">Vectors
+<select id="gs-count">
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+</select>
+</label>
+</div>
+<label class="calc-check" for="gs-units">
+<input id="gs-units" type="checkbox" checked>
+Show unit vectors and QR factors
+</label>
+<div class="matrix-block">
+<h3>Vectors, one per row</h3>
+<div class="calc-grid cols-3" id="gs-grid"></div>
+</div>
+<p class="calc-hint">Integers, decimals, and fractions such as 3/4 or −2/5. The first row is the first vector. Order matters.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="gs-preset-book">Three vectors in space</button>
+<button type="button" class="btn btn-secondary" id="gs-preset-plane">Perpendicular pair</button>
+<button type="button" class="btn btn-secondary" id="gs-preset-dependent">A dependent list</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="gs-compute">Run Gram Schmidt</button>
+<button type="button" class="btn btn-secondary" id="gs-reset">Reset</button>
+</div>
+<p class="calc-error" id="gs-error" role="alert"></p>
+<div class="calc-result" id="gs-result" role="status" aria-live="polite">
+<div class="amount" id="gs-amount" style="overflow-wrap:anywhere"></div>
+<div class="detail steps" id="gs-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>What the process is doing</h2>
+<p>An orthogonal set is a list of nonzero vectors whose pairwise dot products are zero. An orthonormal set is an orthogonal set in which every vector has length 1. The Gram Schmidt process starts with a list that may be neither, and it builds the orthogonal list one vector at a time. The first vector is copied. Each later vector loses its projections onto the directions already accepted. What survives is perpendicular to all of them.</p>
+<p>The formula is forced by one demand. The remainder a − c u should have dot product zero with u. Expand (a − c u) · u = 0 and solve for c. You get c = (a · u) / (u · u), provided u is not zero. There is no new idea after that sentence. The rest is bookkeeping: use the new remainder, not the original vector, as the direction for the next projection.</p>
+<p>If every remainder is nonzero, stack the unit vectors as the columns of Q. The numbers that rebuild each input from those unit vectors form an upper triangular matrix R, and the matrix A with your vectors as columns satisfies A = Q R. The diagonal entries of R are the lengths of the orthogonal vectors. This page keeps the sign that subtraction produced, so those lengths are positive. A textbook that flips a vector before normalizing will show the opposite sign in that column of Q and in that row of R. The product Q R is the same.</p>
+
+<h2>A fully worked example</h2>
+<p>The vectors already filled in are v₁ = (1, 1, 0), v₂ = (1, 0, 1), and v₃ = (0, 1, 1). The first vector is already orthogonal to nothing, so it stays (1, 1, 0), with squared length 2. Its unit vector is (sqrt(2)/2, sqrt(2)/2, 0). The second vector loses (1/2, 1/2, 0) and becomes (1/2, −1/2, 1). The third loses a projection onto each of those, and the remainder is (−2/3, 2/3, 2/3). All three dot products of distinct orthogonal vectors are zero. The lines below match the calculator.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Input vectors, in the order they will be processed.
+v₁ = (1, 1, 0)
+v₂ = (1, 0, 1)
+v₃ = (0, 1, 1)
+The classical Gram Schmidt process subtracts projections onto the orthogonal vectors already built. Exact fractions make the order agree with the modified process. Decimal arithmetic can make those two orders differ, and this page does not use decimals.
+Vector 1 starts as (1, 1, 0).
+Orthogonal vector 1 is (1, 1, 0).
+Squared length 2.
+Vector 2 starts as (1, 0, 1).
+Projection of v₂ onto orthogonal vector 1.
+Dot product 1, squared length 2, coefficient 1/2.
+Projection vector (1/2, 1/2, 0).
+After subtracting that projection, the running vector is (1/2, −1/2, 1).
+Orthogonal vector 2 is (1/2, −1/2, 1).
+Squared length 3/2.
+Vector 3 starts as (0, 1, 1).
+Projection of v₃ onto orthogonal vector 1.
+Dot product 1, squared length 2, coefficient 1/2.
+Projection vector (1/2, 1/2, 0).
+After subtracting that projection, the running vector is (−1/2, 1/2, 1).
+Projection of v₃ onto orthogonal vector 2.
+Dot product 1/2, squared length 3/2, coefficient 1/3.
+Projection vector (1/6, −1/6, 1/3).
+After subtracting that projection, the running vector is (−2/3, 2/3, 2/3).
+Orthogonal vector 3 is (−2/3, 2/3, 2/3).
+Squared length 4/3.
+Unit vectors divide each nonzero orthogonal vector by the square root of its squared length. A zero remainder has no direction, so it has no unit vector.
+Unit vector 1 is (sqrt(2)/2, sqrt(2)/2, 0).
+Unit vector 2 is (sqrt(6)/6, −sqrt(6)/6, sqrt(6)/3).
+Unit vector 3 is (−sqrt(3)/3, sqrt(3)/3, sqrt(3)/3).
+QR factorization. The columns of Q are the unit vectors. R is upper triangular, and column j of the input is Q times column j of R. The diagonal entries of R are the lengths of the orthogonal vectors.
+Q
+Row 1: sqrt(2)/2, sqrt(6)/6, −sqrt(3)/3
+Row 2: sqrt(2)/2, −sqrt(6)/6, sqrt(3)/3
+Row 3: 0, sqrt(6)/3, sqrt(3)/3
+R
+Row 1: sqrt(2), sqrt(2)/2, sqrt(2)/2
+Row 2: 0, sqrt(6)/2, sqrt(6)/6
+Row 3: 0, 0, 2 sqrt(3)/3
+Check passed: Q times R rebuilds the input matrix whose columns are v₁ through v₃.</pre>
+
+<h2>Common mistakes</h2>
+<p>The first mistake is projecting onto the original vectors after the first step. For v₃ you must use the orthogonal remainder of v₂, not v₂ itself. Using v₂ leaves a remainder that is not perpendicular to the second direction.</p>
+<p>The second mistake is treating a different order as a wrong answer. Swap v₁ and v₂ and the orthogonal vectors change. The span does not. If a homework key starts with a different vector, reorder the rows before you compare.</p>
+<p>The third mistake is normalizing too early and then rounding. The orthogonal vector (1/2, −1/2, 1) has squared length 3/2. Its unit vector is exact: (sqrt(6)/6, −sqrt(6)/6, sqrt(6)/3). A decimal such as 0.408 can fail a later dot product check even though the algebra was right.</p>
+<p>The fourth mistake is reading a zero remainder as a broken calculator. Zero means dependence. The <a href="../glossary/#linear-independence">linear independence</a> glossary line is the definition that remainder is testing. You can also row reduce the matrix with these vectors as rows on the <a href="rref.html">RREF calculator</a>. A zero row there is the same news.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> This page uses the ordinary dot product. If your basis is not orthonormal and the inner product is a different formula, these lengths and angles are the wrong ones. Eigenvectors from the <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> are a different basis. They are not the output of Gram Schmidt unless the matrix was symmetric and you were building an orthonormal eigenbasis by hand.</div>
+
+<h2>Related reading</h2>
+<p>The surrounding map is the <a href="../topics/linear-algebra.html">linear algebra</a> pillar, and the ordered route is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>. Glossary lines for <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#basis">basis</a>, and <a href="../glossary/#linear-independence">linear independence</a> are the words this arithmetic is about. A dot product you already computed can be checked on the <a href="vector-ops.html">vector operations calculator</a>. That page does not run this process.</p>
+<p>Once the columns are orthonormal, a later course multiplies by Q transpose instead of inverting Q, because Q transpose Q is the identity. The factors on the <a href="lu-decomposition.html">LU decomposition calculator</a> are a different splitting, from elimination rather than from orthogonality. Do not mix the two letters.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>Gilbert Strang, <em>Introduction to Linear Algebra</em>, fifth edition, Wellesley Cambridge Press, 2016. Orthogonal matrices and this process are Lecture 17 of his 18.06 course. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/" rel="noopener">MIT OpenCourseWare 18.06, Lecture 17</a>, and the book notes at <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a>.</li>
+<li>The same course treats elimination factors separately. If you want L and U rather than Q and R, use the <a href="lu-decomposition.html">LU decomposition calculator</a> and Strang's Lecture 4, linked from that page.</li>
+</ul>
+<p>Last reviewed: 26 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="steps">
+<h2>What does a Gram Schmidt calculator with steps show?</h2>
+<p>It subtracts the projection of each new vector onto the orthogonal vectors already built, writes the coefficient and the projection, and keeps the remainder. Nonzero remainders are then divided by their lengths. When every remainder is nonzero, the unit vectors are the columns of Q and the rebuilding coefficients are an upper triangular R.</p>
+</section>
+<section class="faq-item" id="orthonormal">
+<h2>What is the difference between an orthogonal set and an orthonormal set?</h2>
+<p>Orthogonal vectors have pairwise dot products equal to zero. Orthonormal vectors are orthogonal and each has length 1. This page builds the orthogonal vectors with exact fractions, then writes the unit vectors with simplified square roots.</p>
+</section>
+<section class="faq-item" id="order">
+<h2>Why does the order of the vectors change the result?</h2>
+<p>Each new direction is what remains after removing the span of the vectors that came before it. A different order removes a different span first, so the orthogonal vectors change. The span of the whole list does not change.</p>
+</section>
+<section class="faq-item" id="dependent">
+<h2>When does Gram Schmidt say the vectors are linearly dependent?</h2>
+<p>When a remainder is the zero vector. That input vector was already a combination of the earlier ones, so it adds no new direction and it has no unit vector. The page then refuses a QR factorization of the full list.</p>
+</section>
+<section class="faq-item" id="qr">
+<h2>How is QR related to the Gram Schmidt process?</h2>
+<p>Put the input vectors in the columns of A. If they are independent, the unit vectors from this process are the columns of Q, and A = Q R with R upper triangular. The diagonal entries of R are the lengths of the orthogonal vectors, which this page keeps positive.</p>
+</section>
+<section class="faq-item" id="radical">
+<h2>Why do the unit vectors still contain a square root?</h2>
+<p>The orthogonal vectors are exact fractions. Their lengths are square roots of those fractions. The page factors squares out of the root, so a factor of 8 under a radical becomes 2 sqrt(2), and it leaves the square free part under the radical. A perfect square length becomes an exact fraction with no radical.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/gram-schmidt.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

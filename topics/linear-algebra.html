@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Linear Algebra Topic Map, Higher Math Guide</title>
-<meta name="description" content="First course map of vectors, matrices, bases, and eigenvalues, with a study order into explainers, calculators, and glossary entries.">
+<meta name="description" content="First course map of vectors, matrices, bases, and eigenvalues, with Gram Schmidt and LU factorization calculators in the study order.">
 <link rel="canonical" href="https://highermathguide.com/topics/linear-algebra.html">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Linear Algebra Topic Map, Higher Math Guide">
-<meta property="og:description" content="First course map of vectors, matrices, bases, and eigenvalues, with a study order into explainers, calculators, and glossary entries.">
+<meta property="og:description" content="First course map of vectors, matrices, bases, and eigenvalues, with Gram Schmidt and LU factorization calculators in the study order.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/topics/linear-algebra.html">
 <meta property="og:site_name" content="Higher Math Guide">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="A chalkboard showing handwritten matrices and equations for the linear algebra map.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Linear Algebra Topic Map, Higher Math Guide">
-<meta name="twitter:description" content="First course map of vectors, matrices, bases, and eigenvalues, with a study order into explainers, calculators, and glossary entries.">
+<meta name="twitter:description" content="First course map of vectors, matrices, bases, and eigenvalues, with Gram Schmidt and LU factorization calculators in the study order.">
 <meta name="twitter:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
 <meta name="twitter:image:alt" content="A chalkboard showing handwritten matrices and equations for the linear algebra map.">
 <link rel="stylesheet" href="../css/styles.css">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Linear Algebra Topic Map",
-  "description": "First course map of vectors, matrices, bases, and eigenvalues, with a study order into explainers, calculators, and glossary entries.",
+  "description": "First course map of vectors, matrices, bases, and eigenvalues, with Gram Schmidt and LU factorization calculators in the study order.",
   "url": "https://highermathguide.com/topics/linear-algebra.html",
   "publisher": {
     "@type": "Organization",
@@ -85,7 +85,7 @@
       "name": "Are the calculators only 2 by 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The 2 by 2 eigenvalue calculator keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The 3x3 eigenvalue calculator expands the characteristic polynomial and row reduces for a real eigenvector. The 3 by 3 matrix calculator computes a determinant and an inverse. It does not find eigenvalues."
+        "text": "No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The 2 by 2 eigenvalue calculator keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The 3x3 eigenvalue calculator expands the characteristic polynomial and row reduces for a real eigenvector. The 3 by 3 matrix calculator computes a determinant and an inverse. It does not find eigenvalues. Orthogonal bases are the Gram Schmidt calculator, and elimination factors are the LU decomposition calculator."
       }
     },
     {
@@ -139,7 +139,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Linear algebra",
-  "description": "First course map of vectors, matrices, bases, and eigenvalues, with a study order into explainers, calculators, and glossary entries.",
+  "description": "First course map of vectors, matrices, bases, and eigenvalues, with Gram Schmidt and LU factorization calculators in the study order.",
   "url": "https://highermathguide.com/topics/linear-algebra.html",
   "author": {
     "@type": "Organization",
@@ -166,7 +166,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-09-11",
-  "dateModified": "2026-10-19"
+  "dateModified": "2026-10-26"
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
@@ -254,6 +254,8 @@
 <ol>
 <li>Glossary, each with a 2 by 2 picture: <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#determinant">determinant</a>.</li>
 <li>The <a href="../calculators/vector-ops.html">vector operations calculator</a> for a dot product you already computed. Zero means a right angle or a zero vector. The page does not print an angle.</li>
+<li>The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> when a list of vectors should become an orthogonal basis. Order matters, and a zero remainder means dependence.</li>
+<li>The <a href="../calculators/lu-decomposition.html">LU decomposition calculator</a> when elimination should keep the multipliers instead of clearing all the way to reduced form.</li>
 <li>The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant and for $AB$ versus $BA$, after you read the columns as images of the basis.</li>
 <li>The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for cofactor expansion, the adjugate, and an inverse in exact fractions.</li>
 <li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>, then the triangular example above by hand.</li>
@@ -291,7 +293,7 @@
 </section>
 <section class="faq-item" id="twobytwo">
 <h2>Are the calculators only 2 by 2?</h2>
-<p>No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands the characteristic polynomial and row reduces for a real eigenvector. The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> computes a determinant and an inverse. It does not find eigenvalues.</p>
+<p>No. Pictures in the plane are still the right place to learn span, linear independence, determinant, and eigenvalue. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> keeps the characteristic polynomial a quadratic you can audit by hand, and it does not find eigenvectors. The <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands the characteristic polynomial and row reduces for a real eigenvector. The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> computes a determinant and an inverse. It does not find eigenvalues. Orthogonal bases are the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a>, and elimination factors are the <a href="../calculators/lu-decomposition.html">LU decomposition calculator</a>.</p>
 </section>
 <section class="faq-item" id="diagonal">
 <h2>Is every matrix diagonalizable?</h2>
@@ -307,6 +309,8 @@
 <li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
 <li><a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a></li>
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
+<li><a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a></li>
+<li><a href="../calculators/lu-decomposition.html">LU decomposition calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
 <li><a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a></li>
 <li><a href="../calculators/rref.html">Reduced row echelon form calculator</a></li>

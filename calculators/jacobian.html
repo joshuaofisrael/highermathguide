@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacobian Matrix Calculator with Steps, Higher Math Guide</title>
+<meta name="description" content="Jacobian matrix calculator with steps for partial derivatives, the Jacobian determinant, and the value at a point.">
+<link rel="canonical" href="https://highermathguide.com/calculators/jacobian.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Jacobian Matrix Calculator with Steps, Higher Math Guide">
+<meta property="og:description" content="Jacobian matrix calculator with steps for partial derivatives, the Jacobian determinant, and the value at a point.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/jacobian.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A calculator and a handwritten Jacobian matrix on a wooden desk.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jacobian Matrix Calculator with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Jacobian matrix calculator with steps for partial derivatives, the Jacobian determinant, and the value at a point.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="A calculator and a handwritten Jacobian matrix on a wooden desk.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/jacobian.html#webpage",
+      "name": "Jacobian Matrix Calculator",
+      "description": "Jacobian matrix calculator with steps for partial derivatives, the Jacobian determinant, and the value at a point.",
+      "url": "https://highermathguide.com/calculators/jacobian.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": { "@id": "https://highermathguide.com/#organization" }
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" },
+      "breadcrumb": { "@id": "https://highermathguide.com/calculators/jacobian.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/jacobian.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://highermathguide.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://highermathguide.com/calculators/" },
+        { "@type": "ListItem", "position": 3, "name": "Jacobian matrix calculator", "item": "https://highermathguide.com/calculators/jacobian.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/jacobian.html#faq",
+      "url": "https://highermathguide.com/calculators/jacobian.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Jacobian matrix calculator with steps show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It differentiates each output with respect to each input, writes the matrix, and, when the matrix is square, writes the determinant. If you enter a point, it evaluates the matrix and the determinant there. Fractions stay exact. Roots, logarithms, and trigonometric values at a point are numerical."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the Jacobian matrix and the Jacobian determinant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The matrix is the list of all first partial derivatives, one output per row and one input per column. The determinant exists only when the matrix is square. It is the signed volume scale of the linear approximation. A sentence about the chain rule wants the matrix. A sentence about area after a substitution wants the absolute value of the determinant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which expressions can this page differentiate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The inputs are x, y, and z, and you may use one, two, or three of them. The operations are addition, subtraction, multiplication, division, and integer powers from −12 to 12. The functions are sin, cos, tan, exp, ln, log, and sqrt, and each one needs parentheses. The letter e is not a variable. Write exp(x) for an exponential. log means the natural logarithm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does 1/2x differ from 1/2*x?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Juxtaposition is tighter than division, so 1/2x means 1/(2x). A star between a quotient and a variable is ordinary multiplication, so 1/2*x means (1/2) times x. A minus sign in front of a power belongs to the whole power: −x^2 means −(x^2)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the value at a point exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A rational expression, with no roots, logarithms, or trigonometric functions, evaluates as an exact fraction. If a root, a logarithm, or a trigonometric function is evaluated, the printed number is numerical even when it looks like a whole number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Jacobian used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the best linear approximation to a map with several inputs and several outputs. Its determinant scales area or volume in a change of variables. A gradient is the Jacobian of a function with one output."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": { "@type": "Brand", "@id": "https://highermathguide.com/#site", "name": "Higher Math Guide" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/jacobian.html#app",
+      "name": "Jacobian Matrix Calculator",
+      "url": "https://highermathguide.com/calculators/jacobian.html",
+      "description": "Jacobian matrix calculator with steps for partial derivatives, the Jacobian determinant, and the value at a point.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": { "@id": "https://highermathguide.com/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Jacobian matrix calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">Partial derivatives</p>
+<h1>Jacobian matrix calculator</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 26 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A calculator and a handwritten Jacobian matrix on a wooden desk." class="crop-6" loading="lazy" decoding="async">
+<figcaption>A calculator beside the matrix of partial derivatives a multivariable course writes by hand.</figcaption>
+</figure>
+<div class="article-body">
+<p>This page is a Jacobian matrix calculator with steps. You type one, two, or three formulas in the inputs x, y, and z. The page differentiates each formula with respect to each input that is in use, stacks those partial derivatives into a matrix, and writes the determinant when the matrix is square. Leave the point blank for the symbolic matrix. Fill every coordinate and the page also evaluates the matrix there.</p>
+<p>A Jacobian is the derivative of a map that may have several outputs. One output is a gradient written as a row. Several outputs are those rows stacked. The determinant, when it exists, is the signed volume scale of that linear approximation. It is not a second name for the matrix. The story of that distinction is <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a>. The course map is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>.</p>
+<p>The box opens on (x^2 − y^2, 2xy), evaluated at (1, 0). The partial derivatives are 2x, −2y, 2y, and 2x. The determinant is 4x^2 + 4y^2, which equals 4 at that point. The same lines are printed below, so you can read them with scripts turned off. A numerical gradient of one scalar formula, by central differences, is the <a href="gradient-directional-derivative.html">gradient and directional derivative calculator</a>. This page does the algebra instead.</p>
+</div>
+
+<form class="calc-panel wide" id="jac-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="jac-vars">Inputs
+<select id="jac-vars">
+<option value="1">x only</option>
+<option value="2" selected>x and y</option>
+<option value="3">x, y, and z</option>
+</select>
+</label>
+<label for="jac-outs">Outputs
+<select id="jac-outs">
+<option value="1">1</option>
+<option value="2" selected>2</option>
+<option value="3">3</option>
+</select>
+</label>
+</div>
+<div class="matrix-block">
+<h3>Component formulas</h3>
+<label id="jac-lab-f" for="jac-f">Output 1
+<input id="jac-f" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="x^2−y^2" aria-label="First component">
+</label>
+<label id="jac-lab-g" for="jac-g">Output 2
+<input id="jac-g" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="2xy" aria-label="Second component">
+</label>
+<label id="jac-lab-h" for="jac-h" hidden>Output 3
+<input id="jac-h" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="" aria-label="Third component">
+</label>
+</div>
+<div class="matrix-block">
+<h3>Point, optional</h3>
+<label id="jac-lab-x" for="jac-x">x
+<input id="jac-x" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="1" aria-label="x coordinate">
+</label>
+<label id="jac-lab-y" for="jac-y">y
+<input id="jac-y" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="0" aria-label="y coordinate">
+</label>
+<label id="jac-lab-z" for="jac-z" hidden>z
+<input id="jac-z" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="" aria-label="z coordinate">
+</label>
+</div>
+<p class="calc-hint">Use x, y, and z. Functions need parentheses: sin, cos, tan, exp, ln, log, and sqrt. log means ln. Powers are integers from −12 to 12. A blank point skips the numerical line. 1/2x means 1/(2x). 1/2*x means one half times x.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="jac-preset-square">Square map</button>
+<button type="button" class="btn btn-secondary" id="jac-preset-product">Product map</button>
+<button type="button" class="btn btn-secondary" id="jac-preset-scalar">One output</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="jac-compute">Compute the Jacobian</button>
+<button type="button" class="btn btn-secondary" id="jac-reset">Reset</button>
+</div>
+<p class="calc-error" id="jac-error" role="alert"></p>
+<div class="calc-result" id="jac-result" role="status" aria-live="polite">
+<div class="amount" id="jac-amount" style="overflow-wrap:anywhere"></div>
+<div class="detail steps" id="jac-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How the partial derivatives are built</h2>
+<p>Each partial derivative holds the other inputs fixed and differentiates with respect to one letter. A sum is differentiated term by term. A product uses the product rule. A power uses the power rule, and a function of a formula uses the chain rule. Like terms are combined before the matrix is printed, so 2x + 0 is printed as 2x.</p>
+<p>The grammar is small on purpose. Juxtaposition means multiplication, and it binds tighter than the slash and the star. That is why 2xy is 2 times x times y, and why 1/2x is 1 divided by 2x. Write 1/2*x when you want half of x. A leading minus sits outside a power, so −x^2 is the negative of x squared, which is the usual calculus convention. The letter e is refused. Write exp(x). The name log is the natural logarithm, the same function as ln. Integer powers run from −12 to 12. A small positive power of a sum is expanded. A negative power of a sum of several terms stays in parentheses.</p>
+<p>When the number of outputs equals the number of inputs, the page expands the determinant. A 1 by 1 determinant is the ordinary derivative. A 2 by 2 determinant is ad − bc. A 3 by 3 determinant is the usual cofactor expansion. A rectangular matrix has no determinant, and the page says so instead of inventing one. You can still paste a numeric 2 by 2 matrix into the <a href="matrix-2x2.html">2 by 2 matrix calculator</a> if you want the inverse of a Jacobian you have already evaluated.</p>
+
+<h2>A fully worked example</h2>
+<p>Let F(x, y) = (x^2 − y^2, 2xy), and evaluate at (1, 0). The first component has partial derivatives 2x and −2y. The second has partial derivatives 2y and 2x. The matrix is therefore the rows (2x, −2y) and (2y, 2x). Its determinant is 4x^2 + 4y^2. At (1, 0) the matrix is the rows (2, 0) and (0, 2), and the determinant is 4. That factor 4 is the local area scale: a small region near (1, 0) is stretched by 4, and the orientation stays the same because the determinant is positive. The lines below match the calculator.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Inputs: x, y.
+Each partial derivative holds the other inputs fixed. Like terms are combined. A product uses the product rule, and a composition uses the chain rule.
+Output 1 is x^2 − y^2.
+Partial of output 1 with respect to x is 2x.
+Partial of output 1 with respect to y is −2y.
+Output 2 is 2xy.
+Partial of output 2 with respect to x is 2y.
+Partial of output 2 with respect to y is 2x.
+Jacobian matrix, one output per row and one input per column.
+Row 1: 2x, −2y
+Row 2: 2y, 2x
+Determinant 4x^2 + 4y^2.
+For a square map the determinant is the signed volume scale of the linear approximation. It is not the same object as the matrix.
+Evaluated at (1, 0).
+Row 1 at the point: 2, 0
+Row 2 at the point: 0, 2
+Determinant at the point: 4.</pre>
+
+<h2>Common mistakes</h2>
+<p>The first mistake is calling the determinant the Jacobian when the sentence needed the matrix, or the other way around. Invertibility, eigenvalues, and the chain rule use the matrix. A change of variables in an integral uses the absolute value of the determinant. OpenStax states that factor in the section cited below.</p>
+<p>The second mistake is differentiating 2xy as if the letters were separate terms. The product rule on 2 · x · y, holding y fixed, gives 2y. Holding x fixed gives 2x. A missing factor of 2 usually means one of those letters was treated as a constant too early.</p>
+<p>The third mistake is reading a printed whole number as a proof that the value is exact. sin, cos, tan, exp, ln, and sqrt are evaluated numerically at a point. A fraction with no such function is exact. The page says which case you are in.</p>
+<p>The fourth mistake is using this page for a directional derivative of one scalar function. That object is a gradient dotted with a unit vector. Estimate it on the <a href="gradient-directional-derivative.html">gradient calculator</a>. This page will still give you the gradient row if you type a single output, and it will not divide by a direction you did not enter.</p>
+<div class="callout pitfall"><strong>Pitfall.</strong> A zero determinant does not mean the derivative failed to exist. It means the linear approximation crushes some direction. The same map, at (0, 0), has the zero matrix, and that derivative is correct. The explainer works that example. This calculator will print the zero matrix if you move the point to the origin.</div>
+
+<h2>Related reading</h2>
+<p>The surrounding map is <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>. The ordered linear algebra that makes a matrix feel like a machine is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>. Glossary lines for <a href="../glossary/#jacobian">Jacobian</a>, <a href="../glossary/#partial-derivative">partial derivative</a>, and <a href="../glossary/#gradient">gradient</a> are the words this arithmetic is about.</p>
+<p>After the matrix is numeric, the <a href="matrix-2x2.html">2 by 2 matrix calculator</a> finds a determinant or an inverse, and the <a href="eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> finds stretch factors. Neither of those pages differentiates a formula. The elimination factors of a numeric matrix, which are not a Jacobian, are on the <a href="lu-decomposition.html">LU decomposition calculator</a>.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>OpenStax, <em>Calculus Volume 3</em>, section 5.7, change of variables in multiple integrals, including the Jacobian determinant as the area factor. <a href="https://openstax.org/books/calculus-volume-3/pages/5-7-change-of-variables-in-multiple-integrals" rel="noopener">openstax.org</a>.</li>
+<li>MIT OpenCourseWare, 18.02SC Multivariable Calculus, Fall 2010. <a href="https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/" rel="noopener">ocw.mit.edu</a>.</li>
+<li>Gilbert Strang, <em>Introduction to Linear Algebra</em>, fifth edition, Wellesley Cambridge Press, 2016. The matrix as a linear map is the reading that makes a Jacobian a derivative rather than a grid. Notes at <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a>.</li>
+</ul>
+<p>Last reviewed: 26 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="steps">
+<h2>What does a Jacobian matrix calculator with steps show?</h2>
+<p>It differentiates each output with respect to each input, writes the matrix, and, when the matrix is square, writes the determinant. If you enter a point, it evaluates the matrix and the determinant there. Fractions stay exact. Roots, logarithms, and trigonometric values at a point are numerical.</p>
+</section>
+<section class="faq-item" id="determinant">
+<h2>What is the difference between the Jacobian matrix and the Jacobian determinant?</h2>
+<p>The matrix is the list of all first partial derivatives, one output per row and one input per column. The determinant exists only when the matrix is square. It is the signed volume scale of the linear approximation. A sentence about the chain rule wants the matrix. A sentence about area after a substitution wants the absolute value of the determinant.</p>
+</section>
+<section class="faq-item" id="grammar">
+<h2>Which expressions can this page differentiate?</h2>
+<p>The inputs are x, y, and z, and you may use one, two, or three of them. The operations are addition, subtraction, multiplication, division, and integer powers from −12 to 12. The functions are sin, cos, tan, exp, ln, log, and sqrt, and each one needs parentheses. The letter e is not a variable. Write exp(x) for an exponential. log means the natural logarithm.</p>
+</section>
+<section class="faq-item" id="juxtaposition">
+<h2>Why does 1/2x differ from 1/2*x?</h2>
+<p>Juxtaposition is tighter than division, so 1/2x means 1/(2x). A star between a quotient and a variable is ordinary multiplication, so 1/2*x means (1/2) times x. A minus sign in front of a power belongs to the whole power: −x^2 means −(x^2).</p>
+</section>
+<section class="faq-item" id="exact">
+<h2>When is the value at a point exact?</h2>
+<p>A rational expression, with no roots, logarithms, or trigonometric functions, evaluates as an exact fraction. If a root, a logarithm, or a trigonometric function is evaluated, the printed number is numerical even when it looks like a whole number.</p>
+</section>
+<section class="faq-item" id="use">
+<h2>What is a Jacobian used for?</h2>
+<p>It is the best linear approximation to a map with several inputs and several outputs. Its determinant scales area or volume in a change of variables. A gradient is the Jacobian of a function with one output.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/jacobian.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

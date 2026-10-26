@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Browser Math Calculators, Higher Math Guide</title>
-<meta name="description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
+<title>Math Calculators with Steps, Higher Math Guide</title>
+<meta name="description" content="Browser calculators with steps for Gram Schmidt, Jacobian matrices, LU factorization, derivatives, and probability.">
 <link rel="canonical" href="https://highermathguide.com/calculators/">
 <meta name="theme-color" content="#2f4a7a">
-<meta property="og:title" content="Browser Math Calculators, Higher Math Guide">
-<meta property="og:description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
+<meta property="og:title" content="Math Calculators with Steps, Higher Math Guide">
+<meta property="og:description" content="Browser calculators with steps for Gram Schmidt, Jacobian matrices, LU factorization, derivatives, and probability.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/calculators/">
 <meta property="og:site_name" content="Higher Math Guide">
@@ -17,8 +17,8 @@
 <meta property="og:image:height" content="720">
 <meta property="og:image:alt" content="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Browser Math Calculators, Higher Math Guide">
-<meta name="twitter:description" content="Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences. Educational estimates that run on your device.">
+<meta name="twitter:title" content="Math Calculators with Steps, Higher Math Guide">
+<meta name="twitter:description" content="Browser calculators with steps for Gram Schmidt, Jacobian matrices, LU factorization, derivatives, and probability.">
 <meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
 <meta name="twitter:image:alt" content="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk.">
 <link rel="stylesheet" href="../css/styles.css">
@@ -26,8 +26,8 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Browser Math Calculators",
-  "description": "Free browser calculators for derivatives, integrals, matrices, vectors, probability, and sequences.",
+  "name": "Math Calculators with Steps",
+  "description": "Browser calculators with steps for Gram Schmidt, Jacobian matrices, LU factorization, derivatives, and probability.",
   "url": "https://highermathguide.com/calculators/",
   "publisher": {
     "@type": "Organization",
@@ -93,7 +93,7 @@
 <header class="hero">
 <p class="section-kicker">Tools after ideas</p>
 <h1>Calculators</h1>
-<p class="lede">Small tools that run in your browser. No accounts and no server math. Use them to test a number after you can explain the idea. Each tool page now includes a short lesson, pitfalls, related reading, and a small FAQ. Educational estimates only.</p>
+<p class="lede">Small tools that run in your browser. No accounts and no server math. Use them to test a number after you can explain the idea. Exact algebra now includes <a href="gram-schmidt.html">Gram Schmidt</a>, <a href="lu-decomposition.html">LU factorization</a>, and <a href="jacobian.html">Jacobian matrices</a>. Each tool page includes a short lesson, pitfalls, related reading, and a small FAQ. Educational estimates only.</p>
 </header>
 <figure class="page-banner">
 <img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 1120px) 100vw, 1040px" width="1280" height="720" alt="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk." class="crop-2" loading="lazy" decoding="async">
@@ -145,6 +145,7 @@
 <article class="card"><h3><a href="limit-estimator.html">Numerical limit estimator</a></h3><p>Sample f(x) as x approaches a or infinity. See <a href="../explainers/epsilon-delta-intuition.html">epsilon delta intuition</a>.</p></article>
 <article class="card"><h3><a href="numerical-derivative.html">Numerical derivative</a></h3><p>Forward, backward, or central differences. See <a href="../explainers/what-a-derivative-measures.html">what a derivative measures</a> and <a href="../explainers/implicit-differentiation-intuition.html">implicit differentiation</a>.</p></article>
 <article class="card"><h3><a href="gradient-directional-derivative.html">Gradient and directional derivative</a></h3><p>Partials, steepest ascent, and the slope in a chosen direction. See <a href="../topics/multivariable-vector-calculus.html">multivariable and vector calculus</a>.</p></article>
+<article class="card"><h3><a href="jacobian.html">Jacobian matrix</a></h3><p>Symbolic partial derivatives, the Jacobian determinant, and the value at a point. See <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</p></article>
 <article class="card"><h3><a href="divergence-curl.html">Divergence and curl</a></h3><p>Source, sink, and rotation of a vector field at a point, with a picture of the arrows. See <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>.</p></article>
 <article class="card"><h3><a href="integral-riemann.html">Riemann sum integrator</a></h3><p>Left, midpoint, or right rectangles. See <a href="../topics/calculus-foundations.html">calculus foundations</a>.</p></article>
 <article class="card"><h3><a href="partial-fractions.html">Partial fraction decomposition</a></h3><p>Exact decomposition of a rational function, with division, factoring, and each algebra step. See <a href="../topics/calculus-foundations.html">calculus foundations</a>.</p></article>
@@ -157,7 +158,7 @@
 
 <section class="calc-group" aria-labelledby="calc-lin">
 <h2 id="calc-lin">Matrices and vectors</h2>
-<p>Linear maps in small dimension. Good companions for the <a href="../topics/linear-algebra.html">linear algebra pillar</a>. The 3 by 3 inverse page keeps exact fractions and writes every minor. The <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands the characteristic polynomial and row reduces for a real eigenvector. The row reduction page writes each elimination step the same way.</p>
+<p>Linear maps in small dimension. Good companions for the <a href="../topics/linear-algebra.html">linear algebra pillar</a>. The 3 by 3 inverse page keeps exact fractions and writes every minor. The <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> expands the characteristic polynomial and row reduces for a real eigenvector. The row reduction page writes each elimination step the same way. The <a href="gram-schmidt.html">Gram Schmidt calculator</a> builds an orthogonal basis, and the <a href="lu-decomposition.html">LU decomposition calculator</a> saves the multipliers from elimination.</p>
 <div class="card-grid">
 <article class="card"><h3><a href="matrix-2x2.html">2 by 2 matrix toolkit</a></h3><p>Determinant, inverse, and products AB or BA. See <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</p></article>
 <article class="card"><h3><a href="matrix-3x3.html">3 by 3 determinant and inverse</a></h3><p>Cofactor expansion, the adjugate, and an exact fraction inverse when it exists. See <a href="../topics/linear-algebra.html">linear algebra</a>.</p></article>
@@ -165,6 +166,8 @@
 <article class="card"><h3><a href="eigenvalue-2x2.html">2 by 2 eigenvalues</a></h3><p>Characteristic polynomial roots. See <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>.</p></article>
 <article class="card"><h3><a href="eigenvalue-3x3.html">3x3 eigenvalues</a></h3><p>Characteristic polynomial, eigenvalues, and a real eigenvector, with steps. See <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>.</p></article>
 <article class="card"><h3><a href="vector-ops.html">Vector operations</a></h3><p>Dot product, cross product, magnitude, and unit vectors. See <a href="../explainers/stokes-theorem-intuition.html">Stokes theorem intuition</a>.</p></article>
+<article class="card"><h3><a href="gram-schmidt.html">Gram Schmidt</a></h3><p>Orthogonal vectors, unit vectors, and QR factors in exact fractions. See <a href="../topics/linear-algebra.html">linear algebra</a>.</p></article>
+<article class="card"><h3><a href="lu-decomposition.html">LU decomposition</a></h3><p>L and U factors from elimination, with optional row exchanges and a solution of A x = b. See <a href="../topics/linear-algebra.html">linear algebra</a>.</p></article>
 </div>
 </section>
 
