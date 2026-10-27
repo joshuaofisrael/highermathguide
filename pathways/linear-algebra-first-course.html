@@ -101,7 +101,7 @@
       "name": "Which calculator should I open first?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The vector operations calculator, then the 2 by 2 matrix calculator, then the 2 by 2 eigenvalue calculator. The matrix page does not find eigenvalues. The 2 by 2 eigenvalue page does not find eigenvectors. When the matrix is 3 by 3, the 3x3 eigenvalue calculator row reduces for a real eigenvector. Orthogonal bases are the Gram Schmidt calculator, and elimination factors are the LU decomposition calculator. Open each one after you can say what the output means."
+        "text": "The vector operations calculator, then the 2 by 2 matrix calculator, then the 2 by 2 eigenvalue calculator. The matrix page does not find eigenvalues. The 2 by 2 eigenvalue page does not find eigenvectors. When the matrix is 3 by 3, the 3 by 3 matrix calculator expands a determinant and an inverse, the reduced row echelon form calculator writes elimination, and the 3x3 eigenvalue calculator row reduces for a real eigenvector. Orthogonal bases are the Gram Schmidt calculator, and elimination factors are the LU decomposition calculator. Open each one after you can say what the output means."
       }
     }
   ]
@@ -164,7 +164,7 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Linear algebra first course study map</h1>
-<p class="article-meta">Pathway · Educational only · Updated 22 Sep 2026</p>
+<p class="article-meta">Pathway · Educational only · Updated 27 Oct 2026</p>
 </header>
 <figure class="page-banner">
 <img src="../images/hero-chalkboard.webp" srcset="../images/hero-chalkboard-800.webp 800w, ../images/hero-chalkboard.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A chalkboard of handwritten matrices for the linear algebra pathway." class="crop-2" loading="lazy" decoding="async">
@@ -190,6 +190,7 @@
 <li>Read <a href="../glossary/#vector">vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="../glossary/#matrix">matrix</a>, and <a href="../glossary/#determinant">determinant</a>. Pair each word with a 2 by 2 picture.</li>
 <li>Open the <a href="../calculators/vector-ops.html">vector operations calculator</a> for a dot product, a 3D cross product, a magnitude, or a unit vector. It does not print an angle. Zero means orthogonal (or a zero vector), positive means a similar direction, and negative means an obtuse angle. A cross product’s length is the parallelogram area.</li>
 <li>Open the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant, an inverse when it exists, and the products $AB$ and $BA$. On paper first, read the columns as the images of the standard basis vectors. This page does not compute eigenvalues. A zero determinant means there is no inverse.</li>
+<li>When the matrix is 3 by 3, open the <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for cofactor expansion and an inverse in exact fractions. To see each elimination step of a linear system, open the <a href="../calculators/rref.html">reduced row echelon form calculator</a>. Neither page finds eigenvalues.</li>
 <li>Read <a href="../explainers/eigenvalues-plain-language.html">eigenvalues in plain language</a>, then <a href="../glossary/#eigenvalue">eigenvalue</a>, <a href="../glossary/#eigenvector">eigenvector</a>, and <a href="../glossary/#eigenspace">eigenspace</a>. An eigenvector is never the zero vector. The eigenvalue is the stretch along a line the map does not tip off.</li>
 <li>Check roots on the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. It reports trace, determinant, and the roots of the characteristic polynomial. It does not return eigenvectors, and it does not decide whether a repeated root gives two independent directions. You do that by hand in the checkpoint below. If the quadratic formula itself is rusty, the <a href="../calculators/quadratic-formula.html">quadratic formula calculator</a> is the same algebra without a matrix.</li>
 <li>When a homework matrix is 3 by 3, open the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a>. It expands $\det(A-\lambda I)$ from the trace, the principal minors, and the determinant, then row reduces for a real eigenvector. The pictures in this pathway stay 2 by 2.</li>
@@ -238,7 +239,7 @@
 </section>
 <section class="faq-item" id="whichcalc">
 <h2>Which calculator should I open first?</h2>
-<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a>, then the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, then the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. The matrix page does not find eigenvalues. The 2 by 2 eigenvalue page does not find eigenvectors. When the matrix is 3 by 3, the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> row reduces for a real eigenvector. Orthogonal bases are the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a>, and elimination factors are the <a href="../calculators/lu-decomposition.html">LU decomposition calculator</a>. Open each one after you can say what the output means.</p>
+<p>The <a href="../calculators/vector-ops.html">vector operations calculator</a>, then the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a>, then the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. The matrix page does not find eigenvalues. The 2 by 2 eigenvalue page does not find eigenvectors. When the matrix is 3 by 3, the <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> expands a determinant and an inverse, the <a href="../calculators/rref.html">reduced row echelon form calculator</a> writes elimination, and the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> row reduces for a real eigenvector. Orthogonal bases are the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a>, and elimination factors are the <a href="../calculators/lu-decomposition.html">LU decomposition calculator</a>. Open each one after you can say what the output means.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
@@ -251,6 +252,8 @@
 <li><a href="../calculators/lu-decomposition.html">LU decomposition calculator</a></li>
 <li><a href="../calculators/jacobian.html">Jacobian matrix calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
+<li><a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a></li>
+<li><a href="../calculators/rref.html">Reduced row echelon form calculator</a></li>
 <li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
 <li><a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a></li>
 <li><a href="../glossary/#basis">Glossary: basis</a></li>

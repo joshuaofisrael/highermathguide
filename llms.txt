@@ -14,7 +14,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Linear algebra](https://highermathguide.com/topics/linear-algebra.html): first course map of vectors, matrices, bases, and eigenvalues
 - [Probability and statistics](https://highermathguide.com/topics/probability-statistics.html): first course map of chance, conditioning, Bayes theorem, and reading data
 - [Real analysis and proofs](https://highermathguide.com/topics/real-analysis-proofs.html): first course map of limits, sequences, series tests, and proof habits
-- [Differential equations](https://highermathguide.com/topics/differential-equations.html): first look map of separable equations, slope fields, initial value problems, and the Laplace transform calculator
+- [Differential equations](https://highermathguide.com/topics/differential-equations.html): first look map of separable equations, slope fields, initial value problems, and the second order, Wronskian, and Laplace transform calculators
 
 ## Explainers
 
