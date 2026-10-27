@@ -149,6 +149,56 @@
   ]
 }
 </script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="ca-pub-5681559774142917">
 </head>
@@ -336,10 +386,109 @@
 <a href="../privacy/">Privacy</a>
 <a href="../contact/">Contact</a>
 <a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
 </nav>
 </div>
 </footer>
 <script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

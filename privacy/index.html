@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy, Higher Math Guide</title>
-<meta name="description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 23 October 2026.">
+<meta name="description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 27 October 2026.">
 <link rel="canonical" href="https://highermathguide.com/privacy/">
 <meta name="theme-color" content="#2f4a7a">
 <meta property="og:title" content="Privacy Policy, Higher Math Guide">
-<meta property="og:description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 23 October 2026.">
+<meta property="og:description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 27 October 2026.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://highermathguide.com/privacy/">
 <meta property="og:site_name" content="Higher Math Guide">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="A green chalkboard filled with handwritten calculus, integrals, and matrix notes in a quiet study.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Privacy Policy, Higher Math Guide">
-<meta name="twitter:description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 23 October 2026.">
+<meta name="twitter:description" content="Privacy Policy for Higher Math Guide. Joshua Israel Ventures LLC is the data controller. Cookies, analytics, ads, and contact mail. Effective 27 October 2026.">
 <meta name="twitter:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
 <meta name="twitter:image:alt" content="A green chalkboard filled with handwritten calculus, integrals, and matrix notes in a quiet study.">
 <link rel="stylesheet" href="../css/styles.css">
@@ -62,6 +62,56 @@
   ]
 }
 </script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="ca-pub-5681559774142917">
 </head>
@@ -91,7 +141,7 @@
 <div class="wrap narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
 <h1>Privacy Policy</h1>
-<p class="lede">This policy describes what Joshua Israel Ventures LLC collects through Higher Math Guide. Effective date 23 October 2026.</p>
+<p class="lede">This policy describes what Joshua Israel Ventures LLC collects through Higher Math Guide. Effective date 27 October 2026.</p>
 </header>
 <div class="article-body">
 <h2>Who is responsible</h2>
@@ -101,10 +151,16 @@
 <p>The site does not require an account. It does not ask you to create a profile. Calculator numbers stay in your browser. The site does not transmit those numbers to a server.</p>
 
 <h3>Cookies</h3>
-<p>The site does not set its own account cookie. Cloudflare Web Analytics, described below, is cookieless measurement and does not set a cookie for that measurement. Google AdSense may set cookies and similar technologies to serve and measure ads. Visitors in the European Economic Area, the United Kingdom, and Switzerland see a consent choice delivered by Google before personalised ads or cookies that are not essential are used. Affiliate cookies are not used now. If affiliate cookies are added later, this policy will be updated before those cookies are used.</p>
+<p>The site does not set its own account cookie. Your Accept or Reject choice is saved in local storage in this browser. That saved choice is not a cookie. Cloudflare Web Analytics, described below, is cookieless measurement and does not set a cookie for that measurement. Google Analytics 4, described below, sets analytics cookies only after you accept. Google AdSense may set cookies and similar technologies to serve and measure ads once consent for ads is granted. Affiliate cookies are not used now. If affiliate cookies are added later, this policy will be updated before those cookies are used.</p>
 
 <h3>Cloudflare Web Analytics</h3>
 <p>Each page includes a Cloudflare Web Analytics beacon. Cloudflare offers that tool as cookieless measurement. It reports aggregate visit information, such as page views, referrers, country, browser, and device type. It does not set a cookie on your browser for this measurement. We do not receive a list of named visitors from it.</p>
+
+<h3>Google Analytics 4</h3>
+<p>Each page can load Google Analytics 4, measurement ID G-9MKRPRJMF5, after you accept. The script comes from googletagmanager.com. It is not added when you reject, and it is not added before you choose. If you accepted on an earlier visit, this browser loads the script again on later visits. The Google AdSense script stays on each page. Consent Mode is what tells Google whether ad cookies are allowed. The Google Analytics script is separate: it is added only after Accept.</p>
+<p>When the script runs, Google Analytics 4 collects page views and related events. That includes the page address and title, the referrer, general location derived from the IP address, browser and device information, language, and how the visit engaged with the page. Google uses a cookie named _ga to tell browsers apart and a cookie named _ga_9MKRPRJMF5 to keep session state. Google says these cookies can remain for up to two years. Joshua Israel Ventures LLC sees aggregate reports, not a list of named visitors.</p>
+<p>Google Consent Mode v2 starts with ad storage, ad user data, ad personalisation, and analytics storage denied. Accept updates those four signals to granted and then adds the Google Analytics script. Reject leaves them denied and does not add the script. The choice is saved in local storage in this browser. Later visits use that saved choice until you change it.</p>
+<p>To change the choice, use Cookie settings in the footer. The banner opens again, and Accept or Reject replaces the saved choice. Clearing cookies in your browser removes cookies Google already stored. You can also install the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt out add on</a>. Google describes how it uses information from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites">Google partner sites</a>.</p>
 
 <h3>Contact by email</h3>
 <p>The contact form posts your name, email address, and message to FormSubmit (formsubmit.co), which delivers the note to the publisher. The subject is [Contact: highermathguide.com] New message. If the message includes the word DMCA and the page script runs, the subject mentions DMCA. FormSubmit receives the fields you submit so it can deliver the message. The contact page does not show a mailbox address. After the form sends, the contact page shows a short thank you. An empty honeypot field and a short wait before sending are used instead of a captcha.</p>
@@ -115,6 +171,7 @@
 
 <h2>Advertising</h2>
 <p>This site may show ads served by Google AdSense. Google and its partners use cookies and similar technologies to serve and measure ads, including ads based on your earlier visits to this and other sites. You can learn how Google uses data from sites that use its services at <a href="https://policies.google.com/technologies/ads">policies.google.com/technologies/ads</a>, and you can manage personalised ads in <a href="https://adssettings.google.com">Google Ads Settings</a> or opt out at <a href="https://www.aboutads.info">aboutads.info</a>. Visitors in the European Economic Area, the United Kingdom and Switzerland see a consent choice delivered by Google before personalised ads or cookies that are not essential are used. California residents can opt out of the sale or sharing of personal information by using these controls or by sending a request through the <a href="../contact/">contact form</a>.</p>
+<p>Accept on the cookie banner grants Consent Mode for Google Analytics 4 and for Google ad cookies. Reject withholds that grant. Cookie settings in the footer opens the banner so you can change the saved choice.</p>
 <p>The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost.</p>
 <h2>Children</h2>
 <p>The site is a general audience educational site. It is not directed to children under 13, and children are not targeted. We do not knowingly collect personal information from children under 13. If you believe a child under 13 sent a message, use the <a href="../contact/">contact form</a> and ask us to delete it.</p>
@@ -172,10 +229,109 @@
 <a href="../privacy/">Privacy</a>
 <a href="../contact/">Contact</a>
 <a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
 </nav>
 </div>
 </footer>
 <script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
