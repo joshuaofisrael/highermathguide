@@ -22,6 +22,14 @@ const LEGAL_PAGES = new Set([
   "contact/index.html",
   "contact/thanks.html",
 ]);
+const NOINDEX_PAGES = new Set([
+  "404.html",
+  "contact/thanks.html",
+]);
+const GA_ID = "G-9MKRPRJMF5";
+const GA_SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917";
+const ADSENSE_META = '<meta name="google-adsense-account" content="ca-pub-5681559774142917">';
 const BEACON = "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"2a796980ec83472687c1d36c60177e23\"}'></script><!-- End Cloudflare Web Analytics -->";
 
 const SECTION = {
@@ -274,8 +282,10 @@ for (const file of htmlFiles) {
     const h = m[0].match(/href=["']([^"']+)["']/i);
     return h ? h[1] : "";
   });
-  if (file === "404.html") {
-    if (!/noindex/i.test(html)) fail(`${file} must be noindex`);
+  const robotsMeta = html.match(/<meta[^>]*name=["']robots["'][^>]*>/i);
+  const robotsContent = robotsMeta ? ((robotsMeta[0].match(/content=["']([^"']*)["']/i) || [])[1] || "") : "";
+  if (NOINDEX_PAGES.has(file)) {
+    if (robotsContent !== "noindex, follow") fail(`${file} must use meta robots noindex, follow`);
   } else if (/\bnoindex\b|\bnofollow\b|\bnoai\b|\bnoimageai\b/i.test(html)) {
     fail(`${file} has a robots restriction`);
   }
@@ -323,6 +333,7 @@ for (const file of htmlFiles) {
   if (otherCss.length) fail(`${file} unexpected stylesheet ${otherCss.join(", ")}`);
   if (/<style\b/i.test(html)) fail(`${file} has a page style block`);
   const blocking = [];
+  let consentBootstraps = 0;
   const scriptRe = /<script\b([^>]*)>/gi;
   let sm;
   while ((sm = scriptRe.exec(html))) {
@@ -331,9 +342,39 @@ for (const file of htmlFiles) {
     if (!inHead) continue;
     if (/type=["']application\/ld\+json["']/i.test(attrs)) continue;
     if (/\bdefer\b/i.test(attrs) || /\basync\b/i.test(attrs) || /type=["']module["']/i.test(attrs)) continue;
-    blocking.push(attrs.trim());
+    const close = html.indexOf("</script>", sm.index);
+    const code = close > sm.index ? html.slice(sm.index + sm[0].length, close) : "";
+    if (code.includes("/* hmg-consent */")) {
+      consentBootstraps += 1;
+      if (!code.includes(GA_ID) || !code.includes(GA_SRC) || !code.includes('signals("denied")') || !code.includes('"granted"') || !code.includes('consent", "update"')) {
+        fail(`${file} consent bootstrap is missing Consent Mode or the measurement id`);
+      }
+      if (code.length > 2200) fail(`${file} consent bootstrap is ${code.length} characters`);
+      continue;
+    }
+    blocking.push(attrs.trim() || "(inline)");
   }
   if (blocking.length) fail(`${file} render-blocking scripts: ${blocking.join(" | ")}`);
+  if (consentBootstraps !== 1) fail(`${file} consent bootstrap count ${consentBootstraps}`);
+  const uiAt = html.indexOf("/* hmg-consent-ui */");
+  const headEnd = html.indexOf("</head>");
+  if (uiAt < 0 || uiAt < headEnd) fail(`${file} consent banner script must sit after the head`);
+  const adsenseAt = html.indexOf(ADSENSE_SRC);
+  const consentAt = html.indexOf("/* hmg-consent */");
+  if (adsenseAt < 0 || html.indexOf(ADSENSE_META) < 0) fail(`${file} AdSense head tags missing`);
+  if (!(consentAt >= 0 && consentAt < adsenseAt)) fail(`${file} consent default must run before AdSense`);
+  if (/<script\b[^>]*\bsrc=["']https:\/\/www\.googletagmanager\.com\/gtag\/js/i.test(html)) {
+    fail(`${file} loads gtag.js before consent`);
+  }
+  const cookieLinks = html.match(/<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings<\/a>/g) || [];
+  if (cookieLinks.length !== 1) fail(`${file} Cookie settings link count ${cookieLinks.length}`);
+  if (file === "privacy/index.html") {
+    const visible = stripTags(html);
+    if (!visible.includes("Google Analytics 4")) fail("privacy page does not name Google Analytics 4");
+    if (!html.includes("https://tools.google.com/dlpage/gaoptout")) fail("privacy page missing analytics opt out link");
+    if (!html.includes("https://policies.google.com/technologies/partner-sites")) fail("privacy page missing partner sites link");
+    if (/\b(compliant|compliance|GDPR|CCPA)\b/i.test(visible)) fail("privacy page claims legal compliance");
+  }
   const imgs = [...html.matchAll(/<img\b[^>]*>/gi)];
   imgs.forEach((im) => {
     const tag = im[0];
@@ -343,9 +384,9 @@ for (const file of htmlFiles) {
     if (homeHero && /loading=["']lazy["']/i.test(tag)) fail(`${file} homepage hero must not be lazy`);
     if (im.index > fold && !/loading=["']lazy["']/i.test(tag) && !homeHero) fail(`${file} below-fold img not lazy ${tag}`);
   });
-  if (file !== "404.html") indexable.push(file);
+  if (!NOINDEX_PAGES.has(file)) indexable.push(file);
 }
-if (!failures.some((f) => /canonical|viewport|lang|charset|footer|byline|beacon|stylesheet|render-blocking|robots restriction|noindex/.test(f))) {
+if (!failures.some((f) => /canonical|viewport|lang|charset|footer|byline|beacon|stylesheet|render-blocking|robots restriction|noindex|consent|AdSense|Cookie settings|gtag|partner sites|opt out|compliance/.test(f))) {
   console.log(`OK. ${htmlFiles.length} html files checked`);
 }
 
