@@ -55,7 +55,7 @@ function fail(msg) {
 
 function walk(dir, acc) {
   for (const name of fs.readdirSync(dir)) {
-    if (name === ".git" || name === "node_modules") continue;
+    if (name === ".git" || name === "node_modules" || name === "tests" || name === ".github" || name === "_site") continue;
     const full = path.join(dir, name);
     const st = fs.statSync(full);
     if (st.isDirectory()) walk(full, acc);

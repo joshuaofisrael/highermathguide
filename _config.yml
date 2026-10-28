@@ -1,0 +1,6 @@
+# Jekyll publishes the legacy branch build. Keep the legal gate fixtures,
+# the hold queue, and the staging directory off the public site.
+exclude:
+  - tests
+  - hold-queue.jsonl
+  - _site

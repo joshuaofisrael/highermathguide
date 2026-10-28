@@ -18,6 +18,10 @@ Open http://127.0.0.1:8080/
 
 No build step is required. HTML, CSS, and JS are ready to serve as-is. KaTeX loads from CDN on pages that need math rendering.
 
+## Legal hold gate
+
+`node scripts/legal-gate.js` scans pages before GitHub Pages deploy. A failure exits 1, writes `hold-queue.jsonl`, and the deploy workflow does not upload the site. `node --test tests/legal-gate.test.js` checks a hold fixture and a passing fixture. Those fixtures live under `tests/fixtures/legal-gate/` and are not part of the published site.
+
 ## Structure
 
 | Path | Purpose |
