@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrating Factor Calculator, First Order Linear ODE, Higher Math Guide</title>
+<meta name="description" content="Integrating factor calculator for y' + P(x) y = Q(x). Steps for μ(x), the integral, and an optional initial condition, for polynomials, exponentials, and sine or cosine.">
+<link rel="canonical" href="https://highermathguide.com/calculators/first-order-linear-ode.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Integrating Factor Calculator, First Order Linear ODE, Higher Math Guide">
+<meta property="og:description" content="Integrating factor calculator for y' + P(x) y = Q(x). Steps for μ(x), the integral, and an optional initial condition, for polynomials, exponentials, and sine or cosine.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://highermathguide.com/calculators/first-order-linear-ode.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/calculators.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Handwritten differential equations next to a scientific calculator.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Integrating Factor Calculator, First Order Linear ODE, Higher Math Guide">
+<meta name="twitter:description" content="Integrating factor calculator for y' + P(x) y = Q(x). Steps for μ(x), the integral, and an optional initial condition, for polynomials, exponentials, and sine or cosine.">
+<meta name="twitter:image" content="https://highermathguide.com/images/calculators.webp">
+<meta name="twitter:image:alt" content="Handwritten differential equations next to a scientific calculator.">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://highermathguide.com/calculators/first-order-linear-ode.html#webpage",
+      "name": "Integrating Factor Calculator",
+      "description": "Integrating factor calculator for y' + P(x) y = Q(x). Steps for μ(x), the integral, and an optional initial condition, for polynomials, exponentials, and sine or cosine.",
+      "url": "https://highermathguide.com/calculators/first-order-linear-ode.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "publisher": {
+          "@id": "https://highermathguide.com/#organization"
+        }
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://highermathguide.com/calculators/first-order-linear-ode.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://highermathguide.com/calculators/first-order-linear-ode.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://highermathguide.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://highermathguide.com/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Integrating factor calculator",
+          "item": "https://highermathguide.com/calculators/first-order-linear-ode.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://highermathguide.com/calculators/first-order-linear-ode.html#faq",
+      "url": "https://highermathguide.com/calculators/first-order-linear-ode.html",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does an integrating factor calculator solve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It solves y' + P(x) y = Q(x), the standard form of a first order linear equation. P can be a constant or a polynomial of degree up to 4. Q can be a polynomial, a polynomial times an exponential e^(kx), or a polynomial times A sin(bx) + B cos(bx). The page identifies P and Q, builds the integrating factor, multiplies through, integrates when that integral is in its closed-form class, and writes the general solution. If you enter y at x0, it also fixes the constant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you compute the integrating factor of y' + P(x) y = Q(x)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide through first so the coefficient of y' is 1. Integrate P(x), and drop the constant of integration. The integrating factor is μ(x) = e raised to that antiderivative. Multiplying the differential equation by μ makes the left side equal to the derivative of μ times y."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the general solution after multiplying by the integrating factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The multiplied equation says the derivative of μ y equals μ Q. Integrate both sides and divide by μ. The general solution is y = (1/μ) times (the integral of μ Q dx, plus C). When P is the constant p and Q is a polynomial, this becomes a polynomial plus C e^(−p x)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does this page switch from a formula to a Runge-Kutta table?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It switches when the integral of μ Q is outside the closed-form class it can finish exactly. A typical case is y' + x y = 1. The integrating factor is e^(x^2/2), and the integral of that factor is not an elementary function. The page says so, instead of printing a guessed antiderivative. With an initial condition, an endpoint, and a step count, it shows a classical fourth-order Runge-Kutta table and labels every row as a numerical approximation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the integrating factor omit the constant of integration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Adding a constant to the integral of P multiplies μ by a nonzero constant. That factor stands on both sides of the multiplied equation and cancels when you solve for y. The page uses the antiderivative of P whose constant term is 0. A different legal choice gives the same family of solutions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many initial conditions does a first order linear equation need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The general solution has one arbitrary constant, because the equation contains a first derivative and no higher derivative. One condition, y(x0) = y0, determines that constant when the integrating factor is a nonzero real number at x0. A second order equation needs two conditions. The characteristic-equation method on the second order calculator is a different problem."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://highermathguide.com/#organization",
+      "name": "Higher Math Guide",
+      "url": "https://highermathguide.com/",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://highermathguide.com/#site",
+        "name": "Higher Math Guide"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://highermathguide.com/calculators/first-order-linear-ode.html#app",
+      "name": "Integrating Factor Calculator",
+      "url": "https://highermathguide.com/calculators/first-order-linear-ode.html",
+      "description": "Integrating factor calculator for y' + P(x) y = Q(x). Steps for μ(x), the integral, and an optional initial condition, for polynomials, exponentials, and sine or cosine.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/"
+      },
+      "publisher": {
+        "@id": "https://highermathguide.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/" aria-current="page">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="../calculators/">Calculators</a>
+ · <span aria-current="page">Integrating factor calculator</span>
+</nav>
+<header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
+<p class="section-kicker">First order linear equations</p>
+<h1>Integrating factor calculator</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 28 October 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 28 Oct 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="page-banner is-slim">
+<img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="Handwritten differential equations next to a scientific calculator." class="crop-7" loading="lazy" decoding="async">
+<figcaption>A calculator beside handwritten differential equations.</figcaption>
+</figure>
+<div class="article-body">
+<p>This integrating factor calculator is a first order linear differential equation solver for y' + P(x) y = Q(x). The coefficient of y' is already 1. P(x) is a constant or a polynomial. Q(x) is a polynomial, a polynomial times an exponential, or a polynomial times a sine and a cosine of the same frequency. The steps name P and Q, build μ(x) = e^(∫ P dx), multiply through, integrate, and write the general solution. An optional condition y(x₀) = y₀ fixes the constant.</p>
+<p>The boxes open on y' + 2y = 4x with y(0) = 1. The particular solution is 2x − 1 + 2 e^(−2x). Leave both condition boxes blank when you only want the family with C still in it.</p>
+<p>Separation is a different first order method. A product of a function of x and a function of y is on the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. Constant-coefficient second order equations use a characteristic polynomial, not an integrating factor. That solver is the <a href="second-order-ode.html">second order differential equation calculator</a>. The map around both is <a href="../topics/differential-equations.html">differential equations</a>.</p>
+</div>
+
+<form class="calc-panel wide" id="fol-form" style="margin:1.5rem 0;max-width:100%" autocomplete="off">
+<div class="field-row">
+<label for="fol-p-mode">P(x)
+<select id="fol-p-mode">
+<option value="constant" selected>Constant</option>
+<option value="poly">Polynomial, up to x^4</option>
+</select>
+</label>
+<label for="fol-q-mode">Q(x)
+<select id="fol-q-mode">
+<option value="poly" selected>Polynomial</option>
+<option value="exp">Polynomial times e^(kx)</option>
+<option value="trig">Polynomial times sine and cosine</option>
+</select>
+</label>
+</div>
+<div id="fol-p-constant">
+<label for="fol-p">P, the constant in y' + P y
+<input id="fol-p" type="text" value="2" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="fol-hint">
+</label>
+</div>
+<div id="fol-p-poly" hidden>
+<p class="calc-hint">P(x) = p0 + p1 x + p2 x^2 + p3 x^3 + p4 x^4. A blank box is 0.</p>
+<div class="calc-grid cols-5">
+<label for="fol-p0">p0, constant<input id="fol-p0" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-p1">p1, coefficient of x<input id="fol-p1" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-p2">p2, coefficient of x^2<input id="fol-p2" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-p3">p3, coefficient of x^3<input id="fol-p3" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-p4">p4, coefficient of x^4<input id="fol-p4" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+</div>
+</div>
+<p class="calc-hint" id="fol-q-hint">Q(x) is the polynomial whose coefficients are below. Leave a blank box as 0.</p>
+<div class="calc-grid cols-5">
+<label for="fol-q0">q0, constant<input id="fol-q0" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-q1">q1, coefficient of x<input id="fol-q1" type="text" value="4" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-q2">q2, coefficient of x^2<input id="fol-q2" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-q3">q3, coefficient of x^3<input id="fol-q3" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+<label for="fol-q4">q4, coefficient of x^4<input id="fol-q4" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false"></label>
+</div>
+<div id="fol-exp-fields" hidden>
+<label for="fol-k">k, in e^(kx)
+<input id="fol-k" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<div id="fol-trig-fields" hidden>
+<div class="field-row">
+<label for="fol-A">A, coefficient of sin(bx)
+<input id="fol-A" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="fol-B">B, coefficient of cos(bx)
+<input id="fol-B" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="fol-b">b, the shared frequency
+<input id="fol-b" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+</div>
+</div>
+<div class="field-row">
+<label for="fol-x0">x₀, optional
+<input id="fol-x0" type="text" value="0" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="fol-y0">y(x₀), optional
+<input id="fol-y0" type="text" value="1" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="fol-x-end">Numerical endpoint, optional
+<input id="fol-x-end" type="text" value="" inputmode="text" autocomplete="off" spellcheck="false">
+</label>
+<label for="fol-steps">Runge-Kutta steps
+<input id="fol-steps" type="text" value="10" inputmode="numeric" autocomplete="off" spellcheck="false">
+</label>
+</div>
+<p class="calc-hint" id="fol-hint">Use integers, decimals, or fractions such as 3/4 or −1/2. Enter both initial conditions, or leave both blank. The endpoint and the step count are used only when the integral of μ Q is not elementary. A closed-form answer ignores them.</p>
+<div class="calc-actions">
+<button type="button" class="btn btn-secondary" id="fol-preset-poly">Polynomial forcing</button>
+<button type="button" class="btn btn-secondary" id="fol-preset-trig">Sine forcing</button>
+<button type="button" class="btn btn-secondary" id="fol-preset-factor">Factor e^(x^2)</button>
+<button type="button" class="btn btn-secondary" id="fol-preset-numeric">Not elementary</button>
+</div>
+<div class="calc-actions">
+<button type="submit" class="btn" id="fol-compute">Show steps</button>
+<button type="button" class="btn btn-secondary" id="fol-reset">Reset</button>
+</div>
+<p class="calc-error" id="fol-error" role="alert"></p>
+<div class="calc-result" id="fol-result" role="status" aria-live="polite">
+<div class="amount" id="fol-amount" style="overflow-wrap:anywhere"></div>
+<canvas id="fol-plot" class="ed-plot" width="560" height="280" role="img" aria-label="Plot of the solution of the first order linear equation"></canvas>
+<p class="ed-legend" id="fol-legend"></p>
+<div id="fol-table"></div>
+<div class="detail steps" id="fol-detail"></div>
+</div>
+</form>
+
+<div class="article-body">
+<h2>How the integrating factor works</h2>
+<p>Start from standard form, y' + P(x) y = Q(x). If a textbook writes a(x) y' + b(x) y = g(x), divide by a(x) first, on an interval where a(x) is not zero. This page does not do that division. P and Q are the functions after it.</p>
+<p>Choose any antiderivative of P. The page uses the one with constant term 0. Then μ(x) = e raised to that antiderivative. The product rule says (μ y)' = μ y' + μ' y. Because μ' = μ P, the left side of the multiplied equation is exactly (μ y)'. Integrate both sides. Divide by μ, which is never zero. The constant of integration becomes the C in y = (1/μ) (∫ μ Q dx + C).</p>
+<p>For a constant P = p, μ(x) = e^(p x). A polynomial Q, a polynomial times e^(kx), and a polynomial times A sin(bx) + B cos(bx) all integrate against that factor by a finite reduction. The page writes the coefficients. For a nonconstant polynomial P, a polynomial Q sometimes has a polynomial particular solution, and the homogeneous piece is still C e^(−∫ P dx). The page checks every power before it trusts that polynomial. If a power disagrees, it does not print a formula.</p>
+
+<h2>How to read the result</h2>
+<p>The large line is the general solution, or the particular solution when C came out as an exact fraction. Under it, the steps follow the order above: standard form, integrating factor, multiplied equation, integral, general solution, then the initial condition if you supplied one.</p>
+<p>Fractions stay exact. A decimal such as 0.5 is kept as 1/2. If the initial time makes an exponential, a sine, or a cosine that is not 0, 1, or −1, the page still writes an exact expression for C when the rest of the value is rational, and it prints a decimal on its own line, labelled as a decimal approximation.</p>
+<p>The curve is the particular solution when a condition was entered. The marked point is (x₀, y₀). With no condition, the curve uses the sample choice C = 1, and the legend says so. It is one member of the family. A Runge-Kutta plot is the numerical table, not a closed form. The legend says that too.</p>
+
+<h2>When the integral is not elementary</h2>
+<p>Some integrating factors do not have an elementary antiderivative against Q. The example to keep is y' + x y = 1. Here P(x) = x, so μ(x) = e^(x^2/2). With y(0) = 0 the exact initial-value statement is still an integral, y(x) = e^(−x^2/2) times the integral from 0 to x of e^(t^2/2) dt. That integral is not a finite combination of polynomials, exponentials, and sines and cosines. Printing one would be a wrong answer.</p>
+<p>The preset "Not elementary" asks for that initial condition, the endpoint x = 1, and 10 steps. Classical fourth-order Runge-Kutta then reports a value near 0.724778 at x = 1. The later digits move if you shorten the step. Every row is labelled as a numerical approximation. Without an initial condition the page stops after the integrating factor and asks for y(x₀), because a table has to start somewhere.</p>
+
+<h2>Three worked examples</h2>
+<p>The three solutions below are written on the page, so you can read them with scripts turned off. The form opens on the first one. Each check substitutes the solution back into the differential equation.</p>
+<pre id="worked-static" style="white-space:pre-wrap;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;font-size:0.92rem;line-height:1.5;margin:1rem 0">Polynomial forcing. y' + 2y = 4x, y(0) = 1.
+
+P(x) = 2 and Q(x) = 4x.
+∫ P dx = 2x, taking the antiderivative with no added constant.
+μ(x) = e^(2x).
+
+Multiply through.
+d/dx [ e^(2x) y ] = 4x e^(2x).
+
+Integrate. For ∫ x^n e^(a x) dx with a = 2, the antiderivative is e^(2x) times a polynomial.
+The coefficient of x is 4/2 = 2.
+The constant term is (0 − 1·2)/2 = −1.
+∫ 4x e^(2x) dx = e^(2x) (2x − 1), up to a constant.
+
+Divide by μ.
+y = 2x − 1 + C e^(−2x).
+
+Initial condition y(0) = 1.
+−1 + C = 1, so C = 2.
+y = 2x − 1 + 2 e^(−2x).
+
+Check.
+y' = 2 − 4 e^(−2x).
+y' + 2y = 2 − 4 e^(−2x) + 4x − 2 + 4 e^(−2x) = 4x.
+y(0) = −1 + 2 = 1.
+
+Sine forcing. y' + y = sin(x), y(0) = 1.
+
+P(x) = 1 and Q(x) = sin(x).
+μ(x) = e^x.
+d/dx [ e^x y ] = e^x sin(x).
+
+∫ e^(a x) sin(bx) dx with a = 1 and b = 1 is e^x (sin(x) − cos(x)) / 2.
+Divide by e^x.
+y = (1/2) sin(x) − (1/2) cos(x) + C e^(−x).
+
+y(0) = 1 gives −1/2 + C = 1, so C = 3/2.
+y = (1/2) sin(x) + (−1/2) cos(x) + (3/2) e^(−x).
+
+Check at x = 0.
+(1/2)·0 + (−1/2)·1 + 3/2 = 1.
+The derivative of the particular piece at 0, plus the derivative of (3/2) e^(−x) at 0, plus y(0), returns sin(0) = 0.
+
+Integrating factor e^(x^2). y' + 2x y = 2x, y(0) = 3.
+
+P(x) = 2x and Q(x) = 2x.
+∫ P dx = x^2.
+μ(x) = e^(x^2).
+d/dx [ e^(x^2) y ] = 2x e^(x^2).
+
+The right side is the derivative of e^(x^2). A polynomial particular solution is the constant 1, because 0 + 2x·1 = 2x.
+y = 1 + C e^(−x^2).
+
+y(0) = 3 gives 1 + C = 3, so C = 2.
+y = 1 + 2 e^(−x^2).
+
+Check.
+y' = −4x e^(−x^2).
+y' + 2x y = −4x e^(−x^2) + 2x + 4x e^(−x^2) = 2x.
+y(0) = 1 + 2 = 3.</pre>
+
+<h2 id="mistakes">Common mistakes</h2>
+<p>The first mistake is skipping the division that puts the equation in standard form. If the book says 2y' + 4y = 8x, then P is 2 and Q is 4x, not 4 and 8x. This page assumes you already divided by the coefficient of y'.</p>
+<p>The second mistake is keeping a constant inside the exponent of μ and then treating that constant as part of the answer. It multiplies every term and cancels. The arbitrary constant belongs with the integral of μ Q, as C, not inside μ.</p>
+<p>The third mistake is integrating μ Q and forgetting to multiply back by 1/μ. The product μ y equals that integral. y itself is the integral divided by μ.</p>
+<p>The fourth mistake is reaching for a characteristic equation. That method solves a y'' + b y' + c y = 0, a second order equation with constant coefficients. It is the <a href="second-order-ode.html">second order calculator</a>. A first order linear equation has an integrating factor even when P depends on x.</p>
+<p>The fifth mistake is inventing an elementary antiderivative for e^(x^2/2). The preset "Not elementary" exists so the page can refuse that guess and show a labelled numerical table instead.</p>
+
+<h2>Related reading</h2>
+<p>Place the equation on the <a href="../topics/differential-equations.html">differential equations</a> map. Separation, which is a different method, is the <a href="../explainers/separable-differential-equations.html">separable walkthrough</a>. The short definitions are <a href="../glossary/#differential-equation">differential equation</a> and <a href="../glossary/#initial-value-problem">initial value problem</a>. A course shaped path that arrives at this chapter is the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a>.</p>
+<p>After this first order chapter, constant coefficients of a second derivative are the <a href="second-order-ode.html">second order differential equation calculator</a>. Two candidate solutions from that page can be tested on the <a href="wronskian.html">Wronskian calculator</a>. A zero at one point is not, by itself, a proof of dependence. The same initial value problem can also be started from a transform. Once you have Y(s), the <a href="laplace-transform.html">Laplace transform calculator</a> inverts it.</p>
+<div class="callout warning"><strong>Disclaimer.</strong> Educational estimate only. This page is not a computer algebra system and not a proof. See the <a href="../disclaimer/">site disclaimer</a> and the <a href="../faq/#calculators">FAQ on calculators versus understanding</a>.</div>
+</div>
+
+<h2>Sources</h2>
+<ul class="source-list">
+<li>Paul’s Online Math Notes, Linear Equations, the integrating factor section used in a first differential equations course. <a href="https://tutorial.math.lamar.edu/classes/de/linear.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+<li>MIT OpenCourseWare, 18.03SC Differential Equations, Solution by Integrating Factors. <a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/pages/unit-i-first-order-differential-equations/solution-by-integrating-factors/" rel="noopener">ocw.mit.edu</a></li>
+<li>OpenStax Calculus Volume 2, Section 4.5, First-order Linear Equations. <a href="https://openstax.org/books/calculus-volume-2/pages/4-5-first-order-linear-equations" rel="noopener">openstax.org</a></li>
+</ul>
+<p>Last reviewed: 28 October 2026.</p>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="what">
+<h2>What does an integrating factor calculator solve?</h2>
+<p>It solves y' + P(x) y = Q(x), the standard form of a first order linear equation. P can be a constant or a polynomial of degree up to 4. Q can be a polynomial, a polynomial times an exponential e^(kx), or a polynomial times A sin(bx) + B cos(bx). The page identifies P and Q, builds the integrating factor, multiplies through, integrates when that integral is in its closed-form class, and writes the general solution. If you enter y at x0, it also fixes the constant.</p>
+</section>
+<section class="faq-item" id="mu">
+<h2>How do you compute the integrating factor of y' + P(x) y = Q(x)?</h2>
+<p>Divide through first so the coefficient of y' is 1. Integrate P(x), and drop the constant of integration. The integrating factor is μ(x) = e raised to that antiderivative. Multiplying the differential equation by μ makes the left side equal to the derivative of μ times y.</p>
+</section>
+<section class="faq-item" id="general">
+<h2>What is the general solution after multiplying by the integrating factor?</h2>
+<p>The multiplied equation says the derivative of μ y equals μ Q. Integrate both sides and divide by μ. The general solution is y = (1/μ) times (the integral of μ Q dx, plus C). When P is the constant p and Q is a polynomial, this becomes a polynomial plus C e^(−p x).</p>
+</section>
+<section class="faq-item" id="numerical">
+<h2>When does this page switch from a formula to a Runge-Kutta table?</h2>
+<p>It switches when the integral of μ Q is outside the closed-form class it can finish exactly. A typical case is y' + x y = 1. The integrating factor is e^(x^2/2), and the integral of that factor is not an elementary function. The page says so, instead of printing a guessed antiderivative. With an initial condition, an endpoint, and a step count, it shows a classical fourth-order Runge-Kutta table and labels every row as a numerical approximation.</p>
+</section>
+<section class="faq-item" id="constant">
+<h2>Why does the integrating factor omit the constant of integration?</h2>
+<p>Adding a constant to the integral of P multiplies μ by a nonzero constant. That factor stands on both sides of the multiplied equation and cancels when you solve for y. The page uses the antiderivative of P whose constant term is 0. A different legal choice gives the same family of solutions.</p>
+</section>
+<section class="faq-item" id="conditions">
+<h2>How many initial conditions does a first order linear equation need?</h2>
+<p>The general solution has one arbitrary constant, because the equation contains a first derivative and no higher derivative. One condition, y(x0) = y0, determines that constant when the integrating factor is a nonzero real number at x0. A second order equation needs two conditions. The characteristic-equation method on the second order calculator is a different problem.</p>
+</section>
+<div class="cta-panel">
+<p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
+<a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+<div class="related"><h2>Related tools and explainers</h2><ul>
+<li><a href="second-order-ode.html">Second order differential equation calculator</a></li>
+<li><a href="laplace-transform.html">Laplace transform calculator</a></li>
+<li><a href="wronskian.html">Wronskian calculator</a></li>
+<li><a href="../explainers/separable-differential-equations.html">Separable differential equations</a></li>
+<li><a href="../topics/differential-equations.html">Differential equations</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/first-order-linear-ode.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

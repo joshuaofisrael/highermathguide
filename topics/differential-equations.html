@@ -101,7 +101,7 @@
       "name": "What comes after separable equations?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the sources page. On this site, constant coefficients are the second order differential equation calculator, independence of those solutions is the Wronskian calculator, and a transform you have already built is the Laplace transform calculator. The next related cluster is linear algebra if eigenvalues are the door you need, and calculus foundations if the integral is the door."
+        "text": "A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the sources page. On this site, y' + P(x) y = Q(x) is the integrating factor calculator, constant coefficients are the second order differential equation calculator, independence of those solutions is the Wronskian calculator, and a transform you have already built is the Laplace transform calculator. The next related cluster is linear algebra if eigenvalues are the door you need, and calculus foundations if the integral is the door."
       }
     }
   ]
@@ -140,7 +140,7 @@
   "@type": "ItemList",
   "name": "Related",
   "url": "https://highermathguide.com/topics/differential-equations.html",
-  "numberOfItems": 15,
+  "numberOfItems": 16,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -181,54 +181,60 @@
     {
       "@type": "ListItem",
       "position": 7,
+      "name": "Integrating factor calculator",
+      "url": "https://highermathguide.com/calculators/first-order-linear-ode.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
       "name": "Second order differential equation calculator",
       "url": "https://highermathguide.com/calculators/second-order-ode.html"
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "name": "Wronskian calculator",
       "url": "https://highermathguide.com/calculators/wronskian.html"
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "name": "Laplace transform calculator",
       "url": "https://highermathguide.com/calculators/laplace-transform.html"
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "name": "Quadratic formula calculator",
       "url": "https://highermathguide.com/calculators/quadratic-formula.html"
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "name": "Glossary: differential equation",
       "url": "https://highermathguide.com/glossary/#differential-equation"
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "name": "Glossary: initial value problem",
       "url": "https://highermathguide.com/glossary/#initial-value-problem"
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "name": "Glossary: slope field",
       "url": "https://highermathguide.com/glossary/#slope-field"
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "name": "Linear algebra",
       "url": "https://highermathguide.com/topics/linear-algebra.html"
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "name": "All topics",
       "url": "https://highermathguide.com/topics/"
     }
@@ -268,7 +274,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-09-11",
-  "dateModified": "2026-10-27"
+  "dateModified": "2026-10-28"
 }
 </script>
 <script>
@@ -398,7 +404,7 @@
 <p>Take the autonomous equation $y'=y(1-y)$. The equilibria are $y=0$ and $y=1$. Between them the slope is positive, so solutions increase toward $1$. Above $1$ the slope is negative, so solutions decrease toward $1$. Below $0$ the slope is negative, so solutions decrease and move away from $0$. In that rough portrait, $y=1$ attracts from above and from the interval between the equilibria, and $y=0$ does not attract. You can say this without solving. The separable explainer treats a similar autonomous equation and shows the partial fractions that produce a formula. Those coefficients are on the <a href="../calculators/partial-fractions.html">partial fraction decomposition calculator</a> if you want the algebra written out. Do the portrait first.</p>
 
 <h2 id="beyond">What a first course adds next</h2>
-<p>Not every equation separates. A linear equation $y'+p(t)y=g(t)$ is the usual next family. An integrating factor is a function of $t$ chosen so the left side becomes the derivative of a product. The books on the <a href="../sources/">sources</a> page write that method. No explainer here walks it. Separation was never the whole subject.</p>
+<p>Not every equation separates. A linear equation $y'+P(x)y=Q(x)$ is the usual next family. An integrating factor is a function of $x$ chosen so the left side becomes the derivative of a product. The <a href="../calculators/first-order-linear-ode.html">integrating factor calculator</a> writes $\mu(x)=e^{\int P\,dx}$, multiplies through, and integrates when that integral is elementary. When it is not, the page labels a Runge-Kutta table instead of inventing a formula. The books on the <a href="../sources/">sources</a> page write the same method. Separation was never the whole subject.</p>
 <p>Constant-coefficient second order equations are another standard chapter. For $a y''+b y'+c y=0$, the characteristic equation $a r^2+b r+c=0$ decides whether the solution is two real exponentials, a repeated root with an extra factor of $x$, or a complex pair written with sine and cosine. The <a href="../calculators/second-order-ode.html">second order differential equation calculator</a> writes the discriminant, the three cases, and the constants from $y(x_0)$ and $y'(x_0)$. Those roots are an ordinary quadratic. The <a href="../calculators/quadratic-formula.html">quadratic formula calculator</a> reports the discriminant on its own, without the differential equation wrapped around it. The second order page does not replace the separable checkpoint above.</p>
 <p>A set of solutions is useful as a fundamental set only when the solutions are linearly independent. The Wronskian is the determinant of the matrix whose rows are the functions and their derivatives. For solutions of one linear homogeneous equation, Abel's identity says that determinant is either always zero or never zero, so one sample settles the question. For arbitrary formulas, a zero at one point does not prove dependence. The <a href="../calculators/wronskian.html">Wronskian calculator</a> writes the matrix, the determinant, and that caveat.</p>
 <p>The Laplace transform is the usual next tool once initial conditions are part of the question. It turns a constant-coefficient equation into algebra for a function of s, and the inverse step is partial fractions plus a short table. The <a href="../calculators/laplace-transform.html">Laplace transform calculator</a> names the table row, the shift, and the inverse. It does not replace the separation checkpoint above, and it does not build the transformed equation for you.</p>
@@ -413,7 +419,7 @@
 <li>Read <a href="../explainers/separable-differential-equations.html">the separable walkthrough</a> and compare its warnings with the solution you just produced.</li>
 <li>Sketch a slope field for $y'=y(1-y)$ at a few heights. Mark the equilibria before you draw curves.</li>
 <li>Use the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> only to audit an explicit solution. Use the <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> only if the integral itself is the fog.</li>
-<li>If you want the calculus route that arrives here on purpose, follow the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>. For integrating factors and systems, use the <a href="../sources/">sources</a> page.</li>
+<li>If you want the calculus route that arrives here on purpose, follow the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a>. For $y'+P(x)y=Q(x)$, use the <a href="../calculators/first-order-linear-ode.html">integrating factor calculator</a>. For systems, use the <a href="../sources/">sources</a> page.</li>
 </ol>
 
 <h2 id="practice">Checkpoints and practice habits</h2>
@@ -454,7 +460,7 @@
 </section>
 <section class="faq-item" id="after">
 <h2>What comes after separable equations?</h2>
-<p>A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the <a href="../sources/">sources</a> page. On this site, constant coefficients are the <a href="../calculators/second-order-ode.html">second order differential equation calculator</a>, independence of those solutions is the <a href="../calculators/wronskian.html">Wronskian calculator</a>, and a transform you have already built is the <a href="../calculators/laplace-transform.html">Laplace transform calculator</a>. The next related cluster is <a href="linear-algebra.html">linear algebra</a> if eigenvalues are the door you need, and <a href="calculus-foundations.html">calculus foundations</a> if the integral is the door.</p>
+<p>A first course often treats linear equations with an integrating factor, then systems whose growth is read from eigenvalues. Those methods live in OpenStax and in MIT OpenCourseWare, both listed on the <a href="../sources/">sources</a> page. On this site, $y'+P(x)y=Q(x)$ is the <a href="../calculators/first-order-linear-ode.html">integrating factor calculator</a>, constant coefficients are the <a href="../calculators/second-order-ode.html">second order differential equation calculator</a>, independence of those solutions is the <a href="../calculators/wronskian.html">Wronskian calculator</a>, and a transform you have already built is the <a href="../calculators/laplace-transform.html">Laplace transform calculator</a>. The next related cluster is <a href="linear-algebra.html">linear algebra</a> if eigenvalues are the door you need, and <a href="calculus-foundations.html">calculus foundations</a> if the integral is the door.</p>
 </section>
 
 <div class="related"><h2>Related</h2><ul>
@@ -464,6 +470,7 @@
 <li><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></li>
 <li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
 <li><a href="../calculators/partial-fractions.html">Partial fraction decomposition calculator</a></li>
+<li><a href="../calculators/first-order-linear-ode.html">Integrating factor calculator</a></li>
 <li><a href="../calculators/second-order-ode.html">Second order differential equation calculator</a></li>
 <li><a href="../calculators/wronskian.html">Wronskian calculator</a></li>
 <li><a href="../calculators/laplace-transform.html">Laplace transform calculator</a></li>
