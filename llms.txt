@@ -1,6 +1,6 @@
 # Higher Math Guide
 
-> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 26 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
+> Higher Math Guide is a free educational site that explains higher mathematics without the fog. Learn from original explainers, topic maps, study pathways, a glossary, and 27 browser calculators covering calculus, multivariable and vector calculus, linear algebra, probability, real analysis, and differential equations. Educational only, not a substitute for coursework, tutoring, or professional advice.
 
 The legal publisher is named on the terms of use. The site may show Google AdSense ads and may later use affiliate links, which may earn a commission at no extra cost. Site: https://highermathguide.com/ Contact: https://highermathguide.com/contact/.
 
@@ -14,7 +14,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Linear algebra](https://highermathguide.com/topics/linear-algebra.html): first course map of vectors, matrices, bases, and eigenvalues
 - [Probability and statistics](https://highermathguide.com/topics/probability-statistics.html): first course map of chance, conditioning, Bayes theorem, and reading data
 - [Real analysis and proofs](https://highermathguide.com/topics/real-analysis-proofs.html): first course map of limits, sequences, series tests, and proof habits
-- [Differential equations](https://highermathguide.com/topics/differential-equations.html): first look map of separable equations, slope fields, initial value problems, and the second order, Wronskian, and Laplace transform calculators
+- [Differential equations](https://highermathguide.com/topics/differential-equations.html): first look map of separable equations, slope fields, initial value problems, and the integrating factor, second order, Wronskian, and Laplace transform calculators
 
 ## Explainers
 
@@ -33,7 +33,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 
 ## Calculators
 
-- [All calculators](https://highermathguide.com/calculators/): index of the 26 browser tools
+- [All calculators](https://highermathguide.com/calculators/): index of the 27 browser tools
 - [Gradient and directional derivative calculator](https://highermathguide.com/calculators/gradient-directional-derivative.html): partial derivatives, the gradient, and a directional derivative at a point for functions of two or three variables
 - [Jacobian matrix calculator](https://highermathguide.com/calculators/jacobian.html): symbolic Jacobian matrix and determinant for one to three formulas in x, y, and z, with the value at a point
 - [Divergence and curl calculator](https://highermathguide.com/calculators/divergence-curl.html): divergence and curl of a planar or spatial vector field at a point, with an arrow plot
@@ -42,6 +42,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Numerical derivative calculator](https://highermathguide.com/calculators/numerical-derivative.html): forward, backward, and central difference slope estimates
 - [Riemann sum calculator](https://highermathguide.com/calculators/integral-riemann.html): left, midpoint, or right rectangle approximations of a definite integral
 - [Partial fraction decomposition calculator](https://highermathguide.com/calculators/partial-fractions.html): exact partial fractions of a rational function, with polynomial division and each algebra step for linear factors, repeated linear factors, and irreducible quadratics
+- [Integrating factor calculator](https://highermathguide.com/calculators/first-order-linear-ode.html): first order linear solver for y' + P(x) y = Q(x), with the integrating factor, exact steps for polynomials, exponentials, and sine or cosine, an optional initial condition, and a labelled Runge-Kutta table when the integral is not elementary
 - [Second order differential equation calculator](https://highermathguide.com/calculators/second-order-ode.html): characteristic equation solver for a y'' + b y' + c y = 0, with the three root cases, exact constants from initial conditions when possible, and a plot of the solution
 - [Wronskian calculator](https://highermathguide.com/calculators/wronskian.html): Wronskian of two or three functions of x, with the matrix, the determinant, and a linear-independence reading that does not treat a single zero as dependence
 - [Laplace transform calculator](https://highermathguide.com/calculators/laplace-transform.html): forward and inverse Laplace transforms of common terms, with the table rule, linearity, the shift theorem, and partial-fraction steps
