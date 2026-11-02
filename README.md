@@ -22,6 +22,10 @@ No build step is required. HTML, CSS, and JS are ready to serve as-is. KaTeX loa
 
 `node scripts/legal-gate.js` scans pages before GitHub Pages deploy. A failure exits 1, writes `hold-queue.jsonl`, and the deploy workflow does not upload the site. `node --test tests/legal-gate.test.js` checks a hold fixture and a passing fixture. Those fixtures live under `tests/fixtures/legal-gate/` and are not part of the published site.
 
+## IndexNow
+
+After a successful deploy from `main`, `node scripts/indexnow-ping.js` POSTs the sitemap and any changed page URLs to the [IndexNow](https://www.indexnow.org/) API using the key file at the site root (`45e97950d9eb472c8e370ccafe218e5c.txt`). It is best effort: a non-200/202 response or a network error is logged but never fails the workflow. Run it locally with `node scripts/indexnow-ping.js --dry-run` to preview the URL list without sending it.
+
 ## Structure
 
 | Path | Purpose |

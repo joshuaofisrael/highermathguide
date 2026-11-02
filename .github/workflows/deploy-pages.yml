@@ -79,3 +79,26 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-indexnow:
+    needs: deploy
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Best-effort: tells search engines which pages changed. Never blocks
+      # or fails the deploy, so it has no retry loop and no skip input.
+      - name: Ping IndexNow
+        run: node scripts/indexnow-ping.js
+        env:
+          INDEXNOW_BEFORE: ${{ github.event.before }}
+          INDEXNOW_AFTER: ${{ github.sha }}
