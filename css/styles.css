@@ -203,6 +203,16 @@ h3 {
 .card h3 a { color: var(--ink); text-decoration: none; }
 .card h3 a:hover { color: var(--accent); }
 .card p { margin: 0.4rem 0 0; color: var(--ink-muted); font-size: 0.95rem; }
+.card-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+  margin: 0 0 0.75rem;
+}
+.card-thumb + h3 { margin-top: 0; }
 
 .guide-list {
   list-style: none;
