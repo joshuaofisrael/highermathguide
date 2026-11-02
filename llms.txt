@@ -26,6 +26,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Convergence tests for series](https://highermathguide.com/explainers/convergence-tests-series.html): comparison, ratio, and root tests and the cases where each test is inconclusive
 - [Eigenvalues in plain language](https://highermathguide.com/explainers/eigenvalues-plain-language.html): invariant lines, a 2 by 2 audit, repeated roots, and complex pairs
 - [Row reduction and RREF intuition](https://highermathguide.com/explainers/row-reduction-rref-intuition.html): the three safe row moves, reading RREF, and one, none or infinitely many solutions
+- [Partial fractions intuition](https://highermathguide.com/explainers/partial-fractions-intuition.html): why splitting a fraction makes an integral easy, with two worked examples and a checkpoint that reaches a logarithm and an arctangent
 - [Jacobian matrices in plain language](https://highermathguide.com/explainers/jacobian-matrices-plain-language.html): local linear maps, area scaling, and several variables changing together
 - [Lagrange multipliers intuition](https://highermathguide.com/explainers/lagrange-multipliers-intuition.html): why parallel gradients find constrained extrema and what the multiplier means
 - [Stokes theorem intuition](https://highermathguide.com/explainers/stokes-theorem-intuition.html): circulation on a boundary, curl on a surface, and the fundamental theorem family
