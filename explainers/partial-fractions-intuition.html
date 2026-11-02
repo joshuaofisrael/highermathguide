@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partial Fractions Intuition, Higher Math Guide</title>
+<meta name="description" content="Why splitting a fraction into partial fractions turns a hard integral into easy log and arctangent pieces, with two worked examples and a checkpoint.">
+<link rel="canonical" href="https://highermathguide.com/explainers/partial-fractions-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Partial Fractions Intuition, Higher Math Guide">
+<meta property="og:description" content="Why splitting a fraction into partial fractions turns a hard integral into easy log and arctangent pieces, with two worked examples and a checkpoint.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/partial-fractions-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/partial-fractions-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A tidy desk with a blank notebook, a calculator, and a pencil, ready for algebra practice.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Partial Fractions Intuition, Higher Math Guide">
+<meta name="twitter:description" content="Why splitting a fraction into partial fractions turns a hard integral into easy log and arctangent pieces, with two worked examples and a checkpoint.">
+<meta name="twitter:image" content="https://highermathguide.com/images/partial-fractions-desk.webp">
+<meta name="twitter:image:alt" content="A tidy desk with a blank notebook, a calculator, and a pencil, ready for algebra practice.">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Partial fractions intuition",
+      "description": "Why splitting a fraction into partial fractions turns a hard integral into easy log and arctangent pieces, with two worked examples and a checkpoint.",
+      "url": "https://highermathguide.com/explainers/partial-fractions-intuition.html",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-11-02",
+      "dateModified": "2026-11-02"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/partial-fractions-intuition.html",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does splitting a fraction make an integral easier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A complicated rational function has no antiderivative you already know. Each simple piece after the split does: a term over a linear factor integrates to a logarithm, a term over a power of a linear factor integrates to a power, and a term over an irreducible quadratic integrates to a logarithm plus an arctangent after you complete the square."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know how many terms a repeated factor needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A factor (x minus r) that divides the denominator m times needs m separate terms, one for each power from 1 up to m, each with its own unknown constant. One fraction over the highest power alone cannot carry every coefficient the full expansion needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the numerator linear over an irreducible quadratic factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A quadratic with no rational root does not split further over the rationals, so it keeps the whole denominator. Matching every possible numerator over that denominator needs two free constants, so the numerator is written Bx + C, not a single constant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do first if the fraction is improper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide. Partial fraction decomposition only applies once the numerator has smaller degree than the denominator. Polynomial long division turns an improper fraction into a polynomial plus a proper fraction, and only the proper fraction gets split."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a check by multiplying back prove the decomposition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a strong numerical check, not a proof. Multiplying the partial fractions back together and matching the original numerator confirms the specific constants you found. The decomposition itself follows from a theorem about factoring real polynomials that this page does not prove."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/partial-fractions-intuition.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Partial fractions intuition",
+      "item": "https://highermathguide.com/explainers/partial-fractions-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Partial fractions intuition</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 2 November 2026.</p>
+<p class="article-meta">Explainer · Educational only · Updated 2 Nov 2026</p>
+</header>
+<p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
+<figure class="article-figure">
+<img src="../images/partial-fractions-desk.webp" srcset="../images/partial-fractions-desk-800.webp 800w, ../images/partial-fractions-desk.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A tidy desk with a blank notebook, a calculator, and a pencil, ready for algebra practice." class="crop-1" loading="lazy" decoding="async">
+<figcaption>A desk ready for the algebra, before the fraction gets split. <small>AI-generated image</small></figcaption>
+</figure>
+<div class="article-body">
+<p>Splitting a fraction into partial fractions rewrites one complicated rational function as a sum of simple fractions. Each simple piece has an antiderivative you already know: a term over a linear factor integrates to a logarithm, a term over a repeated linear factor integrates to a power, and a term over an irreducible quadratic integrates to a logarithm plus an arctangent. The hard integral disappears because the pieces are already easy.</p>
+<p>This explainer pairs with the <a href="../calculators/partial-fractions.html">partial fraction decomposition calculator</a>, which runs the same algebra on any rational function you type in. Zoom out on the <a href="../topics/calculus-foundations.html">calculus foundations</a> pillar, or follow the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a> if integration techniques are the current step.</p>
+
+<h2>The intuition: reversing a step you already know</h2>
+<p>Adding fractions over a common denominator is routine: $1/(x+1) + 1/(x-1)$ becomes $2x/((x+1)(x-1))$ once you combine them. Partial fraction decomposition runs that step backward. Handed the combined fraction, you recover the two simple pieces that were added to make it.</p>
+<p>That reversal only works because of a structural fact about real polynomials: any polynomial with real coefficients factors completely into linear factors and irreducible quadratic factors, possibly repeated. Those are the only two kinds of unbreakable pieces, so the list of possible denominators in the split is short and known in advance. A theorem then guarantees that matching constants exist for each piece. Showing that the constants exist is beyond what this page proves; OpenStax states the result for nonrepeated linear factors directly. What this page shows is how to find those constants once you trust that they exist, and why finding them is worth the trouble: each resulting term is something you can already integrate.</p>
+<p>The template for each kind of factor is fixed. A linear factor $(x-r)$ contributes one constant over $(x-r)$. A linear factor raised to the $m$th power contributes $m$ separate constants, one for each power from $1$ up to $m$. An irreducible quadratic factor contributes a linear numerator $Bx+C$ over that quadratic, because a single constant cannot match every proper fraction with that denominator.</p>
+
+<h2>Worked example: distinct linear factors</h2>
+<p>Take $\dfrac{1}{x^2-1}$. The denominator factors as $(x-1)(x+1)$, both factors distinct and linear, so the template is</p>
+<p>$$\frac{1}{x^2-1} = \frac{A}{x-1} + \frac{B}{x+1}.$$</p>
+<p>Cover up $(x-1)$ and substitute $x=1$ into what remains: the numerator is $1$ and the other factor is $1+1=2$, so $A = 1/2$. Cover up $(x+1)$ and substitute $x=-1$: the numerator is $1$ and the other factor is $-1-1=-2$, so $B = -1/2$. The decomposition is</p>
+<p>$$\frac{1}{x^2-1} = \frac{1/2}{x-1} - \frac{1/2}{x+1}.$$</p>
+<p>Now the integral is two easy logarithms:</p>
+<p>$$\int \frac{dx}{x^2-1} = \frac{1}{2}\ln|x-1| - \frac{1}{2}\ln|x+1| + C = \frac{1}{2}\ln\left|\frac{x-1}{x+1}\right| + C.$$</p>
+<p>Check by differentiating: the derivative of the right side is $\dfrac{1}{2(x-1)} - \dfrac{1}{2(x+1)}$, which combines back to $\dfrac{(x+1)-(x-1)}{2(x-1)(x+1)} = \dfrac{1}{x^2-1}$. That matches the original integrand, away from $x=1$ and $x=-1$ where the original fraction was never defined.</p>
+
+<h2>Worked example: a repeated linear factor</h2>
+<p>Take $\dfrac{x+2}{(x-1)^2}$. The factor $(x-1)$ is repeated, so the template needs two terms, one for each power:</p>
+<p>$$\frac{x+2}{(x-1)^2} = \frac{A}{x-1} + \frac{B}{(x-1)^2}.$$</p>
+<p>Cover up $(x-1)^2$ and substitute $x=1$ into the numerator alone: $1+2=3$, so $B=3$. One substitution cannot find $A$, because covering up the full repeated factor hides it. Multiply the template out instead: $x+2 = A(x-1) + B$. Matching the coefficient of $x$ gives $A=1$, and the constant term then checks: $-A+B = -1+3 = 2$, which agrees. The decomposition is</p>
+<p>$$\frac{x+2}{(x-1)^2} = \frac{1}{x-1} + \frac{3}{(x-1)^2}.$$</p>
+<p>Integrating term by term, the first piece is a logarithm and the second is a power:</p>
+<p>$$\int \frac{x+2}{(x-1)^2}\,dx = \ln|x-1| - \frac{3}{x-1} + C.$$</p>
+<p>Differentiating the right side gives $\dfrac{1}{x-1} + \dfrac{3}{(x-1)^2}$, which is the decomposition you started from, so the check holds.</p>
+
+<figure class="article-figure">
+<img src="../images/partial-fractions-calculator.webp" srcset="../images/partial-fractions-calculator-800.webp 800w, ../images/partial-fractions-calculator.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A calculator resting on blank graph paper beside a pencil and a cup of coffee, ready to check an algebra step." class="crop-1" loading="lazy" decoding="async">
+<figcaption>Recombine the pieces by hand before you trust a screen. <small>AI-generated image</small></figcaption>
+</figure>
+
+<h2>Where the arctangent comes from</h2>
+<p>An irreducible quadratic factor, one with no rational root, keeps its whole denominator and takes a linear numerator $Bx+C$. For $\dfrac{1}{x(x^2+1)}$, the decomposition is $\dfrac{1}{x} - \dfrac{x}{x^2+1}$, and both pieces integrate to logarithms: $\ln|x| - \tfrac{1}{2}\ln(x^2+1) + C$. That example happens to carry no constant term over the quadratic, so no arctangent shows up.</p>
+<p>A constant term over an irreducible quadratic does produce one. Split $\dfrac{1}{x^2+1}$ off on its own and its antiderivative is $\arctan(x) + C$, by the same rule OpenStax gives for $\int du/(u^2+a^2)$. When a worked decomposition leaves a term such as $\dfrac{1}{x^2+1}$ after the $x$ part is pulled out and integrated as a logarithm, that leftover constant piece is where the arctangent enters. The checkpoint below walks through a case where both a logarithm and an arctangent appear in the same answer.</p>
+
+<h2>Checkpoints</h2>
+<div class="callout"><strong>Checkpoint.</strong> Decompose $\dfrac{1}{(x-1)(x^2+1)}$ and integrate it, before reading on. The denominator has one linear factor and one irreducible quadratic factor, so the template is $\dfrac{A}{x-1} + \dfrac{Bx+C}{x^2+1}$.</div>
+<p>Covering up $(x-1)$ at $x=1$ gives $A = 1/2$. Expanding the template and matching coefficients gives $B=-1/2$ and $C=-1/2$, so $\dfrac{1}{(x-1)(x^2+1)} = \dfrac{1/2}{x-1} - \dfrac{(x+1)/2}{x^2+1}$. Splitting that last term into an $x$ part and a constant part and integrating each piece gives</p>
+<p>$$\int \frac{dx}{(x-1)(x^2+1)} = \frac{1}{2}\ln|x-1| - \frac{1}{4}\ln(x^2+1) - \frac{1}{2}\arctan(x) + C.$$</p>
+<p>Differentiating that answer and combining the three terms over one denominator returns $\dfrac{1}{(x-1)(x^2+1)}$, the original integrand. If your decomposition differs, recombine your partial fractions over a common denominator and compare the numerator with $1$ before you trust either answer, including this one.</p>
+<div class="callout"><strong>Checkpoint.</strong> Say, in one sentence, which kind of factor in a denominator produces a logarithm after integration, which kind produces a power, and which kind can produce an arctangent. If you cannot answer without looking back, reread the template paragraph above before opening the calculator.</div>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Decomposing an improper fraction without dividing first. Partial fractions only apply once the numerator has smaller degree than the denominator; OpenStax requires long division before the split whenever that is not already true.</li>
+<li>Giving a repeated linear factor only one term. A factor $(x-r)^m$ needs $m$ separate constants, one for each power up to $m$, not one shared constant for the whole power.</li>
+<li>Writing a plain constant over an irreducible quadratic factor instead of a linear numerator $Bx+C$. A single constant cannot match every proper fraction with that denominator.</li>
+<li>Dropping the absolute value signs on a logarithm, or forgetting that a fraction with a constant numerator over $x^2+a^2$ integrates to an arctangent rather than another logarithm.</li>
+<li>Treating a single numeric substitution as a complete proof. Cover up finds one constant at a time; a repeated or quadratic factor still needs coefficient matching, and the full check is recombining every term and comparing it with the original numerator.</li>
+</ul>
+
+<h2>Related reading</h2>
+<p>A telescoping sum uses the same split before the limit is taken: see <a href="sequences-series-infinite-sums.html">sequences, series, and when infinite sums make sense</a>, which decomposes $1/(n(n+2))$ by partial fractions. The logistic step in <a href="separable-differential-equations.html">separable differential equations</a> integrates $1/(y(2-y))$ the same way. The short definition is <a href="../glossary/#partial-fraction-decomposition">partial fraction decomposition</a> in the glossary, and an inverse Laplace transform on the <a href="../calculators/laplace-transform.html">Laplace transform calculator</a> is often this same split followed by a short table. The <a href="../calculators/integral-riemann.html">Riemann sum calculator</a> estimates a definite integral directly with rectangles; it does not split a fraction first.</p>
+<div class="cta-panel">
+<p>Type your own numerator and denominator and compare every step against the work above.</p>
+<a class="btn" href="../calculators/partial-fractions.html">Open the partial fraction decomposition calculator</a>
+</div>
+
+<h2>Citations and further reading</h2>
+<ul class="source-list">
+<li>OpenStax, <em>Calculus Volume 2</em>, section 3.4, “Partial Fractions,” accessed 2 November 2026. <a href="https://openstax.org/books/calculus-volume-2/pages/3-4-partial-fractions" rel="noopener">openstax.org</a></li>
+<li>MIT OpenCourseWare 18.01SC, Single Variable Calculus, Session 74, “Integration by Partial Fractions,” accessed 2 November 2026. <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/unit-4-techniques-of-integration/part-b-partial-fractions-integration-by-parts-arc-length-and-surface-area/session-74-integration-by-partial-fractions/" rel="noopener">ocw.mit.edu</a></li>
+<li>Paul’s Online Math Notes, Calculus II, section 7.4, “Partial Fractions,” accessed 2 November 2026. <a href="https://tutorial.math.lamar.edu/classes/calcii/partialfractions.aspx" rel="noopener">tutorial.math.lamar.edu</a></li>
+</ul>
+<p>Last reviewed: 2 November 2026.</p>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="why">
+<h2>Why does splitting a fraction make an integral easier?</h2>
+<p>A complicated rational function has no antiderivative you already know. Each simple piece after the split does: a term over a linear factor integrates to a logarithm, a term over a power of a linear factor integrates to a power, and a term over an irreducible quadratic integrates to a logarithm plus an arctangent after you complete the square.</p>
+</section>
+<section class="faq-item" id="repeated">
+<h2>How do I know how many terms a repeated factor needs?</h2>
+<p>A factor (x minus r) that divides the denominator m times needs m separate terms, one for each power from 1 up to m, each with its own unknown constant. One fraction over the highest power alone cannot carry every coefficient the full expansion needs.</p>
+</section>
+<section class="faq-item" id="quadratic">
+<h2>Why is the numerator linear over an irreducible quadratic factor?</h2>
+<p>A quadratic with no rational root does not split further over the rationals, so it keeps the whole denominator. Matching every possible numerator over that denominator needs two free constants, so the numerator is written Bx + C, not a single constant.</p>
+</section>
+<section class="faq-item" id="improper">
+<h2>What should I do first if the fraction is improper?</h2>
+<p>Divide. Partial fraction decomposition only applies once the numerator has smaller degree than the denominator. Polynomial long division turns an improper fraction into a polynomial plus a proper fraction, and only the proper fraction gets split.</p>
+</section>
+<section class="faq-item" id="proof">
+<h2>Does a check by multiplying back prove the decomposition?</h2>
+<p>It is a strong numerical check, not a proof. Multiplying the partial fractions back together and matching the original numerator confirms the specific constants you found. The decomposition itself follows from a theorem about factoring real polynomials that this page does not prove.</p>
+</section>
+
+<div class="related"><h2>Related tools and explainers</h2><ul>
+<li><a href="../calculators/partial-fractions.html">Partial fraction decomposition calculator</a></li>
+<li><a href="../calculators/integral-riemann.html">Riemann sum calculator</a></li>
+<li><a href="../calculators/laplace-transform.html">Laplace transform calculator</a></li>
+<li><a href="../calculators/quadratic-formula.html">Quadratic formula calculator</a></li>
+<li><a href="sequences-series-infinite-sums.html">Sequences, series, and when infinite sums make sense</a></li>
+<li><a href="separable-differential-equations.html">Separable differential equations walkthrough</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations</a></li>
+<li><a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB study pathway</a></li>
+<li><a href="./">Explainer study library</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
