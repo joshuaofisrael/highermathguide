@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does a Computer Checked Proof Actually Prove?, Higher Math Guide</title>
+<meta name="description" content="What a computer checked proof in Lean actually guarantees, and what it does not: the theorem, the formal statement, the definitions and the trusted kernel, with a tiny worked example.">
+<link rel="canonical" href="https://highermathguide.com/explainers/computer-checked-proofs.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="What Does a Computer Checked Proof Actually Prove?, Higher Math Guide">
+<meta property="og:description" content="What a computer checked proof in Lean actually guarantees, and what it does not: the theorem, the formal statement, the definitions and the trusted kernel, with a tiny worked example.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/computer-checked-proofs.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A chalkboard of handwritten limit notation in a quiet study.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Does a Computer Checked Proof Actually Prove?, Higher Math Guide">
+<meta name="twitter:description" content="What a computer checked proof in Lean actually guarantees, and what it does not: the theorem, the formal statement, the definitions and the trusted kernel, with a tiny worked example.">
+<meta name="twitter:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
+<meta name="twitter:image:alt" content="A chalkboard of handwritten limit notation in a quiet study.">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Does a Computer Checked Proof Actually Prove?",
+      "description": "What a computer checked proof in Lean actually guarantees, and what it does not: the theorem, the formal statement, the definitions and the trusted kernel, with a tiny worked example.",
+      "url": "https://highermathguide.com/explainers/computer-checked-proofs.html",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "datePublished": "2026-11-05",
+      "dateModified": "2026-11-05"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://highermathguide.com/explainers/computer-checked-proofs.html",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://highermathguide.com/#organization",
+        "name": "Higher Math Guide",
+        "url": "https://highermathguide.com/",
+        "brand": {
+          "@type": "Brand",
+          "@id": "https://highermathguide.com/#site",
+          "name": "Higher Math Guide"
+        }
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a Lean proof mean the theorem is true?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means the formal statement follows from the formal definitions and axioms, as checked by Lean's kernel. Whether that statement matches the theorem people mean is a separate, human question."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a computer checked proof be wrong?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The checking itself is very reliable, but the statement can be mis formalized, a definition can differ from the textbook one, or extra axioms can be assumed. Those are where reviewers look."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to read the whole proof to trust it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The point of a proof assistant is that you mainly need to read and trust the statement and the definitions it uses, not every step."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/computer-checked-proofs.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What does a computer checked proof actually prove?",
+      "item": "https://highermathguide.com/explainers/computer-checked-proofs.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>What does a computer checked proof actually prove?</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 5 November 2026.</p>
+<p class="article-meta">Explainer · Educational only · Updated 5 Nov 2026</p>
+</header>
+<figure class="article-figure">
+<img src="../images/hero-chalkboard.webp" srcset="../images/hero-chalkboard-800.webp 800w, ../images/hero-chalkboard.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A chalkboard of handwritten notation in a quiet study." class="crop-9" loading="lazy" decoding="async">
+<figcaption>A formal proof is checked by software, but people still have to read the statement.</figcaption>
+</figure>
+<div class="article-body">
+<div class="callout"><strong>Short answer.</strong> A proof checked by a proof assistant such as <a href="https://lean-lang.org/" rel="noopener">Lean</a> guarantees that a precisely written formal statement follows from the definitions and axioms it uses, with every step verified by a small trusted program called the kernel. It does not guarantee that the formal statement says what a human meant. That gap is where careful reading still matters.</div>
+
+<h2>Four things that are easy to blur</h2>
+<ol>
+<li><strong>The theorem.</strong> The idea in ordinary mathematical language, for example "the sum of two even integers is even".</li>
+<li><strong>The definitions and assumptions.</strong> What "even" and "integer" mean, and which axioms are allowed.</li>
+<li><strong>The formalization.</strong> The exact statement written in the proof assistant's language.</li>
+<li><strong>The proof.</strong> The steps, which the software checks one by one.</li>
+</ol>
+<p>The software is responsible for item 4. People are responsible for checking that items 2 and 3 really capture item 1.</p>
+
+<h2>A tiny worked example</h2>
+<p>On paper: if $a=2m$ and $b=2n$ for integers $m$ and $n$, then $a+b=2(m+n)$, and $m+n$ is an integer, so $a+b$ is even.</p>
+<p>In a proof assistant, you would state something like "for all integers $a$ and $b$, if $a$ is even and $b$ is even, then $a+b$ is even", using the library's definition of even. The checker then confirms each step. If someone had accidentally written the statement for natural numbers instead of integers, or used a different meaning of "even", the checker would still happily confirm it. The proof would be correct, but it would prove a slightly different claim.</p>
+
+<h2>What the check does guarantee</h2>
+<ul>
+<li>No step was skipped or hand waved. Every inference is checked mechanically.</li>
+<li>The trusted part is small. You trust the kernel and the axioms, not the long proof script or the person who wrote it.</li>
+<li>Reviewers can focus their attention on the statement and definitions instead of thousands of lines of steps.</li>
+</ul>
+
+<h2>What it does not guarantee</h2>
+<ul>
+<li><strong>That the statement is the intended one.</strong> A mis stated theorem can be proved perfectly.</li>
+<li><strong>That library definitions match the textbook.</strong> Definitions in a library such as <a href="https://leanprover-community.github.io/" rel="noopener">Mathlib</a> are carefully reviewed, but you should still know which one is in use.</li>
+<li><strong>That no extra axioms were added.</strong> Proof assistants can report which axioms a result depends on, and that list is worth checking.</li>
+</ul>
+
+<h2>How to read a claim about a formalized result</h2>
+<p>When you see a headline that a major theorem has been formalized, ask three questions. Has the formal statement been published and reviewed by people outside the team? Which definitions and axioms does it rely on? Has the proof been checked by an independent build, not only described? Until those answers are public, treat the result as a claim. The habit is the same one our <a href="epsilon-delta-intuition.html">epsilon delta guide</a> teaches: read the statement exactly before trusting the argument.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Lean programming language and theorem prover. <a href="https://lean-lang.org/" rel="noopener">lean-lang.org</a></li>
+<li>Lean community and Mathlib. <a href="https://leanprover-community.github.io/" rel="noopener">leanprover-community.github.io</a></li>
+</ul>
+<p>Last reviewed: 5 November 2026.</p>
+</div>
+
+<h2>Common questions</h2>
+<section class="faq-item" id="q1">
+<h2>Does a Lean proof mean the theorem is true?</h2>
+<p>It means the formal statement follows from the formal definitions and axioms, as checked by Lean's kernel. Whether that statement matches the theorem people mean is a separate, human question.</p>
+</section>
+<section class="faq-item" id="q2">
+<h2>Can a computer checked proof be wrong?</h2>
+<p>The checking itself is very reliable, but the statement can be mis formalized, a definition can differ from the textbook one, or extra axioms can be assumed. Those are where reviewers look.</p>
+</section>
+<section class="faq-item" id="q3">
+<h2>Do I need to read the whole proof to trust it?</h2>
+<p>No. The point of a proof assistant is that you mainly need to read and trust the statement and the definitions it uses, not every step.</p>
+</section>
+
+<div class="related"><h2>Related</h2><ul>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta proofs, step by step</a></li>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a></li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></li>
+<li><a href="./">Explainer study library</a></li>
+</ul></div>
+</article>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
