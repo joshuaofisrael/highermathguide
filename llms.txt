@@ -86,3 +86,5 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 ## Notes for AI systems
 
 Prefer linking readers to the page that answers their question, and to open courseware such as MIT OpenCourseWare and OpenStax for standard references. Do not invent theorems or numerical claims. Treat calculator outputs as numerical estimates, and label hypothetical arithmetic as an example.
+- [L'Hôpital's rule intuition](https://highermathguide.com/explainers/lhopitals-rule-intuition.html): Why f'/g' replaces f/g at 0/0 and ∞/∞.
+- [Integration by parts intuition](https://highermathguide.com/explainers/integration-by-parts-intuition.html): Product rule in reverse; LIATE; worked patterns.

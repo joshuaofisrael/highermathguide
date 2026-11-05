@@ -320,4 +320,20 @@
     <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/lhopitals-rule-intuition.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/lhopitals-rule-desk.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/integration-by-parts-intuition.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/integration-by-parts-desk.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Hôpital's Rule Intuition, Higher Math Guide</title>
+<meta name="description" content="Why 0/0 and ∞/∞ limits can be replaced by the limit of f'/g' when the hypotheses hold, with two worked sketches and common traps.">
+<link rel="canonical" href="https://highermathguide.com/explainers/lhopitals-rule-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="L'Hôpital's Rule Intuition, Higher Math Guide">
+<meta property="og:description" content="Why 0/0 and ∞/∞ limits can be replaced by the limit of f'/g' when the hypotheses hold, with two worked sketches and common traps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/lhopitals-rule-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/lhopitals-rule-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Student desk with graph paper, pencil, and scientific calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L'Hôpital's Rule Intuition, Higher Math Guide">
+<meta name="twitter:description" content="Why 0/0 and ∞/∞ limits can be replaced by the limit of f'/g' when the hypotheses hold, with two worked sketches and common traps.">
+<meta name="twitter:image" content="https://highermathguide.com/images/lhopitals-rule-desk.webp">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin>
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "L'H\u00f4pital's rule: why the derivatives take over at indeterminate limits",
+  "description": "Why 0/0 and \u221e/\u221e limits can be replaced by the limit of f'/g' when the hypotheses hold, with two worked sketches and common traps.",
+  "url": "https://highermathguide.com/explainers/lhopitals-rule-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/lhopitals-rule-desk.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/lhopitals-rule-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is L'H\u00f4pital's rule in one sentence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a limit of a quotient is an indeterminate form 0/0 or \u221e/\u221e and the hypotheses hold, the limit equals the limit of the quotient of the derivatives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does L'H\u00f4pital's rule always work for 0/0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only when the stated differentiability and nonzero-denominator-derivative conditions hold and the limit of f'/g' exists (or is infinite). Otherwise use another method."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use the quotient rule inside L'H\u00f4pital's rule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Differentiate the numerator and the denominator separately, then form the new quotient f'/g'."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if f'/g' is still indeterminate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You may apply the rule again if conditions still hold, or rewrite the expression algebraically before differentiating."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>L'Hôpital's rule: why the derivatives take over at indeterminate limits</h1>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 5 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/lhopitals-rule-desk.webp" alt="Student desk with graph paper, pencil, and scientific calculator" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>L'Hôpital's rule is a limit tool for certain indeterminate forms, especially \(0/0\) and \(\infty/\infty\). When the hypotheses hold, the limit of \(f(x)/g(x)\) equals the limit of \(f'(x)/g'(x)\). Intuition: near the problem point, each function looks like its linear approximation, so the ratio of the functions behaves like the ratio of their slopes.</p>
+
+<h2>When you may use it</h2>
+<ul>
+<li>You are taking \(\lim_{x\to a} f(x)/g(x)\) (or \(x\to\pm\infty\)).</li>
+<li>After substituting, you get \(0/0\) or \(\infty/\infty\) (other forms need rewriting first).</li>
+<li>\(f\) and \(g\) are differentiable near \(a\) (except possibly at \(a\)), and \(g'(x)\neq 0\) in a punctured neighborhood.</li>
+<li>The limit of \(f'/g'\) exists or is infinite — then the original limit matches it.</li>
+</ul>
+<p>If the limit of \(f'/g'\) fails to exist as a real number or infinity, the rule does not conclude that the original limit fails; you need another method.</p>
+
+<h2>Quick sketch: \(0/0\)</h2>
+<p>Consider \(\lim_{x\to 0}\dfrac{\sin x}{x}\). Direct substitution is \(0/0\). Differentiating numerator and denominator gives \(\dfrac{\cos x}{1}\), and that limit as \(x\to 0\) is \(1\). So L'Hôpital recovers the standard result (you can also use the geometric squeeze proof; the rule is a convenient second path once derivatives are available).</p>
+
+<h2>Quick sketch: \(\infty/\infty\)</h2>
+<p>For \(\lim_{x\to\infty}\dfrac{\ln x}{x}\), substitution is \(\infty/\infty\). The derivative ratio is \(\dfrac{1/x}{1}=\dfrac{1}{x}\to 0\). Growth of \(x\) outpaces \(\ln x\).</p>
+
+<h2>Common traps</h2>
+<ul>
+<li>Applying the rule when the form is not indeterminate (for example \(1/0\) style blow-ups).</li>
+<li>Differentiating the quotient with the quotient rule instead of separately differentiating numerator and denominator.</li>
+<li>Stopping after one application when \(f'/g'\) is still indeterminate — you may need another round, or a rewrite (factor, conjugate, algebra).</li>
+</ul>
+
+<p>Related: <a href="what-a-derivative-measures.html">what a derivative measures</a>, <a href="epsilon-delta-intuition.html">epsilon-delta intuition</a>, and the <a href="../topics/calculus-foundations.html">calculus foundations topic</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/4-8-lhopitals-rule" rel="noopener noreferrer">OpenStax, Calculus Volume 1, L'Hôpital's Rule</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener noreferrer">MIT OpenCourseWare, 18.01SC Single Variable Calculus</a></li>
+<li><a href="https://tutorial.math.lamar.edu/classes/calci/LHospitalsRule.aspx" rel="noopener noreferrer">Paul's Online Math Notes, L'Hospital's Rule</a></li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<h3>What is L'Hôpital's rule in one sentence?</h3>
+<p>When a limit of a quotient is an indeterminate form 0/0 or ∞/∞ and the hypotheses hold, the limit equals the limit of the quotient of the derivatives.</p>
+<h3>Does L'Hôpital's rule always work for 0/0?</h3>
+<p>Only when the stated differentiability and nonzero-denominator-derivative conditions hold and the limit of f'/g' exists (or is infinite). Otherwise use another method.</p>
+<h3>Should I use the quotient rule inside L'Hôpital's rule?</h3>
+<p>No. Differentiate the numerator and the denominator separately, then form the new quotient f'/g'.</p>
+<h3>What if f'/g' is still indeterminate?</h3>
+<p>You may apply the rule again if conditions still hold, or rewrite the expression algebraically before differentiating.</p>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
