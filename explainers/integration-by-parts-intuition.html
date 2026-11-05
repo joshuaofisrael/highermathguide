@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integration by Parts Intuition, Higher Math Guide</title>
+<meta name="description" content="Why integration by parts swaps one integral for another using the product rule backwards, with the LIATE hint and two worked patterns.">
+<link rel="canonical" href="https://highermathguide.com/explainers/integration-by-parts-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Integration by Parts Intuition, Higher Math Guide">
+<meta property="og:description" content="Why integration by parts swaps one integral for another using the product rule backwards, with the LIATE hint and two worked patterns.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/integration-by-parts-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/integration-by-parts-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Open grid notebook and wooden ruler on a desk beside a blank whiteboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Integration by Parts Intuition, Higher Math Guide">
+<meta name="twitter:description" content="Why integration by parts swaps one integral for another using the product rule backwards, with the LIATE hint and two worked patterns.">
+<meta name="twitter:image" content="https://highermathguide.com/images/integration-by-parts-desk.webp">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin>
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Integration by parts: the product rule run in reverse",
+  "description": "Why integration by parts swaps one integral for another using the product rule backwards, with the LIATE hint and two worked patterns.",
+  "url": "https://highermathguide.com/explainers/integration-by-parts-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/integration-by-parts-desk.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/integration-by-parts-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is integration by parts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the integral form of the product rule: \u222b u dv = uv \u2212 \u222b v du. You trade one integral for another that should be easier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does LIATE mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A mnemonic for choosing u: Logarithmic, Inverse trig, Algebraic, Trig, Exponential. Use it as a starting guess, then verify the new integral is simpler."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use integration by parts twice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Some integrands return a multiple of the original integral after two applications; you then solve for that integral algebraically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is integration by parts the same as the product rule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the product rule integrated and rearranged. Differentiating uv recovers the product rule; integrating recovers parts."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Integration by parts: the product rule run in reverse</h1>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 5 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/integration-by-parts-desk.webp" alt="Open grid notebook and wooden ruler on a desk beside a blank whiteboard" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>Integration by parts comes from the product rule. If \(u(x)\) and \(v(x)\) are differentiable, then \((uv)'=u'v+uv'\). Integrate both sides and rearrange to get
+\[
+\int u\,dv = uv - \int v\,du.
+\]
+You choose a factor to call \(u\) (differentiate it) and a factor to call \(dv\) (integrate it). The goal is a new integral that is easier than the original.</p>
+
+<h2>How to choose \(u\) and \(dv\)</h2>
+<p>A common classroom mnemonic is LIATE (rough priority for \(u\)): Logarithmic, Inverse trig, Algebraic, Trig, Exponential. Prefer a \(u\) that simplifies when differentiated and a \(dv\) that is easy to integrate. The mnemonic is a hint, not a theorem — if the new integral looks worse, swap choices.</p>
+
+<h2>Pattern 1: polynomial times exponential</h2>
+<p>For \(\int x e^{x}\,dx\), take \(u=x\), \(dv=e^{x}\,dx\). Then \(du=dx\), \(v=e^{x}\), so
+\[
+\int x e^{x}\,dx = x e^{x} - \int e^{x}\,dx = x e^{x} - e^{x} + C.
+\]
+One parts step clears the polynomial factor.</p>
+
+<h2>Pattern 2: log without a partner</h2>
+<p>For \(\int \ln x\,dx\), write \(u=\ln x\), \(dv=dx\). Then \(du=\frac{1}{x}dx\), \(v=x\), and
+\[
+\int \ln x\,dx = x\ln x - \int x\cdot\frac{1}{x}\,dx = x\ln x - x + C.
+\]
+Parts turns a lonely log into an algebraic integral.</p>
+
+<h2>When to stop or loop</h2>
+<p>Sometimes parts produces a similar integral (classic: \(\int e^{x}\sin x\,dx\)). Apply parts twice and solve algebraically for the original integral. Related techniques: <a href="partial-fractions-intuition.html">partial fractions</a>, <a href="separable-differential-equations.html">separable DEs</a>, and <a href="../calculators/">calculators</a> for checks — not substitutes for understanding.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-2/pages/3-1-integration-by-parts" rel="noopener noreferrer">OpenStax, Calculus Volume 2, Integration by Parts</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/unit-4-techniques-of-integration/part-b-partial-fractions-integration-by-parts-arc-length-and-surface-area/" rel="noopener noreferrer">MIT OCW 18.01SC, Techniques of integration (parts)</a></li>
+<li><a href="https://tutorial.math.lamar.edu/classes/calcii/IntegrationByParts.aspx" rel="noopener noreferrer">Paul's Online Math Notes, Integration by Parts</a></li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<h3>What is integration by parts?</h3>
+<p>It is the integral form of the product rule: ∫ u dv = uv − ∫ v du. You trade one integral for another that should be easier.</p>
+<h3>What does LIATE mean?</h3>
+<p>A mnemonic for choosing u: Logarithmic, Inverse trig, Algebraic, Trig, Exponential. Use it as a starting guess, then verify the new integral is simpler.</p>
+<h3>Can I use integration by parts twice?</h3>
+<p>Yes. Some integrands return a multiple of the original integral after two applications; you then solve for that integral algebraically.</p>
+<h3>Is integration by parts the same as the product rule?</h3>
+<p>It is the product rule integrated and rearranged. Differentiating uv recovers the product rule; integrating recovers parts.</p>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
