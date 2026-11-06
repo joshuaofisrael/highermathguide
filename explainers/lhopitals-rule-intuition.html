@@ -20,8 +20,11 @@
 <meta name="twitter:title" content="L'Hôpital's Rule Intuition, Higher Math Guide">
 <meta name="twitter:description" content="Why 0/0 and ∞/∞ limits can be replaced by the limit of f'/g' when the hypotheses hold, with two worked sketches and common traps.">
 <meta name="twitter:image" content="https://highermathguide.com/images/lhopitals-rule-desk.webp">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin>
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -107,6 +110,85 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/lhopitals-rule-intuition.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "L'Hôpital's rule: why the derivatives take over at indeterminate limits",
+      "item": "https://highermathguide.com/explainers/lhopitals-rule-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -134,10 +216,11 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>L'Hôpital's rule: why the derivatives take over at indeterminate limits</h1>
+<p class="byline">By the Higher Math Guide editorial team</p>
 <p class="article-meta">Explainer · Calculus · Educational only · Updated 5 Nov 2026</p>
 </header>
 <figure class="article-photo">
-<img src="../images/lhopitals-rule-desk.webp" alt="Student desk with graph paper, pencil, and scientific calculator" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async">
+<img src="../images/lhopitals-rule-desk.webp" alt="Student desk with graph paper, pencil, and scientific calculator" width="1280" height="720" loading="lazy" decoding="async">
 <figcaption>Illustrative AI generated photo</figcaption>
 </figure>
 <div class="article-body">
@@ -176,15 +259,22 @@
 </ul>
 
 <h2 id="faq">Frequently asked questions</h2>
+<section class="faq-item" id="what-is-l-h-pital-s-rule-in-one-sentence">
 <h3>What is L'Hôpital's rule in one sentence?</h3>
 <p>When a limit of a quotient is an indeterminate form 0/0 or ∞/∞ and the hypotheses hold, the limit equals the limit of the quotient of the derivatives.</p>
+</section>
+<section class="faq-item" id="does-l-h-pital-s-rule-always-work-for-0-0">
 <h3>Does L'Hôpital's rule always work for 0/0?</h3>
 <p>Only when the stated differentiability and nonzero-denominator-derivative conditions hold and the limit of f'/g' exists (or is infinite). Otherwise use another method.</p>
+</section>
+<section class="faq-item" id="should-i-use-the-quotient-rule-inside-l-h-pital-">
 <h3>Should I use the quotient rule inside L'Hôpital's rule?</h3>
 <p>No. Differentiate the numerator and the denominator separately, then form the new quotient f'/g'.</p>
+</section>
+<section class="faq-item" id="what-if-f-g-is-still-indeterminate">
 <h3>What if f'/g' is still indeterminate?</h3>
 <p>You may apply the rule again if conditions still hold, or rewrite the expression algebraically before differentiating.</p>
-</div>
+</section></div>
 </article>
 </div>
 </main>
