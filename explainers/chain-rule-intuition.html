@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Chain Rule Explained with Intuition, Higher Math Guide</title>
+<meta name="description" content="Why the chain rule multiplies rates of change through a composition, with the outer times inner picture and two verified worked examples.">
+<link rel="canonical" href="https://highermathguide.com/explainers/chain-rule-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="The Chain Rule Explained with Intuition, Higher Math Guide">
+<meta property="og:description" content="Why the chain rule multiplies rates of change through a composition, with the outer times inner picture and two verified worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/chain-rule-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/chain-rule-intuition-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Open grid notebook and wooden ruler on a desk beside a blank whiteboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Chain Rule Explained with Intuition, Higher Math Guide">
+<meta name="twitter:description" content="Why the chain rule multiplies rates of change through a composition, with the outer times inner picture and two verified worked examples.">
+<meta name="twitter:image" content="https://highermathguide.com/images/chain-rule-intuition-desk.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The chain rule: outer rate times inner rate",
+  "description": "Why the chain rule multiplies rates of change through a composition, with the outer times inner picture and two verified worked examples.",
+  "url": "https://highermathguide.com/explainers/chain-rule-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/chain-rule-intuition-desk.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/chain-rule-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the chain rule in one sentence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If y = f(g(x)), then dy/dx = f'(g(x)) times g'(x): the outer function's rate at the inner value, multiplied by how fast the inner function is changing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do we multiply the derivatives?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A small change in x first changes the inner output by about g'(x) dx. That change then feeds the outer function and is scaled by about f'(g(x)). The product of the two scales is the net change in y per unit x."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need the chain rule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whenever the expression is a composition: one function applied to the output of another. Powers of a non linear expression, sine of a polynomial, and e to a function of x are common cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the chain rule related to implicit differentiation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Implicit differentiation treats y as a function of x and differentiates both sides. Every time y appears inside another function, the chain rule supplies a factor of dy/dx."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/chain-rule-intuition.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The chain rule: outer rate times inner rate",
+      "item": "https://highermathguide.com/explainers/chain-rule-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>The chain rule: outer rate times inner rate</h1>
+<p class="byline">By the Higher Math Guide editorial team</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 6 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/chain-rule-intuition-desk.webp" alt="Open grid notebook and wooden ruler on a desk beside a blank whiteboard" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>If \(y = f(g(x))\) and both \(f\) and \(g\) are differentiable where needed, the chain rule says
+\[
+\frac{dy}{dx} = f'(g(x))\, g'(x).
+\]
+In words: evaluate the outer derivative at the inner output, then multiply by the inner derivative. You are composing two rates of change, so you multiply the two local scales. For the meaning of a single derivative before you stack them, see <a href="what-a-derivative-measures.html">what a derivative actually measures</a>.</p>
+
+<h2>The picture: two gears, not one</h2>
+<p>A tiny change \(dx\) first moves the inner function by about \(g'(x)\,dx\). That change becomes the input change for \(f\). Near the current inner value \(u = g(x)\), the outer function scales input changes by about \(f'(u)\). So the net change in \(y\) is about
+\[
+dy \approx f'(g(x)) \cdot \bigl(g'(x)\, dx\bigr).
+\]
+Divide by \(dx\) and you recover the product. Forgetting either factor is the usual exam slip: people differentiate the outer shell and leave the inside frozen, or they differentiate the inside and forget the outer slope.</p>
+
+<h2>Worked example 1: power of a linear expression</h2>
+<p>Let \(y = (3x + 1)^4\). Outer function: \(f(u) = u^4\), so \(f'(u) = 4u^3\). Inner function: \(g(x) = 3x + 1\), so \(g'(x) = 3\). Therefore
+\[
+y' = 4(3x + 1)^3 \cdot 3 = 12(3x + 1)^3.
+\]
+Check at \(x = 0\): \(y = 1\), and the formula gives \(y' = 12\). Expanding \(y = 81x^4 + 108x^3 + 54x^2 + 12x + 1\) and differentiating term by term also gives \(324x^3 + 324x^2 + 108x + 12\), which equals \(12(3x + 1)^3\). At \(x = 0\) both routes say \(12\).</p>
+
+<h2>Worked example 2: sine of a quadratic</h2>
+<p>Let \(y = \sin(x^2)\). Outer: \(f(u) = \sin u\), so \(f'(u) = \cos u\). Inner: \(g(x) = x^2\), so \(g'(x) = 2x\). Therefore
+\[
+y' = \cos(x^2) \cdot 2x = 2x\cos(x^2).
+\]
+Check at \(x = 0\): \(y = \sin 0 = 0\), and \(y' = 0\). That matches a horizontal tangent at the origin for this even looking composition. At \(x = 1\), \(y' = 2\cos(1)\), which is positive since \(\cos 1 &gt; 0\).</p>
+
+<h2>Where the chain rule shows up next</h2>
+<p>Implicit differentiation is the chain rule with \(y\) treated as a function of \(x\): every time \(y\) sits inside another function, you pick up a factor of \(dy/dx\). Read <a href="implicit-differentiation-intuition.html">implicit differentiation intuition</a> when the curve is an equation rather than an explicit formula. Related tools: the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> for a slope check (an estimate, not a proof), and the <a href="../topics/calculus-foundations.html">calculus foundations</a> map for study order.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Differentiating only the outer function and writing \(4(3x+1)^3\) without the factor \(3\).</li>
+<li>Writing \(\cos(x^2)\) and dropping the \(2x\).</li>
+<li>Treating \(\sin(x^2)\) as \((\sin x)^2\). Those are different compositions and have different derivatives.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/3-6-the-chain-rule" rel="noopener noreferrer">OpenStax, Calculus Volume 1, The Chain Rule</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener noreferrer">MIT OCW 18.01SC, Single Variable Calculus</a></li>
+<li><a href="https://tutorial.math.lamar.edu/classes/calci/ChainRule.aspx" rel="noopener noreferrer">Paul's Online Math Notes, Chain Rule</a></li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<section class="faq-item" id="what-is-the-chain-rule-in-one-sentence">
+<h3>What is the chain rule in one sentence?</h3>
+<p>If y = f(g(x)), then dy/dx = f'(g(x)) times g'(x): the outer function's rate at the inner value, multiplied by how fast the inner function is changing.</p>
+</section>
+<section class="faq-item" id="why-do-we-multiply-the-derivatives">
+<h3>Why do we multiply the derivatives?</h3>
+<p>A small change in x first changes the inner output by about g'(x) dx. That change then feeds the outer function and is scaled by about f'(g(x)). The product of the two scales is the net change in y per unit x.</p>
+</section>
+<section class="faq-item" id="when-do-i-need-the-chain-rule">
+<h3>When do I need the chain rule?</h3>
+<p>Whenever the expression is a composition: one function applied to the output of another. Powers of a non linear expression, sine of a polynomial, and e to a function of x are common cases.</p>
+</section>
+<section class="faq-item" id="how-is-the-chain-rule-related-to-implicit-">
+<h3>How is the chain rule related to implicit differentiation?</h3>
+<p>Implicit differentiation treats y as a function of x and differentiates both sides. Every time y appears inside another function, the chain rule supplies a factor of dy/dx.</p>
+</section></div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>

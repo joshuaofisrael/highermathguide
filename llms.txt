@@ -21,6 +21,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Explainer study library](https://highermathguide.com/explainers/): read an explainer for intuition, then practice with the linked calculator and topic map
 - [Epsilon delta proofs, step by step](https://highermathguide.com/explainers/epsilon-delta-intuition.html): a step by step proof method that answers every epsilon with a delta and writes the argument forward, with linear, quadratic, hole, and jump examples, plus a finder that samples and does not prove
 - [What a derivative actually measures](https://highermathguide.com/explainers/what-a-derivative-measures.html): instantaneous rate, the best local line, and when a derivative fails to exist
+- [The chain rule explained with intuition](https://highermathguide.com/explainers/chain-rule-intuition.html): Outer rate times inner rate for a composition; two verified worked examples; link to implicit differentiation
 - [Implicit differentiation intuition](https://highermathguide.com/explainers/implicit-differentiation-intuition.html): why the chain rule finds slope on a curve given by an equation
 - [Sequences, series, and infinite sums](https://highermathguide.com/explainers/sequences-series-infinite-sums.html): infinite sums as limits of partial sums, including geometric, harmonic, and telescoping series
 - [Convergence tests for series](https://highermathguide.com/explainers/convergence-tests-series.html): comparison, ratio, and root tests and the cases where each test is inconclusive
