@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof by Induction Explained Step by Step, Higher Math Guide</title>
+<meta name="description" content="How proof by induction works: the base case, the inductive step, a fill in template, two fully worked examples, checkpoints, and the mistakes that break proofs.">
+<link rel="canonical" href="https://highermathguide.com/explainers/proof-by-induction.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Proof by Induction Explained Step by Step, Higher Math Guide">
+<meta property="og:description" content="How proof by induction works: the base case, the inductive step, a fill in template, two fully worked examples, checkpoints, and the mistakes that break proofs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/proof-by-induction.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/lhopitals-rule-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Student desk with graph paper, pencil, and scientific calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proof by Induction Explained Step by Step, Higher Math Guide">
+<meta name="twitter:description" content="How proof by induction works: the base case, the inductive step, a fill in template, two fully worked examples, checkpoints, and the mistakes that break proofs.">
+<meta name="twitter:image" content="https://highermathguide.com/images/lhopitals-rule-desk.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Proof by induction, explained step by step",
+  "description": "How proof by induction works: the base case, the inductive step, a fill in template, two fully worked examples, checkpoints, and the mistakes that break proofs.",
+  "url": "https://highermathguide.com/explainers/proof-by-induction.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/lhopitals-rule-desk.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-07",
+  "dateModified": "2026-11-07"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/proof-by-induction.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the two steps of proof by induction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The base case shows the statement is true for the first value, usually n = 1. The inductive step shows that if the statement is true for some n = k, it must also be true for n = k + 1. Together they cover every whole number from the start onward."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is assuming P(k) in the inductive step not circular?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You are not claiming P(k) is true for every k. You are proving a conditional: if P(k) holds, then P(k + 1) holds. Combined with the base case, that conditional pushes the truth forward one value at a time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between ordinary and strong induction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ordinary induction assumes only P(k) to prove P(k + 1). Strong induction assumes P holds for every value from the start up to k. Strong induction is convenient when the next case depends on several earlier ones, such as factoring a number into smaller factors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is checking many values of n the same as a proof?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Checking cases is evidence and a good way to catch algebra slips, but it covers only the values you tried. Induction is what covers every n."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/proof-by-induction.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Proof by induction, explained step by step",
+      "item": "https://highermathguide.com/explainers/proof-by-induction.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Proof by induction, explained step by step</h1>
+<p class="byline">By the Higher Math Guide editorial team</p>
+<p class="article-meta">Explainer · Proofs · Educational only · Updated 7 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/lhopitals-rule-desk.webp" alt="Student desk with graph paper, pencil, and scientific calculator" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>Proof by induction proves a statement \(P(n)\) for every whole number \(n\) from some starting value onward, using two checks. The <strong>base case</strong> shows \(P(1)\) is true (or \(P(n_0)\) for whatever start the problem uses). The <strong>inductive step</strong> shows that whenever \(P(k)\) is true, \(P(k+1)\) must be true as well. Once both checks pass, every later case follows, one after another, like an endless row of dominoes that has been pushed at the front and is spaced so each one knocks over the next.</p>
+
+<h2>The picture: a ladder you can always climb one more rung</h2>
+<p>The base case puts you on the first rung. The inductive step is a promise: from any rung you stand on, you can reach the next one. Neither check alone is enough. A promise to climb one more rung is useless if you never get on the ladder, and getting on the first rung tells you nothing about rung one hundred. Together they reach every rung, because any rung \(n\) is reached after finitely many single steps from the start.</p>
+<p>The inductive step is a conditional statement. You do not prove \(P(k)\) is true. You assume it, as the <em>inductive hypothesis</em>, and show that \(P(k+1)\) follows. If conditional statements still feel slippery, the <a href="../pathways/intro-to-proofs.html">intro to proofs pathway</a> builds that habit first.</p>
+
+<h2>The template, step by step</h2>
+<ol>
+<li><strong>State \(P(n)\) clearly.</strong> Write the exact sentence or equation you will prove, and the starting value of \(n\).</li>
+<li><strong>Base case.</strong> Check \(P\) at the starting value by direct computation.</li>
+<li><strong>Inductive hypothesis.</strong> Write: assume \(P(k)\) is true for some fixed \(k\) at least the starting value.</li>
+<li><strong>Inductive step.</strong> Start from the left side of \(P(k+1)\), find a place to use the hypothesis, and simplify until you reach the right side of \(P(k+1)\).</li>
+<li><strong>Conclusion.</strong> Say that by induction \(P(n)\) holds for every \(n\) from the starting value onward.</li>
+</ol>
+
+<h2>Worked example 1: the sum of the first n whole numbers</h2>
+<p>Claim: for every \(n \ge 1\),
+\[
+1 + 2 + \cdots + n = \frac{n(n+1)}{2}.
+\]
+<strong>Base case.</strong> When \(n = 1\) the left side is \(1\) and the right side is \(\frac{1 \cdot 2}{2} = 1\). They match.</p>
+<p><strong>Inductive hypothesis.</strong> Assume \(1 + 2 + \cdots + k = \frac{k(k+1)}{2}\) for some \(k \ge 1\).</p>
+<p><strong>Inductive step.</strong> The sum up to \(k+1\) is the sum up to \(k\) plus one more term:
+\[
+1 + 2 + \cdots + k + (k+1) = \frac{k(k+1)}{2} + (k+1) = \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2}.
+\]
+That last expression is exactly \(\frac{n(n+1)}{2}\) with \(n = k+1\). So \(P(k+1)\) holds, and by induction the formula is true for every \(n \ge 1\).</p>
+<p>Spot check at \(n = 4\): \(1 + 2 + 3 + 4 = 10\), and \(\frac{4 \cdot 5}{2} = 10\). A spot check is not a proof, but it catches algebra slips before you write the argument up.</p>
+
+<h2>Worked example 2: a divisibility claim</h2>
+<p>Claim: for every \(n \ge 1\), the number \(4^n - 1\) is divisible by \(3\).</p>
+<p><strong>Base case.</strong> When \(n = 1\), \(4^1 - 1 = 3\), which is divisible by \(3\).</p>
+<p><strong>Inductive hypothesis.</strong> Assume \(4^k - 1 = 3m\) for some whole number \(m\).</p>
+<p><strong>Inductive step.</strong> Rewrite the next case so the hypothesis appears inside it:
+\[
+4^{k+1} - 1 = 4 \cdot 4^k - 1 = 4(4^k - 1) + 3 = 4(3m) + 3 = 3(4m + 1).
+\]
+The result is \(3\) times a whole number, so \(4^{k+1} - 1\) is divisible by \(3\). By induction the claim holds for every \(n \ge 1\). Spot check: \(4^3 - 1 = 63 = 3 \cdot 21\).</p>
+<p>The trick in both examples is the same. Write the \(k+1\) case so the \(k\) case sits visibly inside it, then use the hypothesis on that piece.</p>
+
+<h2>Strong induction, briefly</h2>
+<p>Sometimes \(P(k+1)\) depends on several earlier cases, not just \(P(k)\). Strong induction lets you assume \(P\) holds for every value from the start up to \(k\), then prove \(P(k+1)\). It is no more powerful in what it can prove, but it is often easier to write, for example when every whole number above \(1\) is shown to be a product of primes by splitting it into two smaller factors. Richard Hammack's open textbook Book of Proof treats ordinary and strong induction in its Chapter 10.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>In your own words, why does the inductive step not assume what you are trying to prove?</li>
+<li>Prove by induction that \(1 + 3 + 5 + \cdots + (2n - 1) = n^2\) for every \(n \ge 1\). (Base case: \(1 = 1^2\). In the step, add the next odd number, \(2k + 1\).)</li>
+<li>Prove that \(2^n \ge n + 1\) for every \(n \ge 1\). Which base case do you need, and where does the inequality get used in the step?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Skipping the base case.</strong> A false statement can still have a valid looking inductive step. For example, "\(n + 1 = n\)" would imply "\((n + 1) + 1 = n + 1\)", yet the statement is never true. The base case is what anchors the chain.</li>
+<li><strong>Assuming \(P(k+1)\).</strong> Start from one side of the \(k+1\) statement and work toward the other side. Do not write the \(k+1\) equation and manipulate both sides as if it were already known.</li>
+<li><strong>A step that silently fails for small \(k\).</strong> The classic "all horses are the same colour" argument breaks exactly when moving from \(1\) to \(2\), because the two overlapping groups it relies on share no horse. Check that your step works for the smallest \(k\) it is supposed to cover.</li>
+<li><strong>Never using the hypothesis.</strong> If the inductive step does not use \(P(k)\) anywhere, either the statement is easy enough for a direct proof or the step has a gap.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a> for conditional statements, quantifiers, and writing practice</li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proofs topic map</a></li>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta proofs, step by step</a> for another proof template with a fixed structure</li>
+<li><a href="sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a>, where finite sum formulas like the one above reappear</li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/sequence-series.html">sequence calculator</a> adds finitely many terms, which is handy for spot checking a sum formula at a few values of \(n\). Matching values for a few cases is evidence, not a proof. Only the induction argument covers every \(n\).</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://richardhammack.github.io/BookOfProof/" rel="noopener noreferrer">Richard Hammack, Book of Proof, third edition, Chapter 10 Mathematical Induction (open textbook)</a></li>
+<li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" rel="noopener noreferrer">MIT OpenCourseWare 6.042J, Mathematics for Computer Science (proof methods and induction)</a></li>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/5-1-approximating-areas" rel="noopener noreferrer">OpenStax, Calculus Volume 1, 5.1 Approximating Areas (sum formulas for consecutive integers)</a></li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<section class="faq-item" id="what-are-the-two-steps-of-proof-by-induction">
+<h3>What are the two steps of proof by induction?</h3>
+<p>The base case shows the statement is true for the first value, usually n = 1. The inductive step shows that if the statement is true for some n = k, it must also be true for n = k + 1. Together they cover every whole number from the start onward.</p>
+</section>
+<section class="faq-item" id="why-is-assuming-p-k-in-the-inductive-step-no">
+<h3>Why is assuming P(k) in the inductive step not circular?</h3>
+<p>You are not claiming P(k) is true for every k. You are proving a conditional: if P(k) holds, then P(k + 1) holds. Combined with the base case, that conditional pushes the truth forward one value at a time.</p>
+</section>
+<section class="faq-item" id="what-is-the-difference-between-ordinary-and-">
+<h3>What is the difference between ordinary and strong induction?</h3>
+<p>Ordinary induction assumes only P(k) to prove P(k + 1). Strong induction assumes P holds for every value from the start up to k. Strong induction is convenient when the next case depends on several earlier ones, such as factoring a number into smaller factors.</p>
+</section>
+<section class="faq-item" id="is-checking-many-values-of-n-the-same-as-a-p">
+<h3>Is checking many values of n the same as a proof?</h3>
+<p>No. Checking cases is evidence and a good way to catch algebra slips, but it covers only the values you tried. Induction is what covers every n.</p>
+</section></div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
