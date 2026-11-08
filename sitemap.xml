@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/real-analysis-proofs.html</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -272,7 +272,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/intro-to-proofs.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -317,7 +317,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -350,6 +350,14 @@
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/lhopitals-rule-desk.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/quantifiers-and-negation.html</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/hero-chalkboard.webp</image:loc>
     </image:image>
   </url>
 </urlset>

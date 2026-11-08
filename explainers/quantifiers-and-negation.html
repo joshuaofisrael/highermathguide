@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantifiers and Negation Explained, Higher Math Guide</title>
+<meta name="description" content="Universal and existential quantifiers in plain language, why their order matters, how negation flips them, and how that prepares epsilon delta proofs.">
+<link rel="canonical" href="https://highermathguide.com/explainers/quantifiers-and-negation.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Quantifiers and Negation Explained, Higher Math Guide">
+<meta property="og:description" content="Universal and existential quantifiers in plain language, why their order matters, how negation flips them, and how that prepares epsilon delta proofs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/quantifiers-and-negation.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A green chalkboard filled with handwritten calculus notes in a quiet study">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quantifiers and Negation Explained, Higher Math Guide">
+<meta name="twitter:description" content="Universal and existential quantifiers in plain language, why their order matters, how negation flips them, and how that prepares epsilon delta proofs.">
+<meta name="twitter:image" content="https://highermathguide.com/images/hero-chalkboard.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Quantifiers and negation explained",
+  "description": "Universal and existential quantifiers in plain language, why their order matters, how negation flips them, and how that prepares epsilon delta proofs.",
+  "url": "https://highermathguide.com/explainers/quantifiers-and-negation.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/hero-chalkboard.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-08",
+  "dateModified": "2026-11-08"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/quantifiers-and-negation.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What do the two main quantifiers mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The universal quantifier means for all, for every, or for each. The existential quantifier means there exists or there is at least one. A universally quantified claim is true only if the property holds for every allowed value. An existentially quantified claim is true if the property holds for at least one allowed value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the order of quantifiers matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you mix a for all with a there exists, swapping their order usually changes the meaning. For every real x there is a real y with y cubed equal to x says every real number has a cube root. There is a real y such that for every real x, y cubed equals x says one fixed number cubes to every real number, which is false."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you negate a quantified statement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Move the word not across each quantifier and change its kind. The negation of for all x, P(x) is there exists an x such that P(x) fails. The negation of there exists an x such that P(x) is for all x, P(x) fails. If several quantifiers are stacked, flip each one from left to right and then negate the innermost claim."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does this help with for every epsilon there exists a delta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That sentence is a universal claim followed by an existential claim. The window may depend on the tolerance you were given. It is not the claim that one window works for every tolerance. The epsilon delta explainer is where you write the limit argument itself."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/quantifiers-and-negation.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Quantifiers and negation explained",
+      "item": "https://highermathguide.com/explainers/quantifiers-and-negation.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Quantifiers and negation explained</h1>
+<p class="byline">Higher Math Guide editorial team. Last reviewed: 8 November 2026.</p>
+<p class="article-meta">Explainer · Proofs · Educational only · Updated 8 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/hero-chalkboard.webp" alt="A green chalkboard filled with handwritten calculus notes in a quiet study" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>A quantifier tells you how many values a claim is about. The universal quantifier, written \(\forall\), means for all, for every, or for each. The existential quantifier, written \(\exists\), means there exists a or there is a. A sentence that begins with \(\forall x \in X, P(x)\) is true only when \(P(x)\) holds for every element of \(X\). A sentence that begins with \(\exists x \in X, P(x)\) is true when \(P(x)\) holds for at least one element of \(X\). To negate such a sentence you flip the kind of quantifier: not "for all" becomes "there exists" a value where the property fails, and not "there exists" becomes "for all" values the property fails.</p>
+
+<h2>Without the fog</h2>
+<p>Ordinary "and" and "or" are not enough once a set may be infinite. Richard Hammack's Book of Proof introduces \(\forall\) and \(\exists\) for exactly that reason. "Every element of \(X\) is odd" would otherwise become an endless chain of "and". "There is at least one odd element of \(X\)" would become an endless chain of "or". The two new symbols package those ideas.</p>
+<p>MIT's Mathematics for Computer Science notes say the same thing in the language of predicates. A predicate is a claim whose truth depends on a variable. You then make one of two common assertions: the predicate is always true, or the predicate is sometimes true. Those are the universally quantified statement and the existentially quantified statement. In symbols, \(\forall x \in D, P(x)\) is read "for all \(x\) in \(D\), \(P(x)\) is true." \(\exists x \in D, P(x)\) is read "there exists an \(x\) in \(D\) such that \(P(x)\) is true."</p>
+<p>English can hide which one you meant. The MIT notes point out that "if you can solve any problem we come up with, then you get an A" might mean every problem, or at least one problem. In a proof you do not get to leave that choice hanging. Write the quantifier you intend.</p>
+
+<h2>Worked example: why order matters</h2>
+<p>When a statement has two quantifiers, their order is part of the meaning. Hammack's example is the cleanest small case.</p>
+<p>Claim A:
+\[
+\forall x \in \mathbb{R},\; \exists y \in \mathbb{R},\; y^3 = x.
+\]
+In words: for every real number \(x\), there is a real number \(y\) whose cube is \(x\). That is true, because every real number has a real cube root. The choice of \(y\) is allowed to depend on \(x\).</p>
+<p>Now swap the quantifiers to get claim B:
+\[
+\exists y \in \mathbb{R},\; \forall x \in \mathbb{R},\; y^3 = x.
+\]
+In words: there is one fixed real number \(y\) such that \(y^3 = x\) for every real number \(x\). No single \(y\) can have that property, so claim B is false. Hammack stresses that the two sentences have entirely different meanings. The MIT notes give the same warning: swapping a universal quantifier with an existential quantifier usually changes the proposition. Their Goldbach example makes the same point. "For every even integer greater than 2 there exist primes that add to it" is not "there exist two primes that add to every even integer greater than 2."</p>
+
+<h2>How to negate a quantified statement</h2>
+<p>Hammack records the two rules you will use constantly:
+\[
+\sim(\forall x \in X,\, P(x)) \;=\; \exists x \in X,\, \sim P(x),
+\]
+\[
+\sim(\exists x \in X,\, P(x)) \;=\; \forall x \in X,\, \sim P(x).
+\]
+The MIT notes say this as a general principle: moving a "not" across a quantifier changes the kind of quantifier. "It is not the case that everyone likes to snowboard" means "there exists someone who does not like to snowboard." "There does not exist anyone who likes skiing over magma" means "everyone dislikes skiing over magma."</p>
+<p>If several quantifiers are stacked, you apply the rule from the outside in. Hammack starts with the true cube root claim and computes
+\[
+\sim(\forall x \in \mathbb{R},\; \exists y \in \mathbb{R},\; y^3 = x)
+= \exists x \in \mathbb{R},\; \forall y \in \mathbb{R},\; y^3 \neq x.
+\]
+In words: there is a real number \(x\) such that no real \(y\) cubes to it. That negated sentence is false, as it should be, because the original claim was true. The pattern is mechanical. Flip each quantifier, then negate the innermost statement.</p>
+<p>A useful everyday warning from Hammack: do not say "all integers are not even" when you mean "not all integers are even." The first sentence says there are no even integers. The second says there is at least one odd integer, which is the correct negation of "every integer is even."</p>
+
+<h2>A fill in template</h2>
+<ol>
+<li><strong>Write the claim with the quantifiers in reading order.</strong> Start with "for every" or "there exists," name the set each variable ranges over, then state the property.</li>
+<li><strong>Decide how you would test it.</strong> A universal claim dies with one counterexample. An existential claim lives if you can exhibit one example, or otherwise prove that at least one value works.</li>
+<li><strong>If the claim is nested, keep the dependence honest.</strong> In \(\forall x, \exists y\), the value of \(y\) may depend on \(x\). In \(\exists y, \forall x\), the same \(y\) must work for every \(x\).</li>
+<li><strong>To negate, walk from the left.</strong> Change every "for all" into "there exists" and every "there exists" into "for all." Then negate the innermost property. Read the new sentence aloud and check that it is exactly the refusal of the original claim.</li>
+<li><strong>Translate back into English before you prove anything.</strong> If you cannot say the negated sentence in words, you are not ready to use it inside a larger argument.</li>
+</ol>
+
+<h2>The link to for every epsilon there exists a delta</h2>
+<p>Once the two quantifiers and their order are clear, the opening line of a limit definition is no longer a spell. Hammack even uses that sentence as a translation exercise: for every positive number \(\varepsilon\) there is a positive number \(\delta\) with a stated implication. The order is the meaning. You are given the tolerance first. Then you are allowed to choose a window, and that window may depend on the tolerance.</p>
+<p>The swapped sentence, "there exists a \(\delta\) such that for every \(\varepsilon\) the implication holds," would demand one window that works for every tolerance at once. That is a different, much stronger claim, and it is not the definition of a limit. The <a href="epsilon-delta-intuition.html">epsilon delta intuition</a> page is where you write the actual limit argument, with linear and other examples. This page only unpacks the two quantifiers that page is negotiating. The <a href="../pathways/intro-to-proofs.html">intro to proofs pathway</a> and the <a href="../topics/real-analysis-proofs.html">real analysis and proofs topic map</a> both treat that order as a habit you name before any algebra.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>Translate "every integer is even" into symbols, then write its negation in symbols and in English. Give one counterexample that shows the original claim is false.</li>
+<li>In your own words, why is \(\forall x \in \mathbb{R},\; \exists y \in \mathbb{R},\; y^3 = x\) true while \(\exists y \in \mathbb{R},\; \forall x \in \mathbb{R},\; y^3 = x\) is false?</li>
+<li>Negate \(\forall x \in \mathbb{R},\; \exists y \in \mathbb{R},\; y^3 = x\) by flipping each quantifier. Read the result in English.</li>
+<li>Why is "for every \(\varepsilon &gt; 0\) there exists a \(\delta &gt; 0\)" not the same as "there exists a \(\delta &gt; 0\) that works for every \(\varepsilon &gt; 0\)"?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Negating "for all" as "for all, not."</strong> The negation of "every integer is even" is not "every integer is not even." It is "there exists an integer that is not even."</li>
+<li><strong>Swapping the order of mixed quantifiers.</strong> \(\forall x, \exists y\) lets \(y\) depend on \(x\). \(\exists y, \forall x\) demands one \(y\) that works for every \(x\). Those are different claims.</li>
+<li><strong>Flipping the quantifiers and forgetting to negate the inner property.</strong> After you change \(\forall\) to \(\exists\), you still have to replace \(P(x)\) with its negation.</li>
+<li><strong>Saying "all ... are not" when you mean "not all."</strong> Hammack flags this as a sentence that may pass in casual talk and must never pass in a proof.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a> for writing practice with these quantifiers inside calculus statements</li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proofs topic map</a></li>
+<li><a href="epsilon-delta-intuition.html">Epsilon delta proofs, step by step</a>, where "for every epsilon there exists a delta" becomes a written argument</li>
+<li><a href="proof-by-induction.html">Proof by induction, explained step by step</a> for another proof template with a fixed structure</li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> searches for a window at one tolerance you type, and the <a href="../calculators/limit-estimator.html">numerical limit estimator</a> samples nearby values. Both are scratch pictures. Neither proves a quantified claim, because a proof has to handle every allowed value, not only the ones a table happened to show.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://richardhammack.github.io/BookOfProof/" rel="noopener noreferrer">Richard Hammack, Book of Proof, third edition, Chapter 2.7 Quantifiers and Chapter 2.10 Negating Statements (open textbook)</a></li>
+<li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" rel="noopener noreferrer">MIT OpenCourseWare 6.042J, Mathematics for Computer Science (Fall 2010)</a></li>
+<li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/pages/readings/" rel="noopener noreferrer">MIT OpenCourseWare 6.042J readings, including Chapter 1 Propositions, section 1.3 Predicates and Quantifiers</a></li>
+</ul>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-do-the-two-main-quantifiers-mean">
+<h3>What do the two main quantifiers mean?</h3>
+<p>The universal quantifier means for all, for every, or for each. The existential quantifier means there exists or there is at least one. A universally quantified claim is true only if the property holds for every allowed value. An existentially quantified claim is true if the property holds for at least one allowed value.</p>
+</section>
+<section class="faq-item" id="why-does-the-order-of-quantifiers-matter">
+<h3>Why does the order of quantifiers matter?</h3>
+<p>When you mix a for all with a there exists, swapping their order usually changes the meaning. For every real \(x\) there is a real \(y\) with \(y\) cubed equal to \(x\) says every real number has a cube root. There is a real \(y\) such that for every real \(x\), \(y\) cubed equals \(x\) says one fixed number cubes to every real number, which is false.</p>
+</section>
+<section class="faq-item" id="how-do-you-negate-a-quantified-statement">
+<h3>How do you negate a quantified statement?</h3>
+<p>Move the word not across each quantifier and change its kind. The negation of for all \(x\), \(P(x)\) is there exists an \(x\) such that \(P(x)\) fails. The negation of there exists an \(x\) such that \(P(x)\) is for all \(x\), \(P(x)\) fails. If several quantifiers are stacked, flip each one from left to right and then negate the innermost claim.</p>
+</section>
+<section class="faq-item" id="how-does-this-help-with-for-every-epsilon">
+<h3>How does this help with for every epsilon there exists a delta?</h3>
+<p>That sentence is a universal claim followed by an existential claim. The window may depend on the tolerance you were given. It is not the claim that one window works for every tolerance. The epsilon delta explainer is where you write the limit argument itself.</p>
+</section>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
