@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrapositive vs Proof by Contradiction, Higher Math Guide</title>
+<meta name="description" content="Contrapositive vs proof by contradiction: what each assumes, what it must reach, worked examples, when to choose which, and the converse trap.">
+<link rel="canonical" href="https://highermathguide.com/explainers/contrapositive-vs-contradiction.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Contrapositive vs Proof by Contradiction, Higher Math Guide">
+<meta property="og:description" content="Contrapositive vs proof by contradiction: what each assumes, what it must reach, worked examples, when to choose which, and the converse trap.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/contrapositive-vs-contradiction.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/contrapositive-vs-contradiction-desk.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="An open blank grid notebook and a wooden ruler on a desk below an empty whiteboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contrapositive vs Proof by Contradiction, Higher Math Guide">
+<meta name="twitter:description" content="Contrapositive vs proof by contradiction: what each assumes, what it must reach, worked examples, when to choose which, and the converse trap.">
+<meta name="twitter:image" content="https://highermathguide.com/images/contrapositive-vs-contradiction-desk.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Contrapositive vs proof by contradiction explained",
+  "description": "Contrapositive vs proof by contradiction: what each assumes, what it must reach, worked examples, when to choose which, and the converse trap.",
+  "url": "https://highermathguide.com/explainers/contrapositive-vs-contradiction.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/contrapositive-vs-contradiction-desk.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-09",
+  "dateModified": "2026-11-09"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/contrapositive-vs-contradiction.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between proof by contrapositive and proof by contradiction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To prove if P then Q by contrapositive, you assume Q is false and show P is false. To prove it by contradiction, you assume P is true and Q is false together and derive an impossible statement. The contrapositive has a known target; a contradiction proof finds its contradiction along the way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is proving the contrapositive enough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The statement if P then Q and its contrapositive if not Q then not P are logically equivalent. A truth table shows they are true and false in exactly the same cases, so proving one proves the other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the converse the same as the contrapositive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The converse of if P then Q is if Q then P, and it is not logically equivalent to the original. The contrapositive is if not Q then not P, which is equivalent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use proof by contradiction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use it when there is no natural place to start, such as proving that something is irrational or that something does not exist. If a contradiction proof only assumes not Q and reaches not P, rewrite it as a shorter contrapositive proof."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/contrapositive-vs-contradiction.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Contrapositive vs proof by contradiction explained",
+      "item": "https://highermathguide.com/explainers/contrapositive-vs-contradiction.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Contrapositive vs proof by contradiction explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 9 November 2026.</p>
+<p class="article-meta">Explainer · Proofs · Educational only · Updated 9 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/contrapositive-vs-contradiction-desk.webp" alt="An open blank grid notebook and a wooden ruler on a desk below an empty whiteboard" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>Both methods are indirect ways to prove a statement, but they assume different things and aim at different targets. To prove "if \(P\), then \(Q\)" by contrapositive, you assume \(Q\) is false and show that \(P\) must be false. That works because \(P \Rightarrow Q\) and \(\sim Q \Rightarrow \sim P\) are logically equivalent. To prove a statement by contradiction, you assume the whole statement is false and keep reasoning until you reach something impossible, a statement together with its own negation. For a conditional, that means assuming \(P\) is true and \(Q\) is false at the same time. The contrapositive has a fixed finish line, \(\sim P\). A proof by contradiction does not know in advance which contradiction it will reach.</p>
+
+<h2>Without the fog</h2>
+<p>Richard Hammack's Book of Proof treats direct proof, contrapositive proof and proof by contradiction as the three main techniques for statements of the form "if \(P\), then \(Q\)." The contrapositive is the easiest to trust, because a four row truth table shows that \(P \Rightarrow Q\) and \(\sim Q \Rightarrow \sim P\) have exactly the same truth values. Proving one is as good as proving the other, as MIT's Mathematics for Computer Science notes put it.</p>
+<p>Proof by contradiction is broader. Hammack points out that it is not limited to conditional statements and can be used to prove any kind of statement. You suppose the statement is false, then show that this assumption leads to nonsense. A statement of the form \(C \wedge \sim C\) can never be true, so the assumption that produced it must be wrong.</p>
+<p>Here is the difference in one table.</p>
+<table>
+<thead><tr><th></th><th>Contrapositive</th><th>Contradiction (for "if \(P\), then \(Q\)")</th></tr></thead>
+<tbody>
+<tr><td>First line</td><td>Suppose \(\sim Q\).</td><td>Suppose \(P\) and \(\sim Q\).</td></tr>
+<tr><td>Last line</td><td>Therefore \(\sim P\).</td><td>Therefore \(C \wedge \sim C\), for some statement \(C\).</td></tr>
+<tr><td>Target known in advance?</td><td>Yes, it is \(\sim P\).</td><td>No, you find \(C\) along the way.</td></tr>
+<tr><td>Works for non conditional statements?</td><td>No, it needs an "if, then" form.</td><td>Yes, assume \(\sim P\) for any statement \(P\).</td></tr>
+</tbody>
+</table>
+
+<h2>Worked example 1: contrapositive</h2>
+<p><strong>Claim.</strong> Let \(n\) be an integer. If \(n^2\) is even, then \(n\) is even. Hammack sets this as an exercise for contrapositive proof.</p>
+<p>A direct proof is awkward. You would start from \(n^2 = 2a\) and need to get information about \(n\) itself, which means taking a square root of an even number and hoping it stays an integer. Information flows much more easily from \(n\) to \(n^2\) than the other way, so flip the statement.</p>
+<p><strong>Contrapositive.</strong> If \(n\) is not even, then \(n^2\) is not even. In other words, if \(n\) is odd, then \(n^2\) is odd.</p>
+<p><strong>Proof.</strong> Suppose \(n\) is odd. Then \(n = 2k + 1\) for some integer \(k\). So
+\[
+n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1.
+\]
+Since \(2k^2 + 2k\) is an integer, \(n^2\) is odd, so \(n^2\) is not even. We have shown \(\sim Q \Rightarrow \sim P\), which is equivalent to the original claim. \(\blacksquare\)</p>
+<p>Notice the shape. The first line assumed the negation of the conclusion. The last line was the negation of the hypothesis. Nothing else was needed.</p>
+
+<h2>Worked example 2: contradiction</h2>
+<p><strong>Claim.</strong> \(\sqrt{2}\) is irrational. Both Hammack and the MIT notes use this as their model proof by contradiction. It is not an "if, then" statement in any helpful way, so the contrapositive has nothing obvious to grab.</p>
+<p><strong>Proof.</strong> Suppose, for the sake of contradiction, that \(\sqrt{2}\) is rational. Then \(\sqrt{2} = a/b\) for integers \(a\) and \(b\) with \(b \neq 0\), and we may take the fraction fully reduced, so \(a\) and \(b\) are not both even. Squaring gives \(2 = a^2/b^2\), so
+\[
+a^2 = 2b^2.
+\]
+So \(a^2\) is even, and by worked example 1, \(a\) is even. Write \(a = 2c\). Then \(4c^2 = 2b^2\), so \(b^2 = 2c^2\). Now \(b^2\) is even, so \(b\) is even too. Both \(a\) and \(b\) are even, which contradicts the choice of a fully reduced fraction. So the assumption was false, and \(\sqrt{2}\) is irrational. \(\blacksquare\)</p>
+<p>Two things are worth seeing. First, the proof did not announce at the start which contradiction it would reach; "both even" only appeared near the end. Second, it used worked example 1 as a step. Hammack's version of this proof does the same, citing his chapter 5 exercise that \(a^2\) even implies \(a\) even. A contrapositive result sits inside the contradiction argument.</p>
+
+<h2>When to choose which</h2>
+<ul>
+<li><strong>Try contrapositive when the negations are easier to work with.</strong> If "not \(Q\)" gives you a concrete form, such as \(n = 2k+1\), and "not \(P\)" is easy to check, the contrapositive usually runs smoothly. Several of Hammack's examples about odd and even integers have this shape.</li>
+<li><strong>Try contradiction when there is no natural starting point.</strong> Statements like "\(\sqrt{2}\) is irrational" or "there are infinitely many primes" say that something does not exist or cannot happen. Assuming the opposite hands you an object to work with. Hammack notes that assuming \(\sim \forall x, P(x)\) gives \(\exists x, \sim P(x)\): one specific \(x\) to study.</li>
+<li><strong>Check for a hidden contrapositive.</strong> Hammack's advice is to use contradiction only when direct and contrapositive approaches do not seem to work, because a proof by contradiction can hide a simpler contrapositive proof. If your contradiction proof assumes \(\sim Q\), deduces \(\sim P\), and then says "but we assumed \(P\)," you have written a contrapositive proof with an extra layer. Delete the layer.</li>
+<li><strong>Prefer clarity.</strong> The MIT notes say indirect proofs can be a little convoluted, so direct proofs are generally preferable for clarity. Pick the method that a reader can follow most easily.</li>
+</ul>
+<p>Both methods lean on negating statements correctly. If the negation of "for all" or "there exists" is still shaky, read <a href="quantifiers-and-negation.html">quantifiers and negation explained</a> first.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>Write the contrapositive and the converse of "if \(x^2 &gt; 4\), then \(x &gt; 2\)." Which one is logically equivalent to the original? Is the original true for all real \(x\)?</li>
+<li>Prove by contrapositive: if \(n^2\) is odd, then \(n\) is odd. What is the first line of your proof?</li>
+<li>For a proof by contradiction of "if \(P\), then \(Q\)," what exactly do you assume in the first line?</li>
+<li>Look back at the \(\sqrt{2}\) proof. Which step used a fact that was itself proved by contrapositive?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Confusing the contrapositive with the converse.</strong> The converse of \(P \Rightarrow Q\) is \(Q \Rightarrow P\), and Hammack warns that it is not logically equivalent to the original. Proving the converse proves a different statement.</li>
+<li><strong>Assuming the wrong thing in a contradiction proof.</strong> The negation of "if \(P\), then \(Q\)" is "\(P\) and not \(Q\)," not "if \(P\), then not \(Q\)."</li>
+<li><strong>Negating the pieces badly.</strong> "Not even" for an integer means odd. "Not \(x \le y\)" means \(x &gt; y\), not \(x &lt; y\). A slip here wrecks either method.</li>
+<li><strong>Reusing facts proved under the false assumption.</strong> The MIT notes warn that inside a proof by contradiction you derive statements that are not necessarily true, so you cannot rely on those intermediate results after the proof is finished.</li>
+<li><strong>Wrapping a contrapositive in a contradiction.</strong> It is not wrong, but it is longer than it needs to be. Hammack recommends the simpler contrapositive version.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a> for writing practice</li>
+<li><a href="quantifiers-and-negation.html">Quantifiers and negation explained</a>, the negation rules both methods rely on</li>
+<li><a href="proof-by-induction.html">Proof by induction, explained step by step</a>, another proof template with a fixed structure</li>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis and proofs topic map</a></li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>Proof methods do not have a calculator, and that is the point: a table of examples never proves a universal claim. The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> and the <a href="../calculators/limit-estimator.html">numerical limit estimator</a> are useful scratch pictures for limit proofs, where the written argument still has to be direct, contrapositive or by contradiction.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://richardhammack.github.io/BookOfProof/" rel="noopener noreferrer">Richard Hammack, Book of Proof, third edition, Chapter 5 Contrapositive Proof and Chapter 6 Proof by Contradiction (open textbook)</a></li>
+<li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/" rel="noopener noreferrer">MIT OpenCourseWare 6.042J, Mathematics for Computer Science (Fall 2010)</a></li>
+<li><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/pages/readings/" rel="noopener noreferrer">MIT OpenCourseWare 6.042J readings, Chapter 2 Patterns of Proof, sections 2.3.2 Prove the Contrapositive and 2.5 Proof by Contradiction</a></li>
+</ul>
+
+<p>Last reviewed: 9 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-the-difference">
+<h3>What is the difference between proof by contrapositive and proof by contradiction?</h3>
+<p>To prove if P then Q by contrapositive, you assume Q is false and show P is false. To prove it by contradiction, you assume P is true and Q is false together and derive an impossible statement. The contrapositive has a known target; a contradiction proof finds its contradiction along the way.</p>
+</section>
+<section class="faq-item" id="is-contrapositive-equivalent">
+<h3>Why is proving the contrapositive enough?</h3>
+<p>The statement if P then Q and its contrapositive if not Q then not P are logically equivalent. A truth table shows they are true and false in exactly the same cases, so proving one proves the other.</p>
+</section>
+<section class="faq-item" id="converse-vs-contrapositive">
+<h3>Is the converse the same as the contrapositive?</h3>
+<p>No. The converse of if P then Q is if Q then P, and it is not logically equivalent to the original. The contrapositive is if not Q then not P, which is equivalent.</p>
+</section>
+<section class="faq-item" id="when-use-contradiction">
+<h3>When should I use proof by contradiction?</h3>
+<p>Use it when there is no natural place to start, such as proving that something is irrational or that something does not exist. If a contradiction proof only assumes not Q and reaches not P, rewrite it as a shorter contrapositive proof.</p>
+</section>
+
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
