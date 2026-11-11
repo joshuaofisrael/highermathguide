@@ -305,7 +305,13 @@
     <lastmod>2026-10-27</lastmod>
     <changefreq>yearly</changefreq>
   </url>
-  <url>
+    <url>
+    <loc>https://highermathguide.com/image-policy/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+<url>
     <loc>https://highermathguide.com/disclaimer/</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>yearly</changefreq>
