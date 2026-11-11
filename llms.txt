@@ -88,6 +88,7 @@ Calculators run in the browser and give numerical estimates for learning. A nume
 - [Privacy Policy](https://highermathguide.com/privacy/): what the site collects, and how to ask a privacy question
 - [Disclaimer](https://highermathguide.com/disclaimer/): educational use only, including the advertising and affiliate disclosure
 - [Copyright](https://highermathguide.com/copyright/): copyright, content use, DMCA notices sent through the contact form, and the corrections policy
+- [Image policy](https://highermathguide.com/image-policy/): how the site uses AI generated photographs and teaching diagrams, and where the Source link under those images leads
 
 ## Notes for AI systems
 
