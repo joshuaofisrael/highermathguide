@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Independence Explained: Higher Math Guide</title>
+<meta name="description" content="What linear independence means, how to test vectors by row reduction, three worked examples, the link to determinants and bases, and common mistakes.">
+<link rel="canonical" href="https://highermathguide.com/explainers/linear-independence-explained.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Linear Independence Explained: Higher Math Guide">
+<meta property="og:description" content="What linear independence means, how to test vectors by row reduction, three worked examples, the link to determinants and bases, and common mistakes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/linear-independence-explained.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/linear-independence-whiteboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Three people seen from behind studying a large whiteboard covered in abstract arrows and circles in a bright office">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Linear Independence Explained: Higher Math Guide">
+<meta name="twitter:description" content="What linear independence means, how to test vectors by row reduction, three worked examples, the link to determinants and bases, and common mistakes.">
+<meta name="twitter:image" content="https://highermathguide.com/images/linear-independence-whiteboard.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Linear independence explained",
+  "description": "What linear independence means, how to test vectors by row reduction, three worked examples, the link to determinants and bases, and common mistakes.",
+  "url": "https://highermathguide.com/explainers/linear-independence-explained.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/linear-independence-whiteboard.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-11",
+  "dateModified": "2026-11-11"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/linear-independence-explained.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does linearly independent mean in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A set of vectors is linearly independent when none of them can be built from the others. Formally, the only combination of the vectors that equals the zero vector is the one with every coefficient equal to zero. Each vector then adds a new direction to the span."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you check whether vectors are linearly independent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Put the vectors into a matrix as columns and row reduce. If every column has a pivot, the vectors are independent. If some column has no pivot, its free variable gives a nonzero combination equal to zero, so the vectors are dependent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is linear independence related to the determinant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For n vectors in n dimensional space, the square matrix with those vectors as columns has independent columns exactly when its determinant is not zero. A zero determinant means the columns are dependent and the map flattens space into a lower dimension."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between linear independence and a basis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basis must do two things: be linearly independent and span the whole space. An independent set that does not span is only part of a basis. For example, (1, 0, 0) and (0, 1, 0) are independent in three dimensional space but span only a plane."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/linear-independence-explained.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Linear independence explained",
+      "item": "https://highermathguide.com/explainers/linear-independence-explained.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Linear independence explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 11 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 11 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/linear-independence-whiteboard.webp" alt="Three people seen from behind studying a large whiteboard covered in abstract arrows and circles in a bright office" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo</figcaption>
+</figure>
+<div class="article-body">
+
+<p>A set of vectors $\mathbf{v}_1, \ldots, \mathbf{v}_k$ is <strong>linearly independent</strong> when the only way to combine them into the zero vector is to use all zero coefficients:
+$$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0} \quad\text{only when}\quad c_1 = c_2 = \cdots = c_k = 0.$$
+If some other combination also gives zero, the set is <strong>linearly dependent</strong>. In plain words, independent vectors carry no passengers: none of them can be built from the others, so each one adds a new direction to the span.</p>
+
+<h2>Without the fog</h2>
+<p>Margalit and Rabinoff's open textbook Interactive Linear Algebra starts from a picture. Sometimes the span of a set of vectors is smaller than you expect from the number of vectors. That means at least one vector is redundant: you can remove it and the span stays the same. Linear independence is the precise way of saying that no vector is redundant.</p>
+<p>The book gives two equivalent tests that match that picture.</p>
+<ul>
+<li><strong>The span test.</strong> A set is linearly dependent exactly when one of its vectors is in the span of the others. Any such vector can be removed without changing the span.</li>
+<li><strong>The increasing span test.</strong> Build the set one vector at a time. If the span gets bigger every time you add a vector, the set is linearly independent.</li>
+</ul>
+<p>A nonzero combination that gives zero, such as $2\mathbf{v}_1 - \mathbf{v}_2 = \mathbf{0}$, is called a linear dependence relation. Finding one is how you prove dependence. Showing that none exists is how you prove independence.</p>
+
+<h2>The recipe: row reduce and look for pivots</h2>
+<p>Put the vectors into a matrix $A$ as its columns. The vector equation above is the same as the matrix equation $A\mathbf{c} = \mathbf{0}$. So the columns are independent exactly when $A\mathbf{c} = \mathbf{0}$ has only the trivial solution, which happens exactly when $A$ has a pivot position in every column. A column without a pivot means a free variable, and any nonzero value of that free variable gives a dependence relation.</p>
+<p>The <a href="row-reduction-rref-intuition.html">row reduction (RREF) intuition</a> explainer and the <a href="../calculators/rref.html">RREF calculator</a> do the mechanical part. The idea to keep is short: pivot in every column means independent; a free column means dependent.</p>
+
+<h2>Worked example 1: two vectors in the plane</h2>
+<p>Are $\mathbf{v}_1 = (1,2)$ and $\mathbf{v}_2 = (3,1)$ independent? Solve $c_1(1,2) + c_2(3,1) = (0,0)$. That is two equations:
+$$c_1 + 3c_2 = 0, \qquad 2c_1 + c_2 = 0.$$
+The first gives $c_1 = -3c_2$. Substitute into the second: $-6c_2 + c_2 = -5c_2 = 0$, so $c_2 = 0$ and then $c_1 = 0$. Only the trivial solution exists, so the vectors are independent.</p>
+<p>The picture agrees. Two vectors are dependent exactly when they are collinear, meaning one is a scalar multiple of the other. Here $(3,1)$ is not a multiple of $(1,2)$, so the two arrows point in different directions and together they span the whole plane. The determinant of the matrix with these columns is $1 \cdot 1 - 3 \cdot 2 = -5$, which is not zero, the same verdict from a different angle.</p>
+
+<h2>Worked example 2: three vectors in space</h2>
+<p>Take $\mathbf{u}_1 = (1,0,1)$, $\mathbf{u}_2 = (0,1,1)$ and $\mathbf{u}_3 = (1,1,2)$. Put them in a matrix as columns and row reduce:
+$$\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\1&amp;1&amp;2\end{pmatrix} \;\to\; \begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;1&amp;1\end{pmatrix} \;\to\; \begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;0\end{pmatrix}.$$
+The first step subtracts row 1 from row 3, and the second subtracts row 2 from row 3. Columns 1 and 2 have pivots. Column 3 does not, so its variable $c_3$ is free and the set is dependent.</p>
+<p>Set $c_3 = 1$. The reduced rows say $c_1 + c_3 = 0$ and $c_2 + c_3 = 0$, so $c_1 = -1$ and $c_2 = -1$. That gives the dependence relation
+$$-\mathbf{u}_1 - \mathbf{u}_2 + \mathbf{u}_3 = \mathbf{0}, \quad\text{that is,}\quad \mathbf{u}_3 = \mathbf{u}_1 + \mathbf{u}_2.$$
+Check it directly: $(1,0,1) + (0,1,1) = (1,1,2)$. All three vectors lie in one plane through the origin, so their span is a plane, not all of space. Interactive Linear Algebra notes that three vectors are dependent exactly when they are coplanar.</p>
+
+<h2>Worked example 3: too many vectors</h2>
+<p>Any four vectors in three dimensional space are dependent, whatever they are. Put them in a matrix with 3 rows and 4 columns. Each row holds at most one pivot, so there are at most 3 pivots and at least one column must be free. In general, a wide matrix (more columns than rows) always has dependent columns. A tall matrix may or may not have independent columns, so you still have to check.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 640 260" role="img" aria-labelledby="li-title li-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:640px;background:#fff;border:1px solid #d8dfea;border-radius:8px">
+<title id="li-title">Independent and dependent pairs of vectors in the plane</title>
+<desc id="li-desc">On the left, two arrows from the origin point in different directions, labelled independent. On the right, two arrows from the origin lie on the same line, one twice as long as the other, labelled dependent.</desc>
+<g transform="translate(60,220)">
+<line x1="0" y1="0" x2="220" y2="0" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="0" x2="0" y2="-190" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="0" x2="50" y2="-100" stroke="#2f4a7a" stroke-width="3"/>
+<line x1="0" y1="0" x2="150" y2="-50" stroke="#b34a2a" stroke-width="3"/>
+<text x="56" y="-104" font-size="13" fill="#2f4a7a">(1, 2)</text>
+<text x="156" y="-50" font-size="13" fill="#b34a2a">(3, 1)</text>
+<text x="40" y="22" font-size="14" fill="#333">Independent</text>
+</g>
+<g transform="translate(360,220)">
+<line x1="0" y1="0" x2="220" y2="0" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="0" x2="0" y2="-190" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="0" x2="80" y2="-160" stroke="#b34a2a" stroke-width="3"/>
+<line x1="0" y1="0" x2="40" y2="-80" stroke="#2f4a7a" stroke-width="5"/>
+<text x="46" y="-76" font-size="13" fill="#2f4a7a">(1, 2)</text>
+<text x="86" y="-160" font-size="13" fill="#b34a2a">(2, 4)</text>
+<text x="40" y="22" font-size="14" fill="#333">Dependent</text>
+</g>
+</svg>
+<figcaption>Left: $(1,2)$ and $(3,1)$ point in different directions and span the plane. Right: $(2,4)$ is twice $(1,2)$, so both lie on one line and the span is only that line. Grid units, not to scale.</figcaption>
+</figure>
+
+<h2>Quick facts worth memorising</h2>
+<ul>
+<li>Two vectors are dependent exactly when one is a scalar multiple of the other.</li>
+<li>Any set containing the zero vector is dependent, because $1 \cdot \mathbf{0} = \mathbf{0}$ is a dependence relation.</li>
+<li>If part of a set is dependent, the whole set is dependent. Adding vectors can never repair dependence.</li>
+<li>For $n$ vectors in $n$ dimensional space, the square matrix with those columns has independent columns exactly when its determinant is not zero. The <a href="determinant-geometric-meaning.html">determinant explainer</a> shows why: dependent columns flatten the unit square or cube, so the volume scale factor is $0$.</li>
+</ul>
+
+<h2>Why it matters: bases and dimension</h2>
+<p>A <a href="../glossary/#basis">basis</a> is a set of vectors that is linearly independent and spans the space. Independence is what makes coordinates unique. If $\mathbf{b}_1, \ldots, \mathbf{b}_n$ are independent and $\mathbf{x} = a_1\mathbf{b}_1 + \cdots + a_n\mathbf{b}_n = a_1'\mathbf{b}_1 + \cdots + a_n'\mathbf{b}_n$, subtracting gives a combination equal to zero, so every $a_i - a_i'$ is zero. Without independence, the same vector would have more than one set of coordinates.</p>
+<p>Interactive Linear Algebra also shows which vectors to keep. Row reduce the matrix of columns, then delete the columns of the original matrix that have no pivot. The pivot columns that remain are independent and have the same span. Their number is the dimension of the span: one pivot column means a line, two mean a plane, three mean a three dimensional space. Take the pivot columns from the original matrix, not the row reduced one, because row operations change the column span.</p>
+<p>The same idea runs through the rest of the course. <a href="eigenvalues-plain-language.html">Eigenvalues</a> are useful for diagonalising a matrix only when there are enough independent eigenvectors. The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> turns an independent list into an orthogonal one. For functions, the <a href="../calculators/wronskian.html">Wronskian calculator</a> gives a test: if the Wronskian of a list of differentiable functions is nonzero at some point of an interval, the functions are linearly independent on that interval.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>Are $(2,6)$ and $(3,9)$ independent? If not, write a dependence relation.</li>
+<li>Are $(1,0,0)$, $(1,1,0)$ and $(1,1,1)$ independent? Use the increasing span test or row reduce.</li>
+<li>Without computing, explain why five vectors in four dimensional space must be dependent.</li>
+<li>A $3 \times 3$ matrix has determinant $0$. What does that tell you about its columns?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Calling one vector dependent.</strong> Interactive Linear Algebra stresses that independence and dependence describe a collection of vectors. It does not make sense to say one vector is dependent, or that a matrix is independent.</li>
+<li><strong>Assuming every vector in a dependent set is redundant.</strong> In a dependent set at least one vector is in the span of the others, but not necessarily every one. In the set $(1,0)$, $(2,0)$, $(0,1)$, the vector $(0,1)$ is not a combination of the other two.</li>
+<li><strong>Stopping at "the vectors look different".</strong> Three vectors can be pairwise non collinear and still dependent, as in worked example 2. Check the whole set, not pairs.</li>
+<li><strong>Using the reduced matrix's columns as the basis.</strong> Row reduction tells you which positions are pivots. Take those columns from the original matrix.</li>
+<li><strong>Reading a tall matrix as automatically independent.</strong> Only the wide case is automatic. A tall matrix still needs a pivot in every column.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a>, with span, basis and a study order</li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course pathway</a></li>
+<li><a href="row-reduction-rref-intuition.html">Row reduction (RREF) intuition</a></li>
+<li><a href="determinant-geometric-meaning.html">What a determinant means geometrically</a></li>
+<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></li>
+<li><a href="../glossary/#linear-independence">Glossary: linear independence</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#basis">basis</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/rref.html">RREF calculator</a> finds the pivot columns for the recipe above. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> and the <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> give the determinant check for square cases, and the <a href="../calculators/wronskian.html">Wronskian calculator</a> handles lists of functions. Predict the answer first, then check.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://textbooks.math.gatech.edu/ila/linear-independence.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.5 Linear Independence (retrieved 11 Nov 2026)</a></li>
+<li><a href="https://textbooks.math.gatech.edu/ila/dimension.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.7 Basis and Dimension (retrieved 11 Nov 2026)</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-9-independence-basis-and-dimension/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 9: Independence, basis, and dimension (retrieved 11 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 11 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-linear-independence">
+<h3>What does linearly independent mean in simple terms?</h3>
+<p>A set of vectors is linearly independent when none of them can be built from the others. Formally, the only combination of the vectors that equals the zero vector is the one with every coefficient equal to zero. Each vector then adds a new direction to the span.</p>
+</section>
+<section class="faq-item" id="how-to-check">
+<h3>How do you check whether vectors are linearly independent?</h3>
+<p>Put the vectors into a matrix as columns and row reduce. If every column has a pivot, the vectors are independent. If some column has no pivot, its free variable gives a nonzero combination equal to zero, so the vectors are dependent.</p>
+</section>
+<section class="faq-item" id="determinant-test">
+<h3>How is linear independence related to the determinant?</h3>
+<p>For n vectors in n dimensional space, the square matrix with those vectors as columns has independent columns exactly when its determinant is not zero. A zero determinant means the columns are dependent and the map flattens space into a lower dimension.</p>
+</section>
+<section class="faq-item" id="independence-vs-basis">
+<h3>What is the difference between linear independence and a basis?</h3>
+<p>A basis must do two things: be linearly independent and span the whole space. An independent set that does not span is only part of a basis. For example, (1, 0, 0) and (0, 1, 0) are independent in three dimensional space but span only a plane.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
