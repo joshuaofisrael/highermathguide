@@ -21,6 +21,7 @@ const LEGAL_PAGES = new Set([
   "copyright/index.html",
   "contact/index.html",
   "contact/thanks.html",
+  "image-policy/index.html",
 ]);
 const NOINDEX_PAGES = new Set([
   "404.html",
@@ -46,6 +47,7 @@ const SECTION = {
   privacy: "Privacy",
   disclaimer: "Disclaimer",
   copyright: "Copyright",
+  "image-policy": "Image policy",
 };
 
 const failures = [];
