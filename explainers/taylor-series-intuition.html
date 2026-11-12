@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taylor series explained with intuition: Higher Math Guide</title>
+<meta name="description" content="What a Taylor series is, why the coefficients are f^(n)(a)/n!, Maclaurin series for e^x, sin x and cos x, and how Taylor&#x27;s remainder bounds the error.">
+<link rel="canonical" href="https://highermathguide.com/explainers/taylor-series-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Taylor series explained with intuition: Higher Math Guide">
+<meta property="og:description" content="What a Taylor series is, why the coefficients are f^(n)(a)/n!, Maclaurin series for e^x, sin x and cos x, and how Taylor&#x27;s remainder bounds the error.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/taylor-series-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/taylor-series-lake.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Gentle ripples spreading across a calm lake at sunrise beside a wooden dock">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taylor series explained with intuition: Higher Math Guide">
+<meta name="twitter:description" content="What a Taylor series is, why the coefficients are f^(n)(a)/n!, Maclaurin series for e^x, sin x and cos x, and how Taylor&#x27;s remainder bounds the error.">
+<meta name="twitter:image" content="https://highermathguide.com/images/taylor-series-lake.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Taylor series explained with intuition",
+  "description": "What a Taylor series is, why the coefficients are f^(n)(a)/n!, Maclaurin series for e^x, sin x and cos x, and how Taylor's remainder bounds the error.",
+  "url": "https://highermathguide.com/explainers/taylor-series-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/taylor-series-lake.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/taylor-series-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Taylor series?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a power series built from a function's derivatives at one point a. Its terms are f^(n)(a)/n! times (x - a)^n, chosen so that the series matches the function's value and every derivative at a."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a Taylor series and a Maclaurin series?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Maclaurin series is a Taylor series centred at a = 0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Taylor polynomial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The nth partial sum of the Taylor series. It is a polynomial of degree n that approximates the function near a."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is a Taylor polynomial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Taylor's theorem with remainder says the error is f^(n+1)(c)/(n+1)! times (x - a)^(n+1) for some c between a and x. If the (n+1)th derivative is bounded by M, the error is at most M/(n+1)! times |x - a|^(n+1)."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Taylor series explained with intuition",
+      "item": "https://highermathguide.com/explainers/taylor-series-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Taylor series explained with intuition</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Series · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/taylor-series-lake.webp" alt="Gentle ripples spreading across a calm lake at sunrise beside a wooden dock" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>A <strong>Taylor series</strong> rebuilds a function from what it is doing at a single point. You record the function's value, slope, curvature and every higher derivative at $x = a$, and you write down the one power series that matches all of them:
+$$\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots$$
+When $a = 0$ it is called a <strong>Maclaurin series</strong>. That is the definition in OpenStax Calculus Volume 2, Section 6.3.</p>
+
+<h2>Why the coefficients are $f^{(n)}(a)/n!$</h2>
+<p>Suppose $f(x) = c_0 + c_1(x-a) + c_2(x-a)^2 + \cdots$. Put $x = a$: every term after the first vanishes, so $c_0 = f(a)$. Differentiate once and put $x = a$: you get $c_1 = f'(a)$. Differentiate twice: the $(x-a)^2$ term gives $2c_2$, so $c_2 = f''(a)/2$. Differentiate $n$ times and the $(x-a)^n$ term leaves $n!\,c_n$, so $c_n = f^{(n)}(a)/n!$. The factorial is there to undo the factors the power rule produces. OpenStax adds that power series are unique, so if $f$ has any power series at $a$ converging to it, it is this one.</p>
+
+<h2>Taylor polynomials: stopping early</h2>
+<p>Cutting the series after the $(x-a)^n$ term gives the <strong>$n$th Taylor polynomial</strong> $p_n(x)$. The first one, $p_1(x) = f(a) + f'(a)(x-a)$, is the tangent line. Each extra term bends the polynomial to match one more derivative, so it hugs the curve over a wider stretch.</p>
+
+<h2>The three Maclaurin series to know</h2>
+<p>From OpenStax's worked examples:</p>
+<ul>
+<li>$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots = \sum_{n=0}^{\infty} \frac{x^n}{n!}$, because every derivative of $e^x$ is $e^x$, which equals 1 at 0.</li>
+<li>$\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots$, odd powers only, because the derivatives at 0 cycle $0, 1, 0, -1$.</li>
+<li>$\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots$, even powers only.</li>
+</ul>
+<p>OpenStax uses the <a href="convergence-tests-series.html">ratio test</a> to show all three converge for every real $x$, and the remainder bound below to show they converge to the function.</p>
+
+<h2>Worked example: estimating $\sqrt[3]{11}$</h2>
+<p>OpenStax centres $f(x) = \sqrt[3]{x}$ at $a = 8$, where $f(8) = 2$, $f'(8) = \frac{1}{12}$ and $f''(8) = -\frac{1}{144}$. Then
+$$p_1(11) = 2 + \tfrac{1}{12}(3) = 2.25, \qquad p_2(11) = 2 + \tfrac{1}{12}(3) - \tfrac{1}{288}(3)^2 = 2.21875.$$
+The quadratic is the better estimate, and the remainder bound below says how much better.</p>
+
+<h2>How big is the error?</h2>
+<p><strong>Taylor's theorem with remainder</strong>: if $f$ can be differentiated $n+1$ times on an interval containing $a$ and $x$, then
+$$R_n(x) = f(x) - p_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$
+for some $c$ between $a$ and $x$. If $|f^{(n+1)}| \le M$ there, then $|R_n(x)| \le \frac{M}{(n+1)!}|x-a|^{n+1}$. OpenStax applies this to $\sin\left(\frac{\pi}{18}\right) \approx 0.173648$ using the fifth Maclaurin polynomial and finds the error is at most about $9.8 \times 10^{-10}$. The $(n+1)!$ in the denominator grows so fast that a few terms often give many correct digits near the centre.</p>
+<p>A Taylor series converges to $f$ exactly when $R_n(x) \to 0$. Matching every derivative at one point is not by itself enough; the remainder has to shrink.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>Write $p_0$ to $p_3$ for $\ln x$ at $a = 1$.</li>
+<li>Use the fourth Maclaurin polynomial for $\cos x$ to approximate $\cos\left(\frac{\pi}{12}\right)$.</li>
+<li>Find the Taylor series of $\frac{1}{x}$ at $a = 1$ and its interval of convergence.</li>
+<li>Use $\sin x \approx x - \frac{x^3}{6}$ to evaluate $\lim_{x\to 0} \frac{\sin x - x}{x^3}$.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Dropping the factorials.</strong> The coefficient is $f^{(n)}(a)$ divided by $n!$.</li>
+<li><strong>Centring at the wrong point.</strong> Use powers of $(x-a)$, not $x$, unless $a = 0$.</li>
+<li><strong>Assuming convergence everywhere.</strong> The series for $\frac{1}{x}$ at 1 only converges on $(0,2)$.</li>
+<li><strong>Using $a$ instead of $c$ in the remainder.</strong> The derivative in the error term is evaluated at an unknown point between $a$ and $x$; bound it over that interval.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="sequences-series-infinite-sums.html">Sequences, series and infinite sums</a> and <a href="convergence-tests-series.html">convergence tests for series</a></li>
+<li><a href="what-a-derivative-measures.html">What a derivative measures</a> and the <a href="mean-value-theorem-intuition.html">mean value theorem</a></li>
+<li><a href="lhopitals-rule-intuition.html">L'Hôpital's rule intuition</a>, a second way to handle the limits above</li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations topic map</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/taylor-polynomial.html">Taylor polynomial calculator</a> builds $p_n(x)$ for you. Work one by hand first, then compare.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-2/pages/6-3-taylor-and-maclaurin-series" rel="noopener noreferrer">OpenStax, Calculus Volume 2, Section 6.3 Taylor and Maclaurin Series (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What is a Taylor series?</h3>
+<p>It is a power series built from a function&#x27;s derivatives at one point a. Its terms are f^(n)(a)/n! times (x - a)^n, chosen so that the series matches the function&#x27;s value and every derivative at a.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>What is the difference between a Taylor series and a Maclaurin series?</h3>
+<p>A Maclaurin series is a Taylor series centred at a = 0.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>What is a Taylor polynomial?</h3>
+<p>The nth partial sum of the Taylor series. It is a polynomial of degree n that approximates the function near a.</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>How accurate is a Taylor polynomial?</h3>
+<p>Taylor&#x27;s theorem with remainder says the error is f^(n+1)(c)/(n+1)! times (x - a)^(n+1) for some c between a and x. If the (n+1)th derivative is bounded by M, the error is at most M/(n+1)! times |x - a|^(n+1).</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>

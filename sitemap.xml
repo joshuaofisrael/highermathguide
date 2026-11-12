@@ -414,4 +414,28 @@
       <image:loc>https://highermathguide.com/images/central-limit-theorem-coins.webp</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/fundamental-theorem-blackboard.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/taylor-series-intuition.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/taylor-series-lake.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/u-substitution-explained.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/u-substitution-keys.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>

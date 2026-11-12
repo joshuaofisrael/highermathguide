@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The fundamental theorem of calculus explained: Higher Math Guide</title>
+<meta name="description" content="Both parts of the fundamental theorem of calculus in plain language: why the derivative of an accumulation function is the integrand, and how to evaluate definite integrals.">
+<link rel="canonical" href="https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="The fundamental theorem of calculus explained: Higher Math Guide">
+<meta property="og:description" content="Both parts of the fundamental theorem of calculus in plain language: why the derivative of an accumulation function is the integrand, and how to evaluate definite integrals.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/fundamental-theorem-blackboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A chalk curve and a straight line joining two points on a classroom blackboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The fundamental theorem of calculus explained: Higher Math Guide">
+<meta name="twitter:description" content="Both parts of the fundamental theorem of calculus in plain language: why the derivative of an accumulation function is the integrand, and how to evaluate definite integrals.">
+<meta name="twitter:image" content="https://highermathguide.com/images/fundamental-theorem-blackboard.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The fundamental theorem of calculus explained",
+  "description": "Both parts of the fundamental theorem of calculus in plain language: why the derivative of an accumulation function is the integrand, and how to evaluate definite integrals.",
+  "url": "https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/fundamental-theorem-blackboard.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the fundamental theorem of calculus say?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It has two parts. Part 1 says that if you accumulate a continuous function f from a fixed point a up to x, the rate of change of that accumulation is f(x). Part 2 says a definite integral of f from a to b equals F(b) minus F(a) for any antiderivative F."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why don't you need the +C when evaluating a definite integral?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any antiderivative works. The constant appears in both F(b) and F(a) and cancels when you subtract."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the chain rule combine with Part 1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the upper limit is a function u(x), the derivative of the integral from a to u(x) of f(t) dt is f(u(x)) times u'(x)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a definite integral be negative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It measures net signed area, so area below the x axis counts as negative."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The fundamental theorem of calculus explained",
+      "item": "https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>The fundamental theorem of calculus explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/fundamental-theorem-blackboard.webp" alt="A chalk curve and a straight line joining two points on a classroom blackboard" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>The <strong>fundamental theorem of calculus</strong> is the bridge between the two halves of calculus. Differentiation measures how fast something changes. Integration adds up small pieces. The theorem says these are inverse processes, and it turns the hard job of computing a limit of Riemann sums into the easy job of finding an antiderivative. OpenStax Calculus Volume 1 calls Part 2 "perhaps the most important theorem in calculus".</p>
+
+<h2>Part 1: accumulation and its rate</h2>
+<p>If $f$ is continuous on $[a,b]$ and we define
+$$F(x) = \int_a^x f(t)\,dt,$$
+then $F'(x) = f(x)$ on $(a,b)$. Read $F(x)$ as "the area accumulated from $a$ up to $x$". Push $x$ a little to the right by $h$ and you add a thin strip of width $h$ and height roughly $f(x)$. So the change in $F$ is about $f(x)\,h$, and the rate of change is $f(x)$. OpenStax makes this exact with the mean value theorem for integrals: the strip's area is exactly $f(c)\,h$ for some $c$ between $x$ and $x+h$, and $f(c) \to f(x)$ as $h \to 0$.</p>
+<p>A consequence OpenStax points out: every continuous function has an antiderivative, because $F$ is one.</p>
+
+<h2>Part 2: the evaluation theorem</h2>
+<p>If $f$ is continuous on $[a,b]$ and $F$ is any antiderivative of $f$, then
+$$\int_a^b f(x)\,dx = F(b) - F(a).$$
+OpenStax proves it by splitting $[a,b]$ into pieces, applying the <a href="mean-value-theorem-intuition.html">mean value theorem</a> to $F$ on each piece to get $F(x_i) - F(x_{i-1}) = f(c_i)\,\Delta x$, and adding. The sum telescopes to $F(b) - F(a)$ on one side and becomes a Riemann sum on the other. Take the limit and you have the theorem.</p>
+
+<h2>Worked example 1: evaluating a definite integral</h2>
+<p>OpenStax evaluates $\int_{-2}^{2} (t^2 - 4)\,dt$. An antiderivative is $\frac{t^3}{3} - 4t$. So
+$$\left[\frac{t^3}{3} - 4t\right]_{-2}^{2} = \left(\frac{8}{3} - 8\right) - \left(-\frac{8}{3} + 8\right) = -\frac{32}{3}.$$
+The answer is negative because the parabola sits below the $x$ axis on that interval. A definite integral gives net signed area, not total area.</p>
+
+<h2>Worked example 2: differentiating an integral</h2>
+<p>For $g(x) = \int_1^x \frac{1}{t^3 + 1}\,dt$, Part 1 gives $g'(x) = \frac{1}{x^3+1}$ with no integration at all. When the upper limit is a function, combine Part 1 with the <a href="chain-rule-intuition.html">chain rule</a>. OpenStax takes $F(x) = \int_1^{\sqrt{x}} \sin t\,dt$ and gets
+$$F'(x) = \sin(\sqrt{x}) \cdot \frac{1}{2\sqrt{x}}.$$</p>
+
+<h2>Worked example 3: who skated farther?</h2>
+<p>OpenStax's roller skating race: James skates at $5 + 2t$ feet per second and Kathy at $10 + \cos\left(\frac{\pi}{2}t\right)$ feet per second for 5 seconds. Distance is the integral of velocity. James covers $\left[5t + t^2\right]_0^5 = 50$ feet. Kathy covers $\left[10t + \frac{2}{\pi}\sin\left(\frac{\pi}{2}t\right)\right]_0^5 = 50 + \frac{2}{\pi} \approx 50.6$ feet. Kathy wins, narrowly.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>Evaluate $\int_1^4 \frac{1}{2\sqrt{x}}\,dx$.</li>
+<li>Find $\frac{d}{dx}\int_0^{x^2} \cos t\,dt$.</li>
+<li>Find the average value of $f(x) = x^2$ on $[0,6]$ and a point $c$ where $f(c)$ equals it.</li>
+<li>Explain why $\int_0^{2\pi} \cos\theta\,d\theta = 0$ even though the graph encloses area.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Subtracting in the wrong order.</strong> It is $F(\text{upper}) - F(\text{lower})$.</li>
+<li><strong>Forgetting the chain rule factor</strong> when the limit of integration is a function of $x$.</li>
+<li><strong>Reading a negative integral as an error.</strong> It is net signed area.</li>
+<li><strong>Integrating across a discontinuity.</strong> The theorem needs $f$ continuous on the whole interval. $\int_{-1}^{1} \frac{1}{x^2}\,dx$ is not $-2$.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="what-a-derivative-measures.html">What a derivative actually measures</a> and the <a href="mean-value-theorem-intuition.html">mean value theorem</a></li>
+<li><a href="u-substitution-explained.html">U-substitution explained</a> and <a href="integration-by-parts-intuition.html">integration by parts intuition</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations topic map</a> and the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="../glossary/#derivative">Glossary: derivative</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus" rel="noopener noreferrer">OpenStax, Calculus Volume 1, Section 5.3 The Fundamental Theorem of Calculus (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What does the fundamental theorem of calculus say?</h3>
+<p>It has two parts. Part 1 says that if you accumulate a continuous function f from a fixed point a up to x, the rate of change of that accumulation is f(x). Part 2 says a definite integral of f from a to b equals F(b) minus F(a) for any antiderivative F.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>Why don&#x27;t you need the +C when evaluating a definite integral?</h3>
+<p>Any antiderivative works. The constant appears in both F(b) and F(a) and cancels when you subtract.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>How does the chain rule combine with Part 1?</h3>
+<p>If the upper limit is a function u(x), the derivative of the integral from a to u(x) of f(t) dt is f(u(x)) times u&#x27;(x).</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>Can a definite integral be negative?</h3>
+<p>Yes. It measures net signed area, so area below the x axis counts as negative.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
