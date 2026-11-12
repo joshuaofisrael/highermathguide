@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Related rates explained step by step: Higher Math Guide</title>
+<meta name="description" content="How to solve related-rates problems: write an equation, differentiate with the chain rule, then substitute known values. OpenStax balloon and airplane examples.">
+<link rel="canonical" href="https://highermathguide.com/explainers/related-rates-explained.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Related rates explained step by step: Higher Math Guide">
+<meta property="og:description" content="How to solve related-rates problems: write an equation, differentiate with the chain rule, then substitute known values. OpenStax balloon and airplane examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/related-rates-explained.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/related-rates-balloon.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A pale spherical balloon sitting on a wooden table beside a simple hand pump">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Related rates explained step by step: Higher Math Guide">
+<meta name="twitter:description" content="How to solve related-rates problems: write an equation, differentiate with the chain rule, then substitute known values. OpenStax balloon and airplane examples.">
+<meta name="twitter:image" content="https://highermathguide.com/images/related-rates-balloon.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Related rates explained step by step",
+  "description": "How to solve related-rates problems: write an equation, differentiate with the chain rule, then substitute known values. OpenStax balloon and airplane examples.",
+  "url": "https://highermathguide.com/explainers/related-rates-explained.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/related-rates-balloon.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/related-rates-explained.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a related-rates problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a problem where two or more quantities that are linked by an equation are both changing with time. You are given one rate and asked for another. The link between the rates is the chain rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the standard method?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenStax lists five steps: name the variables and draw a figure, write down the given rates and the unknown rate, find an equation relating the variables, differentiate both sides with respect to time, then substitute known values and solve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why must you differentiate before plugging in a changing value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you substitute a changing quantity too soon, it becomes a constant and its derivative disappears. OpenStax's airplane example shows that this mistake incorrectly gives a rate of zero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you differentiate with respect to the variable or with respect to time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With respect to time. Every changing quantity is treated as a function of t, and the chain rule produces factors like dr/dt."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Related rates explained step by step",
+      "item": "https://highermathguide.com/explainers/related-rates-explained.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Related rates explained step by step</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/related-rates-balloon.webp" alt="A pale spherical balloon sitting on a wooden table beside a simple hand pump" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p><strong>Related rates</strong> problems ask how fast one quantity is changing when you already know how fast a related quantity is changing. If a balloon is being filled, both the volume and the radius are increasing. Those two rates are not independent: the geometry of a sphere ties them together. OpenStax Calculus Volume 1, Section 4.1, shows how to turn that geometric link into an equation for the rates by differentiating with the <a href="chain-rule-intuition.html">chain rule</a>.</p>
+
+<h2>The five-step strategy</h2>
+<p>OpenStax's problem-solving strategy is:</p>
+<ol>
+<li>Assign symbols to every variable and draw a figure if you can.</li>
+<li>State the given information and the rate you must find, in terms of those symbols.</li>
+<li>Find an equation that relates the variables from step 1.</li>
+<li>Differentiate both sides with respect to time. The new equation relates the derivatives.</li>
+<li>Substitute the known values and solve for the unknown rate.</li>
+</ol>
+<p>The warning that comes with step 5 is the one students miss most often: do not substitute a value for a changing quantity until after you differentiate. A constant height can be plugged in early. A changing radius cannot.</p>
+
+<h2>Worked example 1: inflating a balloon</h2>
+<p>OpenStax Example 4.1: a spherical balloon is filled at the constant rate $2\,\mathrm{cm}^3/\mathrm{s}$. How fast is the radius increasing when the radius is $3\,\mathrm{cm}$?</p>
+<p>The volume is $V=\frac{4}{3}\pi r^3$. Both $V$ and $r$ depend on time, so differentiating with the chain rule gives
+$$V'(t)=4\pi\bigl[r(t)\bigr]^2 r'(t).$$
+The fill rate is $V'(t)=2$, so
+$$r'(t)=\frac{2}{4\pi [r(t)]^2}=\frac{1}{2\pi [r(t)]^2}.$$
+At $r=3$, $r'(t)=\frac{1}{18\pi}$ centimetres per second. The radius grows more slowly as the balloon gets larger, because each new cubic centimetre of air is spread over a bigger surface.</p>
+
+<h2>Worked example 2: an airplane flying overhead</h2>
+<p>OpenStax Example 4.2: a plane flies at a constant elevation of $4000\,\mathrm{ft}$, moving horizontally at $600\,\mathrm{ft}/\mathrm{s}$. A person stands $3000\,\mathrm{ft}$ from the base of a radio tower. How fast is the distance between the person and the plane increasing when the plane passes over the tower?</p>
+<p>Let $x(t)$ be the horizontal distance from the person to the point on the ground beneath the plane, and let $s(t)$ be the straight-line distance to the plane. The height is the constant $4000$, so Pythagoras gives
+$$[x(t)]^2+4000^2=[s(t)]^2.$$
+Differentiate with respect to time:
+$$x\frac{dx}{dt}=s\frac{ds}{dt}.$$
+When the plane is over the tower, $x=3000$ and $s=5000$, with $\frac{dx}{dt}=600$. Therefore
+$$\frac{ds}{dt}=\frac{3000\cdot 600}{5000}=360\,\mathrm{ft}/\mathrm{s}.$$
+OpenStax then shows the trap: if you had set $x=3000$ before differentiating, the left side would have been a constant and you would have concluded, wrongly, that $\frac{ds}{dt}=0$.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>In the balloon problem, what is $r'(t)$ when $r=6\,\mathrm{cm}$? (OpenStax Checkpoint 4.1.)</li>
+<li>A 10-ft ladder leans against a wall. The top slides down at $2\,\mathrm{ft}/\mathrm{s}$. How fast is the bottom moving when it is $5\,\mathrm{ft}$ from the wall?</li>
+<li>The radius of a circle increases at $2\,\mathrm{m}/\mathrm{s}$. How fast is the area increasing when the radius is $5\,\mathrm{m}$?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Plugging in a changing value too soon</strong>, so its derivative vanishes.</li>
+<li><strong>Forgetting units</strong> or mixing feet and seconds inconsistently.</li>
+<li><strong>Differentiating with respect to $x$ or $r$</strong> instead of $t$.</li>
+<li><strong>Leaving a leftover variable</strong>, such as $s$, instead of evaluating it at the instant in question.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="chain-rule-intuition.html">Chain rule intuition</a> and <a href="what-a-derivative-measures.html">what a derivative actually measures</a></li>
+<li><a href="implicit-differentiation-intuition.html">Implicit differentiation intuition</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations topic map</a> and the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/4-1-related-rates" rel="noopener noreferrer">OpenStax, Calculus Volume 1, Section 4.1 Related Rates (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What is a related-rates problem?</h3>
+<p>It is a problem where two or more quantities that are linked by an equation are both changing with time. You are given one rate and asked for another. The link between the rates is the chain rule.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>What is the standard method?</h3>
+<p>OpenStax lists five steps: name the variables and draw a figure, write down the given rates and the unknown rate, find an equation relating the variables, differentiate both sides with respect to time, then substitute known values and solve.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>Why must you differentiate before plugging in a changing value?</h3>
+<p>If you substitute a changing quantity too soon, it becomes a constant and its derivative disappears. OpenStax&#x27;s airplane example shows that this mistake incorrectly gives a rate of zero.</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>Do you differentiate with respect to the variable or with respect to time?</h3>
+<p>With respect to time. Every changing quantity is treated as a function of t, and the chain rule produces factors like dr/dt.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>

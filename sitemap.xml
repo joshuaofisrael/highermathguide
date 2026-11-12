@@ -438,4 +438,28 @@
       <image:loc>https://highermathguide.com/images/u-substitution-keys.webp</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/related-rates-explained.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/related-rates-balloon.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/intermediate-value-theorem-blackboard.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/riemann-sums-intuition.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/riemann-sums-stone-terrace.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>
