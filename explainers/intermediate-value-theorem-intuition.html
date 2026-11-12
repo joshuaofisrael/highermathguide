@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The intermediate value theorem explained: Higher Math Guide</title>
+<meta name="description" content="If a function is continuous on a closed interval, it takes every value between its endpoint values. Why continuity matters, how to prove a root exists, and when the theorem does not apply.">
+<link rel="canonical" href="https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="The intermediate value theorem explained: Higher Math Guide">
+<meta property="og:description" content="If a function is continuous on a closed interval, it takes every value between its endpoint values. Why continuity matters, how to prove a root exists, and when the theorem does not apply.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/intermediate-value-theorem-blackboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A green classroom blackboard with a smooth chalk curve crossing a straight horizontal chalk line">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The intermediate value theorem explained: Higher Math Guide">
+<meta name="twitter:description" content="If a function is continuous on a closed interval, it takes every value between its endpoint values. Why continuity matters, how to prove a root exists, and when the theorem does not apply.">
+<meta name="twitter:image" content="https://highermathguide.com/images/intermediate-value-theorem-blackboard.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The intermediate value theorem explained",
+  "description": "If a function is continuous on a closed interval, it takes every value between its endpoint values. Why continuity matters, how to prove a root exists, and when the theorem does not apply.",
+  "url": "https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/intermediate-value-theorem-blackboard.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the intermediate value theorem say?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If f is continuous on a closed, bounded interval [a, b] and z is any real number between f(a) and f(b), then there is at least one c in [a, b] with f(c) = z."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the intermediate value theorem tell you the value of c?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is an existence theorem. It guarantees that such a c is there; it does not construct it or say there is only one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does continuity matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Without continuity on the whole interval the graph can jump over the target value. OpenStax's example f(x) = 1/x on [-1, 1] has opposite signs at the endpoints but no zero, because the function is not continuous on that interval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If f(a) and f(b) have the same sign, does that mean there is no root?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. OpenStax points out that f(x) = (x-1)^2 is positive at 0 and at 2 but still has a root at 1. The theorem never lets you conclude that a value is missing."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The intermediate value theorem explained",
+      "item": "https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>The intermediate value theorem explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/intermediate-value-theorem-blackboard.webp" alt="A green classroom blackboard with a smooth chalk curve crossing a straight horizontal chalk line" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>The <strong>intermediate value theorem</strong> makes precise an intuition you already have: if you draw a continuous curve from one height to another, you cannot get there without passing through every height in between. OpenStax Calculus Volume 1 states it as Theorem 2.11 in Section 2.4. It is one of the first genuine existence theorems in calculus, and it is the usual tool for proving that an equation has a root without solving the equation.</p>
+
+<h2>The statement</h2>
+<p>Let $f$ be continuous on a closed, bounded interval $[a,b]$. If $z$ is any real number between $f(a)$ and $f(b)$, then there is a number $c$ in $[a,b]$ such that $f(c)=z$. Continuity on the closed interval is essential: $f$ must be defined at the endpoints and have no jumps, holes or vertical asymptotes in between. OpenStax first builds that idea with the three-part definition of continuity at a point: $f(a)$ is defined, $\lim_{x\to a}f(x)$ exists, and the two are equal.</p>
+
+<h2>Worked example 1: proving a zero exists</h2>
+<p>OpenStax Example 2.36 asks you to show that $f(x)=x-\cos x$ has at least one zero. The function is continuous everywhere, hence continuous on $[0,\pi/2]$. The endpoint values are
+$$f(0)=0-\cos 0=-1<0,\qquad f\bigl(\tfrac{\pi}{2}\bigr)=\tfrac{\pi}{2}-\cos\tfrac{\pi}{2}=\tfrac{\pi}{2}>0.$$
+The number $0$ lies between $f(0)$ and $f(\pi/2)$, so the theorem supplies a $c$ in $[0,\pi/2]$ with $f(c)=0$. You have not computed $c$. You have proved it exists.</p>
+
+<h2>Worked example 2: when the theorem does not apply</h2>
+<p>OpenStax Example 2.38 considers $f(x)=1/x$ on $[-1,1]$. Here $f(-1)=-1<0$ and $f(1)=1>0$, so the endpoint signs look promising. But $f$ is not continuous on $[-1,1]$: it has an infinite discontinuity at $0$. The hypotheses fail, and in fact there is no zero on that interval. Opposite signs at the endpoints are not enough without continuity.</p>
+
+<h2>Worked example 3: you cannot prove a root is absent</h2>
+<p>OpenStax Example 2.37 asks: if $f$ is continuous on $[0,2]$ and both $f(0)$ and $f(2)$ are positive, can you conclude that $f$ has no zero in the interval? No. The theorem only tells you about values that must occur. It is silent about values that might still occur. The counterexample $f(x)=(x-1)^2$ has $f(0)=1>0$, $f(2)=1>0$, and $f(1)=0$.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>OpenStax Checkpoint 2.26: show that $f(x)=x^3-x^2-3x+1$ has a zero on $[0,1]$.</li>
+<li>Does $f(x)=1/x$ have a zero on $[1,2]$? Can you use the theorem to say so?</li>
+<li>If $f$ is continuous on $[1,4]$, $f(1)=2$ and $f(4)=8$, must there be a $c$ with $f(c)=5$? Must there be a $c$ with $f(c)=10$?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Dropping continuity.</strong> Sign change alone does not guarantee a root.</li>
+<li><strong>Claiming uniqueness.</strong> The theorem says "at least one" $c$, not "exactly one".</li>
+<li><strong>Claiming a missing value.</strong> Same-sign endpoints do not prove there is no root.</li>
+<li><strong>Confusing it with the mean value theorem.</strong> The <a href="mean-value-theorem-intuition.html">mean value theorem</a> is about a derivative equalling an average slope. This theorem is about a function hitting an intermediate height.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="epsilon-delta-intuition.html">Epsilon-delta intuition</a> and <a href="what-a-derivative-measures.html">what a derivative actually measures</a></li>
+<li><a href="mean-value-theorem-intuition.html">The mean value theorem</a> and <a href="fundamental-theorem-of-calculus.html">the fundamental theorem of calculus</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations topic map</a> and the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/2-4-continuity" rel="noopener noreferrer">OpenStax, Calculus Volume 1, Section 2.4 Continuity (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What does the intermediate value theorem say?</h3>
+<p>If f is continuous on a closed, bounded interval [a, b] and z is any real number between f(a) and f(b), then there is at least one c in [a, b] with f(c) = z.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>Can the intermediate value theorem tell you the value of c?</h3>
+<p>No. It is an existence theorem. It guarantees that such a c is there; it does not construct it or say there is only one.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>Why does continuity matter?</h3>
+<p>Without continuity on the whole interval the graph can jump over the target value. OpenStax&#x27;s example f(x) = 1/x on [-1, 1] has opposite signs at the endpoints but no zero, because the function is not continuous on that interval.</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>If f(a) and f(b) have the same sign, does that mean there is no root?</h3>
+<p>No. OpenStax points out that f(x) = (x-1)^2 is positive at 0 and at 2 but still has a root at 1. The theorem never lets you conclude that a value is missing.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>

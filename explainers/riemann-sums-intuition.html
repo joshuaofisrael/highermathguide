@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riemann sums explained with intuition: Higher Math Guide</title>
+<meta name="description" content="How left, right and midpoint Riemann sums approximate area, why the limit of the sums is the definite integral, and a worked example on y = x^2.">
+<link rel="canonical" href="https://highermathguide.com/explainers/riemann-sums-intuition.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Riemann sums explained with intuition: Higher Math Guide">
+<meta property="og:description" content="How left, right and midpoint Riemann sums approximate area, why the limit of the sums is the definite integral, and a worked example on y = x^2.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/riemann-sums-intuition.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/riemann-sums-stone-terrace.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Terraced stone steps rising along a curved hillside in warm late-afternoon light">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Riemann sums explained with intuition: Higher Math Guide">
+<meta name="twitter:description" content="How left, right and midpoint Riemann sums approximate area, why the limit of the sums is the definite integral, and a worked example on y = x^2.">
+<meta name="twitter:image" content="https://highermathguide.com/images/riemann-sums-stone-terrace.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Riemann sums explained with intuition",
+  "description": "How left, right and midpoint Riemann sums approximate area, why the limit of the sums is the definite integral, and a worked example on y = x^2.",
+  "url": "https://highermathguide.com/explainers/riemann-sums-intuition.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/riemann-sums-stone-terrace.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/riemann-sums-intuition.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Riemann sum?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a sum of the form Σ f(x_i*) Δx that approximates the net signed area under a curve by adding the areas of thin rectangles. Each rectangle has width Δx and height f at a sample point in that subinterval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between left, right and midpoint sums?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They only differ in the sample point. A left sum uses the left endpoint of each subinterval, a right sum uses the right endpoint, and a midpoint sum uses the midpoint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a Riemann sum become a definite integral?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenStax defines the definite integral as the limit of Riemann sums as the number of subintervals goes to infinity and the widths shrink to zero, when that limit exists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a Riemann sum overestimate and underestimate on the same interval?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. For an increasing positive function, left sums underestimate the area and right sums overestimate it. Midpoint sums are often closer, but that is not a theorem for every function."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Riemann sums explained with intuition",
+      "item": "https://highermathguide.com/explainers/riemann-sums-intuition.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Riemann sums explained with intuition</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/riemann-sums-stone-terrace.webp" alt="Terraced stone steps rising along a curved hillside in warm late-afternoon light" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>A <strong>Riemann sum</strong> is the standard way to approximate the area under a graph before you have the <a href="fundamental-theorem-of-calculus.html">fundamental theorem of calculus</a>. You slice the interval into thin strips, replace the curve on each strip by a flat rectangle, and add the areas. OpenStax Calculus Volume 1 develops this in Sections 5.1 and 5.2 and then defines the definite integral as the limit of those sums.</p>
+
+<h2>Building the sum</h2>
+<p>Take a function $f$ on a closed interval $[a,b]$ and choose a positive integer $n$. The width of each subinterval is
+$$\Delta x=\frac{b-a}{n}.$$
+The partition points are $x_i=a+i\Delta x$ for $i=0,1,\dots,n$. On the $i$th subinterval $[x_{i-1},x_i]$ you pick a sample point $x_i^*$ and form the rectangle of height $f(x_i^*)$ and width $\Delta x$. The Riemann sum is
+$$\sum_{i=1}^{n} f(x_i^*)\,\Delta x.$$
+Three common choices of sample point have names:</p>
+<ul>
+<li><strong>Left sum:</strong> $x_i^*=x_{i-1}$.</li>
+<li><strong>Right sum:</strong> $x_i^*=x_i$.</li>
+<li><strong>Midpoint sum:</strong> $x_i^*=\frac{x_{i-1}+x_i}{2}$.</li>
+</ul>
+<p>If $f$ is negative on a strip, that term is negative. The sum estimates net signed area, not total area.</p>
+
+<h2>A teaching example</h2>
+<p>Approximate the area under $f(x)=x^2$ on $[0,2]$ with $n=4$ rectangles. Then $\Delta x=1/2$, and the partition is $0,0.5,1,1.5,2$. These figures are a worked teaching example, not a numbered OpenStax exercise.</p>
+<p>The right sum uses the heights $f(0.5),f(1),f(1.5),f(2)$:
+$$(0.25+1+2.25+4)\cdot\frac{1}{2}=3.75.$$
+The left sum uses $f(0),f(0.5),f(1),f(1.5)$:
+$$(0+0.25+1+2.25)\cdot\frac{1}{2}=1.75.$$
+The midpoint sum uses $f(0.25),f(0.75),f(1.25),f(1.75)$:
+$$(0.0625+0.5625+1.5625+3.0625)\cdot\frac{1}{2}=2.625.$$
+The exact integral is $\int_0^2 x^2\,dx=\frac{8}{3}\approx 2.667$. Because $x^2$ is increasing and positive on $[0,2]$, the left sum sits below the curve and the right sum sits above it. The midpoint sum is already close.</p>
+
+<h2>From sums to the definite integral</h2>
+<p>OpenStax defines the definite integral, when the limit exists, by shrinking the widths:
+$$\int_a^b f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^{n} f(x_i^*)\,\Delta x.$$
+If $f$ is continuous on $[a,b]$, the limit exists and does not depend on how you choose the sample points. That is why left, right and midpoint sums, and more irregular partitions, all head for the same number. Once you know an antiderivative, the fundamental theorem evaluates the integral without writing another sum. The sums remain the meaning of the integral: they are what the symbol is defined to be.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>For $f(x)=x$ on $[0,3]$ with $n=3$, compute the left, right and midpoint sums. What is the exact integral?</li>
+<li>Why is a right sum an underestimate when $f$ is positive and decreasing?</li>
+<li>Explain why $\int_0^{2\pi}\sin x\,dx=0$ even though each individual sine bump has area $2$.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Using $n$ as the width</strong> instead of $(b-a)/n$.</li>
+<li><strong>Off-by-one sample points</strong>, especially starting a right sum at $a$ instead of $a+\Delta x$.</li>
+<li><strong>Treating a negative term as a mistake.</strong> Signed area can be negative.</li>
+<li><strong>Thinking the definite integral is defined by antiderivatives.</strong> Antiderivatives compute it; Riemann sums define it.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="fundamental-theorem-of-calculus.html">The fundamental theorem of calculus</a> and <a href="what-a-derivative-measures.html">what a derivative actually measures</a></li>
+<li><a href="u-substitution-explained.html">U-substitution explained</a> and <a href="integration-by-parts-intuition.html">integration by parts intuition</a></li>
+<li><a href="../topics/calculus-foundations.html">Calculus foundations topic map</a> and the <a href="../pathways/ap-calc-ab-bridge.html">AP Calculus AB bridge</a></li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/5-1-approximating-areas" rel="noopener noreferrer">OpenStax, Calculus Volume 1, Section 5.1 Approximating Areas (retrieved 12 Nov 2026)</a></li>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral" rel="noopener noreferrer">OpenStax, Calculus Volume 1, Section 5.2 The Definite Integral (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What is a Riemann sum?</h3>
+<p>It is a sum of the form Σ f(x_i*) Δx that approximates the net signed area under a curve by adding the areas of thin rectangles. Each rectangle has width Δx and height f at a sample point in that subinterval.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>What is the difference between left, right and midpoint sums?</h3>
+<p>They only differ in the sample point. A left sum uses the left endpoint of each subinterval, a right sum uses the right endpoint, and a midpoint sum uses the midpoint.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>How does a Riemann sum become a definite integral?</h3>
+<p>OpenStax defines the definite integral as the limit of Riemann sums as the number of subintervals goes to infinity and the widths shrink to zero, when that limit exists.</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>Can a Riemann sum overestimate and underestimate on the same interval?</h3>
+<p>Yes. For an increasing positive function, left sums underestimate the area and right sums overestimate it. Midpoint sums are often closer, but that is not a theorem for every function.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
