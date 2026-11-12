@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rank Nullity Theorem Explained: Higher Math Guide</title>
+<meta name="description" content="Rank plus nullity equals the number of columns. What rank and nullity mean, the pivot count proof, three worked examples, the linear map version and common mistakes.">
+<link rel="canonical" href="https://highermathguide.com/explainers/rank-nullity-theorem.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="The Rank Nullity Theorem Explained: Higher Math Guide">
+<meta property="og:description" content="Rank plus nullity equals the number of columns. What rank and nullity mean, the pivot count proof, three worked examples, the linear map version and common mistakes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/rank-nullity-theorem.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/rank-nullity-lecture-hall.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A darkened lecture hall with silhouetted rows of seats facing a screen showing an abstract network of dots and lines">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Rank Nullity Theorem Explained: Higher Math Guide">
+<meta name="twitter:description" content="Rank plus nullity equals the number of columns. What rank and nullity mean, the pivot count proof, three worked examples, the linear map version and common mistakes.">
+<meta name="twitter:image" content="https://highermathguide.com/images/rank-nullity-lecture-hall.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The rank nullity theorem explained",
+  "description": "Rank plus nullity equals the number of columns. What rank and nullity mean, the pivot count proof, three worked examples, the linear map version and common mistakes.",
+  "url": "https://highermathguide.com/explainers/rank-nullity-theorem.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/rank-nullity-lecture-hall.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/rank-nullity-theorem.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the rank nullity theorem say?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a matrix A with n columns, the rank of A plus the nullity of A equals n. The rank is the dimension of the column space and the nullity is the dimension of the null space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you find the rank and nullity of a matrix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Row reduce the matrix. The number of pivot columns is the rank. The number of columns without a pivot, which is the number of free variables, is the nullity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does nullity zero mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means the only solution of Ax = 0 is x = 0, so the columns are linearly independent and the map x to Ax is one to one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why must a wide matrix have a nonzero null space?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A matrix with more columns than rows has rank at most the number of rows, so by the rank nullity theorem its nullity is at least the number of columns minus the number of rows, which is positive."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The rank nullity theorem explained",
+      "item": "https://highermathguide.com/explainers/rank-nullity-theorem.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>The rank nullity theorem explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 12 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 12 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/rank-nullity-lecture-hall.webp" alt="A darkened lecture hall with silhouetted rows of seats facing a screen showing an abstract network of dots and lines" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>The <strong>rank nullity theorem</strong>, which Interactive Linear Algebra calls simply the rank theorem, says that for any matrix $A$ with $n$ columns,
+$$\operatorname{rank}(A) + \operatorname{nullity}(A) = n.$$
+The <strong>rank</strong> is the dimension of the column space, the set of all outputs $A\mathbf{x}$. The <strong>nullity</strong> is the dimension of the null space, the set of inputs $\mathbf{x}$ with $A\mathbf{x} = \mathbf{0}$. In words: every input direction either shows up in the output or gets sent to zero, and the two counts add up to the number of input directions.</p>
+
+<h2>Without the fog</h2>
+<p>Picture a machine that takes vectors with $n$ entries and returns $A\mathbf{x}$. The rank counts how many independent output directions the machine can produce. The nullity counts how many independent input directions it flattens to nothing. Interactive Linear Algebra puts the trade off this way: the more freedom there is in choosing $\mathbf{x}$, the less freedom there is in the outputs, and the reverse. You cannot gain dimensions; you can only spend them on one side or the other.</p>
+
+<h2>Why it is true: count pivots</h2>
+<p>Row reduce $A$. Interactive Linear Algebra shows two facts from earlier sections:</p>
+<ul>
+<li>The rank equals the number of pivot columns.</li>
+<li>The nullity equals the number of free variables, which is the number of columns without a pivot.</li>
+</ul>
+<p>Every column either has a pivot or does not, so the two counts add up to $n$. That is the whole proof. The theorem looks deep because it links two different subspaces, but the bookkeeping is just counting columns.</p>
+
+<h2>Worked example 1: a 2 by 3 matrix</h2>
+<p>Let
+$$A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 4 &amp; 6 \end{pmatrix}.$$
+The second row is twice the first, so row reduction leaves one nonzero row, $(1, 2, 3)$. There is one pivot, in column 1, so the rank is 1. The column space is the line in the plane spanned by $(1,2)$. With $n = 3$ columns, the theorem says the nullity is $3 - 1 = 2$.</p>
+<p>Check directly. $A\mathbf{x} = \mathbf{0}$ means $x_1 + 2x_2 + 3x_3 = 0$, with $x_2$ and $x_3$ free. So $x_1 = -2x_2 - 3x_3$, and the null space is spanned by $(-2, 1, 0)$ and $(-3, 0, 1)$. Both vectors satisfy the equation: $-2 + 2 = 0$ and $-3 + 3 = 0$. Two independent vectors means a plane, so the nullity is 2, as predicted.</p>
+
+<h2>Worked example 2: a square matrix that is not invertible</h2>
+<p>Use the three vectors from <a href="linear-independence-explained.html">linear independence explained</a> as columns:
+$$B = \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 2 \end{pmatrix}.$$
+The third column is the sum of the first two, so there are two pivots and the rank is 2. The theorem gives nullity $3 - 2 = 1$. Indeed, $1 \cdot (1,0,1) + 1 \cdot (0,1,1) - 1 \cdot (1,1,2) = (0,0,0)$, so the null space is the line spanned by $(1, 1, -1)$. Since the nullity is not zero, $\det B = 0$, which matches the <a href="determinant-geometric-meaning.html">determinant explainer</a>: the map flattens space onto a plane.</p>
+
+<h2>Worked example 3: a wide matrix, no row reduction needed</h2>
+<p>Suppose $C$ is any $3 \times 5$ matrix. Its column space sits inside three dimensional space, so the rank is at most 3. The theorem then says the nullity is at least $5 - 3 = 2$. Without computing anything, you know that $C\mathbf{x} = \mathbf{0}$ has infinitely many solutions, forming at least a plane of them. This is the kind of qualitative conclusion Interactive Linear Algebra highlights: the theorem says something about a system without solving it.</p>
+
+<h2>The linear map version</h2>
+<p>For a linear map $T : V \to W$ on a finite dimensional space $V$, the same statement reads
+$$\dim V = \dim \ker T + \dim \operatorname{im} T.$$
+For example, let $T$ take a polynomial of degree at most 3 to its derivative. The domain has dimension 4, with basis $1, x, x^2, x^3$. The kernel is the constants, dimension 1. The image is every polynomial of degree at most 2, dimension 3. And $1 + 3 = 4$.</p>
+
+<h2>What it tells you about solutions</h2>
+<ul>
+<li><strong>Nullity 0</strong> means the columns are independent and each consistent system $A\mathbf{x} = \mathbf{b}$ has exactly one solution.</li>
+<li><strong>Nullity $k &gt; 0$</strong> means every consistent system has a $k$ dimensional family of solutions: one particular solution plus anything in the null space.</li>
+<li><strong>Square matrices.</strong> For an $n \times n$ matrix, rank $n$, nullity 0, a nonzero determinant and invertibility all say the same thing.</li>
+<li><strong>Four subspaces.</strong> Gilbert Strang's MIT 18.06 lecture on the four fundamental subspaces pairs this with the row space and left null space: the row space also has dimension equal to the rank.</li>
+</ul>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>A $4 \times 6$ matrix has rank 4. What is its nullity?</li>
+<li>Can a $5 \times 3$ matrix have nullity 0? Can it have rank 4?</li>
+<li>Find the rank and nullity of $\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}$ and give a basis for its null space.</li>
+<li>A linear map from a 7 dimensional space has a 3 dimensional image. What is the dimension of its kernel?</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Using the number of rows.</strong> The theorem counts columns, the dimension of the input space, not rows.</li>
+<li><strong>Taking rank from the reduced matrix's columns as a basis.</strong> The count of pivots is right, but a basis for the column space comes from the pivot columns of the original matrix.</li>
+<li><strong>Calling nullity the number of zero rows.</strong> Zero rows after reduction relate to the rows, not to free variables. Count columns without pivots.</li>
+<li><strong>Forgetting finite dimensions.</strong> The linear map version needs a finite dimensional domain.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="linear-independence-explained.html">Linear independence explained</a> and <a href="row-reduction-rref-intuition.html">row reduction (RREF) intuition</a></li>
+<li><a href="determinant-geometric-meaning.html">What a determinant means geometrically</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
+<li><a href="../glossary/#span">Glossary: span</a>, <a href="../glossary/#basis">basis</a>, <a href="../glossary/#linear-map">linear map</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/rref.html">RREF calculator</a> shows the pivot columns, so you can read off rank and nullity. Predict both numbers before you press the button.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://textbooks.math.gatech.edu/ila/rank-thm.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.9 The Rank Theorem (retrieved 12 Nov 2026)</a></li>
+<li><a href="https://textbooks.math.gatech.edu/ila/dimension.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.7 Basis and Dimension (retrieved 12 Nov 2026)</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-10-the-four-fundamental-subspaces/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 10: The four fundamental subspaces (retrieved 12 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 12 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="q1">
+<h3>What does the rank nullity theorem say?</h3>
+<p>For a matrix A with n columns, the rank of A plus the nullity of A equals n. The rank is the dimension of the column space and the nullity is the dimension of the null space.</p>
+</section>
+<section class="faq-item" id="q2">
+<h3>How do you find the rank and nullity of a matrix?</h3>
+<p>Row reduce the matrix. The number of pivot columns is the rank. The number of columns without a pivot, which is the number of free variables, is the nullity.</p>
+</section>
+<section class="faq-item" id="q3">
+<h3>What does nullity zero mean?</h3>
+<p>It means the only solution of Ax = 0 is x = 0, so the columns are linearly independent and the map x to Ax is one to one.</p>
+</section>
+<section class="faq-item" id="q4">
+<h3>Why must a wide matrix have a nonzero null space?</h3>
+<p>A matrix with more columns than rows has rank at most the number of rows, so by the rank nullity theorem its nullity is at least the number of columns minus the number of rows, which is positive.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
