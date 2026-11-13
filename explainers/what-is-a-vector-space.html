@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Vector Space? Higher Math Guide</title>
+<meta name="description" content="What a vector space is: the ten axioms in plain words, examples from R^n to polynomials and functions, the three step subspace test, and common mistakes.">
+<link rel="canonical" href="https://highermathguide.com/explainers/what-is-a-vector-space.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="What Is a Vector Space? Higher Math Guide">
+<meta property="og:description" content="What a vector space is: the ten axioms in plain words, examples from R^n to polynomials and functions, the three step subspace test, and common mistakes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/what-is-a-vector-space.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/vector-space-glowing-cube.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A glowing wireframe cube floating above an open palm in darkness">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Is a Vector Space? Higher Math Guide">
+<meta name="twitter:description" content="What a vector space is: the ten axioms in plain words, examples from R^n to polynomials and functions, the three step subspace test, and common mistakes.">
+<meta name="twitter:image" content="https://highermathguide.com/images/vector-space-glowing-cube.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What is a vector space?",
+  "description": "What a vector space is: the ten axioms in plain words, examples from R^n to polynomials and functions, the three step subspace test, and common mistakes.",
+  "url": "https://highermathguide.com/explainers/what-is-a-vector-space.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/vector-space-glowing-cube.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/what-is-a-vector-space.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a vector space in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A vector space is a set of objects that you can add and multiply by numbers, where the results always stay in the set and the usual rules of arithmetic hold. Arrows in the plane, lists of numbers, polynomials, matrices and functions are all examples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many axioms does a vector space have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard definition lists ten conditions: closure under addition and scalar multiplication, commutativity and associativity of addition, a zero vector, additive inverses, two distributive laws, associativity of scalar multiplication, and multiplication by 1 leaving a vector unchanged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you check whether a set is a subspace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inside a known vector space such as R^n, check three things: the zero vector is in the set, the sum of any two members is in the set, and every scalar multiple of a member is in the set. If any one fails, it is not a subspace."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are polynomials vectors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Polynomials of degree at most 3 form a vector space under ordinary polynomial addition and scaling, and it behaves like R^4 once each polynomial is matched with its list of four coefficients."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/what-is-a-vector-space.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What is a vector space?",
+      "item": "https://highermathguide.com/explainers/what-is-a-vector-space.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>What is a vector space?</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 13 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 13 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/vector-space-glowing-cube.webp" alt="A glowing wireframe cube floating above an open palm in darkness" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+
+<p>A <strong>vector space</strong> is a set of objects you can add together and multiply by numbers, where those two operations follow the familiar rules of arithmetic. The objects are called vectors, and the numbers are called scalars. Arrows in the plane are the first example, but polynomials, matrices, functions and the solution sets of homogeneous linear systems are vector spaces too. The point of the definition is to prove facts about linear combinations once and then use them in every one of those settings.</p>
+
+<h2>Without the fog</h2>
+<p>Jim Hefferon's free textbook Linear Algebra opens its chapter on vector spaces with exactly this motive. Results about linear combinations should apply anywhere linear combinations make sense, not only to columns of numbers. Any setting where they make sense gets the name vector space, so a theorem can say "in any vector space" instead of being proved again for each case.</p>
+<p>So when you meet the definition, read it as a checklist that says: adding and scaling are always possible inside the set, and they behave the way adding and scaling numbers behave.</p>
+
+<h2>The definition</h2>
+<p>Hefferon's Definition 1.1 says a vector space over $\mathbb{R}$ is a set $V$ with an addition and a scalar multiplication such that, for all vectors $\mathbf{u}, \mathbf{v}, \mathbf{w}$ in $V$ and all real scalars $r, s$:</p>
+<ol>
+<li><strong>Closed under addition:</strong> $\mathbf{v} + \mathbf{w}$ is in $V$.</li>
+<li><strong>Addition is commutative:</strong> $\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}$.</li>
+<li><strong>Addition is associative:</strong> $(\mathbf{v} + \mathbf{w}) + \mathbf{u} = \mathbf{v} + (\mathbf{w} + \mathbf{u})$.</li>
+<li><strong>Zero vector:</strong> there is a $\mathbf{0}$ in $V$ with $\mathbf{v} + \mathbf{0} = \mathbf{v}$ for every $\mathbf{v}$.</li>
+<li><strong>Additive inverses:</strong> each $\mathbf{v}$ has a $\mathbf{w}$ in $V$ with $\mathbf{w} + \mathbf{v} = \mathbf{0}$.</li>
+<li><strong>Closed under scalar multiplication:</strong> $r\mathbf{v}$ is in $V$.</li>
+<li>$(r + s)\mathbf{v} = r\mathbf{v} + s\mathbf{v}$.</li>
+<li>$r(\mathbf{v} + \mathbf{w}) = r\mathbf{v} + r\mathbf{w}$.</li>
+<li>$(rs)\mathbf{v} = r(s\mathbf{v})$.</li>
+<li>$1\mathbf{v} = \mathbf{v}$.</li>
+</ol>
+<p>Hefferon singles out the two closure conditions, 1 and 6, as especially important. They say the operations always make sense: every sum and every scalar multiple stays inside the set. In practice, closure is where most candidate sets fail.</p>
+
+<h2>Examples you already know</h2>
+<ul>
+<li><strong>$\mathbb{R}^n$.</strong> Columns of $n$ real numbers, added and scaled entry by entry.</li>
+<li><strong>A line through the origin.</strong> Hefferon's first worked example is the line $y = 3x$ in $\mathbb{R}^2$. Adding two points on the line, or scaling one, lands back on the line.</li>
+<li><strong>Polynomials of degree at most 3.</strong> $\mathcal{P}_3 = \{a_0 + a_1x + a_2x^2 + a_3x^3\}$ with the usual polynomial addition and scaling. For instance
+$$3(1 - 2x + 3x^2 - 4x^3) - 2\left(2 - 3x + x^2 - \tfrac{1}{2}x^3\right) = -1 + 7x^2 - 11x^3.$$</li>
+<li><strong>Matrices.</strong> The 2 by 2 real matrices, added and scaled entry by entry.</li>
+<li><strong>Functions.</strong> All real valued functions of a real variable, with $(f + g)(x) = f(x) + g(x)$ and $(rf)(x) = rf(x)$.</li>
+<li><strong>Solution sets.</strong> The solutions of a homogeneous linear system $A\mathbf{x} = \mathbf{0}$, and the solutions of the differential equation $f'' + f = 0$, are vector spaces under the same operations.</li>
+</ul>
+<p>Hefferon also notes that $\mathcal{P}_3$ is not a subset of any $\mathbb{R}^n$, yet it behaves like $\mathbb{R}^4$: match $a_0 + a_1x + a_2x^2 + a_3x^3$ with the column $(a_0, a_1, a_2, a_3)$ and the operations line up. That is the payoff of the abstraction. Once you can compute in $\mathbb{R}^4$, you can compute with cubic polynomials.</p>
+
+<h2>Subspaces: the test you will actually use</h2>
+<p>Most sets you are asked about sit inside a space you already know is a vector space, such as $\mathbb{R}^n$. Then you do not need all ten conditions. Margalit and Rabinoff's Interactive Linear Algebra defines a <strong>subspace</strong> of $\mathbb{R}^n$ as a subset $V$ with three properties:</p>
+<ul>
+<li><strong>Non emptiness:</strong> the zero vector is in $V$.</li>
+<li><strong>Closure under addition:</strong> if $\mathbf{u}$ and $\mathbf{v}$ are in $V$, so is $\mathbf{u} + \mathbf{v}$.</li>
+<li><strong>Closure under scalar multiplication:</strong> if $\mathbf{v}$ is in $V$ and $c$ is a real number, $c\mathbf{v}$ is in $V$.</li>
+</ul>
+<p>Hefferon's Lemma 2.9 packs this into one line for any vector space: a nonempty subset is a subspace exactly when it is closed under linear combinations. The other rules, such as commutativity, are inherited from the bigger space for free.</p>
+<p>Interactive Linear Algebra adds a useful fact: every span is a subspace, and every subspace of $\mathbb{R}^n$ is the span of some linearly independent vectors. So "subspace" and "span" describe the same objects. Two subspaces you will meet constantly are the column space and the null space of a matrix.</p>
+
+<h2>Worked example 1: a plane through the origin</h2>
+<p>Is $V = \{(x, y, z) : x + 3y + z = 0\}$ a subspace of $\mathbb{R}^3$?</p>
+<ul>
+<li>Zero: $0 + 3 \cdot 0 + 0 = 0$, so $\mathbf{0}$ is in $V$.</li>
+<li>Addition: if $x_1 + 3y_1 + z_1 = 0$ and $x_2 + 3y_2 + z_2 = 0$, adding gives $(x_1 + x_2) + 3(y_1 + y_2) + (z_1 + z_2) = 0$, so the sum is in $V$.</li>
+<li>Scaling: multiplying $x + 3y + z = 0$ by $c$ gives $cx + 3(cy) + cz = 0$, so $c\mathbf{v}$ is in $V$.</li>
+</ul>
+<p>So $V$ is a subspace. Solving for $x = -3y - z$ shows it is a span:
+$$V = \operatorname{Span}\{(-3, 1, 0),\ (-1, 0, 1)\}.$$
+Check both: $-3 + 3 + 0 = 0$ and $-1 + 0 + 1 = 0$. The same argument works for the solution set of any homogeneous system, which is why null spaces are always subspaces.</p>
+
+<h2>Worked example 2: sets that fail</h2>
+<p>Interactive Linear Algebra lists standard non examples in $\mathbb{R}^2$. Each fails a specific condition.</p>
+<ul>
+<li><strong>A line that misses the origin,</strong> such as $y = 3x + 1$. The zero vector is not on it, so it fails at the first check. (Also, $(0,1)$ and $(1,4)$ are on it but their sum $(1,5)$ is not.)</li>
+<li><strong>The first quadrant,</strong> points with $x \ge 0$ and $y \ge 0$. It contains zero and is closed under addition, but $(1,1)$ times $-1$ is $(-1,-1)$, which is outside. Closure under scalar multiplication fails.</li>
+<li><strong>The unit circle</strong> $x^2 + y^2 = 1$. It does not contain zero, and $(1,0) + (0,1) = (1,1)$ is not on it.</li>
+<li><strong>A line union a plane</strong> in $\mathbb{R}^3$. Scaling stays inside, but adding a vector on the line to a vector on the plane can leave both.</li>
+</ul>
+
+<figure class="diagram">
+<svg viewBox="0 0 640 260" role="img" aria-labelledby="vs-title vs-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:640px;background:#fff;border:1px solid #d8dfea;border-radius:8px">
+<title id="vs-title">A line through the origin compared with a shifted line</title>
+<desc id="vs-desc">On the left, the line y equals 3x passes through the origin and is labelled subspace. On the right, the line y equals 3x plus 1 crosses the vertical axis above the origin and is labelled not a subspace.</desc>
+<g transform="translate(160,140)">
+<line x1="-120" y1="0" x2="120" y2="0" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="-120" x2="0" y2="110" stroke="#999" stroke-width="1"/>
+<line x1="-36" y1="108" x2="36" y2="-108" stroke="#2f4a7a" stroke-width="3"/>
+<circle cx="0" cy="0" r="5" fill="#2f4a7a"/>
+<text x="42" y="-96" font-size="13" fill="#2f4a7a">y = 3x</text>
+<text x="-60" y="112" font-size="14" fill="#333">Subspace</text>
+</g>
+<g transform="translate(470,140)">
+<line x1="-120" y1="0" x2="120" y2="0" stroke="#999" stroke-width="1"/>
+<line x1="0" y1="-120" x2="0" y2="110" stroke="#999" stroke-width="1"/>
+<line x1="-46" y1="108" x2="26" y2="-108" stroke="#b34a2a" stroke-width="3"/>
+<circle cx="0" cy="0" r="5" fill="none" stroke="#b34a2a" stroke-width="2"/>
+<text x="32" y="-96" font-size="13" fill="#b34a2a">y = 3x + 1</text>
+<text x="-80" y="112" font-size="14" fill="#333">Not a subspace</text>
+</g>
+</svg>
+<figcaption>Left: the line $y = 3x$ contains the origin and is closed under adding and scaling. Right: $y = 3x + 1$ misses the origin, shown as an open circle, so it is not a subspace. Not to scale.</figcaption>
+</figure>
+
+<h2>Where vector spaces sit in a first course</h2>
+<p>In MIT OpenCourseWare's 18.06 Linear Algebra, Gilbert Strang reaches vector spaces and subspaces in Lecture 5, right after elimination and factorizations, and the course description calls them central to linear algebra. The order makes sense: once you can row reduce, the next questions are about which vectors you can reach (column space), which inputs map to zero (null space), and how many directions a space really has. Those questions lead to <a href="linear-independence-explained.html">linear independence</a>, bases, dimension and the <a href="rank-nullity-theorem.html">rank nullity theorem</a>.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Forgetting the zero vector.</strong> Check it first. Any set that misses $\mathbf{0}$ is not a subspace, and this settles many exam questions in one line.</li>
+<li><strong>Checking only one example.</strong> Closure has to hold for all vectors and all scalars. One pair that works proves nothing; one pair that fails proves the set is not a subspace.</li>
+<li><strong>Forgetting negative scalars.</strong> Sets defined by inequalities, such as the first quadrant, usually fail when you multiply by $-1$.</li>
+<li><strong>Thinking vectors must be arrows or lists.</strong> Polynomials, matrices and functions count, as long as the operations satisfy the conditions.</li>
+<li><strong>Calling any subset a subspace.</strong> A subset is any collection of vectors. A subspace is a subset that also passes the three checks.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a>, with span, basis and a study order</li>
+<li><a href="../pathways/linear-algebra-first-course.html">Linear algebra first course pathway</a></li>
+<li><a href="linear-independence-explained.html">Linear independence explained</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem</a></li>
+<li><a href="row-reduction-rref-intuition.html">Row reduction (RREF) intuition</a> and <a href="determinant-geometric-meaning.html">what a determinant means geometrically</a></li>
+<li><a href="../glossary/#vector">Glossary: vector</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#basis">basis</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/rref.html">RREF calculator</a> turns a homogeneous system into parametric form, which writes its solution space as a span, as in worked example 1. Predict the spanning vectors first, then check.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">Jim Hefferon, Linear Algebra, fourth edition, free textbook, Chapter Two Section I: Definition of Vector Space (Definition 1.1, Examples 1.3 to 1.15, Lemma 2.9) (retrieved 13 Nov 2026)</a></li>
+<li><a href="https://textbooks.math.gatech.edu/ila/subspaces.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.6 Subspaces (retrieved 13 Nov 2026)</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 5: Transposes, permutations, spaces R^n (retrieved 13 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 13 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-a-vector-space">
+<h3>What is a vector space in simple terms?</h3>
+<p>A vector space is a set of objects that you can add and multiply by numbers, where the results always stay in the set and the usual rules of arithmetic hold. Arrows in the plane, lists of numbers, polynomials, matrices and functions are all examples.</p>
+</section>
+<section class="faq-item" id="how-many-axioms">
+<h3>How many axioms does a vector space have?</h3>
+<p>The standard definition lists ten conditions: closure under addition and scalar multiplication, commutativity and associativity of addition, a zero vector, additive inverses, two distributive laws, associativity of scalar multiplication, and multiplication by 1 leaving a vector unchanged.</p>
+</section>
+<section class="faq-item" id="subspace-test">
+<h3>How do you check whether a set is a subspace?</h3>
+<p>Inside a known vector space such as R^n, check three things: the zero vector is in the set, the sum of any two members is in the set, and every scalar multiple of a member is in the set. If any one fails, it is not a subspace.</p>
+</section>
+<section class="faq-item" id="polynomials">
+<h3>Are polynomials vectors?</h3>
+<p>Yes. Polynomials of degree at most 3 form a vector space under ordinary polynomial addition and scaling, and it behaves like R^4 once each polynomial is matched with its list of four coefficients.</p>
+</section>
+
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
