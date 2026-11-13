@@ -462,4 +462,12 @@
       <image:loc>https://highermathguide.com/images/riemann-sums-stone-terrace.webp</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/what-is-a-vector-space.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/vector-space-glowing-cube.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>
