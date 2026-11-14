@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basis and Dimension of a Vector Space Explained, Higher Math Guide</title>
+<meta name="description" content="What a basis of a vector space is, why coordinates are unique, what dimension means, and five worked examples from R^2 to polynomials.">
+<link rel="canonical" href="https://highermathguide.com/explainers/basis-and-dimension.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Basis and Dimension of a Vector Space Explained, Higher Math Guide">
+<meta property="og:description" content="What a basis of a vector space is, why coordinates are unique, what dimension means, and five worked examples from R^2 to polynomials.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/basis-and-dimension.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/basis-dimension-light-strands.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Glowing purple and cyan light strands curving through darkness">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Basis and Dimension of a Vector Space Explained, Higher Math Guide">
+<meta name="twitter:description" content="What a basis of a vector space is, why coordinates are unique, what dimension means, and five worked examples from R^2 to polynomials.">
+<meta name="twitter:image" content="https://highermathguide.com/images/basis-dimension-light-strands.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Basis and dimension of a vector space explained",
+  "description": "What a basis of a vector space is, why coordinates are unique, what dimension means, and five worked examples from R^2 to polynomials.",
+  "url": "https://highermathguide.com/explainers/basis-and-dimension.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/basis-dimension-light-strands.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-14",
+  "dateModified": "2026-11-14"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/basis-and-dimension.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a basis in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basis is a set of vectors that can build every vector in the space through linear combinations, with no redundant vectors. Because nothing is redundant, every vector has exactly one set of coordinates with respect to the basis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a vector space have more than one basis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every nonzero vector space has infinitely many bases. For example, both the standard basis (1,0), (0,1) and the pair (2,4), (1,1) are bases of the plane. What every basis shares is its size, which is the dimension."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the dimension of a vector space?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dimension is the number of vectors in any basis of the space. R^n has dimension n, polynomials of degree at most n have dimension n + 1, and the space containing only the zero vector has dimension 0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a span and a basis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The span of a set is everything you can build from it. A basis is a spanning set with no redundancy: its vectors span the space and are linearly independent. Removing any vector from a basis makes the span smaller."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/basis-and-dimension.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Basis and dimension of a vector space explained",
+      "item": "https://highermathguide.com/explainers/basis-and-dimension.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Basis and dimension of a vector space explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 14 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 14 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/basis-dimension-light-strands.webp" alt="Glowing purple and cyan light strands curving through darkness" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>A <strong>basis</strong> of a vector space is a set of vectors that does two jobs at once: its vectors <a href="../glossary/#span">span</a> the space, so every vector can be built from them, and they are <a href="linear-independence-explained.html">linearly independent</a>, so none of them is wasted. The number of vectors in a basis is the <strong>dimension</strong> of the space. A basis is the smallest toolkit that still builds everything, and once you fix one, every vector gets a unique list of coordinates.</p>
+
+<h2>Without the fog</h2>
+<p>Think of a basis as a set of directions plus a promise. The directions are enough to reach any point in the space. The promise is that there is exactly one way to reach each point using them. Too few vectors and some points are out of reach. Too many and some point can be reached in two different ways, which means one of the vectors was redundant.</p>
+<p>Margalit and Rabinoff's Interactive Linear Algebra puts it the same way: a subspace has infinitely many spanning sets, and a basis is a spanning set with the smallest possible number of vectors, chosen to avoid redundancy.</p>
+
+<h2>The definition</h2>
+<p>Hefferon's Linear Algebra (Chapter Two, Section III, Definition 1.1) says a basis for a vector space is a sequence of vectors that is linearly independent and that spans the space. In symbols, $\langle \boldsymbol{\beta}_1, \dots, \boldsymbol{\beta}_n \rangle$ is a basis of $V$ when:</p>
+<ol>
+<li><strong>It spans:</strong> every $\mathbf{v}$ in $V$ can be written as $\mathbf{v} = c_1\boldsymbol{\beta}_1 + \dots + c_n\boldsymbol{\beta}_n$ for some scalars $c_1, \dots, c_n$.</li>
+<li><strong>It is independent:</strong> the only way to get $c_1\boldsymbol{\beta}_1 + \dots + c_n\boldsymbol{\beta}_n = \mathbf{0}$ is with every $c_i = 0$.</li>
+</ol>
+<p>Hefferon writes a basis as a sequence, with angle brackets, so that the vectors come in a fixed order. The order matters once you start writing coordinates.</p>
+
+<h2>Why the coordinates are unique</h2>
+<p>Hefferon's Theorem 1.12 states the key payoff: a subset is a basis exactly when every vector in the space can be written as a linear combination of its members in one and only one way. The proof is short. If $\mathbf{v}$ had two expressions, $\sum c_i\boldsymbol{\beta}_i$ and $\sum d_i\boldsymbol{\beta}_i$, subtracting them gives $\sum (c_i - d_i)\boldsymbol{\beta}_i = \mathbf{0}$. Independence forces every $c_i - d_i$ to be zero, so the two expressions were the same.</p>
+<p>The unique weights $c_1, \dots, c_n$ are the <strong>coordinates</strong> of $\mathbf{v}$ with respect to the basis $B$, written as a column $\operatorname{Rep}_B(\mathbf{v})$. This is how an abstract space, such as a space of polynomials, turns into ordinary columns of numbers you can row reduce.</p>
+
+<h2>What dimension means</h2>
+<p>A space has many bases, but Hefferon's Theorem 2.4 shows that in a finite dimensional space all of them have the same number of vectors. That shared number is the <strong>dimension</strong> (Definition 2.5). Some standard values:</p>
+<ul>
+<li>$\mathbb{R}^n$ has dimension $n$, because the standard basis $\mathbf{e}_1, \dots, \mathbf{e}_n$ has $n$ vectors.</li>
+<li>The polynomials of degree at most $n$, called $\mathcal{P}_n$, have dimension $n + 1$, with basis $\langle 1, x, \dots, x^n \rangle$.</li>
+<li>The functions $a\cos\theta + b\sin\theta$ form a space of dimension 2, with basis $\langle \cos\theta, \sin\theta \rangle$.</li>
+<li>The trivial space $\{\mathbf{0}\}$ has dimension 0. Its basis is empty.</li>
+</ul>
+<p>Dimension also explains why the subspaces of $\mathbb{R}^3$ are only the origin, lines through the origin, planes through the origin and the whole space. Dimension is a whole number no bigger than 3, so nothing sits in between (Hefferon, Example 2.11).</p>
+
+<h2>Worked example 1: a basis of the plane that is not the standard one</h2>
+<p>This is Hefferon's Example 1.2. Take $B = \left\langle \begin{pmatrix} 2 \\ 4 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle$ in $\mathbb{R}^2$.</p>
+<p><strong>Independent:</strong> $c_1(2,4) + c_2(1,1) = (0,0)$ means $2c_1 + c_2 = 0$ and $4c_1 + c_2 = 0$. Subtracting gives $2c_1 = 0$, so $c_1 = 0$ and then $c_2 = 0$.</p>
+<p><strong>Spans:</strong> to reach any $(x, y)$, solve $2c_1 + c_2 = x$ and $4c_1 + c_2 = y$. Subtracting gives $c_1 = (y - x)/2$, and then $c_2 = 2x - y$.</p>
+<p><strong>Check with a number:</strong> for $\mathbf{v} = (3, 5)$, the formulas give $c_1 = 1$ and $c_2 = 1$, and indeed $(2,4) + (1,1) = (3,5)$. For $\mathbf{v} = (1, 0)$ they give $c_1 = -\tfrac12$ and $c_2 = 2$: $(-1,-2) + (2,2) = (1,0)$. The coordinates depend on the basis: in the standard basis the same vector $(1,0)$ has coordinates $(1,0)$.</p>
+
+<h2>Worked example 2: three vectors in three dimensional space</h2>
+<p>Are $(1,1,0)$, $(0,1,1)$ and $(1,0,1)$ a basis of $\mathbb{R}^3$? Put them as the columns of a matrix and take the <a href="determinant-geometric-meaning.html">determinant</a>:</p>
+<p>$$\det\begin{pmatrix} 1 & 0 & 1 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{pmatrix} = 1(1\cdot 1 - 0\cdot 1) - 0(1\cdot 1 - 0\cdot 0) + 1(1\cdot 1 - 1\cdot 0) = 1 + 1 = 2.$$</p>
+<p>The determinant is not zero, so the columns are independent. Here a shortcut applies. Hefferon's Corollary 2.14 (Interactive Linear Algebra states the same idea as its basis theorem) says that in an $n$ dimensional space a set of exactly $n$ vectors is independent if and only if it spans. Three independent vectors in $\mathbb{R}^3$ therefore form a basis, with no separate spanning check needed.</p>
+
+<h2>Worked example 3: a basis for a plane through the origin</h2>
+<p>The plane $x + 3y + z = 0$ is a subspace of $\mathbb{R}^3$ (it appears as a worked example in <a href="what-is-a-vector-space.html">what is a vector space?</a>). Solve for $x$: $x = -3y - z$, with $y$ and $z$ free. Then</p>
+<p>$$\begin{pmatrix} x \\ y \\ z \end{pmatrix} = y\begin{pmatrix} -3 \\ 1 \\ 0 \end{pmatrix} + z\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}.$$</p>
+<p>Both vectors lie in the plane: $-3 + 3 + 0 = 0$ and $-1 + 0 + 1 = 0$. They span it, because every solution has this form. They are independent, because neither is a multiple of the other (look at the second and third entries). So $\langle(-3,1,0), (-1,0,1)\rangle$ is a basis and the plane has dimension 2, as a plane should. Interactive Linear Algebra states this recipe as a theorem: the vectors attached to the free variables in the parametric form of the solutions of $A\mathbf{x} = \mathbf{0}$ form a basis of the null space.</p>
+
+<h2>Worked example 4: a basis for a column space</h2>
+<p>Take $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 7 \end{pmatrix}$. Row reduce: replace row 2 by row 2 minus 2 times row 1 to get $\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 1 \end{pmatrix}$. The pivots are in columns 1 and 3.</p>
+<p>Interactive Linear Algebra's rule is that the pivot columns <em>of the original matrix</em> form a basis for the column space. So a basis is $\langle(1,2), (3,7)\rangle$, and the column space has dimension 2, which is all of $\mathbb{R}^2$. Column 2, $(2,4)$, is twice column 1, which is why it got no pivot. Do not take columns from the reduced matrix: row operations change the column space even though they keep the pivot positions. The <a href="../calculators/rref.html">RREF calculator</a> will show the pivots for larger matrices.</p>
+
+<h2>Worked example 5: coordinates in a polynomial space</h2>
+<p>Hefferon's Example 1.14 works in $\mathcal{P}_3$ with the basis $B = \langle 1, 2x, 2x^2, 2x^3 \rangle$. Since $x + x^2 = 0\cdot 1 + \tfrac12\cdot 2x + \tfrac12\cdot 2x^2 + 0\cdot 2x^3$, the coordinates of $x + x^2$ are</p>
+<p>$$\operatorname{Rep}_B(x + x^2) = \begin{pmatrix} 0 \\ \tfrac12 \\ \tfrac12 \\ 0 \end{pmatrix}_B.$$</p>
+<p>With the ordinary basis $\langle 1, x, x^2, x^3 \rangle$ the same polynomial has coordinates $(0, 1, 1, 0)$. Different basis, different column, same vector. Four coordinates, because $\mathcal{P}_3$ has dimension 4.</p>
+
+<h2>Growing and shrinking to a basis</h2>
+<p>Two of Hefferon's corollaries give a practical way to find a basis from whatever you have.</p>
+<ul>
+<li><strong>Shrink a spanning set</strong> (Corollary 2.13). The set $\{(1,2), (2,4), (0,1)\}$ spans $\mathbb{R}^2$, but $(2,4) = 2(1,2)$ is redundant. Drop it. The remaining $\{(1,2), (0,1)\}$ are independent, so they form a basis.</li>
+<li><strong>Grow an independent set</strong> (Corollary 2.12). The single vector $(1,0,0)$ is independent but does not span $\mathbb{R}^3$. Add a vector outside its span, such as $(0,1,0)$, then one outside the span of both, such as $(0,0,1)$. Each addition keeps independence, and you stop when the set spans.</li>
+</ul>
+<p>Corollary 2.10 sets the ceiling: no independent set can have more vectors than the dimension. So four vectors in $\mathbb{R}^3$ are always dependent, and two vectors can never span $\mathbb{R}^3$.</p>
+
+<h2>Where basis and dimension show up next</h2>
+<p>The <a href="rank-nullity-theorem.html">rank nullity theorem</a> is a statement about dimensions: for an $m \times n$ matrix, the dimension of the column space plus the dimension of the null space equals $n$. In worked example 4, the column space has dimension 2 and the null space has dimension $3 - 2 = 1$. <a href="eigenvalues-plain-language.html">Eigenvectors</a> are useful because, when there are enough of them, they form a basis in which a matrix acts by simple stretching. And the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> turns any basis of a subspace into an orthonormal one, where coordinates are just dot products.</p>
+<p>Gilbert Strang's MIT 18.06 Lecture 9 (Independence, basis and dimension) summarises the idea in one line: a basis is a set of vectors, as few as possible, whose combinations produce all vectors in the space, and the number of basis vectors equals the dimension.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Checking only one condition.</strong> Spanning alone allows redundancy, and independence alone allows gaps. You need both, unless you already know the dimension and have exactly that many vectors.</li>
+<li><strong>Saying "the" basis.</strong> Every nonzero space has infinitely many bases. Only the count, the dimension, is fixed.</li>
+<li><strong>Taking pivot columns from the RREF.</strong> Use the matching columns of the original matrix for a column space basis.</li>
+<li><strong>Including the zero vector.</strong> Any set containing $\mathbf{0}$ is dependent, so it cannot be a basis.</li>
+<li><strong>Calling a plane in $\mathbb{R}^3$ "three dimensional" because its vectors have three entries.</strong> Dimension counts basis vectors, not entries. The plane in worked example 3 has dimension 2.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="what-is-a-vector-space.html">What is a vector space?</a> and <a href="linear-independence-explained.html">linear independence explained</a></li>
+<li><a href="rank-nullity-theorem.html">The rank nullity theorem</a> and <a href="row-reduction-rref-intuition.html">row reduction (RREF) intuition</a></li>
+<li><a href="determinant-geometric-meaning.html">What a determinant means geometrically</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
+<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/rref.html">RREF calculator</a> finds pivot columns, which give a column space basis, and free variables, which give a null space basis. The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> turns a basis into an orthonormal basis. Work the small examples on this page by hand first, then check.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">Jim Hefferon, Linear Algebra, fourth edition, free textbook, Chapter Two Section III: Basis and Dimension (Definition 1.1, Example 1.2, Theorem 1.12, Definition 1.13, Example 1.14, Theorem 2.4, Definition 2.5, Examples 2.6 to 2.11, Corollaries 2.10 to 2.14) (retrieved 14 Nov 2026)</a></li>
+<li><a href="https://textbooks.math.gatech.edu/ila/dimension.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.7 Basis and Dimension (retrieved 14 Nov 2026)</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-9-independence-basis-and-dimension/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 9: Independence, basis, and dimension (retrieved 14 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 14 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-a-basis">
+<h3>What is a basis in simple terms?</h3>
+<p>A basis is a set of vectors that can build every vector in the space through linear combinations, with no redundant vectors. Because nothing is redundant, every vector has exactly one set of coordinates with respect to the basis.</p>
+</section>
+<section class="faq-item" id="more-than-one-basis">
+<h3>Can a vector space have more than one basis?</h3>
+<p>Yes. Every nonzero vector space has infinitely many bases. For example, both the standard basis (1,0), (0,1) and the pair (2,4), (1,1) are bases of the plane. What every basis shares is its size, which is the dimension.</p>
+</section>
+<section class="faq-item" id="what-is-dimension">
+<h3>What is the dimension of a vector space?</h3>
+<p>The dimension is the number of vectors in any basis of the space. R^n has dimension n, polynomials of degree at most n have dimension n + 1, and the space containing only the zero vector has dimension 0.</p>
+</section>
+<section class="faq-item" id="span-vs-basis">
+<h3>What is the difference between a span and a basis?</h3>
+<p>The span of a set is everything you can build from it. A basis is a spanning set with no redundancy: its vectors span the space and are linearly independent. Removing any vector from a basis makes the span smaller.</p>
+</section>
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
