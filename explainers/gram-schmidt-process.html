@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gram Schmidt Process Explained with Examples, Higher Math Guide</title>
+<meta name="description" content="How the Gram Schmidt process turns any basis into an orthogonal or orthonormal one, why it works, three worked examples and the common mistakes.">
+<link rel="canonical" href="https://highermathguide.com/explainers/gram-schmidt-process.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Gram Schmidt Process Explained with Examples, Higher Math Guide">
+<meta property="og:description" content="How the Gram Schmidt process turns any basis into an orthogonal or orthonormal one, why it works, three worked examples and the common mistakes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/gram-schmidt-process.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/gram-schmidt-gold-traces.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Gold circuit traces branching across a dark blue board, lit by small glowing points">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gram Schmidt Process Explained with Examples, Higher Math Guide">
+<meta name="twitter:description" content="How the Gram Schmidt process turns any basis into an orthogonal or orthonormal one, why it works, three worked examples and the common mistakes.">
+<meta name="twitter:image" content="https://highermathguide.com/images/gram-schmidt-gold-traces.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Gram Schmidt process explained",
+  "description": "How the Gram Schmidt process turns any basis into an orthogonal or orthonormal one, why it works, three worked examples and the common mistakes.",
+  "url": "https://highermathguide.com/explainers/gram-schmidt-process.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/gram-schmidt-gold-traces.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/gram-schmidt-process.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the Gram Schmidt process do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It turns any basis of a subspace into an orthogonal basis of the same subspace. Each new vector is the old vector minus its projections onto the new vectors already found. Dividing each result by its length gives an orthonormal basis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between an orthogonal and an orthonormal basis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In an orthogonal basis every pair of vectors has dot product zero. An orthonormal basis is orthogonal and every vector also has length 1. You get one from the other by dividing each vector by its length."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the vectors are linearly dependent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At some step the leftover vector comes out as the zero vector. That means the original vector was already in the span of the earlier ones. Drop it and continue; the vectors that remain are an orthogonal basis of the span."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the order of the vectors matter in Gram Schmidt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A different order usually gives a different orthogonal basis, but it is always a basis of the same subspace, and for every k the first k new vectors span the same space as the first k starting vectors."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/gram-schmidt-process.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Gram Schmidt process explained",
+      "item": "https://highermathguide.com/explainers/gram-schmidt-process.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>The Gram Schmidt process explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 15 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 15 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/gram-schmidt-gold-traces.webp" alt="Gold circuit traces branching across a dark blue board, lit by small glowing points" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>The <strong>Gram Schmidt process</strong> takes any <a href="basis-and-dimension.html">basis</a> of a subspace of $\mathbb{R}^n$ and turns it, one vector at a time, into an <strong>orthogonal basis</strong> for the same subspace: a basis whose vectors are all perpendicular to each other. The idea is simple. Keep the first vector. From each later vector, subtract its shadow (its projection) on the directions you already have, and keep what is left. Divide each result by its length and you have an <strong>orthonormal basis</strong>.</p>
+
+<h2>Without the fog</h2>
+<p>Imagine two arrows that point in roughly the same direction. They span a plane, but they overlap: part of the second arrow repeats the first. Gram Schmidt removes the overlap. It splits the second arrow into a piece along the first arrow and a piece at right angles to it, and keeps only the right angle piece. Nothing is lost, because the piece you threw away was already reachable from the first arrow.</p>
+<p>Hefferon's Linear Algebra introduces the process exactly this way: projecting $\mathbf{v}$ onto the line spanned by $\mathbf{s}$ splits $\mathbf{v}$ into two parts, $\operatorname{proj}_{\mathbf{s}}(\mathbf{v})$ and $\mathbf{v} - \operatorname{proj}_{\mathbf{s}}(\mathbf{v})$, that are orthogonal and so do not interact.</p>
+
+<h2>Why orthogonal bases are worth having</h2>
+<ul>
+<li><strong>They are automatically independent.</strong> Hefferon's Theorem 2.2 (Chapter Three, Section VI.2) says a set of nonzero, mutually orthogonal vectors is <a href="linear-independence-explained.html">linearly independent</a>. Dot the equation $c_1\mathbf{v}_1 + \dots + c_k\mathbf{v}_k = \mathbf{0}$ with $\mathbf{v}_i$ and every term but one vanishes, leaving $c_i(\mathbf{v}_i \cdot \mathbf{v}_i) = 0$, so $c_i = 0$.</li>
+<li><strong>Coordinates become dot products.</strong> Margalit and Rabinoff's Interactive Linear Algebra (Section 6.4) gives the recipe: if $\{\mathbf{u}_1, \dots, \mathbf{u}_m\}$ is an orthogonal basis and $\mathbf{x}$ is in the subspace, the coordinate on $\mathbf{u}_i$ is $\dfrac{\mathbf{x}\cdot\mathbf{u}_i}{\mathbf{u}_i\cdot\mathbf{u}_i}$. No row reduction is needed. With an orthonormal basis the coordinate is just $\mathbf{x}\cdot\mathbf{u}_i$.</li>
+<li><strong>Projections become a sum.</strong> The same section's Projection Formula writes the projection of any $\mathbf{x}$ onto the subspace as the sum of those terms times $\mathbf{u}_i$, again only when the basis is orthogonal.</li>
+</ul>
+
+<h2>The process, step by step</h2>
+<p>Start with a basis $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_m$ of a subspace $W$. Define</p>
+<p>$$\mathbf{u}_1 = \mathbf{v}_1,$$</p>
+<p>$$\mathbf{u}_2 = \mathbf{v}_2 - \frac{\mathbf{v}_2\cdot\mathbf{u}_1}{\mathbf{u}_1\cdot\mathbf{u}_1}\,\mathbf{u}_1,$$</p>
+<p>$$\mathbf{u}_3 = \mathbf{v}_3 - \frac{\mathbf{v}_3\cdot\mathbf{u}_1}{\mathbf{u}_1\cdot\mathbf{u}_1}\,\mathbf{u}_1 - \frac{\mathbf{v}_3\cdot\mathbf{u}_2}{\mathbf{u}_2\cdot\mathbf{u}_2}\,\mathbf{u}_2,$$</p>
+<p>and so on: each $\mathbf{u}_k$ is $\mathbf{v}_k$ minus its projections onto all the earlier $\mathbf{u}$ vectors. Hefferon states this as Theorem 2.7 and Interactive Linear Algebra as the Gram Schmidt Process in Section 6.4: the vectors $\mathbf{u}_1, \dots, \mathbf{u}_m$ form an orthogonal basis for the same subspace. Both proofs also show more: for every $k$, the first $k$ new vectors span the same space as the first $k$ old ones.</p>
+<p>Two habits make hand calculation easier. Always project onto the new vectors $\mathbf{u}_i$, never the old $\mathbf{v}_i$, because the formula relies on the $\mathbf{u}_i$ being orthogonal. And you may rescale any $\mathbf{u}_k$ to clear fractions before moving on, since a multiple of a vector points the same way and the later projections do not change.</p>
+
+<h2>Worked example 1: two vectors in the plane</h2>
+<p>This is Hefferon's Example 2.4. Start with $\boldsymbol{\beta}_1 = (4, 2)$ and $\boldsymbol{\beta}_2 = (1, 3)$, a basis of $\mathbb{R}^2$ whose vectors are not orthogonal: $(4,2)\cdot(1,3) = 4 + 6 = 10$.</p>
+<ul>
+<li>$\boldsymbol{\kappa}_1 = (4, 2)$.</li>
+<li>$\boldsymbol{\kappa}_2 = (1, 3) - \dfrac{10}{20}(4, 2) = (1, 3) - (2, 1) = (-1, 2)$, using $(4,2)\cdot(4,2) = 20$.</li>
+</ul>
+<p><strong>Check:</strong> $(4,2)\cdot(-1,2) = -4 + 4 = 0$. So $\langle (4,2), (-1,2) \rangle$ is an orthogonal basis of the plane.</p>
+
+<h2>Worked example 2: three vectors in three dimensional space</h2>
+<p>This is Hefferon's Example 2.6. Start with $\boldsymbol{\beta}_1 = (1,1,1)$, $\boldsymbol{\beta}_2 = (0,2,0)$ and $\boldsymbol{\beta}_3 = (1,0,3)$.</p>
+<ul>
+<li>$\boldsymbol{\kappa}_1 = (1,1,1)$, with $\boldsymbol{\kappa}_1\cdot\boldsymbol{\kappa}_1 = 3$.</li>
+<li>$\boldsymbol{\beta}_2\cdot\boldsymbol{\kappa}_1 = 2$, so $\boldsymbol{\kappa}_2 = (0,2,0) - \tfrac23(1,1,1) = \left(-\tfrac23, \tfrac43, -\tfrac23\right)$, with $\boldsymbol{\kappa}_2\cdot\boldsymbol{\kappa}_2 = \tfrac49 + \tfrac{16}9 + \tfrac49 = \tfrac83$.</li>
+<li>$\boldsymbol{\beta}_3\cdot\boldsymbol{\kappa}_1 = 4$ and $\boldsymbol{\beta}_3\cdot\boldsymbol{\kappa}_2 = -\tfrac23 - 2 = -\tfrac83$. So $\boldsymbol{\kappa}_3 = (1,0,3) - \tfrac43(1,1,1) - \dfrac{-8/3}{8/3}\boldsymbol{\kappa}_2 = (1,0,3) - \left(\tfrac43,\tfrac43,\tfrac43\right) + \left(-\tfrac23,\tfrac43,-\tfrac23\right) = (-1, 0, 1)$.</li>
+</ul>
+<p><strong>Check:</strong> $(1,1,1)\cdot(-1,0,1) = 0$, $\left(-\tfrac23,\tfrac43,-\tfrac23\right)\cdot(-1,0,1) = \tfrac23 - \tfrac23 = 0$, and $(1,1,1)\cdot\left(-\tfrac23,\tfrac43,-\tfrac23\right) = 0$. Every pair is perpendicular.</p>
+<p><strong>Normalise.</strong> Divide each vector by its length ($\sqrt3$, $\sqrt{8/3}$ and $\sqrt2$). Hefferon's Example 2.9 gives the resulting orthonormal basis: $\left(\tfrac{1}{\sqrt3}, \tfrac{1}{\sqrt3}, \tfrac{1}{\sqrt3}\right)$, $\left(-\tfrac{1}{\sqrt6}, \tfrac{2}{\sqrt6}, -\tfrac{1}{\sqrt6}\right)$ and $\left(-\tfrac{1}{\sqrt2}, 0, \tfrac{1}{\sqrt2}\right)$.</p>
+
+<h2>Worked example 3: rescaling to avoid fractions</h2>
+<p>This one is our own and was checked by hand. Start with $\mathbf{v}_1 = (1,1,0)$, $\mathbf{v}_2 = (1,0,1)$ and $\mathbf{v}_3 = (0,1,1)$.</p>
+<ul>
+<li>$\mathbf{u}_1 = (1,1,0)$, with $\mathbf{u}_1\cdot\mathbf{u}_1 = 2$.</li>
+<li>$\mathbf{v}_2\cdot\mathbf{u}_1 = 1$, so $\mathbf{v}_2 - \tfrac12\mathbf{u}_1 = \left(\tfrac12, -\tfrac12, 1\right)$. Multiply by 2 and use $\mathbf{u}_2 = (1, -1, 2)$, with $\mathbf{u}_2\cdot\mathbf{u}_2 = 6$.</li>
+<li>$\mathbf{v}_3\cdot\mathbf{u}_1 = 1$ and $\mathbf{v}_3\cdot\mathbf{u}_2 = 0 - 1 + 2 = 1$, so $\mathbf{v}_3 - \tfrac12\mathbf{u}_1 - \tfrac16\mathbf{u}_2 = (0,1,1) - \left(\tfrac12,\tfrac12,0\right) - \left(\tfrac16,-\tfrac16,\tfrac13\right) = \left(-\tfrac23, \tfrac23, \tfrac23\right)$. Multiply by $\tfrac32$ and use $\mathbf{u}_3 = (-1, 1, 1)$.</li>
+</ul>
+<p><strong>Check:</strong> $(1,1,0)\cdot(1,-1,2) = 0$, $(1,1,0)\cdot(-1,1,1) = 0$ and $(1,-1,2)\cdot(-1,1,1) = -1 - 1 + 2 = 0$. The rescaled set $\langle (1,1,0), (1,-1,2), (-1,1,1) \rangle$ is an orthogonal basis of $\mathbb{R}^3$ with whole number entries.</p>
+<p><strong>Use it.</strong> To find the coordinates of $\mathbf{x} = (2, 0, 4)$, take dot products: $\dfrac{\mathbf{x}\cdot\mathbf{u}_1}{2} = \dfrac{2}{2} = 1$, $\dfrac{\mathbf{x}\cdot\mathbf{u}_2}{6} = \dfrac{2 + 8}{6} = \dfrac53$ and $\dfrac{\mathbf{x}\cdot\mathbf{u}_3}{3} = \dfrac{-2 + 4}{3} = \dfrac23$. Check: $1(1,1,0) + \tfrac53(1,-1,2) + \tfrac23(-1,1,1) = \left(1 + \tfrac53 - \tfrac23,\ 1 - \tfrac53 + \tfrac23,\ \tfrac{10}3 + \tfrac23\right) = (2, 0, 4)$.</p>
+
+<h2>What happens with a dependent set</h2>
+<p>If the starting vectors are not independent, some $\mathbf{v}_k$ already lies in the span of the earlier ones, and its leftover piece is the zero vector: $\mathbf{u}_k = \mathbf{0}$. Interactive Linear Algebra notes that you can still use the process on any spanning set: whenever some $\mathbf{u}_k$ comes out as zero, throw away that vector and carry on. The vectors that survive are an orthogonal basis of the span. For example, with $(1,2)$ and $(2,4)$, the second step gives $(2,4) - \tfrac{10}{5}(1,2) = (0,0)$, which tells you $(2,4)$ was redundant.</p>
+
+<h2>Where Gram Schmidt shows up next</h2>
+<p>Gilbert Strang's MIT 18.06 Lecture 17 pairs Gram Schmidt with orthogonal matrices. Its summary makes the point of the whole topic: many calculations become simpler when performed using orthonormal vectors or orthogonal matrices, and the lecture gives a procedure for converting any basis to an orthonormal one. Interactive Linear Algebra adds practical advice: if you need to project many vectors onto the same subspace, it is worth running Gram Schmidt first so that you can use the Projection Formula, but for one or a few projections, the row reduction method of its Section 6.3 is faster.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Projecting onto the old vectors.</strong> Subtract projections onto $\mathbf{u}_1, \dots, \mathbf{u}_{k-1}$, not onto $\mathbf{v}_1, \dots, \mathbf{v}_{k-1}$. The old vectors are not orthogonal, so the formula breaks.</li>
+<li><strong>Normalising too early by hand.</strong> Dividing by square roots at every step makes the arithmetic messy. Orthogonalise first, rescale to clear fractions if you like, and normalise once at the end.</li>
+<li><strong>Forgetting the denominator.</strong> The projection coefficient is $\dfrac{\mathbf{v}\cdot\mathbf{u}}{\mathbf{u}\cdot\mathbf{u}}$. It only simplifies to $\mathbf{v}\cdot\mathbf{u}$ when $\mathbf{u}$ is a unit vector.</li>
+<li><strong>Expecting the same answer in a different order.</strong> The process depends on the order of the starting vectors. Reordering gives a different orthogonal basis of the same subspace. Both are correct.</li>
+<li><strong>Skipping the check.</strong> Dot every pair of results. Each product should be exactly zero.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="basis-and-dimension.html">Basis and dimension explained</a> and <a href="linear-independence-explained.html">linear independence explained</a></li>
+<li><a href="what-is-a-vector-space.html">What is a vector space?</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem</a></li>
+<li><a href="row-reduction-rref-intuition.html">Row reduction (RREF) intuition</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
+<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#vector">vector</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> runs the process with steps for vectors you enter, so you can check the worked examples above. Work one small example by hand first, then check.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">Jim Hefferon, Linear Algebra, fourth edition, free textbook, Chapter Three Section VI.2: Gram Schmidt Orthogonalization (Definition 2.1, Theorem 2.2, Corollary 2.3, Example 2.4, Definition 2.5, Example 2.6, Theorem 2.7, Example 2.9) (book PDF retrieved 15 Nov 2026)</a></li>
+<li><a href="https://textbooks.math.gatech.edu/ila/orthogonal-sets.html" rel="noopener noreferrer">Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 6.4 Orthogonal Sets (retrieved 15 Nov 2026)</a></li>
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 17: Orthogonal matrices and Gram Schmidt (retrieved 15 Nov 2026)</a></li>
+</ul>
+
+<p>Last reviewed: 15 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-gram-schmidt">
+<h3>What does the Gram Schmidt process do?</h3>
+<p>It turns any basis of a subspace into an orthogonal basis of the same subspace. Each new vector is the old vector minus its projections onto the new vectors already found. Dividing each result by its length gives an orthonormal basis.</p>
+</section>
+<section class="faq-item" id="orthogonal-vs-orthonormal">
+<h3>What is the difference between an orthogonal and an orthonormal basis?</h3>
+<p>In an orthogonal basis every pair of vectors has dot product zero. An orthonormal basis is orthogonal and every vector also has length 1. You get one from the other by dividing each vector by its length.</p>
+</section>
+<section class="faq-item" id="dependent-vectors">
+<h3>What happens if the vectors are linearly dependent?</h3>
+<p>At some step the leftover vector comes out as the zero vector. That means the original vector was already in the span of the earlier ones. Drop it and continue; the vectors that remain are an orthogonal basis of the span.</p>
+</section>
+<section class="faq-item" id="does-order-matter">
+<h3>Does the order of the vectors matter in Gram Schmidt?</h3>
+<p>Yes. A different order usually gives a different orthogonal basis, but it is always a basis of the same subspace, and for every k the first k new vectors span the same space as the first k starting vectors.</p>
+</section>
+</div>
+</article>
+
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
