@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/linear-algebra.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -480,10 +480,18 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/gram-schmidt-process.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/gram-schmidt-gold-traces.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/orthogonal-projection-least-squares.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/orthogonal-projection-blackboard.webp</image:loc>
     </image:image>
   </url>
 </urlset>
