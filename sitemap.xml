@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/multivariable-vector-calculus.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -107,7 +107,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/stokes-theorem-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -492,6 +492,14 @@
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/orthogonal-projection-blackboard.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/divergence-theorem-intuition.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/divergence-theorem-cooling-towers.webp</image:loc>
     </image:image>
   </url>
 </urlset>
