@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change of Basis Explained, Higher Math Guide</title>
+<meta name="description" content="Change of basis explained: coordinates relative to a basis, the change of basis matrix P, why it is invertible, and a worked example checked by hand.">
+<link rel="canonical" href="https://highermathguide.com/explainers/change-of-basis.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="Change of Basis Explained, Higher Math Guide">
+<meta property="og:description" content="Change of basis explained: coordinates relative to a basis, the change of basis matrix P, why it is invertible, and a worked example checked by hand.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/change-of-basis.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/change-of-basis-two-maps.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Two printed copies of the same coloured map at different angles on a table">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Change of Basis Explained, Higher Math Guide">
+<meta name="twitter:description" content="Change of basis explained: coordinates relative to a basis, the change of basis matrix P, why it is invertible, and a worked example checked by hand.">
+<meta name="twitter:image" content="https://highermathguide.com/images/change-of-basis-two-maps.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Change of basis explained",
+  "description": "Change of basis explained: coordinates relative to a basis, the change of basis matrix P, why it is invertible, and a worked example checked by hand.",
+  "url": "https://highermathguide.com/explainers/change-of-basis.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/change-of-basis-two-maps.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/change-of-basis.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the coordinate vector [v]_B actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the list of weights that rebuild v from the basis B in order. If B has basis vectors b1 through bn and v equals c1 times b1 plus c2 times b2 and so on, then the coordinate vector is the column (c1, c2, up to cn). It depends on which basis you chose and on the order you listed its vectors in. The vector v itself does not change. Only its address inside a particular basis changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the change of basis matrix always invertible?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Its columns are the vectors of a basis, written in standard coordinates, and a basis is linearly independent by definition. A square matrix with linearly independent columns has a nonzero determinant, so it has an inverse. If any column were a repeat of the others, the determinant would be zero, but that would mean the original set was not a basis in the first place."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert coordinates between two bases that are both nonstandard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build the change of basis matrix for each one, P for basis B and Q for basis C, using standard coordinates as the bridge. Since v equals P times the B coordinates and also equals Q times the C coordinates, the C coordinates equal Q inverse times P times the B coordinates. You never need the standard coordinates written out separately. The two matrices carry you there and back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does an orthonormal basis do to the change of basis matrix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When the columns of P are unit vectors that are pairwise at a right angle, P transpose equals P inverse, so finding the inverse is just copying rows into columns with no arithmetic at all. The Gram Schmidt process is the usual way to turn an ordinary basis into an orthonormal one before using this shortcut."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/change-of-basis.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Change of basis explained",
+      "item": "https://highermathguide.com/explainers/change-of-basis.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>Change of basis explained</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 18 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 18 Nov 2026</p>
+</header>
+<figure class="article-photo">
+<img src="../images/change-of-basis-two-maps.webp" alt="Two printed copies of the same coloured map at different angles on a table" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p>The same vector gets a different list of numbers depending on which <a href="basis-and-dimension.html">basis</a> you measure it against. Picture the same point marked on two overlapping grids drawn at different angles: the point on the page never moves, but its row and column count changes with the grid. <strong>Change of basis</strong> is the arithmetic that converts the numbers from one grid to the numbers from another, without ever moving the point. This page states the coordinate map, builds the change of basis matrix, checks why that matrix always has an inverse, and works two examples by exact arithmetic, following the treatment in <a href="https://textbooks.math.gatech.edu/ila/dimension.html" rel="noopener noreferrer">Margalit and Rabinoff's Interactive Linear Algebra, Section 2.7</a> and <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">Section 5.3 on similar matrices</a>.</p>
+
+<h2>Coordinates relative to a basis</h2>
+<p>Fix a basis $B = \{\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_n\}$ of a vector space. Because a basis spans the space and is linearly independent, as the <a href="basis-and-dimension.html">basis and dimension explainer</a> shows, every vector $\mathbf{v}$ can be written in exactly one way as $\mathbf{v} = c_1\mathbf{b}_1 + c_2\mathbf{b}_2 + \cdots + c_n\mathbf{b}_n$. The column of weights $[\mathbf{v}]_B = (c_1, c_2, \ldots, c_n)$ is the <strong>coordinate vector</strong> of $\mathbf{v}$ relative to $B$. David Austin's <a href="https://understandinglinearalgebra.org/sec-bases.html" rel="noopener noreferrer">Understanding Linear Algebra, Section 3.2</a> opens with the same picture used above: a city grid of streets gives directions such as four blocks one way and three blocks another, a coordinate system that is more natural than the usual east and north grid for that city, even though both describe the same walk.</p>
+<p>When $B$ is the standard basis, $[\mathbf{v}]_B$ is just $\mathbf{v}$ written the usual way. Change the basis and the list of numbers changes, even though the arrow itself stays put. This is the entire content of the page: track that one fact carefully enough to compute with it.</p>
+
+<h2>The change of basis matrix</h2>
+<p>Collect the basis vectors of $B$, written in standard coordinates, as the columns of a matrix $P = \begin{pmatrix}\mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_n\end{pmatrix}$. Multiplying $P$ by the coordinate vector rebuilds $\mathbf{v}$ exactly, by the definition of matrix times vector as a combination of columns:</p>
+<div class="callout"><strong>Change of basis matrix.</strong>
+<p>$$\mathbf{v} = P\,[\mathbf{v}]_B \qquad\text{and equivalently}\qquad [\mathbf{v}]_B = P^{-1}\mathbf{v}.$$</p></div>
+<p>$P$ turns $B$ coordinates into standard coordinates. $P^{-1}$ runs the conversion the other way. Margalit and Rabinoff state the same pair of equations in Section 2.8 of Interactive Linear Algebra and call $P$ the matrix whose columns are a basis, used exactly this way.</p>
+
+<h2>Why P always has an inverse</h2>
+<p>The columns of $P$ are the vectors of a basis, so they are linearly independent, as the <a href="linear-independence-explained.html">linear independence explainer</a> defines the term. A square matrix with independent columns has a nonzero <a href="determinant-geometric-meaning.html">determinant</a>, because dependent columns are exactly what flattens the unit square or cube to zero volume. A nonzero determinant is exactly the condition for an inverse to exist. So $P$ is invertible for the same reason the basis is a basis in the first place: nothing in it is redundant.</p>
+
+<h2>Worked example 1: coordinates in a tilted basis</h2>
+<p>Let $B = \left\{\begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}1\\-1\end{pmatrix}\right\}$ and $\mathbf{v} = \begin{pmatrix}3\\1\end{pmatrix}$. Solve $c_1\begin{pmatrix}1\\1\end{pmatrix} + c_2\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}3\\1\end{pmatrix}$, which is $c_1 + c_2 = 3$ and $c_1 - c_2 = 1$. Adding the two equations gives $2c_1 = 4$, so $c_1 = 2$, and then $c_2 = 1$. So $[\mathbf{v}]_B = \begin{pmatrix}2\\1\end{pmatrix}$.</p>
+<div class="callout"><strong>Direct check.</strong> $2\begin{pmatrix}1\\1\end{pmatrix} + 1\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}2+1\\2-1\end{pmatrix} = \begin{pmatrix}3\\1\end{pmatrix}$, which is $\mathbf{v}$. The coordinates rebuild the vector.</div>
+<p>Now build $P$ from the same basis vectors, as columns: $P = \begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}$. Its determinant is $1(-1) - 1(1) = -2$, nonzero as expected. Using the formula for a 2 by 2 inverse, $P^{-1} = \dfrac{1}{-2}\begin{pmatrix}-1 & -1\\-1 & 1\end{pmatrix} = \begin{pmatrix}\tfrac12 & \tfrac12\\\tfrac12 & -\tfrac12\end{pmatrix}$. The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> will match this inverse once you type in $P$.</p>
+<div class="callout"><strong>Direct check.</strong> $P^{-1}\mathbf{v} = \begin{pmatrix}\tfrac12 & \tfrac12\\\tfrac12 & -\tfrac12\end{pmatrix}\begin{pmatrix}3\\1\end{pmatrix} = \begin{pmatrix}\tfrac12(3)+\tfrac12(1)\\\tfrac12(3)-\tfrac12(1)\end{pmatrix} = \begin{pmatrix}2\\1\end{pmatrix}$, the same $[\mathbf{v}]_B$ found above by solving the two equations directly. Both routes agree by exact arithmetic.</div>
+
+<h2>Changing between two nonstandard bases</h2>
+<p>Suppose $C$ is a second basis with its own change of basis matrix $Q$, built from $C$'s vectors the same way $P$ was built from $B$'s. Since $\mathbf{v} = P\,[\mathbf{v}]_B$ and also $\mathbf{v} = Q\,[\mathbf{v}]_C$, the two right hand sides equal the same $\mathbf{v}$, so:</p>
+<div class="callout"><strong>Basis to basis conversion.</strong>
+<p>$$[\mathbf{v}]_C = Q^{-1}P\,[\mathbf{v}]_B.$$</p></div>
+<p>Standard coordinates are the bridge that makes this work, even though the formula never writes them down. Take $C = \left\{\begin{pmatrix}2\\0\end{pmatrix}, \begin{pmatrix}0\\1\end{pmatrix}\right\}$, so $Q = \begin{pmatrix}2 & 0\\0 & 1\end{pmatrix}$ and $Q^{-1} = \begin{pmatrix}\tfrac12 & 0\\0 & 1\end{pmatrix}$. For the same $\mathbf{v} = (3,1)$ from worked example 1, solving $2c_1 = 3$ and $c_2 = 1$ directly gives $[\mathbf{v}]_C = \left(\tfrac32, 1\right)$.</p>
+<div class="callout"><strong>Direct check with the formula.</strong> $Q^{-1}P = \begin{pmatrix}\tfrac12 & 0\\0 & 1\end{pmatrix}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix} = \begin{pmatrix}\tfrac12 & \tfrac12\\1 & -1\end{pmatrix}$. Applying that to $[\mathbf{v}]_B = (2,1)$ from worked example 1: $\begin{pmatrix}\tfrac12 & \tfrac12\\1 & -1\end{pmatrix}\begin{pmatrix}2\\1\end{pmatrix} = \begin{pmatrix}\tfrac12(2)+\tfrac12(1)\\1(2)-1(1)\end{pmatrix} = \begin{pmatrix}\tfrac32\\1\end{pmatrix}$, matching $[\mathbf{v}]_C$ found directly. Both routes reach the same column by exact arithmetic.</div>
+
+<h2>A linear map in a new basis: similar matrices</h2>
+<p>If $A$ is the matrix of a linear map $T$ in standard coordinates, the matrix of the same map written in $B$ coordinates is $[T]_B = P^{-1}AP$. Margalit and Rabinoff's Interactive Linear Algebra calls $A$ and $P^{-1}AP$ <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">similar matrices</a> and shows that similar matrices describe the same map, only in different coordinate systems, and that they always share the same characteristic polynomial, hence the same <a href="eigenvalues-plain-language.html">eigenvalues</a>. Choosing $B$ to be a basis of eigenvectors is exactly what makes $P^{-1}AP$ diagonal, the payoff behind diagonalization: a diagonal matrix just scales each basis direction, which is as simple as a matrix can act.</p>
+
+<h2>Worked example 2: a map that becomes diagonal</h2>
+<p>Let $A = \begin{pmatrix}2 & 1\\1 & 2\end{pmatrix}$ and reuse $B = \left\{\begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}1\\-1\end{pmatrix}\right\}$ and $P = \begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}$ from worked example 1. Multiply $A$ by each basis vector directly: $A\begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}2+1\\1+2\end{pmatrix} = \begin{pmatrix}3\\3\end{pmatrix} = 3\begin{pmatrix}1\\1\end{pmatrix}$, and $A\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}2-1\\1-2\end{pmatrix} = \begin{pmatrix}1\\-1\end{pmatrix} = 1\begin{pmatrix}1\\-1\end{pmatrix}$. Each basis vector of $B$ is an eigenvector of $A$, with eigenvalues $3$ and $1$. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> reports those same two roots from the trace $4$ and determinant $3$ of $A$.</p>
+<div class="callout"><strong>Direct check with the formula.</strong> $AP = \begin{pmatrix}2 & 1\\1 & 2\end{pmatrix}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix} = \begin{pmatrix}3 & 1\\3 & -1\end{pmatrix}$, since each column of $AP$ is $A$ times the matching column of $P$, matching the two products above. Then $P^{-1}AP = \begin{pmatrix}\tfrac12 & \tfrac12\\\tfrac12 & -\tfrac12\end{pmatrix}\begin{pmatrix}3 & 1\\3 & -1\end{pmatrix} = \begin{pmatrix}\tfrac12(3)+\tfrac12(3) & \tfrac12(1)+\tfrac12(-1)\\\tfrac12(3)-\tfrac12(3) & \tfrac12(1)-\tfrac12(-1)\end{pmatrix} = \begin{pmatrix}3 & 0\\0 & 1\end{pmatrix}$. Written in the eigenvector basis $B$, the map $A$ is the diagonal matrix $\operatorname{diag}(3,1)$: it stretches the $(1,1)$ direction by $3$ and the $(1,-1)$ direction by $1$, with no mixing between them.</div>
+
+<h2>Orthonormal bases: P inverse for free</h2>
+<p>When the columns of $P$ are unit vectors that are pairwise orthogonal, the <a href="gram-schmidt-process.html">Gram Schmidt process explainer</a> shows that $P^{-1} = P^{\mathsf T}$, so the inverse is just the transpose, with no row reduction at all. Take $\mathbf{b}_1 = \begin{pmatrix}3/5\\4/5\end{pmatrix}$ and $\mathbf{b}_2 = \begin{pmatrix}-4/5\\3/5\end{pmatrix}$, both unit vectors with dot product $\tfrac{3}{5}\!\cdot\!\left(-\tfrac{4}{5}\right) + \tfrac{4}{5}\!\cdot\!\tfrac{3}{5} = 0$, so they are orthonormal. With $P = \begin{pmatrix}3/5 & -4/5\\4/5 & 3/5\end{pmatrix}$ and $P^{\mathsf T} = \begin{pmatrix}3/5 & 4/5\\-4/5 & 3/5\end{pmatrix}$:</p>
+<div class="callout"><strong>Direct check.</strong> $P\,P^{\mathsf T} = \begin{pmatrix}3/5 & -4/5\\4/5 & 3/5\end{pmatrix}\begin{pmatrix}3/5 & 4/5\\-4/5 & 3/5\end{pmatrix} = \begin{pmatrix}9/25+16/25 & 12/25-12/25\\12/25-12/25 & 16/25+9/25\end{pmatrix} = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}.$ Since $P\,P^{\mathsf T}$ is the identity, $P^{\mathsf T}$ is $P^{-1}$, confirmed by exact fractions, with no inversion formula needed.</div>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>For $B = \{(1,0), (1,1)\}$ and $\mathbf{v} = (4,1)$, solve for $[\mathbf{v}]_B$ directly, then build $P$ and check with $P^{-1}\mathbf{v}$.</li>
+<li>Explain in one sentence why a set of vectors that fails to span the space could never be used as the columns of a change of basis matrix.</li>
+<li>For the $A$ and $B$ in worked example 2, compute $A\begin{pmatrix}2\\0\end{pmatrix}$ directly, then check it against $3\begin{pmatrix}1\\1\end{pmatrix} + \begin{pmatrix}1\\-1\end{pmatrix}$ using linearity, since $(2,0) = (1,1)+(1,-1)$.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Writing the basis vectors as rows instead of columns.</strong> $P$ is built with each basis vector as a column. Rows give the transpose of $P$, which is only the correct inverse when the basis happens to be orthonormal.</li>
+<li><strong>Mixing up $P$ and $P^{-1}$.</strong> $P$ turns $B$ coordinates into standard coordinates. $P^{-1}$ runs the other way. Multiplying a standard coordinate vector by $P$ again, instead of by $P^{-1}$, gives a vector with no clear meaning.</li>
+<li><strong>Forgetting the order in $P^{-1}AP$.</strong> Matrix multiplication does not commute, so $AP^{-1}P$ or $PAP^{-1}$ is not the same computation and usually gives a different, meaningless matrix. The $P^{-1}$ belongs on the left and the $P$ on the right.</li>
+<li><strong>Assuming every basis gives a diagonal $P^{-1}AP$.</strong> Worked example 2 used a basis made of eigenvectors of $A$ on purpose. A basis chosen for any other reason usually leaves $P^{-1}AP$ full of nonzero entries, still equal in trace and determinant to $A$, but not diagonal.</li>
+</ul>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="basis-and-dimension.html">Basis and dimension of a vector space explained</a> and <a href="what-is-a-vector-space.html">what is a vector space?</a></li>
+<li><a href="linear-independence-explained.html">Linear independence explained</a> and <a href="determinant-geometric-meaning.html">what a determinant means geometrically</a></li>
+<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a> and <a href="gram-schmidt-process.html">the Gram Schmidt process explained</a></li>
+<li><a href="orthogonal-projection-least-squares.html">Orthogonal projection and least squares explained</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem explained</a></li>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a></li>
+<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+
+<h2>Related tools</h2>
+<p>The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> finds the determinant and inverse used to build $P^{-1}$ in worked example 1. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> checks the eigenvalues used in worked example 2. The <a href="../calculators/rref.html">RREF calculator</a> is a general way to solve the coordinate equations for a basis in more than two dimensions. The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> builds an orthonormal basis, so that the orthonormal shortcut in this page applies.</p>
+
+<h2>Sources and further reading</h2>
+<ul>
+<li>Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 2.7 Basis and Dimension (the basis theorem and B coordinates). <a href="https://textbooks.math.gatech.edu/ila/dimension.html" rel="noopener noreferrer">textbooks.math.gatech.edu</a> (accessed 18 Nov 2026)</li>
+<li>Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 5.3 Similarity (the change of basis matrix, $v = P[v]_B$, and $A = PDP^{-1}$ style similarity). <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">textbooks.math.gatech.edu</a> (accessed 18 Nov 2026)</li>
+<li>David Austin, Understanding Linear Algebra, Section 3.2 Bases and coordinate systems. <a href="https://understandinglinearalgebra.org/sec-bases.html" rel="noopener noreferrer">understandinglinearalgebra.org</a> (accessed 18 Nov 2026)</li>
+</ul>
+<p>Last reviewed: 18 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-is-coordinate-vector">
+<h3>What does the coordinate vector [v]_B actually mean?</h3>
+<p>It is the list of weights that rebuild v from the basis B in order. If B has basis vectors b1 through bn and v equals c1 times b1 plus c2 times b2 and so on, then the coordinate vector is the column (c1, c2, up to cn). It depends on which basis you chose and on the order you listed its vectors in. The vector v itself does not change. Only its address inside a particular basis changes.</p>
+</section>
+<section class="faq-item" id="why-invertible">
+<h3>Why is the change of basis matrix always invertible?</h3>
+<p>Its columns are the vectors of a basis, written in standard coordinates, and a basis is linearly independent by definition. A square matrix with linearly independent columns has a nonzero determinant, so it has an inverse. If any column were a repeat of the others, the determinant would be zero, but that would mean the original set was not a basis in the first place.</p>
+</section>
+<section class="faq-item" id="two-nonstandard-bases">
+<h3>How do I convert coordinates between two bases that are both nonstandard?</h3>
+<p>Build the change of basis matrix for each one, P for basis B and Q for basis C, using standard coordinates as the bridge. Since v equals P times the B coordinates and also equals Q times the C coordinates, the C coordinates equal Q inverse times P times the B coordinates. You never need the standard coordinates written out separately. The two matrices carry you there and back.</p>
+</section>
+<section class="faq-item" id="orthonormal-shortcut">
+<h3>What does an orthonormal basis do to the change of basis matrix?</h3>
+<p>When the columns of P are unit vectors that are pairwise at a right angle, P transpose equals P inverse, so finding the inverse is just copying rows into columns with no arithmetic at all. The Gram Schmidt process is the usual way to turn an ordinary basis into an orthonormal one before using this shortcut.</p>
+</section>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>

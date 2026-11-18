@@ -286,6 +286,7 @@
 <p>Corollary 2.10 sets the ceiling: no independent set can have more vectors than the dimension. So four vectors in $\mathbb{R}^3$ are always dependent, and two vectors can never span $\mathbb{R}^3$.</p>
 
 <h2>Where basis and dimension show up next</h2>
+<p>The same vector gets different coordinates in different bases, and the matrix that converts between them is always invertible because a basis is never redundant. Read <a href="change-of-basis.html">change of basis explained</a> next for that matrix, worked by hand.</p>
 <p>The <a href="rank-nullity-theorem.html">rank nullity theorem</a> is a statement about dimensions: for an $m \times n$ matrix, the dimension of the column space plus the dimension of the null space equals $n$. In worked example 4, the column space has dimension 2 and the null space has dimension $3 - 2 = 1$. <a href="eigenvalues-plain-language.html">Eigenvectors</a> are useful because, when there are enough of them, they form a basis in which a matrix acts by simple stretching. And the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> turns any basis of a subspace into an orthonormal one, where coordinates are just dot products.</p>
 <p>Gilbert Strang's MIT 18.06 Lecture 9 (Independence, basis and dimension) summarises the idea in one line: a basis is a set of vectors, as few as possible, whose combinations produce all vectors in the space, and the number of basis vectors equals the dimension.</p>
 
@@ -301,7 +302,8 @@
 <h2>Related reading</h2>
 <ul>
 <li><a href="what-is-a-vector-space.html">What is a vector space?</a> and <a href="linear-independence-explained.html">linear independence explained</a></li>
-<li><a href="rank-nullity-theorem.html">The rank nullity theorem</a> and <a href="row-reduction-rref-intuition.html">row reduction (RREF) intuition</a></li>
+<li><a href="change-of-basis.html">Change of basis explained</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem</a></li>
+<li><a href="row-reduction-rref-intuition.html">Row reduction (RREF) intuition</a></li>
 <li><a href="determinant-geometric-meaning.html">What a determinant means geometrically</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
 <li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
 <li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>

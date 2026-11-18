@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/linear-algebra.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -376,7 +376,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/determinant-geometric-meaning.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/determinant-geometric-meaning-desk.webp</image:loc>
@@ -464,7 +464,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/what-is-a-vector-space.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/vector-space-glowing-cube.webp</image:loc>
@@ -472,7 +472,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/basis-and-dimension.html</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/basis-dimension-light-strands.webp</image:loc>
@@ -480,7 +480,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/gram-schmidt-process.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/gram-schmidt-gold-traces.webp</image:loc>
@@ -488,7 +488,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/orthogonal-projection-least-squares.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/orthogonal-projection-blackboard.webp</image:loc>
@@ -500,6 +500,14 @@
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/divergence-theorem-cooling-towers.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/change-of-basis.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/change-of-basis-two-maps.webp</image:loc>
     </image:image>
   </url>
 </urlset>
