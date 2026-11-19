@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/linear-algebra.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -67,7 +67,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/eigenvalues-plain-language.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -247,12 +247,12 @@
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/eigenvalue-2x2.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/eigenvalue-3x3.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -267,7 +267,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/linear-algebra-first-course.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -400,7 +400,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/rank-nullity-theorem.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/rank-nullity-lecture-hall.webp</image:loc>
@@ -504,10 +504,18 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/change-of-basis.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/change-of-basis-two-maps.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://highermathguide.com/explainers/diagonalization.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/diagonalization-brass-key-notebook.webp</image:loc>
     </image:image>
   </url>
 </urlset>

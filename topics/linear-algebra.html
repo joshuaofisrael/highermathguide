@@ -247,6 +247,12 @@
     {
       "@type": "ListItem",
       "position": 18,
+      "name": "Diagonalization explained",
+      "url": "https://highermathguide.com/explainers/diagonalization.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
       "name": "All topics",
       "url": "https://highermathguide.com/topics/"
     }
@@ -410,6 +416,7 @@
 <p>For the definition, examples beyond arrows and the three step subspace test, read <a href="../explainers/what-is-a-vector-space.html">what is a vector space?</a></p>
 <p>For what a basis is, why coordinates are unique, and how dimension is counted, read <a href="../explainers/basis-and-dimension.html">basis and dimension of a vector space explained</a>.</p>
 <p>For the coordinate vector $[\mathbf{v}]_B$, the change of basis matrix $P$, why $P$ always has an inverse, and how $P^{-1}AP$ rewrites a map in a new basis, read <a href="../explainers/change-of-basis.html">change of basis explained</a>.</p>
+<p>For when $A = PDP^{-1}$ exists, with a worked 2 by 2 and a worked 3 by 3 checked by exact arithmetic, read <a href="../explainers/diagonalization.html">diagonalization explained</a>.</p>
 <p>To turn a basis into an orthogonal or orthonormal one, with worked examples, read <a href="../explainers/gram-schmidt-process.html">the Gram Schmidt process explained</a>.</p>
 <p>To project a vector onto a line or a subspace, and to see why least squares solves the normal equations $A^{T}A\mathbf{x}=A^{T}\mathbf{b}$, read <a href="../explainers/orthogonal-projection-least-squares.html">orthogonal projection and least squares explained</a>.</p>
 <p>For the pivot test, worked examples and the link between independence and bases, read <a href="../explainers/linear-independence-explained.html">linear independence explained</a>.</p>
@@ -425,7 +432,7 @@
 
 <h2 id="handoff">Where the geometry goes next</h2>
 <p>A gradient is a vector of partial derivatives. A Jacobian is the matrix of them, the best linear approximation to a map at a point. Read <a href="multivariable-vector-calculus.html">multivariable calculus</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices in plain language</a> after eigenvalues feel like lines. Fill the partials yourself. Use the matrix calculator only for a determinant you have already set up.</p>
-<p>Not every matrix is diagonalizable. A repeated eigenvalue may give only one independent direction. Complex eigenvalues of a real matrix mix a rotation and a scale: there is no real invariant line. Learn the stretch story first. The special cases are easier once that picture is drawable.</p>
+<p>Not every matrix is diagonalizable. A repeated eigenvalue may give only one independent direction. Complex eigenvalues of a real matrix mix a rotation and a scale: there is no real invariant line. Learn the stretch story first. The special cases are easier once that picture is drawable. The full criterion and two worked factorizations are on <a href="../explainers/diagonalization.html">diagonalization explained</a>.</p>
 
 <h2 id="order">Suggested learning order</h2>
 <p>Work in this order. Open a calculator only after you can say what the number means. The <a href="../faq/#calculators">FAQ on calculators versus understanding</a> is the rule on this site. The <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a> follows the same arc with more checks. Use that pathway if you want the longer route.</p>
@@ -437,7 +444,7 @@
 <li>The <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> for a determinant and for $AB$ versus $BA$, after you read the columns as images of the basis.</li>
 <li>The <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for cofactor expansion, the adjugate, and an inverse in exact fractions.</li>
 <li><a href="../explainers/eigenvalues-plain-language.html">Eigenvalues in plain language</a>, then the triangular example above by hand.</li>
-<li>Roots on the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. Eigenvectors by hand for that case. When the matrix is 3 by 3, the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> row reduces for a real eigenvector. A repeated root still needs enough independent directions. The <a href="../pathways/linear-algebra-first-course.html">pathway</a> has that checkpoint.</li>
+<li>Roots on the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a>. Eigenvectors by hand for that case. When the matrix is 3 by 3, the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> row reduces for a real eigenvector. A repeated root still needs enough independent directions. Then read <a href="../explainers/diagonalization.html">diagonalization explained</a> and check $AP = PD$. The <a href="../pathways/linear-algebra-first-course.html">pathway</a> has that checkpoint.</li>
 <li>When several variables are next: <a href="multivariable-vector-calculus.html">multivariable calculus</a> and <a href="../explainers/jacobian-matrices-plain-language.html">Jacobian matrices</a>.</li>
 </ol>
 
@@ -475,7 +482,7 @@
 </section>
 <section class="faq-item" id="diagonal">
 <h2>Is every matrix diagonalizable?</h2>
-<p>No. A matrix is diagonalizable when there is a basis of eigenvectors. A repeated eigenvalue can fail to give enough independent eigenvectors. Complex eigenvalues of a real matrix mean there is no real line that the map keeps in place. Learn the geometric story of a stretch along an invariant line before those special cases.</p>
+<p>No. A matrix is diagonalizable when there is a basis of eigenvectors. A repeated eigenvalue can fail to give enough independent eigenvectors. Complex eigenvalues of a real matrix mean there is no real line that the map keeps in place. Learn the geometric story of a stretch along an invariant line before those special cases. See <a href="../explainers/diagonalization.html">diagonalization explained</a> for the $A = PDP^{-1}$ test and two worked examples.</p>
 </section>
 <section class="faq-item" id="after">
 <h2>What should I study after eigenvalues?</h2>
@@ -490,6 +497,7 @@
 <li><a href="../calculators/vector-ops.html">Vector operations calculator</a></li>
 <li><a href="../explainers/orthogonal-projection-least-squares.html">Orthogonal projection and least squares explained</a></li>
 <li><a href="../explainers/change-of-basis.html">Change of basis explained</a></li>
+<li><a href="../explainers/diagonalization.html">Diagonalization explained</a></li>
 <li><a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a></li>
 <li><a href="../calculators/lu-decomposition.html">LU decomposition calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>
