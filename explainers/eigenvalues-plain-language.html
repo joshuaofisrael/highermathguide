@@ -60,7 +60,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-09-30"
+      "dateModified": "2026-11-19"
     },
     {
       "@type": "FAQPage",
@@ -143,7 +143,13 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Eigenvalues in plain language",
+      "name": "Linear algebra",
+      "item": "https://highermathguide.com/topics/linear-algebra.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Eigenvalues",
       "item": "https://highermathguide.com/explainers/eigenvalues-plain-language.html"
     }
   ]
@@ -229,13 +235,19 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Eigenvalues in plain language</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 21 September 2026.</p>
-<p class="article-meta">Explainer · Educational only · Updated 30 Sep 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 19 November 2026.</p>
+<p class="article-meta">Explainer · Educational only · Updated 19 Nov 2026</p>
 </header>
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="./">Explainers</a>
+ · <a href="../topics/linear-algebra.html">Linear algebra</a>
+ · <span aria-current="page">Eigenvalues</span>
+</nav>
 <p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
 <figure class="article-figure">
 <img src="../images/hero-chalkboard.webp" srcset="../images/hero-chalkboard-800.webp 800w, ../images/hero-chalkboard.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A chalkboard with handwritten matrices and linear algebra notes." class="crop-2" loading="lazy" decoding="async">
-<figcaption>Matrices on a chalkboard, the objects an eigenvalue stretches or flips.</figcaption>
+<figcaption>Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
 </figure>
 <div class="article-body">
 <p>A square matrix can rotate, reflect, shear, stretch, and squash. Amid that motion, some lines through the origin are special. The matrix stretches or flips vectors on those lines, but it does not knock them onto a different line. Those lines are spanned by <a href="../glossary/#eigenvector">eigenvectors</a>. The stretch factors are <a href="../glossary/#eigenvalue">eigenvalues</a>.</p>
@@ -260,7 +272,7 @@
 <p>For $\lambda=5$, solve $(B-5I)\mathbf{v}=\mathbf{0}$:</p>
 <p>$$B-5I=\begin{pmatrix}-1&amp;1\\2&amp;-2\end{pmatrix}.$$</p>
 <p>The rows are multiples, so the system is $ -v_1+v_2=0$. One eigenvector is $(1,1)$. Check: $B(1,1)=(5,5)=5(1,1)$. For $\lambda=2$, the same work produces a line spanned by $(1,-2)$. The two lines are not the coordinate axes, yet each is still a direction that $B$ refuses to tip.</p>
-<p>Once you have a basis of eigenvectors, $B$ becomes diagonal in those coordinates. Powers of $B$ become easy because you only raise the two scalars to a power. That is why people hunt for these directions. They are a coordinate system adapted to the map.</p>
+<p>Once you have a basis of eigenvectors, $B$ becomes diagonal in those coordinates. Powers of $B$ become easy because you only raise the two scalars to a power. That is why people hunt for these directions. They are a coordinate system adapted to the map. The factorization that makes this precise is $A = PDP^{-1}$, worked out with a 2 by 2 and a 3 by 3 check on <a href="diagonalization.html">diagonalization explained</a>.</p>
 
 <h2>When the plane has no real invariant line</h2>
 <p>A rotation by a right angle, $R=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$, sends $(1,0)$ to $(0,1)$ and $(0,1)$ to $(-1,0)$. No nonzero real vector stays on its own line. The characteristic polynomial is $\lambda^2+1=0$, with roots $\pm i$. Over the reals the map rotates and scales (here the scale is $1$). Over the complex numbers those roots are ordinary eigenvalues. A real matrix is allowed to have a conjugate pair. That is not a bug in the definition.</p>
@@ -329,7 +341,7 @@
 
 <h2>Why anyone cares</h2>
 <ul>
-<li><strong>Diagonalization.</strong> If you have a basis of eigenvectors, $A$ becomes a diagonal matrix in those coordinates. Powers and matrix exponentials become lists of scalar powers.</li>
+<li><strong>Diagonalization.</strong> If you have a basis of eigenvectors, $A$ becomes a diagonal matrix in those coordinates. Powers and matrix exponentials become lists of scalar powers. See <a href="diagonalization.html">when $A = PDP^{-1}$ exists</a> for the factorization, a worked 2 by 2, and a worked 3 by 3.</li>
 <li><strong>Discrete dynamics.</strong> For $\mathbf{x}_{n+1}=A\mathbf{x}_n$, eigenvalues decide growth, decay, and oscillation. A factor with $|\lambda|&gt;1$ amplifies that mode. A factor with $|\lambda|&lt;1$ damps it.</li>
 <li><strong>Continuous dynamics.</strong> For $\mathbf{x}'=A\mathbf{x}$, signs of real parts govern growth or decay. The section above names that link. Jacobians are where the same numbers describe a linear approximation.</li>
 <li><strong>Quadratic forms and variance.</strong> Symmetric matrices have an orthonormal eigenbasis. Principal axes of an ellipse, and principal components of a covariance, are the same geometry.</li>
@@ -362,7 +374,30 @@
 <li>MIT OpenCourseWare, 18.06 Linear Algebra. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" rel="noopener">ocw.mit.edu</a></li>
 <li>Khan Academy, eigenvalues and eigenvectors unit. <a href="https://www.khanacademy.org/math/linear-algebra/alternate-bases/eigen-everything/v/introduction-to-eigenvalues-and-eigenvectors" rel="noopener">khanacademy.org</a></li>
 </ul>
-<p>Last reviewed: 21 September 2026.</p>
+<p>Last reviewed: 19 November 2026.</p>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/diagonalization-brass-key-notebook.webp" width="1280" height="720" alt="A brass key resting on an open notebook with blank pages" loading="lazy" decoding="async">
+<h3><a href="diagonalization.html">Diagonalization explained</a></h3>
+<p>When $A = PDP^{-1}$ exists, with a 2 by 2 and a 3 by 3 check.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/change-of-basis-two-maps.webp" width="1280" height="720" alt="Two printed copies of the same coloured map at different angles on a table" loading="lazy" decoding="async">
+<h3><a href="change-of-basis.html">Change of basis explained</a></h3>
+<p>The matrix $P$ that converts coordinates between two bases.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/determinant-geometric-meaning-desk.webp" width="1280" height="720" alt="A desk with papers arranged for a geometry calculation" loading="lazy" decoding="async">
+<h3><a href="determinant-geometric-meaning.html">What a determinant means</a></h3>
+<p>Area and volume scale factor, and why zero means no inverse.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/linear-independence-whiteboard.webp" width="1280" height="720" alt="Vectors sketched on a whiteboard" loading="lazy" decoding="async">
+<h3><a href="linear-independence-explained.html">Linear independence explained</a></h3>
+<p>The pivot test that decides whether eigenvectors can fill a basis.</p>
+</article>
+</div>
 </div>
 
 <h2>Common questions</h2>
@@ -387,7 +422,30 @@
 <p>Use the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> for a quadratic characteristic polynomial. Use the <a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a> when the matrix is 3 by 3 and you want the characteristic polynomial, the eigenvalues, and a real eigenvector. Use the <a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a> or the <a href="../calculators/matrix-3x3.html">3 by 3 matrix calculator</a> for a determinant or an inverse. After you have a root, multiply to check.</p>
 </section>
 
-<div class="related"><h2>Related</h2><ul>
+<div class="related"><h2>Related</h2>
+<div class="card-grid" aria-label="Related tools and explainers">
+<article class="card">
+<img class="card-thumb" src="../images/diagonalization-brass-key-notebook.webp" width="1280" height="720" alt="A brass key resting on an open notebook with blank pages" loading="lazy" decoding="async">
+<h3><a href="diagonalization.html">Diagonalization explained</a></h3>
+<p>Build $P$ and $D$, then verify $AP = PD$.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/change-of-basis-two-maps.webp" width="1280" height="720" alt="Two printed copies of the same coloured map at different angles on a table" loading="lazy" decoding="async">
+<h3><a href="change-of-basis.html">Change of basis explained</a></h3>
+<p>Why $P^{-1}AP$ rewrites a map in a new basis.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/rank-nullity-lecture-hall.webp" width="1280" height="720" alt="An empty lecture hall with rows of desks" loading="lazy" decoding="async">
+<h3><a href="rank-nullity-theorem.html">The rank nullity theorem</a></h3>
+<p>Dimension counting beside eigenspace checks.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/basis-dimension-light-strands.webp" width="1280" height="720" alt="Glowing light strands suggesting coordinate directions" loading="lazy" decoding="async">
+<h3><a href="basis-and-dimension.html">Basis and dimension explained</a></h3>
+<p>Why a basis of eigenvectors needs $n$ independent directions.</p>
+</article>
+</div>
+<ul>
 <li><a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a></li>
 <li><a href="../calculators/eigenvalue-3x3.html">3x3 eigenvalue calculator</a></li>
 <li><a href="../calculators/matrix-2x2.html">2 by 2 matrix calculator</a></li>

@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-18",
-  "dateModified": "2026-11-18"
+  "dateModified": "2026-11-19"
 }
 </script>
 <script type="application/ld+json">
@@ -253,7 +253,7 @@
 <div class="callout"><strong>Direct check with the formula.</strong> $Q^{-1}P = \begin{pmatrix}\tfrac12 & 0\\0 & 1\end{pmatrix}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix} = \begin{pmatrix}\tfrac12 & \tfrac12\\1 & -1\end{pmatrix}$. Applying that to $[\mathbf{v}]_B = (2,1)$ from worked example 1: $\begin{pmatrix}\tfrac12 & \tfrac12\\1 & -1\end{pmatrix}\begin{pmatrix}2\\1\end{pmatrix} = \begin{pmatrix}\tfrac12(2)+\tfrac12(1)\\1(2)-1(1)\end{pmatrix} = \begin{pmatrix}\tfrac32\\1\end{pmatrix}$, matching $[\mathbf{v}]_C$ found directly. Both routes reach the same column by exact arithmetic.</div>
 
 <h2>A linear map in a new basis: similar matrices</h2>
-<p>If $A$ is the matrix of a linear map $T$ in standard coordinates, the matrix of the same map written in $B$ coordinates is $[T]_B = P^{-1}AP$. Margalit and Rabinoff's Interactive Linear Algebra calls $A$ and $P^{-1}AP$ <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">similar matrices</a> and shows that similar matrices describe the same map, only in different coordinate systems, and that they always share the same characteristic polynomial, hence the same <a href="eigenvalues-plain-language.html">eigenvalues</a>. Choosing $B$ to be a basis of eigenvectors is exactly what makes $P^{-1}AP$ diagonal, the payoff behind diagonalization: a diagonal matrix just scales each basis direction, which is as simple as a matrix can act.</p>
+<p>If $A$ is the matrix of a linear map $T$ in standard coordinates, the matrix of the same map written in $B$ coordinates is $[T]_B = P^{-1}AP$. Margalit and Rabinoff's Interactive Linear Algebra calls $A$ and $P^{-1}AP$ <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">similar matrices</a> and shows that similar matrices describe the same map, only in different coordinate systems, and that they always share the same characteristic polynomial, hence the same <a href="eigenvalues-plain-language.html">eigenvalues</a>. Choosing $B$ to be a basis of eigenvectors is exactly what makes $P^{-1}AP$ diagonal, the payoff behind <a href="diagonalization.html">diagonalization</a>: a diagonal matrix just scales each basis direction, which is as simple as a matrix can act. That page states when $A = PDP^{-1}$ exists and checks a 2 by 2 and a 3 by 3 factorization by exact arithmetic.</p>
 
 <h2>Worked example 2: a map that becomes diagonal</h2>
 <p>Let $A = \begin{pmatrix}2 & 1\\1 & 2\end{pmatrix}$ and reuse $B = \left\{\begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}1\\-1\end{pmatrix}\right\}$ and $P = \begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}$ from worked example 1. Multiply $A$ by each basis vector directly: $A\begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}2+1\\1+2\end{pmatrix} = \begin{pmatrix}3\\3\end{pmatrix} = 3\begin{pmatrix}1\\1\end{pmatrix}$, and $A\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}2-1\\1-2\end{pmatrix} = \begin{pmatrix}1\\-1\end{pmatrix} = 1\begin{pmatrix}1\\-1\end{pmatrix}$. Each basis vector of $B$ is an eigenvector of $A$, with eigenvalues $3$ and $1$. The <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> reports those same two roots from the trace $4$ and determinant $3$ of $A$.</p>
@@ -282,7 +282,7 @@
 <ul>
 <li><a href="basis-and-dimension.html">Basis and dimension of a vector space explained</a> and <a href="what-is-a-vector-space.html">what is a vector space?</a></li>
 <li><a href="linear-independence-explained.html">Linear independence explained</a> and <a href="determinant-geometric-meaning.html">what a determinant means geometrically</a></li>
-<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a> and <a href="gram-schmidt-process.html">the Gram Schmidt process explained</a></li>
+<li><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a>, <a href="diagonalization.html">diagonalization explained</a>, and <a href="gram-schmidt-process.html">the Gram Schmidt process explained</a></li>
 <li><a href="orthogonal-projection-least-squares.html">Orthogonal projection and least squares explained</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem explained</a></li>
 <li><a href="../topics/linear-algebra.html">Linear algebra topic map</a></li>
 <li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#matrix">matrix</a>, <a href="../glossary/#linear-independence">linear independence</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
