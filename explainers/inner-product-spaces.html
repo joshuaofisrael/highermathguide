@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is an Inner Product? Dot Product vs Cauchy Schwarz</title>
+<meta name="description" content="Inner products explained: four properties, a weighted product that can disagree with the dot product, and Cauchy Schwarz checked exactly.">
+<link rel="canonical" href="https://highermathguide.com/explainers/inner-product-spaces.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="What Is an Inner Product? Dot Product vs Cauchy Schwarz">
+<meta property="og:description" content="Inner products explained: four properties, a weighted product that can disagree with the dot product, and Cauchy Schwarz checked exactly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/inner-product-spaces.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/inner-product-spaces-blackboard.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="A framed chalkboard with a chalk arc and a straight chord between two small circles">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Is an Inner Product? Dot Product vs Cauchy Schwarz">
+<meta name="twitter:description" content="Inner products explained: four properties, a weighted product that can disagree with the dot product, and Cauchy Schwarz checked exactly.">
+<meta name="twitter:image" content="https://highermathguide.com/images/inner-product-spaces-blackboard.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What is an inner product? Dot product versus Cauchy Schwarz",
+  "description": "Inner products explained: four properties, a weighted product that can disagree with the dot product, and Cauchy Schwarz checked exactly.",
+  "url": "https://highermathguide.com/explainers/inner-product-spaces.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/inner-product-spaces-blackboard.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/inner-product-spaces.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an inner product in one sentence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a product of two vectors that returns a scalar, is symmetric (conjugate symmetric over the complex numbers), is linear in the first vector, is never negative when a vector is multiplied by itself, and is zero in that case only for the zero vector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the dot product the only inner product on the plane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The dot product is the standard one. Any symmetric matrix S with positive eigenvalues defines another product by x transpose S y. On this page, S equal to the diagonal matrix with 2 and 1 makes (1, 1) and (1, negative 2) orthogonal, while their dot product is negative 1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you check Cauchy Schwarz without square roots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Square both sides. For the dot product of (1, 2) and (2, 1) the test is 16 less than or equal to 25. For the weighted product 2 x1 x2 plus y1 y2 the same vectors give 36 less than or equal to 54. Equality of those two integers holds when one vector is a scalar multiple of the other, as with (1, 2) and (3, 6), where both sides are 324."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which calculator on this site knows a custom inner product?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "None of them. The vector operations calculator and the Gram Schmidt calculator both use the ordinary dot product. You can still type the matrix S into the 2 by 2 eigenvalue calculator and check that its eigenvalues are positive, which is the test that x transpose S y is an inner product."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/inner-product-spaces.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Linear algebra",
+      "item": "https://highermathguide.com/topics/linear-algebra.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Inner products",
+      "item": "https://highermathguide.com/explainers/inner-product-spaces.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>What is an inner product? Dot product versus Cauchy Schwarz</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 20 Nov 2026</p>
+</header>
+<figure class="article-figure">
+<img src="../images/inner-product-spaces-blackboard.webp" alt="A framed chalkboard with a chalk arc and a straight chord between two small circles" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>A chalk arc and the straight chord between its ends. Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p><strong>An inner product</strong> is a product of two vectors that returns a scalar and obeys four rules: symmetry, linearity in the first argument, a value that is never negative when a vector is paired with itself, and that value equal to zero only for the zero vector. The ordinary <a href="../glossary/#inner-product">dot product</a> is the standard inner product on $\mathbb{R}^n$. It is not the only one. On the same two arrows, a weighted product can report a different angle, and it can report a right angle where the dot product does not. Cauchy Schwarz is the inequality that keeps those angles inside a legal cosine. This page states the four rules, checks a weighted product by exact arithmetic, and checks the inequality the same way, with no decimal approximation.</p>
+
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="./">Explainers</a>
+ · <a href="../topics/linear-algebra.html">Linear algebra</a>
+ · <span aria-current="page">Inner products</span>
+</nav>
+
+<h2>The four properties</h2>
+<p>Sergei Treil's open notes <a href="https://www.math.brown.edu/streil/papers/LADW/LADW_2017-09-04.pdf" rel="noopener noreferrer">Linear Algebra Done Wrong</a>, Chapter 5, Section 1.3, define an inner product on a real or complex vector space as a scalar assigned to each pair of vectors so that four properties hold. Writing $(\mathbf{x},\mathbf{y})$ for the product:</p>
+<ol>
+<li><strong>Symmetry.</strong> Over the reals, $(\mathbf{x},\mathbf{y})=(\mathbf{y},\mathbf{x})$. Over the complex numbers the matching rule is conjugate symmetry, $(\mathbf{x},\mathbf{y})=\overline{(\mathbf{y},\mathbf{x})}$.</li>
+<li><strong>Linearity in the first slot.</strong> $(\alpha\mathbf{x}+\beta\mathbf{y},\mathbf{z})=\alpha(\mathbf{x},\mathbf{z})+\beta(\mathbf{y},\mathbf{z})$ for scalars $\alpha$ and $\beta$.</li>
+<li><strong>Never negative on a repeated vector.</strong> $(\mathbf{x},\mathbf{x})\ge 0$.</li>
+<li><strong>Zero only at zero.</strong> $(\mathbf{x},\mathbf{x})=0$ exactly when $\mathbf{x}=\mathbf{0}$.</li>
+</ol>
+<p>The length, or norm, is then $\|\mathbf{x}\|=\sqrt{(\mathbf{x},\mathbf{x})}$. A vector space carrying one of these products is an inner product space. The first two properties force linearity in the second slot as well, up to a conjugate when the scalars are complex. Treil records that consequence as property $2'$ in the same section.</p>
+<div class="callout"><strong>Where the conjugate sits.</strong>
+<p>For real vectors the conjugate does nothing, so every author agrees. For complex vectors they do not. Treil's Section 1.2 sets $(\mathbf{z},\mathbf{w})=\mathbf{w}^{*}\mathbf{z}$, with the conjugate on the second vector. Gilbert Strang, in the <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-26-complex-matrices-fast-fourier-transform/" rel="noopener noreferrer">MIT OpenCourseWare 18.06 Lecture 26</a> transcript, says the real product was $\mathbf{y}^{\mathsf T}\mathbf{x}$ and the complex product is $\mathbf{y}^{\mathsf H}\mathbf{x}$, with the conjugate on the first vector of that pair. The two formulas are conjugates of each other. This page does every numerical check over the reals, where the disagreement disappears.</p></div>
+
+<h2>The dot product is one inner product</h2>
+<p>Jim Hefferon's open textbook <a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">Linear Algebra</a>, Section II.2 (the PDF copy used here is the one hosted with the book), Definition 2.3, defines the dot product of two real vectors with the same number of components by</p>
+<p>$$\mathbf{u}\cdot\mathbf{v}=u_1 v_1+u_2 v_2+\cdots+u_n v_n.$$</p>
+<p>He calls this the dot product, or inner product, or scalar product. The square of the length is the repeated product: $\mathbf{u}\cdot\mathbf{u}=|\mathbf{u}|^2$. Symmetry is the commute of ordinary multiplication. Exercise 2.38 on that page asks the reader to check linearity. The repeated product $u_1^2+\cdots+u_n^2$ is a sum of squares, so it is never negative, and it is zero only when every component is zero. So the four properties hold, and the dot product is an inner product. It is the one the <a href="../calculators/vector-ops.html">vector operations calculator</a> and the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> actually compute. Neither tool accepts a different formula.</p>
+
+<h2>A weighted product that still qualifies</h2>
+<p>Let $S=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}$ and define</p>
+<p>$$\langle\mathbf{x},\mathbf{y}\rangle_S=\mathbf{x}^{\mathsf T} S\mathbf{y}=2x_1 y_1+x_2 y_2.$$</p>
+<p>$S$ is symmetric. Its eigenvalues are the diagonal entries $2$ and $1$, both positive. The characteristic polynomial is $\lambda^2-3\lambda+2=(\lambda-2)(\lambda-1)$, which the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> will match from the trace $3$ and the determinant $2$. Strang's <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/4d876a9159e32543eb0d73b4d4382f4c_MIT18_06S10ZoomNotes.pdf" rel="noopener noreferrer">18.06 ZoomNotes</a> list two tests for a symmetric matrix to be positive definite: every eigenvalue positive, and the energy $\mathbf{x}^{\mathsf T} S\mathbf{x}$ positive for every nonzero $\mathbf{x}$. Here the energy is $2x_1^2+x_2^2$, which is exactly $\langle\mathbf{x},\mathbf{x}\rangle_S$. It is zero only at the origin. Symmetry and linearity are the matching properties of matrix multiplication. So $\langle\,,\,\rangle_S$ is an inner product, and it is not the dot product: the first coordinate is counted twice.</p>
+<p>Linearity is an identity, but it is worth seeing on numbers. Take $\mathbf{a}=(1,2)$, $\mathbf{b}=(2,1)$, and $\mathbf{w}=(0,1)$. Then $3\mathbf{a}+4\mathbf{w}=(3,10)$ and</p>
+<p>$$\langle(3,10),\mathbf{b}\rangle_S=2\cdot 3\cdot 2+10\cdot 1=22.$$</p>
+<p>The split version is $3\langle\mathbf{a},\mathbf{b}\rangle_S+4\langle\mathbf{w},\mathbf{b}\rangle_S=3\cdot 6+4\cdot 1=22$. Same integer, both ways.</p>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/gram-schmidt-gold-traces.webp" width="1280" height="720" alt="Gold circuit traces branching across a dark blue board, lit by small glowing points" loading="lazy" decoding="async">
+<h3><a href="gram-schmidt-process.html">The Gram Schmidt process</a></h3>
+<p>Orthogonalizing a list with the ordinary dot product, which is one inner product among several.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/orthogonal-projection-blackboard.webp" width="1280" height="720" alt="A green classroom blackboard with a smooth chalk curve crossing a straight horizontal chalk line" loading="lazy" decoding="async">
+<h3><a href="orthogonal-projection-least-squares.html">Orthogonal projection and least squares</a></h3>
+<p>The normal equations use the same dot product. A different product moves the foot of the perpendicular.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/change-of-basis-two-maps.webp" width="1280" height="720" alt="Two printed copies of the same coloured map at different angles on a table" loading="lazy" decoding="async">
+<h3><a href="change-of-basis.html">Change of basis explained</a></h3>
+<p>Why an orthonormal basis makes $P^{-1}$ equal to $P^{\mathsf T}$, and which product that word orthonormal refers to.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard with handwritten matrices and linear algebra notes" loading="lazy" decoding="async">
+<h3><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></h3>
+<p>The stretch factors that decide whether a symmetric matrix can define an inner product.</p>
+</article>
+</div>
+
+<h2>Same arrows, two angles</h2>
+<p>Keep $\mathbf{a}=(1,2)$ and $\mathbf{b}=(2,1)$. The dot product is $1\cdot 2+2\cdot 1=4$, and each squared length is $1+4=5$. The weighted product is $2\cdot 1\cdot 2+2\cdot 1=6$, with squared lengths $2\cdot 1+4=6$ and $2\cdot 4+1=9$. The cosine of the angle is the product divided by the two lengths, so the squared cosine avoids the square roots:</p>
+<table class="stat-table">
+<thead>
+<tr><th>Check</th><th>Dot product</th><th>Weighted product</th></tr>
+</thead>
+<tbody>
+<tr><td>Product of $(1,2)$ and $(2,1)$</td><td>$4$</td><td>$6$</td></tr>
+<tr><td>Squared lengths</td><td>$5$ and $5$</td><td>$6$ and $9$</td></tr>
+<tr><td>Squared cosine</td><td>$16/25$</td><td>$36/54=2/3$</td></tr>
+<tr><td>Product of $(1,1)$ and $(1,-2)$</td><td>$-1$</td><td>$0$</td></tr>
+</tbody>
+</table>
+<p>$16/25=0.64$ and $2/3\approx 0.666\ldots$ are close, but they are not the same angle. The second row of the table is the sharper disagreement. Under the dot product, $(1,1)$ and $(1,-2)$ are not perpendicular, because $1+(-2)=-1$. Under the weighted product, $2\cdot 1\cdot 1+1\cdot(-2)=0$, so they are perpendicular. Orthogonality is a statement about a chosen product. It is not a property of the two arrows alone.</p>
+<p>Hefferon's Definition 2.7 builds the angle from the dot product, and Corollary 2.8 says two vectors in $\mathbb{R}^n$ are orthogonal exactly when that dot product is zero. Both sentences are about the standard product. Swap the product and the right angle moves.</p>
+
+<aside class="callout" aria-label="Check another pair">
+<strong>Check another pair.</strong>
+<p>Take $(3,1)$ and $(1,3)$. The dot product is $6$, and the squared cosine is $36/100=9/25$. The weighted product is $2\cdot 3\cdot 1+1\cdot 3=9$, the squared lengths are $19$ and $11$, and the squared cosine is $81/209$. Confirm the dot product $6$ on the <a href="../calculators/vector-ops.html">vector operations calculator</a>. That page will not compute $81/209$, because it does not know $S$. For a list of vectors turned orthogonal under the dot product only, use the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> beside the <a href="gram-schmidt-process.html">Gram Schmidt explainer</a>.</p>
+</aside>
+
+<h2>Cauchy Schwarz, checked by integers</h2>
+<p>Hefferon's Corollary 2.6, the Cauchy Schwarz inequality for the dot product on $\mathbb{R}^n$, says $|\mathbf{u}\cdot\mathbf{v}|\le|\mathbf{u}|\,|\mathbf{v}|$, with equality exactly when one vector is a scalar multiple of the other. Treil's Theorem 1.7 states the same size bound for a general inner product: $|(\mathbf{x},\mathbf{y})|\le\|\mathbf{x}\|\,\|\mathbf{y}\|$. Squaring both sides, since both are nonnegative, turns the bound into an integer comparison.</p>
+<div class="callout"><strong>Dot product of $(1,2)$ and $(2,1)$.</strong>
+<p>$(\mathbf{a}\cdot\mathbf{b})^2=16$ and $|\mathbf{a}|^2|\mathbf{b}|^2=25$. And $16\le 25$.</p></div>
+<div class="callout"><strong>Weighted product of the same pair.</strong>
+<p>$\langle\mathbf{a},\mathbf{b}\rangle_S^2=36$ and $\langle\mathbf{a},\mathbf{a}\rangle_S\langle\mathbf{b},\mathbf{b}\rangle_S=6\cdot 9=54$. And $36\le 54$.</p></div>
+<p>Equality is the interesting edge. Let $\mathbf{c}=3\mathbf{a}=(3,6)$. Then $\langle\mathbf{a},\mathbf{c}\rangle_S=2\cdot 1\cdot 3+2\cdot 6=18$ and $\langle\mathbf{c},\mathbf{c}\rangle_S=2\cdot 9+36=54$, so both sides of the squared inequality are $18^2=324$ and $6\cdot 54=324$. One vector is a scalar multiple of the other, which is Hefferon's equality case for the dot product, and the weighted integers match too.</p>
+<p>Treil's proof of Theorem 1.7, in the real case, is the quadratic that has to stay nonnegative. For every real $t$,</p>
+<p>$$0\le\langle\mathbf{a}-t\mathbf{b},\mathbf{a}-t\mathbf{b}\rangle_S=6-12t+9t^2.$$</p>
+<p>The $t$ that Treil plugs in is the product divided by the second squared length, $t=6/9=2/3$. The quadratic there equals $6-8+4=2$. The same remainder falls out of the inequality itself: $6-36/9=2$. The gap of $2$ is $54-36$ divided by $9$, so the quadratic check and the integer check are one fact written two ways.</p>
+
+<h2>What changes downstream</h2>
+<p>The <a href="gram-schmidt-process.html">Gram Schmidt process</a> subtracts projections whose coefficients are dot products. Replace every dot with $\langle\,,\,\rangle_S$ and you orthogonalize for the weighted geometry instead. The vectors that come out perpendicular for $S$ need not be perpendicular for the dot product. The <a href="orthogonal-projection-least-squares.html">least squares</a> normal equations $A^{\mathsf T}A\hat{\mathbf{x}}=A^{\mathsf T}\mathbf{b}$ are the same story: the transpose encodes the dot product. A different product replaces those transposes.</p>
+<p>On <a href="change-of-basis.html">change of basis</a>, an orthonormal basis is the case $P^{-1}=P^{\mathsf T}$. "Normal" means length $1$, and "ortho" means the product of distinct columns is zero. Both sentences use whichever inner product you fixed before you started. The ordinary dot product is the one that page checks with fractions. <a href="diagonalization.html">Diagonalization</a> of a real symmetric matrix produces an eigenbasis that is orthonormal for that same dot product. The eigenvalues of $S$ being positive is what let $S$ define a product in the first place. Those stretch factors are the subject of <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a>.</p>
+<p>None of this replaces the <a href="what-is-a-vector-space.html">vector space axioms</a> or the <a href="basis-and-dimension.html">basis and dimension</a> count. An inner product is extra structure on a space that already has addition and scaling. <a href="linear-independence-explained.html">Linear independence</a> does not mention a product. A set can be independent and still fail to be orthogonal.</p>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>For $\mathbf{u}=(1,-1)$ and $\mathbf{v}=(1,2)$, compute the dot product and $\langle\mathbf{u},\mathbf{v}\rangle_S=2u_1 v_1+u_2 v_2$. One of them is zero. Which one?</li>
+<li>Show $\langle(x,y),(x,y)\rangle_S=0$ forces $x=0$ and $y=0$, using that a sum of a nonnegative term and a square is zero only when both are zero.</li>
+<li>For $\mathbf{a}=(1,2)$ and $\mathbf{c}=(3,6)$, check that the dot product form of Cauchy Schwarz is also an equality, by comparing $(\mathbf{a}\cdot\mathbf{c})^2$ with $|\mathbf{a}|^2|\mathbf{c}|^2$.</li>
+</ol>
+<p>Answers, so the check is not a guess. For the first, the dot product is $1+(-2)=-1$, and the weighted product is $2\cdot 1\cdot 1+(-1)\cdot 2=0$. For the third, $\mathbf{a}\cdot\mathbf{c}=1\cdot 3+2\cdot 6=15$ and $|\mathbf{a}|^2|\mathbf{c}|^2=5\cdot 45=225$, and $15^2=225$.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Treating orthogonality as a picture you can see without a formula.</strong> $(1,1)$ and $(1,-2)$ look unrelated to a right angle in the usual grid, and the weighted product still says they are perpendicular. Name the product before you say the word orthogonal.</li>
+<li><strong>Using the Gram Schmidt calculator on a weighted problem.</strong> That tool, and the <a href="../calculators/vector-ops.html">vector operations calculator</a>, use the dot product. A zero on the screen is a zero dot product, not a zero of $\langle\,,\,\rangle_S$.</li>
+<li><strong>Dropping the squares in Cauchy Schwarz.</strong> The bound is on the absolute value of the product, against the product of the lengths. Comparing $6$ with $6\cdot 9$ is the wrong test. Comparing $36$ with $54$ is the right one.</li>
+<li><strong>Importing a complex formula into a real calculation.</strong> Strang's Hermitian product and Treil's $\mathbf{w}^{*}\mathbf{z}$ disagree about which slot gets the conjugate. On real entries both collapse to the dot product, so the disagreement is invisible until a component is actually complex.</li>
+</ul>
+
+<h2>Where this fits</h2>
+<p>This explainer sits in the linear algebra cluster after <a href="what-is-a-vector-space.html">what is a vector space</a> and <a href="basis-and-dimension.html">basis and dimension</a>, beside <a href="gram-schmidt-process.html">Gram Schmidt</a> and <a href="orthogonal-projection-least-squares.html">orthogonal projection</a>. The map is the <a href="../topics/linear-algebra.html">linear algebra topic</a>, and a study order is the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a>. A <a href="determinant-geometric-meaning.html">determinant</a> tells you whether the columns of $S$ give a positive area scale. For this diagonal $S$ the determinant is $2$, which matches the product of the eigenvalues.</p>
+
+<h2>Sources and further reading</h2>
+<ul>
+<li>Jim Hefferon, Linear Algebra, Section II.2 Length and Angle Measures, Definition 2.3, Corollary 2.6, Definition 2.7, Corollary 2.8, and Exercise 2.38. <a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">hefferon.net/linearalgebra</a>, with the book PDF at <a href="https://jheffero.w3.uvm.edu/linearalgebra/book.pdf" rel="noopener noreferrer">jheffero.w3.uvm.edu</a> (accessed 20 Nov 2026)</li>
+<li>Sergei Treil, Linear Algebra Done Wrong, Chapter 5, Sections 1.2 and 1.3 and Theorem 1.7. <a href="https://www.math.brown.edu/streil/papers/LADW/LADW_2017-09-04.pdf" rel="noopener noreferrer">math.brown.edu</a> (accessed 20 Nov 2026)</li>
+<li>Gilbert Strang, MIT OpenCourseWare 18.06 Lecture 26 transcript, complex inner product as $\mathbf{y}^{\mathsf H}\mathbf{x}$. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-26-complex-matrices-fast-fourier-transform/" rel="noopener noreferrer">ocw.mit.edu</a> (accessed 20 Nov 2026)</li>
+<li>Gilbert Strang, MIT OpenCourseWare 18.06 ZoomNotes, positive definite tests: all eigenvalues positive, and $\mathbf{x}^{\mathsf T}S\mathbf{x}&gt;0$ for every nonzero $\mathbf{x}$. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/4d876a9159e32543eb0d73b4d4382f4c_MIT18_06S10ZoomNotes.pdf" rel="noopener noreferrer">ocw.mit.edu</a> (accessed 20 Nov 2026)</li>
+</ul>
+<p>Last reviewed: 20 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="one-sentence">
+<h3>What is an inner product in one sentence?</h3>
+<p>It is a product of two vectors that returns a scalar, is symmetric (conjugate symmetric over the complex numbers), is linear in the first vector, is never negative when a vector is multiplied by itself, and is zero in that case only for the zero vector.</p>
+</section>
+<section class="faq-item" id="only-dot">
+<h3>Is the dot product the only inner product on the plane?</h3>
+<p>No. The dot product is the standard one. Any symmetric matrix $S$ with positive eigenvalues defines another product by $\mathbf{x}^{\mathsf T} S\mathbf{y}$. On this page, $S$ equal to the diagonal matrix with $2$ and $1$ makes $(1,1)$ and $(1,-2)$ orthogonal, while their dot product is $-1$.</p>
+</section>
+<section class="faq-item" id="check-cs">
+<h3>How do you check Cauchy Schwarz without square roots?</h3>
+<p>Square both sides. For the dot product of $(1,2)$ and $(2,1)$ the test is $16$ less than or equal to $25$. For the weighted product $2x_1 x_2+y_1 y_2$ the same vectors give $36$ less than or equal to $54$. Equality of those two integers holds when one vector is a scalar multiple of the other, as with $(1,2)$ and $(3,6)$, where both sides are $324$.</p>
+</section>
+<section class="faq-item" id="which-calculator">
+<h3>Which calculator on this site knows a custom inner product?</h3>
+<p>None of them. The <a href="../calculators/vector-ops.html">vector operations calculator</a> and the <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> both use the ordinary dot product. You can still type the matrix $S$ into the <a href="../calculators/eigenvalue-2x2.html">2 by 2 eigenvalue calculator</a> and check that its eigenvalues are positive, which is the test that $\mathbf{x}^{\mathsf T} S\mathbf{y}$ is an inner product.</p>
+</section>
+
+<h2>Related reading</h2>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/diagonalization-brass-key-notebook.webp" width="1280" height="720" alt="A brass key resting on an open notebook with blank pages" loading="lazy" decoding="async">
+<h3><a href="diagonalization.html">Diagonalization explained</a></h3>
+<p>A real symmetric matrix has an eigenbasis that is orthonormal for the dot product.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/basis-dimension-light-strands.webp" width="1280" height="720" alt="Glowing purple and cyan light strands curving through darkness" loading="lazy" decoding="async">
+<h3><a href="basis-and-dimension.html">Basis and dimension explained</a></h3>
+<p>A basis is independent and spanning. An inner product is extra structure on top of that.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/vector-space-glowing-cube.webp" width="1280" height="720" alt="A glowing wireframe cube floating above an open palm in darkness" loading="lazy" decoding="async">
+<h3><a href="what-is-a-vector-space.html">What is a vector space?</a></h3>
+<p>The addition and scaling rules that an inner product assumes are already in place.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/linear-independence-whiteboard.webp" width="1280" height="720" alt="Three people seen from behind studying a large whiteboard covered in abstract arrows and circles in a bright office" loading="lazy" decoding="async">
+<h3><a href="linear-independence-explained.html">Linear independence explained</a></h3>
+<p>Independence does not mention a product. Orthogonal sets are a special kind of independent set.</p>
+</article>
+</div>
+<ul>
+<li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course</a></li>
+<li><a href="../glossary/#inner-product">Glossary: inner product</a>, <a href="./">all explainers</a>, and the <a href="../sources/">sources</a> page</li>
+</ul>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
+

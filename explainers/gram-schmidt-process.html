@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-15",
-  "dateModified": "2026-11-15"
+  "dateModified": "2026-11-20"
 }
 </script>
 <script type="application/ld+json">
@@ -216,8 +216,8 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>The Gram Schmidt process explained</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 15 November 2026.</p>
-<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 15 Nov 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 20 Nov 2026</p>
 </header>
 <figure class="article-photo">
 <img src="../images/gram-schmidt-gold-traces.webp" alt="Gold circuit traces branching across a dark blue board, lit by small glowing points" width="1280" height="720" loading="lazy" decoding="async">
@@ -225,6 +225,7 @@
 </figure>
 <div class="article-body">
 <p>The <strong>Gram Schmidt process</strong> takes any <a href="basis-and-dimension.html">basis</a> of a subspace of $\mathbb{R}^n$ and turns it, one vector at a time, into an <strong>orthogonal basis</strong> for the same subspace: a basis whose vectors are all perpendicular to each other. The idea is simple. Keep the first vector. From each later vector, subtract its shadow (its projection) on the directions you already have, and keep what is left. Divide each result by its length and you have an <strong>orthonormal basis</strong>.</p>
+<p>Every dot on this page is the ordinary inner product. A weighted product can move which pairs are perpendicular. The four properties, and an exact numerical check of that disagreement, are on <a href="inner-product-spaces.html">inner product spaces</a>.</p>
 
 <h2>Without the fog</h2>
 <p>Imagine two arrows that point in roughly the same direction. They span a plane, but they overlap: part of the second arrow repeats the first. Gram Schmidt removes the overlap. It splits the second arrow into a piece along the first arrow and a piece at right angles to it, and keeps only the right angle piece. Nothing is lost, because the piece you threw away was already reachable from the first arrow.</p>
@@ -236,6 +237,29 @@
 <li><strong>Coordinates become dot products.</strong> Margalit and Rabinoff's Interactive Linear Algebra (Section 6.4) gives the recipe: if $\{\mathbf{u}_1, \dots, \mathbf{u}_m\}$ is an orthogonal basis and $\mathbf{x}$ is in the subspace, the coordinate on $\mathbf{u}_i$ is $\dfrac{\mathbf{x}\cdot\mathbf{u}_i}{\mathbf{u}_i\cdot\mathbf{u}_i}$. No row reduction is needed. With an orthonormal basis the coordinate is just $\mathbf{x}\cdot\mathbf{u}_i$.</li>
 <li><strong>Projections become a sum.</strong> The same section's Projection Formula writes the projection of any $\mathbf{x}$ onto the subspace as the sum of those terms times $\mathbf{u}_i$, again only when the basis is orthogonal.</li>
 </ul>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/inner-product-spaces-blackboard.webp" width="1280" height="720" alt="A framed chalkboard with a chalk arc and a straight chord between two small circles" loading="lazy" decoding="async">
+<h3><a href="inner-product-spaces.html">Inner product spaces</a></h3>
+<p>Why a weighted product can call a different pair orthogonal than the dots on this page.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/orthogonal-projection-blackboard.webp" width="1280" height="720" alt="A green classroom blackboard with a smooth chalk curve crossing a straight horizontal chalk line" loading="lazy" decoding="async">
+<h3><a href="orthogonal-projection-least-squares.html">Orthogonal projection and least squares</a></h3>
+<p>Reuse an orthogonal basis to project, then meet the normal equations when the basis is not orthogonal.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/change-of-basis-two-maps.webp" width="1280" height="720" alt="Two printed copies of the same coloured map at different angles on a table" loading="lazy" decoding="async">
+<h3><a href="change-of-basis.html">Change of basis explained</a></h3>
+<p>An orthonormal basis makes the change of basis inverse a transpose.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/basis-dimension-light-strands.webp" width="1280" height="720" alt="Glowing purple and cyan light strands curving through darkness" loading="lazy" decoding="async">
+<h3><a href="basis-and-dimension.html">Basis and dimension explained</a></h3>
+<p>The spanning independent set this process rewrites, without changing the subspace.</p>
+</article>
+</div>
 
 <h2>The process, step by step</h2>
 <p>Start with a basis $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_m$ of a subspace $W$. Define</p>
@@ -296,8 +320,30 @@
 <li><a href="what-is-a-vector-space.html">What is a vector space?</a> and <a href="rank-nullity-theorem.html">the rank nullity theorem</a></li>
 <li><a href="row-reduction-rref-intuition.html">Row reduction (RREF) intuition</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
 <li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
-<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#vector">vector</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#vector">vector</a>, <a href="../glossary/#inner-product">inner product</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
 </ul>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/inner-product-spaces-blackboard.webp" width="1280" height="720" alt="A framed chalkboard with a chalk arc and a straight chord between two small circles" loading="lazy" decoding="async">
+<h3><a href="inner-product-spaces.html">Inner product spaces</a></h3>
+<p>The dot product is one inner product. Cauchy Schwarz for a second product, checked by integers.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/linear-independence-whiteboard.webp" width="1280" height="720" alt="Three people seen from behind studying a large whiteboard covered in abstract arrows and circles in a bright office" loading="lazy" decoding="async">
+<h3><a href="linear-independence-explained.html">Linear independence explained</a></h3>
+<p>Why a zero remainder in Gram Schmidt means the next vector was redundant.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/diagonalization-brass-key-notebook.webp" width="1280" height="720" alt="A brass key resting on an open notebook with blank pages" loading="lazy" decoding="async">
+<h3><a href="diagonalization.html">Diagonalization explained</a></h3>
+<p>A real symmetric matrix has an eigenbasis that is orthonormal for the dot product.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard with handwritten matrices and linear algebra notes" loading="lazy" decoding="async">
+<h3><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></h3>
+<p>The stretch factors behind that symmetric eigenbasis.</p>
+</article>
+</div>
 
 <h2>Related tools</h2>
 <p>The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> runs the process with steps for vectors you enter, so you can check the worked examples above. Work one small example by hand first, then check.</p>
@@ -309,7 +355,7 @@
 <li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 17: Orthogonal matrices and Gram Schmidt (retrieved 15 Nov 2026)</a></li>
 </ul>
 
-<p>Last reviewed: 15 November 2026.</p>
+<p>Last reviewed: 20 November 2026.</p>
 
 <h2 id="faq">Common questions</h2>
 <section class="faq-item" id="what-is-gram-schmidt">

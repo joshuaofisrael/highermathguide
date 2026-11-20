@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-16",
-  "dateModified": "2026-11-16"
+  "dateModified": "2026-11-20"
 }
 </script>
 <script type="application/ld+json">
@@ -216,8 +216,8 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Orthogonal projection and least squares explained</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 16 November 2026.</p>
-<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 16 Nov 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 20 Nov 2026</p>
 </header>
 <figure class="article-photo">
 <img src="../images/orthogonal-projection-blackboard.webp" alt="A green classroom blackboard with a smooth chalk curve crossing a straight horizontal chalk line" width="1280" height="720" loading="lazy" decoding="async">
@@ -264,6 +264,30 @@
 
 <h2>When is A^T A invertible?</h2>
 <p>Strang's MIT 18.06 Lecture 16 transcript gives the short proof that makes everything above work: if $A^{T}A\mathbf{x}=\mathbf{0}$, multiply both sides on the left by $\mathbf{x}^{T}$ to get $\mathbf{x}^{T}A^{T}A\mathbf{x}=(A\mathbf{x})\cdot(A\mathbf{x})=0$. A dot product of a vector with itself is zero only for the zero vector, so $A\mathbf{x}=\mathbf{0}$. If the columns of $A$ are <a href="linear-independence-explained.html">linearly independent</a>, the only vector in the null space of $A$ is $\mathbf{0}$, which forces $\mathbf{x}=\mathbf{0}$ too, and a matrix whose null space is only the zero vector is invertible by the <a href="rank-nullity-theorem.html">rank nullity theorem</a>'s count of pivots. So $A^{T}A$ is invertible exactly when the columns of $A$ are linearly independent, which is also when the least squares solution $\mathbf{x}$ is unique, even though the projection $\hat{\mathbf{b}}$ onto the column space is always unique regardless.</p>
+<p>The dot product in that proof is the standard inner product. A symmetric matrix with positive eigenvalues defines a different product, and the normal equations change with it. See <a href="inner-product-spaces.html">inner product spaces</a>.</p>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/inner-product-spaces-blackboard.webp" width="1280" height="720" alt="A framed chalkboard with a chalk arc and a straight chord between two small circles" loading="lazy" decoding="async">
+<h3><a href="inner-product-spaces.html">Inner product spaces</a></h3>
+<p>The dot product in the normal equations is one choice. A weighted product moves the right angle.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/gram-schmidt-gold-traces.webp" width="1280" height="720" alt="Gold circuit traces branching across a dark blue board, lit by small glowing points" loading="lazy" decoding="async">
+<h3><a href="gram-schmidt-process.html">The Gram Schmidt process</a></h3>
+<p>Build the orthogonal basis this page reuses before it writes a projection as a sum.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/change-of-basis-two-maps.webp" width="1280" height="720" alt="Two printed copies of the same coloured map at different angles on a table" loading="lazy" decoding="async">
+<h3><a href="change-of-basis.html">Change of basis explained</a></h3>
+<p>The same orthonormal shortcut, written as a change of coordinates.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/linear-independence-whiteboard.webp" width="1280" height="720" alt="Three people seen from behind studying a large whiteboard covered in abstract arrows and circles in a bright office" loading="lazy" decoding="async">
+<h3><a href="linear-independence-explained.html">Linear independence explained</a></h3>
+<p>Why independent columns are exactly the case when the least squares solution is unique.</p>
+</article>
+</div>
 
 <h2>Common mistakes</h2>
 <ul>
@@ -282,8 +306,30 @@
 <li><a href="determinant-geometric-meaning.html">What a determinant means geometrically</a> and <a href="eigenvalues-plain-language.html">eigenvalues in plain language</a></li>
 <li><a href="change-of-basis.html">Change of basis explained</a>, where the orthonormal shortcut used here for projection also simplifies the change of basis matrix</li>
 <li><a href="../topics/linear-algebra.html">Linear algebra topic map</a> and the <a href="../pathways/linear-algebra-first-course.html">linear algebra first course pathway</a></li>
-<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#vector">vector</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
+<li><a href="../glossary/#basis">Glossary: basis</a>, <a href="../glossary/#span">span</a>, <a href="../glossary/#vector">vector</a>, <a href="../glossary/#inner-product">inner product</a>, <a href="./">all explainers</a> and the <a href="../sources/">sources</a> page</li>
 </ul>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/inner-product-spaces-blackboard.webp" width="1280" height="720" alt="A framed chalkboard with a chalk arc and a straight chord between two small circles" loading="lazy" decoding="async">
+<h3><a href="inner-product-spaces.html">Inner product spaces</a></h3>
+<p>Four properties, then Cauchy Schwarz for a product that is not the dot product.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/diagonalization-brass-key-notebook.webp" width="1280" height="720" alt="A brass key resting on an open notebook with blank pages" loading="lazy" decoding="async">
+<h3><a href="diagonalization.html">Diagonalization explained</a></h3>
+<p>Symmetric matrices, eigenbases, and the dot product those bases are orthonormal for.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/basis-dimension-light-strands.webp" width="1280" height="720" alt="Glowing purple and cyan light strands curving through darkness" loading="lazy" decoding="async">
+<h3><a href="basis-and-dimension.html">Basis and dimension explained</a></h3>
+<p>What it means for the columns of A to be a basis of the column space.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard with handwritten matrices and linear algebra notes" loading="lazy" decoding="async">
+<h3><a href="eigenvalues-plain-language.html">Eigenvalues in plain language</a></h3>
+<p>The stretch picture behind a positive definite matrix, which can define another inner product.</p>
+</article>
+</div>
 
 <h2>Related tools</h2>
 <p>The <a href="../calculators/gram-schmidt.html">Gram Schmidt calculator</a> builds the orthogonal basis used in the worked examples above, with steps. The <a href="../calculators/vector-ops.html">vector operations calculator</a> checks any single dot product in this page, including the orthogonality checks on the error vectors.</p>
@@ -296,7 +342,7 @@
 <li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/" rel="noopener noreferrer">MIT OpenCourseWare, 18.06 Linear Algebra (Spring 2010), Gilbert Strang, Lecture 16: Projection matrices and least squares, including the lecture transcript (the fitting a line worked example with exact numbers, the P squared equals P remark, and the A^T A invertibility proof) (retrieved 16 Nov 2026)</a></li>
 </ul>
 
-<p>Last reviewed: 16 November 2026.</p>
+<p>Last reviewed: 20 November 2026.</p>
 
 <h2 id="faq">Common questions</h2>
 <section class="faq-item" id="projection-vs-least-squares">

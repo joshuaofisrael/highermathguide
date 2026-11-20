@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-18",
-  "dateModified": "2026-11-19"
+  "dateModified": "2026-11-20"
 }
 </script>
 <script type="application/ld+json">
@@ -216,8 +216,8 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Change of basis explained</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 18 November 2026.</p>
-<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 18 Nov 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 20 Nov 2026</p>
 </header>
 <figure class="article-photo">
 <img src="../images/change-of-basis-two-maps.webp" alt="Two printed copies of the same coloured map at different angles on a table" width="1280" height="720" loading="lazy" decoding="async">
@@ -260,7 +260,7 @@
 <div class="callout"><strong>Direct check with the formula.</strong> $AP = \begin{pmatrix}2 & 1\\1 & 2\end{pmatrix}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix} = \begin{pmatrix}3 & 1\\3 & -1\end{pmatrix}$, since each column of $AP$ is $A$ times the matching column of $P$, matching the two products above. Then $P^{-1}AP = \begin{pmatrix}\tfrac12 & \tfrac12\\\tfrac12 & -\tfrac12\end{pmatrix}\begin{pmatrix}3 & 1\\3 & -1\end{pmatrix} = \begin{pmatrix}\tfrac12(3)+\tfrac12(3) & \tfrac12(1)+\tfrac12(-1)\\\tfrac12(3)-\tfrac12(3) & \tfrac12(1)-\tfrac12(-1)\end{pmatrix} = \begin{pmatrix}3 & 0\\0 & 1\end{pmatrix}$. Written in the eigenvector basis $B$, the map $A$ is the diagonal matrix $\operatorname{diag}(3,1)$: it stretches the $(1,1)$ direction by $3$ and the $(1,-1)$ direction by $1$, with no mixing between them.</div>
 
 <h2>Orthonormal bases: P inverse for free</h2>
-<p>When the columns of $P$ are unit vectors that are pairwise orthogonal, the <a href="gram-schmidt-process.html">Gram Schmidt process explainer</a> shows that $P^{-1} = P^{\mathsf T}$, so the inverse is just the transpose, with no row reduction at all. Take $\mathbf{b}_1 = \begin{pmatrix}3/5\\4/5\end{pmatrix}$ and $\mathbf{b}_2 = \begin{pmatrix}-4/5\\3/5\end{pmatrix}$, both unit vectors with dot product $\tfrac{3}{5}\!\cdot\!\left(-\tfrac{4}{5}\right) + \tfrac{4}{5}\!\cdot\!\tfrac{3}{5} = 0$, so they are orthonormal. With $P = \begin{pmatrix}3/5 & -4/5\\4/5 & 3/5\end{pmatrix}$ and $P^{\mathsf T} = \begin{pmatrix}3/5 & 4/5\\-4/5 & 3/5\end{pmatrix}$:</p>
+<p>When the columns of $P$ are unit vectors that are pairwise orthogonal, the <a href="gram-schmidt-process.html">Gram Schmidt process explainer</a> shows that $P^{-1} = P^{\mathsf T}$, so the inverse is just the transpose, with no row reduction at all. Orthogonal in that sentence means the ordinary dot product. A different inner product moves which pairs count as perpendicular. See <a href="inner-product-spaces.html">inner product spaces</a>. Take $\mathbf{b}_1 = \begin{pmatrix}3/5\\4/5\end{pmatrix}$ and $\mathbf{b}_2 = \begin{pmatrix}-4/5\\3/5\end{pmatrix}$, both unit vectors with dot product $\tfrac{3}{5}\!\cdot\!\left(-\tfrac{4}{5}\right) + \tfrac{4}{5}\!\cdot\!\tfrac{3}{5} = 0$, so they are orthonormal. With $P = \begin{pmatrix}3/5 & -4/5\\4/5 & 3/5\end{pmatrix}$ and $P^{\mathsf T} = \begin{pmatrix}3/5 & 4/5\\-4/5 & 3/5\end{pmatrix}$:</p>
 <div class="callout"><strong>Direct check.</strong> $P\,P^{\mathsf T} = \begin{pmatrix}3/5 & -4/5\\4/5 & 3/5\end{pmatrix}\begin{pmatrix}3/5 & 4/5\\-4/5 & 3/5\end{pmatrix} = \begin{pmatrix}9/25+16/25 & 12/25-12/25\\12/25-12/25 & 16/25+9/25\end{pmatrix} = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}.$ Since $P\,P^{\mathsf T}$ is the identity, $P^{\mathsf T}$ is $P^{-1}$, confirmed by exact fractions, with no inversion formula needed.</div>
 
 <h2>Checkpoints</h2>
@@ -297,7 +297,7 @@
 <li>Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 5.3 Similarity (the change of basis matrix, $v = P[v]_B$, and $A = PDP^{-1}$ style similarity). <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">textbooks.math.gatech.edu</a> (accessed 18 Nov 2026)</li>
 <li>David Austin, Understanding Linear Algebra, Section 3.2 Bases and coordinate systems. <a href="https://understandinglinearalgebra.org/sec-bases.html" rel="noopener noreferrer">understandinglinearalgebra.org</a> (accessed 18 Nov 2026)</li>
 </ul>
-<p>Last reviewed: 18 November 2026.</p>
+<p>Last reviewed: 20 November 2026.</p>
 
 <h2 id="faq">Common questions</h2>
 <section class="faq-item" id="what-is-coordinate-vector">

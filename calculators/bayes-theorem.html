@@ -244,13 +244,13 @@
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
 <p class="section-kicker">Belief updates</p>
 <h1>Bayes theorem calculator</h1>
-<p class="byline">By the Higher Math Guide editorial team</p>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 1 Oct 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 20 Nov 2026</p>
 </header>
 <p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
 <figure class="page-banner is-slim">
 <img src="../images/statistics.webp" srcset="../images/statistics-800.webp 800w, ../images/statistics.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="Probability notes, a bell curve, and a calculator on a wooden desk." class="crop-6" loading="lazy" decoding="async">
-<figcaption>Counts, a curve, and a calculator, the setting for a Bayes update.</figcaption>
+<figcaption>Counts, a curve, and a calculator, the setting for a Bayes update. <a class="src" href="../image-policy/">Source</a></figcaption>
 </figure>
 <div class="article-body">
 <p>This tool computes a posterior for a yes or no hypothesis. You give a prior $P(H)$, a likelihood $P(E\mid H)$, and the chance of the same evidence when the hypothesis is false, $P(E\mid \text{not }H)$. It reports</p>
@@ -307,6 +307,46 @@ $$P(H\mid E)=\frac{0.0099}{0.0594}=\frac{1}{6}\approx 0.166667.$$
 <p>A bit under 17 percent, not $0.99$. Most of that evidence is false positives from the large group without $H$. Quoting the likelihood as if it were the posterior is base rate neglect. Count mode with $10000$ people prints $99$ expected true positives and $495$ expected false positives, and $99/(99+495)$ is the same $1/6$. If both likelihoods are positive and the prior sits strictly between $0$ and $1$, the page also prints the likelihood ratio and the prior and posterior odds. That is the same fraction in another form. If $P(E\mid H)$ is smaller than $P(E\mid \text{not }H)$, the posterior falls below the prior. That is a real update, not a broken input.</p>
 <h2>A second check you can do by hand</h2>
 <p>Two jars, from the <a href="../topics/probability-statistics.html">probability and statistics</a> topic. The prior on jar 1 is $1/2$. Jar 1 produces red with probability $3/4$, and jar 2 with probability $1/4$. Enter prior $0.5$, likelihood $0.75$, and $0.25$ for $P(E\mid \text{not }H)$. The posterior for jar 1 given red is $0.75$. The match with the likelihood is an accident of these counts. Change the prior to $0.1$ and leave the likelihoods alone. The posterior drops to $0.25$. If you still get $0.75$, you ignored the prior.</p>
+
+<h2>A third check in exact fractions</h2>
+<p>This one was added on 20 November 2026 and checked by hand, not by the screen. Take prior $P(H)=1/5$, likelihood $P(E\mid H)=1/2$, and $P(E\mid \text{not }H)=1/4$. Then $P(\text{not }H)=4/5$ and</p>
+$$P(E)=\frac12\cdot\frac15+\frac14\cdot\frac45=\frac{1}{10}+\frac{2}{10}=\frac{3}{10},$$
+$$P(H\mid E)=\frac{1/10}{3/10}=\frac13.$$
+<p>The other posterior is $2/3$, and the two posteriors add to $1$. In odds, the prior odds are $(1/5)/(4/5)=1/4$, the likelihood ratio is $(1/2)/(1/4)=2$, and the posterior odds are $(1/4)\cdot 2=1/2$, which is the same statement as a posterior of $1/3$. Type prior $0.2$, likelihood $0.5$, and $0.25$ for the false positive rate. The large number should be $0.333333$, with the word about, because $1/3$ is not a short decimal. If the page prints $0.5$, it reported the likelihood and ignored the prior.</p>
+<aside class="callout" aria-label="Check another update">
+<strong>Check another update.</strong>
+<p>Leave this page and read the count version of the same idea in <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>, then come back and run the defaults (prior $0.01$, likelihood $0.99$, false positive rate $0.05$) to recover $1/6$. A fixed number of trials is a different question: the <a href="binomial-probability.html">binomial probability calculator</a> does not update a prior. A sample mean from many draws is the <a href="../explainers/central-limit-theorem-intuition.html">central limit theorem</a> page, not a Bayes update.</p>
+</aside>
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/statistics.webp" width="1280" height="720" alt="A desk with a bell curve, a histogram, and handwritten probability notes." loading="lazy" decoding="async">
+<h3><a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a></h3>
+<p>The rare hall behind the defaults: about 99 true positives beside about 495 false ones.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/central-limit-theorem-coins.webp" width="1280" height="720" alt="A small pile of blank silver coins scattered on black velvet" loading="lazy" decoding="async">
+<h3><a href="../explainers/central-limit-theorem-intuition.html">The central limit theorem</a></h3>
+<p>What a sample mean does after many draws. A different question from a posterior.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/calculators.webp" width="1280" height="720" alt="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk." loading="lazy" decoding="async">
+<h3><a href="binomial-probability.html">Binomial probability calculator</a></h3>
+<p>Chance of exactly k successes when the success probability stays fixed.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/glossary.webp" width="1280" height="720" alt="An open mathematics book, a notebook of definitions, and a cup of coffee on a wooden desk." loading="lazy" decoding="async">
+<h3><a href="../glossary/#bayes-theorem">Glossary: Bayes theorem</a></h3>
+<p>The short form of the update, next to conditional probability.</p>
+</article>
+</div>
+
+<h2>Sources checked 20 November 2026</h2>
+<ul>
+<li>OpenIntro Statistics, open textbook, conditional probability and Bayes. <a href="https://www.openintro.org/book/os/" rel="noopener noreferrer">openintro.org/book/os</a> (accessed 20 Nov 2026). The formula on this page is the standard update $P(H\mid E)=P(E\mid H)P(H)/P(E)$, with $P(E)$ expanded over $H$ and its opposite. The three numerical checks above are this site's arithmetic, not a copied textbook exercise.</li>
+<li>The paired explainer, <a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a>, works the default inputs as counts in a hall of $10{,}000$ people. Rechecked against this calculator on 20 Nov 2026: prior $0.01$, likelihood $0.99$, and $P(E\mid \text{not }H)=0.05$ still give $0.0099/0.0594=1/6$.</li>
+</ul>
+<p>Last reviewed: 20 November 2026.</p>
+
 <h2>Common pitfalls</h2>
 <p>$P(E\mid H)$ and $P(H\mid E)$ are different questions. Sensitivity is about the evidence given the hypothesis. The posterior is about the hypothesis given the evidence. The labels stay in one order. The button will not swap a story you told backwards.</p>
 <p>A probability outside $[0,1]$ is rejected, and so is a head count larger than the population, a population below $1$, or a blank box. If $P(E)=0$, the posterior is undefined and the page stops instead of dividing by zero. A prior of $0$ stays $0$ when the evidence can still come from the opposite hypothesis. A prior of $1$ stays $1$ when the evidence can come from $H$. Population size stops at one billion.</p>
@@ -341,6 +381,28 @@ $$P(H\mid E)=\frac{0.0099}{0.0594}=\frac{1}{6}\approx 0.166667.$$
 <div class="cta-panel">
 <p>Want a tool that matches a new explainer, or a check that a page and a calculator disagree? Write a short note.</p>
 <a class="btn" href="../contact/">Suggest a topic or tool</a>
+</div>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/statistics.webp" width="1280" height="720" alt="A desk with a bell curve, a histogram, and handwritten probability notes." loading="lazy" decoding="async">
+<h3><a href="../topics/probability-statistics.html">Probability and statistics</a></h3>
+<p>The topic map around this calculator, including the two jar count.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/calculators.webp" width="1280" height="720" alt="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk." loading="lazy" decoding="async">
+<h3><a href="normal-cdf.html">Normal distribution calculator</a></h3>
+<p>A continuous tail. It does not update a prior.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/glossary.webp" width="1280" height="720" alt="An open mathematics book, a notebook of definitions, and a cup of coffee on a wooden desk." loading="lazy" decoding="async">
+<h3><a href="combinatorics.html">Combinatorics calculator</a></h3>
+<p>Counts only. Bayes still needs you to say which count is the hypothesis.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/central-limit-theorem-coins.webp" width="1280" height="720" alt="A small pile of blank silver coins scattered on black velvet" loading="lazy" decoding="async">
+<h3><a href="../explainers/central-limit-theorem-intuition.html">The central limit theorem</a></h3>
+<p>Sample means after many draws, kept separate from a single Bayes update.</p>
+</article>
 </div>
 <div class="related"><h2>Related tools and explainers</h2><ul>
 <li><a href="../explainers/bayes-theorem-without-fog.html">Bayes theorem without the fog</a></li>
