@@ -221,13 +221,13 @@
 <header class="hero" style="border:none;margin:0;padding-bottom:0.5rem">
 <p class="section-kicker">Orthonormal bases</p>
 <h1>Gram Schmidt calculator</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 26 October 2026.</p>
-<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 26 Oct 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Calculator · Runs offline in your browser · Educational only · Updated 20 Nov 2026</p>
 </header>
 <p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
 <figure class="page-banner is-slim">
 <img src="../images/calculators.webp" srcset="../images/calculators-800.webp 800w, ../images/calculators.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" width="1280" height="720" alt="A calculator and handwritten orthogonal vectors on a wooden desk." class="crop-4" loading="lazy" decoding="async">
-<figcaption>A calculator beside the sort of vector list a first linear algebra course orthonormalizes by hand.</figcaption>
+<figcaption>A calculator beside the sort of vector list a first linear algebra course orthonormalizes by hand. <a class="src" href="../image-policy/">Source</a></figcaption>
 </figure>
 <div class="article-body">
 <p>This page is a Gram Schmidt calculator with steps. It takes two, three, or four vectors in dimension 2, 3, or 4 and builds an orthogonal set, then unit vectors, then the QR factors when the vectors are independent. Each entry can be an integer, a decimal, or a fraction such as 3/4. A decimal is an exact fraction of a power of ten, so 0.5 is 1/2. The projections stay exact.</p>
@@ -332,7 +332,7 @@ Check passed: Q times R rebuilds the input matrix whose columns are v₁ through
 <p>The second mistake is treating a different order as a wrong answer. Swap v₁ and v₂ and the orthogonal vectors change. The span does not. If a homework key starts with a different vector, reorder the rows before you compare.</p>
 <p>The third mistake is normalizing too early and then rounding. The orthogonal vector (1/2, −1/2, 1) has squared length 3/2. Its unit vector is exact: (sqrt(6)/6, −sqrt(6)/6, sqrt(6)/3). A decimal such as 0.408 can fail a later dot product check even though the algebra was right.</p>
 <p>The fourth mistake is reading a zero remainder as a broken calculator. Zero means dependence. The <a href="../glossary/#linear-independence">linear independence</a> glossary line is the definition that remainder is testing. You can also row reduce the matrix with these vectors as rows on the <a href="rref.html">RREF calculator</a>. A zero row there is the same news.</p>
-<div class="callout pitfall"><strong>Pitfall.</strong> This page uses the ordinary dot product. If your basis is not orthonormal and the inner product is a different formula, these lengths and angles are the wrong ones. Eigenvectors from the <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> are a different basis. They are not the output of Gram Schmidt unless the matrix was symmetric and you were building an orthonormal eigenbasis by hand.</div>
+<div class="callout pitfall"><strong>Pitfall.</strong> This page uses the ordinary dot product. If your basis is not orthonormal and the inner product is a different formula, these lengths and angles are the wrong ones. The four properties of an inner product, and a weighted example, are on <a href="../explainers/inner-product-spaces.html">inner product spaces</a>. Eigenvectors from the <a href="eigenvalue-3x3.html">3x3 eigenvalue calculator</a> are a different basis. They are not the output of Gram Schmidt unless the matrix was symmetric and you were building an orthonormal eigenbasis by hand.</div>
 
 <h2>Related reading</h2>
 <p>For why the process works, three worked examples by hand and what happens with a dependent set, read <a href="../explainers/gram-schmidt-process.html">the Gram Schmidt process explained</a>.</p>
@@ -346,7 +346,7 @@ Check passed: Q times R rebuilds the input matrix whose columns are v₁ through
 <li>Gilbert Strang, <em>Introduction to Linear Algebra</em>, fifth edition, Wellesley Cambridge Press, 2016. Orthogonal matrices and this process are Lecture 17 of his 18.06 course. <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/" rel="noopener">MIT OpenCourseWare 18.06, Lecture 17</a>, and the book notes at <a href="https://math.mit.edu/~gs/linearalgebra/" rel="noopener">math.mit.edu/~gs/linearalgebra</a>.</li>
 <li>The same course treats elimination factors separately. If you want L and U rather than Q and R, use the <a href="lu-decomposition.html">LU decomposition calculator</a> and Strang's Lecture 4, linked from that page.</li>
 </ul>
-<p>Last reviewed: 26 October 2026.</p>
+<p>Last reviewed: 20 November 2026.</p>
 
 <h2>Common questions</h2>
 <section class="faq-item" id="steps">

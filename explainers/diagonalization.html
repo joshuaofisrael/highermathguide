@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-19",
-  "dateModified": "2026-11-19"
+  "dateModified": "2026-11-20"
 }
 </script>
 <script type="application/ld+json">
@@ -222,8 +222,8 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>When does $A = PDP^{-1}$ exist? Diagonalization explained</h1>
-<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 19 November 2026.</p>
-<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 19 Nov 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 20 November 2026.</p>
+<p class="article-meta">Explainer · Linear algebra · Educational only · Updated 20 Nov 2026</p>
 </header>
 <figure class="article-photo">
 <img src="../images/diagonalization-brass-key-notebook.webp" alt="A brass key resting on an open notebook with blank pages" width="1280" height="720" loading="lazy" decoding="async">
@@ -248,7 +248,7 @@
 
 <h2>When the factorization exists</h2>
 <p>You need $n$ <a href="linear-independence-explained.html">linearly independent</a> eigenvectors. That is the whole test. Distinct eigenvalues always produce independent eigenvectors, so an $n$ by $n$ matrix with $n$ distinct eigenvalues is always diagonalizable. A repeated eigenvalue is the danger case: algebraic multiplicity counts how many times the root appears in the characteristic polynomial, while geometric multiplicity counts how many independent eigenvectors that root actually gives. If any eigenspace is too small, you cannot fill $P$, and $A = PDP^{-1}$ does not exist over that field.</p>
-<p>A classic failure is the Jordan block $J = \begin{pmatrix}3 &amp; 1\\0 &amp; 3\end{pmatrix}$. Its only eigenvalue is $3$, with algebraic multiplicity $2$, but every eigenvector is a multiple of $(1,0)$. One independent direction is not enough to build a 2 by 2 invertible $P$ of eigenvectors. The <a href="eigenvalues-plain-language.html">eigenvalues explainer</a> works that example in detail. Symmetric real matrices always succeed: they always have an orthonormal eigenbasis, so $P^{-1}$ is just $P^{\mathsf T}$. That orthogonal shortcut is the same one the <a href="gram-schmidt-process.html">Gram Schmidt process</a> prepares you for.</p>
+<p>A classic failure is the Jordan block $J = \begin{pmatrix}3 &amp; 1\\0 &amp; 3\end{pmatrix}$. Its only eigenvalue is $3$, with algebraic multiplicity $2$, but every eigenvector is a multiple of $(1,0)$. One independent direction is not enough to build a 2 by 2 invertible $P$ of eigenvectors. The <a href="eigenvalues-plain-language.html">eigenvalues explainer</a> works that example in detail. Symmetric real matrices always succeed: they always have an orthonormal eigenbasis, so $P^{-1}$ is just $P^{\mathsf T}$. That orthogonal shortcut is the same one the <a href="gram-schmidt-process.html">Gram Schmidt process</a> prepares you for. Both use the ordinary dot product. A weighted product can move which pairs are perpendicular, which is the subject of <a href="inner-product-spaces.html">inner product spaces</a>.</p>
 
 <div class="card-grid" aria-label="Related reading">
 <article class="card">
@@ -344,7 +344,7 @@
 <li>Jim Hefferon, Linear Algebra (open textbook), eigenvalue and diagonalization material. <a href="https://hefferon.net/linearalgebra/" rel="noopener noreferrer">hefferon.net/linearalgebra</a> (accessed 19 Nov 2026)</li>
 <li>Dan Margalit and Joseph Rabinoff, Interactive Linear Algebra, Section 5.3 Similarity ($A$ and $P^{-1}AP$, and the diagonal case). <a href="https://textbooks.math.gatech.edu/ila/similarity.html" rel="noopener noreferrer">textbooks.math.gatech.edu</a> (accessed 19 Nov 2026)</li>
 </ul>
-<p>Last reviewed: 19 November 2026.</p>
+<p>Last reviewed: 20 November 2026.</p>
 
 <h2 id="faq">Common questions</h2>
 <section class="faq-item" id="what-means">
