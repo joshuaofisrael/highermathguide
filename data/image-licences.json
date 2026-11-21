@@ -209,6 +209,12 @@
       "source": "AI-generated image bank",
       "licence": "original AI-generated, owned",
       "notes": "1280x720 WebP evergreen image for inner-product-spaces, converted from the JI Ventures image bank original /workspace/image-bank/highermathguide/ftc-chalk-curve-blackboard.png (original AI-generated photo of a framed chalkboard with a chalk arc and a straight chord; original image owned by the publisher; same source photo used once before on highermathguide.com for fundamental-theorem-blackboard.webp, added 2026-11-12; this use marked use 2 in run-1120-seo). Added 2026-11-20. No real people, no logos, no legible text."
+    },
+    {
+      "file": "images/computer-checked-proofs-office.webp",
+      "source": "original AI-generated, owned",
+      "licence": "original AI-generated, owned",
+      "notes": "1280x720 WebP evergreen image for computer-checked-proofs, converted from the JI Ventures image bank original /workspace/image-bank/ai-news/ai-lab-office.png (original AI-generated photo of an empty daylight office with desks, laptops, and whiteboards of diagrams; original image owned by the publisher; this use already marked in the 21 Nov 2026 image bank index, not incremented again). Added 2026-11-21. No identifiable faces, no logos, no legible text."
     }
   ]
 }

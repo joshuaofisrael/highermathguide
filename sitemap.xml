@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/real-analysis-proofs.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -42,12 +42,12 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/epsilon-delta-intuition.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -272,12 +272,12 @@
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/intro-to-proofs.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/sources/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/llms.txt</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -343,8 +343,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://highermathguide.com/explainers/computer-checked-proofs.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>https://highermathguide.com/images/computer-checked-proofs-office.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://highermathguide.com/explainers/chain-rule-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/chain-rule-intuition-desk.webp</image:loc>
@@ -352,7 +360,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/proof-by-induction.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/lhopitals-rule-desk.webp</image:loc>

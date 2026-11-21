@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-06",
-  "dateModified": "2026-11-06"
+  "dateModified": "2026-11-21"
 }
 </script>
 <script type="application/ld+json">
@@ -216,8 +216,8 @@
 <article class="narrow">
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>The chain rule: outer rate times inner rate</h1>
-<p class="byline">By the Higher Math Guide editorial team</p>
-<p class="article-meta">Explainer · Calculus · Educational only · Updated 6 Nov 2026</p>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 21 November 2026.</p>
+<p class="article-meta">Explainer · Calculus · Educational only · Updated 21 Nov 2026</p>
 </header>
 <figure class="article-photo">
 <img src="../images/chain-rule-intuition-desk.webp" alt="Open grid notebook and wooden ruler on a desk beside a blank whiteboard" width="1280" height="720" loading="lazy" decoding="async">
@@ -230,6 +230,14 @@
 \frac{dy}{dx} = f'(g(x))\, g'(x).
 \]
 In words: evaluate the outer derivative at the inner output, then multiply by the inner derivative. You are composing two rates of change, so you multiply the two local scales. For the meaning of a single derivative before you stack them, see <a href="what-a-derivative-measures.html">what a derivative actually measures</a>.</p>
+
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="./">Explainers</a>
+ · <span aria-current="page">The chain rule: outer rate times inner rate</span>
+</nav>
+
+<p>OpenStax Calculus Volume 1, section 3.6, says the derivative of a composite is the outer derivative evaluated at the inner function, times the inner derivative (checked 21 November 2026). Paul's Online Math Notes, Calculus I, section 3.9, writes the same product: if both functions are differentiable, the derivative of the composition is the outer derivative at the inner value, times the inner derivative (checked 21 November 2026). MIT OpenCourseWare 18.01SC, Single Variable Calculus, Fall 2010, taught by David Jerison, is the course page this site uses for that single variable material (checked 21 November 2026).</p>
 
 <h2>The picture: two gears, not one</h2>
 <p>A tiny change \(dx\) first moves the inner function by about \(g'(x)\,dx\). That change becomes the input change for \(f\). Near the current inner value \(u = g(x)\), the outer function scales input changes by about \(f'(u)\). So the net change in \(y\) is about
@@ -252,8 +260,31 @@ y' = \cos(x^2) \cdot 2x = 2x\cos(x^2).
 \]
 Check at \(x = 0\): \(y = \sin 0 = 0\), and \(y' = 0\). That matches a horizontal tangent at the origin for this even looking composition. At \(x = 1\), \(y' = 2\cos(1)\), which is positive since \(\cos 1 &gt; 0\).</p>
 
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of handwritten derivatives and tangent lines" loading="lazy" decoding="async">
+<h3><a href="what-a-derivative-measures.html">What a derivative measures</a></h3>
+<p>The single rate you multiply, before a composition stacks two of them.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/u-substitution-keys.webp" width="1280" height="720" alt="A hand holding a brass key above a wooden desk beside an open blank notebook" loading="lazy" decoding="async">
+<h3><a href="u-substitution-explained.html">U substitution</a></h3>
+<p>The chain rule run backward, when an integral hides a composition.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/related-rates-balloon.webp" width="1280" height="720" alt="A pale spherical balloon sitting on a wooden table beside a simple hand pump" loading="lazy" decoding="async">
+<h3><a href="related-rates-explained.html">Related rates</a></h3>
+<p>Differentiate an equation that ties two changing quantities, then substitute.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard covered with handwritten curves and calculus equations" loading="lazy" decoding="async">
+<h3><a href="implicit-differentiation-intuition.html">Implicit differentiation</a></h3>
+<p>The chain rule when y sits inside the equation instead of on its own.</p>
+</article>
+</div>
+
 <h2>Where the chain rule shows up next</h2>
-<p>Implicit differentiation is the chain rule with \(y\) treated as a function of \(x\): every time \(y\) sits inside another function, you pick up a factor of \(dy/dx\). Read <a href="implicit-differentiation-intuition.html">implicit differentiation intuition</a> when the curve is an equation rather than an explicit formula. Related tools: the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> for a slope check (an estimate, not a proof), and the <a href="../topics/calculus-foundations.html">calculus foundations</a> map for study order.</p>
+<p>Implicit differentiation is the chain rule with \(y\) treated as a function of \(x\): every time \(y\) sits inside another function, you pick up a factor of \(dy/dx\). Read <a href="implicit-differentiation-intuition.html">implicit differentiation intuition</a> when the curve is an equation rather than an explicit formula. The same product run backward is <a href="u-substitution-explained.html">u substitution</a>, which is how an integral undoes a composition. Related tools: the <a href="../calculators/numerical-derivative.html">numerical derivative calculator</a> for a slope check (an estimate, not a proof), and the <a href="../topics/calculus-foundations.html">calculus foundations</a> map for study order. A derivative of a quotient that collapses to 0/0 is a later use; <a href="lhopitals-rule-intuition.html">L'Hôpital's rule</a> still needs the derivatives the chain rule may have built.</p>
 
 <h2>Common mistakes</h2>
 <ul>
@@ -264,10 +295,11 @@ Check at \(x = 0\): \(y = \sin 0 = 0\), and \(y' = 0\). That matches a horizonta
 
 <h2>Sources</h2>
 <ul>
-<li><a href="https://openstax.org/books/calculus-volume-1/pages/3-6-the-chain-rule" rel="noopener noreferrer">OpenStax, Calculus Volume 1, The Chain Rule</a></li>
-<li><a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener noreferrer">MIT OCW 18.01SC, Single Variable Calculus</a></li>
-<li><a href="https://tutorial.math.lamar.edu/classes/calci/ChainRule.aspx" rel="noopener noreferrer">Paul's Online Math Notes, Chain Rule</a></li>
+<li><a href="https://openstax.org/books/calculus-volume-1/pages/3-6-the-chain-rule" rel="noopener noreferrer">OpenStax, Calculus Volume 1, section 3.6, The Chain Rule</a> (accessed 21 November 2026)</li>
+<li><a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" rel="noopener noreferrer">MIT OpenCourseWare 18.01SC, Single Variable Calculus, Fall 2010, David Jerison</a> (accessed 21 November 2026)</li>
+<li><a href="https://tutorial.math.lamar.edu/classes/calci/ChainRule.aspx" rel="noopener noreferrer">Paul's Online Math Notes, Calculus I, section 3.9, Chain Rule</a> (accessed 21 November 2026)</li>
 </ul>
+<p>Last reviewed: 21 November 2026.</p>
 
 <h2 id="faq">Frequently asked questions</h2>
 <section class="faq-item" id="what-is-the-chain-rule-in-one-sentence">
@@ -285,7 +317,32 @@ Check at \(x = 0\): \(y = \sin 0 = 0\), and \(y' = 0\). That matches a horizonta
 <section class="faq-item" id="how-is-the-chain-rule-related-to-implicit-">
 <h3>How is the chain rule related to implicit differentiation?</h3>
 <p>Implicit differentiation treats y as a function of x and differentiates both sides. Every time y appears inside another function, the chain rule supplies a factor of dy/dx.</p>
-</section></div>
+</section>
+
+<h2>Related reading</h2>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/lhopitals-rule-desk.webp" width="1280" height="720" alt="Student desk with graph paper, pencil, and scientific calculator" loading="lazy" decoding="async">
+<h3><a href="lhopitals-rule-intuition.html">L'Hôpital's rule</a></h3>
+<p>A 0/0 limit still needs the derivatives, including derivatives the chain rule built.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/fundamental-theorem-blackboard.webp" width="1280" height="720" alt="A chalk curve and a straight line joining two points on a classroom blackboard" loading="lazy" decoding="async">
+<h3><a href="fundamental-theorem-of-calculus.html">The fundamental theorem of calculus</a></h3>
+<p>Variable limits on an integral bring the chain rule back in.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/calculators.webp" width="1280" height="720" alt="A scientific calculator, pencils, and a notebook of handwritten equations on a wooden desk" loading="lazy" decoding="async">
+<h3><a href="../calculators/numerical-derivative.html">Numerical derivative calculator</a></h3>
+<p>A slope estimate for a check. The screen says an estimate, and the estimate is not a proof.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A green chalkboard of handwritten calculus" loading="lazy" decoding="async">
+<h3><a href="../topics/calculus-foundations.html">Calculus foundations</a></h3>
+<p>The topic map for limits, derivatives, and the order to study them.</p>
+</article>
+</div>
+</div>
 </article>
 </div>
 </main>

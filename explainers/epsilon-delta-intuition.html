@@ -60,7 +60,7 @@
       "isAccessibleForFree": true,
       "inLanguage": "en",
       "datePublished": "2026-09-11",
-      "dateModified": "2026-10-12"
+      "dateModified": "2026-11-21"
     },
     {
       "@type": "FAQPage",
@@ -230,7 +230,7 @@
 <header class="hero" style="border:none;margin:0;padding-bottom:0">
 <h1>Epsilon delta proofs, step by step</h1>
 <p class="byline">By the Higher Math Guide editorial team. Last reviewed: 21 September 2026.</p>
-<p class="article-meta">Explainer · Educational only · Updated 12 Oct 2026</p>
+<p class="article-meta">Explainer · Educational only · Updated 21 Nov 2026</p>
 </header>
 <p class="edu-note">Educational tool; results are estimates for learning, verify with your textbook or instructor.</p>
 <figure class="article-figure">
@@ -327,7 +327,29 @@
 <h2>Try it with the matching tool</h2>
 <p>A numerical table is not a proof. It is still a good way to see the negotiation before you write $\delta$. The matching tool is the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a>. You type $f(x)$, the point $a$, a proposed limit $L$, and a tolerance $\varepsilon$. It searches for a large input window where the sampled outputs stay inside that tolerance, and it draws the horizontal epsilon band and the vertical delta band.</p>
 <div class="callout"><strong>Try it.</strong> Open the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> on the linear preset, $f(x)=3x+1$ at $a=2$ with $L=7$. For $\varepsilon=0.1$ the search should return a $\delta$ near $0.03333$, which is $\varepsilon/3$. Then load the quadratic preset. A written proof often picks a smaller convenient $\delta$, namely $\min(1,\varepsilon/7)$. The finder is hunting a large window that the samples support. Load the jump preset last. No positive $\delta$ survives, because the two sides do not share a limit.</div>
-<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is the companion picture. It only asks whether nearby outputs seem to settle. After the picture looks calm, come back and write a $\delta$ rule by hand for the linear or quadratic case. A sampled window is not a proof.</p>
+<p>The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is the companion picture. It only asks whether nearby outputs seem to settle. After the picture looks calm, come back and write a $\delta$ rule by hand for the linear or quadratic case. A sampled window is not a proof. A kernel check is a third standard: it certifies a formal statement, and a person still reads the definitions to see whether that statement is the limit they meant. That split is <a href="computer-checked-proofs.html">what a computer checked proof actually proves</a>.</p>
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/computer-checked-proofs-office.webp" width="1280" height="720" alt="An empty daylight office with desks, laptops, and whiteboards of diagrams" loading="lazy" decoding="async">
+<h3><a href="computer-checked-proofs.html">What a computer checked proof proves</a></h3>
+<p>The definition in the file is the definition the checker uses. The English name is a person's reading.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A green chalkboard filled with handwritten calculus notes in a quiet study" loading="lazy" decoding="async">
+<h3><a href="quantifiers-and-negation.html">Quantifiers and negation</a></h3>
+<p>For every epsilon there exists a delta. The order is the definition.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/lhopitals-rule-desk.webp" width="1280" height="720" alt="Student desk with graph paper, pencil, and scientific calculator" loading="lazy" decoding="async">
+<h3><a href="proof-by-induction.html">Proof by induction</a></h3>
+<p>Another argument with a fixed shape, once the statement is written in full.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/contrapositive-vs-contradiction-desk.webp" width="1280" height="720" alt="An open blank grid notebook and a wooden ruler on a desk below an empty whiteboard" loading="lazy" decoding="async">
+<h3><a href="contrapositive-vs-contradiction.html">Contrapositive versus contradiction</a></h3>
+<p>What the first line assumes, before any algebra starts.</p>
+</article>
+</div>
 <div class="cta-panel">
 <p>Find a numerical delta for one epsilon, then write the rule a proof would use.</p>
 <a class="btn" href="../calculators/epsilon-delta-finder.html">Open the epsilon delta finder</a>
@@ -365,7 +387,30 @@
 <p>The <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a>. You type $f(x)$, a point, a proposed limit, and epsilon. It searches for a large delta that keeps sampled outputs inside that tolerance. The <a href="../calculators/limit-estimator.html">numerical limit estimator</a> is the earlier picture: it only asks whether nearby values seem to settle. Either tool can support a guess. Write the delta rule by hand. A sampled window is not a proof.</p>
 </section>
 
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/computer-checked-proofs-office.webp" width="1280" height="720" alt="An empty daylight office with desks, laptops, and whiteboards of diagrams" loading="lazy" decoding="async">
+<h3><a href="computer-checked-proofs.html">What a computer checked proof proves</a></h3>
+<p>A success mark certifies the formal statement. The limit you meant is a reading of the definitions.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of handwritten derivatives and tangent lines" loading="lazy" decoding="async">
+<h3><a href="what-a-derivative-measures.html">What a derivative measures</a></h3>
+<p>A derivative is a limit of difference quotients, so the epsilon delta habit comes back.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/glossary.webp" width="1280" height="720" alt="An open mathematics book and handwritten notes for learning proofs" loading="lazy" decoding="async">
+<h3><a href="../pathways/intro-to-proofs.html">Intro to proofs</a></h3>
+<p>Write one linear limit in the forward direction, then a continuity sum.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of careful handwritten mathematics for the analysis and proofs map" loading="lazy" decoding="async">
+<h3><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></h3>
+<p>The topic map that sends you here for the quantifier order.</p>
+</article>
+</div>
 <div class="related"><h2>Related</h2><ul>
+<li><a href="computer-checked-proofs.html">What a computer checked proof actually proves</a></li>
 <li><a href="../calculators/epsilon-delta-finder.html">Epsilon delta finder</a></li>
 <li><a href="../calculators/limit-estimator.html">Numerical limit estimator</a></li>
 <li><a href="what-a-derivative-measures.html">What a derivative actually measures</a></li>

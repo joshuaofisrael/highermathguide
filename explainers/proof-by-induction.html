@@ -56,7 +56,7 @@
   "isAccessibleForFree": true,
   "inLanguage": "en",
   "datePublished": "2026-11-07",
-  "dateModified": "2026-11-07"
+  "dateModified": "2026-11-21"
 }
 </script>
 <script type="application/ld+json">
@@ -252,7 +252,30 @@
 1 + 2 + \cdots + k + (k+1) = \frac{k(k+1)}{2} + (k+1) = \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2}.
 \]
 That last expression is exactly \(\frac{n(n+1)}{2}\) with \(n = k+1\). So \(P(k+1)\) holds, and by induction the formula is true for every \(n \ge 1\).</p>
-<p>Spot check at \(n = 4\): \(1 + 2 + 3 + 4 = 10\), and \(\frac{4 \cdot 5}{2} = 10\). A spot check is not a proof, but it catches algebra slips before you write the argument up.</p>
+<p>Spot check at \(n = 4\): \(1 + 2 + 3 + 4 = 10\), and \(\frac{4 \cdot 5}{2} = 10\). A spot check is not a proof, but it catches algebra slips before you write the argument up. A checker can certify an induction only after the statement is formal. That split is <a href="computer-checked-proofs.html">what a computer checked proof actually proves</a>.</p>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/computer-checked-proofs-office.webp" width="1280" height="720" alt="An empty daylight office with desks, laptops, and whiteboards of diagrams" loading="lazy" decoding="async">
+<h3><a href="computer-checked-proofs.html">What a computer checked proof proves</a></h3>
+<p>The kernel certifies the formal statement. The English sentence is a separate reading.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A green chalkboard filled with handwritten calculus notes in a quiet study" loading="lazy" decoding="async">
+<h3><a href="quantifiers-and-negation.html">Quantifiers and negation</a></h3>
+<p>For every n, the statement holds. The quantifier is part of what a formal induction says.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/contrapositive-vs-contradiction-desk.webp" width="1280" height="720" alt="An open blank grid notebook and a wooden ruler on a desk below an empty whiteboard" loading="lazy" decoding="async">
+<h3><a href="contrapositive-vs-contradiction.html">Contrapositive versus contradiction</a></h3>
+<p>Two other shapes for a short proof, with different first lines.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of handwritten limit notation in a quiet study" loading="lazy" decoding="async">
+<h3><a href="epsilon-delta-intuition.html">Epsilon delta proofs</a></h3>
+<p>Another template with a fixed order: tolerance first, then the window.</p>
+</article>
+</div>
 
 <h2>Worked example 2: a divisibility claim</h2>
 <p>Claim: for every \(n \ge 1\), the number \(4^n - 1\) is divisible by \(3\).</p>
@@ -284,11 +307,29 @@ The result is \(3\) times a whole number, so \(4^{k+1} - 1\) is divisible by \(3
 </ul>
 
 <h2>Related reading</h2>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/computer-checked-proofs-office.webp" width="1280" height="720" alt="An empty daylight office with desks, laptops, and whiteboards of diagrams" loading="lazy" decoding="async">
+<h3><a href="computer-checked-proofs.html">What a computer checked proof proves</a></h3>
+<p>Even a finished induction is an English argument until the statement and the steps are formal.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/glossary.webp" width="1280" height="720" alt="An open mathematics book and handwritten notes for learning proofs" loading="lazy" decoding="async">
+<h3><a href="../pathways/intro-to-proofs.html">Intro to proofs</a></h3>
+<p>Quantifiers, a written limit, and the habit of naming what the last line established.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of careful handwritten mathematics for the analysis and proofs map" loading="lazy" decoding="async">
+<h3><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></h3>
+<p>The topic map for definitions, sequences, and the proofs that sit on them.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A green chalkboard of handwritten calculus" loading="lazy" decoding="async">
+<h3><a href="sequences-series-infinite-sums.html">Sequences and series</a></h3>
+<p>Finite sum formulas from induction reappear as partial sums.</p>
+</article>
+</div>
 <ul>
-<li><a href="../pathways/intro-to-proofs.html">Intro to proofs pathway</a> for conditional statements, quantifiers, and writing practice</li>
-<li><a href="../topics/real-analysis-proofs.html">Real analysis and proofs topic map</a></li>
-<li><a href="epsilon-delta-intuition.html">Epsilon delta proofs, step by step</a> for another proof template with a fixed structure</li>
-<li><a href="sequences-series-infinite-sums.html">Sequences, series, and infinite sums</a>, where finite sum formulas like the one above reappear</li>
 <li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
 </ul>
 

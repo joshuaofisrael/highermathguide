@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does a Computer Checked Proof Actually Prove?</title>
+<meta name="description" content="A checker certifies the formal statement, not your English theorem. An even sum worked by hand, and what Axiom claims Lean checked.">
+<link rel="canonical" href="https://highermathguide.com/explainers/computer-checked-proofs.html">
+<meta name="theme-color" content="#2f4a7a">
+<meta property="og:title" content="What Does a Computer Checked Proof Actually Prove?">
+<meta property="og:description" content="A checker certifies the formal statement, not your English theorem. An even sum worked by hand, and what Axiom claims Lean checked.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highermathguide.com/explainers/computer-checked-proofs.html">
+<meta property="og:site_name" content="Higher Math Guide">
+<meta property="og:image" content="https://highermathguide.com/images/computer-checked-proofs-office.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="An empty daylight office with desks, laptops, and whiteboards of diagrams">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Does a Computer Checked Proof Actually Prove?">
+<meta name="twitter:description" content="A checker certifies the formal statement, not your English theorem. An even sum worked by hand, and what Axiom claims Lean checked.">
+<meta name="twitter:image" content="https://highermathguide.com/images/computer-checked-proofs-office.webp">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What does a computer checked proof actually prove?",
+  "description": "A checker certifies the formal statement, not your English theorem. An even sum worked by hand, and what Axiom claims Lean checked.",
+  "url": "https://highermathguide.com/explainers/computer-checked-proofs.html",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "image": "https://highermathguide.com/images/computer-checked-proofs-office.webp",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://highermathguide.com/explainers/computer-checked-proofs.html",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://highermathguide.com/#organization",
+    "name": "Higher Math Guide",
+    "url": "https://highermathguide.com/",
+    "brand": {
+      "@type": "Brand",
+      "name": "Higher Math Guide"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a computer checked proof actually prove?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It certifies that a formal statement follows from the definitions and earlier results that statement uses. A person still has to read those definitions to see whether the formal statement matches the English theorem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does mathlib mean by even?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The mathlib page on squares and even elements defines Even a as the existence of an r such that a equals r + r. The theorem Even.add adds a hypothesis: addition is a commutative semigroup. Under that hypothesis, Even a and Even b imply Even (a + b)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Lean's kernel check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Lean language reference says the kernel checks proof terms. Tactics build those terms. A separate implementation of the kernel can check the same term again. Reading the English sentence is a person's job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Has this site checked Axiom's classification claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. On 26 October 2026 Axiom said it had formalized the classification of finite simple groups in Lean, and Axiom described that work as a complete computer checked proof. This page reports that as Axiom's claim. It does not rerun the repository or review the formal statement."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://highermathguide.com/explainers/computer-checked-proofs.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://highermathguide.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Explainers",
+      "item": "https://highermathguide.com/explainers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Real analysis and proof habits",
+      "item": "https://highermathguide.com/topics/real-analysis-proofs.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Computer checked proofs",
+      "item": "https://highermathguide.com/explainers/computer-checked-proofs.html"
+    }
+  ]
+}
+</script>
+<script>
+/* hmg-consent */
+(function () {
+  var KEY = "hmg-consent";
+  var ID = "G-9MKRPRJMF5";
+  var SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function read() {
+    try {
+      var value = localStorage.getItem(KEY) || "";
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (err) {
+      return "";
+    }
+  }
+  function signals(value) {
+    return {
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value
+    };
+  }
+  var stored = read();
+  var defaults = signals("denied");
+  if (!stored) defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+  function loadGa() {
+    if (document.getElementById("hmg-gtag")) return;
+    var tag = document.createElement("script");
+    tag.id = "hmg-gtag";
+    tag.async = true;
+    tag.src = SRC;
+    document.head.appendChild(tag);
+    gtag("js", new Date());
+    gtag("config", ID);
+  }
+  window.hmgSetConsent = function (choice) {
+    var next = choice === "granted" ? "granted" : "denied";
+    try { localStorage.setItem(KEY, next); } catch (err) {}
+    gtag("consent", "update", signals(next));
+    if (next === "granted") loadGa();
+    return next;
+  };
+  window.hmgConsent = function () { return read(); };
+  if (stored === "granted") window.hmgSetConsent("granted");
+})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5681559774142917">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="logo" href="../">Higher <span>Math</span> Guide</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Primary">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/" aria-current="page">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/" class="nav-cta">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="narrow">
+<header class="hero" style="border:none;margin:0;padding-bottom:0">
+<h1>What does a computer checked proof actually prove?</h1>
+<p class="byline">By the Higher Math Guide editorial team. Last reviewed: 21 November 2026.</p>
+<p class="article-meta">Explainer · Proofs · Educational only · Updated 21 Nov 2026</p>
+</header>
+<figure class="article-figure">
+<img src="../images/computer-checked-proofs-office.webp" alt="An empty daylight office with desks, laptops, and whiteboards of diagrams" width="1280" height="720" loading="lazy" decoding="async">
+<figcaption>An empty research office in daylight. Illustrative AI generated photo <a class="src" href="../image-policy/">Source</a></figcaption>
+</figure>
+<div class="article-body">
+<p><strong>A computer checked proof certifies that a formal statement follows from the definitions and earlier results that statement uses.</strong> Matching that formal statement to an English theorem is a second job. A person does it by reading the definitions in force. The checker does that reading only in the sense that it sees the formal definition. It does not see the sentence you meant.</p>
+
+<nav class="article-meta" aria-label="Breadcrumb">
+<a href="../">Home</a>
+ · <a href="./">Explainers</a>
+ · <a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a>
+ · <span aria-current="page">Computer checked proofs</span>
+</nav>
+
+<p>On 26 October 2026, <a href="https://axiommath.ai/research/the-enormous-theorem-formalized/" rel="noopener noreferrer">Axiom published Formalizing the Enormous Theorem</a>. Axiom says it formalized the classification of finite simple groups in the Lean proof assistant, and Axiom describes that release as the first complete computer checked proof of the classification. Axiom says the project produced approximately 43.1 million lines of Lean code. In the same note, Axiom says people inspect the statement and the definitions to confirm that they express the intended classification, while Lean checks the formal deductions. This page reports those sentences as Axiom's claim. It has not rerun the repository, and it has not reviewed the formal statement. The arithmetic below is the same split, small enough to finish by hand. Educational only: see the <a href="../disclaimer/">disclaimer</a>.</p>
+
+<h2>Four layers, kept apart</h2>
+<p>A beginner proof and a classification proof fail in the same place when these four layers get glued together. The <a href="quantifiers-and-negation.html">quantifiers and negation</a> page is the human version of the third row: a formal statement is a nest of "for all" and "there exists", and the order is the meaning.</p>
+<table class="stat-table">
+<thead>
+<tr><th>Layer</th><th>The even sum, in this page's example</th><th>Who can check it</th></tr>
+</thead>
+<tbody>
+<tr><td>English theorem</td><td>The sum of two even integers is even</td><td>A person, using the ordinary meaning of even</td></tr>
+<tr><td>Definition in force</td><td>Even a means there exists an r with a = r + r</td><td>A person, reading the definition the file actually uses</td></tr>
+<tr><td>Formal statement</td><td>Even a and Even b imply Even (a + b), when addition is commutative</td><td>A kernel, once a proof term of that statement exists</td></tr>
+<tr><td>Independent check</td><td>Another checker on the same term, and a fresh reading of the statement</td><td>A second program, and a person. Different jobs.</td></tr>
+</tbody>
+</table>
+
+<h2>The definition mathlib actually uses</h2>
+<p>The <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Even.html" rel="noopener noreferrer">mathlib page on squares and even elements</a>, checked 21 November 2026, defines <code>Even a</code> for a type with addition by the existence of an r such that a = r + r. The same page records the theorem <code>Even.add</code>: if the type is an <code>AddCommSemigroup</code>, then Even a and Even b imply Even (a + b). "AddCommSemigroup" is the library's name for a set with an addition that is associative and commutative. Integers with ordinary addition are one example. The hypothesis is part of the formal statement. Drop it, and you are looking at a different statement.</p>
+<p>The page also notes that an older definition asked for an element c with a = 2 * c. The current file lists a lemma, <code>even_iff_exists_two_nsmul</code>, that Even a is equivalent to the existence of an r with a equal to twice r, for an additive monoid. That equivalence is itself a formal statement. A course that uses the words "divisible by 2" and a file that uses r + r can agree, and the agreement is a lemma someone has to prove. Sharing the English word even does not create the lemma.</p>
+
+<h2>The sum, written out</h2>
+<p>Take integers a and b with Even a and Even b in mathlib's sense. Then there are integers r and s with a = r + r and b = s + s. The sum is (r + r) + (s + s). Associativity regroups that as r + ((r + s) + s). Commutativity swaps the inner r past s, giving r + ((s + r) + s), which regroups as (r + s) + (r + s). Set t = r + s. Then a + b = t + t, which is Even (a + b) under the same definition.</p>
+<p>The swap is the step that spends the commutative hypothesis. A proof term that rearranges r and s has to cite commutativity, or some earlier lemma that already cited it. A kernel that accepts the term has accepted that citation. It has also accepted that "Even" in the goal is the Even from the imported file.</p>
+<p>Numbers, so the regrouping is an equality you can recompute. Let r = 3 and s = 5. Then a = 6 and b = 10. The sum is 16. And t = 8, with 8 + 8 = 16. One intermediate value: 3 + ((3 + 5) + 5) = 3 + 13 = 16. Same integer after the swap: 3 + ((5 + 3) + 5) = 16.</p>
+
+<div class="card-grid" aria-label="Related reading">
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A green chalkboard filled with handwritten calculus notes in a quiet study" loading="lazy" decoding="async">
+<h3><a href="quantifiers-and-negation.html">Quantifiers and negation</a></h3>
+<p>There exists and for all, and why swapping them changes the claim a checker would see.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/lhopitals-rule-desk.webp" width="1280" height="720" alt="Student desk with graph paper, pencil, and scientific calculator" loading="lazy" decoding="async">
+<h3><a href="proof-by-induction.html">Proof by induction</a></h3>
+<p>A base and a step. A checker can certify them only after both are formal statements.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/contrapositive-vs-contradiction-desk.webp" width="1280" height="720" alt="An open blank grid notebook and a wooden ruler on a desk below an empty whiteboard" loading="lazy" decoding="async">
+<h3><a href="contrapositive-vs-contradiction.html">Contrapositive versus contradiction</a></h3>
+<p>What a human proof assumes in its first line, before any checker is involved.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of handwritten limit notation in a quiet study" loading="lazy" decoding="async">
+<h3><a href="epsilon-delta-intuition.html">Epsilon delta proofs</a></h3>
+<p>The written argument for a limit. A table of samples is a different object from that argument.</p>
+</article>
+</div>
+
+<h2>A correct proof of a different statement</h2>
+<p>Define OnlyZero a to mean a = 0. Then OnlyZero a and OnlyZero b imply OnlyZero (a + b), because 0 + 0 = 0. A kernel that accepts a proof of that implication has certified a fact about zero. Suppose the comment above the proof still says "the sum of two even integers is even". The comment is for a person. The formal statement is about OnlyZero. Both of the following can be true at once: the proof term checks, and the English comment describes a theorem the file did not state.</p>
+<p>That is the mismatch to practice on, because the arithmetic is obvious. The milder version is already in the mathlib note. A file that defines Even by r + r, and a reader who remembers a = 2 * c, are talking about two formal statements. The lemma that connects them is extra. Until that lemma is the thing being checked, a success mark on Even.add is a success mark for r + r.</p>
+
+<h2>What the kernel checks</h2>
+<p>The <a href="https://lean-lang.org/doc/reference/latest/Elaboration-and-Compilation/" rel="noopener noreferrer">Lean language reference, in the section on elaboration and compilation</a>, checked 21 November 2026, describes the trusted kernel as a small type checker for the core theory. It says the kernel's job is to check proof terms. The <a href="https://lean-lang.org/doc/reference/latest/" rel="noopener noreferrer">reference overview</a>, checked the same day, says each tactic produces a term in that core theory, and the kernel checks the term, so a bug in a tactic threatens a confusing error rather than an accepted proof of the wrong statement. The elaboration section adds that the kernel is written in C++, and that separate implementations exist in Rust and in Lean, so the implementations can be checked against each other.</p>
+<p>Put next to the even sum, those sentences stay small. The proof term is evidence that Even.add, with mathlib's Even and with the commutative hypothesis, follows in the theory. The tactic script is a way of building that term. A second implementation that accepts the same term is evidence about the checker. The English sentence "the sum of two even integers is even" is still waiting for a person to compare it with r + r.</p>
+
+<h2>Three jobs that share the word check</h2>
+<ol>
+<li><strong>Accepting a term.</strong> The kernel of the implementation you ran says the term has the type of the formal statement. That is the check Lean's reference assigns to the kernel.</li>
+<li><strong>Agreeing checkers.</strong> A separate implementation accepts the same term. The reference says those implementations exist so they can be checked against each other. Agreement is about the checker.</li>
+<li><strong>Reading the statement.</strong> A person opens the definitions and says whether the formal statement is the theorem they meant. On this page that reading is the table. Axiom's note says this is the human part of their classification project. This site has not done that reading for Axiom's repository.</li>
+</ol>
+<p>Axiom's own wording already separates the third job from the first. Reporting that wording is the claim. Treating the announcement as the third job, completed, would erase the separation the note is careful about.</p>
+
+<aside class="callout" aria-label="Check another pair">
+<strong>Check another pair.</strong>
+<p>Before you look: take 4 and 14. Witnesses under r + r are 2 and 7, because 4 = 2 + 2 and 14 = 7 + 7. The sum of the witnesses is 9, and 4 + 14 = 18 = 9 + 9. OnlyZero fails for 4, so the hypothesis "both inputs are OnlyZero" is the hypothesis that fails. The implication about zero can still be true. It is a statement about zero.</p>
+<p>For a different kind of check, the <a href="../calculators/epsilon-delta-finder.html">epsilon delta finder</a> searches for a sampled window around a proposed limit. A window the samples support is a picture. The <a href="epsilon-delta-intuition.html">epsilon delta</a> page says how to write the argument the picture does not replace. This site has no checker that runs Lean, and the finder does not become one by sampling more points.</p>
+</aside>
+
+<h2>Checkpoints</h2>
+<ol>
+<li>For a = 8 and b = 6, name r and s with a = r + r and b = s + s. Then name t = r + s and check a + b = t + t.</li>
+<li>Which hypothesis of Even.add does the swap of r with s use?</li>
+<li>The comment above a proof says "sum of two evens". The definition in the file is OnlyZero. What statement did a successful kernel check certify?</li>
+</ol>
+<p>Answers, so the check is a comparison rather than a guess. For the first, r = 4 and s = 3, so t = 7, and 8 + 6 = 14 = 7 + 7. For the second, commutative addition. For the third, the kernel certified the OnlyZero implication. The comment is still a comment.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Reading a success mark as a reading of the textbook sentence.</strong> The mark says a term inhabits the formal statement. The textbook sentence joins the story when a person has compared the two.</li>
+<li><strong>Editing the definition and keeping the comment.</strong> OnlyZero with an even comment is the small version. A larger project has the same failure mode whenever a definition drifts and the surrounding prose stays put.</li>
+<li><strong>Treating the tactic script as the object that was checked.</strong> The Lean reference says the kernel checks the term the tactic builds. A script that fails to build a term has not produced a proof, even if the script looks plausible in a text editor.</li>
+<li><strong>Calling a second kernel a review of the meaning.</strong> Two implementations that agree can raise confidence in the checker. They share the formal statement. They do not supply the English reading.</li>
+<li><strong>Promoting a company's announcement into that reading.</strong> Axiom says it completed a Lean formalization of the classification, and Axiom says people inspected the statement. This page can cite that note. Citing it is the whole of what this page has done with it.</li>
+</ul>
+
+<h2>Where this sits in the proof pages</h2>
+<p><a href="proof-by-induction.html">Proof by induction</a> is the next template to formalize once the even sum feels small: the base and the step are two statements, and a checker certifies each one that has a term. <a href="contrapositive-vs-contradiction.html">Contrapositive versus contradiction</a> is about the first and last lines of a human argument. <a href="../pathways/intro-to-proofs.html">Intro to proofs</a> is the pathway that asks you to write those lines. The cluster map is <a href="../topics/real-analysis-proofs.html">real analysis and proof habits</a>. A limit written with epsilon and delta is the analysis course's version of "the definition in force is the definition you must use", which is why the <a href="epsilon-delta-intuition.html">epsilon delta</a> page belongs next to this one even though no Lean file appears there.</p>
+
+<h2>Sources and further reading</h2>
+<ul>
+<li>Lean language reference, overview: tactics produce terms, and the kernel checks those terms. <a href="https://lean-lang.org/doc/reference/latest/" rel="noopener noreferrer">Lean language site</a> (accessed 21 November 2026)</li>
+<li>Lean language reference, elaboration and compilation, the kernel: a small type checker whose job is to check proof terms; written in C++; separate implementations in Rust and in Lean. <a href="https://lean-lang.org/doc/reference/latest/Elaboration-and-Compilation/" rel="noopener noreferrer">Lean language site, kernel section</a> (accessed 21 November 2026)</li>
+<li>mathlib, squares and even elements: Even a means there exists r with a = r + r; Even.add assumes an AddCommSemigroup; the page notes an older definition a = 2 * c and lists even_iff_exists_two_nsmul. <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Even.html" rel="noopener noreferrer">mathlib docs site</a> (accessed 21 November 2026)</li>
+<li>Axiom, Formalizing the Enormous Theorem, 26 October 2026. Axiom's claim that it formalized the classification of finite simple groups in Lean, including Axiom's description of the human reading of the statement and Lean's check of the deductions. Reported here as Axiom's claim. <a href="https://axiommath.ai/research/the-enormous-theorem-formalized/" rel="noopener noreferrer">axiommath.ai</a> (accessed 21 November 2026)</li>
+</ul>
+<p>Last reviewed: 21 November 2026.</p>
+
+<h2 id="faq">Common questions</h2>
+<section class="faq-item" id="what-it-proves">
+<h3>What does a computer checked proof actually prove?</h3>
+<p>It certifies that a formal statement follows from the definitions and earlier results that statement uses. A person still has to read those definitions to see whether the formal statement matches the English theorem.</p>
+</section>
+<section class="faq-item" id="mathlib-even">
+<h3>What does mathlib mean by even?</h3>
+<p>The mathlib page on squares and even elements defines Even a as the existence of an r such that a equals r + r. The theorem Even.add adds a hypothesis: addition is a commutative semigroup. Under that hypothesis, Even a and Even b imply Even (a + b).</p>
+</section>
+<section class="faq-item" id="kernel">
+<h3>What does Lean's kernel check?</h3>
+<p>The Lean language reference says the kernel checks proof terms. Tactics build those terms. A separate implementation of the kernel can check the same term again. Reading the English sentence is a person's job.</p>
+</section>
+<section class="faq-item" id="axiom-claim">
+<h3>Has this site checked Axiom's classification claim?</h3>
+<p>No. On 26 October 2026 Axiom said it had formalized the classification of finite simple groups in Lean, and Axiom described that work as a complete computer checked proof. This page reports that as Axiom's claim. It does not rerun the repository or review the formal statement.</p>
+</section>
+
+<h2>Related reading</h2>
+<div class="card-grid" aria-label="Related reading at end">
+<article class="card">
+<img class="card-thumb" src="../images/glossary.webp" width="1280" height="720" alt="An open mathematics book and handwritten notes for learning proofs" loading="lazy" decoding="async">
+<h3><a href="../pathways/intro-to-proofs.html">Intro to proofs</a></h3>
+<p>The writing pathway: quantifiers, an epsilon delta argument, and the habit of naming what was proved.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/hero-chalkboard.webp" width="1280" height="720" alt="A chalkboard of careful handwritten mathematics for the analysis and proofs map" loading="lazy" decoding="async">
+<h3><a href="../topics/real-analysis-proofs.html">Real analysis and proof habits</a></h3>
+<p>The topic map this explainer belongs to, from definitions to series tests.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/calculators.webp" width="1280" height="720" alt="A scientific calculator used as a numerical check beside handwritten limits" loading="lazy" decoding="async">
+<h3><a href="../calculators/epsilon-delta-finder.html">Epsilon delta finder</a></h3>
+<p>A sampled window for one epsilon. Useful as a picture, and a different object from a proof term.</p>
+</article>
+<article class="card">
+<img class="card-thumb" src="../images/lhopitals-rule-desk.webp" width="1280" height="720" alt="Student desk with graph paper, pencil, and scientific calculator" loading="lazy" decoding="async">
+<h3><a href="proof-by-induction.html">Proof by induction, step by step</a></h3>
+<p>Base case and inductive step, with the spot check kept separate from the argument.</p>
+</article>
+</div>
+<ul>
+<li><a href="../topics/real-analysis-proofs.html">Real analysis topic map</a> and the <a href="../pathways/intro-to-proofs.html">intro to proofs pathway</a></li>
+<li><a href="./">All explainers</a> and the <a href="../sources/">sources</a> page</li>
+</ul>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div>
+<a class="logo" href="../" style="color:#fff;text-decoration:none">Higher <span style="color:#a8b8d4">Math</span> Guide</a>
+<p style="margin:0.6rem 0 0;max-width:28rem">Higher mathematics, explained without the fog. A free learning resource.</p>
+</div>
+<div>
+<h2>Explore</h2>
+<ul>
+<li><a href="../topics/">Topics</a></li>
+<li><a href="../explainers/">Explainers</a></li>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../pathways/">Pathways</a></li>
+<li><a href="../calculators/">Calculators</a></li>
+<li><a href="../sources/">Sources</a></li>
+</ul>
+</div>
+<div>
+<h2>About</h2>
+<ul>
+<li><a href="../about/">About</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../disclaimer/">Disclaimer</a></li>
+<li><a href="../terms/">Terms</a></li>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../image-policy/">Image policy</a></li>
+<li><a href="../contact/">Email</a></li>
+</ul>
+</div>
+<div class="footer-cta">
+<p>Questions, a correction, or a topic you want explained? This site is free and educational.</p>
+<a class="btn" href="../contact/">Write to Higher Math Guide</a>
+</div>
+<nav class="footer-legal" aria-label="Legal">
+<a href="../terms/">Terms</a>
+<a href="../disclaimer/">Disclaimer</a>
+<a href="../privacy/">Privacy</a>
+<a href="../image-policy/">Image policy</a>
+<a href="../contact/">Contact</a>
+<a href="../copyright/">Copyright</a>
+<a href="#cookie-settings" id="cookie-settings" class="js-cookie-settings">Cookie settings</a>
+</nav>
+</div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+/* hmg-consent-ui */
+(function () {
+  function banner() { return document.getElementById("hmg-consent"); }
+  function current() { return window.hmgConsent ? window.hmgConsent() : ""; }
+  function paint(box) {
+    var stored = current();
+    var buttons = box.querySelectorAll("button[data-consent]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", buttons[i].getAttribute("data-consent") === stored ? "true" : "false");
+    }
+  }
+  function links() { return document.querySelectorAll(".js-cookie-settings"); }
+  function syncLinks(open) {
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("aria-controls", "hmg-consent");
+      nodes[i].setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+  function show(moveFocus) {
+    var box = banner();
+    if (!box) return;
+    box.hidden = false;
+    paint(box);
+    syncLinks(true);
+    if (moveFocus) box.focus();
+  }
+  function hide() {
+    var box = banner();
+    if (!box) return;
+    box.hidden = true;
+    syncLinks(false);
+  }
+  function build() {
+    if (banner()) return;
+    var box = document.createElement("div");
+    box.id = "hmg-consent";
+    box.className = "consent-banner";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie choices");
+    box.tabIndex = -1;
+    box.hidden = true;
+    var text = document.createElement("p");
+    text.id = "hmg-consent-text";
+    text.appendChild(document.createTextNode("Higher Math Guide uses Google Analytics 4 only after you accept. Reject leaves analytics and ad cookies off. "));
+    var policy = document.createElement("a");
+    policy.href = "https://highermathguide.com/privacy/";
+    policy.textContent = "Read the privacy policy";
+    text.appendChild(policy);
+    text.appendChild(document.createTextNode("."));
+    var actions = document.createElement("div");
+    actions.className = "consent-actions";
+    [["Reject", "denied"], ["Accept", "granted"]].forEach(function (pair) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("data-consent", pair[1]);
+      btn.textContent = pair[0];
+      actions.appendChild(btn);
+    });
+    box.appendChild(text);
+    box.appendChild(actions);
+    box.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var value = target.getAttribute("data-consent");
+      if (value !== "granted" && value !== "denied") return;
+      if (window.hmgSetConsent) window.hmgSetConsent(value);
+      hide();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || box.hidden) return;
+      if (!current()) return;
+      hide();
+    });
+    var skip = document.querySelector(".skip-link");
+    if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
+    else document.body.appendChild(box);
+  }
+  function openSettings(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    build();
+    show(true);
+  }
+  window.hmgOpenConsent = openSettings;
+  function boot() {
+    build();
+    var nodes = links();
+    for (var i = 0; i < nodes.length; i++) nodes[i].addEventListener("click", openSettings);
+    var stored = current();
+    if (!stored) show(false);
+    else if (location.hash === "#cookie-settings") show(true);
+    else syncLinks(false);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a796980ec83472687c1d36c60177e23"}'></script><!-- End Cloudflare Web Analytics -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ]});
+  }
+});
+</script>
+</body>
+</html>
