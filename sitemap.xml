@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://highermathguide.com/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/topics/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/topics/calculus-foundations.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/topics/multivariable-vector-calculus.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/topics/linear-algebra.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/topics/probability-statistics.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -37,7 +37,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/topics/differential-equations.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -52,222 +52,222 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/what-a-derivative-measures.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/row-reduction-rref-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/partial-fractions-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/eigenvalues-plain-language.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/bayes-theorem-without-fog.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/sequences-series-infinite-sums.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/separable-differential-equations.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/implicit-differentiation-intuition.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/jacobian-matrices-plain-language.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/convergence-tests-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/lagrange-multipliers-intuition.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/stokes-theorem-intuition.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/glossary/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/numerical-derivative.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/gradient-directional-derivative.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/jacobian.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/divergence-curl.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/quadratic-formula.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/matrix-2x2.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/matrix-3x3.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/rref.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/lu-decomposition.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/vector-ops.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/gram-schmidt.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/binomial-probability.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/bayes-theorem.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/normal-cdf.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/sequence-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/combinatorics.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/limit-estimator.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/epsilon-delta-finder.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/integral-riemann.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/partial-fractions.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/second-order-ode.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/laplace-transform.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/wronskian.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/first-order-linear-ode.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/taylor-polynomial.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/eigenvalue-2x2.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/calculators/eigenvalue-3x3.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/ap-calc-ab-bridge.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/pathways/linear-algebra-first-course.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -282,43 +282,43 @@
   </url>
   <url>
     <loc>https://highermathguide.com/about/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/faq/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/contact/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/terms/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/privacy/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
   </url>
     <url>
     <loc>https://highermathguide.com/image-policy/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 <url>
     <loc>https://highermathguide.com/disclaimer/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://highermathguide.com/copyright/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
@@ -328,7 +328,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/lhopitals-rule-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/lhopitals-rule-desk.webp</image:loc>
@@ -336,7 +336,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/integration-by-parts-intuition.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/integration-by-parts-desk.webp</image:loc>
@@ -368,7 +368,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/quantifiers-and-negation.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/hero-chalkboard.webp</image:loc>
@@ -376,7 +376,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/contrapositive-vs-contradiction.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/contrapositive-vs-contradiction-desk.webp</image:loc>
@@ -384,7 +384,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/determinant-geometric-meaning.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/determinant-geometric-meaning-desk.webp</image:loc>
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/linear-independence-explained.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/linear-independence-whiteboard.webp</image:loc>
@@ -400,7 +400,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/mean-value-theorem-intuition.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/mean-value-theorem-highway.webp</image:loc>
@@ -408,7 +408,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/rank-nullity-theorem.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/rank-nullity-lecture-hall.webp</image:loc>
@@ -416,7 +416,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/central-limit-theorem-intuition.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/central-limit-theorem-coins.webp</image:loc>
@@ -424,7 +424,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/fundamental-theorem-of-calculus.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/fundamental-theorem-blackboard.webp</image:loc>
@@ -432,7 +432,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/taylor-series-intuition.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/taylor-series-lake.webp</image:loc>
@@ -440,7 +440,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/u-substitution-explained.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/u-substitution-keys.webp</image:loc>
@@ -448,7 +448,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/related-rates-explained.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/related-rates-balloon.webp</image:loc>
@@ -456,7 +456,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/intermediate-value-theorem-intuition.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/intermediate-value-theorem-blackboard.webp</image:loc>
@@ -464,7 +464,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/riemann-sums-intuition.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/riemann-sums-stone-terrace.webp</image:loc>
@@ -472,7 +472,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/what-is-a-vector-space.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/vector-space-glowing-cube.webp</image:loc>
@@ -480,7 +480,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/basis-and-dimension.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/basis-dimension-light-strands.webp</image:loc>
@@ -488,7 +488,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/gram-schmidt-process.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/gram-schmidt-gold-traces.webp</image:loc>
@@ -496,7 +496,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/orthogonal-projection-least-squares.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/orthogonal-projection-blackboard.webp</image:loc>
@@ -504,7 +504,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/divergence-theorem-intuition.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/divergence-theorem-cooling-towers.webp</image:loc>
@@ -512,7 +512,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/change-of-basis.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/change-of-basis-two-maps.webp</image:loc>
@@ -520,7 +520,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/diagonalization.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/diagonalization-brass-key-notebook.webp</image:loc>
@@ -528,7 +528,7 @@
   </url>
   <url>
     <loc>https://highermathguide.com/explainers/inner-product-spaces.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <image:image>
       <image:loc>https://highermathguide.com/images/inner-product-spaces-blackboard.webp</image:loc>
