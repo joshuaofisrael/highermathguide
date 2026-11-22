@@ -203,7 +203,7 @@ assert(html.indexOf("Joshua") < 0, "no personal name");
 assert(html.indexOf("Last reviewed: 28 October 2026") >= 0, "review date");
 assert(html.indexOf("integrating factor calculator") >= 0, "target phrase");
 assert(html.indexOf("FAQPage") >= 0 && html.indexOf("BreadcrumbList") >= 0 && html.indexOf("WebApplication") >= 0, "json-ld types");
-assert(html.indexOf("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js") >= 0, "adsense");
+assert(html.indexOf("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js") < 0, "adsense must stay off until approval");
 var faqs = [];
 var faqRe = /<section class="faq-item"[^>]*>\s*<h2>([^<]*)<\/h2>\s*<p>([\s\S]*?)<\/p>/g;
 var faqMatch;

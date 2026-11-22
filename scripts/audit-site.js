@@ -30,7 +30,7 @@ const NOINDEX_PAGES = new Set([
 const GA_ID = "G-9MKRPRJMF5";
 const GA_SRC = "https://www.googletagmanager.com/gtag/js?id=G-9MKRPRJMF5";
 const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917";
-const ADSENSE_META = '<meta name="google-adsense-account" content="ca-pub-5681559774142917">';
+const ADSENSE_META = '';
 const BEACON = "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"2a796980ec83472687c1d36c60177e23\"}'></script><!-- End Cloudflare Web Analytics -->";
 
 const SECTION = {
@@ -363,8 +363,8 @@ for (const file of htmlFiles) {
   if (uiAt < 0 || uiAt < headEnd) fail(`${file} consent banner script must sit after the head`);
   const adsenseAt = html.indexOf(ADSENSE_SRC);
   const consentAt = html.indexOf("/* hmg-consent */");
-  if (adsenseAt < 0 || html.indexOf(ADSENSE_META) < 0) fail(`${file} AdSense head tags missing`);
-  if (!(consentAt >= 0 && consentAt < adsenseAt)) fail(`${file} consent default must run before AdSense`);
+  // AdSense detached 21 Nov 2026 until the account is approved (see seo-central/site-seo-rules.md). Do not re-add.
+  if (adsenseAt >= 0 || html.indexOf("google-adsense-account") >= 0) fail(`${file} AdSense tag must stay off until approval`);
   if (/<script\b[^>]*\bsrc=["']https:\/\/www\.googletagmanager\.com\/gtag\/js/i.test(html)) {
     fail(`${file} loads gtag.js before consent`);
   }
